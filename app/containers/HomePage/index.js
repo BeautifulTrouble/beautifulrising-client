@@ -12,6 +12,8 @@ import { createStructuredSelector } from 'reselect';
 import makeSelectHomePage from './selectors';
 import messages from './messages';
 
+import Tags from 'containers/Tags';
+
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
@@ -23,6 +25,8 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           ]}
         />
         <FormattedMessage {...messages.header} />
+
+        <Tags />
       </div>
     );
   }
