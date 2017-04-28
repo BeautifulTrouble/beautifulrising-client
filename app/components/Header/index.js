@@ -7,19 +7,11 @@
 import React from 'react';
 import Link from 'components/Link';
 import Menu from 'components/Menu';
+import TypeMenu from 'components/TypeMenu';
 import styled from 'styled-components';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
-
-const Ul = styled.ul`
-  padding: 0;
-  margin: 0;
-`;
-const Li = styled.li`
-  display: inline-block;
-  margin: 2px;
-`;
 
 function Header() {
   return (
@@ -28,6 +20,7 @@ function Header() {
         <FormattedMessage {...messages.header} />
       </h1>
       <Menu />
+      <TypeMenu />
     </div>
   );
 }

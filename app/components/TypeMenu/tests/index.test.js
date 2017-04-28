@@ -1,9 +1,9 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
-// import { HomePage } from '../index';
+// import TypeMenu from '../index';
 
-describe('<HomePage />', () => {
+describe('<TypeMenu />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });
