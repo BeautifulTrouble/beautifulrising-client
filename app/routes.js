@@ -33,7 +33,7 @@ export default function createRoutes(store) {
 
     importModules.catch(errorLoading);
   };
-  
+
   return [
     {
       path: '/',
@@ -64,6 +64,15 @@ export default function createRoutes(store) {
       name: 'contribute',
       getComponent(nextState, cb) {
         import('containers/ContributePage')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      },
+    },
+    {
+      path: '/resources(/:section)*',
+      name: 'resources',
+      getComponent(nextState, cb) {
+        import('containers/TrainingPage')
           .then(loadModule(cb))
           .catch(errorLoading)
       },
