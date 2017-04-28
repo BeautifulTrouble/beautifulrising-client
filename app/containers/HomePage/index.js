@@ -9,10 +9,12 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
+
+import Tags from 'containers/Tags';
+
 import makeSelectHomePage from './selectors';
 import messages from './messages';
 
-import Tags from 'containers/Tags';
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {

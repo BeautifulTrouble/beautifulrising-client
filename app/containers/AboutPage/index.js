@@ -12,7 +12,6 @@ import messages from './messages';
 
 export class AboutPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-
     return (
       <div>
         <Helmet
@@ -22,7 +21,6 @@ export class AboutPage extends React.Component { // eslint-disable-line react/pr
           ]}
         />
         <FormattedMessage {...messages.header} />
-        <span>Hello {this.props.params.section}</span>
       </div>
     );
   }

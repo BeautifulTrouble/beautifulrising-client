@@ -5,13 +5,13 @@
 */
 
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 import Link from 'components/Link';
 import MenuBlock from 'components/MenuBlock';
 import MenuList from 'components/MenuList';
 import MenuListItem from 'components/MenuListItem';
-import MenuTitle from 'components/MenuTitle';
+// import MenuTitle from 'components/MenuTitle';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
@@ -21,7 +21,7 @@ function TypeMenu() {
     <MenuBlock>
       <MenuList>
         <MenuListItem>
-          <Link to="/type/stories">Stories</Link>
+          <Link to="/type/stories"><FormattedMessage {...messages.stories} /></Link>
         </MenuListItem>
         <MenuListItem>
           <Link to="/type/tactics">Tactics</Link>

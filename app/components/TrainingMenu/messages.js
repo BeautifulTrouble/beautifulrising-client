@@ -8,6 +8,6 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   header: {
     id: 'app.components.TrainingMenu.header',
-    defaultMessage: 'This is the TrainingMenu component !',
+    defaultMessage: 'Training + Resources',
   },
 });

@@ -5,7 +5,7 @@
 */
 
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 import Link from 'components/Link';
 import MenuBlock from 'components/MenuBlock';
@@ -19,7 +19,7 @@ import messages from './messages';
 function AboutMenu() {
   return (
     <MenuBlock>
-      <MenuTitle>About</MenuTitle>
+      <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
       <MenuList>
         <MenuListItem>
           <Link to="/about/whats-inside">The Toolbox</Link>
@@ -49,9 +49,5 @@ function AboutMenu() {
     </MenuBlock>
   );
 }
-
-AboutMenu.propTypes = {
-
-};
 
 export default AboutMenu;

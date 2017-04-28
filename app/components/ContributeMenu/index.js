@@ -19,13 +19,13 @@ import messages from './messages';
 function ContributeMenu() {
   return (
     <MenuBlock>
-      <MenuTitle>Contribute</MenuTitle>
+      <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
       <MenuList>
         <MenuListItem>
-            <Link to="/contribute/how-it-works">How does it work?</Link>
-          </MenuListItem>
-        </MenuList>
-      </MenuBlock>
+          <Link to="/contribute/how-it-works">How does it work?</Link>
+        </MenuListItem>
+      </MenuList>
+    </MenuBlock>
   );
 }
 

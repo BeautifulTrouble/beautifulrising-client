@@ -10,14 +10,14 @@ import {
 } from './constants';
 
 const initialState = fromJS({
-  tags:  [
-    "capitalism",
-    "colonialism",
-    "corruption",
-    "democracy",
-    "dictatorship",
-    "elections"
-  ]
+  tags: [
+    'capitalism',
+    'colonialism',
+    'corruption',
+    'democracy',
+    'dictatorship',
+    'elections',
+  ],
 });
 
 function tagsReducer(state = initialState, action) {

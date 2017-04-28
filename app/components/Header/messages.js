@@ -17,5 +17,5 @@ export default defineMessages({
   aboutLink: {
     id: 'app.components.Header.aboutLink',
     defaultMessage: 'About',
-  }
+  },
 });

@@ -10,4 +10,8 @@ export default defineMessages({
     id: 'app.components.TypeMenu.header',
     defaultMessage: 'This is the TypeMenu component !',
   },
+  stories: {
+    id: 'app.components.TypeMenu.stories',
+    defaultMessage: 'Stories',
+  },
 });

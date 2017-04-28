@@ -8,6 +8,6 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   header: {
     id: 'app.components.PlatformsMenu.header',
-    defaultMessage: 'This is the PlatformsMenu component !',
+    defaultMessage: 'Platforms',
   },
 });

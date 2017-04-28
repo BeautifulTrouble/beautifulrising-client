@@ -56,7 +56,7 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
         import('containers/AboutPage')
           .then(loadModule(cb))
-          .catch(errorLoading)
+          .catch(errorLoading);
       },
     },
     {
@@ -65,7 +65,7 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
         import('containers/ContributePage')
           .then(loadModule(cb))
-          .catch(errorLoading)
+          .catch(errorLoading);
       },
     },
     {
@@ -74,7 +74,7 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
         import('containers/TrainingPage')
           .then(loadModule(cb))
-          .catch(errorLoading)
+          .catch(errorLoading);
       },
     },
     {
@@ -83,7 +83,7 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
         import('containers/PlatformsPage')
           .then(loadModule(cb))
-          .catch(errorLoading)
+          .catch(errorLoading);
       },
     },
     {

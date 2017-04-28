@@ -20,20 +20,20 @@ import messages from './messages';
 function PlatformsMenu() {
   return (
     <MenuBlock>
-      <MenuTitle>Platforms</MenuTitle>
+      <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
       <MenuSubtitle>Explore other ways to access the toolbox</MenuSubtitle>
       <MenuList>
-         <MenuListItem>
-            <Link to="/platforms/chatbot">Chatbot</Link>
-          </MenuListItem>
-          <MenuListItem>
-             <Link to="/platforms/game">Game</Link>
-           </MenuListItem>
-           <MenuListItem>
-              <Link to="/platforms/pdf">PDF</Link>
-            </MenuListItem>
-        </MenuList>
-      </MenuBlock>
+        <MenuListItem>
+          <Link to="/platforms/chatbot">Chatbot</Link>
+        </MenuListItem>
+        <MenuListItem>
+          <Link to="/platforms/game">Game</Link>
+        </MenuListItem>
+        <MenuListItem>
+          <Link to="/platforms/pdf">PDF</Link>
+        </MenuListItem>
+      </MenuList>
+    </MenuBlock>
   );
 }
 

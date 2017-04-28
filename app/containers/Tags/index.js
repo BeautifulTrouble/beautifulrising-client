@@ -22,19 +22,17 @@ export class Tags extends React.PureComponent { // eslint-disable-line react/pre
 
 
   render() {
-    console.log(this.props.Tags);
-
     return (
       <MenuBlock>
         <MenuTitle>
           <FormattedMessage {...messages.header} />
         </MenuTitle>
         <MenuList>
-        {this.props.Tags.tags.map((label) => (
-          <MenuListItem key={label}>
-            <Link to={`/tag/${label}`}>{label}</Link>
-          </MenuListItem>
-        ))}
+          {this.props.Tags.tags.map((label) => (
+            <MenuListItem key={label}>
+              <Link to={`/tag/${label}`}>{label}</Link>
+            </MenuListItem>
+          ))}
         </MenuList>
       </MenuBlock>
     );
@@ -42,17 +40,21 @@ export class Tags extends React.PureComponent { // eslint-disable-line react/pre
 }
 
 Tags.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  // dispatch: PropTypes.func.isRequired,
+  Tags: {
+    tags: PropTypes.array.isRequired,
+  },
 };
 
 const mapStateToProps = createStructuredSelector({
   Tags: makeSelectTags(),
 });
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     dispatch,
+//   };
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Tags);
+// export default connect(mapStateToProps, mapDispatchToProps)(Tags);
+export default connect(mapStateToProps)(Tags);

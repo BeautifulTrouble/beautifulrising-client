@@ -8,6 +8,6 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   header: {
     id: 'app.components.ContributeMenu.header',
-    defaultMessage: 'This is the ContributeMenu component !',
+    defaultMessage: 'Contribute',
   },
 });

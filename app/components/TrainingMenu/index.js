@@ -19,16 +19,16 @@ import messages from './messages';
 function TrainingMenu() {
   return (
     <MenuBlock>
-      <MenuTitle>Training + Resources</MenuTitle>
+      <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
       <MenuList>
         <MenuListItem>
           <Link to="/resources/training">Request a Training</Link>
-         </MenuListItem>
-         <MenuListItem>
-           <Link to="/resources/other">Other Resources</Link>
-          </MenuListItem>
-        </MenuList>
-      </MenuBlock>
+        </MenuListItem>
+        <MenuListItem>
+          <Link to="/resources/other">Other Resources</Link>
+        </MenuListItem>
+      </MenuList>
+    </MenuBlock>
   );
 }
 
