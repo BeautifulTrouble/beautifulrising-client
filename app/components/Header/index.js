@@ -6,6 +6,7 @@
 
 import React from 'react';
 import Link from 'components/Link';
+import Menu from 'components/Menu';
 import styled from 'styled-components';
 
 import { FormattedMessage } from 'react-intl';
@@ -26,18 +27,7 @@ function Header() {
       <h1>
         <FormattedMessage {...messages.header} />
       </h1>
-      <ul>
-        <Li>
-          <Link to="/">
-            <FormattedMessage {...messages.homeLink} />
-          </Link>
-        </Li>
-        <Li>
-          <Link to="/about">
-            <FormattedMessage {...messages.aboutLink} />
-          </Link>
-        </Li>
-      </ul>
+      <Menu />
     </div>
   );
 }

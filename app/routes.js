@@ -35,10 +35,28 @@ export default function createRoutes(store) {
       },
     },
     {
-      path: '/about',
+      path: '/about(/:section)*',
       name: 'about',
       getComponent(nextState, cb) {
         import('containers/AboutPage')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      },
+    },
+    {
+      path: '/contribute(/:section)*',
+      name: 'contribute',
+      getComponent(nextState, cb) {
+        import('containers/ContributePage')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      },
+    },
+    {
+      path: '/platforms(/:section)*',
+      name: 'platforms',
+      getComponent(nextState, cb) {
+        import('containers/PlatformsPage')
           .then(loadModule(cb))
           .catch(errorLoading)
       },

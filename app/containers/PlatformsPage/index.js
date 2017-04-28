@@ -1,6 +1,6 @@
 /*
  *
- * AboutPage
+ * PlatformsPage
  *
  */
 
@@ -10,25 +10,23 @@ import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-export class AboutPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class PlatformsPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
-
     return (
       <div>
         <Helmet
-          title="AboutPage"
+          title="PlatformsPage"
           meta={[
-            { name: 'description', content: 'Description of AboutPage' },
+            { name: 'description', content: 'Description of PlatformsPage' },
           ]}
         />
         <FormattedMessage {...messages.header} />
-        <span>Hello {this.props.params.section}</span>
       </div>
     );
   }
 }
 
-AboutPage.propTypes = {
+PlatformsPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
@@ -39,4 +37,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(AboutPage);
+export default connect(null, mapDispatchToProps)(PlatformsPage);
