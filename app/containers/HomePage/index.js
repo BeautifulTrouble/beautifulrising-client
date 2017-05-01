@@ -9,14 +9,19 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-
 import Tags from 'containers/Tags';
 
+import { loadData } from '../App/actions';
 import makeSelectHomePage from './selectors';
 import messages from './messages';
 
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  componentDidMount() {
+    this.props.onPageLoad();
+  }
+
   render() {
     return (
       <div>
@@ -35,7 +40,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 }
 
 HomePage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  // dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -44,7 +49,9 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    onPageLoad: (evt) => {
+      dispatch(loadData());
+    }
   };
 }
 
