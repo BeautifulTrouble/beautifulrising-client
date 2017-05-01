@@ -24,21 +24,13 @@ const makeSelectAllTags = () => createSelector(
   }
 )
 
-const makeSelectAllTools = () => createSelector(
-  selectGlobal,
-  (globalState) => globalState.getIn(['appData', 'information'])
-                      ? globalState.getIn(['appData', 'information'])
-                        .filter(item =>  item['module-type'] === 'gallery' || item['module-type'] === 'full' )
-                      : []
-)
-
-const getToolSlug = (state, props) => { console.log("!!", props, props.params.label); return props.params.label; }
+const getToolSlug = (state, props) => { return props.params.label; }
 const makeSelectToolById = createSelector(
   [ selectGlobal, getToolSlug ],
   (globalData, slug) => {
     if( globalData.getIn(['appData', 'information']) ) {
       return appData.find(tool => tool.slug === slug);
-    } 
+    }
     return null;
   }
 )
@@ -87,7 +79,6 @@ const makeSelectLocationState = () => {
 };
 
 export {
-  makeSelectAllTools,
   makeSelectToolById,
   makeSelectLocationState,
   makeSelectLoading,

@@ -9,13 +9,15 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
+import ToolListItem from 'components/ToolListItem';
+import ToolList from 'components/ToolList';
 import Tags from 'containers/Tags';
-import { makeSelectAllTools, makeSelectToolById,
+import { makeSelectToolById,
           makeSelectData, makeSelectLoading,
           makeSelectError } from 'containers/App/selectors';
 
 import { loadData } from '../App/actions';
-import makeSelectHomePage from './selectors';
+import makeSelectHomePage, { makeSelectAllTools } from './selectors';
 import messages from './messages';
 
 
@@ -26,6 +28,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   }
 
   render() {
+
     return (
       <div>
         <Helmet
@@ -37,6 +40,9 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
         <FormattedMessage {...messages.header} />
 
         <Tags />
+        <ToolList>
+          { this.props.tools ? this.props.tools.map(tool => { return (<ToolListItem key={tool['_id']} {...tool}/>) }) : null }
+        </ToolList>
       </div>
     );
   }
@@ -46,12 +52,14 @@ HomePage.propTypes = {
   // dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  HomePage: makeSelectHomePage(),
-  loading: makeSelectLoading(),
-  error: makeSelectError(),
-  tools: makeSelectAllTools()
-});
+const mapStateToProps = (state, props) => {
+  return {
+    HomePage: makeSelectHomePage(),
+    loading: makeSelectLoading(),
+    error: makeSelectError(),
+    tools: makeSelectAllTools(state, props)
+  }
+};
 
 function mapDispatchToProps(dispatch) {
   return {

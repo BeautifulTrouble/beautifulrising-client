@@ -25,7 +25,6 @@ export class Tags extends React.PureComponent { // eslint-disable-line react/pre
 
 
   render() {
-    console.log("TAGS!", this.props.tags)
     return (
       <MenuBlock>
         <MenuTitle>
