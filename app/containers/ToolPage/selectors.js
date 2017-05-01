@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { Map } from 'immutable';
 
-import { TYPE_PERSON } from './constant';
+import { TYPE_PERSON } from './constants';
 /**
  * Direct selector to the toolPage state domain
  */
@@ -15,9 +15,9 @@ const selectToolPageDomain = () => (state) => state.get('toolPage');
 /**
  * Default selector used by ToolPage
  */
- const selectGlobal = (state) => {console.log("X",state.get('global')); return state.get('global') };
+ const selectGlobal = (state) => { return state.get('global') };
 
- const getToolSlug = (state, props) => { console.log("!!", props, props.params.label); return props.params.label; }
+ const getToolSlug = (state, props) => { return props.params.label; }
 
 
  const makeSelectTool = createSelector(

@@ -41,12 +41,7 @@ export default function createRoutes(store) {
       getComponent: getHomePageComponent,
     },
     {
-      path: '/type(/:label)',
-      name: 'homePage',
-      getComponent: getHomePageComponent,
-    },
-    {
-      path: '/tag(/:label)',
+      path: '/:filter(type|tag)(/:label)*',
       name: 'homePage',
       getComponent: getHomePageComponent,
     },
@@ -70,7 +65,7 @@ export default function createRoutes(store) {
           });
 
           importModules.catch(errorLoading);
-          
+
       },
     },
     {
