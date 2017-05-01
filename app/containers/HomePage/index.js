@@ -10,6 +10,9 @@ import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import Tags from 'containers/Tags';
+import { makeSelectAllTools, makeSelectToolById,
+          makeSelectData, makeSelectLoading,
+          makeSelectError } from 'containers/App/selectors';
 
 import { loadData } from '../App/actions';
 import makeSelectHomePage from './selectors';
@@ -45,6 +48,9 @@ HomePage.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   HomePage: makeSelectHomePage(),
+  loading: makeSelectLoading(),
+  error: makeSelectError(),
+  tools: makeSelectAllTools()
 });
 
 function mapDispatchToProps(dispatch) {

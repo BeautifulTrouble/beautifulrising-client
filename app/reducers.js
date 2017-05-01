@@ -10,6 +10,7 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 
 import tagsReducer from 'containers/Tags/reducer';
+import globalReducer from 'containers/App/reducer';
 
 /*
  * routeReducer
@@ -47,6 +48,7 @@ export default function createReducer(asyncReducers) {
     route: routeReducer,
     language: languageProviderReducer,
     tags: tagsReducer,
+    global: globalReducer,
     ...asyncReducers,
   });
 }

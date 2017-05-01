@@ -51,6 +51,29 @@ export default function createRoutes(store) {
       getComponent: getHomePageComponent,
     },
     {
+      path: '/tool(/:label)*',
+      name: 'tool',
+      getComponent(nextState, cb) {
+
+          const importModules = Promise.all([
+            import('containers/ToolPage/reducer'),
+            import('containers/ToolPage/sagas'),
+            import('containers/ToolPage'),
+          ]);
+
+          const renderRoute = loadModule(cb);
+
+          importModules.then(([reducer, sagas, component]) => {
+            injectReducer('tool', reducer.default);
+            injectSagas(sagas.default);
+            renderRoute(component);
+          });
+
+          importModules.catch(errorLoading);
+          
+      },
+    },
+    {
       path: '/about(/:section)*',
       name: 'about',
       getComponent(nextState, cb) {
