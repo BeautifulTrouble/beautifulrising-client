@@ -1,3 +1,74 @@
+import { OrderedSet } from 'immutable';
+import { createSelector } from 'reselect';
+
+const selectGlobal = (state) => state.get('global');
+
+/* THIS WILL BE REVISED*/
+const makeSelectAllTags = () => createSelector(
+  selectGlobal,
+  (globalState) => {
+    if (globalState.getIn(['appData', 'information'])) {
+      return OrderedSet(globalState.getIn(['appData', 'information'])
+        .filter(item => item.type !== 'person')
+        .reduce((acc, item) => {
+          if (item.tags !== null && item.tags !== undefined) {
+            return acc.concat(item.tags.map(i => i.toLowerCase()));
+            // return acc.merge(item.tags);
+          }
+          return acc
+        } , [])
+      ).sort();
+    } else {
+      return [];
+    }
+  }
+)
+
+const makeSelectAllTools = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.getIn(['appData', 'information'])
+                      ? globalState.getIn(['appData', 'information'])
+                        .filter(item =>  item['module-type'] === 'gallery' || item['module-type'] === 'full' )
+                      : []
+)
+
+const getToolSlug = (state, props) => { console.log("!!", props, props.params.label); return props.params.label; }
+const makeSelectToolById = createSelector(
+  [ selectGlobal, getToolSlug ],
+  (globalData, slug) => {
+    if( globalData.getIn(['appData', 'information']) ) {
+      return appData.find(tool => tool.slug === slug);
+    } 
+    return null;
+  }
+)
+
+// const makeSelectToolById = (toolSlug) => createSelector(
+//   selectGlobal,
+//   (globalState) => {
+//     let appDataInfo = globalState.getIn(['appData', 'information']);
+//     if (appDataInfo) {
+//       return appDataInfo.find(item => item.slug === toolSlug);
+//     }
+//     return null;
+//   }
+// )
+
+const makeSelectLoading = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.get('loading')
+);
+
+const makeSelectError = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.get('error')
+);
+
+const makeSelectData = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.getIn(['appData', 'information'])
+);
+
 // makeSelectLocationState expects a plain JS object for the routing state
 const makeSelectLocationState = () => {
   let prevRoutingState;
@@ -16,5 +87,11 @@ const makeSelectLocationState = () => {
 };
 
 export {
+  makeSelectAllTools,
+  makeSelectToolById,
   makeSelectLocationState,
+  makeSelectLoading,
+  makeSelectError,
+  makeSelectData,
+  makeSelectAllTags,
 };

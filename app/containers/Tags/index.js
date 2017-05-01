@@ -8,29 +8,33 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-
+import { makeSelectAllTags } from 'containers/App/selectors';
 import MenuBlock from 'components/MenuBlock';
 import MenuTitle from 'components/MenuTitle';
 import MenuList from 'components/MenuList';
 import MenuListItem from 'components/MenuListItem';
 import Link from 'components/Link';
 
+import {slugify} from 'utils/tags'
+
 import makeSelectTags from './selectors';
 import messages from './messages';
+
 
 export class Tags extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
 
   render() {
+    console.log("TAGS!", this.props.tags)
     return (
       <MenuBlock>
         <MenuTitle>
           <FormattedMessage {...messages.header} />
         </MenuTitle>
         <MenuList>
-          {this.props.Tags.tags.map((label) => (
+          {this.props.tags.map((label) => (
             <MenuListItem key={label}>
-              <Link to={`/tag/${label}`}>{label}</Link>
+              <Link to={`/tag/${slugify(label)}`}>{label}</Link>
             </MenuListItem>
           ))}
         </MenuList>
@@ -41,13 +45,13 @@ export class Tags extends React.PureComponent { // eslint-disable-line react/pre
 
 Tags.propTypes = {
   // dispatch: PropTypes.func.isRequired,
-  Tags: PropTypes.object.isRequired
+  // tags: PropTypes.array.isRequired
   //   tags: PropTypes.array.isRequired,
   // },
 };
 
 const mapStateToProps = createStructuredSelector({
-  Tags: makeSelectTags(),
+  tags: makeSelectAllTags()
 });
 
 // function mapDispatchToProps(dispatch) {
