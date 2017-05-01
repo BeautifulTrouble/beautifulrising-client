@@ -10,3 +10,6 @@
  */
 
 export const DEFAULT_LOCALE = 'en';
+export const LOAD_DATA = 'App/constants/LOAD_DATA';
+export const LOAD_DATA_SUCCESS = 'App/constants/LOAD_DATA_SUCCESS';
+export const LOAD_DATA_ERROR = 'App/constants/LOAD_DATA_ERROR';

@@ -41,9 +41,9 @@ export class Tags extends React.PureComponent { // eslint-disable-line react/pre
 
 Tags.propTypes = {
   // dispatch: PropTypes.func.isRequired,
-  Tags: {
-    tags: PropTypes.array.isRequired,
-  },
+  Tags: PropTypes.object.isRequired
+  //   tags: PropTypes.array.isRequired,
+  // },
 };
 
 const mapStateToProps = createStructuredSelector({
