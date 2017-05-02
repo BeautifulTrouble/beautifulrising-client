@@ -41,11 +41,6 @@ export default function createRoutes(store) {
       getComponent: getHomePageComponent,
     },
     {
-      path: '/:filter(type|tag)(/:label)*',
-      name: 'homePage',
-      getComponent: getHomePageComponent,
-    },
-    {
       path: '/tool(/:label)*',
       name: 'tool',
       getComponent(nextState, cb) {
@@ -103,6 +98,11 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading);
       },
+    },
+    {
+      path: '/:filter(type|tag)(/:label)*',
+      name: 'homePage',
+      getComponent: getHomePageComponent,
     },
     {
       path: '*',

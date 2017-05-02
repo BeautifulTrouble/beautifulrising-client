@@ -6,10 +6,10 @@ import { dataLoaded, dataLoadingError } from 'containers/App/actions';
 
 import request from 'utils/request';
 
-
 export function* getData() {
   const requestURL = `https://api.beautifulrising.org/api/v1/all?lang=en`;
   try {
+
     const data = yield call(request, requestURL);
     /** LOADING AREA **/
     yield put(dataLoaded(data));
@@ -24,12 +24,11 @@ export function* beautifulRisingData() {
   // Watches for LOAD_REPOS actions and calls getRepos when one comes in.
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
+
   const watcher = yield takeLatest(LOAD_DATA, getData);
 
-  // Suspend execution until location changes
   yield take(LOCATION_CHANGE);
   yield cancel(watcher);
-
 }
 
 // All sagas to be loaded

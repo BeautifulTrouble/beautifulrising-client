@@ -6,14 +6,13 @@ import { dataLoaded, dataLoadingError } from 'containers/App/actions';
 
 import request from 'utils/request';
 
-
 export function* getToolsData() {
   const requestURL = `https://api.beautifulrising.org/api/v1/all?lang=en`;
 
   try {
     const data = yield call(request, requestURL);
     /** LOADING AREA **/
-    yield put(dataLoaded(data));
+    yield put(dataLoaded(data))
 
   } catch (err) {
     yield call(put, dataLoadingError(err));

@@ -20,7 +20,9 @@ import messages from './messages';
 export class ToolPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   componentDidMount() {
-    this.props.onPageLoad();
+    if (!this.props.toolData.getIn(['tool'])._id) {
+      this.props.onPageLoad();
+    }
   }
 
   render() {
