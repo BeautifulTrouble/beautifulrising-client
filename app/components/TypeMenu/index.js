@@ -21,19 +21,19 @@ function TypeMenu() {
     <MenuBlock>
       <MenuList>
         <MenuListItem>
-          <Link to="/type/stories"><FormattedMessage {...messages.stories} /></Link>
+          <Link to="/type/story"><FormattedMessage {...messages.stories} /></Link>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/type/tactics">Tactics</Link>
+          <Link to="/type/tactic">Tactics</Link>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/type/principles">Principles</Link>
+          <Link to="/type/principle">Principles</Link>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/type/theories">Theories</Link>
+          <Link to="/type/theory">Theories</Link>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/type/methodologies">Methodologies</Link>
+          <Link to="/type/methodology">Methodologies</Link>
         </MenuListItem>
       </MenuList>
     </MenuBlock>

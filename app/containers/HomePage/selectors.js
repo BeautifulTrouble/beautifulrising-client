@@ -23,22 +23,23 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
      }
    }
  )
+
+ const isFullTool = (item) => item['module-type'] === 'gallery' || item['module-type'] === 'full' ;
  const makeSelectAllTools = createSelector(
    [selectGlobal, selectFilter, selectLabel, allTags],
    (globalState, filter, label, tags) => {
 
      let data = globalState.getIn(['appData', 'information']);
      if (data) {
-
        switch (filter) {
          case TAG_FILTER:
-          return data.filter(item => item.tags && item.tags.includes(tags.all[label]));
+          return data.filter(item => isFullTool(item) && item.tags && item.tags.includes(tags.all[label]));
           break;
          case TYPE_FILTER:
-          return data.filter(item => item.type === filter);
+          return data.filter(item => isFullTool(item) && item.type === label);
           break;
          default:
-          return data.filter(item =>  item['module-type'] === 'gallery' || item['module-type'] === 'full' );
+          return data.filter(item => isFullTool(item) );
        }
      }
 

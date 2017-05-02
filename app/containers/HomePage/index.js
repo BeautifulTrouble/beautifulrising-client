@@ -9,8 +9,6 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import ToolListItem from 'components/ToolListItem';
-import ToolList from 'components/ToolList';
 import Tags from 'containers/Tags';
 import { makeSelectToolById,
           makeSelectData, makeSelectLoading,
@@ -18,17 +16,21 @@ import { makeSelectToolById,
 
 import { loadData } from '../App/actions';
 import makeSelectHomePage, { makeSelectAllTools } from './selectors';
+
+import ToolListItem from './ToolListItem';
+import ToolList from './ToolList';
 import messages from './messages';
 
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   componentDidMount() {
-    this.props.onPageLoad();
+    if (!this.props.tools) {
+      this.props.onPageLoad();
+    }
   }
 
   render() {
-
     return (
       <div>
         <Helmet
