@@ -19,6 +19,8 @@ import makeSelectHomePage, { makeSelectAllTools } from './selectors';
 
 import ToolListItem from './ToolListItem';
 import ToolList from './ToolList';
+import BlockView from './BlockView';
+import ListView from './ListView';
 import messages from './messages';
 
 
@@ -31,6 +33,8 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   }
 
   render() {
+    // TODO: Make this work for switches on cookie / persist
+    const ViewMode = ListView;
     return (
       <div>
         <Helmet
@@ -42,9 +46,11 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
         <FormattedMessage {...messages.header} />
 
         <Tags />
-        <ToolList>
-          { this.props.tools ? this.props.tools.map(tool => { return (<ToolListItem key={tool['_id']} {...tool}/>) }) : null }
-        </ToolList>
+        <ViewMode>
+          <ToolList>
+            { this.props.tools ? this.props.tools.map(tool => { return (<ToolListItem key={tool['_id']} {...tool}/>) }) : null }
+          </ToolList>
+        </ViewMode>
       </div>
     );
   }
