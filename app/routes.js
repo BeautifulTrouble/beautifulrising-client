@@ -21,14 +21,16 @@ export default function createRoutes(store) {
       import('containers/HomePage/reducer'),
       import('containers/HomePage/sagas'),
       import('containers/HomePage'),
+      import('containers/ToolsViewOptions/reducer'),
     ]);
 
     const renderRoute = loadModule(cb);
 
-    importModules.then(([reducer, sagas, component]) => {
+    importModules.then(([reducer, sagas, component, toolsViewOptionReducer]) => {
       injectReducer('homePage', reducer.default);
       injectSagas(sagas.default);
       renderRoute(component);
+      injectReducer('toolsViewOption', toolsViewOptionReducer.default)
     });
 
     importModules.catch(errorLoading);

@@ -9,6 +9,7 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
  * Other specific selectors
  */
  const selectGlobal = (state) => { return state.get('global') };
+ const selectToolsView = (state) => { return state.get('toolsView') }
 
  const selectFilter = (state, props) => { return props.params.filter; }
  const selectLabel = (state, props) => { return props.params.label; }
@@ -22,9 +23,10 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
        return tags;
      }
    }
- )
+ );
 
  const isFullTool = (item) => item['module-type'] === 'gallery' || item['module-type'] === 'full' ;
+
  const makeSelectAllTools = createSelector(
    [selectGlobal, selectFilter, selectLabel, allTags],
    (globalState, filter, label, tags) => {
@@ -44,7 +46,15 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
      }
 
    }
- )
+ );
+
+ const makeSelectToolView = createSelector(
+   [selectToolsView],
+   (toolsView) => {
+      return toolsView.get('chosen');
+    }
+ );
+
 
 
 /**
@@ -60,5 +70,6 @@ export default makeSelectHomePage;
 export {
   selectHomePageDomain,
   makeSelectAllTools,
+  makeSelectToolView,
   allTags
 };

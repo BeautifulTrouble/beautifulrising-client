@@ -10,12 +10,18 @@ import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import Tags from 'containers/Tags';
+import { BLOCK_VIEW, LIST_VIEW } from 'containers/ToolsViewOptions/constants';
 import { makeSelectToolById,
-          makeSelectData, makeSelectLoading,
-          makeSelectError } from 'containers/App/selectors';
+          makeSelectData,
+          makeSelectLoading,
+          makeSelectError,
+       } from 'containers/App/selectors';
+
+import ToolsViewOptions from 'containers/ToolsViewOptions';
 
 import { loadData } from '../App/actions';
-import makeSelectHomePage, { makeSelectAllTools } from './selectors';
+import makeSelectHomePage, { makeSelectToolView, makeSelectAllTools } from './selectors';
+
 
 import ToolListItem from './ToolListItem';
 import ToolList from './ToolList';
@@ -32,9 +38,12 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     }
   }
 
+  getViewMode() {
+    return this.props.viewTool === BLOCK_VIEW ? BlockView : ListView;
+  }
+
   render() {
-    // TODO: Make this work for switches on cookie / persist
-    const ViewMode = ListView;
+    const ViewMode = this.getViewMode();
     return (
       <div>
         <Helmet
@@ -44,7 +53,8 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           ]}
         />
         <FormattedMessage {...messages.header} />
-
+        <h1>$${this.props.viewTool}$$</h1>
+        <ToolsViewOptions />
         <Tags />
         <ViewMode>
           <ToolList>
@@ -63,9 +73,10 @@ HomePage.propTypes = {
 const mapStateToProps = (state, props) => {
   return {
     HomePage: makeSelectHomePage(),
-    loading: makeSelectLoading(),
-    error: makeSelectError(),
-    tools: makeSelectAllTools(state, props)
+    viewTool: makeSelectToolView(state),
+    loading: makeSelectLoading(state),
+    error: makeSelectError(state),
+    tools: makeSelectAllTools(state, props),
   }
 };
 

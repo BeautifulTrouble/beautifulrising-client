@@ -11,7 +11,7 @@ import languageProviderReducer from 'containers/LanguageProvider/reducer';
 
 import tagsReducer from 'containers/Tags/reducer';
 import globalReducer from 'containers/App/reducer';
-
+import toolsViewReducer from 'containers/ToolsViewOptions/reducer';
 /*
  * routeReducer
  *
@@ -49,6 +49,7 @@ export default function createReducer(asyncReducers) {
     language: languageProviderReducer,
     tags: tagsReducer,
     global: globalReducer,
+    toolsView: toolsViewReducer,
     ...asyncReducers,
   });
 }
