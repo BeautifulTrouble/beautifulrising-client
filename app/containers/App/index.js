@@ -12,7 +12,9 @@
  */
 
 import React from 'react';
+import Page from 'components/Page';
 import Header from 'components/Header';
+import Body from 'components/Body';
 
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -22,12 +24,12 @@ export default class App extends React.PureComponent { // eslint-disable-line re
 
   render() {
     return (
-      <div>
+      <Page>
         <Header />
-        <div>
+        <Body>
           {React.Children.toArray(this.props.children)}
-        </div>
-      </div>
+        </Body>
+      </Page>
     );
   }
 }

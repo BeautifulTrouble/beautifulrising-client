@@ -13,6 +13,11 @@ import Link from 'components/Link';
 
 const Container = styled.div`
   background: ${props => props.theme.bgColor};
+  float: left;
+  width: 48%;
+  height: 300px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 `;
 
 function ToolListItem(props) {
