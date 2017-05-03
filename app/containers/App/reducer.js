@@ -16,6 +16,8 @@ import {
   LOAD_DATA_SUCCESS,
   LOAD_DATA,
   LOAD_DATA_ERROR,
+  ADD_TOOL,
+  REMOVE_TOOL,
 } from './constants';
 
 // The initial state of the App
@@ -26,6 +28,7 @@ const initialState = fromJS({
   appData: {
     information: false,
   },
+  chosenTools: []
 });
 
 function appReducer(state = initialState, action) {
@@ -43,6 +46,10 @@ function appReducer(state = initialState, action) {
       return state
         .set('error', action.error)
         .set('loading', false);
+    case ADD_TOOL:
+      return state;
+    case REMOVE_TOOL:
+      return state;
     default:
       return state;
   }

@@ -35,16 +35,6 @@ const makeSelectToolById = createSelector(
   }
 )
 
-// const makeSelectToolById = (toolSlug) => createSelector(
-//   selectGlobal,
-//   (globalState) => {
-//     let appDataInfo = globalState.getIn(['appData', 'information']);
-//     if (appDataInfo) {
-//       return appDataInfo.find(item => item.slug === toolSlug);
-//     }
-//     return null;
-//   }
-// )
 
 const makeSelectLoading = () => createSelector(
   selectGlobal,
@@ -61,6 +51,10 @@ const makeSelectData = () => createSelector(
   (globalState) => globalState.getIn(['appData', 'information'])
 );
 
+// const makeSelectToolView = () => createSelector(
+//   [selectGlobal],
+//   (globalState) => { return globalState.get('toolsView')}
+// );
 // makeSelectLocationState expects a plain JS object for the routing state
 const makeSelectLocationState = () => {
   let prevRoutingState;
@@ -85,4 +79,5 @@ export {
   makeSelectError,
   makeSelectData,
   makeSelectAllTags,
+  // makeSelectToolView,
 };
