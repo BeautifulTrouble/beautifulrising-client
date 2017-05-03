@@ -19,8 +19,12 @@ import { makeSelectToolById,
 
 import ToolsViewOptions from 'containers/ToolsViewOptions';
 
+import LeftSection from 'components/LeftSection';
+import Stage from 'components/Stage';
+
 import { loadData } from '../App/actions';
 import makeSelectHomePage, { makeSelectToolView, makeSelectAllTools } from './selectors';
+
 
 
 import ToolListItem from './ToolListItem';
@@ -52,15 +56,18 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             { name: 'description', content: 'Description of HomePage' },
           ]}
         />
-        <FormattedMessage {...messages.header} />
-        <h1>$${this.props.viewTool}$$</h1>
-        <ToolsViewOptions />
-        <Tags />
-        <ViewMode>
-          <ToolList>
-            { this.props.tools ? this.props.tools.map(tool => { return (<ToolListItem key={tool['_id']} {...tool}/>) }) : null }
-          </ToolList>
-        </ViewMode>
+        <LeftSection>
+          <FormattedMessage {...messages.header} />
+          <ToolsViewOptions />
+          <Tags />
+        </LeftSection>
+        <Stage>
+          <ViewMode>
+            <ToolList>
+              { this.props.tools ? this.props.tools.map(tool => { return (<ToolListItem key={tool['_id']} {...tool}/>) }) : null }
+            </ToolList>
+          </ViewMode>
+        </Stage>
       </div>
     );
   }
