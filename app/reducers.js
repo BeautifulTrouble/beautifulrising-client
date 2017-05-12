@@ -12,6 +12,7 @@ import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import tagsReducer from 'containers/Tags/reducer';
 import globalReducer from 'containers/App/reducer';
 import toolsViewReducer from 'containers/ToolsViewOptions/reducer';
+import searchFieldReducer from 'containers/SearchField/reducer';
 /*
  * routeReducer
  *
@@ -48,6 +49,7 @@ export default function createReducer(asyncReducers) {
     route: routeReducer,
     language: languageProviderReducer,
     tags: tagsReducer,
+    searchField: searchFieldReducer,
     global: globalReducer,
     toolsView: toolsViewReducer,
     ...asyncReducers,
