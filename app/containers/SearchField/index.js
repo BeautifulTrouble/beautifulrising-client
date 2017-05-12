@@ -13,6 +13,8 @@ import makeSelectSearchField from './selectors';
 import messages from './messages';
 import {searchFieldChanged} from './actions';
 
+import { browserHistory } from 'react-router';
+
 const SearchContainer = styled.div``;
 const SearchForm = styled.form``;
 const SearchBox = styled.input`
@@ -22,6 +24,7 @@ const SearchBox = styled.input`
   font-size: 14px;
 `;
 
+let timeoutHandler = null;
 export class SearchField extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
@@ -44,7 +47,14 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     onChange: (evt) => {
-      dispatch(searchFieldChanged(evt.target.value));
+      const text = evt.target.value;
+      //Change browser
+      clearTimeout(timeoutHandler);
+      timeoutHandler = setTimeout(() => {
+        dispatch(searchFieldChanged(text));
+        browserHistory.push(`/search/${text}`);
+      }, 400);
+
     },
   };
 }

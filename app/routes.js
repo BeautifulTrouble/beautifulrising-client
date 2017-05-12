@@ -107,6 +107,11 @@ export default function createRoutes(store) {
       getComponent: getHomePageComponent,
     },
     {
+      path: '/search/:search_text',
+      name: 'homePage',
+      getComponent: getHomePageComponent
+    },
+    {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
