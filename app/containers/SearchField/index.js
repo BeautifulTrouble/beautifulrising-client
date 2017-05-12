@@ -30,7 +30,7 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
     return (
       <SearchContainer>
         <SearchForm>
-          <SearchBox type='text' onChange={this.props.onChange} />
+          <SearchBox type='text' onChange={this.props.onChange} placeholder={'Search tools here...'} />
         </SearchForm>
       </SearchContainer>
     );
@@ -53,7 +53,7 @@ function mapDispatchToProps(dispatch) {
       timeoutHandler = setTimeout(() => {
         dispatch(searchFieldChanged(text));
         browserHistory.push(`/search/${text}`);
-      }, 400);
+      }, 300);
 
     },
   };
