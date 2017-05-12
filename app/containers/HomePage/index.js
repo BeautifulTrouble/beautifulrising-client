@@ -31,6 +31,7 @@ import ToolListItem from './ToolListItem';
 import ToolList from './ToolList';
 import BlockView from './BlockView';
 import ListView from './ListView';
+import Header from './Header';
 import messages from './messages';
 
 
@@ -56,6 +57,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             { name: 'description', content: 'Description of HomePage' },
           ]}
         />
+        <Header />
         <LeftSection>
           <FormattedMessage {...messages.header} />
           <ToolsViewOptions />
