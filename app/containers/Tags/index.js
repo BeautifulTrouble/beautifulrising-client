@@ -33,7 +33,7 @@ export class Tags extends React.PureComponent { // eslint-disable-line react/pre
         <MenuList>
           {this.props.tags.map((label) => (
             <MenuListItem key={label}>
-              <Link to={`/tag/${slugify(label)}`}>{label}</Link>
+              <Link to={`/tag/${slugify(label)}`}>{label}</Link>&nbsp;/&nbsp;
             </MenuListItem>
           ))}
         </MenuList>

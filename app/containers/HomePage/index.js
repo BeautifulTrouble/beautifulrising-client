@@ -24,15 +24,20 @@ import Stage from 'components/Stage';
 
 import { loadData } from '../App/actions';
 import makeSelectHomePage, { makeSelectToolView, makeSelectAllTools } from './selectors';
-
+import styled from 'styled-components';
 
 
 import ToolListItem from './ToolListItem';
 import ToolList from './ToolList';
 import BlockView from './BlockView';
 import ListView from './ListView';
+import Header from './Header';
 import messages from './messages';
 
+const SearchResultsContainer = styled.div`
+  text-align: left;
+`;
+const SearchResultsText = styled.span``;
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -46,6 +51,19 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     return this.props.viewTool === BLOCK_VIEW ? BlockView : ListView;
   }
 
+  getSearchResultsHeader() {
+
+    if (!this.props.params.filter || this.props.params.filter !== 'search' || !this.props.params.label) return;
+
+    return (
+      <SearchResultsContainer>
+        <SearchResultsText>
+          Search results for <strong>{this.props.params.label}</strong>:
+        </SearchResultsText>
+      </SearchResultsContainer>
+    );
+  }
+
   render() {
     const ViewMode = this.getViewMode();
     return (
@@ -56,12 +74,14 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             { name: 'description', content: 'Description of HomePage' },
           ]}
         />
+        <Header />
         <LeftSection>
           <FormattedMessage {...messages.header} />
           <ToolsViewOptions />
           <Tags />
         </LeftSection>
         <Stage>
+          {this.getSearchResultsHeader()}
           <ViewMode>
             <ToolList>
               { this.props.tools ? this.props.tools.map(tool => { return (<ToolListItem key={tool['_id']} {...tool}/>) }) : null }

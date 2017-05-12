@@ -5,38 +5,43 @@
 */
 
 import React from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 import Link from 'components/Link';
-import MenuBlock from 'components/MenuBlock';
-import MenuList from 'components/MenuList';
-import MenuListItem from 'components/MenuListItem';
 // import MenuTitle from 'components/MenuTitle';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
+const TypeMenuBlock = styled.div``;
+const TypeMenuList = styled.ul``;
+const TypeListItem = styled.li`
+display: inline-block;
+width: 18%;
+margin: 0.75%;
+`;
+
 function TypeMenu() {
   return (
-    <MenuBlock>
-      <MenuList>
-        <MenuListItem>
+    <TypeMenuBlock>
+      <TypeMenuList>
+        <TypeListItem>
           <Link to="/type/story"><FormattedMessage {...messages.stories} /></Link>
-        </MenuListItem>
-        <MenuListItem>
+        </TypeListItem>
+        <TypeListItem>
           <Link to="/type/tactic">Tactics</Link>
-        </MenuListItem>
-        <MenuListItem>
+        </TypeListItem>
+        <TypeListItem>
           <Link to="/type/principle">Principles</Link>
-        </MenuListItem>
-        <MenuListItem>
+        </TypeListItem>
+        <TypeListItem>
           <Link to="/type/theory">Theories</Link>
-        </MenuListItem>
-        <MenuListItem>
+        </TypeListItem>
+        <TypeListItem>
           <Link to="/type/methodology">Methodologies</Link>
-        </MenuListItem>
-      </MenuList>
-    </MenuBlock>
+        </TypeListItem>
+      </TypeMenuList>
+    </TypeMenuBlock>
   );
 }
 

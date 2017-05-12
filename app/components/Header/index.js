@@ -31,7 +31,6 @@ function Header() {
         <FormattedMessage {...messages.header} />
       </Title>
       <Menu />
-      <TypeMenu />
     </PageHeader>
   );
 }

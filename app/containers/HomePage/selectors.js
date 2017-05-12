@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { TAG_FILTER, TYPE_FILTER } from './constants';
+import { TAG_FILTER, TYPE_FILTER, SEARCH_FILTER } from './constants';
 /**
  * Direct selector to the homePage state domain
  */
@@ -30,7 +30,6 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
  const makeSelectAllTools = createSelector(
    [selectGlobal, selectFilter, selectLabel, allTags],
    (globalState, filter, label, tags) => {
-
      let data = globalState.getIn(['appData', 'information']);
      if (data) {
        switch (filter) {
@@ -40,8 +39,11 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
          case TYPE_FILTER:
           return data.filter(item => isFullTool(item) && item.type === label);
           break;
+         case SEARCH_FILTER:
+          return label ? data.filter(item => isFullTool(item) && item.title.toLowerCase().search(label.toLowerCase()) >= 0) : data.filter(item => isFullTool(item))
          default:
-          return data.filter(item => isFullTool(item) );
+          return data.filter(item => isFullTool(item));
+
        }
      }
 
