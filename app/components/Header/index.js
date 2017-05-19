@@ -6,9 +6,10 @@
 
 import React from 'react';
 // import Link from 'components/Link';
-import Menu from 'components/Menu';
 import TypeMenu from 'components/TypeMenu';
 import styled from 'styled-components';
+import ModalMenu from 'components/ModalMenu';
+import Link from 'components/Link';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
@@ -28,9 +29,9 @@ function Header() {
   return (
     <PageHeader>
       <Title>
-        <FormattedMessage {...messages.header} />
+        <Link to='/'><FormattedMessage {...messages.header} /></Link>
       </Title>
-      <Menu />
+      <ModalMenu />
     </PageHeader>
   );
 }

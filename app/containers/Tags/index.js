@@ -20,24 +20,28 @@ import {slugify} from 'utils/tags'
 import makeSelectTags from './selectors';
 import messages from './messages';
 
+import styled from 'styled-components';
 
+const TagBlock = styled.div``;
+const TagTitle = styled.h3``;
+const TagList = styled.ul`margin: 0; padding: 0;`;
+const TagListItem = styled.li`display: inline-block;`;
 export class Tags extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-
 
   render() {
     return (
-      <MenuBlock>
-        <MenuTitle>
+      <TagBlock>
+        <TagTitle>
           <FormattedMessage {...messages.header} />
-        </MenuTitle>
-        <MenuList>
+        </TagTitle>
+        <TagList>
           {this.props.tags.map((label) => (
-            <MenuListItem key={label}>
+            <TagListItem key={label}>
               <Link to={`/tag/${slugify(label)}`}>{label}</Link>&nbsp;/&nbsp;
-            </MenuListItem>
+            </TagListItem>
           ))}
-        </MenuList>
-      </MenuBlock>
+        </TagList>
+      </TagBlock>
     );
   }
 }

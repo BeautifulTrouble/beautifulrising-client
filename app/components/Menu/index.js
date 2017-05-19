@@ -15,15 +15,15 @@ import PlatformsMenu from 'components/PlatformsMenu';
 import TrainingMenu from 'components/TrainingMenu';
 import messages from './messages';
 
-function Menu() {
+function Menu(props) {
   return (
     <div>
       <FormattedMessage {...messages.header} />
       <Link to="/">Home</Link>
-      <AboutMenu />
-      <PlatformsMenu />
-      <ContributeMenu />
-      <TrainingMenu />
+      <AboutMenu props />
+      <PlatformsMenu onClick={props.onClick}/>
+      <ContributeMenu onClick={props.onClick}/>
+      <TrainingMenu onClick={props.onClick}/>
     </div>
   );
 }

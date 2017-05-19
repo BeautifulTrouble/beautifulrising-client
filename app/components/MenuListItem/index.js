@@ -6,6 +6,4 @@
 
 import styled from 'styled-components';
 
-export default styled.li`
-display: inline-block;
-`;
+export default styled.li``;
