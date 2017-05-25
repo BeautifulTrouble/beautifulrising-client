@@ -13,6 +13,7 @@ import tagsReducer from 'containers/Tags/reducer';
 import globalReducer from 'containers/App/reducer';
 import toolsViewReducer from 'containers/ToolsViewOptions/reducer';
 import searchFieldReducer from 'containers/SearchField/reducer';
+import toolsReducer from 'containers/Tools/reducer';
 /*
  * routeReducer
  *
@@ -52,6 +53,7 @@ export default function createReducer(asyncReducers) {
     searchField: searchFieldReducer,
     global: globalReducer,
     toolsView: toolsViewReducer,
+    tools: toolsReducer,
     ...asyncReducers,
   });
 }
