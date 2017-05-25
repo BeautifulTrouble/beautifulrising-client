@@ -22,7 +22,6 @@ import Tools from 'containers/Tools'
 import { isShowTools } from './selectors';
 //Themes
 
-import { ToolsShown, ToolsHidden } from 'components/ToolsComponents';
 class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
@@ -30,7 +29,6 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
   };
 
   render() {
-    const ToolsTheme = this.props.isShowTools ? ToolsShown : ToolsHidden;
     return (
       <Page>
         <Header />

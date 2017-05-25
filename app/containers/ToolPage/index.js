@@ -10,6 +10,7 @@ import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 
+import AdderRemover from 'containers/Tools/AdderRemover';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 
 import { loadData } from '../App/actions';
@@ -26,6 +27,8 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
   }
 
   render() {
+    const tool = this.props.toolData.getIn(['tool']);
+
     return (
       <div>
         <Helmet
@@ -35,9 +38,15 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
           ]}
         />
         <FormattedMessage {...messages.header} />
-        <h1>{this.props.toolData.getIn(['tool']).title}</h1>
-        <h3>{this.props.toolData.getIn(['tool']).type}</h3>
-        <p>{this.props.toolData.getIn(['tool'])['short-write-up']}</p>
+        <h1>{tool.title}</h1>
+        <h3>{tool.type}</h3>
+        <AdderRemover
+          slug={tool.slug}
+          title={tool.title}
+          type={tool.type}
+          snapshot={tool.snapshot}
+        />
+        <p>{tool['short-write-up']}</p>
         <h3>{this.props.toolData.getIn(['authors']).map(item => item.title)}</h3>
       </div>
     );

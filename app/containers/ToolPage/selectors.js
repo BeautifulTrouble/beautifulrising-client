@@ -23,7 +23,6 @@ const selectToolPageDomain = () => (state) => state.get('toolPage');
  const makeSelectTool = createSelector(
    [ selectGlobal, getToolSlug ],
    (globalData, slug) => {
-
      let appData = globalData.getIn(['appData', 'information']);
      if( appData ) {
         const tool = appData.find(tool => tool.slug === slug);
