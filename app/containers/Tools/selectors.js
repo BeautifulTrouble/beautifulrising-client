@@ -16,7 +16,7 @@ const selectToolsDomain = () => (state) => state.get('tools');
 
 const makeSelectTools = () => createSelector(
   selectToolsDomain(),
-  (substate) => substate.toJS({})
+  (substate) => substate.toJS()
 );
 
 export default makeSelectTools;

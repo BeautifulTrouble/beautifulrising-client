@@ -12,22 +12,29 @@
  */
 
 import React from 'react';
+import { createStructuredSelector } from 'reselect';
+import { connect } from 'react-redux';
+
 import Page from 'components/Page';
 import Header from 'components/Header';
 import Body from 'components/Body';
 import Tools from 'containers/Tools'
+import { isShowTools } from './selectors';
+//Themes
 
-export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+import { ToolsShown, ToolsHidden } from 'components/ToolsComponents';
+class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
     children: React.PropTypes.node,
   };
 
   render() {
+    const ToolsTheme = this.props.isShowTools ? ToolsShown : ToolsHidden;
     return (
       <Page>
         <Header />
-        <Body>
+        <Body showTools={this.props.isShowTools}>
           {React.Children.toArray(this.props.children)}
           <Tools />
         </Body>
@@ -35,3 +42,10 @@ export default class App extends React.PureComponent { // eslint-disable-line re
     );
   }
 }
+
+const mapStateToProps = createStructuredSelector({
+  isShowTools: isShowTools(),
+});
+
+
+export default connect(mapStateToProps)(App);

@@ -14,63 +14,51 @@ import styled from 'styled-components';
 
 import { Link } from 'react-router';
 
-const ToolsContainer = styled.div`
-  position: fixed;
-  right: 50%;
-  width: 65px;
-  height: calc(100vh - 170px);
-  border: 3px solid black;
-  top: 160px;
-  transform: translateX(600px);
-  `;
-const ToolsButton = styled.button``;
-const ToolsMenu = styled.ul`padding: 0;`;
-const ToolsMenuItem = styled.li`list-style: none;`;
-const ToolsListContainer = styled.div``;
-const ToolsListMenu = styled.ul`padding: 0;`;
-const ToolsListMenuItem = styled.li`list-style: none;`;
-const ToolsList = styled.ul`padding: 0;`;
-const ToolsListItem = styled.li`list-style: none;`;
+import { ToolsButton, ToolsMenu,
+         ToolsMenuItem, ToolsListContainer,
+         ToolsListMenu, ToolsListMenuItem,
+         ToolsList, ToolsListItem,
+         ToolsContainer, ToolsViewport } from 'components/ToolsComponents';
 
+import ToolsArea from './ToolsArea';
+import { setShowTools } from './actions';
 
 export class Tools extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  onToggleClick() {
+    this.props.setShowTools(!this.props.Tools.show);
+  }
+
   render() {
     return (
-      <ToolsContainer>
-        <ToolsMenu>
-          <ToolsMenuItem>
-            <ToolsButton>
-              Open
-            </ToolsButton>
-          </ToolsMenuItem>
-          <ToolsMenuItem>
-            <ToolsButton>
-              <FormattedMessage {...messages.newsFeed} />
-            </ToolsButton>
-          </ToolsMenuItem>
-          <ToolsMenuItem>
-            <ToolsButton>
-              <FormattedMessage {...messages.myTools} />
-            </ToolsButton>
-          </ToolsMenuItem>
-        </ToolsMenu>
-
-        <ToolsListContainer>
-          <ToolsListMenu>
-            <ToolsListMenuItem>
-              <ToolsButton>PDF</ToolsButton>
-            </ToolsListMenuItem>
-              <ToolsButton>EMAIL</ToolsButton>
-            <ToolsListMenuItem>
-            </ToolsListMenuItem>
-          </ToolsListMenu>
-        </ToolsListContainer>
-      </ToolsContainer>
+        <ToolsContainer showTools={this.props.Tools.show}>
+          <ToolsViewport>
+            <ToolsMenu>
+              <ToolsMenuItem>
+                <ToolsButton onClick={this.onToggleClick.bind(this)}>
+                  {this.props.Tools.show ? 'Close' : 'Open'}
+                </ToolsButton>
+              </ToolsMenuItem>
+              <ToolsMenuItem>
+                <ToolsButton>
+                  <FormattedMessage {...messages.newsFeed} />
+                </ToolsButton>
+              </ToolsMenuItem>
+              <ToolsMenuItem>
+                <ToolsButton>
+                  <FormattedMessage {...messages.myTools} />
+                </ToolsButton>
+              </ToolsMenuItem>
+            </ToolsMenu>
+            {this.props.Tools.show ? <ToolsArea /> : null}
+          </ToolsViewport>
+        </ToolsContainer>
     );
   }
 }
 
 Tools.propTypes = {
+  show: PropTypes.bool
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -80,6 +68,9 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    setShowTools: (toShow) => {
+      dispatch(setShowTools(toShow));
+    }
   };
 }
 
