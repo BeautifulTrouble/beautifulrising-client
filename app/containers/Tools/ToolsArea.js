@@ -13,14 +13,15 @@ import messages from './messages';
 import styled from 'styled-components';
 
 import { Link } from 'react-router';
-
+import { Map } from 'immutable';
 import { ToolsButton, ToolsListMenu, ToolsListMenuItem,
           ToolsList, ToolsListItem } from 'components/ToolsComponents';
 
+import SelectedTool from './SelectedTool'
+
 export const ToolsListContainer = styled.div`
   width: 230px;
-  float: right;
-  display: ${(props) => props.theme.displayTools }`;
+  float: right;`;
 
 export class ToolsArea extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -30,12 +31,19 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
           <ToolsListMenuItem>
             <ToolsButton>PDF</ToolsButton>
           </ToolsListMenuItem>
-            <ToolsButton>EMAIL</ToolsButton>
           <ToolsListMenuItem>
+            <ToolsButton>EMAIL</ToolsButton>
           </ToolsListMenuItem>
         </ToolsListMenu>
         <ToolsList>
-          <ToolsListItem></ToolsListItem>
+          {
+            Map(this.props.Tools.selectedTools).toList().map((item) => (
+                <ToolsListItem key={item.slug}>
+                  <SelectedTool {...item} />
+                </ToolsListItem>
+              )
+            )
+          }
         </ToolsList>
       </ToolsListContainer>
     );

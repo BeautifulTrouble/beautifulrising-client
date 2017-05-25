@@ -25,12 +25,21 @@ ToolsComponents.propTypes = {
 
 export const ToolsButton = styled.button``;
 export const ToolsListMenu = styled.ul`padding: 0;`;
-export const ToolsListMenuItem = styled.li`list-style: none;`;
+export const ToolsListMenuItem = styled.li`
+  list-style: none;
+  display: inline-block;
+  width: 49%;
+  text-align: center;
+`;
+
 export const ToolsList = styled.ul`padding: 0;`;
 export const ToolsListItem = styled.li`list-style: none;`;
 
 export const ToolsMenu = styled.ul`padding: 0; width: 60px; float: left;`;
-export const ToolsMenuItem = styled.li`list-style: none;`;
+export const ToolsMenuItem = styled.li`
+  list-style: none;
+`;
+
 export const ToolsListContainer = styled.div``;
 export const ToolsViewport = styled.div` width: 300px`;
 
