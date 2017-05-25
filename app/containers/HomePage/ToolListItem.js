@@ -8,8 +8,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { FormattedMessage } from 'react-intl';
-import messages from './messages';
 import Link from 'components/Link';
+import AdderRemover from 'containers/Tools/AdderRemover';
+import messages from './messages';
+
 
 const Container = styled.div`
   background: ${props => props.theme.bgColor};

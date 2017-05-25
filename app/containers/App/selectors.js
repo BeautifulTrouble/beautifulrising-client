@@ -2,6 +2,7 @@ import { OrderedSet } from 'immutable';
 import { createSelector } from 'reselect';
 
 const selectGlobal = (state) => state.get('global');
+const selectTools = (state) => state.get('tools');
 
 /* THIS WILL BE REVISED*/
 const makeSelectAllTags = () => createSelector(
@@ -21,6 +22,13 @@ const makeSelectAllTags = () => createSelector(
     } else {
       return [];
     }
+  }
+)
+
+const isShowTools = () => createSelector(
+  selectTools,
+  (toolsState) => {
+    return toolsState.get('show');
   }
 )
 
@@ -79,5 +87,6 @@ export {
   makeSelectError,
   makeSelectData,
   makeSelectAllTags,
+  isShowTools
   // makeSelectToolView,
 };
