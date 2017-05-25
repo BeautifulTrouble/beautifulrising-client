@@ -22,10 +22,8 @@ function toolsReducer(state = initialState, action) {
     case SET_SHOW_TOOLS:
       return state.set('show', action.data);
     case ADD_TOOL:
-      console.log(state);
       return state.setIn(['selectedTools', action.slug], action.data);
     case REMOVE_TOOL:
-      console.log(state);
       return state.removeIn(['selectedTools', action.slug])
     case DEFAULT_ACTION:
       return state;
