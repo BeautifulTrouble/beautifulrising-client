@@ -20,7 +20,7 @@ function Menu(props) {
     <div>
       <FormattedMessage {...messages.header} />
       <Link to="/">Home</Link>
-      <AboutMenu props />
+      <AboutMenu onClick={props.onClick} />
       <PlatformsMenu onClick={props.onClick}/>
       <ContributeMenu onClick={props.onClick}/>
       <TrainingMenu onClick={props.onClick}/>

@@ -17,20 +17,20 @@ import MenuSubtitle from 'components/MenuSubtitle';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-function PlatformsMenu() {
+function PlatformsMenu(props) {
   return (
     <MenuBlock>
       <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
       <MenuSubtitle>Explore other ways to access the toolbox</MenuSubtitle>
       <MenuList>
         <MenuListItem>
-          <Link to="/platforms/chatbot">Chatbot</Link>
+          <Link to="/platforms/chatbot" onClick={props.onClick}>Chatbot</Link>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/platforms/game">Game</Link>
+          <Link to="/platforms/game" onClick={props.onClick}>Game</Link>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/platforms/pdf">PDF</Link>
+          <Link to="/platforms/pdf" onClick={props.onClick}>PDF</Link>
         </MenuListItem>
       </MenuList>
     </MenuBlock>

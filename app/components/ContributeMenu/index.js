@@ -16,13 +16,13 @@ import MenuTitle from 'components/MenuTitle';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-function ContributeMenu() {
+function ContributeMenu(props) {
   return (
     <MenuBlock>
       <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
       <MenuList>
         <MenuListItem>
-          <Link to="/contribute/how-it-works">How does it work?</Link>
+          <Link to="/contribute/how-it-works" onClick={props.onClick}>How does it work?</Link>
         </MenuListItem>
       </MenuList>
     </MenuBlock>

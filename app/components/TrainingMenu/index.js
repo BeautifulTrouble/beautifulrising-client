@@ -16,16 +16,16 @@ import MenuTitle from 'components/MenuTitle';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-function TrainingMenu() {
+function TrainingMenu(props) {
   return (
     <MenuBlock>
       <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
       <MenuList>
         <MenuListItem>
-          <Link to="/resources/training">Request a Training</Link>
+          <Link to="/resources/training" onClick={props.onClick}>Request a Training</Link>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/resources/other">Other Resources</Link>
+          <Link to="/resources/other" onClick={props.onClick}>Other Resources</Link>
         </MenuListItem>
       </MenuList>
     </MenuBlock>

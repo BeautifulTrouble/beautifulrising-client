@@ -60,7 +60,7 @@ export class ModalMenu extends React.Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <Menu onclick={() => { this.closeModal.bind(this)}} />
+          <Menu onClick={this.closeModal.bind(this)} />
         </Modal>
       </div>
     );
