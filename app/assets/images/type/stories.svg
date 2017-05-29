@@ -1,0 +1,55 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="190px" height="67px" viewBox="0 0 190 67" enable-background="new 0 0 190 67" xml:space="preserve">
+<g>
+	<g>
+		<g>
+			<polyline fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" points="132.215,33.939 132.215,54.518
+				114.274,66.062 			"></polyline>
+
+				<line fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" x1="132.215" y1="54.518" x2="151.654" y2="66.062"></line>
+		</g>
+		<g>
+			<polyline fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" points="132.215,1.147 132.215,21.726
+				114.274,33.27 			"></polyline>
+			<line fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" x1="132.215" y1="21.726" x2="151.654" y2="33.27"></line>
+		</g>
+		<g>
+			<polyline fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" points="57.171,33.939 57.171,54.518
+				39.23,66.062 			"></polyline>
+			<line fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" x1="57.171" y1="54.518" x2="76.609" y2="66.062"></line>
+		</g>
+		<g>
+			<polyline fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" points="57.171,1.147 57.171,21.726
+				39.23,33.27 			"></polyline>
+			<line fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" x1="57.171" y1="21.726" x2="76.609" y2="33.27"></line>
+		</g>
+	</g>
+	<g>
+		<g>
+			<polyline fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" points="8.42,62.709 8.42,53.886 21.831,53.886
+				21.831,44.168 33.845,44.168 33.845,37.293 			"></polyline>
+			<polyline fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" points="82.502,62.709 82.502,53.886
+				95.913,53.886 95.913,44.168 107.927,44.168 107.927,37.293 			"></polyline>
+			<polyline fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" points="156.932,62.709 156.932,53.886
+				170.343,53.886 170.343,44.168 182.357,44.168 182.357,37.293 			"></polyline>
+		</g>
+	</g>
+	<g>
+		<circle fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" cx="19.407" cy="13.737" r="8.256"></circle>
+		<circle fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" cx="96.063" cy="13.737" r="8.256"></circle>
+		<circle fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" cx="170.145" cy="13.737" r="8.256"></circle>
+	</g>
+	<line fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" x1="1.681" y1="0.501" x2="1.681" y2="33.502"></line>
+	<line fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" x1="38.806" y1="0.501" x2="38.806" y2="33.502"></line>
+	<line fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" x1="1.681" y1="33.497" x2="1.681" y2="66.498"></line>
+	<line fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" x1="38.806" y1="33.497" x2="38.806" y2="66.498"></line>
+	<line fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" x1="77.112" y1="0.501" x2="77.112" y2="33.502"></line>
+	<line fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" x1="114.237" y1="0.501" x2="114.237" y2="33.502"></line>
+	<line fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" x1="77.112" y1="33.497" x2="77.112" y2="66.498"></line>
+	<line fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" x1="114.237" y1="33.497" x2="114.237" y2="66.498"></line>
+	<line fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" x1="151.194" y1="0.501" x2="151.194" y2="33.502"></line>
+	<line fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" x1="188.319" y1="0.501" x2="188.319" y2="33.502"></line>
+	<line fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" x1="151.194" y1="33.497" x2="151.194" y2="66.498"></line>
+	<line fill="none" stroke="#08EB8C" stroke-width="2" stroke-miterlimit="10" x1="188.319" y1="33.497" x2="188.319" y2="66.498"></line>
+</g>
+<rect x="0" y="0" fill="none" width="190" height="67"></rect>
+</svg>
