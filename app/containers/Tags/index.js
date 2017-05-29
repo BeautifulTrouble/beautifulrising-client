@@ -23,7 +23,6 @@ import messages from './messages';
 import styled from 'styled-components';
 
 const TagBlock = styled.div``;
-const TagTitle = styled.h3``;
 const TagList = styled.ul`margin: 0; padding: 0;`;
 const TagListItem = styled.li`display: inline-block;`;
 export class Tags extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -31,9 +30,6 @@ export class Tags extends React.PureComponent { // eslint-disable-line react/pre
   render() {
     return (
       <TagBlock>
-        <TagTitle>
-          <FormattedMessage {...messages.header} />
-        </TagTitle>
         <TagList>
           {this.props.tags.map((label) => (
             <TagListItem key={label}>

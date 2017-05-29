@@ -20,6 +20,9 @@ import { makeSelectToolById,
 import ToolsViewOptions from 'containers/ToolsViewOptions';
 
 import LeftSection from 'components/LeftSection';
+
+import { LeftHeader, LeftContainer } from 'components/HomePageComponents';
+
 import Stage from 'components/Stage';
 
 import { loadData } from '../App/actions';
@@ -76,8 +79,17 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
         />
         <Header />
         <LeftSection>
-          <FormattedMessage {...messages.header} />
-          <ToolsViewOptions />
+
+          <LeftHeader>
+            <FormattedMessage {...messages.viewAs} />
+          </LeftHeader>
+          <LeftContainer>
+            <ToolsViewOptions />
+          </LeftContainer>
+
+          <LeftHeader>
+            <FormattedMessage {...messages.tags} />
+          </LeftHeader>
           <Tags />
         </LeftSection>
         <Stage>

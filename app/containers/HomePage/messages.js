@@ -10,4 +10,12 @@ export default defineMessages({
     id: 'app.containers.HomePage.header',
     defaultMessage: 'This is Home',
   },
+  viewAs: {
+    id: 'app.containers.HomePage.viewAs',
+    defaultMessage: 'View As'
+  },
+  tags: {
+    id: 'app.containers.HomePage.tags',
+    defaultMessage: 'Tags'
+  }
 });
