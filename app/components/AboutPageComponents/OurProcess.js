@@ -13,23 +13,19 @@ import messages from './messages';
 import VisibilitySensor from 'react-visibility-sensor';
 
 
-function OurProcess(props) {
-  return (
-    <AboutSection id='process' name='process'>
-      <VisibilitySensor onChange={props.onChange}>
-        <h2>
-          <FormattedMessage {...messages.ourProcessHeader} />
-        </h2>
-      </VisibilitySensor>
-      <p>
-        <FormattedMessage {...messages.ipsum} />
-      </p>
-    </AboutSection>
-  );
+export default class OurProcess extends React.Component {
+  render() {
+    return (
+      <AboutSection id='process' name='process'>
+        <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
+          <h2>
+            <FormattedMessage {...messages.ourProcessHeader} />
+          </h2>
+        </VisibilitySensor>
+        <p>
+          <FormattedMessage {...messages.ipsum} />
+        </p>
+      </AboutSection>
+    );
+  }
 }
-
-OurProcess.propTypes = {
-
-};
-
-export default OurProcess;

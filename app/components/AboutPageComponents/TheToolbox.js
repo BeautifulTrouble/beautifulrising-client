@@ -13,23 +13,20 @@ import VisibilitySensor from 'react-visibility-sensor';
 
 import messages from './messages';
 
-function TheToolbox(props) {
-  return (
-    <AboutSection id='whats-inside' name='whats-inside'>
-      <VisibilitySensor  onChange={props.onChange}>
-        <h2>
-          <FormattedMessage {...messages.theToolboxHeader} />
-        </h2>
-      </VisibilitySensor>
-      <p>
-        <FormattedMessage {...messages.ipsum} />
-      </p>
-    </AboutSection>
-  );
+export default class TheToolbox extends React.Component {
+
+  render() {
+    return (
+      <AboutSection id='whats-inside' name='whats-inside'>
+        <VisibilitySensor  onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
+          <h2>
+            <FormattedMessage {...messages.theToolboxHeader} />
+          </h2>
+        </VisibilitySensor>
+        <p>
+          <FormattedMessage {...messages.ipsum} />
+        </p>
+      </AboutSection>
+    );
+  }
 }
-
-TheToolbox.propTypes = {
-
-};
-
-export default TheToolbox;

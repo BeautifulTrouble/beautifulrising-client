@@ -9,26 +9,22 @@ import React from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { AboutSection } from 'components/AboutPageComponents';
-import messages from './messages';
 import VisibilitySensor from 'react-visibility-sensor';
+import messages from './messages';
 
-function OurValues(props) {
-  return (
-    <AboutSection id='values' name='value'>
-      <VisibilitySensor onChange={props.onChange}>
-        <h2>
-          <FormattedMessage {...messages.ourValuesHeader} />
-        </h2>
-      </VisibilitySensor>
-      <p>
-        <FormattedMessage {...messages.ipsum} />
-      </p>
-    </AboutSection>
-  );
+export default class OurValues extends React.Component {
+  render() {
+    return (
+      <AboutSection id='values' name='values'>
+        <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
+          <h2>
+            <FormattedMessage {...messages.ourValuesHeader} />
+          </h2>
+        </VisibilitySensor>
+        <p>
+          <FormattedMessage {...messages.ipsum} />
+        </p>
+      </AboutSection>
+    );
+  }
 }
-
-OurValues.propTypes = {
-
-};
-
-export default OurValues;

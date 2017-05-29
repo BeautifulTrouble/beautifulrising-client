@@ -9,23 +9,23 @@ import React from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { AboutSection } from 'components/AboutPageComponents';
+import VisibilitySensor from 'react-visibility-sensor';
 import messages from './messages';
 
-function BeautifulTroubleAA() {
-  return (
-    <AboutSection id='beautiful-trouble-and-action-aid'>
-      <h2>
-        <FormattedMessage {...messages.beautifulTroubleAAHeader} />
-      </h2>
-      <p>
-        <FormattedMessage {...messages.ipsum} />
-      </p>
-    </AboutSection>
-  );
+export default class BeautifulTroubleAA extends React.Component {
+  render() {
+    return (
+      <AboutSection id='beautiful-trouble-and-action-aid'>
+        <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
+          <h2>
+            <FormattedMessage {...messages.beautifulTroubleAAHeader} />
+          </h2>
+        </VisibilitySensor>
+        <p>
+          <FormattedMessage {...messages.ipsum} />
+        </p>
+      </AboutSection>
+    );
+
+  }
 }
-
-BeautifulTroubleAA.propTypes = {
-
-};
-
-export default BeautifulTroubleAA;
