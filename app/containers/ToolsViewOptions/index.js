@@ -8,32 +8,34 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-// import makeSelectToolsViewOptions from './selectors';
+import makeSelectToolView, { isListView, isBlockView } from './selectors';
+import styled from 'styled-components';
 
+//Icons
+import BlockIcon from 'assets/images/icons/view_block.svg';
+import ListIcon from 'assets/images/icons/view_list.svg';
+
+import {SvgButton} from 'components/CommonComponents';
 
 import IconButton from 'components/IconButton';
 
 import { LIST_VIEW, BLOCK_VIEW } from './constants'
 import { changeToolView } from './actions';
 
-import { makeSelectToolView } from './selectors';
+// import { makeSelectToolView } from './selectors';
 import messages from './messages';
 
 export class ToolsViewOptions extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
-
   render() {
     return (
       <div>
-        <h1>{this.props.view}
-        </h1>
-        <IconButton onClick={this.props.clickListView}>
-          List View Button
+        <IconButton width="49%" onClick={this.props.clickListView}>
+          <SvgButton selected={this.props.isListView} src={BlockIcon}/>
         </IconButton>
-        <IconButton onClick={this.props.clickBlockView}>
-          Block View Button
+        <IconButton width="49%" onClick={this.props.clickBlockView}>
+          <SvgButton selected={this.props.isBlockView} src={ListIcon}/>
         </IconButton>
-
       </div>
     );
   }
@@ -44,7 +46,9 @@ ToolsViewOptions.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  // view: makeSelectToolView()
+  ToolView: makeSelectToolView(),
+  isListView: isListView(),
+  isBlockView: isBlockView()
 });
 
 function mapDispatchToProps(dispatch) {

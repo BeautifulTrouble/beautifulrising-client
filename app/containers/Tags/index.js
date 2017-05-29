@@ -22,22 +22,40 @@ import messages from './messages';
 
 import styled from 'styled-components';
 
-const TagBlock = styled.div``;
-const TagTitle = styled.h3``;
-const TagList = styled.ul`margin: 0; padding: 0;`;
-const TagListItem = styled.li`display: inline-block;`;
+const TagBlock = styled.div`
+  text-align: center`
+;
+const TagList = styled.ul`margin: 0; padding: 0; line-height: 1.2;`;
+const TagListItem = styled.li`
+  display: inline-block;
+  vertical-align: middle;
+  &:last-child {
+    span { display: none; }
+  }
+  * { vertical-align: middle; }
+`;
+
+const TagLink = styled(Link)`
+  font-size: 12px;
+  color: #828486;
+  text-decoration: underline;
+  vertical-align: middle;
+`;
+
+const TagDivider = styled(() => (<span>&nbsp;/&nbsp;</span>))`
+  vertical-align: middle;
+  display: inline-block;
+`;
 export class Tags extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   render() {
     return (
       <TagBlock>
-        <TagTitle>
-          <FormattedMessage {...messages.header} />
-        </TagTitle>
         <TagList>
           {this.props.tags.map((label) => (
             <TagListItem key={label}>
-              <Link to={`/tag/${slugify(label)}`}>{label}</Link>&nbsp;/&nbsp;
+              <TagLink to={`/tag/${slugify(label)}`}>{label}</TagLink>
+              <TagDivider />
             </TagListItem>
           ))}
         </TagList>

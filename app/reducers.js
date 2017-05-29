@@ -11,7 +11,8 @@ import languageProviderReducer from 'containers/LanguageProvider/reducer';
 
 import tagsReducer from 'containers/Tags/reducer';
 import globalReducer from 'containers/App/reducer';
-import toolsViewReducer from 'containers/ToolsViewOptions/reducer';
+import toolsViewOptionsReducer from 'containers/ToolsViewOptions/reducer';
+import toolsSortOptionsReducer from 'containers/ToolsSortOptions/reducer';
 import searchFieldReducer from 'containers/SearchField/reducer';
 import toolsReducer from 'containers/Tools/reducer';
 /*
@@ -52,7 +53,8 @@ export default function createReducer(asyncReducers) {
     tags: tagsReducer,
     searchField: searchFieldReducer,
     global: globalReducer,
-    toolsView: toolsViewReducer,
+    toolsView: toolsViewOptionsReducer,
+    toolsSort: toolsSortOptionsReducer,
     tools: toolsReducer,
     ...asyncReducers,
   });
