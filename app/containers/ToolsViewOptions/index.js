@@ -30,11 +30,11 @@ export class ToolsViewOptions extends React.PureComponent { // eslint-disable-li
   render() {
     return (
       <div>
-        <IconButton width="49%" onClick={this.props.clickListView}>
-          <SvgButton selected={this.props.isListView} src={BlockIcon}/>
-        </IconButton>
         <IconButton width="49%" onClick={this.props.clickBlockView}>
-          <SvgButton selected={this.props.isBlockView} src={ListIcon}/>
+          <SvgButton selected={this.props.isBlockView} src={BlockIcon}/>
+        </IconButton>
+        <IconButton width="49%" onClick={this.props.clickListView}>
+          <SvgButton selected={this.props.isListView} src={ListIcon}/>
         </IconButton>
       </div>
     );

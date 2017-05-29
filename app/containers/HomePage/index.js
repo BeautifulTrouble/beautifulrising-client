@@ -52,6 +52,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   }
 
   getViewMode() {
+    console.log(this.props.viewTool);
     return this.props.viewTool === BLOCK_VIEW ? BlockView : ListView;
   }
 
@@ -84,6 +85,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           <LeftHeader>
             <FormattedMessage {...messages.viewAs} />
           </LeftHeader>
+
           <LeftContainer>
             <ToolsViewOptions />
           </LeftContainer>
@@ -91,6 +93,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           <LeftHeader>
             <FormattedMessage {...messages.sortBy} />
           </LeftHeader>
+
           <LeftContainer>
             <ToolsSortOptions />
           </LeftContainer>

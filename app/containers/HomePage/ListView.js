@@ -5,7 +5,13 @@ import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 
 const theme = {
-    bgColor: 'blue',
+    bgColor: 'none',
+    listItemWidth: '48%',
+    listItemHeight: '200px',
+    //Spiel
+    spielFontSize: '12px',
+    spielColor: '#000000'
+
 };
 
 export default (props) => {

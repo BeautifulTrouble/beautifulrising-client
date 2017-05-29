@@ -8,7 +8,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Isvg from 'react-inlinesvg';
 
-
 function CommonComponents() {
   return (
     <div>
@@ -31,6 +30,7 @@ export const TextButton = styled.span`
   text-transform: uppercase;
   font-size: 14PX;
 `;
+
 
 CommonComponents.propTypes = {
 

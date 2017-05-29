@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components';
 
 const theme = {
     bgColor: 'red',
+    listItemWidth: '32%',
 };
 
 export default (props) => {
