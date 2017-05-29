@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { TAG_FILTER, TYPE_FILTER, SEARCH_FILTER } from './constants';
+import { SORT_NEWEST, SORT_ALPHABETICAL } from 'containers/ToolsSortOptions/constants';
 /**
  * Direct selector to the homePage state domain
  */
@@ -10,6 +11,7 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
  */
  const selectGlobal = (state) => { return state.get('global') };
  const selectToolsView = (state) => { return state.get('toolsView') }
+
 
  const selectFilter = (state, props) => { return props.params.filter; }
  const selectLabel = (state, props) => { return props.params.label; }
@@ -50,6 +52,31 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
    }
  );
 
+ // Sorting it according to the call
+ const selectToolsSort = (state) => { console.log("XX", state); return state.get('toolsSort') }
+ const makeSortedTools = createSelector(
+   [selectToolsSort, makeSelectAllTools],
+   (sortByResult, tools) => {
+     const sortBy = sortByResult.get('chosen');
+
+     switch (sortBy) {
+       case SORT_NEWEST:
+        return tools.sort((a, b) => {
+          return new Date(b.timestamp) - new Date(a.timestamp);
+          // if (a.timestamp > b.timestamp) return -1;
+          // if (a.timestamp < b.timestamp) return 1;
+          // return 0;
+        })
+       case SORT_ALPHABETICAL:
+        return tools.sort((a, b) => {
+            if(a.title < b.title) return -1;
+            if(a.title > b.title) return 1;
+            return 0;
+        })
+     }
+   }
+ )
+
  const makeSelectToolView = createSelector(
    [selectToolsView],
    (toolsView) => {
@@ -73,5 +100,6 @@ export {
   selectHomePageDomain,
   makeSelectAllTools,
   makeSelectToolView,
+  makeSortedTools,
   allTags
 };

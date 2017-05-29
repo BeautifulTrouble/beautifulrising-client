@@ -27,7 +27,7 @@ import { LeftHeader, LeftContainer } from 'components/HomePageComponents';
 import Stage from 'components/Stage';
 
 import { loadData } from '../App/actions';
-import makeSelectHomePage, { makeSelectToolView, makeSelectAllTools } from './selectors';
+import makeSelectHomePage, { makeSelectToolView, makeSelectAllTools, makeSortedTools } from './selectors';
 import styled from 'styled-components';
 
 
@@ -70,6 +70,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 
   render() {
     const ViewMode = this.getViewMode();
+    console.log(this.props.sorted);
     return (
       <div>
         <Helmet
@@ -105,7 +106,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           {this.getSearchResultsHeader()}
           <ViewMode>
             <ToolList>
-              { this.props.tools ? this.props.tools.map(tool => { return (<ToolListItem key={tool['_id']} {...tool}/>) }) : null }
+              { this.props.sorted ? this.props.sorted.map(tool => { return (<ToolListItem key={tool['_id']} {...tool}/>) }) : null }
             </ToolList>
           </ViewMode>
         </Stage>
@@ -125,6 +126,7 @@ const mapStateToProps = (state, props) => {
     loading: makeSelectLoading(state),
     error: makeSelectError(state),
     tools: makeSelectAllTools(state, props),
+    sorted: makeSortedTools(state, props)
   }
 };
 
