@@ -32,7 +32,6 @@ export default function createRoutes(store) {
       injectReducer('homePage', reducer.default);
       injectSagas(sagas.default);
 
-      console.log("XXXX", toolsSortOptionsReducer);
       injectReducer('toolsView', toolsViewOptionsReducer.default);
       injectReducer('toolsSort', toolsSortOptionsReducer.default)
 

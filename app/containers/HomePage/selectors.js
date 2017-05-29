@@ -53,7 +53,7 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
  );
 
  // Sorting it according to the call
- const selectToolsSort = (state) => { console.log("XX", state); return state.get('toolsSort') }
+ const selectToolsSort = (state) => { return state.get('toolsSort') }
  const makeSortedTools = createSelector(
    [selectToolsSort, makeSelectAllTools],
    (sortByResult, tools) => {

@@ -70,7 +70,6 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 
   render() {
     const ViewMode = this.getViewMode();
-    console.log(this.props.sorted);
     return (
       <div>
         <Helmet
