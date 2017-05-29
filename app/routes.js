@@ -96,6 +96,7 @@ export default function createRoutes(store) {
     {
       path: '/platforms(/:section)*',
       name: 'platforms',
+      ignoreScrollBehavior: true, //for useScroll
       getComponent(nextState, cb) {
         import('containers/PlatformsPage')
           .then(loadModule(cb))

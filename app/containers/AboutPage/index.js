@@ -42,6 +42,8 @@ export class AboutPage extends React.Component { // eslint-disable-line react/pr
     }
   }
 
+  // The delay is so that the receiveProps and didMount
+  // will not go against eachother
   componentDidMount() {
     const reference = browserHistory.getCurrentLocation().pathname;
     const targetNode = ReactDOM.findDOMNode(this.refs[reference]);
@@ -50,7 +52,6 @@ export class AboutPage extends React.Component { // eslint-disable-line react/pr
   }
 
   componentWillReceiveProps(nextProps) {
-
     const reference = browserHistory.getCurrentLocation().pathname;
     const targetNode = ReactDOM.findDOMNode(this.refs[reference]);
 
@@ -61,6 +62,7 @@ export class AboutPage extends React.Component { // eslint-disable-line react/pr
     }
   }
 
+  // This puts the path on top of the route stack
   componentIsVisible(isVisible, aboutPath) {
     if (isVisible &&
         browserHistory.getCurrentLocation().pathname != aboutPath
