@@ -14,6 +14,10 @@ export default defineMessages({
     id: 'app.containers.HomePage.viewAs',
     defaultMessage: 'View As'
   },
+  sortBy: {
+    id: 'app.containers.HomePage.sortBy',
+    defaultMessage: 'Sort By'
+  },
   tags: {
     id: 'app.containers.HomePage.tags',
     defaultMessage: 'Tags'

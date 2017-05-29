@@ -18,6 +18,7 @@ import { makeSelectToolById,
        } from 'containers/App/selectors';
 
 import ToolsViewOptions from 'containers/ToolsViewOptions';
+import ToolsSortOptions from 'containers/ToolsSortOptions';
 
 import LeftSection from 'components/LeftSection';
 
@@ -86,6 +87,14 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           <LeftContainer>
             <ToolsViewOptions />
           </LeftContainer>
+
+          <LeftHeader>
+            <FormattedMessage {...messages.sortBy} />
+          </LeftHeader>
+          <LeftContainer>
+            <ToolsSortOptions />
+          </LeftContainer>
+
 
           <LeftHeader>
             <FormattedMessage {...messages.tags} />
