@@ -25,7 +25,7 @@ import styled from 'styled-components';
 const TagBlock = styled.div`
   text-align: center`
 ;
-const TagList = styled.ul`margin: 0; padding: 0;`;
+const TagList = styled.ul`margin: 0; padding: 0; line-height: 1.2;`;
 const TagListItem = styled.li`
   display: inline-block;
   vertical-align: middle;
