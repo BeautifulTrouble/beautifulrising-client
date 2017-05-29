@@ -68,6 +68,7 @@ export default function createRoutes(store) {
     {
       path: '/about(/:section)*',
       name: 'about',
+      ignoreScrollBehavior: true, //for useScroll
       getComponent(nextState, cb) {
         import('containers/AboutPage')
           .then(loadModule(cb))
