@@ -45,6 +45,10 @@ export const ToolsPageLeftHeader = styled(CommonLeftHeader)`
   text-align: left;
 `
 
+export const ToolsPageContributor = styled(ToolsPageLeftHeader)`
+  font-size: 24px;
+`;
+
 export const ToolHeaderContainer = styled.section`
   width: 100%;
   height: 100%;
