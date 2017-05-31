@@ -11,12 +11,18 @@ import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 
 import AdderRemover from 'containers/Tools/AdderRemover';
+import { ToolInformation, ToolHeader } from 'components/ToolsPageComponents';
+
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 
 import { loadData } from '../App/actions';
 
 import makeSelectToolPage, { makeSelectTool } from './selectors';
 import messages from './messages';
+import ToolPageHeader from './ToolPageHeader';
+import ToolPageLeft from './ToolPageLeft';
+import ToolPageMain from './ToolPageMain';
+import ToolPageRight from './ToolPageRight';
 
 export class ToolPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -37,21 +43,22 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
             { name: 'description', content: 'Description of ToolPage' },
           ]}
         />
-        <FormattedMessage {...messages.header} />
-        <h1>{tool.title}</h1>
-        <h3>{tool.type}</h3>
-        <AdderRemover
-          slug={tool.slug}
-          title={tool.title}
-          type={tool.type}
-          snapshot={tool.snapshot}
-        />
-        <p>{tool['short-write-up']}</p>
-        <h3>{this.props.toolData.getIn(['authors']).map(item => item.title)}</h3>
+        <ToolHeader>
+          <ToolPageHeader {...tool} />
+        </ToolHeader>
+        <ToolInformation>
+          <ToolPageLeft {...tool} />
+          <ToolPageMain {...tool} />
+          <ToolPageRight {...tool} />
+        </ToolInformation>
       </div>
     );
   }
 }
+
+// <h3>{tool.type}</h3>
+// <p>{tool['short-write-up']}</p>
+// <h3>{this.props.toolData.getIn(['authors']).map(item => item.title)}</h3>
 
 ToolPage.propTypes = {
   // dispatch: PropTypes.func.isRequired,
