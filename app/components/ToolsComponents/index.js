@@ -40,7 +40,13 @@ export const getToolTypeColor = (type) => {
   }
 }
 
-export const ToolsButton = styled.button`outline: none; cursor: pointer;`;
+export const ToolsButton = styled.button`
+  outline: none;
+  cursor: pointer;
+  color: ${props=> props.color || 'black'};
+  font-weight: bold;
+  img { margin-right: 10px;}
+`;
 export const ToolsListMenu = styled.ul`padding: 0;`;
 export const ToolsListMenuItem = styled.li`
   list-style: none;
@@ -82,7 +88,7 @@ export const ToolsContainer = styled.div`
   height: calc(100vh - 170px);
   border: 3px solid black;
   top: 160px;
-  transform: translateX(${(props) => props.showTools ? '750px' : '600px' });
+  transform: translateX(${(props) => props.showTools ? '750px' : '620px' });
   transition: transform 0.5s, width 0.5s;
   overflow-x: hidden;
   `;

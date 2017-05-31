@@ -11,7 +11,7 @@ import {ToolType, ToolTitle, BlockContainer,
         BlockViewport, BlockSpiel, BlockAddRem, BlockViewTitleArea} from 'components/ToolsComponents';
 
 import messages from './messages';
-import { BR_IMAGE_PREFIX } from './constants';
+import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
 
 class BlockViewItem extends React.Component {
 

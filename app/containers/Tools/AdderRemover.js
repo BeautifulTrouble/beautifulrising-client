@@ -34,6 +34,22 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
     }
   }
 
+  buildRemove() {
+    return (
+      <span>
+        <img src={RemoveToolIcon}/>{ this.props.removeText || ""}
+      </span>
+    )
+  }
+
+  buildAdd() {
+    return (
+      <span>
+        <img src={AddToolIcon}/>{ this.props.addText || "" }
+      </span>
+    );
+  }
+
   render() {
 
     if (this.props.showFull) {
@@ -42,8 +58,8 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
       </ToolsButton>);
     } else {
       return (
-        <ToolsButton onClick={this.onButtonClick.bind(this)}>
-          {this.props.toolIsSelected ? <img src={RemoveToolIcon}/> : <img src={AddToolIcon}/>}
+        <ToolsButton color="white" onClick={this.onButtonClick.bind(this)}>
+          {this.props.toolIsSelected ? this.buildRemove() : this.buildAdd()}
         </ToolsButton>
       );
     }

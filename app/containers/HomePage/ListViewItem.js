@@ -12,7 +12,7 @@ import Link from 'components/Link';
 import AdderRemover from 'containers/Tools/AdderRemover';
 import messages from './messages';
 import {ToolType, ToolTitle, ListContainer, ListViewport, ListSpiel} from 'components/ToolsComponents';
-import { BR_IMAGE_PREFIX } from './constants';
+import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
 
 
 class ListViewItem extends React.Component {

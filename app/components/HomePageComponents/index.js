@@ -6,7 +6,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-
+import { CommonLeftHeader } from 'components/CommonComponents';
 
 function HomePageComponents() {
   return (
@@ -20,14 +20,7 @@ HomePageComponents.propTypes = {
 };
 
 
-export const LeftHeader = styled.h2`
-  font-size: 18px;
-  text-transform: uppercase;
-  padding: 5px 2px;
-  text-align: center;
-  border-bottom: 2px solid black;
-  margin: 0;
-`;
+export const LeftHeader = styled(CommonLeftHeader)``;
 
 export const LeftContainer = styled.div`
   padding-bottom: 5px;
