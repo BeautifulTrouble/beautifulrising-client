@@ -10,7 +10,7 @@ import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 
 import AdderRemover from 'containers/Tools/AdderRemover';
-import { ToolRightArea } from 'components/ToolsPageComponents';
+import { ToolRightArea, ToolsPageRelatedToolsHeader, ToolsPageRightHeader, ToolsRelatedArea } from 'components/ToolsPageComponents';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 
 import messages from './messages';
@@ -19,7 +19,16 @@ export class ToolPageRight extends React.PureComponent { // eslint-disable-line 
 
   render() {
     return (
-      <ToolRightArea>ToolPage Right</ToolRightArea>
+      <ToolRightArea>
+        <ToolsPageRelatedToolsHeader>Related Tools</ToolsPageRelatedToolsHeader>
+        <ToolsRelatedArea>
+          <ToolsPageRightHeader>Tactics</ToolsPageRightHeader>
+          <ToolsPageRightHeader>Principles</ToolsPageRightHeader>
+          <ToolsPageRightHeader>Theories</ToolsPageRightHeader>
+          <ToolsPageRightHeader>Methodologies</ToolsPageRightHeader>
+          <ToolsPageRightHeader>Stories</ToolsPageRightHeader>
+        </ToolsRelatedArea>
+      </ToolRightArea>
     );
   }
 }
