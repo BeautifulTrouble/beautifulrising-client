@@ -6,10 +6,11 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import Markdown from 'react-remarkable';
 
 import { ToolType, ToolTitle } from 'components/ToolsComponents';
 import { CommonLeftHeader } from 'components/CommonComponents';
+import { Link } from 'react-router';
+
 function ToolsPageComponents() {
   return (
     <div>
@@ -96,15 +97,54 @@ export const ToolLeftArea = styled(ToolInfoSection)`
   width: 20%;
 `;
 
-export const ToolMainArea = styled(ToolInfoSection)`
-  width: 49%
-  margin-left: 0.5%;
-`;
 
 export const ToolRightArea = styled(ToolInfoSection)`
   width: 29%
   margin-left: 0.5%;
   margin-right: 0.5%;
 `;
+
+
+/**
+  ToolMainArea components
+**/
+
+export const ToolMainArea = styled(ToolInfoSection)`
+  width: 49%
+  margin-left: 0.5%;
+  padding: 20px;
+`;
+
+export const ToolMainContent = styled.div`text-align: left;`;
+
+export const ToolMainContentHeader = styled(CommonLeftHeader)`
+  text-align: left;
+  border: none;
+  margin-top: 20px;
+`;
+export const ToolReadContent = styled.div`
+  font-size: 14px;
+
+  a {
+    color: #838486;
+  }
+`;
+export const ToolReadShortContent = styled(ToolReadContent)``;
+export const ToolReadFullContent = styled(ToolReadContent)``;
+
+export const LearnMoreList = styled.ul`padding: 0; margin: 0;`;
+export const LearnMoreItem = styled.li`
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin-bottom: 10px;
+  font-size: 14px;
+`;
+export const LearnMoreItemLink = styled(Link)`
+  color: #828486;
+  font-weight: 700;
+  text-decoration: underline;
+`;
+export const LearnMoreItemSource = styled.span``;
 
 export default ToolsPageComponents;

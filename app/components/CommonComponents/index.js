@@ -31,6 +31,16 @@ export const TextButton = styled.span`
   font-size: 14PX;
 `;
 
+export const BorderedButton = styled.button`
+  outline: none;
+  text-transform: uppercase;
+  border: solid 2px black;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 4px 7;
+  cursor: pointer;
+`;
+
 
 export const CommonLeftHeader = styled.h2`
   font-size: 18px;

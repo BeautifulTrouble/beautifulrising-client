@@ -17,5 +17,17 @@ export default defineMessages({
   removeTool: {
     id: 'app.containers.ToolPage.removeTool',
     defaultMessage: 'Remove this text from your saved tools',
+  },
+  showLess: {
+    id: 'app.containers.ToolPage.showLess',
+    defaultMessage: 'Show Less',
+  },
+  showMore: {
+    id: 'app.containers.ToolPage.showMore',
+    defaultMessage: 'Show More',
+  },
+  learnMore: {
+    id: 'app.containers.ToolPage.learnMore',
+    defaultMessage: 'Learn More',
   }
 });
