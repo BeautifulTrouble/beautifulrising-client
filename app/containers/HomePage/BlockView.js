@@ -5,8 +5,12 @@ import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 
 const theme = {
-    bgColor: 'red',
-    listItemWidth: '32%',
+    bgColor: 'whitesmoke',
+    listItemWidth: '260px',
+    showBackground: true,
+    listItemHeight: '260px',
+    blockView: true,
+    padding: ''
 };
 
 export default (props) => {

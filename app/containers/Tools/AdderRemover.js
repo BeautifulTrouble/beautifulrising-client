@@ -8,6 +8,11 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
+import Isvg from 'react-inlinesvg';
+
+import AddToolIcon from 'assets/images/icons/add-tool.svg';
+import RemoveToolIcon from 'assets/images/icons/remove-tool.svg';
+
 import makeSelectTools, { toolIsSelected } from './selectors';
 import messages from './messages';
 import styled from 'styled-components';
@@ -30,11 +35,18 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
   }
 
   render() {
-    return (
-      <ToolsButton onClick={this.onButtonClick.bind(this)}>
-        {this.props.toolIsSelected ? 'Remove' : 'Add' }
-      </ToolsButton>
-    );
+
+    if (this.props.showFull) {
+      return (<ToolsButton onClick={this.onButtonClick.bind(this)}>
+        {this.props.toolIsSelected ? "Remove" : "Add"}
+      </ToolsButton>);
+    } else {
+      return (
+        <ToolsButton onClick={this.onButtonClick.bind(this)}>
+          {this.props.toolIsSelected ? <img src={RemoveToolIcon}/> : <img src={AddToolIcon}/>}
+        </ToolsButton>
+      );
+    }
   }
 }
 

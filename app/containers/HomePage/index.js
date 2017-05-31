@@ -31,10 +31,9 @@ import makeSelectHomePage, { makeSelectToolView, makeSelectAllTools, makeSortedT
 import styled from 'styled-components';
 
 
-import ToolListItem from './ToolListItem';
 import ToolList from './ToolList';
-import BlockView from './BlockView';
-import ListView from './ListView';
+import BlockViewItem from './BlockViewItem';
+import ListViewItem from './ListViewItem';
 import Header from './Header';
 import messages from './messages';
 
@@ -52,8 +51,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   }
 
   getViewMode() {
-    console.log(this.props.viewTool);
-    return this.props.viewTool === BLOCK_VIEW ? BlockView : ListView;
+    return this.props.viewTool === BLOCK_VIEW ? BlockViewItem : ListViewItem;
   }
 
   getSearchResultsHeader() {
@@ -70,7 +68,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   }
 
   render() {
-    const ViewMode = this.getViewMode();
+    const ListItem = this.getViewMode();
     return (
       <div>
         <Helmet
@@ -106,11 +104,9 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
         </LeftSection>
         <Stage>
           {this.getSearchResultsHeader()}
-          <ViewMode>
-            <ToolList>
-              { this.props.sorted ? this.props.sorted.map(tool => { return (<ToolListItem key={tool['_id']} {...tool}/>) }) : null }
-            </ToolList>
-          </ViewMode>
+          <ToolList>
+            { this.props.sorted ? this.props.sorted.map(tool => { return (<ListItem key={tool['_id']} {...tool}/>) }) : null }
+          </ToolList>
         </Stage>
       </div>
     );

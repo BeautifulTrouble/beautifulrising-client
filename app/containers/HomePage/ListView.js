@@ -10,7 +10,9 @@ const theme = {
     listItemHeight: '200px',
     //Spiel
     spielFontSize: '12px',
-    spielColor: '#000000'
+    spielColor: '#000000',
+
+    padding: '0 10px 0 50px'
 
 };
 

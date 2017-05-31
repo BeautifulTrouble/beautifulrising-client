@@ -27,7 +27,7 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
    }
  );
 
- const isFullTool = (item) => item['module-type'] === 'gallery' || item['module-type'] === 'full' ;
+ const isFullTool = (item) => (item['module-type'] === 'snapshot' && item['image']) || item['module-type'] === 'gallery' || item['module-type'] === 'full' ;
 
  const makeSelectAllTools = createSelector(
    [selectGlobal, selectFilter, selectLabel, allTags],
@@ -39,7 +39,8 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
           return data.filter(item => isFullTool(item) && item.tags && item.tags.includes(tags.all[label]));
           break;
          case TYPE_FILTER:
-          return data.filter(item => isFullTool(item) && item.type === label);
+          const result = data.filter(item => isFullTool(item) && item.type === label);
+          return result;
           break;
          case SEARCH_FILTER:
           return label ? data.filter(item => isFullTool(item) && item.title.toLowerCase().search(label.toLowerCase()) >= 0) : data.filter(item => isFullTool(item))

@@ -32,7 +32,7 @@ export class SelectedTool extends React.PureComponent { // eslint-disable-line r
         </SelectedToolSnapshot>
         <SelectedToolCommands>
           <SelectedToolCommandItem>
-            <AdderRemover {...this.props} />
+            <AdderRemover {...this.props} showFull={true}/>
           </SelectedToolCommandItem>
           <SelectedToolCommandItem>
             Share
