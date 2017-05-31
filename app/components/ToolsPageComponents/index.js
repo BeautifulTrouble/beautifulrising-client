@@ -6,6 +6,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import Markdown from 'react-remarkable';
 
 import { ToolType, ToolTitle } from 'components/ToolsComponents';
 import { CommonLeftHeader } from 'components/CommonComponents';
@@ -53,6 +54,13 @@ export const ToolsPageContributor = styled(ToolsPageLeftHeader)`
   font-size: 24px;
 `;
 
+export const ToolPageCaption = styled.div`
+  position: absolute;
+  bottom: 10px;
+  color: white;
+
+  a { color: #828486; }
+`;
 export const ToolsPageRelatedToolsHeader = styled(ToolsPageLeftHeader)`
   font-size: 24px;
   border: none;

@@ -5,13 +5,18 @@
  */
 
 import React, { PropTypes } from 'react';
+
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
+import Markdown from 'react-remarkable';
 
 import AdderRemover from 'containers/Tools/AdderRemover';
-import { ToolHeaderContainer, ToolHeaderViewport, ToolHeaderType,
-          ToolHeaderTitle} from 'components/ToolsPageComponents';
+import { ToolHeaderContainer,
+          ToolHeaderViewport,
+          ToolHeaderType,
+          ToolHeaderTitle,
+          ToolPageCaption} from 'components/ToolsPageComponents';
 import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
 
 // import { makeSelectToolById } from 'containers/Tool/selectors';
@@ -34,6 +39,9 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
             addText={(<FormattedMessage {...messages.addTool} />)}
             removeText={(<FormattedMessage {...messages.removeTool} />)}
           />
+          <ToolPageCaption>
+            <Markdown source={'/ ' + this.props['image-caption']} />
+          </ToolPageCaption>
         </ToolHeaderViewport>
       </ToolHeaderContainer>
     );
