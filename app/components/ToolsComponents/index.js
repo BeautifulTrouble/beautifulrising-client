@@ -120,7 +120,7 @@ export const BlockSpiel = styled.p`
   left: 0;
   padding: 10px;
   opacity: ${props=>props.show?'1':'0'};
-  transition: opacity 0.4s;
+  transition: opacity 0.2s;
 `;
 
 export const BlockViewTitleArea = styled.div`
@@ -129,7 +129,7 @@ export const BlockViewTitleArea = styled.div`
   left: 10px;
   z-index: 100;
   opacity: ${props=>props.show?'1':'0'};
-  transition: opacity 0.4s;
+  transition: opacity 0.2s;
 `;
 export const BlockAddRem = styled.div`
   position: absolute;

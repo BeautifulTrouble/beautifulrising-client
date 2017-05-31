@@ -23,7 +23,7 @@ const PageHeader = styled.header`
   overflow: scroll;
   border: 1px solid black;
   padding: 20px;
-  z-index: 100;
+  z-index: 200;
 `;
 
 function Header() {
