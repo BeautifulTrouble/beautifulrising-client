@@ -44,9 +44,27 @@ export const ToolHeaderTitle = styled(ToolTitle)`
 export const ToolsPageLeftHeader = styled(CommonLeftHeader)`
   text-align: left;
 `
+export const ToolsPageRightHeader = styled(CommonLeftHeader)`
+  text-align: left;
+  border: 0;
+`;
 
 export const ToolsPageContributor = styled(ToolsPageLeftHeader)`
   font-size: 24px;
+`;
+
+export const ToolsPageRelatedToolsHeader = styled(ToolsPageLeftHeader)`
+  font-size: 24px;
+  border: none;
+  background-color: #f7f7f7;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 30px;
+`;
+
+export const ToolsRelatedArea = styled.div`
+  padding: 10px 10px 10px 30px;
+  background-color: #f7f7f7;
 `;
 
 export const ToolHeaderContainer = styled.section`
@@ -71,12 +89,12 @@ export const ToolLeftArea = styled(ToolInfoSection)`
 `;
 
 export const ToolMainArea = styled(ToolInfoSection)`
-  width: 59%
+  width: 49%
   margin-left: 0.5%;
 `;
 
 export const ToolRightArea = styled(ToolInfoSection)`
-  width: 19%
+  width: 29%
   margin-left: 0.5%;
   margin-right: 0.5%;
 `;
