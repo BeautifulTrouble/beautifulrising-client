@@ -22,7 +22,8 @@ export default class ToolRealWorld extends React.Component { // eslint-disable-l
 
   generateRealWorldList() {
 
-    if (!this.props['real-world-examples'] || this.props['real-world-examples'].length == 0)
+    if (!this.props['real-world-examples']
+        || this.props['real-world-examples'].length == 0)
       return null;
 
     return (

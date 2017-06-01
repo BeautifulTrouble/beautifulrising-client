@@ -17,6 +17,10 @@ import { ToolMainArea,
          ToolMainContent,
          ToolReadShortContent,
          ToolReadFullContent } from 'components/ToolsPageComponents';
+
+import ToolHowToUse from 'components/ToolHowToUse';
+import ToolWhyItWorked from 'components/ToolWhyItWorked';
+import ToolWhyItFailed from 'components/ToolWhyItFailed';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 import ToolLearnMore from './ToolLearnMore';
 import ToolRealWorld from './ToolRealWorld';
@@ -78,15 +82,23 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
       )
     }
   }
+
+  renderRealWorldExample() {
+    if (this.props.type === 'story')
+      return null;
+
+    return (<ToolRealWorld {...this.props} />);
+  }
   render() {
 
     return (
       <ToolMainArea>
           { this.checkContentLength()}
-
-
+          <ToolHowToUse text={this.props['how-to-use']} />
+          <ToolWhyItWorked text={this.props['why-it-worked']} />
+          <ToolWhyItFailed text={this.props['why-it-failed']} />
           <ToolLearnMore {...this.props} />
-          <ToolRealWorld {...this.props} />
+          { this.renderRealWorldExample() }
       </ToolMainArea>
     );
   }
