@@ -29,5 +29,9 @@ export default defineMessages({
   learnMore: {
     id: 'app.containers.ToolPage.learnMore',
     defaultMessage: 'Learn More',
+  },
+  realWorldExamplesOf: {
+    id: 'app.containers.ToolPage.realWorldExamplesOf',
+    defaultMessage: 'Real World Examples of',
   }
 });

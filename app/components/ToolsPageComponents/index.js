@@ -128,6 +128,10 @@ export const ToolReadContent = styled.div`
   a {
     color: #838486;
   }
+
+  img {
+    width: 100%;
+  }
 `;
 export const ToolReadShortContent = styled(ToolReadContent)``;
 export const ToolReadFullContent = styled(ToolReadContent)``;
@@ -146,5 +150,16 @@ export const LearnMoreItemLink = styled(Link)`
   text-decoration: underline;
 `;
 export const LearnMoreItemSource = styled.span``;
+
+
+// RealWorldContainer
+export const RealWorldHeader = styled.h1`
+text-transform: uppercase;
+font-size: 28px;
+`;
+
+export const RealWorldContainer = styled(ToolMainContent)`
+margin-top: 30px;
+`;
 
 export default ToolsPageComponents;

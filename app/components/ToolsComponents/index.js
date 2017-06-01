@@ -9,9 +9,15 @@ import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 
 import { FormattedMessage } from 'react-intl';
+import Isvg from 'react-inlinesvg';
+
 import messages from './messages';
 import { TYPE_STORIES, TYPE_TACTICS, TYPE_PRINCIPLES,
           TYPE_THEORIES, TYPE_METHODOLOGIES } from './constants';
+
+import RealWorldIconImage from 'assets/images/icons/real-world.svg';
+
+
 
 function ToolsComponents() {
   return (
@@ -39,6 +45,18 @@ export const getToolTypeColor = (type) => {
       return "#b700c2";
   }
 }
+
+/*** START OF TOOLS ICONS ***/
+export const RealWorldIcon = styled(Isvg)`
+  svg {
+    fill: ${props=>props.type ? getToolTypeColor(props.type) : 'red'};
+
+    .circle {
+      fill: black;
+    }
+  }
+`;
+/*** END OF TOOLS ICONS ***/
 
 export const ToolsButton = styled.button`
   outline: none;

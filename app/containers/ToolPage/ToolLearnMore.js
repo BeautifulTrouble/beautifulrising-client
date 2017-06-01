@@ -17,7 +17,7 @@ import ToolLearnMoreItem from './ToolLearnMoreItem';
 import messages from './messages';
 
 export default function ToolLearnMore(props) { // eslint-disable-line react/prefer-stateless-function
-  console.log(props);
+
   if (props['learn-more'] && props['learn-more'].length > 0)
     return (
       <ToolMainContent>
