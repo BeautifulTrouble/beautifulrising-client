@@ -10,4 +10,20 @@ export default defineMessages({
     id: 'app.components.ToolKeyItems.header',
     defaultMessage: 'This is the ToolKeyItems component !',
   },
+  tactic: {
+    id: 'app.components.ToolKeyItems.keyTactic',
+    defaultMessage: 'Key Tactic',
+  },
+  principle: {
+    id: 'app.components.ToolKeyItems.keyPrinciple',
+    defaultMessage: 'Key Principle',
+  },
+  theory: {
+    id: 'app.components.ToolKeyItems.keyTheory',
+    defaultMessage: 'Key Theory',
+  },
+  methodology: {
+    id: 'app.components.ToolKeyItems.keyMethodology',
+    defaultMessage: 'Key Methodology',
+  },
 });

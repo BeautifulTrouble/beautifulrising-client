@@ -21,6 +21,7 @@ import { ToolMainArea,
 import ToolHowToUse from 'components/ToolHowToUse';
 import ToolWhyItWorked from 'components/ToolWhyItWorked';
 import ToolWhyItFailed from 'components/ToolWhyItFailed';
+import ToolKeyItems from 'components/ToolKeyItems';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 import ToolLearnMore from './ToolLearnMore';
 import ToolRealWorld from './ToolRealWorld';
@@ -97,6 +98,12 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
           <ToolHowToUse text={this.props['how-to-use']} />
           <ToolWhyItWorked text={this.props['why-it-worked']} />
           <ToolWhyItFailed text={this.props['why-it-failed']} />
+          <ToolKeyItems
+            keyTactics={this.props['key-tactics']}
+            keyPrinciples={this.props['key-principles']}
+            keyTheories={this.props['key-theories']}
+            keyMethodologies={this.props['key-methodologies']}
+          />
           <ToolLearnMore {...this.props} />
           { this.renderRealWorldExample() }
       </ToolMainArea>
