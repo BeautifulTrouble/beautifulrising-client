@@ -95,6 +95,7 @@ export const ToolHeaderViewport = styled.div`
 
 export const ToolLeftArea = styled(ToolInfoSection)`
   width: 20%;
+  text-align: left;
 `;
 
 

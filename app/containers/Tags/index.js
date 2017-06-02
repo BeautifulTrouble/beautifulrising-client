@@ -23,7 +23,7 @@ import messages from './messages';
 import styled from 'styled-components';
 
 const TagBlock = styled.div`
-  text-align: center`
+  text-align: ${props=>props.align || 'center'}`
 ;
 const TagList = styled.ul`margin: 0; padding: 0; line-height: 1.2;`;
 const TagListItem = styled.li`
@@ -50,11 +50,11 @@ export class Tags extends React.PureComponent { // eslint-disable-line react/pre
 
   render() {
     return (
-      <TagBlock>
+      <TagBlock align={this.props.align}>
         <TagList>
-          {this.props.tags.map((label) => (
-            <TagListItem key={label}>
-              <TagLink to={`/tag/${slugify(label)}`}>{label}</TagLink>
+          {this.props.tags.map((item) => (
+            <TagListItem key={item.key}>
+              <TagLink to={`/tag/${item.key}`}>{item.value}</TagLink>
               <TagDivider />
             </TagListItem>
           ))}
@@ -71,9 +71,11 @@ Tags.propTypes = {
   // },
 };
 
-const mapStateToProps = createStructuredSelector({
-  tags: makeSelectAllTags()
-});
+const mapStateToProps = (state, props) => {
+  return {
+    tags: makeSelectAllTags(state, props)
+  }
+};
 
 // function mapDispatchToProps(dispatch) {
 //   return {

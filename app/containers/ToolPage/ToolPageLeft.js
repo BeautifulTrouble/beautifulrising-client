@@ -9,6 +9,8 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 
+import ToolsRequestTraining from 'components/ToolsRequestTraining';
+import Tags from 'containers/Tags';
 import Author from 'containers/Author';
 import AdderRemover from 'containers/Tools/AdderRemover';
 import { ToolLeftArea, ToolsPageLeftHeader, ToolsPageContributor } from 'components/ToolsPageComponents';
@@ -20,13 +22,15 @@ export class ToolPageLeft extends React.PureComponent { // eslint-disable-line r
 
 
   render() {
-    // console.log(this.props);
+    console.log(this.props);
     return (
       <ToolLeftArea>
         <ToolsPageContributor>Contributed By</ToolsPageContributor>
         { this.props.authors.map(item=><Author key={item} slug={item}/>) }
         <ToolsPageLeftHeader>Tags</ToolsPageLeftHeader>
+        <Tags align="left" tags={this.props.tags.map(item=>item.toLowerCase())} />
         <ToolsPageLeftHeader>Training</ToolsPageLeftHeader>
+        <ToolsRequestTraining />
       </ToolLeftArea>
     );
   }

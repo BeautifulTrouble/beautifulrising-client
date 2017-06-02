@@ -27,6 +27,7 @@ const initialState = fromJS({
   currentUser: false,
   appData: {
     information: false,
+    tags: {}
   },
   chosenTools: []
 });
@@ -41,7 +42,10 @@ function appReducer(state = initialState, action) {
     case LOAD_DATA_SUCCESS:
       return state
         .setIn(['appData', 'information'], action.data)
-        .set('loading', false);
+        //TODO: Not sure if best practice
+        .setIn(['appData', 'tags'], action.data.filter(item=>item._id === 'text:tags')[0]['all'])
+        .set('loading', false)
+        ;
     case LOAD_DATA_ERROR:
       return state
         .set('error', action.error)
