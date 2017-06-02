@@ -1,29 +1,45 @@
-import { OrderedSet } from 'immutable';
+import { OrderedSet, Map } from 'immutable';
 import { createSelector } from 'reselect';
 
 const selectGlobal = (state) => state.get('global');
 const selectTools = (state) => state.get('tools');
 
 /* THIS WILL BE REVISED*/
-const makeSelectAllTags = () => createSelector(
-  selectGlobal,
-  (globalState) => {
-    if (globalState.getIn(['appData', 'information'])) {
-      return OrderedSet(globalState.getIn(['appData', 'information'])
-        .filter(item => item.type !== 'person')
-        .reduce((acc, item) => {
-          if (item.tags !== null && item.tags !== undefined) {
-            return acc.concat(item.tags.map(i => i.toLowerCase()));
-            // return acc.merge(item.tags);
-          }
-          return acc
-        } , [])
-      ).sort();
+const getTagsArray = (state, props) => { return props.tags };
+const makeSelectAllTags = createSelector(
+  [getTagsArray, selectGlobal],
+  (toolTags, globalState) => {
+
+    if (globalState.getIn(['appData', 'tags']).size !== 0) {
+      const allTags = globalState.getIn(['appData', 'tags']);
+      const keys = Object.keys(allTags);
+
+      console.log(toolTags);
+      return keys
+                .filter(key => toolTags ? toolTags.includes(allTags[key]) : true)
+                .map((key, index) => {
+                    return {key: key, value: allTags[key]}}
+                )
+                .sort((a, b) => {
+                  if ( a.value < b.value ) return -1;
+                  else if ( b.value < a.value ) return 1;
+                  else return 0;
+                });
+      // return OrderedSet(globalState.getIn(['appData', 'information'])
+      //   .filter(item => item.type !== 'person')
+      //   .reduce((acc, item) => {
+      //     if (item.tags !== null && item.tags !== undefined) {
+      //       return acc.concat(item.tags.map(i => i.toLowerCase()));
+      //       // return acc.merge(item.tags);
+      //     }
+      //     return acc
+      //   } , [])
+      // ).sort();
     } else {
       return [];
     }
   }
-)
+);
 
 const isShowTools = () => createSelector(
   selectTools,

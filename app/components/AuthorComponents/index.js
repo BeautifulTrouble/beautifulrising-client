@@ -52,7 +52,7 @@ export const AuthorLink = styled(Link)`
   color: rgb(130, 132, 134);
 `;
 
-export const AuthorDesc = styled.p`
+export const AuthorDesc = styled.div`
   margin: 2px;
   line-height: 1;
   font-size: 14px;

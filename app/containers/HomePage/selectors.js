@@ -27,7 +27,7 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
    }
  );
 
- const isFullTool = (item) => (item['module-type'] === 'snapshot' && item['image']) || item['module-type'] === 'gallery' || item['module-type'] === 'full' ;
+ const isFullTool = (item) => item['module-type'] === 'gallery' || item['module-type'] === 'full' ;
 
  const makeSelectAllTools = createSelector(
    [selectGlobal, selectFilter, selectLabel, allTags],
@@ -60,21 +60,26 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
    (sortByResult, tools) => {
      const sortBy = sortByResult.get('chosen');
 
-     switch (sortBy) {
-       case SORT_NEWEST:
-        return tools.sort((a, b) => {
-          return new Date(b.timestamp) - new Date(a.timestamp);
-          // if (a.timestamp > b.timestamp) return -1;
-          // if (a.timestamp < b.timestamp) return 1;
-          // return 0;
-        })
-       case SORT_ALPHABETICAL:
-        return tools.sort((a, b) => {
-            if(a.title < b.title) return -1;
-            if(a.title > b.title) return 1;
-            return 0;
-        })
+     if (tools) {
+       switch (sortBy) {
+         case SORT_NEWEST:
+          return tools.sort((a, b) => {
+            return new Date(b.timestamp) - new Date(a.timestamp);
+            // if (a.timestamp > b.timestamp) return -1;
+            // if (a.timestamp < b.timestamp) return 1;
+            // return 0;
+          })
+         case SORT_ALPHABETICAL:
+          return tools.sort((a, b) => {
+              if(a.title < b.title) return -1;
+              if(a.title > b.title) return 1;
+              return 0;
+          })
+       }
      }
+
+     return null;
+
    }
  )
 

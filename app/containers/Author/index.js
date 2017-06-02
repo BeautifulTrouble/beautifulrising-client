@@ -5,6 +5,7 @@
  */
 
 import React, { PropTypes } from 'react';
+import Markdown from 'react-remarkable';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import {AuthorContainer, AuthorImageArea, AuthorLink,
@@ -24,7 +25,9 @@ export class Author extends React.PureComponent { // eslint-disable-line react/p
         <AuthorName>
           <AuthorLink to={`/search/authors!${this.props.slug}`}>{this.props.author.title}</AuthorLink>
         </AuthorName>
-        <AuthorDesc>{this.props.author.bio}</AuthorDesc>
+        <AuthorDesc>
+          <Markdown source={this.props.author.bio} />
+        </AuthorDesc>
       </AuthorContainer>
     );
   }

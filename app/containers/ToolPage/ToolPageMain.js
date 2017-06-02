@@ -5,23 +5,108 @@
  */
 
 import React, { PropTypes } from 'react';
+import Markdown from 'react-remarkable';
+
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 
 import AdderRemover from 'containers/Tools/AdderRemover';
-import { ToolMainArea } from 'components/ToolsPageComponents';
-// import { makeSelectToolById } from 'containers/Tool/selectors';
+import { BorderedButton } from 'components/CommonComponents';
+import { ToolMainArea,
+         ToolMainContent,
+         ToolReadShortContent,
+         ToolReadFullContent } from 'components/ToolsPageComponents';
 
+import ToolHowToUse from 'components/ToolHowToUse';
+import ToolWhyItWorked from 'components/ToolWhyItWorked';
+import ToolWhyItFailed from 'components/ToolWhyItFailed';
+import ToolKeyItems from 'components/ToolKeyItems';
+// import { makeSelectToolById } from 'containers/Tool/selectors';
+import ToolLearnMore from './ToolLearnMore';
+import ToolRealWorld from './ToolRealWorld';
 import messages from './messages';
 
 export class ToolPageMain extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      showFull: false
+    }
+  }
 
+  handleShowClick() {
+    this.setState({ showFull : !this.state.showFull })
+  }
+  generateShortContent() {
+    return(
+      <ToolReadShortContent>
+        <Markdown source={this.props['short-write-up'].replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)") } />
+      </ToolReadShortContent>
+    );
+  }
+
+  generateFullContent() {
+    return(
+      <ToolReadFullContent>
+        <Markdown source={this.props['full-write-up'].replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)")} />
+      </ToolReadFullContent>
+    );
+  }
+
+  generateContent(){
+    if (this.state.showFull) {
+      return this.generateFullContent();
+    } else {
+      return this.generateShortContent();
+    }
+  }
+
+  checkContentLength() {
+    if( this.props['full-write-up']) {
+      return (
+        <ToolMainContent>
+          {this.generateContent()}
+          <BorderedButton onClick={this.handleShowClick.bind(this)}>
+            {this.state.showFull
+                ? (<FormattedMessage {...messages.showLess}/>)
+                : (<FormattedMessage {...messages.showMore}/>) }
+          </BorderedButton>
+        </ToolMainContent>
+      );
+    } else {
+      return (
+        <ToolMainContent>
+          {this.generateShortContent()}
+        </ToolMainContent>
+      )
+    }
+  }
+
+  renderRealWorldExample() {
+    if (this.props.type === 'story')
+      return null;
+
+    return (<ToolRealWorld {...this.props} />);
+  }
   render() {
 
     return (
-      <ToolMainArea>ToolPage Main</ToolMainArea>
+      <ToolMainArea>
+          { this.checkContentLength()}
+          <ToolHowToUse text={this.props['how-to-use']} />
+          <ToolWhyItWorked text={this.props['why-it-worked']} />
+          <ToolWhyItFailed text={this.props['why-it-failed']} />
+          <ToolKeyItems
+            keyTactics={this.props['key-tactics']}
+            keyPrinciples={this.props['key-principles']}
+            keyTheories={this.props['key-theories']}
+            keyMethodologies={this.props['key-methodologies']}
+          />
+          <ToolLearnMore {...this.props} />
+          { this.renderRealWorldExample() }
+      </ToolMainArea>
     );
   }
 }

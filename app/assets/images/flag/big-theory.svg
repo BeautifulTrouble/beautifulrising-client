@@ -1,0 +1,21 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="264px" height="175px" viewBox="0 0 264 175" enable-background="new 0 0 264 175" xml:space="preserve">
+<g>
+	<rect x="2" y="0" fill="none" width="260" height="175"></rect>
+	<g>
+		<circle fill="none" stroke="#FF0000" stroke-width="2" stroke-miterlimit="10" cx="19.79" cy="21.184" r="8.256"></circle>
+		<circle fill="none" stroke="#FF0000" stroke-width="2" stroke-miterlimit="10" cx="19.79" cy="87.347" r="8.256"></circle>
+		<circle fill="none" stroke="#FF0000" stroke-width="2" stroke-miterlimit="10" cx="94.597" cy="21.184" r="8.256"></circle>
+		<circle fill="none" stroke="#FF0000" stroke-width="2" stroke-miterlimit="10" cx="94.597" cy="87.347" r="8.256"></circle>
+		<circle fill="none" stroke="#FF0000" stroke-width="2" stroke-miterlimit="10" cx="169.403" cy="21.184" r="8.256"></circle>
+		<circle fill="none" stroke="#FF0000" stroke-width="2" stroke-miterlimit="10" cx="169.403" cy="87.347" r="8.256"></circle>
+		<circle fill="none" stroke="#FF0000" stroke-width="2" stroke-miterlimit="10" cx="244.21" cy="21.184" r="8.256"></circle>
+		<circle fill="none" stroke="#FF0000" stroke-width="2" stroke-miterlimit="10" cx="244.21" cy="87.347" r="8.256"></circle>
+		<rect x="0" y="4.265" fill="none" width="264" height="100"></rect>
+		<circle fill="none" stroke="#FF0000" stroke-width="2" stroke-miterlimit="10" cx="19.79" cy="153.817" r="8.256"></circle>
+		<circle fill="none" stroke="#FF0000" stroke-width="2" stroke-miterlimit="10" cx="94.597" cy="153.817" r="8.256"></circle>
+		<circle fill="none" stroke="#FF0000" stroke-width="2" stroke-miterlimit="10" cx="169.403" cy="153.817" r="8.256"></circle>
+		<circle fill="none" stroke="#FF0000" stroke-width="2" stroke-miterlimit="10" cx="244.21" cy="153.817" r="8.256"></circle>
+		<rect x="0" y="70.735" fill="none" width="264" height="100"></rect>
+	</g>
+</g>
+</svg>
