@@ -76,6 +76,11 @@ export const ToolsRelatedArea = styled.div`
   background-color: #f7f7f7;
 `;
 
+export const ToolsRelatedContainer = styled.div`
+  padding: 10px 10px 10px 30px;
+  background-color: #f7f7f7;
+`;
+
 export const ToolHeaderContainer = styled.section`
   width: 100%;
   height: 100%;
