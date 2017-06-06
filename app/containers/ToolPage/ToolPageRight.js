@@ -8,25 +8,94 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-
+import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
 import AdderRemover from 'containers/Tools/AdderRemover';
-import { ToolRightArea, ToolsPageRelatedToolsHeader, ToolsPageRightHeader, ToolsRelatedArea } from 'components/ToolsPageComponents';
+import { ToolRightArea, ToolsPageRelatedToolsHeader, ToolsPageRightHeader, ToolsRelatedArea, ToolsRelatedContainer } from 'components/ToolsPageComponents';
+import ToolsRelatedTool from 'components/ToolsRelatedTool';
+import ToolsPotentialRisk from 'components/ToolsPotentialRisk';
+import messages from './messages'
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 
-import messages from './messages';
-
 export class ToolPageRight extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  getRelatedTactics() {
+    if (!this.props.tactics || this.props.tactics.length == 0) return null;
+    return (
+      <ToolsRelatedContainer>
+        <ToolsPageRightHeader>
+          <FormattedMessage {...messages.tactics} />
+        </ToolsPageRightHeader>
+        <ToolsRelatedTool type={"tactic"} relatedTools={this.props.tactics} dict={this.props.toolsList}/>
+      </ToolsRelatedContainer>
+    )
+  }
+
+  getRelatedPrinciples() {
+    if (!this.props.principles || this.props.principles.length == 0) return null;
+    <ToolsRelatedContainer>
+      <ToolsPageRightHeader>
+        <FormattedMessage {...messages.principles} />
+      </ToolsPageRightHeader>
+      <ToolsRelatedTool type={"principle"} relatedTools={this.props.principles} dict={this.props.toolsList}/>
+    </ToolsRelatedContainer>
+  }
+
+  getRelatedTheories() {
+    if (!this.props.theories || this.props.theories.length == 0) return null;
+    return (
+      <ToolsRelatedContainer>
+        <ToolsPageRightHeader>
+          <FormattedMessage {...messages.theories} />
+        </ToolsPageRightHeader>
+        <ToolsRelatedTool type={"theory"} relatedTools={this.props.theories} dict={this.props.toolsList}/>
+      </ToolsRelatedContainer>
+    );
+  }
+
+  getRelatedMethodologies() {
+    if (!this.props.methodologies || this.props.methodologies.length == 0) return null;
+
+    return(
+      <ToolsRelatedContainer>
+        <ToolsPageRightHeader>
+          <FormattedMessage {...messages.methodologies} />
+        </ToolsPageRightHeader>
+        <ToolsRelatedTool type={"methodology"} relatedTools={this.props.methodologies} dict={this.props.toolsList}/>
+      </ToolsRelatedContainer>
+    );
+  }
+
+  getRelatedStories() {
+    if (!this.props.stories || this.props.stories.length == 0) return null;
+    return (
+      <ToolsRelatedContainer>
+        <ToolsPageRightHeader>
+          <FormattedMessage {...messages.stories} />
+        </ToolsPageRightHeader>
+        <ToolsRelatedTool type={"story"} relatedTools={this.props.stories} dict={this.props.toolsList}/>
+      </ToolsRelatedContainer>
+    );
+  }
 
   render() {
     return (
       <ToolRightArea>
-        <ToolsPageRelatedToolsHeader>Related Tools</ToolsPageRelatedToolsHeader>
+        <ToolsPotentialRisk content={this.props['potential-risks']} type={this.props.type} />
+
+        <ToolsPageRelatedToolsHeader>
+          <FormattedMessage {...messages.relatedTools} />
+        </ToolsPageRelatedToolsHeader>
         <ToolsRelatedArea>
-          <ToolsPageRightHeader>Tactics</ToolsPageRightHeader>
-          <ToolsPageRightHeader>Principles</ToolsPageRightHeader>
-          <ToolsPageRightHeader>Theories</ToolsPageRightHeader>
-          <ToolsPageRightHeader>Methodologies</ToolsPageRightHeader>
-          <ToolsPageRightHeader>Stories</ToolsPageRightHeader>
+          { this.getRelatedTactics() }
+
+          { this.getRelatedPrinciples() }
+
+          { this.getRelatedTheories() }
+
+          { this.getRelatedMethodologies() }
+
+          { this.getRelatedStories() }
+
         </ToolsRelatedArea>
       </ToolRightArea>
     );
@@ -37,10 +106,14 @@ ToolPageRight.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
+const mapStateToProps = createStructuredSelector({
+   toolsList: makeSelectAllToolsWithSlugIndex()
+});
+
 function mapDispatchToProps(dispatch) {
   return {
     dispatch
   };
 }
 
-export default connect(null, mapDispatchToProps)(ToolPageRight);
+export default connect(mapStateToProps, mapDispatchToProps)(ToolPageRight);

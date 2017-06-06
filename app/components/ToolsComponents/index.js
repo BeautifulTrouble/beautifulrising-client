@@ -56,6 +56,12 @@ export const RealWorldIcon = styled(Isvg)`
     }
   }
 `;
+
+export const PotentialRiskIcon = styled(Isvg)`
+  svg {
+    fill: ${props=>props.type ? getToolTypeColor(props.type) : 'red'};
+  }
+`;
 /*** END OF TOOLS ICONS ***/
 
 export const ToolsButton = styled.button`

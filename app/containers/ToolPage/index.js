@@ -34,7 +34,6 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
 
   render() {
     const tool = this.props.toolData.getIn(['tool']);
-    console.log(tool);
     if (!tool._id) return null;
     return (
       <div>

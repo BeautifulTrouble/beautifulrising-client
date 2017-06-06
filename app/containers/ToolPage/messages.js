@@ -33,5 +33,35 @@ export default defineMessages({
   realWorldExamplesOf: {
     id: 'app.containers.ToolPage.realWorldExamplesOf',
     defaultMessage: 'Real World Examples of',
+  },
+
+  // RELATED TOOLS
+
+  relatedTools: {
+    id: 'app.containers.ToolPage.relatedTools',
+    defaultMessage: 'Related Tools',
+  },
+  tactics: {
+    id: 'app.containers.ToolPage.tactics',
+    defaultMessage: 'Tactics',
+  },
+
+  principles: {
+    id: 'app.containers.ToolPage.principles',
+    defaultMessage: 'Principles',
+  },
+  theories: {
+    id: 'app.containers.ToolPage.theories',
+    defaultMessage: 'Theories',
+  },
+  methodologies: {
+    id: 'app.containers.ToolPage.methodologies',
+    defaultMessage: 'Methodologies',
+  },
+  stories: {
+    id: 'app.containers.ToolPage.stories',
+    defaultMessage: 'Stories',
   }
+
+
 });
