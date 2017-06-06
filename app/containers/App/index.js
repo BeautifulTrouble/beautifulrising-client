@@ -24,6 +24,8 @@ import { isShowTools } from './selectors';
 //Themes
 
 const Content = styled.section`
+min-height: 80vh;
+
 &::after {
   content: ' ';
   display: block;
