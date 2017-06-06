@@ -1,8 +1,23 @@
-import { OrderedSet, Map } from 'immutable';
+import Immutable, { OrderedSet, Map } from 'immutable';
 import { createSelector } from 'reselect';
 
 const selectGlobal = (state) => state.get('global');
 const selectTools = (state) => state.get('tools');
+
+
+/* This will take all items */
+/* Source: https://stackoverflow.com/questions/33830745/immutablejs-convert-list-to-indexed-map */
+const indexBy = (iterable, searchKey) =>
+    iterable.reduce(
+        (lookup, item) => lookup.set(item.get(searchKey), item),
+        Map()
+    );
+
+// Get all items with slugs as index
+const makeSelectAllToolsWithSlugIndex = () => createSelector(
+  [selectGlobal],
+  (globalState) => indexBy(Immutable.fromJS(globalState.getIn(['appData', 'information'])), 'slug')
+);
 
 /* THIS WILL BE REVISED*/
 const getTagsArray = (state, props) => { return props.tags };
@@ -103,6 +118,7 @@ export {
   makeSelectError,
   makeSelectData,
   makeSelectAllTags,
-  isShowTools
+  isShowTools,
+  makeSelectAllToolsWithSlugIndex
   // makeSelectToolView,
 };
