@@ -29,7 +29,6 @@ const makeSelectAllTags = createSelector(
       const allTags = globalState.getIn(['appData', 'tags']);
       const keys = Object.keys(allTags);
 
-      console.log(toolTags);
       return keys
                 .filter(key => toolTags ? toolTags.includes(allTags[key]) : true)
                 .map((key, index) => {

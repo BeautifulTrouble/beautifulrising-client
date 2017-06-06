@@ -22,7 +22,6 @@ export class ToolPageLeft extends React.PureComponent { // eslint-disable-line r
 
 
   render() {
-    console.log(this.props);
     return (
       <ToolLeftArea>
         <ToolsPageContributor>Contributed By</ToolsPageContributor>

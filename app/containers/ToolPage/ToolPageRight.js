@@ -12,6 +12,7 @@ import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
 import AdderRemover from 'containers/Tools/AdderRemover';
 import { ToolRightArea, ToolsPageRelatedToolsHeader, ToolsPageRightHeader, ToolsRelatedArea, ToolsRelatedContainer } from 'components/ToolsPageComponents';
 import ToolsRelatedTool from 'components/ToolsRelatedTool';
+import ToolsPotentialRisk from 'components/ToolsPotentialRisk';
 import messages from './messages'
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 
@@ -79,6 +80,8 @@ export class ToolPageRight extends React.PureComponent { // eslint-disable-line 
   render() {
     return (
       <ToolRightArea>
+        <ToolsPotentialRisk content={this.props['potential-risks']} type={this.props.type} />
+
         <ToolsPageRelatedToolsHeader>
           <FormattedMessage {...messages.relatedTools} />
         </ToolsPageRelatedToolsHeader>
