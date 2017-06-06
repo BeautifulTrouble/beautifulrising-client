@@ -48,7 +48,9 @@ class ToolKeyItems extends React.PureComponent { // eslint-disable-line react/pr
                         <FormattedMessage {...messages[type]} />
                       </TypeSubheader>
                       <Header>{header}</Header>
-                      <Content>{content}</Content>
+                      <Content>
+                        <Markdown source={content} />
+                      </Content>
                     </KeyItemListItem>)
         }) }
       </KeyItemList>

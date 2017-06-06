@@ -14,13 +14,21 @@
 import React from 'react';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
-
+import styled from 'styled-components';
 import Page from 'components/Page';
 import Header from 'components/Header';
 import Body from 'components/Body';
-import Tools from 'containers/Tools'
+import Tools from 'containers/Tools';
+import Footer from 'components/Footer';
 import { isShowTools } from './selectors';
 //Themes
+
+const Content = styled.section`
+&::after {
+  content: ' ';
+  display: block;
+  clear: both;
+}`;
 
 class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -33,8 +41,11 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
       <Page>
         <Header />
         <Body showTools={this.props.isShowTools}>
-          {React.Children.toArray(this.props.children)}
           <Tools />
+          <Content>
+            {React.Children.toArray(this.props.children)}
+          </Content>
+          <Footer />
         </Body>
       </Page>
     );
