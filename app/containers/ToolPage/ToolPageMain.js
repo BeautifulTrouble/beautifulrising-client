@@ -23,6 +23,8 @@ import ToolHowToUse from 'components/ToolHowToUse';
 import ToolWhyItWorked from 'components/ToolWhyItWorked';
 import ToolWhyItFailed from 'components/ToolWhyItFailed';
 import ToolKeyItems from 'components/ToolKeyItems';
+import ToolEpigraph from 'components/ToolEpigraph';
+import ToolWithPullQuote from 'components/ToolWithPullQuote';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 import ToolLearnMore from './ToolLearnMore';
 import ToolRealWorld from './ToolRealWorld';
@@ -49,11 +51,25 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
     );
   }
 
+  renderWithPullQuote(content) {
+    const split = content.split('\n').filter(item => item !== "");
+    return (<ToolWithPullQuote content={split} pullQuote={this.props['pull-quote']} />)
+  }
+
   generateFullContent() {
     if (!this.props['full-write-up']) return null;
+
+    const imageReplaced = this.props['full-write-up'].replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)");
+
+
+
     return(
       <ToolReadFullContent>
-        <Markdown source={this.props['full-write-up'].replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)")} />
+        <ToolEpigraph {...this.props}/>
+        { this.props['pull-quote'] !== ''
+            ? this.renderWithPullQuote(imageReplaced)
+            : <Markdown source={imageReplaced} />
+        }
       </ToolReadFullContent>
     );
   }
