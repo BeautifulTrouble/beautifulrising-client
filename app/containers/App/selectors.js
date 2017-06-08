@@ -16,8 +16,11 @@ const indexBy = (iterable, searchKey) =>
 // Get all items with slugs as index
 const makeSelectAllToolsWithSlugIndex = () => createSelector(
   [selectGlobal],
-  (globalState) => indexBy(Immutable.fromJS(globalState.getIn(['appData', 'information'])), 'slug')
+  (globalState) => {
+      return indexBy(Immutable.fromJS(globalState.getIn(['appData', 'information'])), 'slug');
+    }
 );
+
 
 /* THIS WILL BE REVISED*/
 const getTagsArray = (state, props) => { return props.tags };

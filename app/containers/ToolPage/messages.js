@@ -61,6 +61,10 @@ export default defineMessages({
   stories: {
     id: 'app.containers.ToolPage.stories',
     defaultMessage: 'Stories',
+  },
+  tags: {
+    id: 'app.containers.ToolPage.tags',
+    defaultMessage: 'Tags',
   }
 
 
