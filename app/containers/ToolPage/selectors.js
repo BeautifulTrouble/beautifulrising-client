@@ -24,11 +24,11 @@ const selectToolPageDomain = () => (state) => state.get('toolPage');
    [ selectGlobal, getToolSlug ],
    (globalData, slug) => {
      let appData = globalData.getIn(['appData', 'information']);
+
      if( appData ) {
         const tool = appData.find(tool => tool.slug === slug);
-
-        const authors = tool.authors.map(author =>
-          appData.find(person => person.type === TYPE_PERSON && person.slug === author) );
+        const authors = tool.authors && tool.authors != undefined ? tool.authors.map(author =>
+          appData.find(person => person.type === TYPE_PERSON && person.slug === author) ) : [];
         return Map({ tool, authors })
      }
 

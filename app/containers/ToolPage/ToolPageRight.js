@@ -13,7 +13,8 @@ import AdderRemover from 'containers/Tools/AdderRemover';
 import { ToolRightArea, ToolsPageRelatedToolsHeader, ToolsPageRightHeader, ToolsRelatedArea, ToolsRelatedContainer } from 'components/ToolsPageComponents';
 import ToolsRelatedTool from 'components/ToolsRelatedTool';
 import ToolsPotentialRisk from 'components/ToolsPotentialRisk';
-import messages from './messages'
+import messages from './messages';
+
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 
 export class ToolPageRight extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -32,12 +33,14 @@ export class ToolPageRight extends React.PureComponent { // eslint-disable-line 
 
   getRelatedPrinciples() {
     if (!this.props.principles || this.props.principles.length == 0) return null;
-    <ToolsRelatedContainer>
-      <ToolsPageRightHeader>
-        <FormattedMessage {...messages.principles} />
-      </ToolsPageRightHeader>
-      <ToolsRelatedTool type={"principle"} relatedTools={this.props.principles} dict={this.props.toolsList}/>
-    </ToolsRelatedContainer>
+    return (
+      <ToolsRelatedContainer>
+        <ToolsPageRightHeader>
+          <FormattedMessage {...messages.principles} />
+        </ToolsPageRightHeader>
+        <ToolsRelatedTool type={"principle"} relatedTools={this.props.principles} dict={this.props.toolsList}/>
+      </ToolsRelatedContainer>
+    );
   }
 
   getRelatedTheories() {

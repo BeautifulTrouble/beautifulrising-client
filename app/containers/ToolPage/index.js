@@ -12,7 +12,6 @@ import { createStructuredSelector } from 'reselect';
 
 import AdderRemover from 'containers/Tools/AdderRemover';
 import { ToolInformation, ToolHeader } from 'components/ToolsPageComponents';
-
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 
 import { loadData } from '../App/actions';
@@ -35,6 +34,7 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
   render() {
     const tool = this.props.toolData.getIn(['tool']);
     if (!tool._id) return null;
+
     return (
       <div>
         <Helmet

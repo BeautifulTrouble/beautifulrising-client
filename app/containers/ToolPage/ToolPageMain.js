@@ -10,6 +10,7 @@ import Markdown from 'react-remarkable';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
+import ToolSnapshotArea from 'components/ToolSnapshotArea';
 
 import AdderRemover from 'containers/Tools/AdderRemover';
 import { BorderedButton } from 'components/CommonComponents';
@@ -40,6 +41,7 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
     this.setState({ showFull : !this.state.showFull })
   }
   generateShortContent() {
+    if (!this.props['short-write-up']) return null;
     return(
       <ToolReadShortContent>
         <Markdown source={this.props['short-write-up'].replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)") } />
@@ -48,6 +50,7 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
   }
 
   generateFullContent() {
+    if (!this.props['full-write-up']) return null;
     return(
       <ToolReadFullContent>
         <Markdown source={this.props['full-write-up'].replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)")} />
@@ -90,8 +93,16 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
 
     return (<ToolRealWorld {...this.props} />);
   }
+
+  renderSnapshot() {
+    return (
+      <ToolSnapshotArea  {...this.props} />
+    );
+  }
   render() {
 
+    // If snapshot, render the snapshot area...
+    const snapshotArea = this.props['module-type'] === 'snapshot' ? this.renderSnapshot() : null;
     return (
       <ToolMainArea>
           { this.checkContentLength()}
@@ -105,6 +116,9 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
             keyMethodologies={this.props['key-methodologies']}
           />
           <ToolLearnMore {...this.props} />
+
+          {snapshotArea}
+
           { this.renderRealWorldExample() }
       </ToolMainArea>
     );
