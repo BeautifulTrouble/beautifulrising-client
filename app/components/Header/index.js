@@ -16,13 +16,15 @@ import messages from './messages';
 
 const Title = styled.h1`
   position: absolute;
-  top: 10px;
-  left: 50%;
+  top: 0px;
+  left: 100px;
   margin: 0;
-  transform: translate(-540px, 0);
 `;
 const Viewport = styled.div`
   position: relative;
+  width: 1110px;
+  text-align: left;
+  display: inline-block;
 `;
 const PageHeader = styled.header`
   position: fixed;
@@ -33,6 +35,17 @@ const PageHeader = styled.header`
   border: 1px solid black;
   padding: 20px;
   z-index: 200;
+  text-align: center;
+`;
+
+const ModalMenuArea = styled(ModalMenu)`
+  .ReactModalPortal {
+    color: blue;
+  }
+  .ReactModal__Overlay ReactModal__Overlay--after-open {
+    z-index: 600;
+    background-color: rgba(255,255,255,0.5);
+  }
 `;
 
 function Header() {
@@ -42,7 +55,7 @@ function Header() {
         <Title>
           <Link to='/'><img src={LogoImageEn} /></Link>
         </Title>
-        <ModalMenu />
+        <ModalMenuArea />
       </Viewport>
     </PageHeader>
   );

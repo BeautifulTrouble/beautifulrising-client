@@ -18,7 +18,6 @@ import messages from './messages';
 function Menu(props) {
   return (
     <div>
-      <FormattedMessage {...messages.header} />
       <Link to="/">Home</Link>
       <AboutMenu onClick={props.onClick} />
       <PlatformsMenu onClick={props.onClick}/>
