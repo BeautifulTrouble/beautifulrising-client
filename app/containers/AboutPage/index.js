@@ -38,7 +38,9 @@ export class AboutPage extends React.Component { // eslint-disable-line react/pr
   constructor(props) {
     super(props);
     this.state = {
-      activateAnchor: false
+      activateAnchor: false,
+      currentPath: null,
+      currentOffset: null
     }
   }
 
@@ -56,7 +58,7 @@ export class AboutPage extends React.Component { // eslint-disable-line react/pr
     const targetNode = ReactDOM.findDOMNode(this.refs[reference]);
 
     if (targetNode && this.state.activateAnchor) {
-      this.setState({ activateAnchor : false });
+      this.setState({ activateAnchor : false, currentPath: reference, currentOffset: targetNode.offsetTop });
       window.scrollTo(0, targetNode.offsetTop);
       setTimeout(() => { this.setState({ activateAnchor: true }); }, 100);
     }
@@ -64,13 +66,59 @@ export class AboutPage extends React.Component { // eslint-disable-line react/pr
 
   // This puts the path on top of the route stack
   componentIsVisible(isVisible, aboutPath) {
-    if (isVisible &&
-        browserHistory.getCurrentLocation().pathname != aboutPath
+
+    if (isVisible && !this.refs[this.state.currentPath]) {
+        if (this.refs[aboutPath]) {
+          // this.setState({ activateAnchor : false });
+          const container = ReactDOM.findDOMNode(this.refs[aboutPath])
+          // console.log("3333", container.offsetTop);
+
+          this.props.dispatch(push(aboutPath));
+          this.setState({ currentPath: aboutPath, currentOffset: container.offsetTop })
+        }
+        // setTimeout(() => { this.setState({ activateAnchor : true, currentPath: aboutPath })}, 100);
+    } else
+      if (browserHistory.getCurrentLocation().pathname != aboutPath
         && this.state.activateAnchor) {
       //Set this as the url
-        this.setState({ activateAnchor : false });
-        this.props.dispatch(push(aboutPath));
-        setTimeout(() => { this.setState({ activateAnchor : true })}, 100);
+        const container = ReactDOM.findDOMNode(this.refs[aboutPath])
+        const position = window.scrollY - container.offsetTop;
+
+        if (this.state.currentPath !== aboutPath) {
+
+          // if items are in window
+          const currentDOM = ReactDOM.findDOMNode(this.refs[this.state.currentPath]);
+          const newDOM = ReactDOM.findDOMNode(this.refs[aboutPath]);
+
+          const currentOffset = currentDOM.offsetTop - window.scrollY;
+          const newOffset = newDOM.offsetTop - window.scrollY;
+          // console.log("CURRENTDOM", currentDOM, currentDOM.offsetTop - window.scrollY )
+          // console.log("NEWDOM", newDOM, newDOM.offsetTop - window.scrollY)
+          // if the DOM is higher, it dominates
+
+          // console.log(newDOM.offsetTop, this.state.currentOffset);
+          if ((currentOffset < 0 || currentOffset > window.innerHeight) && isVisible) {
+            // console.log("1111");
+            this.setState({ activateAnchor : false });
+            // this.setState({currentPath: aboutPath})
+            this.props.dispatch(push(aboutPath));
+            setTimeout(() => { this.setState({ currentPath: aboutPath, currentOffset: newDOM.offsetTop  })}, 10);
+            setTimeout(() => { this.setState({ activateAnchor : true })}, 100);
+          }
+          // else if (isVisible && currentOffset > 0
+          //           && currentOffset < window.innerHeight
+          //           && currentOffset < newOffset
+          //           && newDom.offsetTop > this.state.currentOffset
+          //         ) {
+          //   console.log("2222", currentOffset);
+          //   this.setState({ activateAnchor : false });
+          //   // this.setState({currentPath: aboutPath})
+          //   this.props.dispatch(push(aboutPath));
+          //   setTimeout(() => { this.setState({ currentPath: aboutPath, currentOffset: newDOM.offsetTop })}, 0);
+          //   setTimeout(() => { this.setState({ activateAnchor : true })}, 100);
+          // }
+
+      }
     }
   }
 
@@ -87,8 +135,8 @@ export class AboutPage extends React.Component { // eslint-disable-line react/pr
         <h1><Msg {...msg.header} /></h1>
         <p><Msg {...msg.description} /></p>
 
-        <TheToolbox ref="/about/whats-inside" targetRoute="/about/whats-inside"  onChange={ this.componentIsVisible.bind(this) } />
-        <OurProcess ref="/about/process" targetRoute="/about/process" onChange={this.componentIsVisible.bind(this) } />
+        <TheToolbox  ref={"/about/whats-inside"} targetRoute="/about/whats-inside"  onChange={ this.componentIsVisible.bind(this) } />
+        <OurProcess ref={"/about/process"} targetRoute="/about/process" onChange={this.componentIsVisible.bind(this) } />
         <OurValues ref="/about/values"  targetRoute="/about/values" onChange={this.componentIsVisible.bind(this) } />
         <OurAdvisoryNetwork ref="/about/advisory-network"  targetRoute="/about/advisory-network" onChange={this.componentIsVisible.bind(this) }/>
         <OurTeam ref="/about/team"  targetRoute="/about/team" onChange={this.componentIsVisible.bind(this) }/>

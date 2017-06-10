@@ -34,6 +34,12 @@ export const getToolTypeColor = (type) => {
   }
 }
 
+export const themeFourColumns = {
+  itemWidth: '24%',
+  itemMargin: '0.5%'
+
+};
+
 
 export const SvgButton = styled(Isvg)`
 
