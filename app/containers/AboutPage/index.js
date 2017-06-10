@@ -25,7 +25,8 @@ import OurProcess from 'components/AboutPageComponents/OurProcess';
 import OurAdvisoryNetwork from 'components/AboutPageComponents/OurAdvisoryNetwork';
 import FAQ from 'components/AboutPageComponents/FAQ';
 import BeautifulTroubleAA from 'components/AboutPageComponents/BeautifulTroubleAA';
-import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
+import { makeSelectAllToolsWithSlugIndex, makeSelectAdvisoryBoard } from 'containers/App/selectors';
+
 import msg from './messages';
 
 
@@ -50,7 +51,8 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
   // The delay is so that the receiveProps and didMount
   // will not go against eachother
   componentDidMount() {
-    if (!this.props.slugged) {
+    console.log("About Data", this.props.aboutData);
+    if (this.props.aboutData) {
       console.log("Loading Data");
       this.props.onPageLoad();
     }
@@ -132,7 +134,7 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
 
   render() {
 
-    console.log("SLUGGED", this.props.aboutData.get('workshop-participants'));
+    console.log("SLUGGED", this.props);
 
     return (
       <div>
@@ -160,7 +162,12 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
             ourValues={this.props.aboutData.getIn(['about', 'values'])}
         />
 
-        <OurAdvisoryNetwork ref="/about/advisory-network"  targetRoute="/about/advisory-network" onChange={this.componentIsVisible.bind(this) }/>
+        <OurAdvisoryNetwork
+            ref="/about/advisory-network"
+            targetRoute="/about/advisory-network"
+            onChange={this.componentIsVisible.bind(this) }
+            advisoryNetwork = {this.props.advisoryBoard}
+        />
         <OurTeam ref="/about/team"  targetRoute="/about/team" onChange={this.componentIsVisible.bind(this) }/>
         <BeautifulTroubleAA ref="/about/beautiful-trouble-and-action-aid"  targetRoute="/about/beautiful-trouble-and-action-aid" onChange={this.componentIsVisible.bind(this) }/>
         <Partners ref="/about/partners"  targetRoute="/about/partners" onChange={this.componentIsVisible.bind(this) }/>
@@ -176,7 +183,8 @@ AboutPage.propTypes = {
 
 
 const mapStateToProps = createStructuredSelector({
-  aboutData: makeSelectAllToolsWithSlugIndex()
+  aboutData: makeSelectAllToolsWithSlugIndex(),
+  advisoryBoard: makeSelectAdvisoryBoard()
 });
 
 function mapDispatchToProps(dispatch) {

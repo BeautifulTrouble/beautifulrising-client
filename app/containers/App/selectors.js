@@ -1,4 +1,4 @@
-import Immutable, { OrderedSet, Map } from 'immutable';
+import Immutable, { OrderedSet, Map, List } from 'immutable';
 import { createSelector } from 'reselect';
 
 const selectGlobal = (state) => state.get('global');
@@ -26,6 +26,21 @@ const makeSelectAllToolsWithSlugIndex = () => createSelector(
       return indexBy(Immutable.fromJS(globalState.getIn(['appData', 'information'])), 'slug');
     }
 );
+
+const makeSelectAdvisoryBoard = () => createSelector(
+    [selectGlobal],
+    (globalState) => {
+        console.log("makeSelectAdvisoryBoard", globalState)
+
+        if (globalState.getIn(['appData', 'information'])) {
+          return globalState.getIn(['appData', 'information']).filter(item => {
+                return item['team-bio'] !== undefined && item['team-title'] !== undefined && item['team-title'] === 'Advisory Network';
+            });
+        }
+        return List();
+      }
+  );
+
 
 
 /* THIS WILL BE REVISED*/
@@ -127,6 +142,7 @@ export {
   makeSelectData,
   makeSelectAllTags,
   isShowTools,
-  makeSelectAllToolsWithSlugIndex
+  makeSelectAllToolsWithSlugIndex,
+  makeSelectAdvisoryBoard
   // makeSelectToolView,
 };
