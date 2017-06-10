@@ -13,6 +13,9 @@ import { push,replace } from 'react-router-redux';
 
 //For listening
 import { browserHistory } from 'react-router';
+import { createStructuredSelector } from 'reselect';
+
+import { loadData } from 'containers/App/actions';
 
 import TheToolbox from 'components/AboutPageComponents/TheToolbox';
 import Partners from 'components/AboutPageComponents/Partners';
@@ -22,7 +25,7 @@ import OurProcess from 'components/AboutPageComponents/OurProcess';
 import OurAdvisoryNetwork from 'components/AboutPageComponents/OurAdvisoryNetwork';
 import FAQ from 'components/AboutPageComponents/FAQ';
 import BeautifulTroubleAA from 'components/AboutPageComponents/BeautifulTroubleAA';
-
+import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
 import msg from './messages';
 
 
@@ -33,7 +36,7 @@ const Msg = FormattedMessage;
 //  console.log("Location", location);
 // });
 
-export class AboutPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class AboutPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
     super(props);
@@ -47,10 +50,17 @@ export class AboutPage extends React.Component { // eslint-disable-line react/pr
   // The delay is so that the receiveProps and didMount
   // will not go against eachother
   componentDidMount() {
+    if (!this.props.slugged) {
+      console.log("Loading Data");
+      this.props.onPageLoad();
+    }
+
     const reference = browserHistory.getCurrentLocation().pathname;
     const targetNode = ReactDOM.findDOMNode(this.refs[reference]);
-    window.scrollTo(0, targetNode.offsetTop);
-    setTimeout(() => { this.setState({ activateAnchor: true }); }, 100);
+    // if (targetNode) {
+      window.scrollTo(0, targetNode.offsetTop);
+      setTimeout(() => { this.setState({ activateAnchor: true }); }, 100);
+    // }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -67,7 +77,7 @@ export class AboutPage extends React.Component { // eslint-disable-line react/pr
   // This puts the path on top of the route stack
   componentIsVisible(isVisible, aboutPath) {
 
-    if (isVisible && !this.refs[this.state.currentPath]) {
+    if (isVisible && !this.refs[this.state.currentPath] && this.refs[aboutPath]) {
         if (this.refs[aboutPath]) {
           // this.setState({ activateAnchor : false });
           const container = ReactDOM.findDOMNode(this.refs[aboutPath])
@@ -77,9 +87,7 @@ export class AboutPage extends React.Component { // eslint-disable-line react/pr
           this.setState({ currentPath: aboutPath, currentOffset: container.offsetTop })
         }
         // setTimeout(() => { this.setState({ activateAnchor : true, currentPath: aboutPath })}, 100);
-    } else
-      if (browserHistory.getCurrentLocation().pathname != aboutPath
-        && this.state.activateAnchor) {
+    } else if (isVisible && browserHistory.getCurrentLocation().pathname != aboutPath && this.state.activateAnchor) {
       //Set this as the url
         const container = ReactDOM.findDOMNode(this.refs[aboutPath])
         const position = window.scrollY - container.offsetTop;
@@ -123,6 +131,9 @@ export class AboutPage extends React.Component { // eslint-disable-line react/pr
   }
 
   render() {
+
+    console.log("SLUGGED", this.props.aboutData.get('workshop-participants'));
+
     return (
       <div>
         <Helmet
@@ -136,8 +147,19 @@ export class AboutPage extends React.Component { // eslint-disable-line react/pr
         <p><Msg {...msg.description} /></p>
 
         <TheToolbox  ref={"/about/whats-inside"} targetRoute="/about/whats-inside"  onChange={ this.componentIsVisible.bind(this) } />
-        <OurProcess ref={"/about/process"} targetRoute="/about/process" onChange={this.componentIsVisible.bind(this) } />
-        <OurValues ref="/about/values"  targetRoute="/about/values" onChange={this.componentIsVisible.bind(this) } />
+        <OurProcess ref={"/about/process"}
+              targetRoute="/about/process"
+              onChange={this.componentIsVisible.bind(this) }
+              participants={this.props.aboutData.get('workshop-participants')}
+              />
+
+        <OurValues
+            ref="/about/values"
+            targetRoute="/about/values"
+            onChange={this.componentIsVisible.bind(this) }
+            ourValues={this.props.aboutData.getIn(['about', 'values'])}
+        />
+
         <OurAdvisoryNetwork ref="/about/advisory-network"  targetRoute="/about/advisory-network" onChange={this.componentIsVisible.bind(this) }/>
         <OurTeam ref="/about/team"  targetRoute="/about/team" onChange={this.componentIsVisible.bind(this) }/>
         <BeautifulTroubleAA ref="/about/beautiful-trouble-and-action-aid"  targetRoute="/about/beautiful-trouble-and-action-aid" onChange={this.componentIsVisible.bind(this) }/>
@@ -153,10 +175,17 @@ AboutPage.propTypes = {
 };
 
 
+const mapStateToProps = createStructuredSelector({
+  aboutData: makeSelectAllToolsWithSlugIndex()
+});
+
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    onPageLoad: (evt) => {
+      dispatch(loadData());
+    }
   };
 }
 
-export default connect(null, mapDispatchToProps)(AboutPage);
+export default connect(mapStateToProps, mapDispatchToProps)(AboutPage);

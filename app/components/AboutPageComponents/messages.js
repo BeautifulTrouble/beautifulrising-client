@@ -45,7 +45,7 @@ Early prototypes evolved into multiple iterations of what’s currently a [game]
   },
   ourValuesHeader: {
     id: 'app.components.AboutPageComponents.ourValuesHeader',
-    defaultMessage: 'Our Values'
+    defaultMessage: 'WHAT ARE OUR VALUES?'
   },
   ourAdvisoryNetworkHeader: {
     id: 'app.components.AboutPageComponents.ourAdvisoryNetworkHeader',

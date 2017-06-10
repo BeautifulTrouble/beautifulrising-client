@@ -32,6 +32,7 @@ const ListItem = styled.li`list-style: none;
   margin-right: ${props=>props.theme.itemMargin};
   display: inline-block;
   vertical-align: top;
+  margin-bottom: 50px;
 
   h1 {
     font-size: 24px;
@@ -44,13 +45,60 @@ const ListItem = styled.li`list-style: none;
     font-size: 18px;
     padding-left: 10px;
   }
+
+  h2 {
+    font-size: 21px;
+    text-transform: uppercase;
+  }
+
+  ol {
+    li {
+      font-size: 14px;
+      text-align: left;
+    }
+  }
 `;
 
+const Image = styled.img`
+  height: 120px;
+  margin-bottom: 30px;
+`;
 class OurProcess extends React.Component {
+
+  renderProjects() {
+
+    if (!this.props.participants || !this.props.participants.get('groups')) return null;
+
+    const groups = this.props.participants.get('groups')
+
+    console.log("GROUPS ", groups);
+    if (groups) return null;
+
+    return (
+        <List>
+          {groups.map((item,ind) => { console.log(item,ind); return(
+            <ListItem key={ind}>
+
+              <Image src={require('assets/images/workshops/' + item.get('name') + '.png')} />
+              <h2>{item.get('name')}</h2>
+              <ol>
+                {item.get('participants') ?
+                    item.get('participants').map((participant, ind2) =>( <li key={ind2}>{participant}</li> ))
+                    : null }
+              </ol>
+            </ListItem>
+            )}
+          )}
+        </List>
+      )
+
+  }
+
   render() {
     const theme = themeFourColumns;
     const {formatMessage} = this.props.intl;
 
+    console.log("PARTICIPANTS");
     return (
       <AboutSection id='process' name='process'>
         <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
@@ -79,8 +127,12 @@ class OurProcess extends React.Component {
                 <CircledImage src={RealizationImage} />
                 <Markdown source={formatMessage(messages.realization)} />
               </ListItem>
-
             </List>
+        </ThemeProvider>
+
+
+        <ThemeProvider theme={themeFourColumns}>
+          {this.renderProjects()}
         </ThemeProvider>
       </AboutSection>
     );

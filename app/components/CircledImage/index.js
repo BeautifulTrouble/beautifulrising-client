@@ -17,7 +17,6 @@ const CircledContainer = styled.div`
 `;
 
 function CircledImage(props) {
-  console.log(props, props.theme)
   return (
     <CircledContainer>
       <Isvg src={props.src} />

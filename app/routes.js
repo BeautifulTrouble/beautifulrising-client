@@ -75,9 +75,24 @@ export default function createRoutes(store) {
       name: 'about',
       ignoreScrollBehavior: true, //for useScroll
       getComponent(nextState, cb) {
-        import('containers/AboutPage')
-          .then(loadModule(cb))
-          .catch(errorLoading);
+
+          const importModules = Promise.all([
+            import('containers/HomePage/reducer'),
+            import('containers/AboutPage/sagas'),
+            import('containers/AboutPage'),
+          ]);
+
+          const renderRoute = loadModule(cb);
+
+          importModules.then(([reducer, sagas, component]) => {
+            console.log("ENTRY", sagas.default);
+            injectReducer('aboutPage', reducer.default);
+            injectSagas(sagas.default);
+            renderRoute(component);
+          });
+
+          importModules.catch(errorLoading);
+
       },
     },
     {

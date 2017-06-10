@@ -7,16 +7,22 @@ const selectTools = (state) => state.get('tools');
 
 /* This will take all items */
 /* Source: https://stackoverflow.com/questions/33830745/immutablejs-convert-list-to-indexed-map */
-const indexBy = (iterable, searchKey) =>
-    iterable.reduce(
-        (lookup, item) => lookup.set(item.get(searchKey), item),
-        Map()
-    );
+const indexBy = (iterable, searchKey) => {
+    console.log("Iterable", iterable);
+    if (iterable) {
+      return iterable.reduce(
+          (lookup, item) => lookup.set(item.get(searchKey), item),
+          Map()
+      );
+    } return Map()
+}
+
 
 // Get all items with slugs as index
 const makeSelectAllToolsWithSlugIndex = () => createSelector(
   [selectGlobal],
   (globalState) => {
+      console.log("GLOBAL", globalState, globalState.getIn(['appData', 'information']));
       return indexBy(Immutable.fromJS(globalState.getIn(['appData', 'information'])), 'slug');
     }
 );
