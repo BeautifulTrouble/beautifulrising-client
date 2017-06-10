@@ -19,6 +19,8 @@ import DefinitionImage from 'assets/images/about/definition.svg';
 import PrototypingImage from 'assets/images/about/prototyping.svg';
 import RealizationImage from 'assets/images/about/realization.svg';
 
+import CircledImage from 'components/CircledImage';
+
 const MainBox = styled.div`
   width: 100%;
 `;
@@ -34,11 +36,13 @@ const ListItem = styled.li`list-style: none;
   h1 {
     font-size: 24px;
     margin-bottom: 5px;
+    text-align: left;
   }
 
   p {
     text-align: left;
     font-size: 18px;
+    padding-left: 10px;
   }
 `;
 
