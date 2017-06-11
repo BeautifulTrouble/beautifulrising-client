@@ -187,7 +187,12 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
             onChange={ this.componentIsVisible.bind(this) }
             networkPartners={this.props.aboutData.getIn(['about', 'network-partners'])}
         />
-        <FAQ ref="/about/faq"  targetRoute="/about/faq" onChange={this.componentIsVisible.bind(this) }/>
+        <FAQ
+            ref="/about/faq"
+            targetRoute="/about/faq"
+            onChange={this.componentIsVisible.bind(this) }
+            questions={this.props.aboutData.getIn(['about', 'questions'])}
+        />
       </div>
     );
   }
