@@ -57,7 +57,7 @@ Early prototypes evolved into multiple iterations of what’s currently a [game]
   },
   beautifulTroubleAAHeader: {
     id: 'app.components.AboutPageComponents.beautifulTroubleAAHeader',
-    defaultMessage: 'BeautifulTrouble + AA'
+    defaultMessage: 'What’s the connection with Beautiful Trouble + ActionAid?'
   },
   partnersHeader: {
     id: 'app.components.AboutPageComponents.partnersHeader',
