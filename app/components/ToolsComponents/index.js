@@ -77,6 +77,7 @@ export const ToolsButton = styled.button`
 
   svg, svg * {
     fill: ${props => props.color};
+    transition:  fill 0.4s ease;
   }
 `;
 export const ToolsListMenu = styled.ul`padding: 0;`;

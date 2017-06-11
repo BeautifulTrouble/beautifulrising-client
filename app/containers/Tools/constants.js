@@ -12,3 +12,6 @@ export const BR_IMAGE_PREFIX = 'https://beautifulrising.org/assets/content/mediu
 
 export const NEWS_FEED = 'app/Tools/NEWS_FEED';
 export const MY_TOOLS = 'app/Tools/MY_TOOLS';
+
+export const DOWNDLOAD_PDF =  'app/Tools/DOWNDLOAD_PDF';
+export const SEND_EMAIL =  'app/Tools/SEND_EMAIL';

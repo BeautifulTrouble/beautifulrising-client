@@ -15,6 +15,10 @@ import makeSelectTools from './selectors';
 import messages from './messages';
 import styled from 'styled-components';
 
+import PDFIcon from 'assets/images/icons/pdf.svg';
+import EmailIcon from 'assets/images/icons/email.svg';
+
+import { DOWNDLOAD_PDF, SEND_EMAIL } from './constants';
 
 import { Link } from 'react-router';
 import { Map } from 'immutable';
@@ -29,29 +33,65 @@ export const ToolsListContainer = styled.div`
   display: ${props=>props.show ? 'block' : 'none'};
 `;
 
+const Container = styled.div``;
+
 export class ToolsArea extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      chosen: null
+    };
+  }
+
+  handleClick(item = null) {
+
+    console.log(item)
+    if ( item && this.state.chosen !== item) {
+      this.setState({ chosen: item });
+    }
+
+    if (this.state.chosen === item) {
+      this.setState({ chosen: null });
+    }
+  }
+
   render() {
+    console.log("XXXXXX", this.state.chosen, this.state.chosen === DOWNDLOAD_PDF);
     return (
       <ToolsListContainer show={this.props.show} rotate={true}>
         <ToolsListMenu>
           <ToolsListMenuItem>
-            <ToolsButton>PDF
+            <ToolsButton
+              onClick={()=>this.handleClick(DOWNDLOAD_PDF)}
+              color={this.state.chosen === DOWNDLOAD_PDF ? 'black' : '#B3B3B3'}
+              show={this.state.chosen === DOWNDLOAD_PDF }
+              >
+              <Isvg src={PDFIcon} />
             </ToolsButton>
           </ToolsListMenuItem>
           <ToolsListMenuItem>
-            <ToolsButton>EMAIL</ToolsButton>
+            <ToolsButton
+               onClick={()=>this.handleClick(SEND_EMAIL)}
+               color={this.state.chosen === SEND_EMAIL ? 'black' : '#B3B3B3'}
+               show={this.state.chosen === SEND_EMAIL }
+            >
+              <Isvg src={EmailIcon} />
+            </ToolsButton>
           </ToolsListMenuItem>
         </ToolsListMenu>
-        <ToolsList>
-          {
-            Map(this.props.Tools.selectedTools).toList().map((item) => (
-                <ToolsListItem key={item.slug}>
-                  <SelectedTool {...item} />
-                </ToolsListItem>
+        <Container>
+          <ToolsList>
+            {
+              Map(this.props.Tools.selectedTools).toList().map((item) => (
+                  <ToolsListItem key={item.slug}>
+                    <SelectedTool {...item} />
+                  </ToolsListItem>
+                )
               )
-            )
-          }
-        </ToolsList>
+            }
+          </ToolsList>
+        </Container>
       </ToolsListContainer>
     );
   }
