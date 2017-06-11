@@ -95,10 +95,23 @@ export default function createRoutes(store) {
     {
       path: '/contribute(/:section)*',
       name: 'contribute',
+      ignoreScrollBehavior: true, //for useScroll
       getComponent(nextState, cb) {
-        import('containers/ContributePage')
-          .then(loadModule(cb))
-          .catch(errorLoading);
+
+          const importModules = Promise.all([
+            import('containers/AboutPage/sagas'),
+            import('containers/ContributePage'),
+          ]);
+
+          const renderRoute = loadModule(cb);
+
+          importModules.then(([sagas, component]) => {
+            injectSagas(sagas.default);
+            renderRoute(component);
+          });
+
+          importModules.catch(errorLoading);
+
       },
     },
     {
