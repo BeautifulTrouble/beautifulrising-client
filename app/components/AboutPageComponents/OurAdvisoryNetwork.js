@@ -53,8 +53,6 @@ const Content = styled.div``;
 
 export default class OurAdvisoryNetwork extends React.Component {
   render() {
-
-    console.log(this.props.advisoryNetwork);
     return (
       <AboutSection id='advisory-network'>
         <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
