@@ -115,9 +115,21 @@ export default function createRoutes(store) {
       name: 'platforms',
       ignoreScrollBehavior: true, //for useScroll
       getComponent(nextState, cb) {
-        import('containers/PlatformsPage')
-          .then(loadModule(cb))
-          .catch(errorLoading);
+
+          const importModules = Promise.all([
+            import('containers/AboutPage/sagas'),
+            import('containers/PlatformsPage'),
+          ]);
+
+          const renderRoute = loadModule(cb);
+
+          importModules.then(([sagas, component]) => {
+            injectSagas(sagas.default);
+            renderRoute(component);
+          });
+
+          importModules.catch(errorLoading);
+
       },
     },
     {
