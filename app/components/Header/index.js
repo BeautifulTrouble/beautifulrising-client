@@ -16,6 +16,7 @@ import messages from './messages';
 
 const Title = styled.h1`
   position: absolute;
+  background-color: white;
   top: 0px;
   left: 100px;
   margin: 0;
@@ -30,12 +31,12 @@ const PageHeader = styled.header`
   position: fixed;
   width: 100%;
   background-color: white;
-  height: 150px;
-  overflow: scroll;
-  border: 1px solid black;
-  padding: 20px;
+  height: 90px;
+  overflow: visible;
+  padding: 0 20px 0px;
   z-index: 200;
   text-align: center;
+
 `;
 
 const ModalMenuArea = styled(ModalMenu)`
