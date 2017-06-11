@@ -75,27 +75,62 @@ export default function createRoutes(store) {
       name: 'about',
       ignoreScrollBehavior: true, //for useScroll
       getComponent(nextState, cb) {
-        import('containers/AboutPage')
-          .then(loadModule(cb))
-          .catch(errorLoading);
+
+          const importModules = Promise.all([
+            import('containers/AboutPage/sagas'),
+            import('containers/AboutPage'),
+          ]);
+
+          const renderRoute = loadModule(cb);
+
+          importModules.then(([sagas, component]) => {
+            injectSagas(sagas.default);
+            renderRoute(component);
+          });
+
+          importModules.catch(errorLoading);
+
       },
     },
     {
       path: '/contribute(/:section)*',
       name: 'contribute',
+      ignoreScrollBehavior: true, //for useScroll
       getComponent(nextState, cb) {
-        import('containers/ContributePage')
-          .then(loadModule(cb))
-          .catch(errorLoading);
+
+          const importModules = Promise.all([
+            import('containers/AboutPage/sagas'),
+            import('containers/ContributePage'),
+          ]);
+
+          const renderRoute = loadModule(cb);
+
+          importModules.then(([sagas, component]) => {
+            injectSagas(sagas.default);
+            renderRoute(component);
+          });
+
+          importModules.catch(errorLoading);
+
       },
     },
     {
       path: '/resources(/:section)*',
       name: 'resources',
+      ignoreScrollBehavior: true, //for useScroll
       getComponent(nextState, cb) {
-        import('containers/TrainingPage')
-          .then(loadModule(cb))
-          .catch(errorLoading);
+
+          const importModules = Promise.all([
+            import('containers/AboutPage/sagas'),
+            import('containers/TrainingPage'),
+          ]);
+
+          const renderRoute = loadModule(cb);
+          importModules.then(([sagas, component]) => {
+            injectSagas(sagas.default);
+            renderRoute(component);
+          });
+          importModules.catch(errorLoading);
       },
     },
     {
@@ -103,9 +138,18 @@ export default function createRoutes(store) {
       name: 'platforms',
       ignoreScrollBehavior: true, //for useScroll
       getComponent(nextState, cb) {
-        import('containers/PlatformsPage')
-          .then(loadModule(cb))
-          .catch(errorLoading);
+
+          const importModules = Promise.all([
+            import('containers/AboutPage/sagas'),
+            import('containers/PlatformsPage'),
+          ]);
+
+          const renderRoute = loadModule(cb);
+          importModules.then(([sagas, component]) => {
+            injectSagas(sagas.default);
+            renderRoute(component);
+          });
+          importModules.catch(errorLoading);
       },
     },
     {

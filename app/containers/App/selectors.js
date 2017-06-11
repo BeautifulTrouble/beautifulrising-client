@@ -1,4 +1,4 @@
-import Immutable, { OrderedSet, Map } from 'immutable';
+import Immutable, { OrderedSet, Map, List } from 'immutable';
 import { createSelector } from 'reselect';
 
 const selectGlobal = (state) => state.get('global');
@@ -7,19 +7,40 @@ const selectTools = (state) => state.get('tools');
 
 /* This will take all items */
 /* Source: https://stackoverflow.com/questions/33830745/immutablejs-convert-list-to-indexed-map */
-const indexBy = (iterable, searchKey) =>
-    iterable.reduce(
-        (lookup, item) => lookup.set(item.get(searchKey), item),
-        Map()
-    );
+const indexBy = (iterable, searchKey) => {
+    console.log("Iterable", iterable);
+    if (iterable) {
+      return iterable.reduce(
+          (lookup, item) => lookup.set(item.get(searchKey), item),
+          Map()
+      );
+    } return Map()
+}
+
 
 // Get all items with slugs as index
 const makeSelectAllToolsWithSlugIndex = () => createSelector(
   [selectGlobal],
   (globalState) => {
+      console.log("GLOBAL", globalState, globalState.getIn(['appData', 'information']));
       return indexBy(Immutable.fromJS(globalState.getIn(['appData', 'information'])), 'slug');
     }
 );
+
+const makeSelectAdvisoryBoard = () => createSelector(
+    [selectGlobal],
+    (globalState) => {
+        console.log("makeSelectAdvisoryBoard", globalState)
+
+        if (globalState.getIn(['appData', 'information'])) {
+          return globalState.getIn(['appData', 'information']).filter(item => {
+                return item['team-bio'] !== undefined && item['team-title'] !== undefined && item['team-title'] === 'Advisory Network';
+            });
+        }
+        return List();
+      }
+  );
+
 
 
 /* THIS WILL BE REVISED*/
@@ -121,6 +142,7 @@ export {
   makeSelectData,
   makeSelectAllTags,
   isShowTools,
-  makeSelectAllToolsWithSlugIndex
+  makeSelectAllToolsWithSlugIndex,
+  makeSelectAdvisoryBoard
   // makeSelectToolView,
 };

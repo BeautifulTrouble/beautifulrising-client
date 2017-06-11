@@ -7,21 +7,64 @@
 import React from 'react';
 import Modal from 'react-modal';
 import Menu from 'components/Menu';
-// import styled from 'styled-components';
+import Isvg from 'react-inlinesvg';
+
+import MenuIcon from 'assets/images/icons/menu.svg';
+import CloseIcon from 'assets/images/icons/close.svg';
+import styled from 'styled-components';
 
 const customStyles = {
   overlay: {
-    backgroundColor: 'rgba(0,0,0,0.5)'
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    zIndex: 600
   },
   content : {
-    top                   : '50%',
+    top                   : '0px',
     left                  : '50%',
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-450px',
-    transform             : 'translate(-570px, -50%)'
+    transform             : 'translate(-570px, 0)',
+    padding: '0'
   }
 };
+
+const Button = styled.button`
+  cursor: pointer;
+  outline: none;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+`;
+
+const MenuText = styled.span`{
+  text-transform: 'uppercase';
+  font-weight: bold;
+  display: block;
+  margin-top: 2px;
+}`;
+
+const CloseBox = styled.div`{
+  position: absolute;
+  padding: 10px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border: 3px solid;
+  background-color: white;
+}`;
+
+const MenuContainer= styled.div`{
+  border: 3px solid;
+  padding: 130px 20px 20px;
+}`;
+const CloseButton = styled.button`{
+
+}`;
+
+const Viewport = styled.div`{
+  position: relative;
+}`;
 
 export class ModalMenu extends React.Component {
   constructor() {
@@ -51,8 +94,11 @@ export class ModalMenu extends React.Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.openModal}>Open Modal</button>
+      <Viewport>
+        <Button onClick={this.openModal}>
+          <Isvg src={MenuIcon} />
+          <MenuText>MENU</MenuText>
+        </Button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -60,9 +106,16 @@ export class ModalMenu extends React.Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <Menu onClick={this.closeModal.bind(this)} />
+          <MenuContainer>
+            <CloseBox>
+              <CloseButton onClick={this.closeModal.bind(this)}>
+                <Isvg src={CloseIcon} />
+              </CloseButton>
+            </CloseBox>
+            <Menu onClick={this.closeModal.bind(this)} />
+          </MenuContainer>
         </Modal>
-      </div>
+      </Viewport>
     );
   }
 

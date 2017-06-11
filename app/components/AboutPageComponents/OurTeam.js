@@ -5,12 +5,51 @@
 */
 
 import React from 'react';
-// import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 
 import { FormattedMessage } from 'react-intl';
 import { AboutSection } from 'components/AboutPageComponents';
+import { themeThreeColumns } from 'components/CommonComponents';
 import VisibilitySensor from 'react-visibility-sensor';
+import Markdown from 'react-remarkable';
 import messages from './messages';
+
+const List = styled.ul``;
+
+const ListItem = styled.li`list-style: none;
+  width: ${props=>props.theme.itemWidth};
+  margin-right: ${props=>props.theme.itemMargin};
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 50px;
+
+  h3 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+
+  p {
+    text-align: left;
+    font-size: 18px;
+    padding-left: 10px;
+  }`;
+
+const Image = styled.div`
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background-image: url(${props=> `https://www.beautifulrising.org/assets/content/small-${props.source}`})
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+`;
+
+const Name = styled.h3``;
+const Team = styled.h5`
+  text-transform: uppercase;
+`;
+const Content = styled.div``;
 
 export default class OurTeam extends React.Component {
   render() {
@@ -21,9 +60,24 @@ export default class OurTeam extends React.Component {
             <FormattedMessage {...messages.ourTeamHeader} />
           </h2>
         </VisibilitySensor>
-        <p>
-          <FormattedMessage {...messages.ipsum} />
-        </p>
+        <ThemeProvider theme={themeThreeColumns}>
+          <List>
+            { !this.props.teamMembers ? null : this.props.teamMembers.map((item, ind) => {
+                const teamMember = this.props.allData.get(item);
+                console.log(teamMember);
+                return (
+                  <ListItem key={ind}>
+                    <Image source={teamMember.get('image')} />
+                    <Name>{teamMember.get('person')}</Name>
+                    <Team>{teamMember.get('team-title')}</Team>
+                    <Content>
+                      <Markdown source={teamMember.get('team-bio')} />
+                    </Content>
+                  </ListItem>
+                );
+            })}
+          </List>
+        </ThemeProvider>
       </AboutSection>
     );
   }

@@ -18,7 +18,9 @@ function AboutPageComponents() {
   );
 }
 
-export const AboutSection = styled.div``;
+export const AboutSection = styled.div`
+font-size: 24px;
+`;
 
 AboutPageComponents.propTypes = {
 

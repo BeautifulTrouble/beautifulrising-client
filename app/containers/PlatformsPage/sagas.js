@@ -23,7 +23,7 @@ export function* getData() {
 }
 
 // Individual exports for testing
-export function* aboutPageData() {
+export function* platformPageData() {
   // Watches for LOAD_REPOS actions and calls getRepos when one comes in.
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
@@ -38,5 +38,5 @@ export function* aboutPageData() {
 
 // All sagas to be loaded
 export default [
-  aboutPageData,
+  platformPageData,
 ];
