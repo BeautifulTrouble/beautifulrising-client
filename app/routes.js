@@ -117,10 +117,20 @@ export default function createRoutes(store) {
     {
       path: '/resources(/:section)*',
       name: 'resources',
+      ignoreScrollBehavior: true, //for useScroll
       getComponent(nextState, cb) {
-        import('containers/TrainingPage')
-          .then(loadModule(cb))
-          .catch(errorLoading);
+
+          const importModules = Promise.all([
+            import('containers/AboutPage/sagas'),
+            import('containers/TrainingPage'),
+          ]);
+
+          const renderRoute = loadModule(cb);
+          importModules.then(([sagas, component]) => {
+            injectSagas(sagas.default);
+            renderRoute(component);
+          });
+          importModules.catch(errorLoading);
       },
     },
     {
@@ -135,14 +145,11 @@ export default function createRoutes(store) {
           ]);
 
           const renderRoute = loadModule(cb);
-
           importModules.then(([sagas, component]) => {
             injectSagas(sagas.default);
             renderRoute(component);
           });
-
           importModules.catch(errorLoading);
-
       },
     },
     {
