@@ -8,9 +8,13 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
+
+import Isvg from 'react-inlinesvg';
+
 import makeSelectTools from './selectors';
 import messages from './messages';
 import styled from 'styled-components';
+
 
 import { Link } from 'react-router';
 import { Map } from 'immutable';
@@ -21,15 +25,18 @@ import SelectedTool from './SelectedTool'
 
 export const ToolsListContainer = styled.div`
   width: 230px;
-  float: right;`;
+  float: right;
+  display: ${props=>props.show ? 'block' : 'none'};
+`;
 
 export class ToolsArea extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <ToolsListContainer>
+      <ToolsListContainer show={this.props.show} rotate={true}>
         <ToolsListMenu>
           <ToolsListMenuItem>
-            <ToolsButton>PDF</ToolsButton>
+            <ToolsButton>PDF
+            </ToolsButton>
           </ToolsListMenuItem>
           <ToolsListMenuItem>
             <ToolsButton>EMAIL</ToolsButton>

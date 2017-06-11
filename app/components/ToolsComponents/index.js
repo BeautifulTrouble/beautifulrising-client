@@ -67,9 +67,17 @@ export const PotentialRiskIcon = styled(Isvg)`
 export const ToolsButton = styled.button`
   outline: none;
   cursor: pointer;
-  color: ${props=> props.color || 'black'};
+  color:${props => props.color};
   font-weight: bold;
+
   img { margin-right: 10px;}
+
+  transform: ${props=>props.show&&props.rotate ? 'rotate(180deg)' : 'rotate(0)'};
+  transition:  transform 0.4s ease;
+
+  svg, svg * {
+    fill: ${props => props.color};
+  }
 `;
 export const ToolsListMenu = styled.ul`padding: 0;`;
 export const ToolsListMenuItem = styled.li`
