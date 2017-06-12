@@ -64,7 +64,6 @@ export default class OurTeam extends React.Component {
           <List>
             { !this.props.teamMembers ? null : this.props.teamMembers.map((item, ind) => {
                 const teamMember = this.props.allData.get(item);
-                console.log(teamMember);
                 return (
                   <ListItem key={ind}>
                     <Image source={teamMember.get('image')} />

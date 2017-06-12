@@ -38,7 +38,7 @@ export class SelectedTool extends React.PureComponent { // eslint-disable-line r
 
   render() {
     const flag = this.getFlag();
-    console.log("FLAG", flag);
+
     return (
       <SelectedToolItem>
         <SelectedToolTitle flag={flag}>{this.props.title}</SelectedToolTitle>

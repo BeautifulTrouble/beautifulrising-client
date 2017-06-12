@@ -45,8 +45,6 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
   }
 
   handleClick(item = null) {
-
-    console.log(item)
     if ( item && this.state.chosen !== item) {
       this.setState({ chosen: item });
     }
@@ -57,7 +55,6 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
   }
 
   render() {
-    console.log("XXXXXX", this.state.chosen, this.state.chosen === DOWNDLOAD_PDF);
     return (
       <ToolsListContainer show={this.props.show} rotate={true}>
         <ToolsListMenu>

@@ -71,12 +71,11 @@ class OurProcess extends React.Component {
 
     const groups = this.props.participants.get('groups')
 
-    console.log("GROUPS ", groups);
     if (groups) return null;
 
     return (
         <List>
-          {groups.map((item,ind) => { console.log(item,ind); return(
+          {groups.map((item,ind) => { return(
             <ListItem key={ind}>
 
               <Image src={require('assets/images/workshops/' + item.get('name') + '.png')} />
@@ -98,7 +97,6 @@ class OurProcess extends React.Component {
     const theme = themeFourColumns;
     const {formatMessage} = this.props.intl;
 
-    console.log("PARTICIPANTS");
     return (
       <AboutSection id='process' name='process'>
         <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>

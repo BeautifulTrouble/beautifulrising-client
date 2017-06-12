@@ -77,7 +77,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             { name: 'description', content: 'Description of HomePage' },
           ]}
         />
-        <Header />
+        <Header {...this.props} />
         <LeftSection>
 
           <LeftHeader>

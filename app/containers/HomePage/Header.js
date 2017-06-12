@@ -11,6 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import Link from 'components/Link';
 import TypeMenu from 'components/TypeMenu';
+import ToolTypeArea from 'components/ToolTypeArea';
 import SearchField from 'containers/SearchField';
 
 const HeaderContainer = styled.div`
@@ -21,7 +22,7 @@ function Header(props) {
   return (
     <HeaderContainer>
       <SearchField />
-      <TypeMenu />
+      <ToolTypeArea {...props.params} />
     </HeaderContainer>
   );
 }
