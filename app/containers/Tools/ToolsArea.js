@@ -28,9 +28,9 @@ import { ToolsButton, ToolsListMenu, ToolsListMenuItem,
 import SelectedTool from './SelectedTool'
 
 export const ToolsListContainer = styled.div`
-  width: 230px;
-  float: right;
-  display: ${props=>props.show ? 'block' : 'none'};
+    width: 215px;
+    float: right;
+    display: ${props=>props.show ? 'block' : 'none'};
 `;
 
 const Container = styled.div``;

@@ -18,9 +18,25 @@ function SelectedToolComponents() {
   );
 }
 
-export const SelectedToolItem = styled.div``;
-export const SelectedToolTitle = styled.h4``;
-export const SelectedToolSnapshot = styled.p``;
+export const SelectedToolItem = styled.div`
+  text-align: left;
+`;
+export const SelectedToolTitle = styled.div`
+  margin: 20px 0 0;
+  padding: 0;
+  font-size: 22px;
+  font-weight: bold;
+
+  &::after {
+    content: url(${props => props.flag });
+    position: absolute;
+    transform: scale(.75) translate(-10px,-5px);
+    box-sizing: border-box;
+  }
+
+`;
+export const SelectedToolSnapshot = styled.p`
+margin: 0 0 10px ;`;
 export const SelectedToolCommands = styled.ul``;
 export const SelectedToolCommandItem = styled.li`
   display: inline-block;

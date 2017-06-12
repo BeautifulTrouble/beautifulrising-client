@@ -49,7 +49,7 @@ const makeSelectAllTags = createSelector(
   [getTagsArray, selectGlobal],
   (toolTags, globalState) => {
 
-    if (globalState.getIn(['appData', 'tags']).size !== 0) {
+    if (globalState.getIn(['appData', 'tags']) !== undefined && globalState.getIn(['appData', 'tags']).size !== 0) {
       const allTags = globalState.getIn(['appData', 'tags']);
       const keys = Object.keys(allTags);
 
