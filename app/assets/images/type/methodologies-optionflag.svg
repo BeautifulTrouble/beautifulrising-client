@@ -1,23 +1,32 @@
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="190px" height="67px" viewBox="0 0 190 67" enable-background="new 0 0 190 67" xml:space="preserve">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="264px" height="175px" viewBox="0 0 264 175" enable-background="new 0 0 264 175" xml:space="preserve">
 <g>
-	<rect x="0" y="0" fill="none" width="190" height="67"></rect>
-	<g>
-		<g>
-			<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="7.481,28.302 7.481,19.48 20.892,19.48
-				20.892,9.761 32.906,9.761 32.906,2.886 			"></polyline>
-			<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="82.288,28.302 82.288,19.48
-				95.699,19.48 95.699,9.761 107.712,9.761 107.712,2.886 			"></polyline>
-			<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="157.094,28.302 157.094,19.48
-				170.505,19.48 170.505,9.761 182.519,9.761 182.519,2.886 			"></polyline>
-		</g>
-		<g>
-			<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="7.481,64.114 7.481,55.291
-				20.892,55.291 20.892,45.573 32.906,45.573 32.906,38.698 			"></polyline>
-			<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="82.288,64.114 82.288,55.291
-				95.699,55.291 95.699,45.573 107.712,45.573 107.712,38.698 			"></polyline>
-			<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="157.094,64.114 157.094,55.291
-				170.505,55.291 170.505,45.573 182.519,45.573 182.519,38.698 			"></polyline>
-		</g>
-	</g>
+	<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="7.836,33.891 7.836,25.069 21.247,25.069
+		21.247,15.35 33.261,15.35 33.261,8.475 	"></polyline>
+	<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="82.643,33.891 82.643,25.069
+		96.054,25.069 96.054,15.35 108.068,15.35 108.068,8.475 	"></polyline>
+	<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="157.449,33.891 157.449,25.069
+		170.861,25.069 170.861,15.35 182.874,15.35 182.874,8.475 	"></polyline>
+	<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="232.256,33.891 232.256,25.069
+		245.667,25.069 245.667,15.35 257.681,15.35 257.681,8.475 	"></polyline>
+</g>
+<g>
+	<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="7.836,99.778 7.836,90.956 21.247,90.956
+		21.247,81.237 33.261,81.237 33.261,74.362 	"></polyline>
+	<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="82.643,99.778 82.643,90.956
+		96.054,90.956 96.054,81.237 108.068,81.237 108.068,74.362 	"></polyline>
+	<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="157.449,99.778 157.449,90.956
+		170.861,90.956 170.861,81.237 182.874,81.237 182.874,74.362 	"></polyline>
+	<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="232.256,99.778 232.256,90.956
+		245.667,90.956 245.667,81.237 257.681,81.237 257.681,74.362 	"></polyline>
+</g>
+<g>
+	<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="7.836,166.525 7.836,157.703
+		21.247,157.703 21.247,147.984 33.261,147.984 33.261,141.109 	"></polyline>
+	<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="82.643,166.525 82.643,157.703
+		96.054,157.703 96.054,147.984 108.068,147.984 108.068,141.109 	"></polyline>
+	<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="157.449,166.525 157.449,157.703
+		170.861,157.703 170.861,147.984 182.874,147.984 182.874,141.109 	"></polyline>
+	<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="232.256,166.525 232.256,157.703
+		245.667,157.703 245.667,147.984 257.681,147.984 257.681,141.109 	"></polyline>
 </g>
 </svg>

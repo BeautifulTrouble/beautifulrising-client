@@ -18,6 +18,7 @@ import TheoryIcon from 'assets/images/type/theories-option.svg';
 
 const Container = styled.section`
     height: 280px;
+    display: ${props=>props.show ? 'block' : 'none'};
 `;
 const Viewport = styled.div``;
 const Row = styled.div`
@@ -47,47 +48,47 @@ const Desc = styled.p`
   }
 `
 
-function ToolTypeAllFull() {
+function ToolTypeAllFull(props) {
   return (
-    <Container>
+    <Container {...props} >
       <Viewport>
         <Row>
             <ToolType to={'/type/story'}>
-              <Head><FormattedMessage {...messages.storiesHead} />
+              <Head><FormattedMessage {...messages.storyHead} />
               </Head>
               <Isvg src={StoryIcon} />
             </ToolType>
 
             <ToolType to={'/type/story'} style={{paddingTop: 20}}>
-              <Desc><FormattedMessage {...messages.storiesDesc} /></Desc>
+              <Desc><FormattedMessage {...messages.storyDesc} /></Desc>
             </ToolType>
         </Row>
 
         <Row>
           <ToolType to={'/type/tactic'}>
             <Head>
-              <FormattedMessage {...messages.tacticsHead} />
+              <FormattedMessage {...messages.tacticHead} />
             </Head>
             <Isvg src={TacticIcon} />
-            <Desc><FormattedMessage {...messages.tacticsDesc} /></Desc>
+            <Desc><FormattedMessage {...messages.tacticDesc} /></Desc>
           </ToolType>
 
           <ToolType to={'/type/principle'}>
-            <Head><FormattedMessage {...messages.principlesHead} /></Head>
+            <Head><FormattedMessage {...messages.principleHead} /></Head>
             <Isvg src={PrincipleIcon} />
-            <Desc><FormattedMessage {...messages.principlesDesc} /></Desc>
+            <Desc><FormattedMessage {...messages.principleDesc} /></Desc>
           </ToolType>
 
           <ToolType to={'/type/theory'}>
-            <Head><FormattedMessage {...messages.theoriesHead} /></Head>
+            <Head><FormattedMessage {...messages.theoryHead} /></Head>
             <Isvg src={TheoryIcon} />
-            <Desc><FormattedMessage {...messages.theoriesDesc} /></Desc>
+            <Desc><FormattedMessage {...messages.theoryDesc} /></Desc>
           </ToolType>
 
           <ToolType to={'/type/methodology'}>
-            <Head><FormattedMessage {...messages.methodologiesHead} /></Head>
+            <Head><FormattedMessage {...messages.methodologyHead} /></Head>
             <Isvg src={MethodologyIcon} />
-            <Desc><FormattedMessage {...messages.methodologiesDesc} /></Desc>
+            <Desc><FormattedMessage {...messages.methodologyDesc} /></Desc>
           </ToolType>
         </Row>
       </Viewport>

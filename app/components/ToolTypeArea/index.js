@@ -44,23 +44,25 @@ class ToolTypeArea extends React.PureComponent { // eslint-disable-line react/pr
   }
 
   render() {
-    if (this.state.scrollY < 10) { // User is on top
-      if (!this.props.label || this.props.label === undefined) {
-        //All
-        return (<ToolTypeAllFull />);
-      } else {
-        //Selected
-        return (<ToolTypeSelectedFull />);
-      }
+    const onTop = this.state.scrollY < 10;
 
-    } else { // User is scrolling
-      if (!this.props.label || this.props.label === undefined) {
-        //All
-        return (<ToolTypeAllPartial />);
-      } else {
-        //Selected
-        return (<ToolTypeSelectedPartial />);
-      }
+    if (this.props.filter !== 'type' || !this.props.label || this.props.label === undefined) {
+      //All
+      console.log("ENTERED HERE")
+      return (
+          <div>
+            <ToolTypeAllFull show={onTop} />
+            <ToolTypeAllPartial show={!onTop} />
+          </div>
+      );
+    } else {
+      //Selected
+      return (
+        <div>
+          <ToolTypeSelectedFull show={onTop} label={this.props.label} />
+          <ToolTypeSelectedPartial show={!onTop} label={this.props.label} />
+        </div>
+      );
     }
   }
 }
