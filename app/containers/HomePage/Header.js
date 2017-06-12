@@ -19,6 +19,7 @@ const HeaderContainer = styled.div`
 `;
 
 function Header(props) {
+  console.log(props.params);
   return (
     <HeaderContainer>
       <SearchField />

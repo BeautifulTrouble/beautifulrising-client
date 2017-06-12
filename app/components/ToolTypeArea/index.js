@@ -30,12 +30,23 @@ class ToolTypeArea extends React.PureComponent { // eslint-disable-line react/pr
 
   constructor(props) {
     super(props);
+    this.state = {
+      scrollY: 0
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll.bind(this));
+  }
+
+  handleScroll() {
+    this.setState({ scrollY: window.scrollY });
   }
 
   render() {
-    if (window.scrollTop < 10) { // User is on top
-      console.log(window.scrollTop, "User is on top");
-      if (!this.props.type) {
+    if (this.state.scrollY < 10) { // User is on top
+      console.log(this.props.label, "User is on top");
+      if (!this.props.label || this.props.label === undefined) {
         //All
         return (<ToolTypeAllFull />);
       } else {
@@ -44,8 +55,8 @@ class ToolTypeArea extends React.PureComponent { // eslint-disable-line react/pr
       }
 
     } else { // User is scrolling
-      console.log("User is scrolling");
-      if (window.scrollTop, !this.props.type) {
+      console.log(this.props.label, "User is scrolling");
+      if (!this.props.label || this.props.label === undefined) {
         //All
         return (<ToolTypeAllPartial />);
       } else {
