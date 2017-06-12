@@ -11,17 +11,23 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import Link from 'components/Link';
 import TypeMenu from 'components/TypeMenu';
+import ToolTypeArea from 'components/ToolTypeArea';
 import SearchField from 'containers/SearchField';
 
 const HeaderContainer = styled.div`
-  width: 100%;
+  width: 1080px;
+  position: fixed;
+  background-color: white;
+  z-index: 200;
+  top: 92px;
 `;
 
 function Header(props) {
+  console.log(props.params);
   return (
     <HeaderContainer>
       <SearchField />
-      <TypeMenu />
+      <ToolTypeArea {...props.params} />
     </HeaderContainer>
   );
 }

@@ -42,6 +42,9 @@ const SearchResultsContainer = styled.div`
 `;
 const SearchResultsText = styled.span``;
 
+const Container = styled.div`
+  padding-top: 340px;
+`;
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   componentDidMount() {
@@ -70,14 +73,14 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   render() {
     const ListItem = this.getViewMode();
     return (
-      <div>
+      <Container>
         <Helmet
           title="HomePage"
           meta={[
             { name: 'description', content: 'Description of HomePage' },
           ]}
         />
-        <Header />
+        <Header {...this.props} />
         <LeftSection>
 
           <LeftHeader>
@@ -108,7 +111,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             { this.props.sorted ? this.props.sorted.map(tool => { return (<ListItem key={tool['_id']} {...tool}/>) }) : null }
           </ToolList>
         </Stage>
-      </div>
+      </Container>
     );
   }
 }

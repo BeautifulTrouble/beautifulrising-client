@@ -53,7 +53,6 @@ const Content = styled.div``;
 
 export default class Partners extends React.Component {
   render() {
-    console.log("~~~~~", this.props.networkPartners);
     return (
       <AboutSection id='partners'>
         <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>

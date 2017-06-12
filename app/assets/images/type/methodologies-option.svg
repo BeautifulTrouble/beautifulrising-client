@@ -1,0 +1,23 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="190px" height="67px" viewBox="0 0 190 67" enable-background="new 0 0 190 67" xml:space="preserve">
+<g>
+	<rect x="0" y="0" fill="none" width="190" height="67"></rect>
+	<g>
+		<g>
+			<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="7.481,28.302 7.481,19.48 20.892,19.48
+				20.892,9.761 32.906,9.761 32.906,2.886 			"></polyline>
+			<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="82.288,28.302 82.288,19.48
+				95.699,19.48 95.699,9.761 107.712,9.761 107.712,2.886 			"></polyline>
+			<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="157.094,28.302 157.094,19.48
+				170.505,19.48 170.505,9.761 182.519,9.761 182.519,2.886 			"></polyline>
+		</g>
+		<g>
+			<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="7.481,64.114 7.481,55.291
+				20.892,55.291 20.892,45.573 32.906,45.573 32.906,38.698 			"></polyline>
+			<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="82.288,64.114 82.288,55.291
+				95.699,55.291 95.699,45.573 107.712,45.573 107.712,38.698 			"></polyline>
+			<polyline fill="none" stroke="#B700C2" stroke-width="2" stroke-miterlimit="10" points="157.094,64.114 157.094,55.291
+				170.505,55.291 170.505,45.573 182.519,45.573 182.519,38.698 			"></polyline>
+		</g>
+	</g>
+</g>
+</svg>

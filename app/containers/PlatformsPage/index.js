@@ -38,10 +38,8 @@ export class PlatformsPage extends React.Component { // eslint-disable-line reac
   // The delay is so that the receiveProps and didMount
   // will not go against eachother
   componentDidMount() {
-    console.log("ADATA", this.props.aboutData);
 
     if (!this.props.aboutData.size || !this.props.aboutData || this.props.aboutData === undefined) {
-      console.log("Loading Data");
       this.props.onPageLoad();
     }
 
@@ -78,7 +76,6 @@ export class PlatformsPage extends React.Component { // eslint-disable-line reac
   }
 
   render() {
-    console.log("ABOUT DATA", this.props);
     if(!this.props.aboutData || this.props.aboutData === undefined) {
       return null;
     }

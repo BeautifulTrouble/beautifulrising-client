@@ -25,7 +25,6 @@ export default class OurValues extends React.Component {
   render() {
     if (!this.props.ourValues) return null;
 
-    console.log(this.props.ourValues);
     return (
       <AboutSection id='values' name='values'>
         <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>

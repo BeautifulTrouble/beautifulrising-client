@@ -10,4 +10,8 @@ export default defineMessages({
     id: 'app.containers.SearchField.header',
     defaultMessage: 'This is SearchField container !',
   },
+  placeholder: {
+    id: 'app.containers.SearchField.placeholder',
+    defaultMessage: 'Search for keywords, ex: legislation, state repression, etc.',
+  }
 });

@@ -40,25 +40,20 @@ export class ContributePage extends React.Component { // eslint-disable-line rea
   // The delay is so that the receiveProps and didMount
   // will not go against eachother
   componentDidMount() {
-    console.log("ADATA", this.props.aboutData);
 
     if (!this.props.aboutData.size || !this.props.aboutData || this.props.aboutData === undefined) {
-      console.log("Loading Data");
       this.props.onPageLoad();
     }
   }
 
 
   render() {
-    console.log("ABOUT DATA", this.props);
     if(!this.props.aboutData || this.props.aboutData === undefined) {
       return null;
     }
 
     const contribute = this.props.aboutData.getIn(['contribute', 'misc']);
     if (contribute == null) { return null; }
-
-    console.log("CONTRIBUTE", contribute);
 
     return (
       <div>
@@ -83,7 +78,7 @@ export class ContributePage extends React.Component { // eslint-disable-line rea
         <Subsubtitle>
           {contribute.get('instructions-heading')}
         </Subsubtitle>
-        
+
         <Content>
           {contribute.get('instructions')}
         </Content>

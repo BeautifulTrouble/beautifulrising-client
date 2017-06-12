@@ -51,9 +51,7 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
   // The delay is so that the receiveProps and didMount
   // will not go against eachother
   componentDidMount() {
-    console.log("About Data", this.props.aboutData);
     if (this.props.aboutData) {
-      console.log("Loading Data");
       this.props.onPageLoad();
     }
 
@@ -133,9 +131,6 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
   }
 
   render() {
-
-    console.log("SLUGGED", this.props);
-
     return (
       <div>
         <Helmet

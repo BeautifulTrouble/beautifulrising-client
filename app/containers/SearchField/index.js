@@ -7,7 +7,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import makeSelectSearchField from './selectors';
 import messages from './messages';
@@ -19,18 +19,21 @@ const SearchContainer = styled.div``;
 const SearchForm = styled.form``;
 const SearchBox = styled.input`
   width: 100%;
-  padding: 10px;
-  border: 1px solid gray;
+  padding: 20px 10px 10px;
+  border: 2px solid black;
   font-size: 14px;
+  font-style: italic;
 `;
 
 let timeoutHandler = null;
 export class SearchField extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
+    const {formatMessage} = this.props.intl;
+
     return (
       <SearchContainer>
         <SearchForm>
-          <SearchBox type='text' onChange={this.props.onChange} placeholder={'Search tools here...'} />
+          <SearchBox type='text' onChange={this.props.onChange} placeholder={formatMessage(messages.placeholder)} />
         </SearchForm>
       </SearchContainer>
     );
@@ -59,4 +62,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchField);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(SearchField));

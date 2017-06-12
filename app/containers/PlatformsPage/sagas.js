@@ -9,15 +9,12 @@ import request from 'utils/request';
 export function* getData() {
   const requestURL = `https://api.beautifulrising.org/api/v1/all?lang=en`;
   try {
-    console.log("HELLOXXX", request, requestURL);
 
     const data = yield call(request, requestURL);
     /** LOADING AREA **/
-    console.log("HELLOXXXY", dataLoaded, data);
     yield put(dataLoaded(data));
 
   } catch (err) {
-    console.log("HELLOXXXZZZ");
     yield call(put, dataLoadingError(err));
   }
 }
@@ -29,8 +26,6 @@ export function* platformPageData() {
   // It returns task descriptor (just like fork) so we can continue execution
 
   const watcher = yield takeLatest(LOAD_DATA, getData);
-
-  console.log("WATCHER", watcher);
 
   yield take(LOCATION_CHANGE);
   yield cancel(watcher);

@@ -8,7 +8,6 @@ const selectTools = (state) => state.get('tools');
 /* This will take all items */
 /* Source: https://stackoverflow.com/questions/33830745/immutablejs-convert-list-to-indexed-map */
 const indexBy = (iterable, searchKey) => {
-    console.log("Iterable", iterable);
     if (iterable) {
       return iterable.reduce(
           (lookup, item) => lookup.set(item.get(searchKey), item),
@@ -22,7 +21,6 @@ const indexBy = (iterable, searchKey) => {
 const makeSelectAllToolsWithSlugIndex = () => createSelector(
   [selectGlobal],
   (globalState) => {
-      console.log("GLOBAL", globalState, globalState.getIn(['appData', 'information']));
       return indexBy(Immutable.fromJS(globalState.getIn(['appData', 'information'])), 'slug');
     }
 );
@@ -30,7 +28,6 @@ const makeSelectAllToolsWithSlugIndex = () => createSelector(
 const makeSelectAdvisoryBoard = () => createSelector(
     [selectGlobal],
     (globalState) => {
-        console.log("makeSelectAdvisoryBoard", globalState)
 
         if (globalState.getIn(['appData', 'information'])) {
           return globalState.getIn(['appData', 'information']).filter(item => {
@@ -49,7 +46,7 @@ const makeSelectAllTags = createSelector(
   [getTagsArray, selectGlobal],
   (toolTags, globalState) => {
 
-    if (globalState.getIn(['appData', 'tags']).size !== 0) {
+    if (globalState.getIn(['appData', 'tags']) !== undefined && globalState.getIn(['appData', 'tags']).size !== 0) {
       const allTags = globalState.getIn(['appData', 'tags']);
       const keys = Object.keys(allTags);
 

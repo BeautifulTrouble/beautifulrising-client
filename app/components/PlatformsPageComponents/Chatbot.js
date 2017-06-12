@@ -44,7 +44,6 @@ const Subtitle = styled.h3``;
 
 export default class Chatbot extends React.Component {
   render() {
-    console.log(this.props);
     if (!this.props.content || this.props.content === undefined) return null;
 
     return (
