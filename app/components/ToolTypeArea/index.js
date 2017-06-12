@@ -45,7 +45,6 @@ class ToolTypeArea extends React.PureComponent { // eslint-disable-line react/pr
 
   render() {
     if (this.state.scrollY < 10) { // User is on top
-      console.log(this.props.label, "User is on top");
       if (!this.props.label || this.props.label === undefined) {
         //All
         return (<ToolTypeAllFull />);
@@ -55,7 +54,6 @@ class ToolTypeArea extends React.PureComponent { // eslint-disable-line react/pr
       }
 
     } else { // User is scrolling
-      console.log(this.props.label, "User is scrolling");
       if (!this.props.label || this.props.label === undefined) {
         //All
         return (<ToolTypeAllPartial />);
