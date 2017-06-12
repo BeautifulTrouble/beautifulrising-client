@@ -13,6 +13,7 @@ import makeSelectSearchField from './selectors';
 import messages from './messages';
 import {searchFieldChanged} from './actions';
 
+import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 
 const SearchContainer = styled.div``;
@@ -27,13 +28,25 @@ const SearchBox = styled.input`
 
 let timeoutHandler = null;
 export class SearchField extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  constructor(props) {
+    super(props);
+  }
+  
+  componentDidMount() {
+
+    if (this.props.filter === 'search') {
+      ReactDOM.findDOMNode(this.refs['SearchBox']).value = this.props.label;
+    }
+
+  }
+
   render() {
     const {formatMessage} = this.props.intl;
-
     return (
       <SearchContainer>
         <SearchForm>
-          <SearchBox type='text' onChange={this.props.onChange} placeholder={formatMessage(messages.placeholder)} />
+          <SearchBox ref={'SearchBox'} type='text' onChange={this.props.onChange} placeholder={formatMessage(messages.placeholder)} />
         </SearchForm>
       </SearchContainer>
     );
@@ -54,9 +67,9 @@ function mapDispatchToProps(dispatch) {
       //Change browser
       clearTimeout(timeoutHandler);
       timeoutHandler = setTimeout(() => {
-        dispatch(searchFieldChanged(text));
+        // dispatch(searchFieldChanged(text));
         browserHistory.push(`/search/${text}`);
-      }, 300);
+      }, 500);
 
     },
   };

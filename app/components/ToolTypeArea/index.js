@@ -48,7 +48,6 @@ class ToolTypeArea extends React.PureComponent { // eslint-disable-line react/pr
 
     if (this.props.filter !== 'type' || !this.props.label || this.props.label === undefined) {
       //All
-      console.log("ENTERED HERE")
       return (
           <div>
             <ToolTypeAllFull show={onTop} />

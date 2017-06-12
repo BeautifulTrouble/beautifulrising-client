@@ -23,10 +23,10 @@ const HeaderContainer = styled.div`
 `;
 
 function Header(props) {
-  console.log(props.params);
+  // console.log(props.params);
   return (
     <HeaderContainer>
-      <SearchField />
+      <SearchField {...props.params}/>
       <ToolTypeArea {...props.params} />
     </HeaderContainer>
   );

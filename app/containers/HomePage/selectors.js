@@ -43,7 +43,15 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
           return result;
           break;
          case SEARCH_FILTER:
-          return label ? data.filter(item => isFullTool(item) && item.title.toLowerCase().search(label.toLowerCase()) >= 0) : data.filter(item => isFullTool(item))
+          const authorMatches = label.match(/^authors!(.+)/i);
+          if (authorMatches) {
+            //For authors, it doesn't matter if it's a snapshot or a full item.
+            return label ? data.filter(item => {
+                return item.authors && (item.authors.filter(author=> author.toLowerCase().includes(authorMatches[1].toLowerCase())).length > 0);
+            }) : [];
+          } else {
+            return label ? data.filter(item => isFullTool(item) && item.title.toLowerCase().search(label.toLowerCase()) >= 0) : data.filter(item => isFullTool(item))
+          }
          default:
           return data.filter(item => isFullTool(item));
 
