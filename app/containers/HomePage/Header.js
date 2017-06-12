@@ -15,7 +15,11 @@ import ToolTypeArea from 'components/ToolTypeArea';
 import SearchField from 'containers/SearchField';
 
 const HeaderContainer = styled.div`
-  width: 100%;
+  width: 1080px;
+  position: fixed;
+  background-color: white;
+  z-index: 200;
+  top: 92px;
 `;
 
 function Header(props) {

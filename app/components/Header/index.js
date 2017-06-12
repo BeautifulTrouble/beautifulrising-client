@@ -31,10 +31,10 @@ const PageHeader = styled.header`
   position: fixed;
   width: 100%;
   background-color: white;
-  height: 90px;
+  height: 92px;
   overflow: visible;
   padding: 0 20px 0px;
-  z-index: 200;
+  z-index: 300;
   text-align: center;
 
 `;
