@@ -33,6 +33,9 @@ import { setShowTools } from './actions';
 
 const ToolsOpenerCloser = styled.div``;
 
+const ToolsMenuContainer = styled.div`
+height: 100%;
+`;
 export class Tools extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
@@ -61,38 +64,38 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
     return (
         <ToolsContainer showTools={this.props.Tools.show}>
           <ToolsViewport>
-            <ToolsMenu>
-              <ToolsMenuItem>
-                <ToolsButton
-                  onClick={() => this.onToggleClick(null)}
-                  color={this.props.Tools.show ? 'black' : '#AFAFAF'}
-                  rotate={true}
-                  show={this.props.Tools.show}
-                >
-                  <Isvg src={ArrowIcon} />
-                </ToolsButton>
-              </ToolsMenuItem>
-              <ToolsMenuItem>
-                <ToolsButton
-                  onClick={() => this.onToggleClick(NEWS_FEED)}
-                  color={this.props.Tools.show && this.state.chosen === NEWS_FEED ? 'black' : '#AFAFAF'}
-                  show={this.props.Tools.show}
-                  >
-                  <Isvg src={NewsFeedIcon} />
-                  <FormattedMessage {...messages.newsFeed} />
-                </ToolsButton>
-              </ToolsMenuItem>
-              <ToolsMenuItem>
-                <ToolsButton
-                    onClick={() => this.onToggleClick(MY_TOOLS)}
-                    color={this.props.Tools.show && this.state.chosen === MY_TOOLS ? 'black' : '#AFAFAF'}
+              <ToolsMenu>
+                <ToolsMenuItem>
+                  <ToolsButton
+                    onClick={() => this.onToggleClick(null)}
+                    color={this.props.Tools.show ? 'black' : '#AFAFAF'}
+                    rotate={true}
                     show={this.props.Tools.show}
-                >
-                  <Isvg src={MyToolsIcon} />
-                  <FormattedMessage {...messages.myTools} />
-                </ToolsButton>
-              </ToolsMenuItem>
-            </ToolsMenu>
+                  >
+                    <Isvg src={ArrowIcon} />
+                  </ToolsButton>
+                </ToolsMenuItem>
+                <ToolsMenuItem>
+                  <ToolsButton
+                    onClick={() => this.onToggleClick(NEWS_FEED)}
+                    color={this.props.Tools.show && this.state.chosen === NEWS_FEED ? 'black' : '#AFAFAF'}
+                    show={this.props.Tools.show}
+                    >
+                    <Isvg src={NewsFeedIcon} />
+                    <FormattedMessage {...messages.newsFeed} />
+                  </ToolsButton>
+                </ToolsMenuItem>
+                <ToolsMenuItem>
+                  <ToolsButton
+                      onClick={() => this.onToggleClick(MY_TOOLS)}
+                      color={this.props.Tools.show && this.state.chosen === MY_TOOLS ? 'black' : '#AFAFAF'}
+                      show={this.props.Tools.show}
+                  >
+                    <Isvg src={MyToolsIcon} />
+                    <FormattedMessage {...messages.myTools} />
+                  </ToolsButton>
+                </ToolsMenuItem>
+              </ToolsMenu>
             <ToolsArea show={this.props.Tools.show}/>
           </ToolsViewport>
         </ToolsContainer>

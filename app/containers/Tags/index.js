@@ -27,7 +27,7 @@ const TagBlock = styled.div`
 ;
 const TagList = styled.ul`margin: 0; padding: 0; line-height: 1.2;`;
 const TagListItem = styled.li`
-  display: inline-block;
+  display: inline;
   vertical-align: middle;
   &:last-child {
     span { display: none; }
@@ -42,7 +42,7 @@ const TagLink = styled(Link)`
   vertical-align: middle;
 `;
 
-const TagDivider = styled(() => (<span>&nbsp;/&nbsp;</span>))`
+const TagDivider = styled(() => (<span> / </span>))`
   vertical-align: middle;
   display: inline-block;
 `;

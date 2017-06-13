@@ -32,7 +32,7 @@ const ToolType = styled(Link)`
   vertical-align: top;
   text-transform: uppercase;
   color: black;
-  text-decoration: none;
+  text-decoration: none;  
 
   * {
     vertical-align: top;

@@ -80,7 +80,13 @@ export const ToolsButton = styled.button`
     transition:  fill 0.4s ease;
   }
 `;
-export const ToolsListMenu = styled.ul`padding: 0;`;
+export const ToolsListMenu = styled.ul`
+    padding: 0;
+    padding: 10px 0 10px;
+    border: 3px solid;
+    border-width: 0 0 3px;
+    margin: 0;
+`;
 export const ToolsListMenuItem = styled.li`
   list-style: none;
   display: inline-block;
@@ -103,27 +109,40 @@ export const ToolTitle = styled.h1`
   }
   color: ${props=>props.color || 'black'};
 `;
-export const ToolsList = styled.ul`padding: 0;`;
+export const ToolsList = styled.ul`
+padding: 0 0 0 5px;
+margin: 0;
+`;
 export const ToolsListItem = styled.li`list-style: none;`;
 
-export const ToolsMenu = styled.ul`padding: 0; width: 60px; float: left;`;
+export const ToolsMenu = styled.ul`
+  width: 78px;
+  float: left;
+  height: 100%;
+  margin: 0;
+  padding: 20px 5px;
+  border: 3px solid black;
+  border-width: 0 3px 0 0;
+`;
 export const ToolsMenuItem = styled.li`
   list-style: none;
+  margin: 10px 0 20px;
 `;
 
 export const ToolsListContainer = styled.div``;
-export const ToolsViewport = styled.div` width: 300px`;
+export const ToolsViewport = styled.div` width: 300px; height: 100%;`;
 
 export const ToolsContainer = styled.div`
   position: fixed;
   right: 50%;
-  width: ${(props) => props.showTools ? '300px' : '65px' };
+  width: ${(props) => props.showTools ? '300px' : '75px' };
   height: calc(100vh - 170px);
   border: 3px solid black;
-  top: 160px;
-  transform: translateX(${(props) => props.showTools ? '750px' : '620px' });
+  top: 93px;
+  transform: translateX(${(props) => props.showTools ? '750px' : '630px' });
   transition: transform 0.5s, width 0.5s;
   overflow-x: hidden;
+  overflow-y: hidden;
   `;
 
 export const ToolContainer = styled.div`

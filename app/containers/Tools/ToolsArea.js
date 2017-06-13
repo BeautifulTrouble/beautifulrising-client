@@ -28,12 +28,16 @@ import { ToolsButton, ToolsListMenu, ToolsListMenuItem,
 import SelectedTool from './SelectedTool'
 
 export const ToolsListContainer = styled.div`
-    width: 215px;
+    width: 222px;
     float: right;
+    height: 100%;
     display: ${props=>props.show ? 'block' : 'none'};
 `;
 
-const Container = styled.div``;
+const Container = styled.div`
+  height: calc(100% - 60px);
+  overflow: auto;
+`;
 
 export class ToolsArea extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 

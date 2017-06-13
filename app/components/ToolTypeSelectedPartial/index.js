@@ -88,6 +88,7 @@ const FlagContainer = styled.div`
   z-index: -1;
   position: absolute;
   top: 120px;
+  display: none;
 `;
 
 function ToolTypeSelectedPartial(props) {
