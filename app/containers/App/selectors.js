@@ -3,8 +3,12 @@ import { createSelector } from 'reselect';
 
 const selectGlobal = (state) => state.get('global');
 const selectTools = (state) => state.get('tools');
+const selectLanguage = (state) => state.get('language');
 
-
+const makeSelectLanguage = () => createSelector(
+  [selectLanguage],
+  (languageState) => languageState
+)
 /* This will take all items */
 /* Source: https://stackoverflow.com/questions/33830745/immutablejs-convert-list-to-indexed-map */
 const indexBy = (iterable, searchKey) => {
@@ -37,8 +41,6 @@ const makeSelectAdvisoryBoard = () => createSelector(
         return List();
       }
   );
-
-
 
 /* THIS WILL BE REVISED*/
 const getTagsArray = (state, props) => { return props.tags };
@@ -140,6 +142,7 @@ export {
   makeSelectAllTags,
   isShowTools,
   makeSelectAllToolsWithSlugIndex,
-  makeSelectAdvisoryBoard
+  makeSelectAdvisoryBoard,
+  makeSelectLanguage
   // makeSelectToolView,
 };

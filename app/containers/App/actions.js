@@ -19,6 +19,7 @@ import {
   LOAD_DATA,
   LOAD_DATA_SUCCESS,
   LOAD_DATA_ERROR,
+  LANGUAGE_CHANGE_RELOAD_DATA
 } from './constants';
 
 /**
@@ -30,6 +31,12 @@ export function loadData() {
   return {
     type: LOAD_DATA,
   };
+}
+
+export function langChangeReloadData() {
+  return {
+    type: LANGUAGE_CHANGE_RELOAD_DATA
+  }
 }
 
 /**
