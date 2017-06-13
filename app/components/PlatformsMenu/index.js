@@ -21,16 +21,24 @@ function PlatformsMenu(props) {
   return (
     <MenuBlock>
       <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
-      <MenuSubtitle>Explore other ways to access the toolbox</MenuSubtitle>
+      <MenuSubtitle>
+        <FormattedMessage {...messages.subheader} />
+      </MenuSubtitle>
       <MenuList>
         <MenuListItem>
-          <Link to="/platforms/chatbot" onClick={props.onClick}>Chatbot</Link>
+          <Link to="/platforms/chatbot" onClick={props.onClick}>
+            <FormattedMessage {...messages.chatbot} />
+          </Link>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/platforms/game" onClick={props.onClick}>Game</Link>
+          <Link to="/platforms/game" onClick={props.onClick}>
+            <FormattedMessage {...messages.game} />
+          </Link>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/platforms/pdf" onClick={props.onClick}>PDF</Link>
+          <Link to="/platforms/pdf" onClick={props.onClick}>
+            <FormattedMessage {...messages.pdf} />
+          </Link>
         </MenuListItem>
       </MenuList>
     </MenuBlock>

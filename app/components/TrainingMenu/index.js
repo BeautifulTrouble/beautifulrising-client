@@ -22,10 +22,14 @@ function TrainingMenu(props) {
       <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
       <MenuList>
         <MenuListItem>
-          <Link to="/resources/training" onClick={props.onClick}>Request a Training</Link>
+          <Link to="/resources/training" onClick={props.onClick}>
+            <FormattedMessage {...messages.requestTraining} />
+          </Link>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/resources/other" onClick={props.onClick}>Other Resources</Link>
+          <Link to="/resources/other" onClick={props.onClick}>
+            <FormattedMessage {...messages.otherResources} />
+          </Link>
         </MenuListItem>
       </MenuList>
     </MenuBlock>

@@ -22,7 +22,9 @@ function ContributeMenu(props) {
       <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
       <MenuList>
         <MenuListItem>
-          <Link to="/contribute/how-it-works" onClick={props.onClick}>How does it work?</Link>
+          <Link to="/contribute/how-it-works" onClick={props.onClick}>
+            <FormattedMessage {...messages.howItWorks} />
+          </Link>
         </MenuListItem>
       </MenuList>
     </MenuBlock>
