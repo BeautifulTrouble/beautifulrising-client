@@ -19,17 +19,24 @@ import TheoryIcon from 'assets/images/type/theories-optionflag.svg';
 const Container = styled.section`
   display: ${props=>props.show ? 'block' : 'none'};
 
-  &::after {
-    content: ' ';
-    clear: both;
-    display: block;
-  }
+
 `;
-const Viewport = styled.div``;
+const Viewport = styled.div`
+padding: 20px;
+border: 3px solid black;
+border-width: 0 3px 3px;
+&::after {
+  content: ' ';
+  clear: both;
+  display: block;
+}
+`;
+
 const Column = styled.div`
   text-align: center;
   width: ${props=>props.width}
   float: left;
+  position: relative;
 `;
 const ToolType = styled(Link)`
   margin-right: 0.5%;
@@ -37,6 +44,12 @@ const ToolType = styled(Link)`
   text-align: left;
   vertical-align: top;
   opacity: ${(props)=>props.selected?'0':'1'};
+  color: #828486;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 14px;
+
   * {
     vertical-align: top;
   }
@@ -56,15 +69,45 @@ const Desc = styled.p`
 
 const Flag = styled.span`
   display: ${props=>props.selected ? 'block' : 'none'};
+  position: absolute;
+    width: 100%;
+    opacity: .4;
+    top: 0;
+    z-index: -1;
+
+  .isvg {
+    width: 100%;
+    overflow-y: hidden;
+    max-height: 160px;
+    display: inline-block;
+    
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
 `;
 
+const TypeName = styled.h3`
+  text-align: right;
+  margin-top: 40px;
+  font-size: 34px;
+  text-transform: uppercase;
+  margin-right: 10px;
+`;
+
+const Description = styled.div`
+  font-size: 14px;
+  text-align: left;
+  padding: 0 10px 0 10px;
+`;
 
 function ToolTypeSelectedFull(props) {
 
   return (
     <Container show={props.show}>
       <Viewport>
-        <Column width="9%">
+        <Column width="15%">
           <ToolType to={'/'}>All</ToolType>
           <ToolType to={'/type/story'} selected={props.label === 'story'}>
             <FormattedMessage {...messages.storyHead} />
@@ -83,15 +126,19 @@ function ToolTypeSelectedFull(props) {
           </ToolType>
         </Column>
         <Column width="40%">
-          <FormattedMessage {...messages[props.label + 'Head']} />
+          <TypeName>
+            <FormattedMessage {...messages[props.label + 'Head']} />
+          </TypeName>
           <Flag selected={props.label === 'story'}><Isvg src={StoryIcon} /></Flag>
           <Flag selected={props.label === 'tactic'}><Isvg src={TacticIcon} /></Flag>
           <Flag selected={props.label === 'principle'}><Isvg src={PrincipleIcon} /></Flag>
           <Flag selected={props.label === 'theory'}><Isvg src={TheoryIcon} /></Flag>
           <Flag selected={props.label === 'methodology'}><Isvg src={MethodologyIcon} /></Flag>
         </Column>
-        <Column width="50%">
-          <FormattedMessage {...messages[props.label + 'Long']} />
+        <Column width="44%">
+          <Description>
+            <FormattedMessage {...messages[props.label + 'Long']} />
+          </Description>
         </Column>
       </Viewport>
     </Container>

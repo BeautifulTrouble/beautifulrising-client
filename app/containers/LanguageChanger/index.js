@@ -15,10 +15,11 @@ import { makeSelectLanguage } from 'containers/App/selectors';
 import { loadData, langChangeReloadData } from '../App/actions';
 
 const Container = styled.div`
-  position: absolute;
+  position: fixed;
   right: 50%;
   top: 10px;
   z-index: 500;
+  transform: translate(530px,0);
 `;
 const Viewport = styled.div``;
 const Button = styled.button`

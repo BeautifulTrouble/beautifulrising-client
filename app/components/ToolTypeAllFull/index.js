@@ -23,13 +23,26 @@ const Container = styled.section`
 const Viewport = styled.div``;
 const Row = styled.div`
   text-align: center;
+
+  &::after {
+    content: ' ';
+    clear: both;
+    display: block;
+  }
 `;
 const ToolType = styled(Link)`
-  width: 24%;
+  width: 195px;
   display: inline-block;
-  height: 100px
   text-align: left;
   vertical-align: top;
+  margin-right: 40px;
+  text-decoration: none;
+  color: black;
+  margin-bottom: 10px;
+
+  &:last-child {
+      margin-right: 0;
+  }
 
   * {
     vertical-align: top;
@@ -37,11 +50,15 @@ const ToolType = styled(Link)`
 `;
 const Head = styled.h3`
   margin: 0;
+  text-transform: uppercase;
 `;
 const Desc = styled.p`
   margin: 0;
+  line-height: 1.3;
+  font-size: 14px;
+  margin-top: 5px;
 
-  ::after {
+  &::after {
     content: ' ';
     clear: both;
     display: block;

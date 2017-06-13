@@ -10,6 +10,13 @@ import {Link} from 'react-router';
 import { FormattedMessage } from 'react-intl';
 import messages from '../ToolTypeArea/messages';
 
+import Isvg from 'react-inlinesvg';
+import MethodologyIcon from 'assets/images/type/methodologies-optionflag.svg';
+import PrincipleIcon from 'assets/images/type/principles-optionflag.svg';
+import StoryIcon from 'assets/images/type/stories-optionflag.svg';
+import TacticIcon from 'assets/images/type/tactics-optionflag.svg';
+import TheoryIcon from 'assets/images/type/theories-optionflag.svg';
+
 const Container = styled.section`
   display: ${props=>props.show ? 'block' : 'none'};
 
@@ -22,6 +29,10 @@ const Container = styled.section`
 const Viewport = styled.div`
   vertical-align: bottom;
   text-align: left;
+  padding: 30px 20px;
+  border: 3px solid black;
+  border-width: 0 3px 3px;
+
   &::after {
     content: ' ';
     display: block;
@@ -42,14 +53,41 @@ const ToolType = styled(Link)`
   display: inline-block;
   text-align: left;
   vertical-align: bottom;
-  font-size: ${(props)=>props.selected ? '24px':'18px'};
+  font-size: ${(props)=>props.selected ? '20px':'14px'};
   text-decoration: ${(props)=>props.selected ? 'none':'underline'};
-  text-transform: 'uppercase';
+  text-transform: uppercase;
   margin-right: 20px;
+  color: #828486;
+  font-weight: bold;
 
   * {
     vertical-align: bottom;
   }
+`;
+
+const Flag = styled.span`
+  display: ${props=>props.selected ? 'block' : 'none'};
+    width: 350px;
+    opacity: .4;
+    top: 0;
+
+
+  .isvg {
+    width: 100%;
+    overflow-y: hidden;
+    max-height: 160px;
+    display: inline-block;
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+`;
+const FlagContainer = styled.div`
+  z-index: -1;
+  position: absolute;
+  top: 120px;
 `;
 
 function ToolTypeSelectedPartial(props) {
@@ -73,6 +111,13 @@ function ToolTypeSelectedPartial(props) {
             <FormattedMessage {...messages.methodologyHead} />
           </ToolType>
       </Viewport>
+      <FlagContainer>
+        <Flag selected={props.label === 'story'}><Isvg src={StoryIcon} /></Flag>
+        <Flag selected={props.label === 'tactic'}><Isvg src={TacticIcon} /></Flag>
+        <Flag selected={props.label === 'principle'}><Isvg src={PrincipleIcon} /></Flag>
+        <Flag selected={props.label === 'theory'}><Isvg src={TheoryIcon} /></Flag>
+        <Flag selected={props.label === 'methodology'}><Isvg src={MethodologyIcon} /></Flag>
+      </FlagContainer>
     </Container>
   );
 }
