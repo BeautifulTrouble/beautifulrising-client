@@ -1,6 +1,6 @@
 /**
 *
-* TypeFlag
+* TypeOverlay
 *
 */
 
@@ -13,25 +13,35 @@ import PrincipleFlag from 'assets/images/flag/principle.svg';
 import TacticFlag from 'assets/images/flag/tactic.svg';
 import TheoryFlag from 'assets/images/flag/theory.svg';
 
-import BigMethodologyFlag from 'assets/images/flag/big-methodology.svg';
-import BigPrincipleFlag from 'assets/images/flag/big-principle.svg';
-import BigTacticFlag from 'assets/images/flag/big-tactic.svg';
-import BigTheoryFlag from 'assets/images/flag/big-theory.svg';
+import BigMethodologyFlag from 'assets/images/patterns/snapshotoverlay/methodology.svg';
+import BigPrincipleFlag from 'assets/images/patterns/snapshotoverlay/principle.svg';
+import BigTacticFlag from 'assets/images/patterns/snapshotoverlay/tactic.svg';
+import BigTheoryFlag from 'assets/images/patterns/snapshotoverlay/theory.svg';
 
 
 const FlagContainer = styled.div`
   position: absolute;
-  left: -200px;
-  top: 125px;
+  opacity: .5;
+  left: 0;
+  top: 0;
+  width: 115%;
+  height: 100%;
 
   svg circle,
   svg line,
   svg polyline {
     stroke: ${props=>getToolTypeColor(props.type)};
   }
+
+  .isvg, svg {
+    width: 100%;
+    height: 100%;
+  }
 `;
 const FlagViewport = styled.div`
   position: relative;
+  width: 100%;
+  height: 100%;
 `;
 const Flag = styled(Isvg)`
   display: ${props=>props.show?'block':'none'};
@@ -40,7 +50,7 @@ const Flag = styled(Isvg)`
   left: 0;
 `;
 
-function TypeFlag(props) {
+function TypeOverlay(props) {
 
   //iF there's only one truth here, we show big flag.
   const oneTruth = [props.isTactic, props.isMethodology, props.isPrinciple, props.isTheory].filter(item=>item).length == 1;
@@ -56,7 +66,7 @@ function TypeFlag(props) {
   );
 }
 
-TypeFlag.propTypes = {
+TypeOverlay.propTypes = {
   type: PropTypes.string.isRequired,
   isMethodology: PropTypes.bool,
   isPrinciple: PropTypes.bool,
@@ -64,4 +74,4 @@ TypeFlag.propTypes = {
   isTheory: PropTypes.bool
 };
 
-export default TypeFlag;
+export default TypeOverlay;
