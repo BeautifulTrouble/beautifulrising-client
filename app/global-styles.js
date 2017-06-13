@@ -1,15 +1,41 @@
 import { injectGlobal } from 'styled-components';
-
+import KnockOut from 'assets/fonts/Knockout-HTF67-FullBantamwtMod.otf';
+import AvenirBlack from 'assets/fonts/Avenir-Black.ttf';
+import AvenirBook from 'assets/fonts/Avenir-Book.ttf';
+import PaintHand from 'assets/fonts/Paint-hand_fixed.ttf';
 /* eslint no-unused-expressions: 0 */
 injectGlobal`
+  @font-face {
+    font-family: 'Paint Hand';
+    src: url(${PaintHand});
+  }
+
+  @font-face {
+    font-family: 'Avenir Book';
+    src: url(${AvenirBook});
+  }
+
+  @font-face {
+    font-family: 'Avenir Black';
+    src: url(${AvenirBlack});
+  }
+
+  @font-face {
+    font-family: 'Knockout';
+    src: url(${KnockOut});
+  }
+
   html,
   body {
     height: 100%;
     width: 100%;
   }
 
-  body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  body,p {
+    font-family: 'Avenir Book', Helvetica, Arial, sans-serif;
+  }
+  h1,h2,h3,h4,h5 {
+    font-family: 'Avenir Black', Helvetica, Arial, sans-serif;
   }
 
   body.fontLoaded {
@@ -27,4 +53,5 @@ injectGlobal`
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.5em;
   }
+
 `;

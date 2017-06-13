@@ -22,6 +22,7 @@ import Tools from 'containers/Tools';
 import Footer from 'components/Footer';
 import LanguageChanger from 'containers/LanguageChanger';
 import { isShowTools } from './selectors';
+
 //Themes
 
 const Content = styled.section`
