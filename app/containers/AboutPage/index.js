@@ -76,58 +76,58 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
 
   // This puts the path on top of the route stack
   componentIsVisible(isVisible, aboutPath) {
-
-    if (isVisible && !this.refs[this.state.currentPath] && this.refs[aboutPath]) {
-        if (this.refs[aboutPath]) {
-          // this.setState({ activateAnchor : false });
-          const container = ReactDOM.findDOMNode(this.refs[aboutPath])
-          // console.log("3333", container.offsetTop);
-
-          this.props.dispatch(push(aboutPath));
-          this.setState({ currentPath: aboutPath, currentOffset: container.offsetTop })
-        }
-        // setTimeout(() => { this.setState({ activateAnchor : true, currentPath: aboutPath })}, 100);
-    } else if (isVisible && browserHistory.getCurrentLocation().pathname != aboutPath && this.state.activateAnchor) {
-      //Set this as the url
-        const container = ReactDOM.findDOMNode(this.refs[aboutPath])
-        const position = window.scrollY - container.offsetTop;
-
-        if (this.state.currentPath !== aboutPath) {
-
-          // if items are in window
-          const currentDOM = ReactDOM.findDOMNode(this.refs[this.state.currentPath]);
-          const newDOM = ReactDOM.findDOMNode(this.refs[aboutPath]);
-
-          const currentOffset = currentDOM.offsetTop - window.scrollY;
-          const newOffset = newDOM.offsetTop - window.scrollY;
-          // console.log("CURRENTDOM", currentDOM, currentDOM.offsetTop - window.scrollY )
-          // console.log("NEWDOM", newDOM, newDOM.offsetTop - window.scrollY)
-          // if the DOM is higher, it dominates
-
-          // console.log(newDOM.offsetTop, this.state.currentOffset);
-          if ((currentOffset < 0 || currentOffset > window.innerHeight) && isVisible) {
-            // console.log("1111");
-            this.setState({ activateAnchor : false });
-            // this.setState({currentPath: aboutPath})
-            this.props.dispatch(push(aboutPath));
-            setTimeout(() => { this.setState({ currentPath: aboutPath, currentOffset: newDOM.offsetTop  })}, 10);
-            setTimeout(() => { this.setState({ activateAnchor : true })}, 100);
-          }
-          // else if (isVisible && currentOffset > 0
-          //           && currentOffset < window.innerHeight
-          //           && currentOffset < newOffset
-          //           && newDom.offsetTop > this.state.currentOffset
-          //         ) {
-          //   console.log("2222", currentOffset);
-          //   this.setState({ activateAnchor : false });
-          //   // this.setState({currentPath: aboutPath})
-          //   this.props.dispatch(push(aboutPath));
-          //   setTimeout(() => { this.setState({ currentPath: aboutPath, currentOffset: newDOM.offsetTop })}, 0);
-          //   setTimeout(() => { this.setState({ activateAnchor : true })}, 100);
-          // }
-
-      }
-    }
+    //
+    // if (isVisible && !this.refs[this.state.currentPath] && this.refs[aboutPath]) {
+    //     if (this.refs[aboutPath]) {
+    //       // this.setState({ activateAnchor : false });
+    //       const container = ReactDOM.findDOMNode(this.refs[aboutPath])
+    //       // console.log("3333", container.offsetTop);
+    //
+    //       this.props.dispatch(push(aboutPath));
+    //       this.setState({ currentPath: aboutPath, currentOffset: container.offsetTop })
+    //     }
+    //     // setTimeout(() => { this.setState({ activateAnchor : true, currentPath: aboutPath })}, 100);
+    // } else if (isVisible && browserHistory.getCurrentLocation().pathname != aboutPath && this.state.activateAnchor) {
+    //   //Set this as the url
+    //     const container = ReactDOM.findDOMNode(this.refs[aboutPath])
+    //     const position = window.scrollY - container.offsetTop;
+    //
+    //     if (this.state.currentPath !== aboutPath) {
+    //
+    //       // if items are in window
+    //       const currentDOM = ReactDOM.findDOMNode(this.refs[this.state.currentPath]);
+    //       const newDOM = ReactDOM.findDOMNode(this.refs[aboutPath]);
+    //
+    //       const currentOffset = currentDOM.offsetTop - window.scrollY;
+    //       const newOffset = newDOM.offsetTop - window.scrollY;
+    //       // console.log("CURRENTDOM", currentDOM, currentDOM.offsetTop - window.scrollY )
+    //       // console.log("NEWDOM", newDOM, newDOM.offsetTop - window.scrollY)
+    //       // if the DOM is higher, it dominates
+    //
+    //       // console.log(newDOM.offsetTop, this.state.currentOffset);
+    //       if ((currentOffset < 0 || currentOffset > window.innerHeight) && isVisible) {
+    //         // console.log("1111");
+    //         this.setState({ activateAnchor : false });
+    //         // this.setState({currentPath: aboutPath})
+    //         this.props.dispatch(push(aboutPath));
+    //         setTimeout(() => { this.setState({ currentPath: aboutPath, currentOffset: newDOM.offsetTop  })}, 10);
+    //         setTimeout(() => { this.setState({ activateAnchor : true })}, 100);
+    //       }
+    //       // else if (isVisible && currentOffset > 0
+    //       //           && currentOffset < window.innerHeight
+    //       //           && currentOffset < newOffset
+    //       //           && newDom.offsetTop > this.state.currentOffset
+    //       //         ) {
+    //       //   console.log("2222", currentOffset);
+    //       //   this.setState({ activateAnchor : false });
+    //       //   // this.setState({currentPath: aboutPath})
+    //       //   this.props.dispatch(push(aboutPath));
+    //       //   setTimeout(() => { this.setState({ currentPath: aboutPath, currentOffset: newDOM.offsetTop })}, 0);
+    //       //   setTimeout(() => { this.setState({ activateAnchor : true })}, 100);
+    //       // }
+    //
+    //   }
+    // }
   }
 
   render() {
