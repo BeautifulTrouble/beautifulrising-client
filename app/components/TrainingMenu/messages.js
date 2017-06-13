@@ -10,4 +10,12 @@ export default defineMessages({
     id: 'app.components.TrainingMenu.header',
     defaultMessage: 'Training + Resources',
   },
+  requestTraining: {
+    id: 'app.components.TrainingMenu.requestTraining',
+    defaultMessage: 'Request a Training'
+  },
+  otherResources: {
+    id: 'app.components.TrainingMenu.otherResources',
+    defaultMessage: 'Other Resources'
+  }
 });

@@ -41,6 +41,9 @@ const Image = styled.div`
 const Title = styled.h1``;
 const Subtitle = styled.h3``;
 
+export const PlatformsSection = styled.div`
+font-size: 24px;
+`;
 export default class PlatformsPageComponents extends React.Component {
   render() {
 

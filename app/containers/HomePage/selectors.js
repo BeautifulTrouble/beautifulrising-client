@@ -1,6 +1,8 @@
 import { createSelector } from 'reselect';
 import { TAG_FILTER, TYPE_FILTER, SEARCH_FILTER } from './constants';
 import { SORT_NEWEST, SORT_ALPHABETICAL } from 'containers/ToolsSortOptions/constants';
+import {slugify} from 'utils/tags'
+
 /**
  * Direct selector to the homePage state domain
  */
@@ -36,14 +38,23 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
      if (data) {
        switch (filter) {
          case TAG_FILTER:
-          return data.filter(item => isFullTool(item) && item.tags && item.tags.includes(tags.all[label]));
+          // data.map(item=>{if(item) { console.log(item.tags, item.tags.map(i=>slugify(i)))} });
+          return data.filter(item => isFullTool(item) && item.tags && item.tags.map(i=>slugify(i)).includes(label));
           break;
          case TYPE_FILTER:
           const result = data.filter(item => isFullTool(item) && item.type === label);
           return result;
           break;
          case SEARCH_FILTER:
-          return label ? data.filter(item => isFullTool(item) && item.title.toLowerCase().search(label.toLowerCase()) >= 0) : data.filter(item => isFullTool(item))
+          const authorMatches = label.match(/^authors!(.+)/i);
+          if (authorMatches) {
+            //For authors, it doesn't matter if it's a snapshot or a full item.
+            return label ? data.filter(item => {
+                return item.authors && (item.authors.filter(author=> author.toLowerCase().includes(authorMatches[1].toLowerCase())).length > 0);
+            }) : [];
+          } else {
+            return label ? data.filter(item => isFullTool(item) && item.title.toLowerCase().search(label.toLowerCase()) >= 0) : data.filter(item => isFullTool(item))
+          }
          default:
           return data.filter(item => isFullTool(item));
 

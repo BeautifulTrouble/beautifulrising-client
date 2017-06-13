@@ -73,7 +73,7 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
   constructor(props) {
     super(props);
     this.state = {
-      selected: 'Training & facilitation'
+      selected: 0
     }
   }
 
@@ -112,8 +112,8 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
               <MenuList>
               {trouble.get('content').map((item, ind) => {
                 return (
-                  <LinkItem key={ind} isSelected={this.state.selected === item.get('heading')}>
-                    <Button onClick={()=>this.handleClick(item.get('heading'))}>
+                  <LinkItem key={ind} isSelected={this.state.selected === ind}>
+                    <Button onClick={()=>this.handleClick(ind)}>
                       {item.get('heading')}
                     </Button>
                   </LinkItem>
@@ -125,7 +125,7 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
               <Banner src={TrainingBanner} />
               {trouble.get('content').map((item, ind) => {
                 return (
-                  <Content key={ind} isVisible={ item.get('heading') === this.state.selected }>
+                  <Content key={ind} isVisible={ ind === this.state.selected }>
                     <Markdown source={item.get('text')} />
                   </Content>
                 );

@@ -10,8 +10,7 @@ import TypeMenu from 'components/TypeMenu';
 import styled from 'styled-components';
 import ModalMenu from 'components/ModalMenu';
 import Link from 'components/Link';
-import LogoImageEn from 'assets/images/logo-en.png';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import messages from './messages';
 
 const Title = styled.h1`
@@ -49,21 +48,26 @@ const ModalMenuArea = styled(ModalMenu)`
   }
 `;
 
-function Header() {
-  return (
-    <PageHeader>
-      <Viewport>
-        <Title>
-          <Link to='/'><img src={LogoImageEn} /></Link>
-        </Title>
-        <ModalMenuArea />
-      </Viewport>
-    </PageHeader>
-  );
+class Header extends React.Component {
+
+  render() {
+    const {formatMessage} = this.props.intl;
+    const logo = formatMessage(messages.logoLanguage);
+    return (
+      <PageHeader>
+        <Viewport>
+          <Title>
+            <Link to='/'><img src={require(`assets/images/logo-${logo}.png`)} /></Link>
+          </Title>
+          <ModalMenuArea />
+        </Viewport>
+      </PageHeader>
+    );
+  }
 }
 
 Header.propTypes = {
 
 };
 
-export default Header;
+export default injectIntl(Header);

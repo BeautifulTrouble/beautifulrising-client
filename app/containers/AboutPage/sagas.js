@@ -2,12 +2,16 @@
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
 import { LOAD_DATA } from 'containers/App/constants';
+import { CHANGE_LOCALE } from 'containers/LanguageProvider/constants';
 import { dataLoaded, dataLoadingError } from 'containers/App/actions';
 
 import request from 'utils/request';
 
-export function* getData() {
-  const requestURL = `https://api.beautifulrising.org/api/v1/all?lang=en`;
+export const getLanguage = (state) => state.get('language');
+
+export function* getData(lang) {
+  const requestURL = `https://api.beautifulrising.org/api/v1/all?lang=${lang}`;
+  console.log(requestURL);
   try {
 
     const data = yield call(request, requestURL);
@@ -25,9 +29,13 @@ export function* aboutPageData() {
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
 
-  const watcher = yield takeLatest(LOAD_DATA, getData);
+  let language = yield select(getLanguage);
+  const chosenLanguage = language !== undefined ? language.get('locale') : 'en';
 
-  yield take(LOCATION_CHANGE);
+  const watcher = yield takeLatest(LOAD_DATA, getData, chosenLanguage);
+
+  // Suspend execution until location changes
+  yield take(CHANGE_LOCALE, LOCATION_CHANGE);
   yield cancel(watcher);
 }
 

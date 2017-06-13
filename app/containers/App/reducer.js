@@ -18,6 +18,7 @@ import {
   LOAD_DATA_ERROR,
   ADD_TOOL,
   REMOVE_TOOL,
+  LANGUAGE_CHANGE_RELOAD_DATA,
 } from './constants';
 
 // The initial state of the App

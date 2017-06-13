@@ -35,8 +35,19 @@ class ToolTypeArea extends React.PureComponent { // eslint-disable-line react/pr
     }
   }
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll.bind(this));
+  componentWillMount() {
+    console.log("Mounting");
+    const func = this.handleScroll.bind(this);
+    console.log(func);
+    window.addEventListener('scroll', this.handleScroll.bind(this), true);
+  }
+
+  componentWillUnmount() {
+    console.log("Unmounting");
+    const func = this.handleScroll.bind(this);
+    console.log(func);
+    window.removeEventListener('scroll', this.handleScroll.bind(this), true);
+    // window.addEventListener('scroll', this.handleScroll.bind(this), true);
   }
 
   handleScroll() {
@@ -48,7 +59,6 @@ class ToolTypeArea extends React.PureComponent { // eslint-disable-line react/pr
 
     if (this.props.filter !== 'type' || !this.props.label || this.props.label === undefined) {
       //All
-      console.log("ENTERED HERE")
       return (
           <div>
             <ToolTypeAllFull show={onTop} />

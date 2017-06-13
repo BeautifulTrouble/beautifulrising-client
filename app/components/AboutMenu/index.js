@@ -22,28 +22,44 @@ function AboutMenu(props) {
       <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
       <MenuList>
         <MenuListItem>
-          <Link to="/about/whats-inside"  onClick={props.onClick}>The Toolbox</Link>
+          <Link to="/about/whats-inside"  onClick={props.onClick}>
+            <FormattedMessage {...messages.toolBoxMenu} />
+          </Link>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/about/process" onClick={props.onClick}>Our Process</Link>
+          <Link to="/about/process" onClick={props.onClick}>
+            <FormattedMessage {...messages.processMenu} />
+          </Link>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/about/values" onClick={props.onClick}>Our Values</Link>
+          <Link to="/about/values" onClick={props.onClick}>
+            <FormattedMessage {...messages.valuesMenu} />
+          </Link>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/about/advisory-network" onClick={props.onClick}>Our Advisory Network</Link>
+          <Link to="/about/advisory-network" onClick={props.onClick}>
+            <FormattedMessage {...messages.advisoryNetMenu} />
+          </Link>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/about/team" onClick={props.onClick}>Our Team</Link>
+          <Link to="/about/team" onClick={props.onClick}>
+            <FormattedMessage {...messages.teamMenu} />
+          </Link>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/about/beautiful-trouble-and-action-aid" onClick={props.onClick}>Beautiful Trouble + AA</Link>
+          <Link to="/about/beautiful-trouble-and-action-aid" onClick={props.onClick}>
+            <FormattedMessage {...messages.btaaMenu} />
+          </Link>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/about/partners" onClick={props.onClick}>Partners</Link>
+          <Link to="/about/partners" onClick={props.onClick}>
+            <FormattedMessage {...messages.partnersMenu} />
+          </Link>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/about/faq" onClick={props.onClick}>FAQ</Link>
+          <Link to="/about/faq" onClick={props.onClick}>
+            <FormattedMessage {...messages.faqMenu} />
+          </Link>
         </MenuListItem>
       </MenuList>
     </MenuBlock>

@@ -18,4 +18,8 @@ export default defineMessages({
     id: 'app.components.Header.aboutLink',
     defaultMessage: 'About',
   },
+  logoLanguage: {
+    id: 'app.components.Header.logo',
+    defaultMessage: 'en',
+  }
 });

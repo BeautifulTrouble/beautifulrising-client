@@ -55,7 +55,7 @@ export default defineMessages({
     defaultMessage: "Theories"
   },
   theoryDesc: {
-    id: 'app.components.ToolTypeArea.theoriesLong',
+    id: 'app.components.ToolTypeArea.theoriesDesc',
     defaultMessage: 'Big-picture ideas that help us understand how the world works and how we might change it.',
   },
   theoryLong: {
