@@ -29,28 +29,26 @@ export function* beautifulRisingData() {
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
 
-  console.log("CALLED THIS");
   let language = yield select(getLanguage);
-  console.log("CALLED THIS", language);
   const chosenLanguage = language !== undefined ? language.get('locale') : 'en';
-  console.log("CALLED THIS", chosenLanguage);
   const watcher = yield takeLatest(LOAD_DATA, getData, chosenLanguage);
-  yield take(CHANGE_LOCALE);
-  console.log("CANCELLED YIELD")
+  console.log("Something Changed here")
+  yield take(CHANGE_LOCALE, LOCATION_CHANGE);
+  console.log("SOMETHING CHANGED")
   yield cancel(watcher);
 }
 
-export function* langaugeChangeData() {
-  // Watches for LOAD_REPOS actions and calls getRepos when one comes in.
-  // By using `takeLatest` only the result of the latest API call is applied.
-  // It returns task descriptor (just like fork) so we can continue execution
-  console.log("LANGUAGE CHANGED")
-  let language = yield select(getLanguage);
-  const chosenLanguage = language !== undefined ? language.get('locale') : 'en';
-  const watcher = yield takeLatest(LANGUAGE_CHANGE_RELOAD_DATA, getData, chosenLanguage);
-  yield take(CHANGE_LOCALE);
-  yield cancel(watcher);
-}
+// export function* langaugeChangeData() {
+//   // Watches for LOAD_REPOS actions and calls getRepos when one comes in.
+//   // By using `takeLatest` only the result of the latest API call is applied.
+//   // It returns task descriptor (just like fork) so we can continue execution
+//   console.log("LANGUAGE CHANGED")
+//   let language = yield select(getLanguage);
+//   const chosenLanguage = language !== undefined ? language.get('locale') : 'en';
+//   const watcher = yield takeLatest(LANGUAGE_CHANGE_RELOAD_DATA, getData, chosenLanguage);
+//   yield take(CHANGE_LOCALE, LOCATION_CHANGE);
+//   yield cancel(watcher);
+// }
 
 // All sagas to be loaded
 export default [
