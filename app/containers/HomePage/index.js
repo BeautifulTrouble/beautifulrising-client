@@ -43,7 +43,7 @@ const SearchResultsContainer = styled.div`
 const SearchResultsText = styled.span``;
 
 const Container = styled.div`
-  padding-top: 340px;
+  padding-top: 390px;
 `;
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 

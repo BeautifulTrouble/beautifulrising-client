@@ -20,7 +20,7 @@ const Container = styled.div``;
 const Content = styled.div``;
 const TableMenu = styled.table`border: 0;`;
 const Row = styled.tr``;
-const Column = styled.td``;
+const Column = styled.td`font-size: 16px; padding: 10px`;
 
 const Image = styled.img``;
 
@@ -37,7 +37,7 @@ export class BeautifulTroubleAA extends React.Component {
           <Content>
             <TableMenu>
               <Row>
-                <Column colSpan={"2"}>
+                <Column colSpan={"2"} style={{ padding: '0 25%'}}>
                   <Markdown source={this.props.allData.getIn(['about', 'beautiful-trouble-and-action-aid', 'introduction'])} />
                 </Column>
               </Row>

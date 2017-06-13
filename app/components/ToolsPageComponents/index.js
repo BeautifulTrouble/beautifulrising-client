@@ -59,6 +59,8 @@ export const ToolPageCaption = styled.div`
   position: absolute;
   bottom: 10px;
   color: white;
+  padding-right: 50px;
+  font-size: 15px;
 
   a { color: #828486; }
 `;
@@ -95,7 +97,8 @@ export const ToolHeaderViewport = styled.div`
   position: relative;
   background-color: rgba(0,0,0,0.3);
   text-align: left;
-  padding-left: 30px;
+  padding-left: 90px;
+  overflow: ${props=>props.showOverflow?'visible':'hidden'};
 `;
 
 export const ToolLeftArea = styled(ToolInfoSection)`

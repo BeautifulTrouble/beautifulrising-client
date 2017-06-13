@@ -30,9 +30,16 @@ const ToolType = styled(Link)`
   height: 100px
   text-align: left;
   vertical-align: top;
+  text-transform: uppercase;
+  color: black;
+  text-decoration: none;  
 
   * {
     vertical-align: top;
+  }
+
+  svg {
+    width: 166px;
   }
 `;
 const Head = styled.h3`

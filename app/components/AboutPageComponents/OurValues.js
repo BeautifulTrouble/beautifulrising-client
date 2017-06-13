@@ -19,7 +19,30 @@ const ListItem = styled.li`
   list-style: none;
   text-align: left;
 `
-const SubListItem = styled.li`list-style: none;`
+const Count = styled.h4`
+  display: inline-block;
+  border: 3px solid;
+  border-width: 0 0 3px;
+  padding: 10px 20px 5px 5px;;
+  margin: 0;
+  &::after {
+    content: ' ';
+    display: block;
+    clear: both;
+  }
+`;
+
+const SubListItem = styled.li`
+  list-style: none;
+  h3 {
+    margin: 0;
+  }
+  p {
+    font-size: 18px;
+    padding-left: 100px;
+    margin: 10px;
+  }
+`
 
 export default class OurValues extends React.Component {
   render() {
@@ -41,6 +64,7 @@ export default class OurValues extends React.Component {
                         <SubList key={ind}>
                           { item.get('value').map((subitem, subindex) => (
                               <SubListItem key={subindex}>
+                                <Count>{subindex + 1}</Count>
                                 <h3>{subitem.get('title')}</h3>
                                 <p>{subitem.get('description')}</p>
                               </SubListItem>
@@ -48,10 +72,18 @@ export default class OurValues extends React.Component {
                         </SubList>
                       );
                       case 'disclaimer': return (
-                        <h3 key={ind}>{item.get('value')}</h3>
+                        <SubList key={ind}>
+                          <SubListItem>
+                            <h3 key={ind}>{item.get('value')}</h3>
+                          </SubListItem>
+                        </SubList>
                       );
                       case 'disclaimer-text': return (
-                        <p key={ind}>{item.get('value')}</p>
+                        <SubList key={ind}>
+                          <SubListItem>
+                            <p key={ind}>{item.get('value')}</p>
+                          </SubListItem>
+                        </SubList>
                       );
                    }
                  }

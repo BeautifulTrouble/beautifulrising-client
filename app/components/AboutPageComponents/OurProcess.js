@@ -51,11 +51,31 @@ const ListItem = styled.li`list-style: none;
     text-transform: uppercase;
   }
 
+  h4 {
+    margin: 0;
+    text-transform: uppercase;
+    text-align: left;
+    padding-left: 20px;
+    &::before {
+      content: '____';
+      display: block;
+      clear: both;
+    }
+  }
+
   ol {
     li {
       font-size: 14px;
       text-align: left;
     }
+  }
+`;
+
+const ParticipantsContainer = styled.div`
+  h3 {
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
   }
 `;
 
@@ -71,7 +91,7 @@ class OurProcess extends React.Component {
 
     const groups = this.props.participants.get('groups')
 
-    if (groups) return null;
+    if (!groups) return null;
 
     return (
         <List>
@@ -79,7 +99,7 @@ class OurProcess extends React.Component {
             <ListItem key={ind}>
 
               <Image src={require('assets/images/workshops/' + item.get('name') + '.png')} />
-              <h2>{item.get('name')}</h2>
+              <h4>{item.get('name')}</h4>
               <ol>
                 {item.get('participants') ?
                     item.get('participants').map((participant, ind2) =>( <li key={ind2}>{participant}</li> ))
@@ -130,7 +150,12 @@ class OurProcess extends React.Component {
 
 
         <ThemeProvider theme={themeFourColumns}>
-          {this.renderProjects()}
+          <ParticipantsContainer>
+            <h3>
+              <FormattedMessage {...messages.participantsHeader} />
+            </h3>
+            {this.renderProjects()}
+          </ParticipantsContainer>
         </ThemeProvider>
       </AboutSection>
     );

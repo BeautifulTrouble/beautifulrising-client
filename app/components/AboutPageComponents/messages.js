@@ -41,7 +41,11 @@ Early prototypes evolved into multiple iterations of what’s currently a [game]
   },
   ourProcessHeader: {
     id: 'app.components.AboutPageComponents.ourProcessHeader',
-    defaultMessage: 'Our Process'
+    defaultMessage: 'HOW DID WE MAKE THE TOOLBOX?'
+  },
+  participantsHeader: {
+    id: 'app.components.AboutPageComponents.participantsHeader',
+    defaultMessage: 'PARTICIPANTS + WORKSHOPS INVOLVED'
   },
   ourValuesHeader: {
     id: 'app.components.AboutPageComponents.ourValuesHeader',

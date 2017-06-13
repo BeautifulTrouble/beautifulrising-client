@@ -26,7 +26,8 @@ export const SelectedToolTitle = styled.div`
   padding: 0;
   font-size: 22px;
   font-weight: bold;
-
+  position: relative;
+  
   &::after {
     content: url(${props => props.flag });
     position: absolute;

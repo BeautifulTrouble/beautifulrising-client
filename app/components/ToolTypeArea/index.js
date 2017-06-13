@@ -26,6 +26,12 @@ import messages from './messages';
   - Type is chosen
 */
 
+const AllContainer = styled.div`
+  border: solid 3px black;
+  border-width: 0 3px 3px;
+  padding: 20px 60px;
+`;
+
 class ToolTypeArea extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
@@ -36,16 +42,12 @@ class ToolTypeArea extends React.PureComponent { // eslint-disable-line react/pr
   }
 
   componentWillMount() {
-    console.log("Mounting");
     const func = this.handleScroll.bind(this);
-    console.log(func);
     window.addEventListener('scroll', this.handleScroll.bind(this), true);
   }
 
   componentWillUnmount() {
-    console.log("Unmounting");
     const func = this.handleScroll.bind(this);
-    console.log(func);
     window.removeEventListener('scroll', this.handleScroll.bind(this), true);
     // window.addEventListener('scroll', this.handleScroll.bind(this), true);
   }
@@ -60,10 +62,10 @@ class ToolTypeArea extends React.PureComponent { // eslint-disable-line react/pr
     if (this.props.filter !== 'type' || !this.props.label || this.props.label === undefined) {
       //All
       return (
-          <div>
-            <ToolTypeAllFull show={onTop} />
-            <ToolTypeAllPartial show={!onTop} />
-          </div>
+        <AllContainer>
+          <ToolTypeAllFull show={onTop} />
+          <ToolTypeAllPartial show={!onTop} />
+        </AllContainer>
       );
     } else {
       //Selected

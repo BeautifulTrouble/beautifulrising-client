@@ -22,27 +22,39 @@ const ListItem = styled.li`list-style: none;
   display: inline-block;
   vertical-align: top;
   margin-bottom: 50px;
+  text-align: left;
 
   h3 {
-    font-size: 24px;
+    font-size: 26px;
+    margin: 0;
     margin-bottom: 5px;
     text-align: left;
+    text-transform: uppercase;
+  }
+  h5 {
+    margin: 0;
+    font-size: 16px;
   }
 
   p {
     text-align: left;
-    font-size: 18px;
-    padding-left: 10px;
+    font-size: 16px;
+    padding-right: 30px;
+
+    a {
+      color: #828486;
+    }
   }`;
 
 const Image = styled.div`
   display: inline-block;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   background-image: url(${props=> `https://www.beautifulrising.org/assets/content/small-${props.source}`})
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  border: 3px solid;
 `;
 
 const Name = styled.h3``;
@@ -54,7 +66,7 @@ const Content = styled.div``;
 export default class OurAdvisoryNetwork extends React.Component {
   render() {
     return (
-      <AboutSection id='advisory-network'>
+      <AboutSection id='advisory-network' style={{ textAlign: 'left' }}>
         <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
           <h2>
             <FormattedMessage {...messages.ourAdvisoryNetworkHeader} />

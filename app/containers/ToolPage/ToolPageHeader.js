@@ -20,35 +20,59 @@ import { ToolHeaderContainer,
 import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
 
 import TypeFlag from 'components/TypeFlag';
+import TypeOverlay from 'components/TypeOverlay';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
-
+import styled from 'styled-components';
 import messages from './messages';
 
+const Content = styled.div`
+  position: absolute;
+  z-index: 100;
+  width: calc(100% - 90px);
+  height: 100%;
+  padding-top: 50px;
+`;
 export class ToolPageHeader extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
+  getBanner() {
+    if(this.props['module-type'] === 'snapshot') {
+      return (<TypeOverlay type={this.props.type}
+        isPrinciple={this.props.type === "principle" || (this.props['key-principles'] && this.props['key-principles'].length > 0)}
+        isMethodology={this.props.type === "methodology" || (this.props['key-methodologies'] && this.props['key-methodologies'].length > 0)}
+        isTactic={this.props.type === "tactic" || (this.props['key-tactics'] && this.props['key-tactics'].length > 0)}
+        isTheory={this.props.type === "theory" || (this.props['key-theories'] && this.props['key-theories'].length > 0)}
+      />)
+    } else if ( ['full', 'gallery'].includes(this.props['module-type'])) {
+      return (<TypeFlag type={this.props.type}
+        isPrinciple={this.props.type === "principle" || (this.props['key-principles'] && this.props['key-principles'].length > 0)}
+        isMethodology={this.props.type === "methodology" || (this.props['key-methodologies'] && this.props['key-methodologies'].length > 0)}
+        isTactic={this.props.type === "tactic" || (this.props['key-tactics'] && this.props['key-tactics'].length > 0)}
+        isTheory={this.props.type === "theory" || (this.props['key-theories'] && this.props['key-theories'].length > 0)}
+      />)
+    }
+
+    return null;
+  }
   render() {
     return (
       <ToolHeaderContainer backgroundImage={BR_IMAGE_PREFIX+this.props.image}>
-        <ToolHeaderViewport>
-          <ToolHeaderType type={this.props.type}>{this.props.type}</ToolHeaderType>
-          <ToolHeaderTitle color={'white'}>{this.props.title}</ToolHeaderTitle>
-          <AdderRemover
-            slug={this.props.slug}
-            title={this.props.title}
-            type={this.props.type}
-            snapshot={this.props.snapshot}
-            addText={(<FormattedMessage {...messages.addTool} />)}
-            removeText={(<FormattedMessage {...messages.removeTool} />)}
-          />
-          <ToolPageCaption>
-            <Markdown source={'/ ' + this.props['image-caption']} />
-          </ToolPageCaption>
-          <TypeFlag type={this.props.type}
-            isPrinciple={this.props.type === "principle" || (this.props['key-principles'] && this.props['key-principles'].length > 0)}
-            isMethodology={this.props.type === "methodology" || (this.props['key-methodologies'] && this.props['key-methodologies'].length > 0)}
-            isTactic={this.props.type === "tactic" || (this.props['key-tactics'] && this.props['key-tactics'].length > 0)}
-            isTheory={this.props.type === "theory" || (this.props['key-theories'] && this.props['key-theories'].length > 0)}
-          />
+        <ToolHeaderViewport showOverflow={this.props['module-type'] !== 'snapshot'}>
+          <Content>
+            <ToolHeaderType type={this.props.type}>{this.props.type}</ToolHeaderType>
+            <ToolHeaderTitle color={'white'}>{this.props.title}</ToolHeaderTitle>
+            <AdderRemover
+              slug={this.props.slug}
+              title={this.props.title}
+              type={this.props.type}
+              snapshot={this.props.snapshot}
+              addText={(<FormattedMessage {...messages.addTool} />)}
+              removeText={(<FormattedMessage {...messages.removeTool} />)}
+            />
+            <ToolPageCaption>
+              <Markdown source={'/ ' + this.props['image-caption']} />
+            </ToolPageCaption>
+          </Content>
+          { this.getBanner() }
         </ToolHeaderViewport>
       </ToolHeaderContainer>
     );
