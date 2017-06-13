@@ -39,15 +39,15 @@ class ToolTypeArea extends React.PureComponent { // eslint-disable-line react/pr
     console.log("Mounting");
     const func = this.handleScroll.bind(this);
     console.log(func);
-    window.addEventListener('scroll', func, false);
+    window.addEventListener('scroll', this.handleScroll.bind(this), true);
   }
 
   componentWillUnmount() {
     console.log("Unmounting");
     const func = this.handleScroll.bind(this);
     console.log(func);
-    // window.removeEventListener('scroll', func, false);
-    window.addEventListener('scroll', null, false);
+    window.removeEventListener('scroll', this.handleScroll.bind(this), true);
+    // window.addEventListener('scroll', this.handleScroll.bind(this), true);
   }
 
   handleScroll() {

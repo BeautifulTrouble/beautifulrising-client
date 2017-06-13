@@ -32,9 +32,7 @@ export function* beautifulRisingData() {
   let language = yield select(getLanguage);
   const chosenLanguage = language !== undefined ? language.get('locale') : 'en';
   const watcher = yield takeLatest(LOAD_DATA, getData, chosenLanguage);
-  console.log("Something Changed here")
   yield take(CHANGE_LOCALE, LOCATION_CHANGE);
-  console.log("SOMETHING CHANGED")
   yield cancel(watcher);
 }
 
