@@ -6,7 +6,7 @@
 
 import React from 'react';
 // import styled from 'styled-components';
-
+import ToolTypeAllFull from 'components/ToolTypeAllFull';
 import { FormattedMessage } from 'react-intl';
 import { AboutSection } from 'components/AboutPageComponents';
 import VisibilitySensor from 'react-visibility-sensor';
@@ -23,9 +23,7 @@ export default class TheToolbox extends React.Component {
             <FormattedMessage {...messages.theToolboxHeader} />
           </h2>
         </VisibilitySensor>
-        <p>
-          <FormattedMessage {...messages.ipsum} />
-        </p>
+        <ToolTypeAllFull show={true} />
       </AboutSection>
     );
   }

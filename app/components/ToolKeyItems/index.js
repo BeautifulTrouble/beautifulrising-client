@@ -37,21 +37,26 @@ const Content = styled.div`
 
 class ToolKeyItems extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   generateKeyItems(list, type) {
-    if (!list || list.length == 0) return null;
+    if (!list || list === undefined || list.length == 0) return null;
 
     return (
       <KeyItemList>
         { list.map((item,ind)=> {
-            const [full, header, content] = item.match(/^(.*?) - (.*)$/i, item)
-            return (<KeyItemListItem key={ind} >
-                      <TypeSubheader type={type}>
-                        <FormattedMessage {...messages[type]} />
-                      </TypeSubheader>
-                      <Header>{header}</Header>
-                      <Content>
-                        <Markdown source={content} />
-                      </Content>
-                    </KeyItemListItem>)
+            try {
+              const [full, header, content] = item.match(/^(.*?) - (.*)$/i, item);
+              return (<KeyItemListItem key={ind} >
+                        <TypeSubheader type={type}>
+                          <FormattedMessage {...messages[type]} />
+                        </TypeSubheader>
+                        <Header>{header}</Header>
+                        <Content>
+                          <Markdown source={content} />
+                        </Content>
+                      </KeyItemListItem>)
+            } catch (e) {
+              return null;
+            }
+
         }) }
       </KeyItemList>
     )
