@@ -12,7 +12,7 @@
  import { push,replace } from 'react-router-redux';
  import { createStructuredSelector } from 'reselect';
  import VisibilitySensor from 'react-visibility-sensor';
-
+import ContributeType from 'components/ContributeType';
  import { loadData } from 'containers/App/actions';
  import styled from 'styled-components';
  //For listening
@@ -24,10 +24,43 @@ import messages from './messages';
 
 
 const Title = styled.h1``;
-const Subtitle = styled.h2``;
-const Subsubtitle = styled.h3``;
+const Subtitle = styled.h2`
+  font-size: 18px;
+  font-family: 'Avenir Black', sans-serif;
+  letter-spacing: 0;
+  border-bottom: 3px solid;
+  padding-bottom: 20px;
+  margin-bottom: 60px;
+  margin-left: 30px;
+  margin-right: 30px;
+`;
+const Subsubtitle = styled.h3`
+  font-family: 'Avenir Black', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0;
+  margin-top: 60px;
+`;
 
-const Content = styled.div``;
+const Content = styled.div`
+  padding: 10px 60px;
+
+`;
+
+const Divider = styled.div`
+&::after {
+  content: ' '
+  display: inline-block;
+  width: 2px;
+  border-right: 1px solid;
+  height: 50px;
+  position: absolute;
+  left: 50%;
+}
+`;
+
+const ContributeTypeContainer = styled.div`
+  margin-top: 60px;
+`;
 
 export class ContributePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -81,8 +114,15 @@ export class ContributePage extends React.Component { // eslint-disable-line rea
 
         <Content>
           {contribute.get('instructions')}
+          <Divider />
         </Content>
 
+        <ContributeTypeContainer>
+          <Subtitle>
+            <FormattedMessage {...messages.typeOfContent} />
+          </Subtitle>
+          <ContributeType />
+        </ContributeTypeContainer>
       </div>
     );
   }

@@ -8,6 +8,10 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   header: {
     id: 'app.containers.ContributePage.header',
-    defaultMessage: 'This is ContributePage container !',
+    defaultMessage: 'Contribute',
   },
+  typeOfContent: {
+    id: 'typeOfContent',
+    defaultMessage: 'WHAT TYPE OF CONTENT WOULD YOU LIKE TO CONTRIBUTE?'
+  }
 });

@@ -87,7 +87,7 @@
   "app.components.TypeMenu.stories": "Stories",
   "app.containers.AboutPage.description": "Beautiful Rising harnesses the insights of changemakers worldwide to help make our movements more strategic, creative and effective.",
   "app.containers.AboutPage.header": "ABOUT",
-  "app.containers.ContributePage.header": "This is ContributePage container !",
+  "app.containers.ContributePage.header": "Contribute",
   "app.containers.HomePage.header": "This is Home",
   "app.containers.HomePage.sortBy": "Sort By",
   "app.containers.HomePage.tags": "Tags",
