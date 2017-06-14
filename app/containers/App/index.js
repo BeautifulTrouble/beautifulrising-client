@@ -44,7 +44,7 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
   render() {
     return (
       <Page>
-        <OnboardingModal isOpen={true} />
+        <OnboardingModal isOpen={false} />
         <LanguageChanger />
         <Header />
         <Body showTools={this.props.isShowTools}>
