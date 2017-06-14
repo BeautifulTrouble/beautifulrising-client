@@ -113,17 +113,21 @@ class OurProcess extends React.Component {
 
   }
 
+  renderHeader() {
+    <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
+      <h2>
+        <FormattedMessage {...messages.ourProcessHeader} />
+      </h2>
+    </VisibilitySensor>
+  }
+
   render() {
     const theme = themeFourColumns;
     const {formatMessage} = this.props.intl;
 
     return (
-      <AboutSection id='process' name='process'>
-        <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
-          <h2>
-            <FormattedMessage {...messages.ourProcessHeader} />
-          </h2>
-        </VisibilitySensor>
+      <AboutSection id='process' name='process' style={{textAlign: 'center'}}>
+        { this.props.hideHeader ?  null : this.renderHeader() }
         <ThemeProvider theme={themeFourColumns}>
             <List>
               <ListItem>

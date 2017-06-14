@@ -43,6 +43,10 @@ injectGlobal`
     font-size: 50px;
     letter-spacing: 1px;
   }
+  h2 {
+    font-size: 40px;
+    letter-spacing: 1px;
+  }
   h3 {
     font-size: 30px;
     letter-spacing: 1px;

@@ -45,16 +45,21 @@ const SubListItem = styled.li`
 `
 
 export default class OurValues extends React.Component {
+  renderHeader() {
+    return (
+      <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
+        <h2>
+          <FormattedMessage {...messages.ourValuesHeader} />
+        </h2>
+      </VisibilitySensor>
+    )
+  }
   render() {
     if (!this.props.ourValues) return null;
 
     return (
       <AboutSection id='values' name='values'>
-        <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
-          <h2>
-            <FormattedMessage {...messages.ourValuesHeader} />
-          </h2>
-        </VisibilitySensor>
+        { this.props.hideHeader ? null : this.renderHeader() }
           <List>
             { this.props.ourValues.map((item, ind) =>
                   {

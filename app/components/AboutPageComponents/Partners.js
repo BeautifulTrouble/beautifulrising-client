@@ -68,14 +68,19 @@ const Team = styled.h5`
 const Content = styled.div``;
 
 export default class Partners extends React.Component {
+  renderHeader() {
+    return (
+      <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
+        <h2>
+          <FormattedMessage {...messages.partnersHeader} />
+        </h2>
+      </VisibilitySensor>
+    );
+  }
   render() {
     return (
       <AboutSection id='partners'>
-        <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
-          <h2>
-            <FormattedMessage {...messages.partnersHeader} />
-          </h2>
-        </VisibilitySensor>
+        { this.props.hideHeader ? null : this.renderHeader() }
         <ThemeProvider theme={themeThreeColumns}>
           <List>
             { this.props.networkPartners === undefined ? null : this.props.networkPartners.map((item, ind) => (
