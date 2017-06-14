@@ -17,6 +17,7 @@ import Markdown from 'react-remarkable';
 
 import TrainingBanner from 'assets/images/about/training.jpg';
 import PlatformsPageComponents from 'components/PlatformsPageComponents';
+import OtherResources  from 'components/OtherResources';
 import { loadData } from 'containers/App/actions';
 
 //For listening
@@ -40,7 +41,11 @@ const MenuArea = styled.div`
 `;
 const Header = styled.h1`text-align: center`;
 const Heading = styled.h2`line-height: 40px;`;
-const Lead = styled.p``;
+const Lead = styled.div`
+  a {
+    color: #828486;
+  }
+`;
 const MenuList = styled.ul`
 padding: 0;
 margin: 0;
@@ -60,10 +65,9 @@ const LinkItem = styled.li`
 
   &::before {
     display: ${props => props.isSelected ? 'block' : 'none'};
-    content: '___';
-    content: '___';
+    content: '______';
     position: absolute;
-    left: 358px;
+    left: 350px;
     top: 25%;
     transform: translate(0,-50%);
   }
@@ -139,6 +143,8 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
     }
 
     const trouble = this.props.data.get('trouble');
+
+    console.log(this.props);
     return (
       <div>
         <Helmet
@@ -155,7 +161,9 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
             <TrainingArea>
               <MenuArea>
                 <Heading>{trouble.get('heading')}</Heading>
-                <Lead>{trouble.get('lead')}</Lead>
+                <Lead>
+                  <Markdown source={trouble.get('lead')} />
+                </Lead>
                 <MenuList>
                 {trouble.get('content').map((item, ind) => {
                   return (
@@ -184,6 +192,7 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
               <Heading>
                 <FormattedMessage {...messages.otherResources} />
               </Heading>
+              <OtherResources data={this.props.data.get('resources')}/>
             </OtherResourcesArea>
           </Viewport>
         </Container>
