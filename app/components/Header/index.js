@@ -6,6 +6,7 @@
 
 import React from 'react';
 // import Link from 'components/Link';
+import Logo from 'components/Logo';
 import TypeMenu from 'components/TypeMenu';
 import styled from 'styled-components';
 import ModalMenu from 'components/ModalMenu';
@@ -13,13 +14,7 @@ import Link from 'components/Link';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import messages from './messages';
 
-const Title = styled.h1`
-  position: absolute;
-  background-color: white;
-  top: 0px;
-  left: 100px;
-  margin: 0;
-`;
+
 const Viewport = styled.div`
   position: relative;
   width: 1110px;
@@ -56,9 +51,7 @@ class Header extends React.Component {
     return (
       <PageHeader>
         <Viewport>
-          <Title>
-            <Link to='/'><img src={require(`assets/images/logo-${logo}.png`)} /></Link>
-          </Title>
+          <Logo/>
           <ModalMenuArea />
         </Viewport>
       </PageHeader>

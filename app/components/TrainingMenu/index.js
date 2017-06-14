@@ -7,7 +7,7 @@
 import React from 'react';
 // import styled from 'styled-components';
 
-import Link from 'components/Link';
+import MenuLink from 'components/MenuLink';
 import MenuBlock from 'components/MenuBlock';
 import MenuList from 'components/MenuList';
 import MenuListItem from 'components/MenuListItem';
@@ -22,14 +22,14 @@ function TrainingMenu(props) {
       <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
       <MenuList>
         <MenuListItem>
-          <Link to="/resources/training" onClick={props.onClick}>
+          <MenuLink to="/resources/training" onClick={props.onClick}>
             <FormattedMessage {...messages.requestTraining} />
-          </Link>
+          </MenuLink>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/resources/other" onClick={props.onClick}>
+          <MenuLink to="/resources/other" onClick={props.onClick}>
             <FormattedMessage {...messages.otherResources} />
-          </Link>
+          </MenuLink>
         </MenuListItem>
       </MenuList>
     </MenuBlock>

@@ -9,5 +9,9 @@ export default defineMessages({
   header: {
     id: 'app.components.Menu.header',
     defaultMessage: 'This is the Menu component !',
+  },
+  home: {
+    id: 'app.components.Menu.home',
+    defaultMessage: 'Home'
   }
 });

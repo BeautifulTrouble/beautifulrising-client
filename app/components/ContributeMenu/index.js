@@ -7,7 +7,7 @@
 import React from 'react';
 // import styled from 'styled-components';
 
-import Link from 'components/Link';
+import MenuLink from 'components/MenuLink';
 import MenuBlock from 'components/MenuBlock';
 import MenuList from 'components/MenuList';
 import MenuListItem from 'components/MenuListItem';
@@ -22,9 +22,9 @@ function ContributeMenu(props) {
       <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
       <MenuList>
         <MenuListItem>
-          <Link to="/contribute/how-it-works" onClick={props.onClick}>
+          <MenuLink to="/contribute/how-it-works" onClick={props.onClick}>
             <FormattedMessage {...messages.howItWorks} />
-          </Link>
+          </MenuLink>
         </MenuListItem>
       </MenuList>
     </MenuBlock>

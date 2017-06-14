@@ -7,7 +7,7 @@
 import React from 'react';
 // import styled from 'styled-components';
 
-import Link from 'components/Link';
+import MenuLink from 'components/MenuLink';
 import MenuBlock from 'components/MenuBlock';
 import MenuList from 'components/MenuList';
 import MenuListItem from 'components/MenuListItem';
@@ -26,19 +26,19 @@ function PlatformsMenu(props) {
       </MenuSubtitle>
       <MenuList>
         <MenuListItem>
-          <Link to="/platforms/chatbot" onClick={props.onClick}>
+          <MenuLink to="/platforms/chatbot" onClick={props.onClick}>
             <FormattedMessage {...messages.chatbot} />
-          </Link>
+          </MenuLink>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/platforms/game" onClick={props.onClick}>
+          <MenuLink to="/platforms/game" onClick={props.onClick}>
             <FormattedMessage {...messages.game} />
-          </Link>
+          </MenuLink>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/platforms/pdf" onClick={props.onClick}>
+          <MenuLink to="/platforms/pdf" onClick={props.onClick}>
             <FormattedMessage {...messages.pdf} />
-          </Link>
+          </MenuLink>
         </MenuListItem>
       </MenuList>
     </MenuBlock>

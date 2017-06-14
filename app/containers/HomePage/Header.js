@@ -20,6 +20,15 @@ const HeaderContainer = styled.div`
   background-color: white;
   z-index: 200;
   top: 92px;
+
+  &::before {
+    position: absolute;
+    content: ' ';
+    width: 240px;
+    height: 4px;
+    background-color: white;
+    left: 96px;
+  }
 `;
 
 function Header(props) {

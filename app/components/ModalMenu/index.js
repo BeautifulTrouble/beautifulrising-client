@@ -26,7 +26,12 @@ const customStyles = {
     marginRight           : '-450px',
     transform             : 'translate(-570px, 0)',
     padding: '0',
-    border: 'none'
+    border: 'none',
+    width: '300px',
+    height: '100%',
+    borderBottom: 'none',
+    borderWidth: 0,
+    overflow: 'visible',
   }
 };
 
@@ -57,7 +62,9 @@ const CloseBox = styled.div`{
 
 const MenuContainer= styled.div`{
   border: 3px solid;
-  padding: 130px 20px 20px;
+  padding: 75px 0px 20px;
+  overflow: auto;
+  height: 100vh;
 }`;
 const CloseButton = styled.button`{
 

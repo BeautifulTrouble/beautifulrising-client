@@ -5,9 +5,9 @@
 */
 
 import React from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
-import Link from 'components/Link';
+import MenuLink from 'components/MenuLink';
 import MenuBlock from 'components/MenuBlock';
 import MenuList from 'components/MenuList';
 import MenuListItem from 'components/MenuListItem';
@@ -22,44 +22,44 @@ function AboutMenu(props) {
       <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
       <MenuList>
         <MenuListItem>
-          <Link to="/about/whats-inside"  onClick={props.onClick}>
+          <MenuLink to="/about/whats-inside"  onClick={props.onClick}>
             <FormattedMessage {...messages.toolBoxMenu} />
-          </Link>
+          </MenuLink>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/about/process" onClick={props.onClick}>
+          <MenuLink to="/about/process" onClick={props.onClick}>
             <FormattedMessage {...messages.processMenu} />
-          </Link>
+          </MenuLink>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/about/values" onClick={props.onClick}>
+          <MenuLink to="/about/values" onClick={props.onClick}>
             <FormattedMessage {...messages.valuesMenu} />
-          </Link>
+          </MenuLink>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/about/advisory-network" onClick={props.onClick}>
+          <MenuLink to="/about/advisory-network" onClick={props.onClick}>
             <FormattedMessage {...messages.advisoryNetMenu} />
-          </Link>
+          </MenuLink>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/about/team" onClick={props.onClick}>
+          <MenuLink to="/about/team" onClick={props.onClick}>
             <FormattedMessage {...messages.teamMenu} />
-          </Link>
+          </MenuLink>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/about/beautiful-trouble-and-action-aid" onClick={props.onClick}>
+          <MenuLink to="/about/beautiful-trouble-and-action-aid" onClick={props.onClick}>
             <FormattedMessage {...messages.btaaMenu} />
-          </Link>
+          </MenuLink>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/about/partners" onClick={props.onClick}>
+          <MenuLink to="/about/partners" onClick={props.onClick}>
             <FormattedMessage {...messages.partnersMenu} />
-          </Link>
+          </MenuLink>
         </MenuListItem>
         <MenuListItem>
-          <Link to="/about/faq" onClick={props.onClick}>
+          <MenuLink to="/about/faq" onClick={props.onClick}>
             <FormattedMessage {...messages.faqMenu} />
-          </Link>
+          </MenuLink>
         </MenuListItem>
       </MenuList>
     </MenuBlock>
