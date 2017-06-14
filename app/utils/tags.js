@@ -1,3 +1,3 @@
 export function slugify(tag) {
-  return tag.replace(/\s/ig, '-').replace(/[^\w\-]/ig,'');
+  return tag.toLowerCase().replace(/\s/ig, '-').replace(/[^\w\-]/ig,'');
 }

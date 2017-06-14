@@ -17,7 +17,6 @@ import TacticIcon from 'assets/images/type/tactics-option.svg';
 import TheoryIcon from 'assets/images/type/theories-option.svg';
 
 const Container = styled.section`
-    height: 280px;
     display: ${props=>props.show ? 'block' : 'none'};
 `;
 const Viewport = styled.div``;

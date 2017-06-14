@@ -32,14 +32,24 @@ injectGlobal`
   }
 
   body,p {
-    font-family: 'Avenir Book', Helvetica, Arial, sans-serif;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
   }
   h1,h2,h3,h4,h5 {
-    font-family: 'Avenir Black', Helvetica, Arial, sans-serif;
+    font-family: 'Knockout', Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: 50px;
+    letter-spacing: 1px;
+  }
+  h3 {
+    font-size: 30px;
+    letter-spacing: 1px;
   }
 
   body.fontLoaded {
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Avenir', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
   #app {
@@ -50,7 +60,7 @@ injectGlobal`
 
   p,
   label {
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Avenir', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.5em;
   }
 

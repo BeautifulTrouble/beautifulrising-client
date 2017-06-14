@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { TAG_FILTER, TYPE_FILTER, SEARCH_FILTER } from './constants';
 import { SORT_NEWEST, SORT_ALPHABETICAL } from 'containers/ToolsSortOptions/constants';
-import {slugify} from 'utils/tags'
+import {slugify} from 'utils/tags';
 
 /**
  * Direct selector to the homePage state domain
@@ -17,6 +17,8 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
 
  const selectFilter = (state, props) => { return props.params.filter; }
  const selectLabel = (state, props) => { return props.params.label; }
+ const selectRegion = (state, props) => { return props.params.region; }
+
  const allTags = createSelector(
    [selectGlobal],
    (globalState) => {
@@ -32,8 +34,8 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
  const isFullTool = (item) => item['module-type'] === 'gallery' || item['module-type'] === 'full' ;
 
  const makeSelectAllTools = createSelector(
-   [selectGlobal, selectFilter, selectLabel, allTags],
-   (globalState, filter, label, tags) => {
+   [selectGlobal, selectFilter, selectLabel, allTags, selectRegion],
+   (globalState, filter, label, tags, region) => {
      let data = globalState.getIn(['appData', 'information']);
      if (data) {
        switch (filter) {
@@ -43,6 +45,10 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
           break;
          case TYPE_FILTER:
           const result = data.filter(item => isFullTool(item) && item.type === label);
+
+          if (region !== undefined && region) {
+            return result.filter(item => slugify(item.region) === region);
+          }
           return result;
           break;
          case SEARCH_FILTER:
