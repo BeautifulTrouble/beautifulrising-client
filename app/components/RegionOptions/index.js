@@ -69,7 +69,6 @@ const RegionLink = styled(Link)`
 `;
 
 function RegionOptions(props) {
-  console.log("XX", props)
   return (
     <Container inline={!props.showHeader}>
       <Viewport>
