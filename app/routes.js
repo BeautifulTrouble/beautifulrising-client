@@ -153,7 +153,7 @@ export default function createRoutes(store) {
       },
     },
     {
-      path: '/:filter(type|tag|search)(/:label)*',
+      path: '/:filter(type|tag|search)(/:label(/:region)*)*',
       name: 'homePage',
       getComponent: getHomePageComponent,
     },

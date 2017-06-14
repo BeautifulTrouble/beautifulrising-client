@@ -16,6 +16,8 @@ import StoryIcon from 'assets/images/type/stories-optionflag.svg';
 import TacticIcon from 'assets/images/type/tactics-optionflag.svg';
 import TheoryIcon from 'assets/images/type/theories-optionflag.svg';
 
+import RegionOptions from 'components/RegionOptions';
+
 const Container = styled.section`
   display: ${props=>props.show ? 'block' : 'none'};
 
@@ -54,7 +56,7 @@ const ToolType = styled(Link)`
     vertical-align: top;
   }
 `;
-const Head = styled.h3`
+const Head = styled.h1`
   margin: 0;
 `;
 const Desc = styled.p`
@@ -80,7 +82,7 @@ const Flag = styled.span`
     overflow-y: hidden;
     max-height: 160px;
     display: inline-block;
-    
+
     svg {
       width: 100%;
       height: auto;
@@ -88,10 +90,9 @@ const Flag = styled.span`
   }
 `;
 
-const TypeName = styled.h3`
+const TypeName = styled.h1`
   text-align: right;
-  margin-top: 40px;
-  font-size: 34px;
+  margin-top: 20px;
   text-transform: uppercase;
   margin-right: 10px;
 `;
@@ -103,7 +104,6 @@ const Description = styled.div`
 `;
 
 function ToolTypeSelectedFull(props) {
-
   return (
     <Container show={props.show}>
       <Viewport>
@@ -139,6 +139,7 @@ function ToolTypeSelectedFull(props) {
           <Description>
             <FormattedMessage {...messages[props.label + 'Long']} />
           </Description>
+          { props.label === 'story' ? <RegionOptions {...props} showHeader={true}/> : null}
         </Column>
       </Viewport>
     </Container>

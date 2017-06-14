@@ -11,6 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import messages from '../ToolTypeArea/messages';
 
 import Isvg from 'react-inlinesvg';
+import RegionOptions from 'components/RegionOptions';
 import MethodologyIcon from 'assets/images/type/methodologies-optionflag.svg';
 import PrincipleIcon from 'assets/images/type/principles-optionflag.svg';
 import StoryIcon from 'assets/images/type/stories-optionflag.svg';
@@ -27,7 +28,7 @@ const Container = styled.section`
   }
 `;
 const Viewport = styled.div`
-  vertical-align: bottom;
+  vertical-align: top;
   text-align: left;
   padding: 30px 20px;
   border: 3px solid black;
@@ -56,13 +57,18 @@ const ToolType = styled(Link)`
   font-size: ${(props)=>props.selected ? '20px':'14px'};
   text-decoration: ${(props)=>props.selected ? 'none':'underline'};
   text-transform: uppercase;
-  margin-right: 20px;
+  margin-right: 10px;
   color: #828486;
   font-weight: bold;
 
   * {
     vertical-align: bottom;
   }
+`;
+
+const LinkArea = styled.div`
+  display: inline-block;
+  vertical-align: top;
 `;
 
 const Flag = styled.span`
@@ -95,22 +101,25 @@ function ToolTypeSelectedPartial(props) {
   return (
     <Container show={props.show}>
       <Viewport>
-          <ToolType to={'/'}>All</ToolType>
-          <ToolType to={'/type/story'} selected={props.label === 'story'}>
-            <FormattedMessage {...messages.storyHead} />
-          </ToolType>
-          <ToolType to={'/type/tactic'} selected={props.label === 'tactic'}>
-            <FormattedMessage {...messages.tacticHead} />
-          </ToolType>
-          <ToolType to={'/type/principle'} selected={props.label === 'principle'}>
-            <FormattedMessage {...messages.principleHead} />
-          </ToolType>
-          <ToolType to={'/type/theory'} selected={props.label === 'theory'}>
-            <FormattedMessage {...messages.theoryHead} />
-          </ToolType>
-          <ToolType to={'/type/methodology'} selected={props.label === 'methodology'}>
-            <FormattedMessage {...messages.methodologyHead} />
-          </ToolType>
+          <LinkArea>
+            <ToolType to={'/'}>All</ToolType>
+            <ToolType to={'/type/story'} selected={props.label === 'story'}>
+              <FormattedMessage {...messages.storyHead} />
+            </ToolType>
+            <ToolType to={'/type/tactic'} selected={props.label === 'tactic'}>
+              <FormattedMessage {...messages.tacticHead} />
+            </ToolType>
+            <ToolType to={'/type/principle'} selected={props.label === 'principle'}>
+              <FormattedMessage {...messages.principleHead} />
+            </ToolType>
+            <ToolType to={'/type/theory'} selected={props.label === 'theory'}>
+              <FormattedMessage {...messages.theoryHead} />
+            </ToolType>
+            <ToolType to={'/type/methodology'} selected={props.label === 'methodology'}>
+              <FormattedMessage {...messages.methodologyHead} />
+            </ToolType>
+          </LinkArea>
+          { props.label === 'story' ? <RegionOptions {...props} showHeader={false}/> : null}
       </Viewport>
       <FlagContainer>
         <Flag selected={props.label === 'story'}><Isvg src={StoryIcon} /></Flag>
