@@ -54,14 +54,19 @@ const Team = styled.h5`
 const Content = styled.div``;
 
 export default class FAQ extends React.Component {
+  renderHeader() {
+    return(
+      <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
+        <h2>
+          <FormattedMessage {...messages.faqHeader} />
+        </h2>
+      </VisibilitySensor>
+    )
+  }
   render() {
     return (
       <AboutSection id='faq'>
-        <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
-          <h2>
-            <FormattedMessage {...messages.faqHeader} />
-          </h2>
-        </VisibilitySensor>
+        { this.props.hideHeader ? null : this.renderHeader()}
         <List>
           { this.props.questions === undefined ? null : this.props.questions.map((item, ind) => {
               return (

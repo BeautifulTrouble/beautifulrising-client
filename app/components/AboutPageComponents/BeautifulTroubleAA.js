@@ -25,14 +25,20 @@ const Column = styled.td`font-size: 16px; padding: 10px`;
 const Image = styled.img``;
 
 export class BeautifulTroubleAA extends React.Component {
+  renderHeader() {
+    return (
+      <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
+        <h2>
+          <FormattedMessage {...messages.beautifulTroubleAAHeader} />
+        </h2>
+      </VisibilitySensor>
+    )
+  }
+  
   render() {
     return (
       <AboutSection id='beautiful-trouble-and-action-aid'>
-        <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
-          <h2>
-            <FormattedMessage {...messages.beautifulTroubleAAHeader} />
-          </h2>
-        </VisibilitySensor>
+        { this.props.hideHeader ? null : this.renderHeader() }
         <Container>
           <Content>
             <TableMenu>

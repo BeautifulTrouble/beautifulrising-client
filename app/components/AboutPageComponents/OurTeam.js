@@ -65,14 +65,19 @@ const Team = styled.h5`
 const Content = styled.div``;
 
 export default class OurTeam extends React.Component {
+  renderHeader() {
+    return(
+      <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
+        <h2>
+          <FormattedMessage {...messages.ourTeamHeader} />
+        </h2>
+      </VisibilitySensor>
+    );
+  }
   render() {
       return (
       <AboutSection id='team' style={{ textAlign: 'left' }}>
-        <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
-          <h2>
-            <FormattedMessage {...messages.ourTeamHeader} />
-          </h2>
-        </VisibilitySensor>
+        { this.props.hideHeader ? null : this.renderHeader() }
         <ThemeProvider theme={themeThreeColumns}>
           <List>
             { !this.props.teamMembers ? null : this.props.teamMembers.map((item, ind) => {

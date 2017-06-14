@@ -15,14 +15,19 @@ import messages from './messages';
 
 export default class TheToolbox extends React.Component {
 
+  renderHeader() {
+    return(
+      <VisibilitySensor  onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
+        <h2>
+          <FormattedMessage {...messages.theToolboxHeader} />
+        </h2>
+      </VisibilitySensor>
+    );
+  }
   render() {
     return (
       <AboutSection id='whats-inside' name='whats-inside'>
-        <VisibilitySensor  onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
-          <h2>
-            <FormattedMessage {...messages.theToolboxHeader} />
-          </h2>
-        </VisibilitySensor>
+        { this.props.hideHeader ? null : this.renderHeader() }
         <ToolTypeAllFull show={true} />
       </AboutSection>
     );

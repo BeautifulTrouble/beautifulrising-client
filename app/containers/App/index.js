@@ -21,6 +21,7 @@ import Body from 'components/Body';
 import Tools from 'containers/Tools';
 import Footer from 'components/Footer';
 import LanguageChanger from 'containers/LanguageChanger';
+import OnboardingModal from 'containers/OnboardingModal';
 import { isShowTools } from './selectors';
 
 //Themes
@@ -43,6 +44,7 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
   render() {
     return (
       <Page>
+        <OnboardingModal isOpen={true} />
         <LanguageChanger />
         <Header />
         <Body showTools={this.props.isShowTools}>
