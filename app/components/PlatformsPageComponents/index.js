@@ -11,10 +11,17 @@ import { FormattedMessage } from 'react-intl';
 import VisibilitySensor from 'react-visibility-sensor';
 import messages from './messages';
 import Markdown from 'react-remarkable';
+import Isvg from 'react-inlinesvg';
 
-const Container = styled.div``;
+
+export const Header = styled.h1`
+`;
+const Container = styled.div`
+  padding-left: 96px;
+`;
 const Viewport = styled.div`
     display: inline-block;
+    position: relative;
 `;
 const TextContent = styled.div`
   width: 30%;
@@ -38,8 +45,37 @@ const Image = styled.div`
   background-position: center;
   background-repeat: no-repeat;
 `;
-const Title = styled.h1``;
-const Subtitle = styled.h3``;
+
+const IconContainer = styled.div`
+  position: absolute;
+  top: 20px;
+  left: -120px;
+  width: 100px;
+  text-align: right;
+`;
+
+const Title = styled.h1`
+margin-top: 0;
+
+&::before {
+  content: '_';
+  position: absolute;
+  top: -48px;
+  font-weight: normal;
+  font-family: Avenir, sans-serif;
+`;
+const Subtitle = styled.h3`
+  font-family: 'Avenir Black', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0px;
+`;
+
+const CTA = styled.div`
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #828486;
+  a { color: #828486; }
+`;
 
 export const PlatformsSection = styled.div`
 font-size: 24px;
@@ -48,10 +84,13 @@ export default class PlatformsPageComponents extends React.Component {
   render() {
 
     if (!this.props.content || this.props.content === undefined) return null;
-
+    console.log(this.props.content, this.props.icon);
     return (
       <Container>
         <Viewport>
+          <IconContainer>
+            <Isvg src={this.props.icon} />
+          </IconContainer>
           <TextContent>
             <Content>
               <Title>
@@ -70,6 +109,10 @@ export default class PlatformsPageComponents extends React.Component {
                 <FormattedMessage {...messages.how} />
               </Subtitle>
               <Markdown source={this.props.content.get('how')} />
+
+              <CTA>
+                <Markdown source={this.props.content.get('get')} />
+              </CTA>
             </Content>
           </TextContent>
           <ImageContent>
