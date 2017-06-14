@@ -2,7 +2,7 @@
 
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
-
+import {slugify} from 'utils/tags';
 import { FormattedMessage } from 'react-intl';
 import Link from 'components/Link';
 import AdderRemover from 'containers/Tools/AdderRemover';
@@ -10,8 +10,15 @@ import AdderRemover from 'containers/Tools/AdderRemover';
 import {ToolType, ToolTitle, BlockContainer,
         BlockViewport, BlockSpiel, BlockAddRem, BlockViewTitleArea} from 'components/ToolsComponents';
 
+import RegionIcon from 'components/RegionIcon';
 import messages from './messages';
 import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
+
+const RegionContainer = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+`;
 
 class BlockViewItem extends React.Component {
 
@@ -47,6 +54,12 @@ class BlockViewItem extends React.Component {
 
             <BlockSpiel show={this.state.mouseOver}
                 type={this.props.type}>{this.props.snapshot}</BlockSpiel>
+
+            { this.props.type === 'story' ?
+                <RegionContainer>
+                  <RegionIcon type={this.props.type} region={slugify(this.props.region)} />
+                </RegionContainer>
+              : null }
           </Link>
 
           <BlockAddRem>

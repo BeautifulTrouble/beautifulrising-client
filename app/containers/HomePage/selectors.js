@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { TAG_FILTER, TYPE_FILTER, SEARCH_FILTER } from './constants';
 import { SORT_NEWEST, SORT_ALPHABETICAL } from 'containers/ToolsSortOptions/constants';
-import {slugify} from 'utils/tags'
+import {slugify} from 'utils/tags';
 
 /**
  * Direct selector to the homePage state domain
