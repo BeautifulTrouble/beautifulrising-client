@@ -4,20 +4,24 @@
  *
  */
 
- import React, { PropTypes } from 'react';
- import ReactDOM from 'react-dom';
- import { connect } from 'react-redux';
- import Helmet from 'react-helmet';
- import { FormattedMessage } from 'react-intl';
- import { push,replace } from 'react-router-redux';
- import { createStructuredSelector } from 'reselect';
- import VisibilitySensor from 'react-visibility-sensor';
+import React, { PropTypes } from 'react';
+import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+import Helmet from 'react-helmet';
+import { FormattedMessage } from 'react-intl';
+import { push,replace } from 'react-router-redux';
+import { createStructuredSelector } from 'reselect';
+import VisibilitySensor from 'react-visibility-sensor';
 
- import PlatformsPageComponents from 'components/PlatformsPageComponents';
- import { loadData } from 'containers/App/actions';
+import ChatbotIcon from 'assets/images/platform/chatbot.svg';
+import GameIcon from 'assets/images/platform/game.svg';
+import PDFIcon from 'assets/images/platform/pdf.svg';
 
- //For listening
- import { browserHistory } from 'react-router';
+import PlatformsPageComponents, { Header } from 'components/PlatformsPageComponents';
+import { loadData } from 'containers/App/actions';
+
+//For listening
+import { browserHistory } from 'react-router';
 
 import Chatbot from 'components/PlatformsPageComponents/Chatbot';
 import Game from 'components/PlatformsPageComponents/Game';
@@ -88,7 +92,9 @@ export class PlatformsPage extends React.Component { // eslint-disable-line reac
             { name: 'description', content: 'Description of PlatformsPage' },
           ]}
         />
-        <FormattedMessage {...messages.header} />
+        <Header>
+          <FormattedMessage {...messages.header} />
+        </Header>
 
         <VisibilitySensor onChange={(isVisible) => this.componentIsVisible(isVisible, '/platforms/chatbot')}>
           <div>
@@ -96,6 +102,7 @@ export class PlatformsPage extends React.Component { // eslint-disable-line reac
               ref="/platforms/chatbot"
               targetRoute="/platforms/chatbot"
               content={ this.props.aboutData.getIn(['platforms', 'chatbot'])}
+              icon={ChatbotIcon}
             />
           </div>
         </VisibilitySensor>
@@ -106,7 +113,8 @@ export class PlatformsPage extends React.Component { // eslint-disable-line reac
             <PlatformsPageComponents
               ref="/platforms/game"
               targetRoute="/platforms/game"
-              content={ this.props.aboutData.getIn(['platforms', 'game'])}
+              content={this.props.aboutData.getIn(['platforms', 'game'])}
+              icon={GameIcon}
             />
           </div>
         </VisibilitySensor>
@@ -118,6 +126,7 @@ export class PlatformsPage extends React.Component { // eslint-disable-line reac
               ref="/platforms/pdf"
               targetRoute="/platforms/pdf"
               content={ this.props.aboutData.getIn(['platforms', 'pdf'])}
+              icon={PDFIcon}
             />
           </div>
         </VisibilitySensor>
