@@ -8,6 +8,6 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   header: {
     id: 'app.containers.TrainingPage.header',
-    defaultMessage: 'This is TrainingPage container !',
+    defaultMessage: 'TRAINING + RESOURCES',
   },
 });

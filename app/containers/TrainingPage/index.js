@@ -31,10 +31,15 @@ const Container = styled.section`
 `;
 const Viewport = styled.div``;
 const MenuArea = styled.div`
-  width: 25%;
+  width: 35%;
   float: left;
+  padding-right: 70px;
+  border-right: 3px solid;
+  position: relative;
+
 `;
-const Heading = styled.h1``;
+const Header = styled.h1`text-align: center`;
+const Heading = styled.h2`line-height: 40px;`;
 const Lead = styled.p``;
 const MenuList = styled.ul`
 padding: 0;
@@ -48,23 +53,45 @@ const LinkItem = styled.li`
   text-decoration: ${props => props.isSelected ? 'none' : 'underline'};
   font-weight: bold;
 
+  position: relative;
   button {
     text-decoration: ${props => props.isSelected ? 'none' : 'underline'};
+  }
+
+  &::before {
+    display: ${props => props.isSelected ? 'block' : 'none'};
+    content: '___';
+    content: '___';
+    position: absolute;
+    left: 373px;
+    top: 25%;
+    transform: translate(0,-50%);
   }
 `;
 const Button = styled.button`
   text-align: left;
   outline: none;
   cursor: pointer;
+
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: 'Avenir Black', sans-serif;
+  margin-bottom: 18px;
+  font-size: 15px;
 `;
 const Banner = styled.img``;
 
 const ContentArea = styled.div`
-  width: 74%;
+  width: 60%;
   float: right;
+  padding-left: 100px;
 `;
 const Content = styled.div`
   display: ${props => props.isVisible ? 'block' : 'none'} !important;
+  padding-right: 170px;
+  font-size: 14px;
+  margin-top: 40px;
 `;
 
 
@@ -106,6 +133,9 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
         />
         <Container>
           <Viewport>
+            <Header>
+              <FormattedMessage {...messages.header} />
+            </Header>
             <MenuArea>
               <Heading>{trouble.get('heading')}</Heading>
               <Lead>{trouble.get('lead')}</Lead>
