@@ -49,5 +49,9 @@ export default defineMessages({
   welcomeSpiel: {
     id: 'app.components.OnboardingContent.welcomeSpiel',
     defaultMessage: 'Beautiful Rising seeks to strengthen the capacity, creativity, and effectiveness of social movements, activist groups, and civil society organizations to achieve lasting social change.'
+  },
+  onboardedMessage: {
+    id: 'app.components.OnboardingContent.onboardedMessage',
+    defaultMessage: 'Yeah I got this. Just take me to the toolbox!'
   }
 });

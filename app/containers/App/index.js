@@ -22,7 +22,7 @@ import Tools from 'containers/Tools';
 import Footer from 'components/Footer';
 import LanguageChanger from 'containers/LanguageChanger';
 import OnboardingModal from 'containers/OnboardingModal';
-import { isShowTools } from './selectors';
+import { isShowTools, isOnboarded } from './selectors';
 
 //Themes
 
@@ -44,7 +44,7 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
   render() {
     return (
       <Page>
-        <OnboardingModal isOpen={false} />
+        <OnboardingModal isOpen={!this.props.isOnboarded} />
         <LanguageChanger />
         <Header />
         <Body showTools={this.props.isShowTools}>
@@ -60,6 +60,7 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
 }
 
 const mapStateToProps = createStructuredSelector({
+  isOnboarded: isOnboarded(),
   isShowTools: isShowTools(),
 });
 

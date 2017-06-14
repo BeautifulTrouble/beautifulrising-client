@@ -10,6 +10,7 @@ import Logo from 'components/Logo';
 import Isvg from 'react-inlinesvg';
 import ArrowIcon from 'assets/images/icons/arrow.svg';
 import Background from 'assets/images/modal.jpg';
+import CloseIcon from 'assets/images/icons/close.svg'
 import { createStructuredSelector } from 'reselect';
 
 import { connect } from 'react-redux';
@@ -23,7 +24,7 @@ import OurAdvisoryNetwork from 'components/AboutPageComponents/OurAdvisoryNetwor
 import FAQ from 'components/AboutPageComponents/FAQ';
 import BeautifulTroubleAA from 'components/AboutPageComponents/BeautifulTroubleAA';
 import { makeSelectAllToolsWithSlugIndex, makeSelectAdvisoryBoard } from 'containers/App/selectors';
-
+import { onboardUser } from 'containers/App/actions';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
@@ -40,7 +41,7 @@ const Header = styled.h2`
   }
 `;
 const Content = styled.div`
-  display: ${props=>props.show ? 'block' : 'none'}
+  display: ${props=>props.show ? 'block' : 'none'};
 `;
 const Button = styled.button`
   outline: none;
@@ -50,6 +51,31 @@ const List = styled.ul`
   padding: 0;
   margin: 20px 50px;
 `;
+const CloseButton = styled(Button)`
+  background: white;
+  border: 3px solid black;
+  padding: 0;
+  position: absolute;
+  right: -27px;
+  top: 27px;
+`;
+const OnboardedButton = styled(Button)`
+  font-family: 'Avenir Black', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  background: white;
+  width: 160px;
+  padding: 5px;
+  text-transform: uppercase;
+  color: black;
+  border: 3px solid;
+  padding: 0;
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translate(-50%,0);
+`;
+
 const ListItem = styled.li`
   list-style: none;
   border-bottom: 3px solid;
@@ -95,7 +121,6 @@ const Overlay = styled.div`
   height: 100%;
   background-color: rgba(0,0,0,0.6);
   padding: 120px 39px 30px;
-
 `;
 
 class OnboardingContent extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -114,6 +139,10 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
     }
   }
 
+  handleClose() {
+    this.props.onOnboard();
+  }
+
   render() {
     const PAGE_STRUCTURE = this.renderData();
 
@@ -122,6 +151,12 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
         <Viewport>
           <HeaderArea>
             <Overlay>
+              <CloseButton onClick={this.handleClose.bind(this)}>
+                <Isvg src={CloseIcon}/>
+              </CloseButton>
+              <OnboardedButton onClick={this.handleClose.bind(this)}>
+                <FormattedMessage {...messages.onboardedMessage} />
+              </OnboardedButton>
               <LogoArea>
                 <Logo top={'20px'} left={'40px'} isReversed={true}/>
               </LogoArea>
@@ -221,4 +256,13 @@ const mapStateToProps = createStructuredSelector({
   advisoryBoard: makeSelectAdvisoryBoard()
 });
 
-export default connect(mapStateToProps)(OnboardingContent);
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+    onOnboard: (evt) => {
+      dispatch(onboardUser());
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(OnboardingContent);
