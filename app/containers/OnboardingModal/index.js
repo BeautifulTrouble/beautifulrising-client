@@ -27,12 +27,12 @@ const customStyles = {
     bottom                : 'auto',
     transform             : 'translate(-50%, 0)',
     padding: '0',
-    border: 'none',
     width: '1100px',
-    minHeight: '90vh',
-    borderBottom: 'none',
-    borderWidth: 0,
+    minHeight: '80vh',
     overflow: 'visible',
+    borderRadius: 0,
+    border: '3px solid',
+    paddingBottom: '40px'
   }
 };
 

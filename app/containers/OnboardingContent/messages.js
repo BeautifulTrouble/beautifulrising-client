@@ -41,5 +41,13 @@ export default defineMessages({
   faq: {
     id: 'app.components.OnboardingContent.faq',
     defaultMessage: 'You still have questions?',
+  },
+  welcomeMessage: {
+    id: 'app.components.OnboardingContent.welcomeMessage',
+    defaultMessage: 'WELCOME TO BEAUTIFUL RISING!'
+  },
+  welcomeSpiel: {
+    id: 'app.components.OnboardingContent.welcomeSpiel',
+    defaultMessage: 'Beautiful Rising seeks to strengthen the capacity, creativity, and effectiveness of social movements, activist groups, and civil society organizations to achieve lasting social change.'
   }
 });

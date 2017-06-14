@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import Logo from 'components/Logo';
 import Isvg from 'react-inlinesvg';
 import ArrowIcon from 'assets/images/icons/arrow.svg';
+import Background from 'assets/images/modal.jpg';
 import { createStructuredSelector } from 'reselect';
 
 import { connect } from 'react-redux';
@@ -30,21 +31,24 @@ import aboutMessages from 'components/AboutPageComponents/messages';
 
 const Container = styled.section``;
 const Viewport = styled.div`
-padding: 30px;
+position: relative;
 `;
 const Header = styled.h2`
   font-family: 'Avenir Black', sans-serif;
   font-weight: 800;
   text-transform: uppercase;
+  }
 `;
 const Content = styled.div`
   display: ${props=>props.show ? 'block' : 'none'}
 `;
 const Button = styled.button`
   outline: none;
+  cursor: pointer;
 `;
 const List = styled.ul`
   padding: 0;
+  margin: 20px 50px;
 `;
 const ListItem = styled.li`
   list-style: none;
@@ -66,6 +70,34 @@ const ListItem = styled.li`
   }
 `;
 
+const HeaderArea = styled.div`
+  background-image: url(${Background});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(0,0,0,0.6);
+
+  color: white;
+`;
+const LogoArea = styled.div`
+
+  svg, svg * {
+    fill: white !important;
+  }
+`;
+const SubTitle = styled.h2`
+  margin: 0;
+`;
+const Spiel = styled.div`
+  width: 500px;
+`;
+const Overlay = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  padding: 120px 39px 30px;
+
+`;
+
 class OnboardingContent extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
@@ -80,6 +112,47 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
     } else {
       this.setState({ chosen: key });
     }
+  }
+
+  render() {
+    const PAGE_STRUCTURE = this.renderData();
+
+    return (
+      <Container>
+        <Viewport>
+          <HeaderArea>
+            <Overlay>
+              <LogoArea>
+                <Logo top={'20px'} left={'40px'} isReversed={true}/>
+              </LogoArea>
+              <SubTitle>
+                <FormattedMessage {...messages.welcomeMessage} />
+              </SubTitle>
+              <Spiel>
+                <FormattedMessage {...messages.welcomeSpiel} />
+              </Spiel>
+            </Overlay>
+          </HeaderArea>
+          <List >
+            { PAGE_STRUCTURE.map((item, index) => (
+
+                <ListItem key={index} selected={this.state.chosen === index}>
+                  <Button onClick={() => this.handleClick(index)}><Header>
+                      {item.title}
+                      <Isvg src={ArrowIcon} />
+                      </Header>
+                    </Button>
+                  <Content show={this.state.chosen === index}>
+                    {item.content}
+                  </Content>
+                </ListItem>
+            ))
+
+            }
+          </List>
+        </Viewport>
+      </Container>
+    );
   }
 
   renderData() {
@@ -136,35 +209,6 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
         />
       },
     ];
-  }
-
-
-  render() {
-    const PAGE_STRUCTURE = this.renderData();
-
-    return (
-      <Container>
-        <Viewport>
-          <List >
-            { PAGE_STRUCTURE.map((item, index) => (
-
-                <ListItem key={index} selected={this.state.chosen === index}>
-                  <Button onClick={() => this.handleClick(index)}><Header>
-                      {item.title}
-                      <Isvg src={ArrowIcon} />
-                      </Header>
-                    </Button>
-                  <Content show={this.state.chosen === index}>
-                    {item.content}
-                  </Content>
-                </ListItem>
-            ))
-
-            }
-          </List>
-        </Viewport>
-      </Container>
-    );
   }
 }
 
