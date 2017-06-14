@@ -18,7 +18,8 @@ padding: 10px;
 text-align: center;
 border-top: 3px solid black;
 margin-top: 50px;
-
+margin-left: 20px;
+margin-right: 20px;
 &::before {
   content: '';
   clear: both;

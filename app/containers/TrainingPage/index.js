@@ -63,7 +63,7 @@ const LinkItem = styled.li`
     content: '___';
     content: '___';
     position: absolute;
-    left: 373px;
+    left: 358px;
     top: 25%;
     transform: translate(0,-50%);
   }
@@ -95,6 +95,22 @@ const Content = styled.div`
 `;
 
 
+const TrainingArea =styled.div`
+  padding-bottom: 40px;
+  border-bottom: 3px solid;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  &::after {
+    content: ' ';
+    clear: both;
+    display: block;
+  }
+`;
+const OtherResourcesArea = styled.div`
+  margin-left: 20px;
+  margin-right: 20px;
+`;
 export class TrainingPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
@@ -136,31 +152,39 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
             <Header>
               <FormattedMessage {...messages.header} />
             </Header>
-            <MenuArea>
-              <Heading>{trouble.get('heading')}</Heading>
-              <Lead>{trouble.get('lead')}</Lead>
-              <MenuList>
-              {trouble.get('content').map((item, ind) => {
-                return (
-                  <LinkItem key={ind} isSelected={this.state.selected === ind}>
-                    <Button onClick={()=>this.handleClick(ind)}>
-                      {item.get('heading')}
-                    </Button>
-                  </LinkItem>
-                )
-              })}
-              </MenuList>
-            </MenuArea>
-            <ContentArea>
-              <Banner src={TrainingBanner} />
-              {trouble.get('content').map((item, ind) => {
-                return (
-                  <Content key={ind} isVisible={ ind === this.state.selected }>
-                    <Markdown source={item.get('text')} />
-                  </Content>
-                );
-              })}
-            </ContentArea>
+            <TrainingArea>
+              <MenuArea>
+                <Heading>{trouble.get('heading')}</Heading>
+                <Lead>{trouble.get('lead')}</Lead>
+                <MenuList>
+                {trouble.get('content').map((item, ind) => {
+                  return (
+                    <LinkItem key={ind} isSelected={this.state.selected === ind}>
+                      <Button onClick={()=>this.handleClick(ind)}>
+                        {item.get('heading')}
+                      </Button>
+                    </LinkItem>
+                  )
+                })}
+                </MenuList>
+              </MenuArea>
+              <ContentArea>
+                <Banner src={TrainingBanner} />
+                {trouble.get('content').map((item, ind) => {
+                  return (
+                    <Content key={ind} isVisible={ ind === this.state.selected }>
+                      <Markdown source={item.get('text')} />
+                    </Content>
+                  );
+                })}
+              </ContentArea>
+            </TrainingArea>
+
+            <OtherResourcesArea>
+              <Heading>
+                <FormattedMessage {...messages.otherResources} />
+              </Heading>
+            </OtherResourcesArea>
           </Viewport>
         </Container>
       </div>

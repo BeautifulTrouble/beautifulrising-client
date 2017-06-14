@@ -10,4 +10,8 @@ export default defineMessages({
     id: 'app.containers.TrainingPage.header',
     defaultMessage: 'TRAINING + RESOURCES',
   },
+  otherResources: {
+    id: 'otherResources',
+    defaultMessage: 'OTHER RESOURCES'
+  }
 });
