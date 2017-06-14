@@ -67,29 +67,57 @@ const Spiel = styled.div`
 `;
 const CallToAction = styled.div`
   text-align: left;
+
   a {
     color: #828486;
     font-weight: bold;
     font-size: 14px;
   }
 `;
+const Content = styled.div`
+  display: ${props=>props.show?'block':'none'};
+`;
+const Button = styled.button`
+  outline: none;
+  cursor: pointer;
+`;
 
 class ContributeType extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  constructor(props) {
+    super(props);
+    this.state = {
+      chosen: null
+    }
+  }
+
+  handleClick(index) {
+    // console.log(e.target, e);
+    if ( index === this.state.chosen ) {
+      this.setState({ chosen: null })
+    } else {
+      this.setState({ chosen: index });
+    }
+  }
+
   render() {
     return (
       <Container>
         <Viewport>
           <TypeList>
-            {DATA.map(item => (
-              <Type>
-                <TypeName>{item.label}</TypeName>
-                <Isvg src={item.icon} />
-                <Spiel>
-                  {item.description}
-                </Spiel>
-                <CallToAction>
-                  <Markdown source={item.form} />
-                </CallToAction>
+            {DATA.map((item, index) => (
+              <Type key={index}>
+                <Button value={index} onClick={()=>this.handleClick(index)}>
+                  <TypeName>{item.label}</TypeName>
+                  <Isvg src={item.icon} />
+                </Button>
+                <Content show={this.state.chosen === index}>
+                  <Spiel>
+                    {item.description}
+                  </Spiel>
+                  <CallToAction>
+                    <Markdown source={item.form} />
+                  </CallToAction>
+                </Content>
               </Type>
             ))}
           </TypeList>
