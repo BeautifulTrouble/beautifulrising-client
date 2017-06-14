@@ -21,13 +21,12 @@ function SelectedToolComponents() {
 export const SelectedToolItem = styled.div`
   text-align: left;
 `;
-export const SelectedToolTitle = styled.div`
+export const SelectedToolTitle = styled.h3`
   margin: 20px 0 0;
   padding: 0;
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 32px;
   position: relative;
-  
+
   &::after {
     content: url(${props => props.flag });
     position: absolute;
@@ -37,6 +36,7 @@ export const SelectedToolTitle = styled.div`
 
 `;
 export const SelectedToolSnapshot = styled.p`
+font-size: 14px;
 margin: 0 0 10px ;`;
 export const SelectedToolCommands = styled.ul``;
 export const SelectedToolCommandItem = styled.li`
