@@ -96,13 +96,16 @@ export const ToolsListMenuItem = styled.li`
 
 export const ToolType = styled.h3`
   margin: 0;
-  font-size: 16px;
+  font-size: 22px;
   padding-top: 20px;
+  font-family: 'Paint Hand',serif;
   color: ${props => getToolTypeColor(props.type) }
 `;
 
 export const ToolTitle = styled.h1`
-  font-size: 20px;
+  font-size: 32px;
+  letter-spacing: 1px;
+  font-weight: normal;
   margin: 0;
   > a {
     color: ${props=>props.color || 'black'};

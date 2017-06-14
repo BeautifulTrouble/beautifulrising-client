@@ -40,7 +40,7 @@ export const ToolHeaderType = styled(ToolType)`
 `;
 
 export const ToolHeaderTitle = styled(ToolTitle)`
-  font-size: 48px;
+  font-size: 60px;
 `;
 
 export const ToolsPageLeftHeader = styled(CommonLeftHeader)`
