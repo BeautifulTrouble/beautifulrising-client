@@ -9,7 +9,7 @@ import React from 'react';
 import Logo from 'components/Logo';
 import TypeMenu from 'components/TypeMenu';
 import styled from 'styled-components';
-import ModalMenu from 'components/ModalMenu';
+import ModalMenu from 'containers/ModalMenu';
 import Link from 'components/Link';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import messages from './messages';
