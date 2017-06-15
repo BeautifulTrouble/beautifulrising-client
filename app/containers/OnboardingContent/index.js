@@ -53,7 +53,7 @@ const List = styled.ul`
 `;
 const CloseButton = styled(Button)`
   background: white;
-  border: 3px solid black;
+  border: 2px solid black;
   padding: 0;
   position: absolute;
   right: -27px;
@@ -115,6 +115,8 @@ const SubTitle = styled.h2`
 `;
 const Spiel = styled.div`
   width: 500px;
+  font-size: 14px;
+  line-height: 22px;
 `;
 const Overlay = styled.div`
   width: 100%;
