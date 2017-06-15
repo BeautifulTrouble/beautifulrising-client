@@ -144,7 +144,6 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
 
     const trouble = this.props.data.get('trouble');
 
-    console.log(this.props);
     return (
       <div>
         <Helmet

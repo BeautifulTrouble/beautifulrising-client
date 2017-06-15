@@ -6,7 +6,6 @@
 
 import React from 'react';
 import Modal from 'react-modal';
-import Menu from 'components/Menu';
 import Isvg from 'react-inlinesvg';
 
 import OnboardingContent from 'containers/OnboardingContent';

@@ -14,6 +14,7 @@ import AboutMenu from 'components/AboutMenu';
 import ContributeMenu from 'components/ContributeMenu';
 import PlatformsMenu from 'components/PlatformsMenu';
 import TrainingMenu from 'components/TrainingMenu';
+import ContactUs from 'containers/ContactUs';
 import messages from './messages';
 
 const MenuArea = styled.div`
@@ -44,6 +45,7 @@ function Menu(props) {
       <PlatformsMenu onClick={props.onClick}/>
       <ContributeMenu onClick={props.onClick}/>
       <TrainingMenu onClick={props.onClick}/>
+      <ContactUs />
     </MenuArea>
   );
 }

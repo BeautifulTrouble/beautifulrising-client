@@ -3,6 +3,7 @@
 // See http://blog.mxstbr.com/2016/01/react-apps-with-pages for more information
 // about the code splitting business
 import { getAsyncInjectors } from 'utils/asyncInjectors';
+import ContactUs from 'containers/ContactUs/sagas';
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -15,6 +16,7 @@ const loadModule = (cb) => (componentModule) => {
 export default function createRoutes(store) {
   // Create reusable async injectors using getAsyncInjectors factory
   const { injectReducer, injectSagas } = getAsyncInjectors(store); // eslint-disable-line no-unused-vars
+  injectSagas(ContactUs);
 
   const getHomePageComponent = (nextState, cb) => {
     const importModules = Promise.all([
@@ -55,14 +57,16 @@ export default function createRoutes(store) {
           const importModules = Promise.all([
             import('containers/ToolPage/reducer'),
             import('containers/ToolPage/sagas'),
+            import('containers/SubmitRealWorldExample/sagas'),
             import('containers/ToolPage'),
           ]);
 
           const renderRoute = loadModule(cb);
 
-          importModules.then(([reducer, sagas, component]) => {
+          importModules.then(([reducer, sagas, worldExampleSagas, component]) => {
             injectReducer('tool', reducer.default);
             injectSagas(sagas.default);
+            injectSagas(worldExampleSagas.default);
             renderRoute(component);
           });
 

@@ -38,7 +38,7 @@ export default class ToolRealWorld extends React.Component { // eslint-disable-l
       <RealWorldContainer>
         <RealWorldHeader>
           <RealWorldIcon src={RealWorldIconImage} type={this.props.type}/>
-          <FormattedMessage {...messages.realWorldExamplesOf} /> "{this.props.title}"
+          <FormattedMessage {...messages.realWorldExamplesOf} values={{title: this.props.title}}/>
         </RealWorldHeader>
         {this.generateRealWorldList()}
       </RealWorldContainer>

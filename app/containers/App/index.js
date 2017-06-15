@@ -16,7 +16,7 @@ import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Page from 'components/Page';
-import Header from 'components/Header';
+import Header from 'containers/Header';
 import Body from 'components/Body';
 import Tools from 'containers/Tools';
 import Footer from 'components/Footer';
