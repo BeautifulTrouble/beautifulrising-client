@@ -32,7 +32,7 @@ export default defineMessages({
   },
   realWorldExamplesOf: {
     id: 'app.containers.ToolPage.realWorldExamplesOf',
-    defaultMessage: 'Real World Examples of',
+    defaultMessage: 'Real World Examples of "{title}"',
   },
 
   // RELATED TOOLS

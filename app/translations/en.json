@@ -101,7 +101,7 @@
   "app.containers.ToolPage.learnMore": "Learn More",
   "app.containers.ToolPage.methodologies": "Methodologies",
   "app.containers.ToolPage.principles": "Principles",
-  "app.containers.ToolPage.realWorldExamplesOf": "Real World Examples of",
+  "app.containers.ToolPage.realWorldExamplesOf": "Real World Examples of \"{title}\"",
   "app.containers.ToolPage.relatedTools": "Related Tools",
   "app.containers.ToolPage.removeTool": "Remove this text from your saved tools",
   "app.containers.ToolPage.showLess": "Show Less",
