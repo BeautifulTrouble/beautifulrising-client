@@ -55,7 +55,6 @@ const Header =styled.h4`
 `;
 
 function OtherResources(props) {
-  console.log(props);
   return (
     <Container>
       <Viewport>

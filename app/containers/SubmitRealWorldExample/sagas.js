@@ -1,7 +1,7 @@
-import { take, call, put, select } from 'redux-saga/effects';
+import { take, call, put, select, takeLatest } from 'redux-saga/effects';
 
 import { SUBMIT_EXAMPLE, SUBMISSION_COMPLETE, SUBMISSION_ERROR } from './constants';
-import { successfulSubmission, submissionError } from './action';
+import { successfulSubmission, submissionError } from './actions';
 // Individual exports for testing
 
 import request from 'utils/request';
@@ -16,7 +16,6 @@ export function* submitExample() {
 
   try {
     const requestUrl = `?url=${url}&title=${title}&description=${description}`;
-    console.log(requestUrl);
 
     yield put(successfulSubmission());
   } catch(e) {
@@ -24,7 +23,7 @@ export function* submitExample() {
   }
 }
 export function* listenForSubmissions() {
-  yield takeLatest(SUBMIT_EXAMPLE, submitExample);
+  const action = yield takeLatest(SUBMIT_EXAMPLE, submitExample);
 }
 
 // All sagas to be loaded

@@ -18,7 +18,6 @@ export function defaultAction() {
 }
 
 export function sendSubscription(email) {
-  console.log(email);
   return {
     type: SEND_SUBSCRIPTION,
     data: {
@@ -28,7 +27,6 @@ export function sendSubscription(email) {
 }
 
 export function subscriptionComplete() {
-  console.log("HELLO WORLD");
   return {
     type: SUBSCRIPTION_COMPLETE
   }

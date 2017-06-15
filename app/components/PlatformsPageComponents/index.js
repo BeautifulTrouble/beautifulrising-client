@@ -84,7 +84,6 @@ export default class PlatformsPageComponents extends React.Component {
   render() {
 
     if (!this.props.content || this.props.content === undefined) return null;
-    console.log(this.props.content, this.props.icon);
     return (
       <Container>
         <Viewport>

@@ -57,14 +57,16 @@ export default function createRoutes(store) {
           const importModules = Promise.all([
             import('containers/ToolPage/reducer'),
             import('containers/ToolPage/sagas'),
+            import('containers/SubmitRealWorldExample/sagas'),
             import('containers/ToolPage'),
           ]);
 
           const renderRoute = loadModule(cb);
 
-          importModules.then(([reducer, sagas, component]) => {
+          importModules.then(([reducer, sagas, worldExampleSagas, component]) => {
             injectReducer('tool', reducer.default);
             injectSagas(sagas.default);
+            injectSagas(worldExampleSagas.default);
             renderRoute(component);
           });
 

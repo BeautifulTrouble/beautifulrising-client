@@ -16,7 +16,6 @@ export function* subscribeUser() {
 
     /** LOADING AREA **/
     yield put(subscriptionComplete());
-
   } catch (err) {
     yield call(put, errorSubscribing(err));
   }

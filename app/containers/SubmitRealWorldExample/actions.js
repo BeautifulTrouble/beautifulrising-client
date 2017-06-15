@@ -17,7 +17,7 @@ export function defaultAction() {
   };
 }
 
-export function submitExample(url, title, description) {
+export function submitExample({url, title, description}) {
   return {
     type: SUBMIT_EXAMPLE,
     data: { url, title, description }
