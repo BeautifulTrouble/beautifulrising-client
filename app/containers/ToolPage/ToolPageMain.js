@@ -139,7 +139,7 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
           {snapshotArea}
 
           { this.renderRealWorldExample() }
-          <SubmitRealWorldExample />
+          <SubmitRealWorldExample {...this.props} />
       </ToolMainArea>
     );
   }

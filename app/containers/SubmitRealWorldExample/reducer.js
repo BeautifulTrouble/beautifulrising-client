@@ -22,6 +22,7 @@ const initialState = fromJS({
 });
 
 function submitRealWorldExampleReducer(state = initialState, action) {
+  console.log(action);
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
