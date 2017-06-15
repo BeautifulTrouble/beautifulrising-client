@@ -19,6 +19,8 @@ import { ToolMainArea,
          ToolReadShortContent,
          ToolReadFullContent } from 'components/ToolsPageComponents';
 
+import SubmitRealWorldExample from 'containers/SubmitRealWorldExample';
+
 import ToolHowToUse from 'components/ToolHowToUse';
 import ToolWhyItWorked from 'components/ToolWhyItWorked';
 import ToolWhyItFailed from 'components/ToolWhyItFailed';
@@ -28,6 +30,7 @@ import ToolWithPullQuote from 'components/ToolWithPullQuote';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 import ToolLearnMore from './ToolLearnMore';
 import ToolRealWorld from './ToolRealWorld';
+
 import messages from './messages';
 
 export class ToolPageMain extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -136,6 +139,7 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
           {snapshotArea}
 
           { this.renderRealWorldExample() }
+          <SubmitRealWorldExample />
       </ToolMainArea>
     );
   }
