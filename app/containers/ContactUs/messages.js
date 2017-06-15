@@ -8,6 +8,6 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   header: {
     id: 'app.containers.ContactUs.header',
-    defaultMessage: 'This is ContactUs container !',
+    defaultMessage: 'Contact Us',
   },
 });

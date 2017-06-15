@@ -15,6 +15,8 @@ import toolsViewOptionsReducer from 'containers/ToolsViewOptions/reducer';
 import toolsSortOptionsReducer from 'containers/ToolsSortOptions/reducer';
 import searchFieldReducer from 'containers/SearchField/reducer';
 import toolsReducer from 'containers/Tools/reducer';
+import contactUsReducer from 'containers/ContactUs/reducer';
+
 /*
  * routeReducer
  *
@@ -56,6 +58,7 @@ export default function createReducer(asyncReducers) {
     toolsView: toolsViewOptionsReducer,
     toolsSort: toolsSortOptionsReducer,
     tools: toolsReducer,
+    contactUs: contactUsReducer,
     ...asyncReducers,
   });
 }
