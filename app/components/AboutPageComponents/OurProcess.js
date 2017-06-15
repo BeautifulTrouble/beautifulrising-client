@@ -33,17 +33,32 @@ const ListItem = styled.li`list-style: none;
   display: inline-block;
   vertical-align: top;
   margin-bottom: 50px;
+  text-align: left;
 
+  &:last-child {
+    .circledContainer {
+      &::after {
+        display: none;
+      }
+    }
+  }
   h1 {
-    font-size: 24px;
+    font-size: 30px;
     margin-bottom: 5px;
     text-align: left;
   }
 
   p {
     text-align: left;
-    font-size: 18px;
+    font-size: 14px;
+    line-height: 22px;
     padding-left: 10px;
+    font-family: 'Avenir', sans-serif;
+
+    a {
+      color: #828486;
+      em { font-style: italic; }
+    }
   }
 
   h2 {
@@ -57,31 +72,41 @@ const ListItem = styled.li`list-style: none;
     text-align: left;
     padding-left: 20px;
     &::before {
-      content: '____';
+      content: ' ';
       display: block;
       clear: both;
+      width: 42px;
+      border-bottom: 2px solid;
     }
   }
 
   ol {
     li {
-      font-size: 14px;
+      font-size: 12px;
       text-align: left;
+      line-height: 20px;
     }
   }
 `;
 
 const ParticipantsContainer = styled.div`
   h3 {
-    font-size: 18px;
+    font-size: 16px;
+    font-family: 'Avenir Black', sans-serif;
+    letter-spacing: 0;
     text-transform: uppercase;
     margin-bottom: 20px;
+  }
+
+  h4 {
+    font-size: 30px;
   }
 `;
 
 const Image = styled.img`
   height: 120px;
   margin-bottom: 30px;
+  margin-left: 20px;
 `;
 class OurProcess extends React.Component {
 
