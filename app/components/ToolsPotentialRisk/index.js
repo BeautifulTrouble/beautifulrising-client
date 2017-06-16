@@ -18,13 +18,20 @@ const Container = styled.div`
 `;
 const Viewport = styled.div``;
 const Header = styled.h3`
+  font-size: 40px;
   text-transform: uppercase
+  margin: 0;
   * {
     vertical-align: middle;
     display: inline-block;
   }
+  border-bottom: 4px solid;
+  padding-bottom: 5px;
 `;
-const Content = styled.div``;
+const Content = styled.div`
+  font-size: 14px;
+  line-height: 22px;
+`;
 
 function ToolsPotentialRisk(props) {
   if (!props.content || props.content.trim().length == 0) return null;
