@@ -38,9 +38,11 @@ function Menu(props) {
   return (
     <MenuArea>
       <Logo top={'16px'} left={'116px'} />
-      <Home to="/">
-        <FormattedMessage {...messages.home} />
-      </Home>
+      { window.location.pathname.match(/^\/(type|tag|search)/) ? null :
+          (<Home to="/">
+            <FormattedMessage {...messages.home} />
+          </Home>)
+      }
       <AboutMenu onClick={props.onClick} />
       <PlatformsMenu onClick={props.onClick}/>
       <ContributeMenu onClick={props.onClick}/>
