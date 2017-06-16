@@ -15,6 +15,7 @@ import Isvg from 'react-inlinesvg';
 
 
 export const Header = styled.h1`
+  font-size: 48px;
 `;
 const Container = styled.div`
   padding-left: 96px;
@@ -56,18 +57,21 @@ const IconContainer = styled.div`
 
 const Title = styled.h1`
 margin-top: 0;
+position: relative;
+margin-bottom: 0px;
 
 &::before {
-  content: '_';
+  content: ' ';
   position: absolute;
-  top: -48px;
-  font-weight: normal;
-  font-family: Avenir, sans-serif;
+  width: 48px;
+  border-bottom: 2px solid;
+  left: 0;
 `;
 const Subtitle = styled.h3`
   font-family: 'Avenir Black', sans-serif;
   font-size: 16px;
   letter-spacing: 0px;
+  margin-bottom: 5px;
 `;
 
 const CTA = styled.div`
@@ -75,6 +79,11 @@ const CTA = styled.div`
   text-transform: uppercase;
   color: #828486;
   a { color: #828486; }
+`;
+
+const ContentArea = styled.div`
+  font-size: 14px;
+  line-height: 22px;
 `;
 
 export const PlatformsSection = styled.div`
@@ -102,12 +111,16 @@ export default class PlatformsPageComponents extends React.Component {
               <Subtitle>
                 <FormattedMessage {...messages.what} />
               </Subtitle>
-              <Markdown source={this.props.content.get('what')} />
+              <ContentArea>
+                <Markdown source={this.props.content.get('what')} />
+              </ContentArea>
 
               <Subtitle>
                 <FormattedMessage {...messages.how} />
               </Subtitle>
-              <Markdown source={this.props.content.get('how')} />
+              <ContentArea>
+                <Markdown source={this.props.content.get('how')} />
+              </ContentArea>
 
               <CTA>
                 <Markdown source={this.props.content.get('get')} />
