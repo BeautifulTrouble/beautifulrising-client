@@ -32,7 +32,12 @@ const TagListItem = styled.li`
   &:last-child {
     span { display: none; }
   }
+  font-size: 14px;
+  line-height: 22px;
   * { vertical-align: middle; }
+  span {
+    font-family: 'Avenir Black';
+  }
 `;
 
 const TagLink = styled(Link)`

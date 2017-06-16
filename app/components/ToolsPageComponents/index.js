@@ -45,6 +45,10 @@ export const ToolHeaderTitle = styled(ToolTitle)`
 
 export const ToolsPageLeftHeader = styled(CommonLeftHeader)`
   text-align: left;
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+
 `
 export const ToolsPageRightHeader = styled(CommonLeftHeader)`
   text-align: left;
@@ -52,7 +56,11 @@ export const ToolsPageRightHeader = styled(CommonLeftHeader)`
 `;
 
 export const ToolsPageContributor = styled(ToolsPageLeftHeader)`
-  font-size: 24px;
+  font-size: 40px;
+  margin: 0;
+  padding: 0;
+  line-height: 40px;
+  margin-top: 32px;
 `;
 
 export const ToolPageCaption = styled.div`
@@ -102,7 +110,7 @@ export const ToolHeaderViewport = styled.div`
 `;
 
 export const ToolLeftArea = styled(ToolInfoSection)`
-  width: 20%;
+  width: 165px;
   text-align: left;
 `;
 

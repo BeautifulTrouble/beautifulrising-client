@@ -34,6 +34,10 @@ export default defineMessages({
     id: 'app.containers.ToolPage.realWorldExamplesOf',
     defaultMessage: 'Real World Examples of "{title}"',
   },
+  contributedByHeader: {
+    id: 'app.containers.ToolPage.contributedByHeader',
+    defaultMessage: 'Contributed By'
+  },
 
   // RELATED TOOLS
 
