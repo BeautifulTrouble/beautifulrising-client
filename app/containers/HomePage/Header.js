@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import messages from './messages';
 import Link from 'components/Link';
 import TypeMenu from 'components/TypeMenu';
@@ -27,13 +27,14 @@ const HeaderContainer = styled.div`
     width: 240px;
     height: 4px;
     background-color: white;
-    ${props=>props.lang==='ar' ? 'left: 96px' : 'right: 95px'};
+    ${props=>props.lang==='ar' ? 'right: 96px' : 'left: 95px'};
   }
 `;
 
 function Header(props) {
+  const lang = props.intl.locale;
   return (
-    <HeaderContainer>
+    <HeaderContainer lang={lang}>
       <SearchField {...props.params}/>
       <ToolTypeArea lang={props.lang} {...props.params} />
     </HeaderContainer>
@@ -44,4 +45,4 @@ Header.propTypes = {
 
 };
 
-export default Header;
+export default injectIntl(Header);
