@@ -16,15 +16,30 @@ import { loadData, langChangeReloadData } from '../App/actions';
 
 const Container = styled.div`
   position: fixed;
-  right: 50%;
+  ${props=>props.lang==='ar'?'left: 50%': 'right:50%'}
   top: 10px;
   z-index: 500;
-  transform: translate(530px,0);
+  transform: ${props=>props.lang==='ar'?'translate(-530px,0)':'translate(530px,0)'};
 `;
 const Viewport = styled.div``;
 const Button = styled.button`
   outline: none;
   cursor: pointer;
+  font-family: ${props=>props.selected ? 'Avenir Black' : 'Avenir'}, sans-serif;
+`;
+
+const List = styled.ul`
+  margin: 0;
+  padding: 0;
+`;
+
+const Item = styled.li`
+  list-style: none;
+  display: inline-block;
+  border-right: 2px solid;
+  &:${props=>props.lang==='ar'?'first-child':'last-child'} {
+    border-right: none;
+  }
 `;
 
 export class LanguageChanger extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -34,11 +49,21 @@ export class LanguageChanger extends React.PureComponent { // eslint-disable-lin
   }
 
   render() {
+    const lang = this.props.language;
     return (
-      <Container>
-        <Viewport>
-          <Button onClick={this.handleClick.bind(this)} value={'en'}>EN</Button>
-          <Button onClick={this.handleClick.bind(this)} value={'es'}>ES</Button>
+      <Container lang={lang}>
+        <Viewport lang={lang}>
+          <List>
+            <Item lang={lang}>
+              <Button onClick={this.handleClick.bind(this)} selected={lang === 'en'} value={'en'}>EN</Button>
+            </Item>
+            <Item lang={lang}>
+              <Button onClick={this.handleClick.bind(this)} selected={lang === 'es'} value={'es'}>ES</Button>
+            </Item>
+            <Item lang={lang}>
+              <Button onClick={this.handleClick.bind(this)} selected={lang === 'ar'} value={'ar'}>AR</Button>
+            </Item>
+          </List>
         </Viewport>
       </Container>
     );

@@ -28,10 +28,15 @@ import { ToolsButton, ToolsListMenu, ToolsListMenuItem,
 import SelectedTool from './SelectedTool'
 
 export const ToolsListContainer = styled.div`
-    width: 222px;
-    float: right;
+    width: 216px;
+    float: ${props=>props.lang === 'ar' ? 'right' : 'left'};
+    direction: float: ${props=>props.lang === 'ar' ? 'rtl' : 'ltr'};
     height: 100%;
     display: ${props=>props.show ? 'block' : 'none'};
+    div * {
+      direction: ${props=>props.lang === 'ar' ? 'rtl' : 'ltr'};
+      text-align: right;
+    }
 `;
 
 const Container = styled.div`
@@ -60,7 +65,7 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
 
   render() {
     return (
-      <ToolsListContainer show={this.props.show} rotate={true}>
+      <ToolsListContainer show={this.props.show} lang={this.props.lang} rotate={true}>
         <ToolsListMenu>
           <ToolsListMenuItem>
             <ToolsButton

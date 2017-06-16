@@ -8,7 +8,8 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import makeSelectTools from './selectors';
+
+import makeSelectTools, {makeSelectLanguage} from './selectors';
 import messages from './messages';
 import styled from 'styled-components';
 import Isvg from 'react-inlinesvg';
@@ -27,6 +28,7 @@ import { NEWS_FEED, MY_TOOLS } from './constants';
  import NewsFeedIcon from 'assets/images/icons/news-feed.svg';
  import MyToolsIcon from 'assets/images/icons/my-tools.svg';
 
+import { ThemeProvider } from 'styled-components';
 
 import ToolsArea from './ToolsArea';
 import { setShowTools } from './actions';
@@ -62,6 +64,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
 
   render() {
     return (
+      <ThemeProvider theme={{ lang: this.props.language }} >
         <ToolsContainer showTools={this.props.Tools.show}>
           <ToolsViewport>
               <ToolsMenu>
@@ -96,9 +99,10 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
                   </ToolsButton>
                 </ToolsMenuItem>
               </ToolsMenu>
-            <ToolsArea show={this.props.Tools.show}/>
+            <ToolsArea lang={this.props.language} show={this.props.Tools.show}/>
           </ToolsViewport>
         </ToolsContainer>
+      </ThemeProvider>
     );
   }
 }
@@ -109,6 +113,7 @@ Tools.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   Tools: makeSelectTools(),
+  language: makeSelectLanguage()
 });
 
 function mapDispatchToProps(dispatch) {

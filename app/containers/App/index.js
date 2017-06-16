@@ -14,7 +14,7 @@
 import React from 'react';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import Page from 'components/Page';
 import Header from 'containers/Header';
 import Body from 'components/Body';
@@ -22,7 +22,7 @@ import Tools from 'containers/Tools';
 import Footer from 'components/Footer';
 import LanguageChanger from 'containers/LanguageChanger';
 import OnboardingModal from 'containers/OnboardingModal';
-import { isShowTools, isOnboarded } from './selectors';
+import { isShowTools, isOnboarded, makeSelectLanguage } from './selectors';
 
 //Themes
 
@@ -42,19 +42,23 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
   };
 
   render() {
+    const theme = {lang: this.props.language};
+
     return (
-      <Page>
-        <OnboardingModal isOpen={!this.props.isOnboarded} />
-        <LanguageChanger />
-        <Header />
-        <Body showTools={this.props.isShowTools}>
-          <Tools />
-          <Content>
-            {React.Children.toArray(this.props.children)}
-          </Content>
-          <Footer />
-        </Body>
-      </Page>
+      <ThemeProvider theme={theme}>
+        <Page lang={this.props.language} >
+          <OnboardingModal isOpen={!this.props.isOnboarded} />
+          <LanguageChanger />
+          <Header lang={this.props.language} />
+          <Body showTools={this.props.isShowTools} lang={this.props.language} >
+            <Tools />
+            <Content>
+              {React.Children.toArray(this.props.children)}
+            </Content>
+            <Footer />
+          </Body>
+        </Page>
+      </ThemeProvider>
     );
   }
 }
@@ -62,6 +66,7 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
 const mapStateToProps = createStructuredSelector({
   isOnboarded: isOnboarded(),
   isShowTools: isShowTools(),
+  language: makeSelectLanguage()
 });
 
 

@@ -8,7 +8,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import Menu from 'containers/Menu';
 import Isvg from 'react-inlinesvg';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import MenuIcon from 'assets/images/icons/menu.svg';
 import CloseIcon from 'assets/images/icons/close.svg';
 import styled from 'styled-components';
@@ -25,7 +25,6 @@ const customStyles = {
     left                  : '50%',
     right                 : 'auto',
     bottom                : 'auto',
-    marginRight           : '-450px',
     transform             : 'translate(-570px, 0)',
     padding: '0',
     border: 'none',
@@ -41,7 +40,7 @@ const Button = styled.button`
   cursor: pointer;
   outline: none;
   position: absolute;
-  left: 10px;
+  ${props=>props.lang==='ar'?'right':'left'}: 10px;
   top: 10px;
 `;
 
@@ -57,6 +56,7 @@ const CloseBox = styled.div`{
   padding: 10px;
   top: 0;
   left: 0;
+  text-align: ${props=>props.lang==='ar'?'right':'left'};
   width: 100%;
   border: 3px solid;
   background-color: white;
@@ -103,9 +103,10 @@ export class ModalMenu extends React.Component {
   }
 
   render() {
+    const lang = this.props.intl.locale;
     return (
       <Viewport>
-        <Button onClick={this.openModal}>
+        <Button lang={lang} onClick={this.openModal}>
           <Isvg src={MenuIcon} />
           <MenuText>
             <FormattedMessage {...messages.header} />
@@ -115,11 +116,16 @@ export class ModalMenu extends React.Component {
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
-          style={customStyles}
+          style={{...customStyles, content: {...customStyles.content,
+            left                  : lang==='ar'?'auto':'50%',
+            right                 : lang==='ar'?'50%':'auto',
+            [lang==='ar'?'marginLeft':'marginRight']           : '-450px',
+            transform             : lang==='ar'?'translate(570px, 0)':'translate(-570px, 0)',
+          }}}
           contentLabel="Example Modal"
         >
           <MenuContainer>
-            <CloseBox>
+            <CloseBox lang={lang}>
               <CloseButton onClick={this.closeModal.bind(this)}>
                 <Isvg src={CloseIcon} />
               </CloseButton>
@@ -137,4 +143,4 @@ ModalMenu.propTypes = {
 
 };
 
-export default ModalMenu;
+export default injectIntl(ModalMenu);

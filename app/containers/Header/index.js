@@ -8,7 +8,7 @@ import React from 'react';
 // import Link from 'components/Link';
 import Logo from 'components/Logo';
 import TypeMenu from 'components/TypeMenu';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import ModalMenu from 'containers/ModalMenu';
 import Link from 'components/Link';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -30,7 +30,6 @@ const PageHeader = styled.header`
   padding: 0 20px 0px;
   z-index: 300;
   text-align: center;
-
 `;
 
 const ModalMenuArea = styled(ModalMenu)`
@@ -49,12 +48,14 @@ class Header extends React.Component {
     const {formatMessage} = this.props.intl;
     const logo = formatMessage(messages.logoLanguage);
     return (
-      <PageHeader>
-        <Viewport>
-          <Logo/>
-          <ModalMenuArea />
-        </Viewport>
-      </PageHeader>
+      <ThemeProvider theme={{ ar: this.props.lang }} >
+        <PageHeader>
+          <Viewport>
+            <Logo lang={this.props.lang}/>
+            <ModalMenuArea lang={this.props.lang} />
+          </Viewport>
+        </PageHeader>
+      </ThemeProvider>
     );
   }
 }

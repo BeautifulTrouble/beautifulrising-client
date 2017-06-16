@@ -13,7 +13,7 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
  */
  const selectGlobal = (state) => { return state.get('global') };
  const selectToolsView = (state) => { return state.get('toolsView') }
-
+ const selectLanguage = (state) => state.get('language');
 
  const selectFilter = (state, props) => { return props.params.filter; }
  const selectLabel = (state, props) => { return props.params.label; }
@@ -32,6 +32,13 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
  );
 
  const isFullTool = (item) => item['module-type'] === 'gallery' || item['module-type'] === 'full' ;
+
+const makeSelectLanguage = createSelector(
+  [selectLanguage],
+  languageState => {
+    return languageState.get('locale');
+  }
+);
 
  const makeSelectAllTools = createSelector(
    [selectGlobal, selectFilter, selectLabel, allTags, selectRegion],
@@ -124,5 +131,6 @@ export {
   makeSelectAllTools,
   makeSelectToolView,
   makeSortedTools,
+  makeSelectLanguage,
   allTags
 };

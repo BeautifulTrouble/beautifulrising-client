@@ -11,4 +11,5 @@ export default styled.section`
   width: 100%;
   text-align: center;
   position: relative;
+  direction: ${props=>props.lang==='ar'?'rtl': 'ltr'};
 `;

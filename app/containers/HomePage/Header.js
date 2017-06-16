@@ -27,16 +27,15 @@ const HeaderContainer = styled.div`
     width: 240px;
     height: 4px;
     background-color: white;
-    left: 96px;
+    ${props=>props.lang==='ar' ? 'left: 96px' : 'right: 95px'};
   }
 `;
 
 function Header(props) {
-  // console.log(props.params);
   return (
     <HeaderContainer>
       <SearchField {...props.params}/>
-      <ToolTypeArea {...props.params} />
+      <ToolTypeArea lang={props.lang} {...props.params} />
     </HeaderContainer>
   );
 }
