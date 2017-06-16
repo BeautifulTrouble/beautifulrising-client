@@ -32,7 +32,8 @@ const ListItem = styled.li`list-style: none;
   a {
     color: #828486;
     font-size: 16px;
-    padding-right: 80px;
+    display: inline-block;
+    width: 100%;
   }
   p {
     text-align: left;
@@ -40,10 +41,16 @@ const ListItem = styled.li`list-style: none;
     padding-left: 10px;
   }`;
 
+const ImageContainer = styled.div`
+width: 65%;
+padding-bottom: 13px;
+`;
+
 const Image = styled.div`
   display: inline-block;
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
   background-image: url(${props=> `https://www.beautifulrising.org/assets/content/small-${props.source}`})
   background-size: contain;
   background-position: center;
@@ -51,15 +58,19 @@ const Image = styled.div`
 `;
 
 const Name = styled.h3`
-font-size: 16px !important;
+font-size: 14px !important;
 text-transform: uppercase;
+position: relative;
 
+font-family: 'Avenir Black', sans-serif;
 &::before {
-  content: '___';
-  display: block;
-  clear: both;
-  color: black;
-  font-weight: bold;
+  content: ' ';
+  width: 42px;
+  height: 1px;
+  border-bottom: 2px solid black;
+  position: absolute;
+  top: -10px;
+  left: 0;
 }
 `;
 const Team = styled.h5`
@@ -86,7 +97,9 @@ export default class Partners extends React.Component {
             { this.props.networkPartners === undefined ? null : this.props.networkPartners.map((item, ind) => (
               <ListItem key={ind}>
                 <a href={item.get('link')} target="_blank">
-                  <Image source={item.get('logo')} />
+                  <ImageContainer>
+                    <Image source={item.get('logo')} />
+                  </ImageContainer>
                   <Name>
                     {item.get('name')}
                   </Name>
