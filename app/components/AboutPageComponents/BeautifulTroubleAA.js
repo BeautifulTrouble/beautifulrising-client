@@ -20,7 +20,14 @@ const Container = styled.div``;
 const Content = styled.div``;
 const TableMenu = styled.table`border: 0;`;
 const Row = styled.tr``;
-const Column = styled.td`font-size: 16px; padding: 10px`;
+const Column = styled.td`
+  font-size: 14px; padding: 10px;
+  line-height: 22px;
+  a {
+    color: #828486;
+    em { font-style: italic; }
+  }
+`;
 
 const Image = styled.img``;
 
@@ -34,7 +41,7 @@ export class BeautifulTroubleAA extends React.Component {
       </VisibilitySensor>
     )
   }
-  
+
   render() {
     return (
       <AboutSection id='beautiful-trouble-and-action-aid'>
@@ -43,18 +50,18 @@ export class BeautifulTroubleAA extends React.Component {
           <Content>
             <TableMenu>
               <Row>
-                <Column colSpan={"2"} style={{ padding: '0 25%'}}>
+                <Column colSpan={"2"} style={{ padding: '0 25%', textAlign: 'center'}}>
                   <Markdown source={this.props.allData.getIn(['about', 'beautiful-trouble-and-action-aid', 'introduction'])} />
                 </Column>
               </Row>
               <Row>
                 <Column>
-                  <Markdown source={this.props.allData.getIn(['about', 'beautiful-trouble-and-action-aid', 'aa'])} />
-                  <Image src={ActionAidLogo} />
-                </Column>
-                <Column>
                   <Markdown source={this.props.allData.getIn(['about', 'beautiful-trouble-and-action-aid', 'bt'])} />
                   <Image src={BeautifulTroubleLogo} />
+                </Column>
+                <Column>
+                  <Markdown source={this.props.allData.getIn(['about', 'beautiful-trouble-and-action-aid', 'aa'])} />
+                  <Image src={ActionAidLogo} />
                 </Column>
               </Row>
             </TableMenu>

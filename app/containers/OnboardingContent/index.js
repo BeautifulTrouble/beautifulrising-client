@@ -38,7 +38,12 @@ const Header = styled.h2`
   font-family: 'Avenir Black', sans-serif;
   font-weight: 800;
   text-transform: uppercase;
-  }
+  border-bottom: 3px solid;
+  padding-left: 20px;
+  width: 100%;
+  display: inline-block;
+  padding-bottom: 15px;
+  margin-bottom: 0;
 `;
 const Content = styled.div`
   display: ${props=>props.show ? 'block' : 'none'};
@@ -46,6 +51,7 @@ const Content = styled.div`
 const Button = styled.button`
   outline: none;
   cursor: pointer;
+  text-align: left;
 `;
 const List = styled.ul`
   padding: 0;
@@ -53,7 +59,7 @@ const List = styled.ul`
 `;
 const CloseButton = styled(Button)`
   background: white;
-  border: 3px solid black;
+  border: 2px solid black;
   padding: 0;
   position: absolute;
   right: -27px;
@@ -62,7 +68,8 @@ const CloseButton = styled(Button)`
 const OnboardedButton = styled(Button)`
   font-family: 'Avenir Black', sans-serif;
   font-weight: 800;
-  font-size: 16px;
+  font-size: 12px;
+  text-align: center;
   background: white;
   width: 160px;
   padding: 5px;
@@ -78,8 +85,8 @@ const OnboardedButton = styled(Button)`
 
 const ListItem = styled.li`
   list-style: none;
-  border-bottom: 3px solid;
-  padding-left: 20px;
+  padding-right: 30px;
+  button { width: 100%; margin-right: 20px;}
   h2 {
     font-size: 20px;
   }
@@ -115,6 +122,8 @@ const SubTitle = styled.h2`
 `;
 const Spiel = styled.div`
   width: 500px;
+  font-size: 14px;
+  line-height: 22px;
 `;
 const Overlay = styled.div`
   width: 100%;

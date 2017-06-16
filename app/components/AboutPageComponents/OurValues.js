@@ -6,13 +6,16 @@
 
 import React from 'react';
 import styled from 'styled-components';
-
+import Markdown from 'react-remarkable';
 import { FormattedMessage } from 'react-intl';
 import { AboutSection } from 'components/AboutPageComponents';
 import VisibilitySensor from 'react-visibility-sensor';
 import messages from './messages';
 
-const List = styled.ul`text-align: left;`;
+const List = styled.ul`
+  text-align: left;
+  padding-left: 0;
+`;
 const SubList = styled.ul``;
 
 const ListItem = styled.li`
@@ -25,6 +28,8 @@ const Count = styled.h4`
   border-width: 0 0 3px;
   padding: 10px 20px 5px 5px;;
   margin: 0;
+  font-size: 30px;
+  font-family: 'Knockout';
   &::after {
     content: ' ';
     display: block;
@@ -36,11 +41,23 @@ const SubListItem = styled.li`
   list-style: none;
   h3 {
     margin: 0;
+    &::before {
+      content: ' ';
+      width: 42px;
+      height: 1px;
+      border-bottom: 2px solid;
+    }
   }
-  p {
-    font-size: 18px;
+  & > p {
+    font-size: 14px;
+    line-height: 22px;
     padding-left: 100px;
     margin: 10px;
+
+    a {
+      color: #828486;
+      em { font-style: italic; }
+    }
   }
 `
 
@@ -71,7 +88,9 @@ export default class OurValues extends React.Component {
                               <SubListItem key={subindex}>
                                 <Count>{subindex + 1}</Count>
                                 <h3>{subitem.get('title')}</h3>
-                                <p>{subitem.get('description')}</p>
+                                <p>
+                                  <Markdown source={subitem.get('description')} />
+                                </p>
                               </SubListItem>
                           )) }
                         </SubList>
@@ -86,7 +105,9 @@ export default class OurValues extends React.Component {
                       case 'disclaimer-text': return (
                         <SubList key={ind}>
                           <SubListItem>
-                            <p key={ind}>{item.get('value')}</p>
+                            <p key={ind} style={{color: '#828486'}}>
+                              <Markdown source={item.get('value')} />
+                            </p>
                           </SubListItem>
                         </SubList>
                       );

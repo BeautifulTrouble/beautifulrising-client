@@ -15,22 +15,22 @@ import styled from 'styled-components';
 
 const customStyles = {
   overlay: {
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'hsla(0,0%,58%,.75)',
     zIndex: 600,
     overflow: 'auto',
   },
   content : {
-    top                   : '5vh',
+    top                   : '57px',
     left                  : '50%',
     right                 : 'auto',
     bottom                : 'auto',
     transform             : 'translate(-50%, 0)',
     padding: '0',
     width: '1100px',
-    minHeight: '80vh',
+    // minHeight: '80vh',
     overflow: 'visible',
     borderRadius: 0,
-    border: '3px solid',
+    border: '2px solid',
     paddingBottom: '40px'
   }
 };
@@ -56,12 +56,12 @@ const CloseBox = styled.div`{
   top: 0;
   left: 0;
   width: 100%;
-  border: 3px solid;
+  border: 2px solid;
   background-color: white;
 }`;
 
 const MenuContainer= styled.div`{
-  border: 3px solid;
+  border: 2px solid;
   padding: 75px 0px 20px;
   overflow: auto;
   height: 100vh;

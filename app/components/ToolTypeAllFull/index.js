@@ -22,7 +22,9 @@ const Container = styled.section`
 const Viewport = styled.div``;
 const Row = styled.div`
   text-align: center;
-
+  &:first-child {
+    margin-bottom: 22px;
+  }
   &::after {
     content: ' ';
     clear: both;
@@ -53,7 +55,7 @@ const Head = styled.h3`
 `;
 const Desc = styled.p`
   margin: 0;
-  line-height: 1.3;
+  line-height: 22px;
   font-size: 14px;
   margin-top: 5px;
 

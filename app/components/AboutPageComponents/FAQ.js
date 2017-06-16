@@ -23,17 +23,20 @@ const ListItem = styled.li`list-style: none;
   margin-right: ${props=>props.theme.itemMargin};
   display: inline-block;
   vertical-align: top;
-  margin-bottom: 50px;
+  margin-bottom: 34px;
 
   h3 {
-    font-size: 24px;
+    font-size: 19px;
+    letter-spacing: 0px;
     margin-bottom: 5px;
     text-align: left;
+    font-family: 'Avenir Black';
   }
 
   p {
     text-align: left;
-    font-size: 18px;
+    font-size: 14px;
+    line-height: 22px;
     padding-left: 10px;
   }`;
 

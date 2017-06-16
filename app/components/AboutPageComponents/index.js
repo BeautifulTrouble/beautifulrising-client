@@ -21,6 +21,7 @@ function AboutPageComponents() {
 export const AboutSection = styled.div`
 font-size: 24px;
 padding: 0 20px;
+padding-top: 20px;
 h2 {
   text-transform: uppercase;
   border: 3px solid;
