@@ -63,7 +63,9 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
     return (
       <FormContainer>
         <form onSubmit={this.props.onSubmitForm.bind(this)}>
-          <input type='email' name='email' placeholder='samir@gmail.com'/><button>Submit</button>
+          <input type='email' name='email' placeholder='samir@gmail.com'/><button>
+            <FormattedMessage {...messages.submit} />
+          </button>
         </form>
       </FormContainer>
 
@@ -72,7 +74,9 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
 
   renderResponse() {
     return (
-      <div>Complete</div>
+      <div>
+        <FormattedMessage {...messages.complete} />
+      </div>
     )
   }
   render() {
@@ -90,7 +94,7 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
             <Isvg src={FacebookIcon} />
           </SocialLink>
           <p>
-            Subscribe to our newsletter.
+            <FormattedMessage {...messages.subscribe} />
           </p>
         </div>
 

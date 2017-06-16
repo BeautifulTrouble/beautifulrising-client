@@ -10,4 +10,16 @@ export default defineMessages({
     id: 'app.containers.ContactUs.header',
     defaultMessage: 'Contact Us',
   },
+  subscribe: {
+    id: 'app.containers.ContactUs.subscribe',
+    defaultMessage: 'Subscribe to our newsletter.'
+  },
+  complete: {
+    id: 'app.containers.ContactUs.complete',
+    defaultMessage: 'Complete'
+  },
+  submit: {
+    id: 'app.containers.ContactUs.submit',
+    defaultMessage: 'Submit'
+  }
 });

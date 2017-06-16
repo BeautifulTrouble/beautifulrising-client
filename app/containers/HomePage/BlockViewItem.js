@@ -46,7 +46,9 @@ class BlockViewItem extends React.Component {
         <BlockViewport>
           <Link to={`/tool/${this.props.slug}`}>
             <BlockViewTitleArea show={!this.state.mouseOver}>
-              <ToolType type={this.props.type}>{this.props.type}</ToolType>
+              <ToolType type={this.props.type}>
+                <FormattedMessage { ...messages[this.props.type] } />
+              </ToolType>
               <ToolTitle color={'white'}>
                 {this.props.title}
               </ToolTitle>

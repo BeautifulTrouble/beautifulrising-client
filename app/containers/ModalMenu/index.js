@@ -8,10 +8,12 @@ import React from 'react';
 import Modal from 'react-modal';
 import Menu from 'containers/Menu';
 import Isvg from 'react-inlinesvg';
-
+import { FormattedMessage } from 'react-intl';
 import MenuIcon from 'assets/images/icons/menu.svg';
 import CloseIcon from 'assets/images/icons/close.svg';
 import styled from 'styled-components';
+
+import messages from './messages';
 
 const customStyles = {
   overlay: {
@@ -105,7 +107,9 @@ export class ModalMenu extends React.Component {
       <Viewport>
         <Button onClick={this.openModal}>
           <Isvg src={MenuIcon} />
-          <MenuText>MENU</MenuText>
+          <MenuText>
+            <FormattedMessage {...messages.header} />
+          </MenuText>
         </Button>
         <Modal
           isOpen={this.state.modalIsOpen}
