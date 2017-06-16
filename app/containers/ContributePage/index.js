@@ -26,9 +26,9 @@ import { makeSelectAllToolsWithSlugIndex,
 import messages from './messages';
 
 
-const Title = styled.h1``;
+const Title = styled.h1`font-size: 48px;`;
 const Subtitle = styled.h2`
-  font-size: 18px;
+  font-size: 19px;
   font-family: 'Avenir Black', sans-serif;
   letter-spacing: 0;
   border-bottom: 3px solid;
@@ -39,13 +39,15 @@ const Subtitle = styled.h2`
 `;
 const Subsubtitle = styled.h3`
   font-family: 'Avenir Black', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: 0;
   margin-top: 60px;
 `;
 
 const Content = styled.div`
   padding: 10px 60px;
+  font-size: 14px;
+  line-height: 22px;
 
 `;
 
@@ -55,14 +57,14 @@ const Divider = styled.div`
   display: inline-block;
   width: 2px;
   border-right: 1px solid;
-  height: 50px;
+  height: 90px;
   position: absolute;
   left: 50%;
 }
 `;
 
 const ContributeTypeContainer = styled.div`
-  margin-top: 60px;
+  margin-top: 95px;
 `;
 
 export class ContributePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
