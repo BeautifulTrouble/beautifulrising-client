@@ -35,10 +35,11 @@ const Home = styled(MenuLink)`
   border-bottom: solid 2px black;
 `;
 function Menu(props) {
+  console.log("XX", window.location.pathname);
   return (
     <MenuArea>
       <Logo top={'16px'} left={'116px'} />
-      { window.location.pathname.match(/^\/(type|tag|search)/) ? null :
+      { window.location.pathname.match(/^\/(type|tag|search)*/) ? null :
           (<Home to="/">
             <FormattedMessage {...messages.home} />
           </Home>)
