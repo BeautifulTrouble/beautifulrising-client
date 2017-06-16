@@ -12,9 +12,13 @@ export default styled(Link)`
   text-decoration: underline;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 14px;
+  line-height: 22px;
   color: #828486;
   display: block;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 12px;
+  margin-top: 0;
+  padding-top: 0;
 
 `;
