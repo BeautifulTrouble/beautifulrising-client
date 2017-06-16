@@ -33,8 +33,12 @@ const FlagContainer = styled.div`
 `;
 const FlagViewport = styled.div`
   position: relative;
+  width: 264px;
+  min-height: 100px;
+  overflow: visible;
 `;
 const Flag = styled(Isvg)`
+  position: absolute;
   display: ${props=>props.show?'block':'none'};
 `;
 

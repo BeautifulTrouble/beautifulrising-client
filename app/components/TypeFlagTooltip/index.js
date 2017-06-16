@@ -15,7 +15,7 @@ const Container = styled.div`
   right: 70px;
   border: 2px solid;
   font-weight: bold;
-  bottom: 180px;
+  bottom: 110px;
   padding: 3px;
   display: ${props=>props.show?'block':'none'};
   max-width: 500px;

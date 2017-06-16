@@ -92,6 +92,9 @@ const Subtitle = styled.h2`
   margin-bottom: 60px;
   margin-left: 30px;
   margin-right: 30px;
+
+  margin-bottom: 10px;
+  margin-top: 30px;
 `;
 
 class ContributeType extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
