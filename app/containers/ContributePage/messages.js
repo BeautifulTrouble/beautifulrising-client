@@ -11,7 +11,7 @@ export default defineMessages({
     defaultMessage: 'Contribute',
   },
   typeOfContent: {
-    id: 'typeOfContent',
+    id: 'app.containers.ContributePage.typeOfContent',
     defaultMessage: 'WHAT TYPE OF CONTENT WOULD YOU LIKE TO CONTRIBUTE?'
-  }
+  },
 });

@@ -81,12 +81,24 @@ const Button = styled.button`
   outline: none;
   cursor: pointer;
 `;
+const Examples = styled.div`
+`;
+
+const Subtitle = styled.h2`
+  font-size: 18px;
+  font-family: 'Avenir Black', sans-serif;
+  letter-spacing: 0;
+  padding-bottom: 20px;
+  margin-bottom: 60px;
+  margin-left: 30px;
+  margin-right: 30px;
+`;
 
 class ContributeType extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
     this.state = {
-      chosen: null
+      chosen: 0
     }
   }
 
@@ -100,6 +112,7 @@ class ContributeType extends React.PureComponent { // eslint-disable-line react/
   }
 
   render() {
+    console.log("X", this.props)
     return (
       <Container>
         <Viewport>
@@ -121,6 +134,13 @@ class ContributeType extends React.PureComponent { // eslint-disable-line react/
               </Type>
             ))}
           </TypeList>
+          <Examples>
+            <Subtitle>
+              <FormattedMessage {...messages.examples} />
+            </Subtitle>
+
+            {this.props.examples[DATA[this.state.chosen].type]}
+          </Examples>
         </Viewport>
       </Container>
     );

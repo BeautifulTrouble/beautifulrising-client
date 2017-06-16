@@ -15,10 +15,13 @@
 import ContributeType from 'components/ContributeType';
  import { loadData } from 'containers/App/actions';
  import styled from 'styled-components';
+
+ import BlockViewItem from 'containers/HomePage/BlockViewItem';
  //For listening
  import { browserHistory } from 'react-router';
 
-import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
+import { makeSelectAllToolsWithSlugIndex,
+          makeSelectExamples} from 'containers/App/selectors';
 
 import messages from './messages';
 
@@ -88,6 +91,8 @@ export class ContributePage extends React.Component { // eslint-disable-line rea
     const contribute = this.props.aboutData.getIn(['contribute', 'misc']);
     if (contribute == null) { return null; }
 
+    const storyEx = this.props.storyExamples;
+    console.log(this.props)
     return (
       <div>
         <Helmet
@@ -121,19 +126,33 @@ export class ContributePage extends React.Component { // eslint-disable-line rea
           <Subtitle>
             <FormattedMessage {...messages.typeOfContent} />
           </Subtitle>
-          <ContributeType />
+          <ContributeType
+            examples={{
+              story: storyEx.map((item,ind) => (<BlockViewItem key={ind} {...item}/>)),
+              principle: this.props.principleExamples.map((item,ind) => (<BlockViewItem key={ind} {...item}/>)),
+              methodology: this.props.methodologyExamples.map((item,ind) => (<BlockViewItem key={ind} {...item}/>)),
+              tactic: this.props.tacticExample.map((item,ind) => (<BlockViewItem key={ind} {...item}/>)),
+              theory: this.props.theoryExample.map((item,ind) => (<BlockViewItem key={ind} {...item}/>))
+            }}
+          />
         </ContributeTypeContainer>
       </div>
     );
   }
 }
 
+
 ContributePage.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  aboutData: makeSelectAllToolsWithSlugIndex()
+  aboutData: makeSelectAllToolsWithSlugIndex(),
+  principleExamples: makeSelectExamples('principle'),
+  storyExamples: makeSelectExamples('story'),
+  methodologyExamples: makeSelectExamples('methodology'),
+  tacticExample: makeSelectExamples('tactic'),
+  theoryExample: makeSelectExamples('theory')
 });
 
 function mapDispatchToProps(dispatch) {
