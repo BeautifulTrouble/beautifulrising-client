@@ -27,7 +27,7 @@
   "app.components.IconButton.header": "",
   "app.components.Link.header": "",
   "app.components.Logo.header": "",
-  "app.components.Logo.language": "",
+  "app.components.Logo.language": "ar",
   "app.components.Menu.advisoryNetMenu": "",
   "app.components.Menu.btaaMenu": "",
   "app.components.Menu.faqMenu": "",

@@ -25,6 +25,21 @@ const Viewport = styled.div``;
 const Button = styled.button`
   outline: none;
   cursor: pointer;
+  font-family: ${props=>props.selected ? 'Avenir Black' : 'Avenir'}, sans-serif;
+`;
+
+const List = styled.ul`
+  margin: 0;
+  padding: 0;
+`;
+
+const Item = styled.li`
+  list-style: none;
+  display: inline-block;
+  border-right: 2px solid;
+  &:last-child {
+    border-right: none;
+  }
 `;
 
 export class LanguageChanger extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -34,11 +49,21 @@ export class LanguageChanger extends React.PureComponent { // eslint-disable-lin
   }
 
   render() {
+    const lang = this.props.language.get('locale');
     return (
       <Container>
         <Viewport>
-          <Button onClick={this.handleClick.bind(this)} value={'en'}>EN</Button>
-          <Button onClick={this.handleClick.bind(this)} value={'es'}>ES</Button>
+          <List>
+            <Item>
+              <Button onClick={this.handleClick.bind(this)} selected={lang === 'en'} value={'en'}>EN</Button>
+            </Item>
+            <Item>
+              <Button onClick={this.handleClick.bind(this)} selected={lang === 'es'} value={'es'}>ES</Button>
+            </Item>
+            <Item>
+              <Button onClick={this.handleClick.bind(this)} selected={lang === 'ar'} value={'ar'}>AR</Button>
+            </Item>
+          </List>
         </Viewport>
       </Container>
     );
