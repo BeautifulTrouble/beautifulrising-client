@@ -103,6 +103,14 @@ const makeSelectToolById = createSelector(
   }
 )
 
+const isFullTool = (item) => item['module-type'] === 'gallery' || item['module-type'] === 'full' ;
+const makeSelectExamples = (type) => createSelector(
+  selectGlobal,
+  (globalState) => {
+    let data = globalState.getIn(['appData', 'information']);
+    return data.filter(item => isFullTool(item) && item.type === type).slice(0,4);
+  }
+)
 
 const makeSelectLoading = () => createSelector(
   selectGlobal,
@@ -151,6 +159,7 @@ export {
   makeSelectAllToolsWithSlugIndex,
   makeSelectAdvisoryBoard,
   makeSelectLanguage,
-  isOnboarded
+  isOnboarded,
+  makeSelectExamples
   // makeSelectToolView,
 };

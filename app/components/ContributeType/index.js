@@ -81,19 +81,30 @@ const Button = styled.button`
   outline: none;
   cursor: pointer;
 `;
+const Examples = styled.div`
+`;
+
+const Subtitle = styled.h2`
+  font-size: 18px;
+  font-family: 'Avenir Black', sans-serif;
+  letter-spacing: 0;
+  padding-bottom: 20px;
+  margin-bottom: 60px;
+  margin-left: 30px;
+  margin-right: 30px;
+`;
 
 class ContributeType extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
     this.state = {
-      chosen: null
+      chosen: 0
     }
   }
 
   handleClick(index) {
     // console.log(e.target, e);
     if ( index === this.state.chosen ) {
-      this.setState({ chosen: null })
     } else {
       this.setState({ chosen: index });
     }
@@ -121,6 +132,15 @@ class ContributeType extends React.PureComponent { // eslint-disable-line react/
               </Type>
             ))}
           </TypeList>
+          <Examples>
+            <Subtitle>
+              <FormattedMessage {...messages.examples} values={{
+                type: DATA[this.state.chosen].label
+              }}/>
+            </Subtitle>
+
+            {this.props.examples[DATA[this.state.chosen].type]}
+          </Examples>
         </Viewport>
       </Container>
     );
@@ -132,7 +152,7 @@ const DATA = [
   {
     type: 'story',
     icon: StoryIcon,
-    label: 'Story',
+    label: 'Stories',
     description: 'Accounts of memorable actions and campaigns, analysing what worked, or didn’t, and why',
     form: '[GO TO FORM](https://docs.google.com/forms/d/e/1FAIpQLSeC_EdxoO7owVnL8fjSERZlychwMhDOR-7rI1SDtpL4ijZgkg/viewform)'
   },

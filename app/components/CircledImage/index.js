@@ -13,6 +13,7 @@ const CircledContainer = styled.div`
   height: 160px;
   vertical-align: middle;
   position: relative;
+  text-align: center;
 
   &::after {
     content: ' ';

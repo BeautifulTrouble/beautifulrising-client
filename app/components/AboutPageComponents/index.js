@@ -22,15 +22,31 @@ export const AboutSection = styled.div`
 font-size: 24px;
 padding: 0 20px;
 padding-top: 20px;
+position: relative;
 h2 {
   text-transform: uppercase;
   border: 3px solid;
   border-width: 0 0 3px;
-  font-size: 24px;
+  font-size: 19px;
+  letter-spacing: 0;
+  font-family: 'Avenir Black', sans-serif;
   margin-top: 40px;
-  padding: 15px 30px;
+  padding: 15px 20px;
   text-align: left;
+  position: relative;
+  margin-bottom: 80px;
+
+  &::after {
+    content: ' ';
+    position: absolute;
+    height: 80px;
+    border-right: 1px solid;
+    width: 1PX;
+    bottom: -65px;
+    left: 50%;
+  }
 }
+
 `;
 
 AboutPageComponents.propTypes = {
