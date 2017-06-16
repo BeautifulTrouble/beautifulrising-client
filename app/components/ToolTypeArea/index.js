@@ -30,6 +30,7 @@ const AllContainer = styled.div`
   border: solid black;
   border-width: 0 2px 2px;
   padding: 20px 60px;
+  text-align: ${props=>props.lang === 'ar' ? 'right' : 'left'};
 `;
 
 class ToolTypeArea extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -57,21 +58,22 @@ class ToolTypeArea extends React.PureComponent { // eslint-disable-line react/pr
   }
 
   render() {
+    console.log(this.props);
     const onTop = this.state.scrollY < 10;
     if (this.props.filter !== 'type' || !this.props.label || this.props.label === undefined) {
       //All
       return (
-        <AllContainer>
-          <ToolTypeAllFull show={onTop} {...this.props} />
-          <ToolTypeAllPartial show={!onTop} {...this.props} />
+        <AllContainer lang={this.props.lang}>
+          <ToolTypeAllFull lang={this.props.lang} show={onTop} {...this.props} />
+          <ToolTypeAllPartial lang={this.props.lang} show={!onTop} {...this.props} />
         </AllContainer>
       );
     } else {
       //Selected
       return (
         <div>
-          <ToolTypeSelectedFull show={onTop} {...this.props}/>
-          <ToolTypeSelectedPartial show={!onTop} {...this.props}/>
+          <ToolTypeSelectedFull lang={this.props.lang}  show={onTop} {...this.props}/>
+          <ToolTypeSelectedPartial lang={this.props.lang} show={!onTop} {...this.props}/>
         </div>
       );
     }

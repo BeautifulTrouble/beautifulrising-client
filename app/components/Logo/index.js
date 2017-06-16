@@ -24,8 +24,6 @@ class Logo extends React.Component {
     const {formatMessage} = this.props.intl;
     const logo = formatMessage(messages.logoLanguage);
 
-    console.log(logo);
-    
     if (this.props.isReversed !== undefined && this.props.isReversed) {
       return (
         <Title withBg={this.props.withBg} top={this.props.top} left={this.props.left}>

@@ -60,6 +60,7 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
   }
 
   generateFullContent() {
+
     if (!this.props['full-write-up']) return null;
 
     const imageReplaced = this.props['full-write-up'].replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)");
@@ -119,7 +120,7 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
     );
   }
   render() {
-
+    console.log(this);
     // If snapshot, render the snapshot area...
     const snapshotArea = this.props['module-type'] === 'snapshot' ? this.renderSnapshot() : null;
     return (

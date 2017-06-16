@@ -17,7 +17,8 @@ import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
 const RegionContainer = styled.div`
   position: absolute;
   top: 10px;
-  right: 10px;
+  ${props=>props.lang==='ar' ? 'left: 10px;' : 'right: 10px;'}
+  svg {  width: 50px; height: 50px;}
 `;
 
 class BlockViewItem extends React.Component {
@@ -40,6 +41,7 @@ class BlockViewItem extends React.Component {
    render() {
      return (
       <BlockContainer
+            lang={this.props.lang}
             onMouseOver={this.handleMouseOver.bind(this)}
             onMouseOut={this.handleMouseOut.bind(this)}
             background={`url(${BR_IMAGE_PREFIX + this.props.image})`}>
@@ -58,7 +60,7 @@ class BlockViewItem extends React.Component {
                 type={this.props.type}>{this.props.snapshot}</BlockSpiel>
 
             { this.props.type === 'story' ?
-                <RegionContainer>
+                <RegionContainer lang={this.props.lang}>
                   <RegionIcon type={this.props.type} region={slugify(this.props.region)} />
                 </RegionContainer>
               : null }

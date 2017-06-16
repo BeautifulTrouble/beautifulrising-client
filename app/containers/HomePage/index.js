@@ -14,7 +14,7 @@ import { BLOCK_VIEW, LIST_VIEW } from 'containers/ToolsViewOptions/constants';
 import { makeSelectToolById,
           makeSelectData,
           makeSelectLoading,
-          makeSelectError,
+          makeSelectError
        } from 'containers/App/selectors';
 
 import ToolsViewOptions from 'containers/ToolsViewOptions';
@@ -27,7 +27,7 @@ import { LeftHeader, LeftContainer } from 'components/HomePageComponents';
 import Stage from 'components/Stage';
 
 import { loadData } from '../App/actions';
-import makeSelectHomePage, { makeSelectToolView, makeSelectAllTools, makeSortedTools } from './selectors';
+import makeSelectHomePage, { makeSelectToolView, makeSelectAllTools, makeSortedTools, makeSelectLanguage } from './selectors';
 import styled from 'styled-components';
 
 
@@ -69,19 +69,23 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
       </SearchResultsContainer>
     );
   }
+  getDirection() {
+    return this.props.language === 'ar' ? 'rtl' : 'ltr';
+  }
 
   render() {
+    const lang = this.props.language;
     const ListItem = this.getViewMode();
     return (
-      <Container>
+      <Container dir={this.getDirection()}>
         <Helmet
           title="HomePage"
           meta={[
             { name: 'description', content: 'Description of HomePage' },
           ]}
         />
-        <Header {...this.props} />
-        <LeftSection>
+        <Header {...this.props} lang={lang}/>
+        <LeftSection lang={lang}>
 
           <LeftHeader>
             <FormattedMessage {...messages.viewAs} />
@@ -105,10 +109,10 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           </LeftHeader>
           <Tags />
         </LeftSection>
-        <Stage>
+        <Stage lang={lang}>
           {this.getSearchResultsHeader()}
           <ToolList>
-            { this.props.sorted ? this.props.sorted.map(tool => { return (<ListItem key={tool['_id']} {...tool}/>) }) : null }
+            { this.props.sorted ? this.props.sorted.map(tool => { return (<ListItem lang={lang} key={tool['_id']} {...tool}/>) }) : null }
           </ToolList>
         </Stage>
       </Container>
@@ -127,7 +131,8 @@ const mapStateToProps = (state, props) => {
     loading: makeSelectLoading(state),
     error: makeSelectError(state),
     tools: makeSelectAllTools(state, props),
-    sorted: makeSortedTools(state, props)
+    sorted: makeSortedTools(state, props),
+    language: makeSelectLanguage(state, props)
   }
 };
 

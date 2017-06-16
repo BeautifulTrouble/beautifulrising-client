@@ -149,7 +149,7 @@ export const ToolsContainer = styled.div`
   `;
 
 export const ToolContainer = styled.div`
-  float: left;
+  ${props=>props.lang==='ar' ? 'float: right' : 'float: left'};
   margin-right: 10px;
   margin-bottom: 10px;
   text-align: left;
@@ -168,7 +168,7 @@ export const BlockContainer = styled(ToolContainer)`
 
 `;
 export const BlockViewport = styled(ToolViewport)`
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0,0,0,0.5);
   padding: 10px;
   width: 100%;
   height: 100%;
@@ -188,7 +188,9 @@ export const BlockViewTitleArea = styled.div`
   position: absolute;
   top: ${props=>props.top || '10px'};
   left: 10px;
+  padding-right: 10px;
   z-index: 100;
+  width: calc(100% - 10px);
   opacity: ${props=>props.show?'1':'0'};
   transition: opacity 0.2s;
 `;
