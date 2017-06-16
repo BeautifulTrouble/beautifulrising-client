@@ -25,20 +25,28 @@ const ListItem = styled.li`list-style: none;
   text-align: left;
 
   h3 {
-    font-size: 26px;
+
+    font-size: 19px;
+    font-family: 'Avenir Black', sans-serif;
     margin: 0;
-    margin-bottom: 5px;
+    margin-top: 15px;
     text-align: left;
     text-transform: uppercase;
+    letter-spacing: 0;
+
   }
   h5 {
     margin: 0;
-    font-size: 16px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: 'Avenir Black', sans-serif;
+    letter-spacing: 0;
   }
 
   p {
     text-align: left;
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 22px;
     padding-right: 30px;
 
     a {
@@ -57,9 +65,9 @@ const Image = styled.div`
   border: 3px solid;
 `;
 
-const Name = styled.h3``;
+const Name = styled.h3`
+`;
 const Team = styled.h5`
-  text-transform: uppercase;
 `;
 const Content = styled.div``;
 
