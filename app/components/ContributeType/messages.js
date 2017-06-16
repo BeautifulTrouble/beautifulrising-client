@@ -12,7 +12,7 @@ export default defineMessages({
   },
   examples: {
     id: 'app.containers.ContributePage.examples',
-    defaultMessage: 'Examples of Stories that were contributed'
+    defaultMessage: 'Examples of {type} that were contributed'
   }
 
 });

@@ -112,7 +112,6 @@ class ContributeType extends React.PureComponent { // eslint-disable-line react/
   }
 
   render() {
-    console.log("X", this.props)
     return (
       <Container>
         <Viewport>
@@ -136,7 +135,9 @@ class ContributeType extends React.PureComponent { // eslint-disable-line react/
           </TypeList>
           <Examples>
             <Subtitle>
-              <FormattedMessage {...messages.examples} />
+              <FormattedMessage {...messages.examples} values={{
+                type: DATA[this.state.chosen].label
+              }}/>
             </Subtitle>
 
             {this.props.examples[DATA[this.state.chosen].type]}

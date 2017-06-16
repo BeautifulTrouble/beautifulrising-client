@@ -92,7 +92,6 @@ export class ContributePage extends React.Component { // eslint-disable-line rea
     if (contribute == null) { return null; }
 
     const storyEx = this.props.storyExamples;
-    console.log(this.props)
     return (
       <div>
         <Helmet
