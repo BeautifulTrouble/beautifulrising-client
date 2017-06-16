@@ -11,7 +11,7 @@ import Markdown from 'react-remarkable';
 const Container = styled.section`text-align: left;`;
 const Viewport = styled.div``;
 const Content = styled.div`
-
+  padding-left: 15px;
   & p:last-child {
     color: gray;
   }

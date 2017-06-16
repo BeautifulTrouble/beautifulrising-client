@@ -14,10 +14,23 @@ const PullQuote = styled.blockquote`
   float: left;
   padding: 0;
   margin: 10px 20px 10px 0;
-  font-size: 18px;
+  font-size: 22px;
+  line-height: 30px;
   max-width: 45%;
-  border-top: 2px solid black;
   padding-top: 10px;
+  font-family: 'Paint Hand', serif;
+  text-transform: uppercase;
+  position: relative;
+
+  &::before {
+    content: ' ';
+    width: 42px;
+    height: 0;
+    border-bottom: 2px solid;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 `;
 class ToolWithPullQuote extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 

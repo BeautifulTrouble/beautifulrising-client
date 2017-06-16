@@ -36,11 +36,17 @@ export const ToolHeader = styled.section`
 `;
 
 export const ToolHeaderType = styled(ToolType)`
-  font-size: 30px;
+  font-size: 40px;
+  margin-bottom: 20px;
+  padding: 0;
+  line-height: 36px;
 `;
 
 export const ToolHeaderTitle = styled(ToolTitle)`
-  font-size: 60px;
+  font-size: 80px;
+  margin: 0 0 20px;
+  padding: 0;
+  line-height: 70px;
 `;
 
 export const ToolsPageLeftHeader = styled(CommonLeftHeader)`
@@ -104,7 +110,7 @@ export const ToolHeaderViewport = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0,0,0,0.5);
   text-align: left;
   padding-left: 90px;
   overflow: ${props=>props.showOverflow?'visible':'hidden'};
