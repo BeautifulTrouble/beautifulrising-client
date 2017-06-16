@@ -27,8 +27,8 @@ import messages from './messages';
 */
 
 const AllContainer = styled.div`
-  border: solid 3px black;
-  border-width: 0 3px 3px;
+  border: solid black;
+  border-width: 0 2px 2px;
   padding: 20px 60px;
 `;
 

@@ -18,6 +18,16 @@ import TheoryIcon from 'assets/images/type/theories-option.svg';
 
 const Container = styled.section`
     display: ${props=>props.show ? 'block' : 'none'};
+
+    position: relative;
+    &::after {
+      content: ' ';
+      position: absolute;
+      height: 40px;
+      width: 1px;
+      left: 50%;
+      border-right: 1px solid;
+    }
 `;
 const Viewport = styled.div``;
 const Row = styled.div`
@@ -32,7 +42,7 @@ const Row = styled.div`
   }
 `;
 const ToolType = styled(Link)`
-  width: 195px;
+  width: 205px;
   display: inline-block;
   text-align: left;
   vertical-align: top;
@@ -77,7 +87,7 @@ function ToolTypeAllFull(props) {
               <Isvg src={StoryIcon} />
             </ToolType>
 
-            <ToolType to={'/type/story'} style={{paddingTop: 20}}>
+            <ToolType to={'/type/story'} style={{paddingTop: 35}}>
               <Desc><FormattedMessage {...messages.storyDesc} /></Desc>
             </ToolType>
         </Row>
