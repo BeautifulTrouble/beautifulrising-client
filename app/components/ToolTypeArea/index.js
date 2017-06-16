@@ -58,7 +58,6 @@ class ToolTypeArea extends React.PureComponent { // eslint-disable-line react/pr
   }
 
   render() {
-    console.log(this.props);
     const onTop = this.state.scrollY < 10;
     if (this.props.filter !== 'type' || !this.props.label || this.props.label === undefined) {
       //All
