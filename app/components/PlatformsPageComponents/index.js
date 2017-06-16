@@ -36,6 +36,7 @@ const ImageContent= styled.div`
   float: right;
   height: 400px;
   display: inline-block;
+  margin-top: 130px;
 `;
 const Image = styled.div`
   width: 100%;
