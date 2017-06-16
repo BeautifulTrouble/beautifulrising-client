@@ -7,7 +7,7 @@ const selectLanguage = (state) => state.get('language');
 
 const makeSelectLanguage = () => createSelector(
   [selectLanguage],
-  (languageState) => languageState
+  (languageState) => languageState.get('locale')
 )
 /* This will take all items */
 /* Source: https://stackoverflow.com/questions/33830745/immutablejs-convert-list-to-indexed-map */

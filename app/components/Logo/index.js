@@ -14,25 +14,27 @@ import messages from './messages';
 const Title = styled.h1`
   position: absolute;
   background-color: ${props=>props.withBg ? 'white' : 'transparent'};
-  top: ${props=>props.top || '0'};
-  left: ${props=>props.left || '100px'};
+  top: ${props=> props.top || '0' };
+  ${props=>props.lang==='ar'?'right':'left'}: ${props=>props.left || '100px'};
   margin: 0;
 `;
 
 class Logo extends React.Component {
+
   render() {
     const {formatMessage} = this.props.intl;
+    const language = this.props.intl.locale;
     const logo = formatMessage(messages.logoLanguage);
 
     if (this.props.isReversed !== undefined && this.props.isReversed) {
       return (
-        <Title withBg={this.props.withBg} top={this.props.top} left={this.props.left}>
+        <Title withBg={this.props.withBg} top={this.props.top} left={this.props.left} lang={language}>
           <Link to='/'><img src={require(`assets/images/logo-reverse-${logo}.png`)} /></Link>
         </Title>
       );
     } else {
       return (
-        <Title withBg={this.props.withBg} top={this.props.top} left={this.props.left}>
+        <Title withBg={this.props.withBg} top={this.props.top} left={this.props.left} lang={language}>
           <Link to='/'><img src={require(`assets/images/logo-${logo}.png`)} /></Link>
         </Title>
       );

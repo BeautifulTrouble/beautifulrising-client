@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import MenuLink from 'components/MenuLink';
 import Logo from 'components/Logo';
 import AboutMenu from 'components/AboutMenu';
@@ -22,7 +22,7 @@ const MenuArea = styled.div`
   content: ' ';
   position: absolute;
   top: 67px;
-  left: 115px;
+  left: ${props=>props.lang==='ar'?'3px':'115px'};
   background-color: white;
   z-index: 0;
   width: 182px;
@@ -35,9 +35,9 @@ const Home = styled(MenuLink)`
   border-bottom: solid 2px black;
 `;
 function Menu(props) {
-  console.log("XX", window.location.pathname);
+  const lang = props.intl.locale;
   return (
-    <MenuArea>
+    <MenuArea lang={lang}>
       <Logo top={'16px'} left={'116px'} />
       { window.location.pathname.match(/^\/(type|tag|search)*/) ? null :
           (<Home to="/">
@@ -57,4 +57,4 @@ Menu.propTypes = {
 
 };
 
-export default Menu;
+export default injectIntl(Menu);
