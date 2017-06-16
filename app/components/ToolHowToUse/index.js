@@ -16,11 +16,19 @@ const Header = styled(CommonLeftHeader)`
   border: none;
   text-align: left;
   margin-top: 40px;
+  font-family: 'Avenir Black', sans-serif;
+  font-size: 19px;
+  letter-spacing: 0;
+  line-height: 22px;
 `;
 const Content = styled.div`
   text-align: left;
   font-size: 14px;
+  line-height: 22px;
 
+  a {
+    color: #828486;
+  }
   img {
     width: 100%;
   }

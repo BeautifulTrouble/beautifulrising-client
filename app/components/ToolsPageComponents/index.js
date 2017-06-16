@@ -141,10 +141,16 @@ export const ToolMainContent = styled.div`
 export const ToolMainContentHeader = styled(CommonLeftHeader)`
   text-align: left;
   border: none;
-  margin-top: 20px;
+
+  font-size: 19px;
+  line-height: 22px;
+  font-family: 'Avenir Black', sans-serif;
+  letter-spacing: 0;
+  margin: 10px 0;
 `;
 export const ToolReadContent = styled.div`
   font-size: 14px;
+  line-height: 22px;
 
   a {
     color: #838486;
