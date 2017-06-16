@@ -32,7 +32,7 @@ const MenuArea = styled.div`
 
 const Home = styled(MenuLink)`
   padding: 25px;
-  border-bottom: solid 3px;
+  border-bottom: solid 2px black;
 `;
 function Menu(props) {
   return (
