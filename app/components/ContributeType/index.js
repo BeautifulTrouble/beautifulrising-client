@@ -105,7 +105,6 @@ class ContributeType extends React.PureComponent { // eslint-disable-line react/
   handleClick(index) {
     // console.log(e.target, e);
     if ( index === this.state.chosen ) {
-      this.setState({ chosen: null })
     } else {
       this.setState({ chosen: index });
     }
@@ -153,7 +152,7 @@ const DATA = [
   {
     type: 'story',
     icon: StoryIcon,
-    label: 'Story',
+    label: 'Stories',
     description: 'Accounts of memorable actions and campaigns, analysing what worked, or didn’t, and why',
     form: '[GO TO FORM](https://docs.google.com/forms/d/e/1FAIpQLSeC_EdxoO7owVnL8fjSERZlychwMhDOR-7rI1SDtpL4ijZgkg/viewform)'
   },
