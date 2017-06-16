@@ -24,6 +24,12 @@ import { ToolsButton, ToolsListMenu, ToolsListMenuItem,
 
 import { removeTool, addTool } from './actions';
 
+const CallToAction = styled.span`
+  text-transform: uppercase;
+  font-family: Avenir Black;
+  line-height: 22px;
+`;
+
 export class AdderRemover extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   onButtonClick() {
@@ -36,17 +42,17 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
 
   buildRemove() {
     return (
-      <span>
+      <CallToAction>
         <img src={RemoveToolIcon}/>{ this.props.removeText || ""}
-      </span>
+      </CallToAction>
     )
   }
 
   buildAdd() {
     return (
-      <span>
+      <CallToAction>
         <img src={AddToolIcon}/>{ this.props.addText || "" }
-      </span>
+      </CallToAction>
     );
   }
 

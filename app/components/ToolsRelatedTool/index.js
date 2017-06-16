@@ -25,6 +25,7 @@ const ListItem = styled.li`
   text-transform: uppercase;
   font-weight: bold;
   margin-bottom: 5px;
+  font-size: 14px;
 `;
 
 const ToolLink = styled(Link)`

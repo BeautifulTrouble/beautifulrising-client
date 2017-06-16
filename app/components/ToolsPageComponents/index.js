@@ -36,23 +36,38 @@ export const ToolHeader = styled.section`
 `;
 
 export const ToolHeaderType = styled(ToolType)`
-  font-size: 30px;
+  font-size: 40px;
+  margin-bottom: 20px;
+  padding: 0;
+  line-height: 36px;
 `;
 
 export const ToolHeaderTitle = styled(ToolTitle)`
-  font-size: 60px;
+  font-size: 80px;
+  margin: 0 0 20px;
+  padding: 0;
+  line-height: 70px;
 `;
 
 export const ToolsPageLeftHeader = styled(CommonLeftHeader)`
   text-align: left;
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+
 `
 export const ToolsPageRightHeader = styled(CommonLeftHeader)`
   text-align: left;
   border: 0;
+  font-size: 30px;
 `;
 
 export const ToolsPageContributor = styled(ToolsPageLeftHeader)`
-  font-size: 24px;
+  font-size: 40px;
+  margin: 0;
+  padding: 0;
+  line-height: 40px;
+  margin-top: 32px;
 `;
 
 export const ToolPageCaption = styled.div`
@@ -65,10 +80,10 @@ export const ToolPageCaption = styled.div`
   a { color: #828486; }
 `;
 export const ToolsPageRelatedToolsHeader = styled(ToolsPageLeftHeader)`
-  font-size: 24px;
+  font-size: 40px;
   border: none;
   background-color: #f7f7f7;
-  padding: 10px;
+  padding: 10px 5px;
   margin-bottom: 10px;
   margin-top: 30px;
 `;
@@ -95,20 +110,20 @@ export const ToolHeaderViewport = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0,0,0,0.5);
   text-align: left;
   padding-left: 90px;
   overflow: ${props=>props.showOverflow?'visible':'hidden'};
 `;
 
 export const ToolLeftArea = styled(ToolInfoSection)`
-  width: 20%;
+  width: 165px;
   text-align: left;
 `;
 
 
 export const ToolRightArea = styled(ToolInfoSection)`
-  width: 29%
+  width: 360px;
   margin-left: 0.5%;
   margin-right: 0.5%;
 `;
@@ -119,20 +134,29 @@ export const ToolRightArea = styled(ToolInfoSection)`
 **/
 
 export const ToolMainArea = styled(ToolInfoSection)`
-  width: 49%
+  float: left;
+  width: calc(100% - 545px);
   margin-left: 0.5%;
-  padding: 20px;
+  padding: 20px 20px 20px 90px;
 `;
 
-export const ToolMainContent = styled.div`text-align: left;`;
+export const ToolMainContent = styled.div`
+  text-align: left;
+`;
 
 export const ToolMainContentHeader = styled(CommonLeftHeader)`
   text-align: left;
   border: none;
-  margin-top: 20px;
+
+  font-size: 19px;
+  line-height: 22px;
+  font-family: 'Avenir Black', sans-serif;
+  letter-spacing: 0;
+  margin: 10px 0;
 `;
 export const ToolReadContent = styled.div`
   font-size: 14px;
+  line-height: 22px;
 
   a {
     color: #838486;

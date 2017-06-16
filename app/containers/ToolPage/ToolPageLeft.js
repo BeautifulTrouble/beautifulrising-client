@@ -19,7 +19,9 @@ import { ToolLeftArea, ToolsPageLeftHeader, ToolsPageContributor } from 'compone
 
 import messages from './messages';
 
-const Container = styled.div``;
+const Container = styled.div`
+  margin-bottom: 30px;
+`;
 export class ToolPageLeft extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   renderTags() {
@@ -37,14 +39,18 @@ export class ToolPageLeft extends React.PureComponent { // eslint-disable-line r
   render() {
     return (
       <ToolLeftArea>
-        <ToolsPageContributor>Contributed By</ToolsPageContributor>
+        <ToolsPageContributor>
+          <FormattedMessage {...messages.contributedByHeader} />
+        </ToolsPageContributor>
         { this.props.authors ?
             this.props.authors.map(item=><Author key={item} slug={item}/>) :
             null }
 
         { this.renderTags() }
-        <ToolsPageLeftHeader>Training</ToolsPageLeftHeader>
-        <ToolsRequestTraining />
+        <Container>
+          <ToolsPageLeftHeader>Training</ToolsPageLeftHeader>
+          <ToolsRequestTraining />
+        </Container>
       </ToolLeftArea>
     );
   }

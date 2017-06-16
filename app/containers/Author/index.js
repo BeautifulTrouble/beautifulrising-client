@@ -17,11 +17,9 @@ export class Author extends React.PureComponent { // eslint-disable-line react/p
     // console.log(this.props.author);
     return (
       <AuthorContainer>
-        <AuthorImageArea>
           <AuthorLink to={`/search/authors!${this.props.slug}`}>
             <AuthorImage image={this.props.author.image} />
           </AuthorLink>
-        </AuthorImageArea>
         <AuthorName>
           <AuthorLink to={`/search/authors!${this.props.slug}`}>{this.props.author.title}</AuthorLink>
         </AuthorName>

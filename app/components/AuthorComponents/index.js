@@ -27,34 +27,41 @@ export const AuthorContainer = styled.section`
 
 export const AuthorImageArea = styled.div`
   border: 2px solid black;
-  height: 220px;
-  width: 220px;
+  width: 100%;
+  padding-bottom: 100%;
 `;
 export const AuthorImage = styled.span`
   width: 100%;
-  height: 100%;
+  height: 0;
+  padding-bottom: 100%;
   background-image: url(${props=>AUTHOR_BASE_IMAGE + props.image})
 
   display: inline-block;
   background-size: cover;
   background-repeat: no-repeat;
+
+  border: 2px solid black;
 `;
 
 export const AuthorName = styled.h3`
-  font-size: 18px;
+  font-size: 19px;
   text-transform: uppercase;
   text-align: left;
   margin-bottom: 2px;
   margin-top: 2px;
+  font-family: 'Avenir Black', sans-serif;
+  letter-spacing: 0;
 `;
 
 export const AuthorLink = styled(Link)`
   color: rgb(130, 132, 134);
+  display: inline-block;
+  width: 100%;
 `;
 
 export const AuthorDesc = styled.div`
   margin: 2px;
-  line-height: 1;
+  line-height: 22px;
   font-size: 14px;
   text-align: left;
 `;

@@ -66,8 +66,8 @@ export const BorderedButton = styled.button`
   text-transform: uppercase;
   border: solid 2px black;
   font-weight: bold;
-  font-size: 12px;
-  padding: 4px 7;
+  font-size: 14px;
+  padding: 4px 10px;
   cursor: pointer;
 `;
 
