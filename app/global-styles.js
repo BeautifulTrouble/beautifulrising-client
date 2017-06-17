@@ -37,6 +37,10 @@ injectGlobal`
   p {
     font-size: 14px;
     line-height: 22px;
+
+    a {
+      color: #828486;
+    }
   }
   h1,h2,h3,h4,h5 {
     font-family: 'Knockout', Helvetica, Arial, sans-serif;

@@ -133,7 +133,12 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
         <h1><Msg {...msg.header} /></h1>
         <p><Msg {...msg.description} /></p>
 
-        <TheToolbox  ref={"/about/whats-inside"} targetRoute="/about/whats-inside"  onChange={ this.componentIsVisible.bind(this) } />
+        <TheToolbox
+            ref={"/about/whats-inside"}
+            targetRoute="/about/whats-inside"
+            onChange={ this.componentIsVisible.bind(this) }
+            whatsInside = { this.props.aboutData.getIn(['about','whats-inside', 'introduction']) }
+        />
         <OurProcess ref={"/about/process"}
               targetRoute="/about/process"
               onChange={this.componentIsVisible.bind(this) }
@@ -152,6 +157,7 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
             targetRoute="/about/advisory-network"
             onChange={this.componentIsVisible.bind(this) }
             advisoryNetwork = {this.props.advisoryBoard}
+            introText = { this.props.aboutData.getIn(['about', 'advisory-network', 'introduction'])}
         />
         <OurTeam
             ref="/about/team"

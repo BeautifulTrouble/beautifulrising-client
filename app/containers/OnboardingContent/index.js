@@ -203,7 +203,9 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
     return [
       {
         title: <FormattedMessage {...messages.toolbox} />,
-        content: <TheToolbox hideHeader={true} />
+        content: <TheToolbox hideHeader={true}
+                  whatsInside = { this.props.aboutData.getIn(['about','whats-inside', 'introduction']) }
+                />
       },
       {
         title: <FormattedMessage {...messages.howDidWeMake} />,
@@ -221,6 +223,7 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
         content: <OurAdvisoryNetwork
             hideHeader={true}
             advisoryNetwork = {this.props.advisoryBoard}
+            introText = { this.props.aboutData.getIn(['about', 'advisory-network', 'introduction'])}
         />
       },
       {

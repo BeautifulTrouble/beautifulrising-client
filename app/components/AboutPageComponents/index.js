@@ -18,6 +18,18 @@ function AboutPageComponents() {
   );
 }
 
+export const Introduction = styled.div`
+  width: 100%;
+  padding-bottom: 20px;
+`;
+export const IntroText = styled.div`
+  width: 50%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  padding: 0 40px;
+  text-align: center;
+`;
+
 export const AboutSection = styled.div`
 font-size: 24px;
 padding: 0 20px;

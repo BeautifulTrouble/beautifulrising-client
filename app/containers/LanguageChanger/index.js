@@ -25,7 +25,9 @@ const Viewport = styled.div``;
 const Button = styled.button`
   outline: none;
   cursor: pointer;
-  font-family: ${props=>props.selected ? 'Avenir Black' : 'Avenir'}, sans-serif;
+  font-family: 'Avenir Black', sans-serif;
+  color: ${props=>props.selected ? 'black' : '#828486'};
+  text-decoration: ${props=>props.selected ? 'none' : 'underline'};
 `;
 
 const List = styled.ul`
