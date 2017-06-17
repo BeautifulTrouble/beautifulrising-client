@@ -46,10 +46,11 @@ export const SelectedToolCommandItem = styled.li`
   width: 49%;
   text-align: left;
   text-transform: uppercase;
+  button { text-transform: uppercase; font-weight: bold; }
   font-size: 14px;
   color: #959595;
   svg * {
-    fill: #959595 !important;
+    fill: #959595;
   }
 `;
 

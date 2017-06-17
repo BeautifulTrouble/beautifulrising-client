@@ -19,6 +19,9 @@ import { ToolHeaderContainer,
           ToolPageCaption} from 'components/ToolsPageComponents';
 import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
 
+import Isvg from 'react-inlinesvg';
+import ShareIcon from 'assets/images/icons/share-small.svg';
+import ShareButton from 'components/ShareButton';
 import TypeFlag from 'components/TypeFlag';
 import TypeOverlay from 'components/TypeOverlay';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
@@ -31,6 +34,18 @@ const Content = styled.div`
   width: calc(100% - 90px);
   height: 100%;
   padding-top: 50px;
+`;
+const ShareContainer = styled.div`
+  font-size: 14px; line-height: 22px;
+
+  display: block;
+  margin-top: 11px;
+  margin-left: 12px;
+  svg * {
+    fill: white;
+  }
+  color: white;
+  * { color: white; font-family: 'Avenir Black'; text-transform: uppercase; }
 `;
 export class ToolPageHeader extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -68,6 +83,12 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
               addText={(<FormattedMessage {...messages.addTool} />)}
               removeText={(<FormattedMessage {...messages.removeTool} />)}
             />
+            <ShareContainer>
+              <ShareButton>
+                <Isvg src={ShareIcon} />
+                <FormattedMessage {...messages.share}/>
+              </ShareButton>
+            </ShareContainer>
             <ToolPageCaption show={this.props['image-caption'] !== undefined}>
               <Markdown source={'/ ' + this.props['image-caption']} />
             </ToolPageCaption>
