@@ -7,7 +7,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { push } from 'react-router';
+import { push } from 'react-router-redux';
 import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import Tags from 'containers/Tags';
@@ -53,6 +53,9 @@ const ClearButton = styled.button`
   padding-right: 24px;
   text-transform: uppercase;
   padding-bottom: 20px;
+  cursor: pointer;
+  
+  * { vertical-align: middle; }
 `;
 const Container = styled.div`
   padding-top: ${props=>props.full ? '490px' : props.isStory ? '420px' : '340px'};

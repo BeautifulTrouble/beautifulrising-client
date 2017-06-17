@@ -32,7 +32,7 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
   constructor(props) {
     super(props);
   }
-  
+
   componentDidMount() {
 
     if (this.props.filter === 'search') {
