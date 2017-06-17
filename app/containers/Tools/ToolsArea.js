@@ -42,7 +42,8 @@ export const ToolsListContainer = styled.div`
 
 const Container = styled.div`
   height: calc(100% - 60px);
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 const DownloadPDFContainer = styled.div`

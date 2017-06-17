@@ -55,15 +55,22 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
   constructor(props) {
     super(props);
     this.state = {
-      email: 'rapi@progcode.org'
+      email: ''
     };
   }
 
+  handleChange(evt) {
+    this.setState({ email: evt.target.value });
+  }
+
+  handleSubmit(evt) {
+    this.props.onSubmitForm(evt, this.state.email);
+  }
   renderForm() {
     return (
       <FormContainer>
-        <form onSubmit={this.props.onSubmitForm.bind(this)}>
-          <input type='email' name='email' placeholder='samir@gmail.com'/><button>
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          <input type='email' name='email' onChange={this.handleChange.bind(this)} placeholder='samir@gmail.com'/><button>
             <FormattedMessage {...messages.submit} />
           </button>
         </form>
@@ -116,9 +123,9 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    onSubmitForm: (evt) => {
+    onSubmitForm: (evt, email) => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(sendSubscription("rapi.castillo@gmail.com"));
+      dispatch(sendSubscription(email));
     }
   };
 }
