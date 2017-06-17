@@ -27,7 +27,7 @@ export const ToolInformation = styled.section`
 `;
 
 export const ToolInfoSection = styled.article`
-  float: left;
+  float: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
 `;
 
 export const ToolHeader = styled.section`
@@ -50,14 +50,14 @@ export const ToolHeaderTitle = styled(ToolTitle)`
 `;
 
 export const ToolsPageLeftHeader = styled(CommonLeftHeader)`
-  text-align: left;
+  text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
   font-size: 30px;
   margin: 0;
   padding: 0;
 
 `
 export const ToolsPageRightHeader = styled(CommonLeftHeader)`
-  text-align: left;
+  text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
   border: 0;
   font-size: 30px;
 `;
@@ -68,13 +68,15 @@ export const ToolsPageContributor = styled(ToolsPageLeftHeader)`
   padding: 0;
   line-height: 40px;
   margin-top: 32px;
+
+  text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
 `;
 
 export const ToolPageCaption = styled.div`
   position: absolute;
   bottom: 10px;
   color: white;
-  padding-right: 50px;
+  padding-${props=>props.theme.lang==='ar'?'left':'right'}: 50px;
   font-size: 15px;
   display: ${props=>props.show ? 'block' : 'none'};
 
@@ -84,18 +86,18 @@ export const ToolsPageRelatedToolsHeader = styled(ToolsPageLeftHeader)`
   font-size: 40px;
   border: none;
   background-color: #f7f7f7;
-  padding: 10px 5px 10px 20px;
+  padding: ${props=>props.theme.lang==='ar'?'10px 20px 10px 5px':'10px 5px 10px 20px'};
   margin-bottom: 10px;
   margin-top: 30px;
 `;
 
 export const ToolsRelatedArea = styled.div`
-  padding: 10px 10px 10px 30px;
+  padding: ${props=>props.theme.lang==='ar'?'10px 30px 10px 10px;':'10px 10px 10px 30px;'};
   background-color: #f7f7f7;
 `;
 
 export const ToolsRelatedContainer = styled.div`
-  padding: 10px 10px 10px 30px;
+  padding: ${props=>props.theme.lang==='ar'?'10px 30px 10px 10px;':'10px 10px 10px 30px;'};
   background-color: #f7f7f7;
 `;
 
@@ -112,14 +114,18 @@ export const ToolHeaderViewport = styled.div`
   height: 100%;
   position: relative;
   background-color: rgba(0,0,0,0.5);
-  text-align: left;
-  padding-left: 90px;
+  text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
+  padding-${props=>props.theme.lang==='ar'?'right':'left'}: 90px;
   overflow: ${props=>props.showOverflow?'visible':'hidden'};
 `;
 
 export const ToolLeftArea = styled(ToolInfoSection)`
   width: 165px;
-  text-align: left;
+  text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
+
+  * {
+    text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
+  }
 `;
 
 
@@ -135,18 +141,17 @@ export const ToolRightArea = styled(ToolInfoSection)`
 **/
 
 export const ToolMainArea = styled(ToolInfoSection)`
-  float: left;
   width: calc(100% - 545px);
   margin-left: 0.5%;
-  padding: 20px 20px 20px 90px;
+  padding: ${props=>props.theme.lang==='ar' ? '20px 90px 20px 20px' : '20px 20px 20px 90px'};
 `;
 
 export const ToolMainContent = styled.div`
-  text-align: left;
+  text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
 `;
 
 export const ToolMainContentHeader = styled(CommonLeftHeader)`
-  text-align: left;
+  text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
   border: none;
 
   font-size: 19px;

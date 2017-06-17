@@ -7,7 +7,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 
 import AdderRemover from 'containers/Tools/AdderRemover';
@@ -16,6 +16,7 @@ import { ToolInformation, ToolHeader } from 'components/ToolsPageComponents';
 
 import { loadData } from '../App/actions';
 
+import { ThemeProvider } from 'styled-components';
 import makeSelectToolPage, { makeSelectTool } from './selectors';
 import messages from './messages';
 import ToolPageHeader from './ToolPageHeader';
@@ -33,25 +34,28 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
 
   render() {
     const tool = this.props.toolData.getIn(['tool']);
+    const lang = this.props.intl.locale;
     if (!tool._id) return null;
 
     return (
-      <div>
-        <Helmet
-          title="ToolPage"
-          meta={[
-            { name: 'description', content: 'Description of ToolPage' },
-          ]}
-        />
-        <ToolHeader>
-          <ToolPageHeader {...tool} />
-        </ToolHeader>
-        <ToolInformation>
-          <ToolPageLeft {...tool} />
-          <ToolPageMain {...tool} />
-          <ToolPageRight {...tool} />
-        </ToolInformation>
-      </div>
+      <ThemeProvider theme={{ lang }}>
+        <div>
+          <Helmet
+            title="ToolPage"
+            meta={[
+              { name: 'description', content: 'Description of ToolPage' },
+            ]}
+          />
+          <ToolHeader>
+            <ToolPageHeader {...tool} />
+          </ToolHeader>
+          <ToolInformation>
+            <ToolPageLeft {...tool} />
+            <ToolPageMain {...tool} />
+            <ToolPageRight {...tool} />
+          </ToolInformation>
+        </div>
+      </ThemeProvider>
     );
   }
 }
@@ -78,4 +82,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ToolPage);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(ToolPage));

@@ -6,11 +6,12 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
+import { injectIntl } from 'react-intl';
 import { getToolTypeColor } from 'components/CommonComponents';
 
 const Container = styled.div`
-  text-align: left;
+  text-align: ${props=>props.lang==='ar' ? 'right' : 'left'};
 `;
 
 const Viewport = styled.div``;
@@ -33,9 +34,8 @@ const ToolLink = styled(Link)`
 `;
 
 function ToolsRelatedTool(props) {
-
   return (
-    <Container>
+    <Container lang={props.intl.locale}>
       <Viewport>
         <List>
           {props.relatedTools.map(item => (
@@ -52,4 +52,4 @@ function ToolsRelatedTool(props) {
 ToolsRelatedTool.propTypes = {
 };
 
-export default ToolsRelatedTool;
+export default injectIntl(ToolsRelatedTool);

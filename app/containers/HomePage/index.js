@@ -87,7 +87,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
       <SearchResultsContainer>
         <SearchResultsText>
           <ClearButton onClick={this.handleClearSearch.bind(this)}>☒ <FormattedMessage {...messages.clearSearch} /></ClearButton>
-          <FormattedHTMLMessage {...messages.searchResults} values={{label: this.props.params.label}} />
+          <FormattedHTMLMessage {...messages.searchResults} values={{label: this.props.params.label, count: this.props.sorted ? this.props.sorted.length : 0 }} />
         </SearchResultsText>
       </SearchResultsContainer>
     );
@@ -108,6 +108,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   }
 
   render() {
+    console.log(this.props.language);
     const lang = this.props.language;
     const ListItem = this.getViewMode();
     return (
@@ -146,7 +147,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
         <Stage lang={lang}>
           {this.getSearchResultsHeader()}
           <ToolList>
-            { this.props.sorted ? this.props.sorted.map(tool => { return (<ListItem position={this.randomizePosition()} lang={lang} key={tool['_id']} {...tool}/>) }) : null }
+            { this.props.sorted ? this.props.sorted.map(tool => { return (<ListItem position={this.randomizePosition()} lang={this.props.language} key={tool['_id']} {...tool}/>) }) : null }
           </ToolList>
         </Stage>
       </Container>

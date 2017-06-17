@@ -5,6 +5,7 @@
 import { getAsyncInjectors } from 'utils/asyncInjectors';
 import ContactUs from 'containers/ContactUs/sagas';
 import EmailTools from 'containers/EmailTools/sagas';
+import LanguageProvider from 'containers/LanguageProvider/sagas';
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -19,7 +20,10 @@ export default function createRoutes(store) {
   const { injectReducer, injectSagas } = getAsyncInjectors(store); // eslint-disable-line no-unused-vars
   injectSagas(ContactUs);
   injectSagas(EmailTools);
-  
+
+  // TODO Re-examine this
+  // injectSagas(LanguageProvider);
+
   const getHomePageComponent = (nextState, cb) => {
     const importModules = Promise.all([
       import('containers/HomePage/reducer'),

@@ -23,7 +23,8 @@ import Footer from 'components/Footer';
 import LanguageChanger from 'containers/LanguageChanger';
 import OnboardingModal from 'containers/OnboardingModal';
 import { isShowTools, isOnboarded, makeSelectLanguage } from './selectors';
-
+import { makeSelectLanguageData } from 'containers/LanguageProvider/selectors';
+import { loadLanguage } from 'containers/LanguageProvider/actions';
 //Themes
 
 const Content = styled.section`
@@ -40,6 +41,15 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
   static propTypes = {
     children: React.PropTypes.node,
   };
+
+  componentDidMount() {
+    console.log("This" , this.props.languageData);
+
+    // TODO Load language if feasible
+    // if (!this.props.languageData) {
+    //   this.props.onLanguageLoad()
+    // }
+  }
 
   render() {
     const theme = {lang: this.props.language};
@@ -66,8 +76,17 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
 const mapStateToProps = createStructuredSelector({
   isOnboarded: isOnboarded(),
   isShowTools: isShowTools(),
-  language: makeSelectLanguage()
+  language: makeSelectLanguage(),
+  languageData: makeSelectLanguageData()
 });
 
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+    onLanguageLoad: (evt) => {
+      dispatch(loadLanguage())
+    }
+  };
+}
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

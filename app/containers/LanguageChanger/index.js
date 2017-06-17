@@ -7,7 +7,7 @@
 import React, { PropTypes } from 'react';
 import { push } from 'react-router';
 import { connect } from 'react-redux';
-import { changeLocale } from 'containers/LanguageProvider/actions';
+import { changeLocale, loadLanguage } from 'containers/LanguageProvider/actions';
 import { createStructuredSelector } from 'reselect';
 import styled from 'styled-components';
 
@@ -25,7 +25,9 @@ const Viewport = styled.div``;
 const Button = styled.button`
   outline: none;
   cursor: pointer;
-  font-family: ${props=>props.selected ? 'Avenir Black' : 'Avenir'}, sans-serif;
+  font-family: 'Avenir Black', sans-serif;
+  color: ${props=>props.selected ? 'black' : '#828486'};
+  text-decoration: ${props=>props.selected ? 'none' : 'underline'};
 `;
 
 const List = styled.ul`
@@ -44,8 +46,10 @@ const Item = styled.li`
 
 export class LanguageChanger extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   handleClick(e) {
-    this.props.handleChangeLocale(e.target.value);
-    this.props.handleChangeLocationSignal();
+    if (this.props.language !== e.target.value) {
+      this.props.handleChangeLocale(e.target.value);
+      this.props.handleChangeLocationSignal();
+    }
   }
 
   render() {
@@ -83,10 +87,14 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     handleChangeLocale: (locale) => {
-      dispatch(changeLocale(locale));
+      dispatch(changeLocale(locale))
+      ;
     },
     handleChangeLocationSignal: () => {
       dispatch(loadData());
+    },
+    handleLoadLanguage: () => {
+      dispatch(loadLanguage());
     }
 
   };

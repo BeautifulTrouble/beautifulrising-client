@@ -12,6 +12,7 @@ import MethodologyFlag from 'assets/images/flag/methodology.svg';
 import PrincipleFlag from 'assets/images/flag/principle.svg';
 import TacticFlag from 'assets/images/flag/tactic.svg';
 import TheoryFlag from 'assets/images/flag/theory.svg';
+import { injectIntl } from 'react-intl';
 
 import TypeFlagTooltip from 'components/TypeFlagTooltip';
 import BigMethodologyFlag from 'assets/images/flag/big-methodology.svg';
@@ -22,7 +23,7 @@ import BigTheoryFlag from 'assets/images/flag/big-theory.svg';
 
 const FlagContainer = styled.div`
   position: absolute;
-  left: -200px;
+  ${props=>props.lang === 'ar' ? 'right' : 'left'}: -200px;
   top: 125px;
 
   svg circle,
@@ -69,7 +70,7 @@ export class TypeFlag extends React.PureComponent {
       {name: 'theory', show:this.props.isTheory}
     ];
     return (
-      <FlagContainer type={this.props.type} onMouseOver={this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)}>
+      <FlagContainer lang={this.props.intl.locale} type={this.props.type} onMouseOver={this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)}>
         <FlagViewport>
           <TypeFlagTooltip truths={truths} show={this.state.showTooltip}/>
           <Flag show={this.props.isTactic} src={oneTruth ? BigTacticFlag : TacticFlag}/>
@@ -90,4 +91,4 @@ TypeFlag.propTypes = {
   isTheory: PropTypes.bool
 };
 
-export default TypeFlag;
+export default injectIntl(TypeFlag);

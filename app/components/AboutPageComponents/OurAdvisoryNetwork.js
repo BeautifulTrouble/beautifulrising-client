@@ -8,7 +8,7 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
 import { FormattedMessage } from 'react-intl';
-import { AboutSection } from 'components/AboutPageComponents';
+import { AboutSection, Introduction, IntroText } from 'components/AboutPageComponents';
 import { themeThreeColumns } from 'components/CommonComponents';
 import VisibilitySensor from 'react-visibility-sensor';
 import Markdown from 'react-remarkable';
@@ -71,20 +71,40 @@ const Team = styled.h5`
 `;
 const Content = styled.div``;
 
+const AdvisoryNetworkSection =styled(AboutSection)`
+  h2 {
+    &::after {
+      left: 83%;
+    }
+  }
+`;
+
+const AdvisoryNetworkIntro = styled(IntroText)`
+  margin-left: 82%;
+  width: 33%;
+  padding: 0;
+`
 export default class OurAdvisoryNetwork extends React.Component {
   renderHeader() {
     return (
       <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
-        <h2>
-          <FormattedMessage {...messages.ourAdvisoryNetworkHeader} />
-        </h2>
+        <div>
+          <h2>
+            <FormattedMessage {...messages.ourAdvisoryNetworkHeader} />
+          </h2>
+        </div>
       </VisibilitySensor>
     );
   }
   render() {
     return (
-      <AboutSection id='advisory-network' style={{ textAlign: 'left' }}>
+      <AdvisoryNetworkSection id='advisory-network' style={{ textAlign: 'left' }}>
         { this.props.hideHeader ? null : this.renderHeader() }
+        <Introduction>
+          <AdvisoryNetworkIntro>
+            <Markdown source={this.props.introText}/>
+          </AdvisoryNetworkIntro>
+        </Introduction>
         <ThemeProvider theme={themeThreeColumns}>
           <List>
             { this.props.advisoryNetwork.map((item, ind) => (
@@ -99,7 +119,7 @@ export default class OurAdvisoryNetwork extends React.Component {
             ))}
           </List>
         </ThemeProvider>
-      </AboutSection>
+      </AdvisoryNetworkSection>
     );
   }
 }

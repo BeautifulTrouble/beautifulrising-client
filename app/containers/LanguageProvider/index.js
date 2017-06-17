@@ -8,15 +8,31 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
+import { createSelector, createStructuredSelector } from 'reselect';
 import { IntlProvider } from 'react-intl';
 
-import { makeSelectLocale } from './selectors';
+import { loadLanguage } from './actions';
+
+import { makeSelectLocale, makeSelectLanguageData } from './selectors';
 
 export class LanguageProvider extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  componentDidMount() {
+    // console.log("XXX", this.props.languageData);
+    //
+    // if (!this.props.languageData) {
+    //   this.props.onLanguageLoad()
+    // }
+  }
+
   render() {
+    console.log("YEs",{...this.props.messages[this.props.locale]});
     return (
-      <IntlProvider locale={this.props.locale} key={this.props.locale} messages={this.props.messages[this.props.locale]}>
+      <IntlProvider
+            locale={this.props.locale}
+            key={this.props.locale}
+            messages={{...this.props.messages[this.props.locale] /* TODO Reexamine this, ...this.props.languageData */}}>
+            
         {React.Children.only(this.props.children)}
       </IntlProvider>
     );
@@ -30,14 +46,14 @@ LanguageProvider.propTypes = {
 };
 
 
-const mapStateToProps = createSelector(
-  makeSelectLocale(),
-  (locale) => ({ locale })
-);
+const mapStateToProps = createStructuredSelector({
+  locale: makeSelectLocale(),
+  languageData: makeSelectLanguageData()
+});
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    dispatch
   };
 }
 
