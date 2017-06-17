@@ -16,7 +16,7 @@ export default defineMessages({
   },
   removeTool: {
     id: 'app.containers.ToolPage.removeTool',
-    defaultMessage: 'Remove this text from your saved tools',
+    defaultMessage: 'Remove this from your saved tools',
   },
   showLess: {
     id: 'app.containers.ToolPage.showLess',

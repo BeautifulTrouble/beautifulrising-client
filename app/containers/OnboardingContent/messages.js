@@ -35,7 +35,7 @@ export default defineMessages({
     defaultMessage: 'what\'s the connection with beautiful trouble + actionaid?',
   },
   partners: {
-    id: 'app.components.OnboardingContent.howDidWeMake',
+    id: 'app.components.OnboardingContent.partners',
     defaultMessage: 'who are our network partners?',
   },
   faq: {

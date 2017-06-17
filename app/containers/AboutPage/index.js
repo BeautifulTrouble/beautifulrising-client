@@ -53,10 +53,10 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
 
     const reference = browserHistory.getCurrentLocation().pathname;
     const targetNode = ReactDOM.findDOMNode(this.refs[reference]);
-    // if (targetNode) {
+    if (targetNode) {
       window.scrollTo(0, targetNode.offsetTop);
       setTimeout(() => { this.setState({ activateAnchor: true }); }, 100);
-    // }
+    }
   }
 
   componentWillReceiveProps(nextProps) {

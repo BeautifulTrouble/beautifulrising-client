@@ -76,6 +76,7 @@ export const ToolPageCaption = styled.div`
   color: white;
   padding-right: 50px;
   font-size: 15px;
+  display: ${props=>props.show ? 'block' : 'none'};
 
   a { color: #828486; }
 `;
@@ -83,7 +84,7 @@ export const ToolsPageRelatedToolsHeader = styled(ToolsPageLeftHeader)`
   font-size: 40px;
   border: none;
   background-color: #f7f7f7;
-  padding: 10px 5px;
+  padding: 10px 5px 10px 20px;
   margin-bottom: 10px;
   margin-top: 30px;
 `;

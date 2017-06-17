@@ -12,6 +12,7 @@ import { FormattedMessage } from 'react-intl';
 import Isvg from 'react-inlinesvg';
 
 import messages from './messages';
+
 import { TYPE_STORIES, TYPE_TACTICS, TYPE_PRINCIPLES,
           TYPE_THEORIES, TYPE_METHODOLOGIES } from './constants';
 
@@ -79,13 +80,6 @@ export const ToolsButton = styled(Link)`
   font-size: 14px;
   line-height: 22px;
 
-  .isvg {
-    &::after {
-      content: ' ';
-      display: block;
-      clear: both;
-    }
-  }
   svg, svg * {
     fill: ${props => props.color};
     transition:  fill 0.4s ease;
@@ -150,6 +144,13 @@ export const ToolsMenu = styled.ul`
 export const ToolsMenuItem = styled.li`
   list-style: none;
   margin: 10px 0 20px;
+  .isvg {
+    &::after {
+      content: ' ';
+      display: block;
+      clear: both;
+    }
+  }
 `;
 
 export const ToolsListContainer = styled.div``;
