@@ -16,7 +16,7 @@ import messages from './messages';
 const Container = styled.section`
 padding: 10px;
 text-align: center;
-border-top: 3px solid black;
+border-top: 2px solid black;
 margin-top: 50px;
 margin-left: 20px;
 margin-right: 20px;
