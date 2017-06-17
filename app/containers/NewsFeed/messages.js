@@ -10,4 +10,8 @@ export default defineMessages({
     id: 'app.containers.NewsFeed.header',
     defaultMessage: 'This is NewsFeed container !',
   },
+  follow: {
+    id: 'app.containers.NewsFeed.follow',
+    defaultMessage: 'Follow'
+  }
 });
