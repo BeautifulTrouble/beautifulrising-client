@@ -25,8 +25,8 @@ const Container = styled.section`
 `;
 const Viewport = styled.div`
 padding: 20px;
-border: 3px solid black;
-border-width: 0 3px 3px;
+border-width: 0 2px 2px;
+border-style: solid;
 &::after {
   content: ' ';
   clear: both;

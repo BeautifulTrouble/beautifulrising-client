@@ -33,10 +33,12 @@ const AllContainer = styled.div`
   text-align: ${props=>props.lang === 'ar' ? 'right' : 'left'};
 `;
 
-class ToolTypeArea extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class ToolTypeArea extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
 
   constructor(props) {
     super(props);
+    this.windowEvent = this.handleScroll.bind(this);
     this.state = {
       scrollY: 0
     }
@@ -44,12 +46,12 @@ class ToolTypeArea extends React.PureComponent { // eslint-disable-line react/pr
 
   componentWillMount() {
     const func = this.handleScroll.bind(this);
-    window.addEventListener('scroll', this.handleScroll.bind(this), true);
+    window.addEventListener('scroll', this.windowEvent, false);
   }
 
   componentWillUnmount() {
     const func = this.handleScroll.bind(this);
-    window.removeEventListener('scroll', this.handleScroll.bind(this), true);
+    window.removeEventListener('scroll', this.windowEvent, false);
     // window.addEventListener('scroll', this.handleScroll.bind(this), true);
   }
 

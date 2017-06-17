@@ -25,9 +25,20 @@ margin-right: 20px;
   clear: both;
   display: block;
 }
+
 `;
 const Viewport = styled.div``;
-const Content = styled.div``;
+const Content = styled.div`
+
+  p {
+    font-size: 10px;
+    font-style: italic;
+    color: #828486;
+    a {
+      color: #828486;
+    }
+  }
+`;
 class Footer extends React.Component {
 
 

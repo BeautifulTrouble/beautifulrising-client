@@ -31,8 +31,12 @@ injectGlobal`
     width: 100%;
   }
 
-  body,p {
+  body,p,input,textarea {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  }
+  p {
+    font-size: 14px;
+    line-height: 22px;
   }
   h1,h2,h3,h4,h5 {
     font-family: 'Knockout', Helvetica, Arial, sans-serif;

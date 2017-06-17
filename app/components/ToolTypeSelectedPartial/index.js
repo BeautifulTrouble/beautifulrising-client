@@ -31,8 +31,8 @@ const Viewport = styled.div`
   vertical-align: top;
   text-align: left;
   padding: 30px 20px;
-  border: 3px solid black;
-  border-width: 0 3px 3px;
+  border-width: 0 2px 2px;
+  border-style: solid;
 
   &::after {
     content: ' ';
@@ -54,12 +54,15 @@ const ToolType = styled(Link)`
   display: inline-block;
   text-align: left;
   vertical-align: bottom;
-  font-size: ${(props)=>props.selected ? '20px':'14px'};
+  font-size: ${(props)=>props.selected ? '30px':'14px'};
   text-decoration: ${(props)=>props.selected ? 'none':'underline'};
+  font-family: ${props=>props.selected?'Knockout':'Avenir'}, sans-serif;
   text-transform: uppercase;
   margin-right: 10px;
-  color: #828486;
-  font-weight: bold;
+  margin-bottom: ${(props)=>props.selected ? '4px':'0'};
+  color: ${(props)=>props.selected ? 'black':'#828486'};
+  font-weight: ${props=>props.selected ? 'normal' : 'bold'};
+  line-height: 0;
 
   * {
     vertical-align: bottom;
