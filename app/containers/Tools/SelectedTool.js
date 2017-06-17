@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import makeSelectTools from './selectors';
+import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
 import messages from './messages';
 import styled from 'styled-components';
 
@@ -38,12 +39,12 @@ export class SelectedTool extends React.PureComponent { // eslint-disable-line r
 
   render() {
     const flag = this.getFlag();
-
+    const tool = this.props.allData.get(this.props.slug);
     return (
       <SelectedToolItem>
-        <SelectedToolTitle flag={flag}>{this.props.title}</SelectedToolTitle>
+        <SelectedToolTitle flag={flag}>{tool.get('title')}</SelectedToolTitle>
         <SelectedToolSnapshot>
-          {this.props.snapshot}
+          {tool.get('snapshot')}
         </SelectedToolSnapshot>
         <SelectedToolCommands>
           <SelectedToolCommandItem>
@@ -66,6 +67,7 @@ SelectedTool.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   Tools: makeSelectTools(),
+  allData: makeSelectAllToolsWithSlugIndex()
 });
 
 function mapDispatchToProps(dispatch) {

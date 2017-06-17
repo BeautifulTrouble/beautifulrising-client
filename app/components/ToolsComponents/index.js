@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
-
+import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
 import Isvg from 'react-inlinesvg';
 
@@ -64,7 +64,7 @@ export const PotentialRiskIcon = styled(Isvg)`
 `;
 /*** END OF TOOLS ICONS ***/
 
-export const ToolsButton = styled.button`
+export const ToolsButton = styled(Link)`
   outline: none;
   cursor: pointer;
   color:${props => props.color};

@@ -6,7 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 
 import Isvg from 'react-inlinesvg';
@@ -35,7 +35,7 @@ export const ToolsListContainer = styled.div`
     display: ${props=>props.show ? 'block' : 'none'};
     div * {
       direction: ${props=>props.lang === 'ar' ? 'rtl' : 'ltr'};
-      text-align: right;
+      text-align: ${props=>props.lang === 'ar' ? 'right' : 'left'};
     }
 `;
 
@@ -44,12 +44,17 @@ const Container = styled.div`
   overflow: auto;
 `;
 
+const DownloadPDFContainer = styled.div`
+  display: ${props=>props.show?'block':'none'};
+`;
+
 export class ToolsArea extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
     super(props);
     this.state = {
-      chosen: null
+      chosen: null,
+      hovering: null
     };
   }
 
@@ -62,6 +67,18 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
       this.setState({ chosen: null });
     }
   }
+  handleMouseOver(item = null) {
+    this.setState({hovering: item});
+  }
+  handleMouseOut(item = null ) {
+    this.setState({hovering: null});
+  }
+  buildPDFLink () {
+    const slugs = Map(this.props.Tools.selectedTools).toList().map(item=>item.slug).join(',');
+    const lang = this.props.intl.locale;
+
+    return `https://api.beautifulrising.org/pdf/download?tools=${encodeURIComponent(slugs)}&lang=${lang}`
+  }
 
   render() {
     return (
@@ -69,9 +86,12 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
         <ToolsListMenu>
           <ToolsListMenuItem>
             <ToolsButton
-              onClick={()=>this.handleClick(DOWNDLOAD_PDF)}
-              color={this.state.chosen === DOWNDLOAD_PDF ? 'black' : '#B3B3B3'}
-              show={this.state.chosen === DOWNDLOAD_PDF }
+              // onClick={()=>this.handleClick(DOWNDLOAD_PDF)}
+              to={this.buildPDFLink()} target='_blank'
+              color={this.state.hovering === DOWNDLOAD_PDF ? 'black' : '#B3B3B3'}
+              show={this.state.hovering === DOWNDLOAD_PDF }
+              onMouseOver={()=>this.handleMouseOver(DOWNDLOAD_PDF)}
+              onMouseOut={()=>this.handleMouseOut(DOWNDLOAD_PDF)}
               >
               <Isvg src={PDFIcon} />
             </ToolsButton>
@@ -87,6 +107,9 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
           </ToolsListMenuItem>
         </ToolsListMenu>
         <Container>
+          <DownloadPDFContainer show={this.state.chosen === DOWNDLOAD_PDF}>
+            <Link to={this.buildPDFLink()} target='_blank'>Download PDF</Link>
+          </DownloadPDFContainer>
           <ToolsList>
             {
               Map(this.props.Tools.selectedTools).toList().map((item) => (
@@ -116,4 +139,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ToolsArea);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(ToolsArea));

@@ -54,7 +54,7 @@ const ClearButton = styled.button`
   text-transform: uppercase;
   padding-bottom: 20px;
   cursor: pointer;
-  
+
   * { vertical-align: middle; }
 `;
 const Container = styled.div`
@@ -100,7 +100,6 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     const positions = [TOP, MIDDLE, BOTTOM];
     const randomPos = positions[Math.floor(Math.random() * 100) % 3];
 
-   //  console.log(randomPos, Math.floor(Math.random() * 100) % 3 );
     switch(randomPos) {
       case TOP: return { top: '10px'};
       case MIDDLE: return { top: '50%', transform: 'translateY(-50%)'};
