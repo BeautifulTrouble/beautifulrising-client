@@ -23,6 +23,7 @@ import TwitterIcon from 'assets/images/icons/twitter.svg';
 
 import EmailTools from 'containers/EmailTools';
 import EmptyToolsMessage from 'containers/EmptyToolsMessage';
+import NewsFeed from 'containers/NewsFeed';
 
 import { DOWNDLOAD_PDF, SEND_EMAIL } from './constants';
 import { NEWS_FEED, MY_TOOLS, TWITTER_FEED, FACEBOOK_FEED } from './constants';
@@ -116,8 +117,6 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
 
   render() {
 
-    console.log(this);
-
     return (
       <ToolsListContainer show={this.props.show} lang={this.props.lang} rotate={true}>
 
@@ -153,6 +152,10 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
           </ToolsListMenuItem>
         </ToolsListMenu>
 
+
+        <Container show={ this.props.Tools.viewType === NEWS_FEED }>
+          <NewsFeed />
+        </Container>
 
         <Container show={ this.props.Tools.viewType === MY_TOOLS }>
           <EmailContainer show={this.state.chosen === SEND_EMAIL} >

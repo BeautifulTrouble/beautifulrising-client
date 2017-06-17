@@ -70,7 +70,6 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
   }
 
   render() {
-    console.log(this);
     return (
       <ThemeProvider theme={{ lang: this.props.language }} >
         <ToolsContainer showTools={this.props.Tools.show}>
