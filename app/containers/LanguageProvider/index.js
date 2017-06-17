@@ -18,7 +18,7 @@ import { makeSelectLocale, makeSelectLanguageData } from './selectors';
 export class LanguageProvider extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   componentDidMount() {
-    // console.log("XXX", this.props.languageData);
+    //
     //
     // if (!this.props.languageData) {
     //   this.props.onLanguageLoad()
@@ -26,13 +26,13 @@ export class LanguageProvider extends React.PureComponent { // eslint-disable-li
   }
 
   render() {
-    console.log("YEs",{...this.props.messages[this.props.locale]});
+    
     return (
       <IntlProvider
             locale={this.props.locale}
             key={this.props.locale}
             messages={{...this.props.messages[this.props.locale] /* TODO Reexamine this, ...this.props.languageData */}}>
-            
+
         {React.Children.only(this.props.children)}
       </IntlProvider>
     );

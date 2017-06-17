@@ -28,7 +28,6 @@ export default class TheToolbox extends React.Component {
     );
   }
   render() {
-    console.log(this.props.whatsInside);
     return (
       <AboutSection id='whats-inside' name='whats-inside'>
         { this.props.hideHeader ? null : this.renderHeader() }

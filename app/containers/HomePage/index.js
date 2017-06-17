@@ -28,7 +28,7 @@ import { LeftHeader, LeftContainer } from 'components/HomePageComponents';
 import Stage from 'components/Stage';
 
 import { loadData } from '../App/actions';
-import makeSelectHomePage, { makeSelectToolView, makeSelectAllTools, makeSortedTools, makeSelectLanguage } from './selectors';
+import makeSelectHomePage, { makeSelectToolView, makeSelectAllTools, isToolsShown, makeSortedTools, makeSelectLanguage } from './selectors';
 import styled from 'styled-components';
 
 
@@ -108,7 +108,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   }
 
   render() {
-    console.log(this.props.language);
+    
     const lang = this.props.language;
     const ListItem = this.getViewMode();
     return (
@@ -167,7 +167,8 @@ const mapStateToProps = (state, props) => {
     error: makeSelectError(state),
     tools: makeSelectAllTools(state, props),
     sorted: makeSortedTools(state, props),
-    language: makeSelectLanguage(state, props)
+    language: makeSelectLanguage(state, props),
+    showTools: isToolsShown(state, props)
   }
 };
 

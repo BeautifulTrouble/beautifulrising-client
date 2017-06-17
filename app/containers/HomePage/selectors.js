@@ -33,6 +33,15 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
 
  const isFullTool = (item) => item['module-type'] === 'gallery' || item['module-type'] === 'full' ;
 
+const selectToolsDomain = (state) => state.get('tools');
+
+const isToolsShown = createSelector(
+  selectToolsDomain,
+  (tools) =>  {
+    return tools.get('show');
+  }
+);
+
 const makeSelectLanguage = createSelector(
   [selectLanguage],
   languageState => {
@@ -131,5 +140,6 @@ export {
   makeSelectToolView,
   makeSortedTools,
   makeSelectLanguage,
-  allTags
+  allTags,
+  isToolsShown
 };

@@ -19,7 +19,7 @@ export function changeLocale(languageLocale) {
 }
 
 export function loadLanguage() {
-  console.log("XXX")
+  
   return {
     type: LOAD_LANGUAGE
   };

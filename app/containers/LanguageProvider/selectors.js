@@ -17,7 +17,7 @@ const makeSelectLocale = () => createSelector(
 const makeSelectLanguageData = () => createSelector(
   selectLanguage,
   (languageState) => {
-    console.log("Language State!", languageState);
+
 
     return languageState.get('data')
   }

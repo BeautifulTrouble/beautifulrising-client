@@ -27,14 +27,15 @@ const HeaderContainer = styled.div`
     width: 240px;
     height: 4px;
     background-color: white;
-    ${props=>props.lang==='ar' ? 'right: 96px' : 'left: 95px'};
+    ${props=>props.lang==='ar' ? (props.showTools?'right: 326px':'right: 96px') : (props.showTools?'left: 325px':'left: 95px')};
+    transition: left 0.5s ease, right 0.5s ease;
   }
 `;
 
 function Header(props) {
   const lang = props.intl.locale;
   return (
-    <HeaderContainer lang={lang}>
+    <HeaderContainer lang={lang} {...props}>
       <SearchField {...props.params}/>
       <ToolTypeArea lang={props.lang} {...props.params} />
     </HeaderContainer>

@@ -35,13 +35,13 @@ function languageProviderReducer(state = initialState, action) {
               .set('complete', false)
               .set('error', false);
     case LOADING_LANGUAGE_COMPLETE:
-      console.log(action, state, "LANGUAGE")
+      
       return state.set('data', action.data)
                 .set('complete', true)
                 .set('loading', false)
                 .set('error', false)
     case LOADING_LANGUAGE_ERROR:
-      console.log(action, state, "LANGUAGE ERROR")
+
       return state.set('data', null)
                 .set('loading', false)
                 .set('complete', false)
