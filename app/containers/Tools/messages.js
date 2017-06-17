@@ -18,4 +18,12 @@ export default defineMessages({
     id: 'app.containers.Tools.myTools',
     defaultMessage: 'My Tools',
   },
+  remove: {
+    id: 'app.containers.Tools.remove',
+    defaultMessage: 'Remove'
+  },
+  share: {
+    id: 'app.containers.Tools.share',
+    defaultMessage: 'share'
+  }
 });

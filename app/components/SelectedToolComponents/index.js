@@ -40,11 +40,17 @@ export const SelectedToolSnapshot = styled.p`
 font-size: 14px;
 line-height: 22px;
 margin: 0 0 10px ;`;
-export const SelectedToolCommands = styled.ul``;
+export const SelectedToolCommands = styled.ul`margin: 0; padding: 0`;
 export const SelectedToolCommandItem = styled.li`
   display: inline-block;
   width: 49%;
-  text-align: center;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #959595;
+  svg * {
+    fill: #959595 !important;
+  }
 `;
 
 export default SelectedToolComponents;

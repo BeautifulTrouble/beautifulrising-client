@@ -57,18 +57,29 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
   }
 
   render() {
+    // {React.Children.toArray(this.props.children)}
 
-    if (this.props.showFull) {
-      return (<ToolsButton onClick={this.onButtonClick.bind(this)}>
-        {this.props.toolIsSelected ? "Remove" : "Add"}
-      </ToolsButton>);
-    } else {
+    console.log("XXXX", this.props.children)
+    if (this.props.children !== undefined) {
       return (
-        <ToolsButton color="white" onClick={this.onButtonClick.bind(this)}>
-          {this.props.toolIsSelected ? this.buildRemove() : this.buildAdd()}
+        <ToolsButton onClick={this.onButtonClick.bind(this)}>
+          {React.Children.toArray(this.props.children)}
         </ToolsButton>
       );
+    } else {
+      if (this.props.showFull) {
+        return (<ToolsButton onClick={this.onButtonClick.bind(this)}>
+          {this.props.toolIsSelected ? "Remove" : "Add"}
+        </ToolsButton>);
+      } else {
+        return (
+          <ToolsButton color="white" onClick={this.onButtonClick.bind(this)}>
+            {this.props.toolIsSelected ? this.buildRemove() : this.buildAdd()}
+          </ToolsButton>
+        );
+      }
     }
+
   }
 }
 

@@ -12,7 +12,9 @@ import makeSelectTools from './selectors';
 import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
 import messages from './messages';
 import styled from 'styled-components';
-
+import Isvg from 'react-inlinesvg';
+import RemoveSmallIcon from 'assets/images/icons/remove-small.svg';
+import ShareSmallIcon from 'assets/images/icons/share-small.svg';
 import MethodologyFlag from 'assets/images/type/methodology-small.svg';
 import PrincipleFlag from 'assets/images/type/principle-small.svg';
 import TacticFlag from 'assets/images/type/tactic-small.svg';
@@ -49,9 +51,14 @@ export class SelectedTool extends React.PureComponent { // eslint-disable-line r
         </SelectedToolSnapshot>
         <SelectedToolCommands>
           <SelectedToolCommandItem>
-            <AdderRemover {...this.props} showFull={true}/>
+            <AdderRemover {...this.props}>
+              <Isvg src={RemoveSmallIcon} />
+              <FormattedMessage {...messages.remove} />
+            </AdderRemover>
           </SelectedToolCommandItem>
           <SelectedToolCommandItem>
+            <Isvg src={ShareSmallIcon} />
+            <FormattedMessage {...messages.share} />
           </SelectedToolCommandItem>
         </SelectedToolCommands>
       </SelectedToolItem>
