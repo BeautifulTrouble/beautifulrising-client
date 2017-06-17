@@ -17,10 +17,10 @@ import { submitExample } from './actions';
 const Container = styled.div`
 `;
 const Form =  styled.form`
-  border: 3px solid;
+  border: 2px solid;
   text-align: ${props=>props.theme.lang === 'ar' ? 'left' : 'right'};
   input {
-    border-bottom: 3px solid;
+    border-bottom: 2px solid;
     text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
     width: 100%;
     padding: 5px;

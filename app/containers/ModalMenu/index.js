@@ -58,12 +58,12 @@ const CloseBox = styled.div`{
   left: 0;
   text-align: ${props=>props.lang==='ar'?'right':'left'};
   width: 100%;
-  border: 3px solid;
+  border: 2px solid;
   background-color: white;
 }`;
 
 const MenuContainer= styled.div`{
-  border: 3px solid;
+  border: 2px solid;
   padding: 75px 0px 20px;
   overflow: auto;
   height: 100vh;

@@ -39,7 +39,7 @@ const Example = styled.div`
   z-index: 100;
   font-size: 12px;
   width: 390px;
-  border: 3px solid black;
+  border: 2px solid black;
   top: ${props=>TOP.includes(props.pos) ? '-10px' : 'auto' };
   bottom: ${props=>BOTTOM.includes(props.pos) ? '-10px' : 'auto' };
   left: ${props=>LEFT.includes(props.pos) ? '-10px' : 'auto' };

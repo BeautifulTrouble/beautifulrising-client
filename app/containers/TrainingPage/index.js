@@ -35,7 +35,7 @@ const MenuArea = styled.div`
   width: 35%;
   float: left;
   padding-right: 70px;
-  border-right: 3px solid;
+  border-right: 2px solid;
   position: relative;
 
 `;
@@ -101,7 +101,7 @@ const Content = styled.div`
 
 const TrainingArea =styled.div`
   padding-bottom: 40px;
-  border-bottom: 3px solid;
+  border-bottom: 2px solid;
   margin-left: 20px;
   margin-right: 20px;
 

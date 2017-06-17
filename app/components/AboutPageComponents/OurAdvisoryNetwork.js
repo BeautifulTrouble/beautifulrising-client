@@ -62,7 +62,7 @@ const Image = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border: 3px solid;
+  border: 2px solid;
 `;
 
 const Name = styled.h3`

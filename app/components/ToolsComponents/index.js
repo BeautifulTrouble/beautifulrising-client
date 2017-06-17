@@ -88,7 +88,7 @@ export const ToolsButton = styled(Link)`
 export const ToolsListMenu = styled.ul`
     padding: 0;
     padding: 10px 0 10px;
-    border: 3px solid;
+    border: 2px solid;
     border-width: 0 0 3px;
     margin: 0;
 `;
@@ -163,7 +163,7 @@ export const ToolsContainer = styled.div`
 
   width: ${(props) => props.showTools ? '350px' : '75px' };
   height: calc(100vh - 170px);
-  border: 3px solid black;
+  border: 2px solid black;
   top: 93px;
 
   ${props=>props.theme.lang == 'ar' ? 'left: 50%' : 'right: 50%;'}

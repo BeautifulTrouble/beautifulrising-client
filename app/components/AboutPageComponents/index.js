@@ -37,7 +37,7 @@ padding-top: 20px;
 position: relative;
 h2 {
   text-transform: uppercase;
-  border: 3px solid;
+  border: 2px solid;
   border-width: 0 0 3px;
   font-size: 19px;
   letter-spacing: 0;

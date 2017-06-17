@@ -24,7 +24,7 @@ const ListItem = styled.li`
 `
 const Count = styled.h4`
   display: inline-block;
-  border: 3px solid;
+  border: 2px solid;
   border-width: 0 0 3px;
   padding: 10px 20px 5px 5px;;
   margin: 0;

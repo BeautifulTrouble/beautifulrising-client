@@ -31,7 +31,7 @@ const Subtitle = styled.h2`
   font-size: 19px;
   font-family: 'Avenir Black', sans-serif;
   letter-spacing: 0;
-  border-bottom: 3px solid;
+  border-bottom: 2px solid;
   padding-bottom: 20px;
   margin-bottom: 60px;
   margin-left: 30px;

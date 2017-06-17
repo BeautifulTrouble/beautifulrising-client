@@ -38,7 +38,7 @@ const Header = styled.h2`
   font-family: 'Avenir Black', sans-serif;
   font-weight: 800;
   text-transform: uppercase;
-  border-bottom: 3px solid;
+  border-bottom: 2px solid;
   padding-left: 20px;
   width: 100%;
   display: inline-block;
@@ -75,7 +75,7 @@ const OnboardedButton = styled(Button)`
   padding: 5px;
   text-transform: uppercase;
   color: black;
-  border: 3px solid;
+  border: 2px solid;
   padding: 0;
   position: absolute;
   bottom: -100px;
