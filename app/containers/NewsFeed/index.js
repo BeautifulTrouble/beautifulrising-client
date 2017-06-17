@@ -11,6 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import Immutable, { Map, List } from 'immutable';
 
+import SubmitNewsFeed from 'containers/SubmitNewsFeed';
 import makeSelectNewsFeed from './selectors';
 import messages from './messages';
 import NewsFeedItem from './NewsFeedItem';
@@ -18,7 +19,9 @@ import NewsFeedItem from './NewsFeedItem';
 import { WEBSOCKET_URL } from './constants';
 
 const Container = styled.div`
-  padding: 10px;
+  padding: 20px;
+  font-size: 14px;
+  line-height: 22px;
 `;
 
 const NewsFeedArea = styled.ul`
@@ -42,8 +45,8 @@ export class NewsFeed extends React.PureComponent { // eslint-disable-line react
   render() {
     return (
       <Container>
-        <FormattedMessage {...messages.header} />
-
+          <FormattedMessage {...messages.header} />
+          <SubmitNewsFeed />
         <NewsFeedArea>
           { this.props.NewsFeed.newsFeed.map( (item, idx) => <NewsFeedItem {...item} key={idx}/> )}
         </NewsFeedArea>

@@ -9,8 +9,7 @@ import messages from './messages';
 
 const ItemContainer = styled.li`
   list-style: none;
-  margin: 10px;
-  border-bottom: 2px solid;
+  border-top: 2px solid;
   padding: 15px 0;
 `;
 const Viewport = styled.div`

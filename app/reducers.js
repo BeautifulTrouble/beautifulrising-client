@@ -19,6 +19,7 @@ import contactUsReducer from 'containers/ContactUs/reducer';
 import submitRealWorldExampleReducer from 'containers/SubmitRealWorldExample/reducer';
 import emailToolsReducer from 'containers/EmailTools/reducer';
 import newsFeedReducer from 'containers/NewsFeed/reducer';
+import submitNewsFeedReducer from 'containers/SubmitNewsFeed/reducer';
 /*
  * routeReducer
  *
@@ -64,6 +65,7 @@ export default function createReducer(asyncReducers) {
     submitRealWorldExample: submitRealWorldExampleReducer,
     emailTools: emailToolsReducer,
     newsFeed: newsFeedReducer,
+    submitNewsFeed: submitNewsFeedReducer,
     ...asyncReducers,
   });
 }
