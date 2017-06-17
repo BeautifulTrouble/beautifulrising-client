@@ -59,7 +59,6 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
   render() {
     // {React.Children.toArray(this.props.children)}
 
-    console.log("XXXX", this.props.children)
     if (this.props.children !== undefined) {
       return (
         <ToolsButton onClick={this.onButtonClick.bind(this)}>
