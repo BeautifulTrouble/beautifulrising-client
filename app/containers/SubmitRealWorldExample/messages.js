@@ -21,5 +21,13 @@ export default defineMessages({
   description: {
     id: 'app.containers.SubmitRealWorldExample.description',
     defaultMessage: 'A brief description (150 characters)'
+  },
+  instruction: {
+    id: 'app.containers.SubmitRealWorldExample.instruction',
+    defaultMessage: 'Great! Share that experience with us in the form of a link and if it’s a solid example we’ll feature it in the section above'
+  },
+  submit: {
+    id: 'app.containers.SubmitRealWorldExample.submit',
+    defaultMessage: 'Submit'
   }
 });

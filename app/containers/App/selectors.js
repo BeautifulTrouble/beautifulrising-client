@@ -107,8 +107,10 @@ const isFullTool = (item) => item['module-type'] === 'gallery' || item['module-t
 const makeSelectExamples = (type) => createSelector(
   selectGlobal,
   (globalState) => {
-    let data = globalState.getIn(['appData', 'information']);
-    return data.filter(item => isFullTool(item) && item.type === type).slice(0,4);
+    if( globalState.getIn(['appData', 'information']) ) {
+      let data = globalState.getIn(['appData', 'information']);
+      return data.filter(item => isFullTool(item) && item.type === type).slice(0,4);
+    }
   }
 )
 

@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import messages from './messages';
 
 import StoryIcon from 'assets/images/type/stories.svg';
@@ -17,6 +17,9 @@ import TheoryIcon from 'assets/images/type/theories.svg';
 import PrincipleIcon from 'assets/images/type/principle.svg';
 import Isvg from 'react-inlinesvg';
 import Markdown from 'react-remarkable';
+
+import typeMessages from 'components/ToolTypeArea/messages';
+
 
 const Container = styled.div``;
 const Viewport = styled.div``;
@@ -113,6 +116,7 @@ class ContributeType extends React.PureComponent { // eslint-disable-line react/
   }
 
   render() {
+    const { formatMessage } = this.props.intl;
     return (
       <Container>
         <Viewport>
@@ -128,7 +132,7 @@ class ContributeType extends React.PureComponent { // eslint-disable-line react/
                     {item.description}
                   </Spiel>
                   <CallToAction>
-                    <Markdown source={item.form} />
+                    <Markdown source={formatMessage(messages.callToAction)} />
                   </CallToAction>
                 </Content>
               </Type>
@@ -154,37 +158,32 @@ const DATA = [
   {
     type: 'story',
     icon: StoryIcon,
-    label: 'Stories',
-    description: 'Accounts of memorable actions and campaigns, analysing what worked, or didn’t, and why',
-    form: '[GO TO FORM](https://docs.google.com/forms/d/e/1FAIpQLSeC_EdxoO7owVnL8fjSERZlychwMhDOR-7rI1SDtpL4ijZgkg/viewform)'
+    label: (<FormattedMessage {...typeMessages.storyHead} />),
+    description: (<FormattedMessage {...typeMessages.storyDesc} />)
   },
   {
     type: 'tactic',
     icon: TacticIcon,
-    label: 'Tactics',
-    description: 'Specific forms of creative action, such as a flash mob or blockade.',
-    form: '[GO TO FORM](https://docs.google.com/forms/d/e/1FAIpQLSeC_EdxoO7owVnL8fjSERZlychwMhDOR-7rI1SDtpL4ijZgkg/viewform)'
+    label: (<FormattedMessage {...typeMessages.tacticHead} />),
+    description: (<FormattedMessage {...typeMessages.tacticDesc} />)
   },
   {
     type: 'principle',
     icon: PrincipleIcon,
-    label: 'Principles',
-    description: 'Time-tested guidelines for how to design successful actions and campaigns.',
-    form: '[GO TO FORM](https://docs.google.com/forms/d/e/1FAIpQLSeC_EdxoO7owVnL8fjSERZlychwMhDOR-7rI1SDtpL4ijZgkg/viewform)'
+    label: (<FormattedMessage {...typeMessages.principleHead} />),
+    description: (<FormattedMessage {...typeMessages.principleDesc} />)
   },
   {
     type: 'theory',
     icon: TheoryIcon,
-    label: 'Theories',
-    description: 'Big-picture ideas that help us understand how the world works and how we might change it.',
-    form: '[GO TO FORM](https://docs.google.com/forms/d/e/1FAIpQLSeC_EdxoO7owVnL8fjSERZlychwMhDOR-7rI1SDtpL4ijZgkg/viewform)'
+    label: (<FormattedMessage {...typeMessages.theoryHead} />),
+    description: (<FormattedMessage {...typeMessages.theoryDesc} />)
   },
   {
     type: 'methodology',
     icon: MethodologyIcon,
-    label: 'Methodologies',
-    description: 'Strategic frameworks and hands-on exercises to help you assess your situation and plan your campaign.',
-    form: '[GO TO FORM](https://docs.google.com/forms/d/e/1FAIpQLSeC_EdxoO7owVnL8fjSERZlychwMhDOR-7rI1SDtpL4ijZgkg/viewform)'
+    label: (<FormattedMessage {...typeMessages.methodologyHead} />),
+    description: (<FormattedMessage {...typeMessages.methodologyDesc} />)
   },
 
 ];
@@ -193,4 +192,4 @@ ContributeType.propTypes = {
 
 };
 
-export default ContributeType;
+export default injectIntl(ContributeType);

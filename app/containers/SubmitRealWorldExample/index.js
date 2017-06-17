@@ -8,7 +8,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import makeSelectSubmitRealWorldExample from './selectors';
 import messages from './messages';
 
@@ -18,10 +18,10 @@ const Container = styled.div`
 `;
 const Form =  styled.form`
   border: 3px solid;
-  text-align: right;
+  text-align: ${props=>props.theme.lang === 'ar' ? 'left' : 'right'};
   input {
     border-bottom: 3px solid;
-    text-align: left;
+    text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
     width: 100%;
     padding: 5px;
   }
@@ -47,11 +47,15 @@ const Form =  styled.form`
 `;
 const Header = styled.h3`
   margin: 0;
-  text-align: left;
+  text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
   font-size: 24px;
   letter-spacing: 0;
   margin-bottom: 5px;
   font-family: 'Avenir Black', sans-serif;
+`;
+
+const Instruction = styled.p`
+  text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
 `;
 export class SubmitRealWorldExample extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -90,7 +94,9 @@ export class SubmitRealWorldExample extends React.PureComponent { // eslint-disa
           placeholder={formatMessage(messages.url)} onChange={this.handleChange.bind(this)} />
         <input type='text' name='title' placeholder={formatMessage(messages.title)}  onChange={this.handleChange.bind(this)} />
         <textarea name='description' placeholder={formatMessage(messages.description)} onChange={this.handleChange.bind(this)} ></textarea>
-        <button>Submit</button>
+        <button>
+          <FormattedMessage {...messages.submit} />
+        </button>
       </Form>
     );
   }
@@ -98,12 +104,17 @@ export class SubmitRealWorldExample extends React.PureComponent { // eslint-disa
   render() {
     const {formatMessage} = this.props.intl;
     return (
-      <Container>
-        <Header>
-          <FormattedMessage {...messages.header} values={{type: this.props.type}} />
-        </Header>
-        { this.props.realWorldEx.complete ? this.renderComplete() : this.renderForm() }
-      </Container>
+      <ThemeProvider theme={{ lang: this.props.intl.locale }}>
+        <Container>
+          <Header>
+            <FormattedMessage {...messages.header} values={{type: this.props.type}} />
+          </Header>
+          <Instruction>
+            <FormattedMessage {...messages.instruction} />
+          </Instruction>
+          { this.props.realWorldEx.complete ? this.renderComplete() : this.renderForm() }
+        </Container>
+      </ThemeProvider>
     );
   }
 }

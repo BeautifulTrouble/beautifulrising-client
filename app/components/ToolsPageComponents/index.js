@@ -83,7 +83,7 @@ export const ToolsPageRelatedToolsHeader = styled(ToolsPageLeftHeader)`
   font-size: 40px;
   border: none;
   background-color: #f7f7f7;
-  padding: 10px 5px;
+  padding: 10px 5px 10px 20px;
   margin-bottom: 10px;
   margin-top: 30px;
 `;
