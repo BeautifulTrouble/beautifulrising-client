@@ -8,6 +8,10 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   header: {
     id: 'app.containers.SubmitNewsFeed.header',
-    defaultMessage: 'This is SubmitNewsFeed container !',
+    defaultMessage: 'IS THERE A HASHTAG THAT WE SHOULD BE AWARE OF? LET US KNOW...',
   },
+  submit: {
+    id: 'app.containers.SubmitNewsFeed.submit',
+    defaultMessage: 'Submit',
+  }
 });
