@@ -19,13 +19,11 @@ export function* sendModulesToEmail() {
   const locale = language.get('locale');
 
   const toolsValue = selectedTools.map(item=>item.slug).join(',');
-  console.log(userEmail, selectedTools);
 
   const requestURL = `https://api.beautifulrising.org/pdf/email?tools=${encodeURIComponent(toolsValue)}&lang=${encodeURIComponent(locale)}&address=${encodeURIComponent(userEmail)}`;
 
   try {
     const data = yield call(request, requestURL);
-    console.log(requestURL, "XXXXX", data);
     yield put(emailModulesComplete());
 
     yield delay(3000);
@@ -40,7 +38,6 @@ export function* sendModulesToEmail() {
 // Individual exports for testing
 export function* listenEmailModules() {
   // See example in containers/HomePage/sagas.js
-  console.log("1");
   yield takeLatest(REQUEST_EMAIL, sendModulesToEmail);
 }
 

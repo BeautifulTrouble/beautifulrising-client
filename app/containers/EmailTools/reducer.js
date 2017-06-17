@@ -21,12 +21,10 @@ const initialState = fromJS({
 });
 
 function emailToolsReducer(state = initialState, action) {
-  console.log(state)
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
     case REQUEST_EMAIL:
-      console.log("1", action);
       return state.set('email', action.data.email)
               .set('sendingEmail', true)
               .set('complete', false)

@@ -19,7 +19,6 @@ export function defaultAction() {
 }
 
 export function emailModules(email) {
-  console.log("1");
   return {
     type: REQUEST_EMAIL,
     data: { email }

@@ -61,7 +61,6 @@ export class EmailTools extends React.PureComponent { // eslint-disable-line rea
   }
 
   handleSubmit(evt) {
-    console.log("1");
     this.props.onSubmitForm(evt, this.state.email);
   }
 
@@ -109,7 +108,6 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     onSubmitForm: (evt, email) => {
-      console.log("2");
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(emailModules(email));
     }
