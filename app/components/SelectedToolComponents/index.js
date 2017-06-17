@@ -38,6 +38,7 @@ export const SelectedToolTitle = styled.h3`
 `;
 export const SelectedToolSnapshot = styled.p`
 font-size: 14px;
+line-height: 22px;
 margin: 0 0 10px ;`;
 export const SelectedToolCommands = styled.ul``;
 export const SelectedToolCommandItem = styled.li`

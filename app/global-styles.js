@@ -67,10 +67,4 @@ injectGlobal`
     min-width: 100%;
   }
 
-  p,
-  label {
-    font-family: 'Avenir', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: 1.5em;
-  }
-
 `;
