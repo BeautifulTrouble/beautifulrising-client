@@ -35,6 +35,7 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
   render() {
     const tool = this.props.toolData.getIn(['tool']);
     const lang = this.props.intl.locale;
+
     if (!tool._id) return null;
 
     return (

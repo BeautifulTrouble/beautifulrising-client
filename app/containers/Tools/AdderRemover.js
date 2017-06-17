@@ -34,7 +34,7 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
 
   onButtonClick(evt) {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-    
+
     if (this.props.toolIsSelected) {
       this.props.removeTool(this.props.slug)
     } else {
@@ -45,7 +45,7 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
   buildRemove() {
     return (
       <CallToAction>
-        <img src={RemoveToolIcon}/>{ this.props.removeText || ""}
+        <Isvg src={RemoveToolIcon}/>{ this.props.removeText || ""}
       </CallToAction>
     )
   }
@@ -53,13 +53,16 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
   buildAdd() {
     return (
       <CallToAction>
-        <img src={AddToolIcon}/>{ this.props.addText || "" }
+        <Isvg src={AddToolIcon}/>{ this.props.addText || "" }
       </CallToAction>
     );
   }
 
   render() {
     // {React.Children.toArray(this.props.children)}
+    if (this.props.slug === null) {
+      return (<ToolsButton color={this.props.color || "white"} onClick={null}><Isvg src={AddToolIcon}/></ToolsButton>);
+    }
 
     if (this.props.children !== undefined) {
       return (
@@ -74,7 +77,7 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
         </ToolsButton>);
       } else {
         return (
-          <ToolsButton color="white" onClick={this.onButtonClick.bind(this)}>
+          <ToolsButton color={this.props.color || "white"} onClick={this.onButtonClick.bind(this)}>
             {this.props.toolIsSelected ? this.buildRemove() : this.buildAdd()}
           </ToolsButton>
         );
@@ -85,10 +88,7 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
 }
 
 AdderRemover.propTypes = {
-  slug: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  snapshot: PropTypes.string.isRequired
+  slug: PropTypes.string
 };
 
 const mapStateToProps = (state, props) => {

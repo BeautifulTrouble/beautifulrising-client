@@ -17,19 +17,23 @@ import styled from 'styled-components';
 
 import PDFIcon from 'assets/images/icons/pdf.svg';
 import EmailIcon from 'assets/images/icons/email.svg';
-import EmailTools from 'containers/EmailTools';
+
 import FacebookIcon from 'assets/images/icons/facebook.svg';
 import TwitterIcon from 'assets/images/icons/twitter.svg';
 
+import EmailTools from 'containers/EmailTools';
+import EmptyToolsMessage from 'containers/EmptyToolsMessage';
+
 import { DOWNDLOAD_PDF, SEND_EMAIL } from './constants';
 import { NEWS_FEED, MY_TOOLS, TWITTER_FEED, FACEBOOK_FEED } from './constants';
+
 
 import { Link } from 'react-router';
 import { Map } from 'immutable';
 import { ToolsButton, ToolsListMenu, ToolsListMenuItem,
           ToolsList, ToolsListItem } from 'components/ToolsComponents';
 
-import SelectedTool from './SelectedTool'
+import SelectedTool from './SelectedTool';
 
 export const ToolsListContainer = styled.div`
     width: calc(100% - 78px);
@@ -111,6 +115,9 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
   }
 
   render() {
+
+    console.log(this);
+
     return (
       <ToolsListContainer show={this.props.show} lang={this.props.lang} rotate={true}>
 
@@ -156,6 +163,11 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
             <FormattedMessage {...messages.pdfSpiel} />
             <Link to={this.buildPDFLink()} target='_blank'>Download PDF</Link>
           </DownloadPDFContainer>
+
+          <Container show={Map(this.props.Tools.selectedTools).toList().size === 0}>
+            <EmptyToolsMessage/>
+          </Container>
+
           <ToolsList>
             {
               Map(this.props.Tools.selectedTools).toList().map((item) => (

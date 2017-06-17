@@ -81,7 +81,8 @@ export const ToolsButton = styled.button`
   line-height: 22px;
 
   svg, svg * {
-    fill: ${props => props.toShow ? 'black' : '#AFAFAF'};
+    fill: ${props=>props.color ? props.color : (props.toShow ? 'black' : '#AFAFAF')};
+    width: ${props=>props.width || 'auto'};
     transition:  fill 0.4s ease;
   }
 `;
