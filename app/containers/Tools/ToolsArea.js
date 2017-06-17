@@ -17,6 +17,7 @@ import styled from 'styled-components';
 
 import PDFIcon from 'assets/images/icons/pdf.svg';
 import EmailIcon from 'assets/images/icons/email.svg';
+import EmailTools from 'containers/EmailTools';
 
 import { DOWNDLOAD_PDF, SEND_EMAIL } from './constants';
 
@@ -45,6 +46,10 @@ const Container = styled.div`
 `;
 
 const DownloadPDFContainer = styled.div`
+  display: ${props=>props.show?'block':'none'};
+`;
+
+const EmailContainer = styled.div`
   display: ${props=>props.show?'block':'none'};
 `;
 
@@ -107,6 +112,9 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
           </ToolsListMenuItem>
         </ToolsListMenu>
         <Container>
+          <EmailContainer show={this.state.chosen === SEND_EMAIL} >
+            <EmailTools />
+          </EmailContainer>
           <DownloadPDFContainer show={this.state.chosen === DOWNDLOAD_PDF}>
             <Link to={this.buildPDFLink()} target='_blank'>Download PDF</Link>
           </DownloadPDFContainer>
