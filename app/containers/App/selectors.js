@@ -47,11 +47,9 @@ const getTagsArray = (state, props) => { return props.tags };
 const makeSelectAllTags = createSelector(
   [getTagsArray, selectGlobal],
   (toolTags, globalState) => {
-    console.log("TAGS :::", toolTags);
     if (globalState.getIn(['appData', 'tags']) !== undefined && globalState.getIn(['appData', 'tags']).size !== 0) {
       const allTags = globalState.getIn(['appData', 'tags']);
-      const slugged = toolTags ? toolTags.map(i=>slugify(i)) : Object.keys(allTags);;
-      console.log(slugged);
+      const slugged = toolTags ? toolTags.map(i=>slugify(i)) : Object.keys(allTags);
 
       return slugged
                 .map((key, index) => {

@@ -25,13 +25,13 @@ text-align: ${props=>props.theme.lang==='ar' ? 'right' : 'left'};
 margin: 0;
 padding: 0;`;
 const TypeSubheader = styled.h4`
-  text-align: ${props=> {console.log(props); return props.theme.lang==='ar' ? 'right' : 'left'}} ;
+  text-align: ${props=> props.theme.lang==='ar' ? 'right' : 'left'} ;
   color: ${props=>getToolTypeColor(props.type)};
   margin: 0;
   padding: 0;
 `;
 const Content = styled.div`
-  text-align: ${props=> {"Content", console.log(props); return props.theme.lang==='ar' ? 'right ' : 'left'}} ;
+  text-align: ${props=> props.theme.lang==='ar' ? 'right ' : 'left'};
 `;
 
 
