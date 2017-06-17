@@ -45,9 +45,10 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
   componentDidMount() {
     console.log("This" , this.props.languageData);
 
-    if (!this.props.languageData) {
-      this.props.onLanguageLoad()
-    }
+    // TODO Load language if feasible
+    // if (!this.props.languageData) {
+    //   this.props.onLanguageLoad()
+    // }
   }
 
   render() {

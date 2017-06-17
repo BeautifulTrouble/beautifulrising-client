@@ -7,7 +7,7 @@ import { defineMessages } from 'react-intl';
 
 export default defineMessages({
   header: {
-    id: 'app.components.ToolHowToUse.header',
+    id: 'app.components.ToolWhyItFailed.header',
     defaultMessage: 'Why it Failed',
   },
 });

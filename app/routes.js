@@ -20,7 +20,9 @@ export default function createRoutes(store) {
   const { injectReducer, injectSagas } = getAsyncInjectors(store); // eslint-disable-line no-unused-vars
   injectSagas(ContactUs);
   injectSagas(EmailTools);
-  injectSagas(LanguageProvider);
+
+  // TODO Re-examine this
+  // injectSagas(LanguageProvider);
 
   const getHomePageComponent = (nextState, cb) => {
     const importModules = Promise.all([
