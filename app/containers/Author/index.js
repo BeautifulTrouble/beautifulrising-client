@@ -14,7 +14,6 @@ import {selectAuthor} from './selectors';
 
 export class Author extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
-    // console.log(this.props.author);
     return (
       <AuthorContainer>
           <AuthorLink to={`/search/authors!${this.props.slug}`}>

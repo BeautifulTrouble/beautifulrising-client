@@ -47,7 +47,6 @@ const makeSelectLanguage = createSelector(
      if (data) {
        switch (filter) {
          case TAG_FILTER:
-          // data.map(item=>{if(item) { console.log(item.tags, item.tags.map(i=>slugify(i)))} });
           return data.filter(item => isFullTool(item) && item.tags && item.tags.map(i=>slugify(i)).includes(label));
           break;
          case TYPE_FILTER:

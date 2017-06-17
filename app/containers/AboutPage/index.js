@@ -32,10 +32,6 @@ import msg from './messages';
 
 
 const Msg = FormattedMessage;
-//
-// browserHistory.listen( location =>  {
-//  console.log("Location", location);
-// });
 
 export class AboutPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -81,7 +77,6 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
     //     if (this.refs[aboutPath]) {
     //       // this.setState({ activateAnchor : false });
     //       const container = ReactDOM.findDOMNode(this.refs[aboutPath])
-    //       // console.log("3333", container.offsetTop);
     //
     //       this.props.dispatch(push(aboutPath));
     //       this.setState({ currentPath: aboutPath, currentOffset: container.offsetTop })
@@ -100,13 +95,9 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
     //
     //       const currentOffset = currentDOM.offsetTop - window.scrollY;
     //       const newOffset = newDOM.offsetTop - window.scrollY;
-    //       // console.log("CURRENTDOM", currentDOM, currentDOM.offsetTop - window.scrollY )
-    //       // console.log("NEWDOM", newDOM, newDOM.offsetTop - window.scrollY)
     //       // if the DOM is higher, it dominates
     //
-    //       // console.log(newDOM.offsetTop, this.state.currentOffset);
     //       if ((currentOffset < 0 || currentOffset > window.innerHeight) && isVisible) {
-    //         // console.log("1111");
     //         this.setState({ activateAnchor : false });
     //         // this.setState({currentPath: aboutPath})
     //         this.props.dispatch(push(aboutPath));
@@ -118,7 +109,6 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
     //       //           && currentOffset < newOffset
     //       //           && newDom.offsetTop > this.state.currentOffset
     //       //         ) {
-    //       //   console.log("2222", currentOffset);
     //       //   this.setState({ activateAnchor : false });
     //       //   // this.setState({currentPath: aboutPath})
     //       //   this.props.dispatch(push(aboutPath));

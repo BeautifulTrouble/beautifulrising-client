@@ -76,7 +76,6 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
   buildPDFLink () {
     const slugs = Map(this.props.Tools.selectedTools).toList().map(item=>item.slug).join(',');
     const lang = this.props.intl.locale;
-    console.log(slugs);
 
     return `https://api.beautifulrising.org/pdf/download?tools=${encodeURIComponent(slugs)}&lang=${lang}`
   }

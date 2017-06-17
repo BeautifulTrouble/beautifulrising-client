@@ -106,7 +106,6 @@ class ContributeType extends React.PureComponent { // eslint-disable-line react/
   }
 
   handleClick(index) {
-    // console.log(e.target, e);
     if ( index === this.state.chosen ) {
     } else {
       this.setState({ chosen: index });

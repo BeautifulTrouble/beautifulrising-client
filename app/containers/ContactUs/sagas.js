@@ -24,7 +24,6 @@ export function* waitingForSubscription() {
   // See example in containers/HomePage/sagas.js
 
   const action = yield takeLatest(SEND_SUBSCRIPTION, subscribeUser);
-  // console.log("GOT THIS", action);
   // // const sel = yield select('email');
   // yield ();
 
