@@ -41,7 +41,7 @@ export default function configureStore(initialState = {}, history) {
   );
 
   // begin periodically persisting the store
-  // persistStore(store, {blacklist: ['route', 'contactUs', 'submitRealWorldExample']});
+  persistStore(store, {blacklist: ['route', 'contactUs', 'submitRealWorldExample']});
 
   // Extensions
   store.runSaga = sagaMiddleware.run;

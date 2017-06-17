@@ -76,6 +76,7 @@ export const ToolPageCaption = styled.div`
   color: white;
   padding-right: 50px;
   font-size: 15px;
+  display: ${props=>props.show ? 'block' : 'none'};
 
   a { color: #828486; }
 `;

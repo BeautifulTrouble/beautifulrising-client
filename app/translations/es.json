@@ -142,9 +142,9 @@
   "app.containers.SubmitRealWorldExample.url": "Copia y pega el URL del video, imagen, gif o audio",
   "app.containers.Tags.header": "Tags",
   "app.containers.ToolPage.addTool": "GUARDAR ESTE MÓDULO",
-  "app.containers.ToolPage.contributedByHeader": "",
+  "app.containers.ToolPage.contributedByHeader": "APORTADO POR",
   "app.containers.ToolPage.header": "This is ToolPage container !",
-  "app.containers.ToolPage.learnMore": "Learn More",
+  "app.containers.ToolPage.learnMore": "APRENDER MÁS",
   "app.containers.ToolPage.methodologies": "METODOLOGÍAS",
   "app.containers.ToolPage.principles": "PRINCIPIOS",
   "app.containers.ToolPage.realWorldExamplesOf": "EJEMPLOS DEL MUNDO REAL SOBRE {title}",
@@ -165,6 +165,6 @@
   "app.containers.ToolsSortOptions.header": "This is ToolsSortOptions container !",
   "app.containers.ToolsSortOptions.newestButton": "Más reciente",
   "app.containers.ToolsViewOptions.header": "This is ToolsViewOptions container !",
-  "app.containers.TrainingPage.header": "TRAINING + RESOURCES",
-  "otherResources": ""
+  "app.containers.TrainingPage.header": "CAPACITACIÓN + RECURSOS",
+  "app.containers.TrainingPage.otherResources": "OTROS RECURSOS"
 }

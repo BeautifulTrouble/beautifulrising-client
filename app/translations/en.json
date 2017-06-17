@@ -166,5 +166,5 @@
   "app.containers.ToolsSortOptions.newestButton": "Newest",
   "app.containers.ToolsViewOptions.header": "This is ToolsViewOptions container !",
   "app.containers.TrainingPage.header": "TRAINING + RESOURCES",
-  "otherResources": "OTHER RESOURCES"
+  "app.containers.TrainingPage.otherResources": "OTHER RESOURCES"
 }

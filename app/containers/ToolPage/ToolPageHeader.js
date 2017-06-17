@@ -68,7 +68,7 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
               addText={(<FormattedMessage {...messages.addTool} />)}
               removeText={(<FormattedMessage {...messages.removeTool} />)}
             />
-            <ToolPageCaption>
+            <ToolPageCaption show={this.props['image-caption'] !== undefined}>
               <Markdown source={'/ ' + this.props['image-caption']} />
             </ToolPageCaption>
           </Content>
