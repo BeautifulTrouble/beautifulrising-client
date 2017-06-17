@@ -17,6 +17,7 @@ import searchFieldReducer from 'containers/SearchField/reducer';
 import toolsReducer from 'containers/Tools/reducer';
 import contactUsReducer from 'containers/ContactUs/reducer';
 import submitRealWorldExampleReducer from 'containers/SubmitRealWorldExample/reducer';
+import emailToolsReducer from 'containers/EmailTools/reducer';
 /*
  * routeReducer
  *
@@ -60,6 +61,7 @@ export default function createReducer(asyncReducers) {
     tools: toolsReducer,
     contactUs: contactUsReducer,
     submitRealWorldExample: submitRealWorldExampleReducer,
+    emailTools: emailToolsReducer,
     ...asyncReducers,
   });
 }

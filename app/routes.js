@@ -4,6 +4,7 @@
 // about the code splitting business
 import { getAsyncInjectors } from 'utils/asyncInjectors';
 import ContactUs from 'containers/ContactUs/sagas';
+import EmailTools from 'containers/EmailTools/sagas';
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -17,7 +18,8 @@ export default function createRoutes(store) {
   // Create reusable async injectors using getAsyncInjectors factory
   const { injectReducer, injectSagas } = getAsyncInjectors(store); // eslint-disable-line no-unused-vars
   injectSagas(ContactUs);
-
+  injectSagas(EmailTools);
+  
   const getHomePageComponent = (nextState, cb) => {
     const importModules = Promise.all([
       import('containers/HomePage/reducer'),
