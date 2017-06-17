@@ -71,10 +71,21 @@ export const ToolsButton = styled(Link)`
   font-weight: bold;
 
   img { margin-right: 10px;}
-
+  display: inline-block;
   transform: ${props=>props.show&&props.rotate ? 'rotate(180deg)' : 'rotate(0)'};
   transition:  transform 0.4s ease;
 
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 22px;
+
+  .isvg {
+    &::after {
+      content: ' ';
+      display: block;
+      clear: both;
+    }
+  }
   svg, svg * {
     fill: ${props => props.color};
     transition:  fill 0.4s ease;
