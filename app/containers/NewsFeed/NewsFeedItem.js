@@ -75,8 +75,8 @@ export default function NewsFeedItem(props) {
     <ItemContainer>
       <Viewport>
         <Image src={props.image_http}/>
-        <Source to={props.user_link}>{props.user_name}</Source>
-        <Handle to={props.user_link}>{props.user_handle}</Handle>
+        <Source to={props.user_link} target='_blank'>{props.user_name}</Source>
+        <Handle to={props.user_link} target='_blank'>{props.user_handle}</Handle>
         <Content dangerouslySetInnerHTML={{__html: props.content_html}}></Content>
         <TweetTimestamp time={props.timestamp / 1000} format='full' />
         <CallToAction>
