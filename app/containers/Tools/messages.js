@@ -25,5 +25,9 @@ export default defineMessages({
   share: {
     id: 'app.containers.Tools.share',
     defaultMessage: 'share'
+  },
+  pdfSpiel: {
+    id: 'app.containers.Tools.pdfSpiel',
+    defaultMessage: 'Click the button below to download a PDF version of your chosen tools'
   }
 });

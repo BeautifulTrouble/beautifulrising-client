@@ -18,8 +18,11 @@ import styled from 'styled-components';
 import PDFIcon from 'assets/images/icons/pdf.svg';
 import EmailIcon from 'assets/images/icons/email.svg';
 import EmailTools from 'containers/EmailTools';
+import FacebookIcon from 'assets/images/icons/facebook.svg';
+import TwitterIcon from 'assets/images/icons/twitter.svg';
 
 import { DOWNDLOAD_PDF, SEND_EMAIL } from './constants';
+import { NEWS_FEED, MY_TOOLS, TWITTER_FEED, FACEBOOK_FEED } from './constants';
 
 import { Link } from 'react-router';
 import { Map } from 'immutable';
@@ -44,10 +47,32 @@ const Container = styled.div`
   height: calc(100% - 60px);
   overflow-y: auto;
   overflow-x: hidden;
+  display: ${props=>props.show?'block':'none'};
 `;
 
 const DownloadPDFContainer = styled.div`
   display: ${props=>props.show?'block':'none'};
+  padding: 10px;
+  h3 {
+    margin: 0; padding: 0;
+  }
+  span {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  a {
+    &::before { display: block; content: ' ';}
+    color: #959595;
+    display: inline-block;
+    border: 2px;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: bold;
+
+  }
+  border-bottom: 2px solid;
 `;
 
 const EmailContainer = styled.div`
@@ -60,7 +85,7 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
     super(props);
     this.state = {
       chosen: null,
-      hovering: null
+      newsFeed: TWITTER_FEED
     };
   }
 
@@ -73,12 +98,7 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
       this.setState({ chosen: null });
     }
   }
-  handleMouseOver(item = null) {
-    this.setState({hovering: item});
-  }
-  handleMouseOut(item = null ) {
-    this.setState({hovering: null});
-  }
+
   buildPDFLink () {
     const slugs = Map(this.props.Tools.selectedTools).toList().map(item=>item.slug).join(',');
     const lang = this.props.intl.locale;
@@ -86,18 +106,32 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
     return `https://api.beautifulrising.org/pdf/download?tools=${encodeURIComponent(slugs)}&lang=${lang}`
   }
 
+  handleNewsFeedChange(feedType) {
+    this.setState({ newsFeed: feedType });
+  }
+
   render() {
     return (
       <ToolsListContainer show={this.props.show} lang={this.props.lang} rotate={true}>
-        <ToolsListMenu>
+
+        <ToolsListMenu show={this.props.Tools.viewType === NEWS_FEED}>
+          <ToolsListMenuItem>
+            <ToolsButton toShow={this.state.newsFeed === TWITTER_FEED} onClick={()=>this.handleNewsFeedChange(TWITTER_FEED)}>
+              <Isvg src={TwitterIcon} />
+            </ToolsButton>
+          </ToolsListMenuItem>
+          <ToolsListMenuItem>
+            <ToolsButton toShow={this.state.newsFeed === FACEBOOK_FEED} onClick={()=>this.handleNewsFeedChange(FACEBOOK_FEED)}>
+              <Isvg src={FacebookIcon} />
+            </ToolsButton>
+          </ToolsListMenuItem>
+        </ToolsListMenu>
+
+        <ToolsListMenu show={this.props.Tools.viewType === MY_TOOLS}>
           <ToolsListMenuItem>
             <ToolsButton
-              // onClick={()=>this.handleClick(DOWNDLOAD_PDF)}
-              to={this.buildPDFLink()} target='_blank'
-              color={this.state.hovering === DOWNDLOAD_PDF ? 'black' : '#B3B3B3'}
-              show={this.state.hovering === DOWNDLOAD_PDF }
-              onMouseOver={()=>this.handleMouseOver(DOWNDLOAD_PDF)}
-              onMouseOut={()=>this.handleMouseOut(DOWNDLOAD_PDF)}
+              onClick={()=>this.handleClick(DOWNDLOAD_PDF)}
+              toShow={this.state.chosen === DOWNDLOAD_PDF }
               >
               <Isvg src={PDFIcon} />
             </ToolsButton>
@@ -105,18 +139,21 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
           <ToolsListMenuItem>
             <ToolsButton
                onClick={()=>this.handleClick(SEND_EMAIL)}
-               color={this.state.chosen === SEND_EMAIL ? 'black' : '#B3B3B3'}
-               show={this.state.chosen === SEND_EMAIL }
+               toShow={this.state.chosen === SEND_EMAIL }
             >
               <Isvg src={EmailIcon} />
             </ToolsButton>
           </ToolsListMenuItem>
         </ToolsListMenu>
-        <Container>
+
+
+        <Container show={ this.props.Tools.viewType === MY_TOOLS }>
           <EmailContainer show={this.state.chosen === SEND_EMAIL} >
             <EmailTools />
           </EmailContainer>
           <DownloadPDFContainer show={this.state.chosen === DOWNDLOAD_PDF}>
+            <h3>Download PDF</h3>
+            <FormattedMessage {...messages.pdfSpiel} />
             <Link to={this.buildPDFLink()} target='_blank'>Download PDF</Link>
           </DownloadPDFContainer>
           <ToolsList>

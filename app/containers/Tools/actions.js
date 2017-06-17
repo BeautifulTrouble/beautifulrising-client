@@ -9,12 +9,20 @@ import {
   ADD_TOOL,
   REMOVE_TOOL,
   DEFAULT_ACTION,
+  SET_VIEW_TYPE
 } from './constants';
 
 export function setShowTools(showTools) {
   return {
     type: SET_SHOW_TOOLS,
     data: showTools
+  }
+}
+
+export function setViewType(viewType) {
+  return {
+    type: SET_VIEW_TYPE,
+    data: viewType
   }
 }
 

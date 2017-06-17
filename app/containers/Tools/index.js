@@ -31,12 +31,19 @@ import { NEWS_FEED, MY_TOOLS } from './constants';
 import { ThemeProvider } from 'styled-components';
 
 import ToolsArea from './ToolsArea';
-import { setShowTools } from './actions';
+import { setShowTools, setViewType } from './actions';
 
 const ToolsOpenerCloser = styled.div``;
 
 const ToolsMenuContainer = styled.div`
 height: 100%;
+`;
+
+const ToolsViewType = styled(ToolsButton)`
+  color: ${props=>props.chosen&&props.toShow ? 'black' : '#AFAFAF' };
+  svg, svg * {
+    fill: ${props=>props.chosen&&props.toShow ? 'black' : '#AFAFAF' };
+  }
 `;
 export class Tools extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -53,12 +60,12 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
       this.props.setShowTools(!this.props.Tools.show);
     }
 
-    if (this.props.Tools.show && chosen === this.state.chosen) {
+    if (this.props.Tools.show && chosen === this.props.Tools.viewType) {
       this.props.setShowTools(false);
     }
 
     if ( chosen !== null) {
-      this.setState({ chosen })
+      this.props.setViewType(chosen);
     }
   }
 
@@ -71,32 +78,31 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
                 <ToolsMenuItem>
                   <ToolsButton
                     onClick={() => this.onToggleClick(null)}
-                    color={this.props.Tools.show ? 'black' : '#AFAFAF'}
                     rotate={true}
-                    show={this.props.Tools.show}
+                    toShow={this.props.Tools.show}
                   >
                     <Isvg src={ArrowIcon} />
                   </ToolsButton>
                 </ToolsMenuItem>
                 <ToolsMenuItem>
-                  <ToolsButton
+                  <ToolsViewType
                     onClick={() => this.onToggleClick(NEWS_FEED)}
-                    color={this.props.Tools.show && this.state.chosen === NEWS_FEED ? 'black' : '#AFAFAF'}
-                    show={this.props.Tools.show}
+                    chosen={this.props.Tools.viewType === NEWS_FEED}
+                    toShow={this.props.Tools.show}
                     >
                     <Isvg src={NewsFeedIcon} />
                     <FormattedMessage {...messages.newsFeed} />
-                  </ToolsButton>
+                  </ToolsViewType>
                 </ToolsMenuItem>
                 <ToolsMenuItem>
-                  <ToolsButton
+                  <ToolsViewType
                       onClick={() => this.onToggleClick(MY_TOOLS)}
-                      color={this.props.Tools.show && this.state.chosen === MY_TOOLS ? 'black' : '#AFAFAF'}
-                      show={this.props.Tools.show}
+                      chosen={this.props.Tools.viewType === MY_TOOLS}
+                      toShow={this.props.Tools.show}
                   >
                     <Isvg src={MyToolsIcon} />
                     <FormattedMessage {...messages.myTools} />
-                  </ToolsButton>
+                  </ToolsViewType>
                 </ToolsMenuItem>
               </ToolsMenu>
             <ToolsArea lang={this.props.language} show={this.props.Tools.show}/>
@@ -121,6 +127,9 @@ function mapDispatchToProps(dispatch) {
     dispatch,
     setShowTools: (toShow) => {
       dispatch(setShowTools(toShow));
+    },
+    setViewType: (viewType) => {
+      dispatch(setViewType(viewType));
     }
   };
 }

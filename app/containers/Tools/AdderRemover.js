@@ -32,7 +32,9 @@ const CallToAction = styled.span`
 
 export class AdderRemover extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
-  onButtonClick() {
+  onButtonClick(evt) {
+    if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+    
     if (this.props.toolIsSelected) {
       this.props.removeTool(this.props.slug)
     } else {

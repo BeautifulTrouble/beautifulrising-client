@@ -65,7 +65,7 @@ export const PotentialRiskIcon = styled(Isvg)`
 `;
 /*** END OF TOOLS ICONS ***/
 
-export const ToolsButton = styled(Link)`
+export const ToolsButton = styled.button`
   outline: none;
   cursor: pointer;
   color:${props => props.color};
@@ -73,7 +73,7 @@ export const ToolsButton = styled(Link)`
 
   img { margin-right: 10px;}
   display: inline-block;
-  transform: ${props=>props.show&&props.rotate ? 'rotate(180deg)' : 'rotate(0)'};
+  transform: ${props=>props.toShow&&props.rotate ? 'rotate(180deg)' : 'rotate(0)'};
   transition:  transform 0.4s ease;
 
   text-transform: uppercase;
@@ -81,7 +81,7 @@ export const ToolsButton = styled(Link)`
   line-height: 22px;
 
   svg, svg * {
-    fill: ${props => props.color};
+    fill: ${props => props.toShow ? 'black' : '#AFAFAF'};
     transition:  fill 0.4s ease;
   }
 `;
@@ -91,12 +91,16 @@ export const ToolsListMenu = styled.ul`
     border: 2px solid;
     border-width: 0 0 3px;
     margin: 0;
+    display: ${props=>props.show?'block':'none'};
 `;
 export const ToolsListMenuItem = styled.li`
   list-style: none;
   display: inline-block;
   width: 49%;
   text-align: center;
+  &:first-child {
+    border-right: 2px solid;
+  }
 `;
 
 export const ToolType = styled.h3`

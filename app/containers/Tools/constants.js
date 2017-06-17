@@ -15,3 +15,8 @@ export const MY_TOOLS = 'app/Tools/MY_TOOLS';
 
 export const DOWNDLOAD_PDF =  'app/Tools/DOWNDLOAD_PDF';
 export const SEND_EMAIL =  'app/Tools/SEND_EMAIL';
+
+export const SET_VIEW_TYPE = 'app/Tools/SET_VIEW_TYPE';
+
+export const TWITTER_FEED= 'app/Tools/TWITTER_FEED';
+export const FACEBOOK_FEED= 'app/Tools/FACEBOOK_FEED';
