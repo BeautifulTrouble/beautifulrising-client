@@ -68,6 +68,8 @@ export const ToolsPageContributor = styled(ToolsPageLeftHeader)`
   padding: 0;
   line-height: 40px;
   margin-top: 32px;
+
+  text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
 `;
 
 export const ToolPageCaption = styled.div`
@@ -120,6 +122,10 @@ export const ToolHeaderViewport = styled.div`
 export const ToolLeftArea = styled(ToolInfoSection)`
   width: 165px;
   text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
+
+  * {
+    text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
+  }
 `;
 
 

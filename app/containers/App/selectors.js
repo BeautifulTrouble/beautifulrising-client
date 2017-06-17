@@ -1,6 +1,6 @@
 import Immutable, { OrderedSet, Map, List } from 'immutable';
 import { createSelector } from 'reselect';
-
+import {slugify} from 'utils/tags';
 const selectGlobal = (state) => state.get('global');
 const selectTools = (state) => state.get('tools');
 const selectLanguage = (state) => state.get('language');
@@ -47,13 +47,13 @@ const getTagsArray = (state, props) => { return props.tags };
 const makeSelectAllTags = createSelector(
   [getTagsArray, selectGlobal],
   (toolTags, globalState) => {
-
+    console.log("TAGS :::", toolTags);
     if (globalState.getIn(['appData', 'tags']) !== undefined && globalState.getIn(['appData', 'tags']).size !== 0) {
       const allTags = globalState.getIn(['appData', 'tags']);
-      const keys = Object.keys(allTags);
+      const slugged = toolTags ? toolTags.map(i=>slugify(i)) : Object.keys(allTags);;
+      console.log(slugged);
 
-      return keys
-                .filter(key => toolTags ? toolTags.includes(allTags[key]) : true)
+      return slugged
                 .map((key, index) => {
                     return {key: key, value: allTags[key]}}
                 )

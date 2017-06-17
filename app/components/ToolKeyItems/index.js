@@ -5,12 +5,13 @@
 */
 
 import React, {PropTypes} from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { getToolTypeColor } from 'components/CommonComponents';
 import messages from './messages';
 import Markdown from 'react-remarkable';
+
 
 const Container = styled.section``;
 const Viewport = styled.div``;
@@ -20,17 +21,17 @@ const KeyItemListItem = styled.div`
   margin: 20px 0;
 `;
 const Header = styled.h3`
-text-align: left;
+text-align: ${props=>props.theme.lang==='ar' ? 'right' : 'left'};
 margin: 0;
 padding: 0;`;
 const TypeSubheader = styled.h4`
-  text-align: left;
+  text-align: ${props=> {console.log(props); return props.theme.lang==='ar' ? 'right' : 'left'}} ;
   color: ${props=>getToolTypeColor(props.type)};
   margin: 0;
   padding: 0;
 `;
 const Content = styled.div`
-  text-align: left;
+  text-align: ${props=> {"Content", console.log(props); return props.theme.lang==='ar' ? 'right ' : 'left'}} ;
 `;
 
 
@@ -40,6 +41,7 @@ class ToolKeyItems extends React.PureComponent { // eslint-disable-line react/pr
     if (!list || list === undefined || list.length == 0) return null;
 
     return (
+      <ThemeProvider theme={{ lang: this.props.intl.locale }}>
       <KeyItemList>
         { list.map((item,ind)=> {
             try {
@@ -59,6 +61,7 @@ class ToolKeyItems extends React.PureComponent { // eslint-disable-line react/pr
 
         }) }
       </KeyItemList>
+      </ThemeProvider>
     )
 
   }
@@ -85,4 +88,4 @@ ToolKeyItems.propTypes = {
   keyTheories: PropTypes.array,
 };
 
-export default ToolKeyItems;
+export default injectIntl(ToolKeyItems);

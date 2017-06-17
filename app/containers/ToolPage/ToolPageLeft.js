@@ -6,9 +6,9 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import styled from 'styled-components';
+import styled, { ThemeProvider} from 'styled-components';
 
 import ToolsRequestTraining from 'components/ToolsRequestTraining';
 import Tags from 'containers/Tags';
@@ -37,21 +37,24 @@ export class ToolPageLeft extends React.PureComponent { // eslint-disable-line r
   }
 
   render() {
+    const lang = this.props.intl.locale;
     return (
-      <ToolLeftArea>
-        <ToolsPageContributor>
-          <FormattedMessage {...messages.contributedByHeader} />
-        </ToolsPageContributor>
-        { this.props.authors ?
-            this.props.authors.map(item=><Author key={item} slug={item}/>) :
-            null }
+        <ThemeProvider theme={{ lang: lang}}>
+          <ToolLeftArea>
+            <ToolsPageContributor>
+              <FormattedMessage {...messages.contributedByHeader} />
+            </ToolsPageContributor>
+            { this.props.authors ?
+                this.props.authors.map(item=><Author key={item} slug={item}/>) :
+                null }
 
-        { this.renderTags() }
-        <Container>
-          <ToolsPageLeftHeader>Training</ToolsPageLeftHeader>
-          <ToolsRequestTraining />
-        </Container>
-      </ToolLeftArea>
+            { this.renderTags() }
+            <Container>
+              <ToolsPageLeftHeader>Training</ToolsPageLeftHeader>
+              <ToolsRequestTraining />
+            </Container>
+          </ToolLeftArea>
+        </ThemeProvider>
     );
   }
 }
@@ -67,4 +70,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(ToolPageLeft);
+export default connect(null, mapDispatchToProps)(injectIntl(ToolPageLeft));
