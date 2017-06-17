@@ -41,5 +41,13 @@ export default defineMessages({
   story: {
     id: 'app.containers.HomePage.story',
     defaultMessage: 'story'
+  },
+  clearSearch: {
+    id: 'app.containers.HomePage.clearSearch',
+    defaultMessage: 'Clear'
+  },
+  searchResults: {
+    id: 'app.containers.HomePage.searchResults',
+    defaultMessage: 'Search results for <strong>{label}</strong>'
   }
 });

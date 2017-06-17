@@ -21,7 +21,6 @@ class ListViewItem extends React.Component {
     return (
       <ListContainer>
         <ListViewport>
-          <hr width="60px"/>
           <ToolType type={this.props.type}>
             <ToolType type={this.props.type}>
               <FormattedMessage { ...messages[this.props.type] } />

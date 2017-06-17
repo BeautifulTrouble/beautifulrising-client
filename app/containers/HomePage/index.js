@@ -7,7 +7,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
+import { push } from 'react-router-redux';
+import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import Tags from 'containers/Tags';
 import { BLOCK_VIEW, LIST_VIEW } from 'containers/ToolsViewOptions/constants';
@@ -39,12 +40,29 @@ import messages from './messages';
 
 const SearchResultsContainer = styled.div`
   text-align: left;
+  padding-left: 42px;
+  color: #828486;
+  font-size: 14px;
 `;
 const SearchResultsText = styled.span``;
 
-const Container = styled.div`
-  padding-top: 490px;
+const ClearButton = styled.button`
+  outline: none;
+  font-family: 'Avenir Black', sans-serif;
+  font-weight: 800;
+  padding-right: 24px;
+  text-transform: uppercase;
+  padding-bottom: 20px;
+  cursor: pointer;
+  
+  * { vertical-align: middle; }
 `;
+const Container = styled.div`
+  padding-top: ${props=>props.full ? '490px' : props.isStory ? '420px' : '340px'};
+`;
+
+const TOP=0,MIDDLE=1,BOTTOM=2;
+
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   componentDidMount() {
@@ -57,6 +75,10 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     return this.props.viewTool === BLOCK_VIEW ? BlockViewItem : ListViewItem;
   }
 
+  handleClearSearch() {
+    this.props.dispatch(push('/'));
+  }
+
   getSearchResultsHeader() {
 
     if (!this.props.params.filter || this.props.params.filter !== 'search' || !this.props.params.label) return;
@@ -64,7 +86,8 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     return (
       <SearchResultsContainer>
         <SearchResultsText>
-          Search results for <strong>{this.props.params.label}</strong>:
+          <ClearButton onClick={this.handleClearSearch.bind(this)}>☒ <FormattedMessage {...messages.clearSearch} /></ClearButton>
+          <FormattedHTMLMessage {...messages.searchResults} values={{label: this.props.params.label}} />
         </SearchResultsText>
       </SearchResultsContainer>
     );
@@ -73,11 +96,23 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     return this.props.language === 'ar' ? 'rtl' : 'ltr';
   }
 
+  randomizePosition() {
+    const positions = [TOP, MIDDLE, BOTTOM];
+    const randomPos = positions[Math.floor(Math.random() * 100) % 3];
+
+   //  console.log(randomPos, Math.floor(Math.random() * 100) % 3 );
+    switch(randomPos) {
+      case TOP: return { top: '10px'};
+      case MIDDLE: return { top: '50%', transform: 'translateY(-50%)'};
+      case BOTTOM: return { bottom: '10px' };
+    }
+  }
+
   render() {
     const lang = this.props.language;
     const ListItem = this.getViewMode();
     return (
-      <Container dir={this.getDirection()}>
+      <Container dir={this.getDirection()} full={this.props.params.filter !== 'type'} isStory = {this.props.params.label === 'story'}>
         <Helmet
           title="HomePage"
           meta={[
@@ -112,7 +147,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
         <Stage lang={lang}>
           {this.getSearchResultsHeader()}
           <ToolList>
-            { this.props.sorted ? this.props.sorted.map(tool => { return (<ListItem lang={lang} key={tool['_id']} {...tool}/>) }) : null }
+            { this.props.sorted ? this.props.sorted.map(tool => { return (<ListItem position={this.randomizePosition()} lang={lang} key={tool['_id']} {...tool}/>) }) : null }
           </ToolList>
         </Stage>
       </Container>
@@ -138,6 +173,7 @@ const mapStateToProps = (state, props) => {
 
 function mapDispatchToProps(dispatch) {
   return {
+    dispatch,
     onPageLoad: (evt) => {
       dispatch(loadData());
     }

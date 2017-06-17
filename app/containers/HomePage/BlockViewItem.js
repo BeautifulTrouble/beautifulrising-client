@@ -9,14 +9,18 @@ import AdderRemover from 'containers/Tools/AdderRemover';
 
 import {ToolType, ToolTitle, BlockContainer,
         BlockViewport, BlockSpiel, BlockAddRem, BlockViewTitleArea} from 'components/ToolsComponents';
-
+import Markdown from 'react-remarkable';
 import RegionIcon from 'components/RegionIcon';
 import messages from './messages';
 import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
 
+//Positions
+
 const RegionContainer = styled.div`
   position: absolute;
   top: 10px;
+  opacity: ${props=>props.show?'1':'0'};
+  transition: opacity 0.3s ease;
   ${props=>props.lang==='ar' ? 'left: 10px;' : 'right: 10px;'}
   svg {  width: 50px; height: 50px;}
 `;
@@ -26,7 +30,8 @@ class BlockViewItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mouseOver: false
+      mouseOver: false,
+      forceShow: false
     }
   }
 
@@ -38,6 +43,14 @@ class BlockViewItem extends React.Component {
      this.setState({mouseOver: false });
    }
 
+   handleForceShow(){
+     this.setState({forceShow: true});
+   }
+
+   handleRemoveForce() {
+    this.setState({forceShow: false});
+   }
+
    render() {
      return (
       <BlockContainer
@@ -47,28 +60,33 @@ class BlockViewItem extends React.Component {
             background={`url(${BR_IMAGE_PREFIX + this.props.image})`}>
         <BlockViewport>
           <Link to={`/tool/${this.props.slug}`}>
-            <BlockViewTitleArea show={!this.state.mouseOver}>
+            <BlockViewTitleArea
+                  show={!this.state.mouseOver}
+                  forceShow={this.state.forceShow}
+                  style={this.props.position}
+            >
               <ToolType type={this.props.type}>
                 <FormattedMessage { ...messages[this.props.type] } />
               </ToolType>
               <ToolTitle color={'white'}>
                 {this.props.title}
               </ToolTitle>
+              <BlockAddRem onMouseOver={this.handleForceShow.bind(this)} onMouseOut={this.handleRemoveForce.bind(this)}>
+                <AdderRemover {...this.props}/>
+              </BlockAddRem>
             </BlockViewTitleArea>
 
             <BlockSpiel show={this.state.mouseOver}
-                type={this.props.type}>{this.props.snapshot}</BlockSpiel>
+               forceShow={this.state.forceShow}
+                type={this.props.type}>
+                  <Markdown source={this.props.snapshot} /></BlockSpiel>
 
             { this.props.type === 'story' ?
-                <RegionContainer lang={this.props.lang}>
+                <RegionContainer lang={this.props.lang} show={!this.state.mouseOver}>
                   <RegionIcon type={this.props.type} region={slugify(this.props.region)} />
                 </RegionContainer>
               : null }
           </Link>
-
-          <BlockAddRem>
-            <AdderRemover {...this.props}/>
-          </BlockAddRem>
         </BlockViewport>
       </BlockContainer>
      );

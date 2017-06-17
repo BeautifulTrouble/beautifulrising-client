@@ -107,6 +107,7 @@ export const ToolTitle = styled.h1`
   letter-spacing: 1px;
   font-weight: normal;
   margin: 0;
+  line-height: 1;
   > a {
     color: ${props=>props.color || 'black'};
   }
@@ -180,46 +181,54 @@ export const BlockViewport = styled(ToolViewport)`
   height: 100%;
   position: relative;
 `;
-export const BlockSpiel = styled.p`
+export const BlockSpiel = styled.div`
   color: ${props=>getToolTypeColor(props.type)};
   position: absolute;
   top: 0;
   left: 0;
   padding: 10px;
-  opacity: ${props=>props.show?'1':'0'};
+  font-weight: 800;
+  opacity: ${props=>props.show?(props.forceShow?'0':'1'):'0'};
   transition: opacity 0.2s;
 `;
 
 export const BlockViewTitleArea = styled.div`
   position: absolute;
-  top: ${props=>props.top || '10px'};
   left: 10px;
   padding-right: 10px;
   z-index: 100;
   width: calc(100% - 10px);
-  opacity: ${props=>props.show?'1':'0'};
+  opacity: ${props=>props.show ? '1': (props.forceShow?'1':'0')};
   transition: opacity 0.2s;
 `;
 export const BlockAddRem = styled.div`
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
 `;
 
 //List View
 export const ListContainer = styled(ToolContainer)`
   width: 48%;
-  height: 200px;
+  height: 190px;
   text-align: left;
+
 `;
 
 export const ListViewport = styled(ToolViewport)`
   background-color: none;
   padding: 0 10px 0 50px;
-  > hr {
-    border-width: 2px;
-    border-color: black;
-    float: left;
+  position: relative;
+
+  &::before{
+    content: ' ';
+    width: 53px;
+    height: 1px;
+    border-bottom: 2px solid;
+    position: absolute;
+    top: 0px;
+    left: 50px;
+  }
+
+  h3 {
+    padding-top: 5px;
   }
 `;
 export const ListSpiel = styled.p`

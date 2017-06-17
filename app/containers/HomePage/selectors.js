@@ -59,7 +59,7 @@ const makeSelectLanguage = createSelector(
           return result;
           break;
          case SEARCH_FILTER:
-          const authorMatches = label.match(/^authors!(.+)/i);
+          const authorMatches = label===undefined?null:label.match(/^authors!(.+)/i);
           if (authorMatches) {
             //For authors, it doesn't matter if it's a snapshot or a full item.
             return label ? data.filter(item => {
