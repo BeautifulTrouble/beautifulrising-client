@@ -58,7 +58,7 @@ export class SelectedTool extends React.PureComponent { // eslint-disable-line r
             </AdderRemover>
           </SelectedToolCommandItem>
           <SelectedToolCommandItem>
-            <ShareButton>
+            <ShareButton {...this.props}>
               <Isvg src={ShareSmallIcon} />
               <FormattedMessage {...messages.share} />
             </ShareButton>

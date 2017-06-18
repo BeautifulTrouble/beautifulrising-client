@@ -12,7 +12,7 @@ import messages from './messages';
 import ShareIcon from 'assets/images/icons/share-small.svg';
 import FacebookIcon from 'assets/images/icons/facebook.svg';
 import TwitterIcon from 'assets/images/icons/twitter.svg';
-
+import { twitterShare, facebookShare } from 'utils/social';
 import Isvg from 'react-inlinesvg';
 
 const Container = styled.div`position: relative; `;
@@ -63,14 +63,23 @@ class ShareButton extends React.PureComponent { // eslint-disable-line react/pre
       </span>
     )
   }
+
+  handleTwitterClick(title, url) {
+    twitterShare(title, url);
+  }
+
+  handleFacebookShare(url) {
+    facebookShare(url);
+  }
+
   render() {
     return (
       <Container onMouseOver={this.showSocial.bind(this)} onMouseOut={this.hideSocial.bind(this)}>
         <ShareArea show={this.state.showSocialButtons}>
-          <FacebookButton>
+          <FacebookButton onClick={()=>this.handleFacebookShare(`https://beautifulrising.org/tool/${this.props.slug}`)}>
             <Isvg src={FacebookIcon} />
           </FacebookButton>
-          <TwitterButton>
+          <TwitterButton onClick={()=>this.handleTwitterClick(this.props.title, `https://beautifulrising.org/tool/${this.props.slug}`)}>
             <Isvg src={TwitterIcon} />
           </TwitterButton>
         </ShareArea>
@@ -85,7 +94,8 @@ class ShareButton extends React.PureComponent { // eslint-disable-line react/pre
 }
 
 ShareButton.propTypes = {
-
+  title: React.PropTypes.string.isRequired,
+  slug: React.PropTypes.string.isRequired
 };
 
 export default ShareButton;

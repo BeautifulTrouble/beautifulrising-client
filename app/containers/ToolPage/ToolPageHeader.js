@@ -84,7 +84,7 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
               removeText={(<FormattedMessage {...messages.removeTool} />)}
             />
             <ShareContainer>
-              <ShareButton>
+              <ShareButton {...this.props}>
                 <Isvg src={ShareIcon} />
                 <FormattedMessage {...messages.share}/>
               </ShareButton>
