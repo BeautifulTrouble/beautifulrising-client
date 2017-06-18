@@ -40,7 +40,7 @@ export class NewsFeed extends React.PureComponent { // eslint-disable-line react
 
   }
   handleData(data) {
-    console.log(data, Immutable(data));
+    
   }
   render() {
     return (

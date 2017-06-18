@@ -63,7 +63,7 @@ const ExampleDescription = styled.p`
 `;
 
 function RealWorldItem(props) {
-  console.log('RealWorld', props, props.pos);
+
   return (
     <RealWorldItemContainer>
       <ImageBackground type={props.type} image={props.image} />
