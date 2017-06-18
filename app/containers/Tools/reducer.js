@@ -10,12 +10,14 @@ import {
   ADD_TOOL,
   REMOVE_TOOL,
   SET_SHOW_TOOLS,
-  SET_VIEW_TYPE
+  SET_VIEW_TYPE,
+  NEWS_FEED
 } from './constants';
 
 const initialState = fromJS({
   show: false,
-  selectedTools: {}
+  selectedTools: {},
+  viewType: NEWS_FEED
 });
 
 function toolsReducer(state = initialState, action) {

@@ -19,7 +19,7 @@ function newsFeedReducer(state = initialState, action) {
     case DEFAULT_ACTION:
       return state;
     case ADD_TO_NEWSFEED:
-      return state.set('newsFeed', state.get('newsFeed').concat(action.data.reverse()));
+      return state.set('newsFeed', action.data.reverse().concat(state.get('newsFeed')));
     default:
       return state;
   }

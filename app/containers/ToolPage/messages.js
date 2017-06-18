@@ -39,6 +39,11 @@ export default defineMessages({
     defaultMessage: 'Contributed By'
   },
 
+  share: {
+    id: 'app.containers.ToolPage.share',
+    defaultMessage: 'Share this tool'
+  },
+
   // RELATED TOOLS
 
   relatedTools: {

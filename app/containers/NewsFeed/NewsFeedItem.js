@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 import { FormattedMessage } from 'react-intl';
 import Timestamp from 'react-timestamp';
 import messages from './messages';
-
+import { twitterFollow } from 'utils/social';
 
 
 const ItemContainer = styled.li`
@@ -60,6 +60,7 @@ text-align: right !important;
     font-weight: bold;
     text-decoration: underline;
     font-size:14px;
+    cursor: pointer;
   }
 `;
 
@@ -71,6 +72,7 @@ const TweetTimestamp = styled(Timestamp)`
 `;
 
 export default function NewsFeedItem(props) {
+
   return (
     <ItemContainer>
       <Viewport>
@@ -80,7 +82,7 @@ export default function NewsFeedItem(props) {
         <Content dangerouslySetInnerHTML={{__html: props.content_html}}></Content>
         <TweetTimestamp time={props.timestamp / 1000} format='full' />
         <CallToAction>
-          <button><FormattedMessage {...messages.follow} /></button>
+          <button onClick={()=>twitterFollow(props.user_handle)}><FormattedMessage {...messages.follow} /></button>
         </CallToAction>
       </Viewport>
     </ItemContainer>

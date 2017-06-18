@@ -13,6 +13,7 @@ import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
 import messages from './messages';
 import styled from 'styled-components';
 import Isvg from 'react-inlinesvg';
+import ShareButton from 'components/ShareButton';
 import RemoveSmallIcon from 'assets/images/icons/remove-small.svg';
 import ShareSmallIcon from 'assets/images/icons/share-small.svg';
 import MethodologyFlag from 'assets/images/type/methodology-small.svg';
@@ -57,8 +58,10 @@ export class SelectedTool extends React.PureComponent { // eslint-disable-line r
             </AdderRemover>
           </SelectedToolCommandItem>
           <SelectedToolCommandItem>
-            <Isvg src={ShareSmallIcon} />
-            <FormattedMessage {...messages.share} />
+            <ShareButton {...this.props}>
+              <Isvg src={ShareSmallIcon} />
+              <FormattedMessage {...messages.share} />
+            </ShareButton>
           </SelectedToolCommandItem>
         </SelectedToolCommands>
       </SelectedToolItem>
