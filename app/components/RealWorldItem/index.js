@@ -10,8 +10,8 @@ import styled from 'styled-components';
 // positions;
 const TOP = [0,3];
 const BOTTOM = [1,2];
-const LEFT = [0,1];
-const RIGHT = [2,3];
+const LEFT = [1,2];
+const RIGHT = [0,3];
 
 const IMAGE_PREFIX = "https://beautifulrising.org/assets/content/";
 const getSvgOverlay = (type) => {
@@ -20,16 +20,17 @@ const getSvgOverlay = (type) => {
 
 const ImageBackground = styled.div`
   background-image: url(${props=>getSvgOverlay(props.type)}),url(${props=>IMAGE_PREFIX+props.image});
-  background-position-x: 50%;
-  background-position-y: 25%;
+  background-position: center center;
   opacity: 0.5;
   width: 400px;
-  height: 152px;
+  height: 252px;
   transform: translate(12%, 15%);
+  background-size: auto, cover;
 `;
 const RealWorldItemContainer = styled.div`
-    min-height: 200px;
+    min-height: 300px;
     position: relative;
+    margin-bottom: 30px;
 `;
 
 const Example = styled.div`
@@ -46,6 +47,7 @@ const Example = styled.div`
   right: ${props=>RIGHT.includes(props.pos) ? '-10px' : 'auto' };
 `;
 const ExampleTitle = styled.h3`
+  line-height: 1;
   margin: 0;
   padding: 0;
   a {
@@ -61,7 +63,7 @@ const ExampleDescription = styled.p`
 `;
 
 function RealWorldItem(props) {
-
+  console.log('RealWorld', props, props.pos);
   return (
     <RealWorldItemContainer>
       <ImageBackground type={props.type} image={props.image} />
