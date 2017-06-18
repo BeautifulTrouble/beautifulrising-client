@@ -28,6 +28,7 @@ const ShareArea = styled.div `position: absolute; width: 100px; background-color
 const FacebookButton = styled(Button)`
   span svg * { fill: #3b5998; }
   padding: 10px;
+  padding-left: 15px;
 `;
 const TwitterButton = styled(Button)`
   span svg * { fill: #1fa1fb; }
