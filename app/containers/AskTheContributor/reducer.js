@@ -21,6 +21,7 @@ const initialState = fromJS({
 });
 
 function askTheContributorReducer(state = initialState, action) {
+  console.log("Ask The Contributor", action);
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;

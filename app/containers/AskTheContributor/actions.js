@@ -30,8 +30,9 @@ export function contributorQuestionSent() {
   }
 }
 
-export function contributorQuestionError() {
+export function contributorQuestionError(error) {
   return {
-    type: CONTRIB_QUESTION_ERROR
+    type: CONTRIB_QUESTION_ERROR,
+    error: error
   }
 }
