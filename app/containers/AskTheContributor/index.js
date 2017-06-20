@@ -61,7 +61,7 @@ export class AskTheContributor extends React.PureComponent { // eslint-disable-l
   }
 
   render() {
-    console.log(this.props.authors);
+
     const {formatMessage} = this.props.intl;
     return (
       <Container>
