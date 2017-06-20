@@ -66,15 +66,17 @@ export default function createRoutes(store) {
             import('containers/ToolPage/reducer'),
             import('containers/ToolPage/sagas'),
             import('containers/SubmitRealWorldExample/sagas'),
+            import('containers/AskTheContributor/sagas'),
             import('containers/ToolPage'),
           ]);
 
           const renderRoute = loadModule(cb);
 
-          importModules.then(([reducer, sagas, worldExampleSagas, component]) => {
+          importModules.then(([reducer, sagas, worldExampleSagas, askContributor, component]) => {
             injectReducer('tool', reducer.default);
             injectSagas(sagas.default);
             injectSagas(worldExampleSagas.default);
+            injectSagas(askContributor.default);
             renderRoute(component);
           });
 

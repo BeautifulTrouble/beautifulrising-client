@@ -20,6 +20,7 @@ import submitRealWorldExampleReducer from 'containers/SubmitRealWorldExample/red
 import emailToolsReducer from 'containers/EmailTools/reducer';
 import newsFeedReducer from 'containers/NewsFeed/reducer';
 import submitNewsFeedReducer from 'containers/SubmitNewsFeed/reducer';
+import askTheContributorReducer from 'containers/AskTheContributor/reducer'
 /*
  * routeReducer
  *
@@ -66,6 +67,7 @@ export default function createReducer(asyncReducers) {
     emailTools: emailToolsReducer,
     newsFeed: newsFeedReducer,
     submitNewsFeed: submitNewsFeedReducer,
+    askTheContributor: askTheContributorReducer,
     ...asyncReducers,
   });
 }

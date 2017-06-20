@@ -14,6 +14,7 @@ import ToolsRequestTraining from 'components/ToolsRequestTraining';
 import Tags from 'containers/Tags';
 import Author from 'containers/Author';
 import AdderRemover from 'containers/Tools/AdderRemover';
+import AskTheContributor from 'containers/AskTheContributor';
 import { ToolLeftArea, ToolsPageLeftHeader, ToolsPageContributor } from 'components/ToolsPageComponents';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 
@@ -36,6 +37,14 @@ export class ToolPageLeft extends React.PureComponent { // eslint-disable-line r
     )
   }
 
+  renderAskContributors() {
+    return (
+      <Container>
+        <AskTheContributor slug={this.props.authors[0]} count={this.props.authors.length}/>
+      </Container>
+    )
+  }
+
   render() {
     const lang = this.props.intl.locale;
     return (
@@ -46,6 +55,9 @@ export class ToolPageLeft extends React.PureComponent { // eslint-disable-line r
             </ToolsPageContributor>
             { this.props.authors ?
                 this.props.authors.map(item=><Author key={item} slug={item}/>) :
+                null }
+            { this.props.authors ?
+                this.renderAskContributors() :
                 null }
 
             { this.renderTags() }

@@ -7,6 +7,6 @@ export function twitterShare(title, url) {
 }
 
 export function facebookShare(url) {
-  console.log(url);
+  
   window.open(`https://www.facebook.com/dialog/share?href=${url}&app_id=142496076313954&display=popup`, `${Math.random()}`, 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=655,width=570')
 }

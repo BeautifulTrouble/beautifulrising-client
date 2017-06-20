@@ -16,6 +16,7 @@ export function* submitExample() {
 
   try {
     const requestUrl = `?url=${url}&title=${title}&description=${description}`;
+    //TODO Insert request call here
 
     yield put(successfulSubmission());
   } catch(e) {
