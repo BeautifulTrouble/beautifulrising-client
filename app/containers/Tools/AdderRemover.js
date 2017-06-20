@@ -45,7 +45,7 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
   buildRemove() {
     return (
       <CallToAction>
-        <Isvg src={RemoveToolIcon}/>{ this.props.removeText || ""}
+        <img src={RemoveToolIcon}/>{ this.props.removeText || ""}
       </CallToAction>
     )
   }
@@ -53,7 +53,7 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
   buildAdd() {
     return (
       <CallToAction>
-        <Isvg src={AddToolIcon}/>{ this.props.addText || "" }
+        <img src={AddToolIcon}/>{ this.props.addText || "" }
       </CallToAction>
     );
   }
@@ -65,6 +65,7 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
     }
 
     if (this.props.children !== undefined) {
+      console.log("ZZZ");
       return (
         <ToolsButton onClick={this.onButtonClick.bind(this)}>
           {React.Children.toArray(this.props.children)}
@@ -72,13 +73,15 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
       );
     } else {
       if (this.props.showFull) {
+        console.log("YYY");
         return (<ToolsButton onClick={this.onButtonClick.bind(this)}>
           {this.props.toolIsSelected ? "Remove" : "Add"}
         </ToolsButton>);
       } else {
+        console.log("XXX", this.props);
         return (
           <ToolsButton color={this.props.color || "white"} onClick={this.onButtonClick.bind(this)}>
-            {this.props.toolIsSelected ? this.buildRemove() : this.buildAdd()}
+            {this.props.toolIsSelected && this.props.toolIsSelected !== undefined ? this.buildRemove() : this.buildAdd()}
           </ToolsButton>
         );
       }

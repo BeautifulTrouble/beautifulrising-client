@@ -7,11 +7,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Isvg from 'react-inlinesvg';
+
 import { FormattedMessage } from 'react-intl';
 import ToolTypeAllFull from 'components/ToolTypeAllFull';
 import ToolTypeAllPartial from 'components/ToolTypeAllPartial';
 import ToolTypeSelectedFull from 'components/ToolTypeSelectedFull';
 import ToolTypeSelectedPartial from 'components/ToolTypeSelectedPartial';
+import ArrowIcon from 'assets/images/icons/arrow.svg';
 
 import messages from './messages';
 
@@ -31,6 +34,15 @@ const AllContainer = styled.div`
   border-width: 0 2px 2px;
   padding: 20px 60px;
   text-align: ${props=>props.lang === 'ar' ? 'right' : 'left'};
+`;
+
+const TypeArrow = styled.button`
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+  outline: none;
+  transform: ${props=>props.lookRight ? 'rotate(270deg)' : 'rotate(180deg)'};
 `;
 
 class ToolTypeArea extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -67,6 +79,9 @@ class ToolTypeArea extends React.Component { // eslint-disable-line react/prefer
         <AllContainer lang={this.props.lang}>
           <ToolTypeAllFull lang={this.props.lang} show={onTop} {...this.props} />
           <ToolTypeAllPartial lang={this.props.lang} show={!onTop} {...this.props} />
+          <TypeArrow lookRight={!onTop}>
+            <Isvg src={ArrowIcon} />
+          </TypeArrow>
         </AllContainer>
       );
     } else {
@@ -75,6 +90,9 @@ class ToolTypeArea extends React.Component { // eslint-disable-line react/prefer
         <div>
           <ToolTypeSelectedFull lang={this.props.lang}  show={onTop} {...this.props}/>
           <ToolTypeSelectedPartial lang={this.props.lang} show={!onTop} {...this.props}/>
+          <TypeArrow lookRight={!onTop}>
+            <Isvg src={ArrowIcon} />
+          </TypeArrow>
         </div>
       );
     }

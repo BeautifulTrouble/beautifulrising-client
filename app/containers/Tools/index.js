@@ -80,6 +80,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
                     onClick={() => this.onToggleClick(null)}
                     rotate={true}
                     toShow={this.props.Tools.show}
+                    lang={this.props.language}
                   >
                     <Isvg src={ArrowIcon} />
                   </ToolsButton>

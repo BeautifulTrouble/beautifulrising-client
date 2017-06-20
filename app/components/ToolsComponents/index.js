@@ -73,7 +73,16 @@ export const ToolsButton = styled.button`
 
   img { margin-right: 10px;}
   display: inline-block;
-  transform: ${props=>props.toShow&&props.rotate ? 'rotate(180deg)' : 'rotate(0)'};
+  ${
+    props=> {
+      if (props.lang&&props.lang==='ar') {
+        return `transform: ${props.toShow&&props.rotate ? 'rotate(0)' : 'rotate(180deg)'};`
+      } else {
+        return `transform: ${props.toShow&&props.rotate ? 'rotate(180deg)' : 'rotate(0)'};`
+      }
+    }
+  }
+
   transition:  transform 0.4s ease;
 
   text-transform: uppercase;
