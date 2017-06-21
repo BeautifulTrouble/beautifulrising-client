@@ -19,7 +19,6 @@ import { ToolMainArea,
          ToolReadShortContent,
          ToolReadFullContent } from 'components/ToolsPageComponents';
 
-import SubmitRealWorldExample from 'containers/SubmitRealWorldExample';
 
 import ToolHowToUse from 'components/ToolHowToUse';
 import ToolWhyItWorked from 'components/ToolWhyItWorked';
@@ -139,7 +138,6 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
           {snapshotArea}
 
           { this.renderRealWorldExample() }
-          <SubmitRealWorldExample {...this.props} />
       </ToolMainArea>
     );
   }

@@ -26,6 +26,26 @@ export const ToolInformation = styled.section`
   width: 100%;
 `;
 
+export const RealWorldToggle = styled.button`
+  outline: none;
+  cursor: pointer;
+  transform: ${props => props.collapsed ? 'rotate(270deg)' : 'rotate(180deg)'};
+  transition: transform 0.4s ease;
+  margin-left: 5px;
+  svg {
+    width: 10px;
+  }
+
+  svg * {
+    fill: black;
+  }
+`;
+
+export const RealWorldItems = styled.div`
+  display: ${props=>props.show ? 'block' : 'none'};
+`;
+
+
 export const ToolInfoSection = styled.article`
   float: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
 `;
