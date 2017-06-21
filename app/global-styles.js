@@ -13,7 +13,7 @@ console.log(KaffBold, KaffRegular, "XXX");
 injectGlobal`
 
   @font-face {
-    font-family: 'Paint Hand', 'Massira Spray';
+    font-family: 'Paint Hand';
     src: url(${PaintHand});
   }
 
@@ -58,7 +58,7 @@ injectGlobal`
   }
 
   body,p,input,textarea {
-    font-family: 'Kaff', Helvetica, Arial, sans-serif;
+    font-family: 'Avenir', 'Kaff', Helvetica, Arial, sans-serif;
   }
   p {
     font-size: 14px;
@@ -71,7 +71,7 @@ injectGlobal`
   button {
     font-family: 'Avenir', 'Kaff', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
-  
+
   h1,h2,h3,h4,h5 {
     font-family: 'KnockOut', 'Kaff Bold', Helvetica, Arial, sans-serif;
     text-transform: uppercase;
