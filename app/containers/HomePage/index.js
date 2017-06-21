@@ -48,7 +48,7 @@ const SearchResultsText = styled.span``;
 
 const ClearButton = styled.button`
   outline: none;
-  font-family: 'Avenir Black', sans-serif;
+  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
   font-weight: 800;
   padding-right: 24px;
   text-transform: uppercase;

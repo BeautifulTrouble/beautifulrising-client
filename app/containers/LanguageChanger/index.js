@@ -25,7 +25,7 @@ const Viewport = styled.div``;
 const Button = styled.button`
   outline: none;
   cursor: pointer;
-  font-family: 'Avenir Black', sans-serif;
+  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
   color: ${props=>props.selected ? 'black' : '#828486'};
   text-decoration: ${props=>props.selected ? 'none' : 'underline'};
 `;

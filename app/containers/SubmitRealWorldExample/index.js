@@ -51,7 +51,7 @@ const Header = styled.h3`
   font-size: 24px;
   letter-spacing: 0;
   margin-bottom: 5px;
-  font-family: 'Avenir Black', sans-serif;
+  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
 `;
 
 const Instruction = styled.p`

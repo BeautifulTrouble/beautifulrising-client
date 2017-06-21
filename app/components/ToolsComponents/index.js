@@ -117,7 +117,7 @@ export const ToolType = styled.h3`
   margin: 0;
   font-size: 22px;
   padding-top: 20px;
-  font-family: 'Paint Hand',serif;
+  font-family: 'Paint Hand', 'Massira Spray', serif;
   color: ${props => getToolTypeColor(props.type) }
 `;
 

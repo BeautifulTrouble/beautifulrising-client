@@ -18,7 +18,7 @@ const PullQuote = styled.blockquote`
   line-height: 30px;
   max-width: 45%;
   padding-top: 10px;
-  font-family: 'Paint Hand', serif;
+  font-family: 'Paint Hand',  'Massira Spray', serif;
   text-transform: uppercase;
   position: relative;
 

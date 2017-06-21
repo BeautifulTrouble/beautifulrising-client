@@ -80,7 +80,7 @@ const Button = styled.button`
   text-decoration: none;
   text-transform: uppercase;
   font-weight: bold;
-  font-family: 'Avenir Black', sans-serif;
+  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
   margin-bottom: 18px;
   font-size: 15px;
 `;

@@ -36,7 +36,7 @@ const TagListItem = styled.li`
   line-height: 18px;
   * { vertical-align: middle; }
   span {
-    font-family: 'Avenir Black';
+    font-family: 'Avenir Black', 'Kaff Bold';
   }
 `;
 

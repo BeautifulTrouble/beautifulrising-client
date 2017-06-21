@@ -69,7 +69,7 @@ margin-bottom: 0px;
   left: 0;
 `;
 const Subtitle = styled.h3`
-  font-family: 'Avenir Black', sans-serif;
+  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
   font-size: 16px;
   letter-spacing: 0px;
   margin-bottom: 5px;

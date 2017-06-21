@@ -29,7 +29,7 @@ const Count = styled.h4`
   padding: 10px 20px 5px 5px;;
   margin: 0;
   font-size: 30px;
-  font-family: 'Knockout';
+  font-family: 'KnockOut', 'Kaff Bold';
   &::after {
     content: ' ';
     display: block;

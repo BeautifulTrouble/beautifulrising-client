@@ -45,7 +45,7 @@ const ShareContainer = styled.div`
     fill: white;
   }
   color: white;
-  * { color: white; font-family: 'Avenir Black'; text-transform: uppercase; }
+  * { color: white; font-family: 'Avenir Black', 'Kaff Bold'; text-transform: uppercase; }
 `;
 export class ToolPageHeader extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 

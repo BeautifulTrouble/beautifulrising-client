@@ -29,7 +29,7 @@ import messages from './messages';
 const Title = styled.h1`font-size: 48px;`;
 const Subtitle = styled.h2`
   font-size: 19px;
-  font-family: 'Avenir Black', sans-serif;
+  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
   letter-spacing: 0;
   border-bottom: 2px solid;
   padding-bottom: 20px;
@@ -38,7 +38,7 @@ const Subtitle = styled.h2`
   margin-right: 30px;
 `;
 const Subsubtitle = styled.h3`
-  font-family: 'Avenir Black', sans-serif;
+  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
   font-size: 18px;
   letter-spacing: 0;
   margin-top: 60px;

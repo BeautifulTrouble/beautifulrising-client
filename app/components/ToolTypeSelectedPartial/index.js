@@ -56,7 +56,7 @@ const ToolType = styled(Link)`
   vertical-align: bottom;
   font-size: ${(props)=>props.selected ? '30px':'14px'};
   text-decoration: ${(props)=>props.selected ? 'none':'underline'};
-  font-family: ${props=>props.selected?'Knockout':'Avenir'}, sans-serif;
+  font-family: ${props=>props.selected?'Knockout, \'Kaff Bold\'':'Avenir, Kaff'}, sans-serif;
   text-transform: uppercase;
   margin-right: 10px;
   margin-bottom: ${(props)=>props.selected ? '4px':'0'};

@@ -26,7 +26,7 @@ text-align: left;
  * { font-size: 14px; line-height: 22px; padding: 3px; }
 `;
 const Header = styled.h3`
-  font-family: 'Avenir Black', sans-serif;
+  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
   letter-spacing: 0;
   line-height: 1;
   font-size: 14px;
