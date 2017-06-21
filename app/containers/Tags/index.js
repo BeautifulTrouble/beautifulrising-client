@@ -32,8 +32,8 @@ const TagListItem = styled.li`
   &:last-child {
     span { display: none; }
   }
-  font-size: 14px;
-  line-height: 22px;
+  font-size: 12px;
+  line-height: 18px;
   * { vertical-align: middle; }
   span {
     font-family: 'Avenir Black';
