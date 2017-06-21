@@ -11,7 +11,7 @@ export default defineMessages({
     defaultMessage: 'QUESTIONS FOR THE CONTRIBUTOR?',
   },
   subheader: {
-    id: 'app.containers.AskTheContributor.header',
+    id: 'app.containers.AskTheContributor.subheader',
     defaultMessage: 'Ask {author} here...',
   },
   questionPlaceholder: {
