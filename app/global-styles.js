@@ -8,7 +8,7 @@ import KaffRegular from 'assets/fonts/Kaff-Regular.woff';
 import KaffBold from 'assets/fonts/Kaff-Bold.woff';
 
 /* eslint no-unused-expressions: 0 */
-console.log(KaffBold, KaffRegular, "XXX");
+
 
 injectGlobal`
 

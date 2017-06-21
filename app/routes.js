@@ -7,6 +7,7 @@ import ContactUs from 'containers/ContactUs/sagas';
 import EmailTools from 'containers/EmailTools/sagas';
 import LanguageProvider from 'containers/LanguageProvider/sagas';
 import NewsFeed from 'containers/NewsFeed/sagas';
+import Tools from 'containers/Tools/sagas';
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -20,8 +21,15 @@ export default function createRoutes(store) {
   // Create reusable async injectors using getAsyncInjectors factory
   const { injectReducer, injectSagas } = getAsyncInjectors(store); // eslint-disable-line no-unused-vars
   injectSagas(ContactUs);
+
+  //enable email everywhere
   injectSagas(EmailTools);
+
+  //get news feed
   injectSagas(NewsFeed);
+
+  //close tools when changing locs
+  injectSagas(Tools);
 
   // TODO Re-examine this
   // injectSagas(LanguageProvider);
