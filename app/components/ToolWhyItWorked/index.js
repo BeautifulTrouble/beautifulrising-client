@@ -16,10 +16,15 @@ const Header = styled(CommonLeftHeader)`
   border: none;
   text-align: left;
   margin-top: 40px;
+
+  font-size: 19px;
+  line-height: 22px;
+  font-family: 'Avenir Black', sans-serif;
 `;
 const Content = styled.div`
   text-align: left;
   font-size: 14px;
+  line-height: 22px
 
   img {
     width: 100%;
