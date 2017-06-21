@@ -19,13 +19,13 @@ const getSvgOverlay = (type) => {
 };
 
 const ImageBackground = styled.div`
-  background-image: url(${props=>getSvgOverlay(props.type)}),url(${props=>IMAGE_PREFIX+props.image});
+  background-image: url(${props=>IMAGE_PREFIX+props.image});
   background-position: center center;
-  opacity: 0.5;
+  opacity: 1;
   width: 400px;
   height: 252px;
   transform: translate(12%, 15%);
-  background-size: auto, cover;
+  background-size: cover;
 `;
 const RealWorldItemContainer = styled.div`
     min-height: 300px;
