@@ -48,13 +48,22 @@ const Form =  styled.form`
 const Header = styled.h3`
   margin: 0;
   text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
-  font-size: 24px;
+  font-size: 19px;
   letter-spacing: 0;
   margin-bottom: 5px;
   font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
 `;
 
+const TextInput = styled.input`
+font-size: 14px;
+line-height: 22px;
+`;
+const TextArea = styled.textarea`
+  font-size: 14px;
+  line-height: 22px;
+`;
 const Instruction = styled.p`
+  font-size: 14px;
   text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
 `;
 export class SubmitRealWorldExample extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -90,10 +99,10 @@ export class SubmitRealWorldExample extends React.PureComponent { // eslint-disa
     return (
 
       <Form onSubmit={this.handleSubmit.bind(this)}>
-        <input type='text' name='url'
+        <TextInput type='text' name='url'
           placeholder={formatMessage(messages.url)} onChange={this.handleChange.bind(this)} />
-        <input type='text' name='title' placeholder={formatMessage(messages.title)}  onChange={this.handleChange.bind(this)} />
-        <textarea name='description' placeholder={formatMessage(messages.description)} onChange={this.handleChange.bind(this)} ></textarea>
+        <TextInput type='text' name='title' placeholder={formatMessage(messages.title)}  onChange={this.handleChange.bind(this)} />
+        <TextArea name='description' placeholder={formatMessage(messages.description)} onChange={this.handleChange.bind(this)} ></TextArea>
         <button>
           <FormattedMessage {...messages.submit} />
         </button>

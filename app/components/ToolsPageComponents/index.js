@@ -214,7 +214,8 @@ export const LearnMoreItemSource = styled.span``;
 // RealWorldContainer
 export const RealWorldHeader = styled.h1`
 text-transform: uppercase;
-font-size: 28px;
+font-size: 40px;
+line-height: 0;
 `;
 
 export const RealWorldContainer = styled(ToolMainContent)`
