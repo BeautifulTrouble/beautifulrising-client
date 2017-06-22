@@ -12,13 +12,14 @@ import messages from 'containers/HomePage/messages';
 
 const Container = styled.div`
   position: absolute;
-  right: 70px;
+  left: 0;
   border: 2px solid;
   font-weight: bold;
   bottom: 110px;
   padding: 3px;
   display: ${props=>props.show?'block':'none'};
-  max-width: 500px;
+  background-color: white;
+  // max-width: 500px;
 `;
 
 const TypeTile = styled.span`
