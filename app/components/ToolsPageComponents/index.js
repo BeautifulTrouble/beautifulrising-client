@@ -216,6 +216,10 @@ export const RealWorldHeader = styled.h1`
 text-transform: uppercase;
 font-size: 40px;
 line-height: 0;
+
+padding-left: 48px;
+text-indent: -48px;
+
 `;
 
 export const RealWorldContainer = styled(ToolMainContent)`
