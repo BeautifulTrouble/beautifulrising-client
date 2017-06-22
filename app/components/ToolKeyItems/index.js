@@ -25,6 +25,9 @@ text-align: ${props=>props.theme.lang==='ar' ? 'right' : 'left'};
 margin: 0;
 padding: 0;`;
 const TypeSubheader = styled.h4`
+  font-family: 'Paint Hand', 'Massira Spray';
+  font-size: 20px;
+  line-height: 22px;
   text-align: ${props=> props.theme.lang==='ar' ? 'right' : 'left'} ;
   color: ${props=>getToolTypeColor(props.type)};
   margin: 0;
