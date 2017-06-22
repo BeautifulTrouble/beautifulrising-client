@@ -103,9 +103,9 @@ class ShareButton extends React.PureComponent { // eslint-disable-line react/pre
     const { formatMessage } = this.props.intl;
     const url = `https://beautifulrising.org/tool/${this.props.slug}`;
     const emailMessage = formatMessage(messages.emailMessage, {url: url});
-    const emailSubject = formatMessage(messages.emailSubject, {title: this.props.title })
+    const emailSubject = formatMessage(messages.emailSubject, {title: this.props.title });
 
-    console.log(emailMessage);
+
     return (
       <Container onMouseOver={this.showSocial.bind(this)} onMouseOut={this.hideSocial.bind(this)}>
         <ShareArea show={ true /*this.state.showSocialButtons */}>

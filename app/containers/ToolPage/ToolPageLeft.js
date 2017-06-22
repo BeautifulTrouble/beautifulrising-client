@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import styled, { ThemeProvider} from 'styled-components';
-
+import CouldBeYou from 'components/CouldBeYou';
 import ToolsRequestTraining from 'components/ToolsRequestTraining';
 import Tags from 'containers/Tags';
 import Author from 'containers/Author';
@@ -53,9 +53,9 @@ export class ToolPageLeft extends React.PureComponent { // eslint-disable-line r
             <ToolsPageContributor>
               <FormattedMessage {...messages.contributedByHeader} />
             </ToolsPageContributor>
-            { this.props.authors ?
+            { this.props.authors && this.props.authors.length > 0 ?
                 this.props.authors.map(item=><Author key={item} slug={item}/>) :
-                null }
+                <CouldBeYou /> }
             { this.props.authors ?
                 this.renderAskContributors() :
                 null }
