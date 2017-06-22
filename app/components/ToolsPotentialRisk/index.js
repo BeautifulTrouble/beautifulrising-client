@@ -19,14 +19,23 @@ const Container = styled.div`
 const Viewport = styled.div``;
 const Header = styled.h3`
   font-size: 40px;
-  text-transform: uppercase
+  text-transform: uppercase;
+  position: relative;
   margin: 0;
+  padding-left: 46px;
+  padding-bottom: 0;
+  .isvg.loaded {
+    position: absolute;
+    top: 6px;
+    left: 0;
+  }
   * {
+    line-height: 1;
     vertical-align: middle;
     display: inline-block;
   }
-  border-bottom: 4px solid;
-  padding-bottom: 5px;
+  border-bottom: 5px solid;
+  padding-bottom: 0;
 `;
 const Content = styled.div`
   font-size: 14px;
