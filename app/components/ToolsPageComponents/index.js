@@ -100,7 +100,7 @@ export const ToolPageCaption = styled.div`
   font-size: 15px;
   display: ${props=>props.show ? 'block' : 'none'};
 
-  a { color: #828486; }
+  a { color: white; }
 `;
 export const ToolsPageRelatedToolsHeader = styled(ToolsPageLeftHeader)`
   font-size: 40px;
@@ -215,7 +215,7 @@ export const LearnMoreItemSource = styled.span``;
 export const RealWorldHeader = styled.h1`
 text-transform: uppercase;
 font-size: 40px;
-line-height: 0;
+line-height: 1;
 
 padding-left: 48px;
 text-indent: -48px;

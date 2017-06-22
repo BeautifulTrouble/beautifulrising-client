@@ -20,7 +20,7 @@
   "app.components.ContributeMenu.howItWorks": "¿CÓMO PUEDO CONTRIBUIR?",
   "app.components.ContributeType.callToAction": "[IR AL FORMULARIO](https://docs.google.com/forms/d/e/1FAIpQLSeC_EdxoO7owVnL8fjSERZlychwMhDOR-7rI1SDtpL4ijZgkg/viewform)",
   "app.components.ContributeType.header": "",
-  "app.components.Footer.footer": "Bella Rebeldía de Bella Rebeldía (diversos autores) está bajo una licencia Creative Commons Atribución-NoComercial-CompartirIgual 3.0 Unported. Los permisos que escapen al alcance de esta licencia pueden estar disponibles en beautifulrising.org. La documentación del API (application programming interface, interfaz de programación de aplicaciones) con la que funciona Bella Rebeldía puede encontrarse en [GitHub](https://github.com/BeautifulTrouble/api-docs#api-documentation-for-the-various-beautiful-projects).",
+  "app.components.Footer.footer": "Bella Rebeldía de Bella Rebeldía (diversos autores) está bajo una licencia Creative Commons Atribución-NoComercial-CompartirIgual 3.0 Unported. Los permisos que escapen al alcance de esta licencia pueden estar disponibles en [beautifulrising.org](//beautifulrising.org). La documentación del API (application programming interface, interfaz de programación de aplicaciones) con la que funciona Bella Rebeldía puede encontrarse en [GitHub](https://github.com/BeautifulTrouble/api-docs#api-documentation-for-the-various-beautiful-projects).",
   "app.components.Header.aboutLink": "About",
   "app.components.Header.header": "BeautifulRising",
   "app.components.Header.homeLink": "Home",
