@@ -13,14 +13,19 @@ import {AuthorContainer, AuthorImageArea, AuthorLink,
 import {selectAuthor} from './selectors';
 
 export class Author extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
   render() {
+    let name = this.props.author.title.split(' ');
+    const firstName = name.shift();
+    const latterName = name.join(' ');
     return (
       <AuthorContainer>
           <AuthorLink to={`/search/authors!${this.props.slug}`}>
             <AuthorImage image={this.props.author.image} />
           </AuthorLink>
         <AuthorName>
-          <AuthorLink to={`/search/authors!${this.props.slug}`}>{this.props.author.title}</AuthorLink>
+          <AuthorLink to={`/search/authors!${this.props.slug}`}>{firstName}</AuthorLink>
+          <AuthorLink to={`/search/authors!${this.props.slug}`}>{latterName}</AuthorLink>
         </AuthorName>
         <AuthorDesc>
           <Markdown source={this.props.author.bio} />

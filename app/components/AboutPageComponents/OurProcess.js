@@ -139,11 +139,11 @@ class OurProcess extends React.Component {
   }
 
   renderHeader() {
-    <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
+    return (<VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
       <h2>
         <FormattedMessage {...messages.ourProcessHeader} />
       </h2>
-    </VisibilitySensor>
+    </VisibilitySensor>);
   }
 
   render() {

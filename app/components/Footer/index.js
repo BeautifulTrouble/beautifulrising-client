@@ -32,6 +32,7 @@ const Content = styled.div`
 
   p {
     font-size: 10px;
+    line-height: 18px;
     font-style: italic;
     color: #828486;
     a {

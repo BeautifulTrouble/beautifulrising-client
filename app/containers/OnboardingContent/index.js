@@ -59,7 +59,7 @@ const List = styled.ul`
 `;
 const CloseButton = styled(Button)`
   background: white;
-  border: 2px solid black;
+  border: 1px solid black;
   padding: 0;
   position: absolute;
   right: -27px;
@@ -71,12 +71,11 @@ const OnboardedButton = styled(Button)`
   font-size: 12px;
   text-align: center;
   background: white;
-  width: 160px;
-  padding: 5px;
+  width: 180px;
   text-transform: uppercase;
   color: black;
   border: 2px solid;
-  padding: 0;
+  padding: 10px 21px;
   position: absolute;
   bottom: -100px;
   left: 50%;

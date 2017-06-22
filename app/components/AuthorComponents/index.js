@@ -55,7 +55,7 @@ export const AuthorName = styled.h3`
 
 export const AuthorLink = styled(Link)`
   color: rgb(130, 132, 134);
-  display: inline-block;
+  display: block;
   width: 100%;
 `;
 

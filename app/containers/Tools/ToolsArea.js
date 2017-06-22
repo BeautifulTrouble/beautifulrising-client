@@ -37,7 +37,7 @@ import { ToolsButton, ToolsListMenu, ToolsListMenuItem,
 import SelectedTool from './SelectedTool';
 
 export const ToolsListContainer = styled.div`
-    width: calc(100% - 78px);
+    width: calc(100% - 73px);
     float: ${props=>props.lang === 'ar' ? 'right' : 'left'};
     direction: float: ${props=>props.lang === 'ar' ? 'rtl' : 'ltr'};
     height: 100%;

@@ -8,10 +8,10 @@ import React, {PropTypes} from 'react';
 import styled from 'styled-components';
 
 // positions;
-const TOP = [0,3];
-const BOTTOM = [1,2];
-const LEFT = [1,2];
-const RIGHT = [0,3];
+const TOP = [0,2];
+const BOTTOM = [1,3];
+const LEFT = [0,2];
+const RIGHT = [1,3];
 
 const IMAGE_PREFIX = "https://beautifulrising.org/assets/content/";
 const getSvgOverlay = (type) => {
@@ -50,7 +50,7 @@ const ExampleTitle = styled.h3`
   line-height: 1;
   margin: 0;
   padding: 0;
-  font-size: 19px;
+  font-size: 14px;
   font-family: 'Avenir Black', sans-serif;
   letter-spacing: 0;
   a {
