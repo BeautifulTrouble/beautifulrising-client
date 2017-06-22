@@ -164,12 +164,12 @@ function ToolTypeSelectedFull(props) {
             <FormattedMessage {...messages.methodologyHead} />
           </ToolType>
         </Column>
-        <Column width="40%" bg={props.label}>
+        <Column width="33%" bg={props.label}>
           <TypeName>
             <FormattedMessage {...messages[props.label + 'Head']} />
           </TypeName>
         </Column>
-        <Column width="44%">
+        <Column width="50%">
           <Description>
             <FormattedMessage {...messages[props.label + 'Long']} />
           </Description>
