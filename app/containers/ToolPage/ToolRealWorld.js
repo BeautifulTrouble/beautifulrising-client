@@ -43,7 +43,7 @@ export default class ToolRealWorld extends React.Component { // eslint-disable-l
 
     return (
       <div show={this.state.isCollapsed}>
-        {this.props['real-world-examples'].map((item, index)=>(<RealWorldItem key={index} pos={Math.floor(this.props.timestamp - index ) %4} {...item} type={this.props.type} toolImage={this.props.image}/>))}
+        {this.props['real-world-examples'].map((item, index)=>(<RealWorldItem key={index} pos={index} {...item} type={this.props.type} toolImage={this.props.image}/>))}
       </div>
     )
 

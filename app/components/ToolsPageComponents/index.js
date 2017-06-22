@@ -220,6 +220,7 @@ line-height: 1;
 padding-left: 48px;
 text-indent: -48px;
 
+border-bottom: 6px solid black;
 `;
 
 export const RealWorldContainer = styled(ToolMainContent)`
