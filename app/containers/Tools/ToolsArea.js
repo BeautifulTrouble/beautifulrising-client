@@ -42,7 +42,7 @@ export const ToolsListContainer = styled.div`
     direction: float: ${props=>props.lang === 'ar' ? 'rtl' : 'ltr'};
     height: 100%;
     display: ${props=>props.show ? 'block' : 'none'};
-    div * {
+    & > div > * {
       direction: ${props=>props.lang === 'ar' ? 'rtl' : 'ltr'};
       text-align: ${props=>props.lang === 'ar' ? 'right' : 'left'};
     }

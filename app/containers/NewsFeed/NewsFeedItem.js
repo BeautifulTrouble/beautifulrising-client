@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import Timestamp from 'react-timestamp';
 import messages from './messages';
 import { twitterFollow } from 'utils/social';
@@ -35,9 +35,10 @@ text-decoration: none;
 `;
 
 const Image = styled.img`
-  float: left;
+  float: ${props=>props.lang === 'ar' ? 'right' : 'left' };
+  ${props=>props.lang === 'ar' ? 'margin-left' : 'margin-right' }: 5px;
   width: 40px;
-  margin-right: 5px;
+
 
 `;
 const Content = styled.span`
@@ -71,12 +72,12 @@ const TweetTimestamp = styled(Timestamp)`
   color: gray;
 `;
 
-export default function NewsFeedItem(props) {
+function NewsFeedItem(props) {
 
   return (
     <ItemContainer>
       <Viewport>
-        <Image src={props.image_http}/>
+        <Image src={props.image_http} lang={props.intl.locale}/>
         <Source to={props.user_link} target='_blank'>{props.user_name}</Source>
         <Handle to={props.user_link} target='_blank'>{props.user_handle}</Handle>
         <Content dangerouslySetInnerHTML={{__html: props.content_html}}></Content>
@@ -88,3 +89,5 @@ export default function NewsFeedItem(props) {
     </ItemContainer>
   )
 }
+
+export default injectIntl(NewsFeedItem);

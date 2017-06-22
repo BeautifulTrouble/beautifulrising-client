@@ -101,4 +101,7 @@ injectGlobal`
     min-width: 100%;
   }
 
+  .ReactModal__Body--open {
+    overflow-y: hidden;
+  }
 `;
