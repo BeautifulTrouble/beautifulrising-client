@@ -58,12 +58,38 @@ const ClearButton = styled.button`
   * { vertical-align: middle; }
 `;
 const Container = styled.div`
-  padding-top: ${props=>props.full ? '490px' : props.isStory ? '420px' : '340px'};
+  transition: padding-top 0.6s ease;
+  ${props=> {
+    if(!props.shorten) {
+      return `padding-top: ${props.full ? '490px' : props.isStory ? '440px' : '360px'};`
+    } else {
+      return `padding-top: ${props.full ? '290px' : props.isStory ? '240px' : '160px'};`
+    }
+  }
+  }
 `;
 
 const TOP=0,MIDDLE=1,BOTTOM=2;
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  constructor(props) {
+    super(props);
+    this.windowEvent = this.handleScroll.bind(this);
+    this.state = {
+      scrollY: 0
+    }
+  }
+
+  componentWillMount() {
+    window.addEventListener('scroll', this.windowEvent, false);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.windowEvent, false);
+  }
+  handleScroll() {
+    this.setState({ scrollY: window.scrollY });
+  }
 
   componentDidMount() {
     if (!this.props.tools) {
@@ -108,11 +134,16 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   }
 
   render() {
-    
+
     const lang = this.props.language;
     const ListItem = this.getViewMode();
     return (
-      <Container dir={this.getDirection()} full={this.props.params.filter !== 'type'} isStory = {this.props.params.label === 'story'}>
+      <Container
+          dir={this.getDirection()}
+          full={this.props.params.filter !== 'type'}
+          isStory = {this.props.params.label === 'story'}
+          shorten = {this.state.scrollY > 10}
+          >
         <Helmet
           title="HomePage"
           meta={[
