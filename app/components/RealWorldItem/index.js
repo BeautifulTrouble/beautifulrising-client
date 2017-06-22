@@ -5,6 +5,7 @@
 */
 
 import React, {PropTypes} from 'react';
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 // positions;
@@ -22,29 +23,65 @@ const ImageBackground = styled.div`
   background-image: url(${props=>IMAGE_PREFIX+props.image});
   background-position: center center;
   opacity: 1;
-  width: 400px;
-  height: 252px;
-  transform: translate(12%, 15%);
+  width: 100%;
+  height: 300px;
   background-size: cover;
 `;
+
+const ImageBackgroundTop =styled(ImageBackground)`
+  display: ${props=> props.pos%2==1 ? 'block' : 'none' };
+`;
+const ImageBackgroundBottom =styled(ImageBackground)`
+  display: ${props=> props.pos%2==1 ? 'none' : 'block' };
+  margin-top: ${props=>props.marginTop - 30}px;
+`;
+
 const RealWorldItemContainer = styled.div`
-    min-height: 300px;
+    // min-height: 300px;
+    // position: relative;
+    // margin-bottom: 30px;
+
+    width: 100%;
     position: relative;
-    margin-bottom: 30px;
+    padding: 22px;
+
+    &::after {
+      content: ' ';
+      display: block;
+    }
 `;
 
 const Example = styled.div`
   padding: 5px 10px;
   background-color: white;
-  position: absolute;
+
   z-index: 100;
   font-size: 12px;
   width: 390px;
   border: 2px solid black;
-  top: ${props=>TOP.includes(props.pos) ? '-10px' : 'auto' };
-  bottom: ${props=>BOTTOM.includes(props.pos) ? '-10px' : 'auto' };
-  left: ${props=>LEFT.includes(props.pos) ? '-10px' : 'auto' };
-  right: ${props=>RIGHT.includes(props.pos) ? '-10px' : 'auto' };
+
+  ${props=> {
+    if(props.pos % 2 == 1) {
+      return `
+      margin-top: -22px;
+      margin-left: 28px;
+    `
+
+    } else {
+      return `
+        position: absolute;
+        bottom: 302px;
+        left: 0;
+        margin-top: ${props=>props.marginTop};
+      `;
+    }
+
+  }}
+  // position: absolute;
+  // top: ${props=>TOP.includes(props.pos) ? '-10px' : 'auto' };
+  // bottom: ${props=>BOTTOM.includes(props.pos) ? '-10px' : 'auto' };
+  // left: ${props=>LEFT.includes(props.pos) ? '-10px' : 'auto' };
+  // right: ${props=>RIGHT.includes(props.pos) ? '-10px' : 'auto' };
 `;
 const ExampleTitle = styled.h3`
   line-height: 1;
@@ -65,23 +102,40 @@ const ExampleDescription = styled.p`
   padding: 0;
 `;
 
-function RealWorldItem(props) {
+class RealWorldItem extends React.PureComponent {
 
-  return (
-    <RealWorldItemContainer>
-      <ImageBackground type={props.type} image={props.image} />
-      <Example pos={props.pos}>
-        <ExampleTitle>
-          <a href={props.link} target='_blank'>
-            {props.title}
-          </a>
-        </ExampleTitle>
-        <ExampleDescription>
-          {props.description}
-        </ExampleDescription>
-      </Example>
-    </RealWorldItemContainer>
-  );
+  constructor(props) {
+    super(props);
+    this.state = {
+      exampleHeight: 0
+    }
+  }
+  componentDidMount() {
+
+    var node = ReactDOM.findDOMNode(this.refs.example);
+    console.log("REFS", node.clientHeight);
+    this.setState({ exampleHeight: node.clientHeight });
+  }
+  render() {
+    return (
+      <RealWorldItemContainer>
+        <ImageBackgroundTop type={this.props.type} image={this.props.image} pos={this.props.pos}/>
+          <Example ref={'example'} pos={this.props.pos}>
+            <ExampleTitle>
+              <a href={this.props.link} target='_blank'>
+                {this.props.title}
+              </a>
+            </ExampleTitle>
+            <ExampleDescription>
+              {this.props.description}
+            </ExampleDescription>
+          </Example>
+        <ImageBackgroundBottom type={this.props.type} image={this.props.image}
+              pos={this.props.pos} marginTop={this.state.exampleHeight}/>
+      </RealWorldItemContainer>
+    );
+  }
+
 }
 
 RealWorldItem.propTypes = {
