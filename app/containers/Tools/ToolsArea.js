@@ -42,7 +42,7 @@ export const ToolsListContainer = styled.div`
     direction: float: ${props=>props.lang === 'ar' ? 'rtl' : 'ltr'};
     height: 100%;
     display: ${props=>props.show ? 'block' : 'none'};
-    div * {
+    & > div > * {
       direction: ${props=>props.lang === 'ar' ? 'rtl' : 'ltr'};
       text-align: ${props=>props.lang === 'ar' ? 'right' : 'left'};
     }
@@ -116,11 +116,10 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
   }
 
   render() {
-
+    const lang=this.props.intl.locale;
     return (
       <ToolsListContainer show={this.props.show} lang={this.props.lang} rotate={true}>
-
-        <ToolsListMenu show={this.props.Tools.viewType === NEWS_FEED}>
+        <ToolsListMenu lang={lang} show={this.props.Tools.viewType === NEWS_FEED}>
           <ToolsListMenuItem>
             <ToolsButton toShow={this.state.newsFeed === TWITTER_FEED} onClick={()=>this.handleNewsFeedChange(TWITTER_FEED)}>
               <Isvg src={TwitterIcon} />
@@ -133,7 +132,7 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
           </ToolsListMenuItem>
         </ToolsListMenu>
 
-        <ToolsListMenu show={this.props.Tools.viewType === MY_TOOLS}>
+        <ToolsListMenu lang={lang} show={this.props.Tools.viewType === MY_TOOLS}>
           <ToolsListMenuItem>
             <ToolsButton
               onClick={()=>this.handleClick(DOWNDLOAD_PDF)}

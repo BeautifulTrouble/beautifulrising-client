@@ -35,7 +35,7 @@ const Content = styled.div`
 
 function ToolTextSection(props) {
   if (!props.text) return null;
-  console.log(props.intl);
+  
   return (
     <div>
       <Header lang={props.intl.locale}>

@@ -40,9 +40,11 @@ const ShareContainer = styled.div`
 
   display: block;
   margin-top: 11px;
-  margin-left: 12px;
   svg * {
     fill: white;
+  }
+  span.share-button {
+    margin-right: 10px;
   }
   color: white;
   * { color: white; font-family: 'Avenir Black', 'Kaff Bold'; text-transform: uppercase; }
@@ -87,7 +89,7 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
             />
             <ShareContainer>
               <ShareButton {...this.props}>
-                <Isvg src={ShareIcon} />
+                <Isvg src={ShareIcon} className={'share-button'} />
                 <FormattedMessage {...messages.share}/>
               </ShareButton>
             </ShareContainer>

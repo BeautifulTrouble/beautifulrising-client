@@ -102,15 +102,16 @@ export const ToolsListMenu = styled.ul`
     border-width: 0 0 3px;
     margin: 0;
     display: ${props=>props.show?'block':'none'};
+
+    & > li:first-child {
+      ${props=>props.lang==='ar' ? 'border-left' : 'border-right'}: 2px solid;
+    }
 `;
 export const ToolsListMenuItem = styled.li`
   list-style: none;
   display: inline-block;
   width: 49%;
   text-align: center;
-  &:first-child {
-    border-right: 2px solid;
-  }
 `;
 
 export const ToolType = styled.h3`
