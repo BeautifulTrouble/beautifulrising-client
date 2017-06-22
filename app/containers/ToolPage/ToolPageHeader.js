@@ -73,7 +73,9 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
       <ToolHeaderContainer backgroundImage={BR_IMAGE_PREFIX+this.props.image}>
         <ToolHeaderViewport showOverflow={this.props['module-type'] !== 'snapshot'}>
           <Content>
-            <ToolHeaderType type={this.props.type}>{this.props.type}</ToolHeaderType>
+            <ToolHeaderType type={this.props.type}>
+              <FormattedMessage {...messages[this.props.type]} />
+            </ToolHeaderType>
             <ToolHeaderTitle color={'white'}>{this.props.title}</ToolHeaderTitle>
             <AdderRemover
               slug={this.props.slug}
