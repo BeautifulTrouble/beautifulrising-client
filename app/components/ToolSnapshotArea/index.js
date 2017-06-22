@@ -27,7 +27,7 @@ const Actions = styled.ul`
   }
 `;
 const Act = styled.li`list-style: none;
-
+  color: #838486;
   width: 45%;
   display: inline-block;
   &:first-child {
@@ -44,7 +44,7 @@ const SnapshotCallout = styled.div`
   margin-bottom: 5px;
 `;
 const Link = styled.a`
-
+    color: #838486;
     font-size: 18px;
     text-transform: uppercase;
     font-weight: bold;

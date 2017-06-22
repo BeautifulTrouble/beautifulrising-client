@@ -30,7 +30,7 @@ const ListItem = styled.li`list-style: none;
     letter-spacing: 0px;
     margin-bottom: 5px;
     text-align: left;
-    font-family: 'Avenir Black';
+    font-family: 'Avenir Black', 'Kaff Bold';
   }
 
   p {

@@ -43,6 +43,7 @@ const TypeArrow = styled.button`
   cursor: pointer;
   outline: none;
   transform: ${props=>props.lookRight ? 'rotate(270deg)' : 'rotate(180deg)'};
+  display: ${props=>props.lookRight ? 'block' : 'none' };
 `;
 
 class ToolTypeArea extends React.Component { // eslint-disable-line react/prefer-stateless-function

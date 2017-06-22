@@ -16,7 +16,7 @@ const Header = styled(CommonLeftHeader)`
   border: none;
   text-align: left;
   margin-top: 40px;
-  font-family: 'Avenir Black', sans-serif;
+  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
   font-size: 19px;
   letter-spacing: 0;
   line-height: 22px;

@@ -41,7 +41,7 @@ h2 {
   border-width: 0 0 3px;
   font-size: 19px;
   letter-spacing: 0;
-  font-family: 'Avenir Black', sans-serif;
+  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
   margin-top: 40px;
   padding: 15px 20px;
   text-align: left;

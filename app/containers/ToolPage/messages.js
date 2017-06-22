@@ -54,7 +54,6 @@ export default defineMessages({
     id: 'app.containers.ToolPage.tactics',
     defaultMessage: 'Tactics',
   },
-
   principles: {
     id: 'app.containers.ToolPage.principles',
     defaultMessage: 'Principles',
@@ -69,6 +68,26 @@ export default defineMessages({
   },
   stories: {
     id: 'app.containers.ToolPage.stories',
+    defaultMessage: 'Stories',
+  },
+  tactic: {
+    id: 'app.containers.ToolPage.tactic',
+    defaultMessage: 'Tactics',
+  },
+  principle: {
+    id: 'app.containers.ToolPage.principle',
+    defaultMessage: 'Principles',
+  },
+  theory: {
+    id: 'app.containers.ToolPage.theory',
+    defaultMessage: 'Theories',
+  },
+  methodology: {
+    id: 'app.containers.ToolPage.methodology',
+    defaultMessage: 'Methodologies',
+  },
+  story: {
+    id: 'app.containers.ToolPage.story',
     defaultMessage: 'Stories',
   },
   tags: {

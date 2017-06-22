@@ -50,6 +50,9 @@ const ExampleTitle = styled.h3`
   line-height: 1;
   margin: 0;
   padding: 0;
+  font-size: 19px;
+  font-family: 'Avenir Black', sans-serif;
+  letter-spacing: 0;
   a {
     color: black;
     text-decoration: none;

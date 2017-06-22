@@ -53,7 +53,7 @@ const ListItem = styled.li`list-style: none;
     font-size: 14px;
     line-height: 22px;
     padding-left: 10px;
-    font-family: 'Avenir', sans-serif;
+    font-family: 'Avenir', 'Kaff', sans-serif;
 
     a {
       color: #828486;
@@ -92,7 +92,7 @@ const ListItem = styled.li`list-style: none;
 const ParticipantsContainer = styled.div`
   h3 {
     font-size: 16px;
-    font-family: 'Avenir Black', sans-serif;
+    font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
     letter-spacing: 0;
     text-transform: uppercase;
     margin-bottom: 20px;

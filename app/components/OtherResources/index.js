@@ -24,7 +24,7 @@ const ResourceType = styled.li`
     top: -19px;
     left: 0;
     font-weight: 800;
-    font-family: 'Avenir Black';
+    font-family: 'Avenir Black', 'Kaff Bold';
   }
 `;
 

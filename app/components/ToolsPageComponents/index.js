@@ -176,7 +176,7 @@ export const ToolMainContentHeader = styled(CommonLeftHeader)`
 
   font-size: 19px;
   line-height: 22px;
-  font-family: 'Avenir Black', sans-serif;
+  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
   letter-spacing: 0;
   margin: 10px 0;
 `;
@@ -214,7 +214,8 @@ export const LearnMoreItemSource = styled.span``;
 // RealWorldContainer
 export const RealWorldHeader = styled.h1`
 text-transform: uppercase;
-font-size: 28px;
+font-size: 40px;
+line-height: 0;
 `;
 
 export const RealWorldContainer = styled(ToolMainContent)`

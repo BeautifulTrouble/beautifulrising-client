@@ -41,6 +41,12 @@ export function* listenEmailModules() {
   yield takeLatest(REQUEST_EMAIL, sendModulesToEmail);
 }
 
+// This will hide the tools area the page
+// when the user changes a page if at all...
+export function* listenToPageChange() {
+
+}
+
 // All sagas to be loaded
 export default [
   listenEmailModules,

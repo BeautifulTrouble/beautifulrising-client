@@ -3,8 +3,15 @@ import KnockOut from 'assets/fonts/Knockout-HTF67-FullBantamwtMod.otf';
 import AvenirBlack from 'assets/fonts/Avenir-Black.ttf';
 import AvenirBook from 'assets/fonts/Avenir-Book.ttf';
 import PaintHand from 'assets/fonts/Paint-hand_fixed.ttf';
+import MassiraSpray from 'assets/fonts/Massira-Spray.woff';
+import KaffRegular from 'assets/fonts/Kaff-Regular.woff';
+import KaffBold from 'assets/fonts/Kaff-Bold.woff';
+
 /* eslint no-unused-expressions: 0 */
+
+
 injectGlobal`
+
   @font-face {
     font-family: 'Paint Hand';
     src: url(${PaintHand});
@@ -21,8 +28,27 @@ injectGlobal`
   }
 
   @font-face {
-    font-family: 'Knockout';
+    font-family: 'KnockOut';
     src: url(${KnockOut});
+  }
+
+  @font-face {
+    font-family: 'Massira Spray';
+    src: url(${MassiraSpray}) format('woff');
+  }
+
+  @font-face {
+    font-family: 'Kaff Bold';
+    font-weight: bold;
+    font-style: normal;
+    src: url(${KaffBold});
+  }
+
+  @font-face {
+    font-family: 'Kaff';
+    font-weight: normal;
+    font-style: normal;
+    src: url(${KaffRegular}) format('woff');
   }
 
   html,
@@ -32,7 +58,7 @@ injectGlobal`
   }
 
   body,p,input,textarea {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: 'Avenir', 'Kaff', Helvetica, Arial, sans-serif;
   }
   p {
     font-size: 14px;
@@ -42,8 +68,12 @@ injectGlobal`
       color: #828486;
     }
   }
+  button {
+    font-family: 'Avenir', 'Kaff', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
   h1,h2,h3,h4,h5 {
-    font-family: 'Knockout', Helvetica, Arial, sans-serif;
+    font-family: 'KnockOut', 'Kaff Bold', Helvetica, Arial, sans-serif;
     text-transform: uppercase;
     font-weight: normal;
   }
@@ -62,7 +92,7 @@ injectGlobal`
   }
 
   body.fontLoaded {
-    font-family: 'Avenir', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Avenir', 'Kaff', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
   #app {

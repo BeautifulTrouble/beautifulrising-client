@@ -39,6 +39,39 @@ const Column = styled.div`
   width: ${props=>props.width}
   float: left;
   position: relative;
+
+  &::after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 180px;
+    opacity: 0.3;
+    z-index: -1;
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: ${
+      props=>{
+        switch(props.bg) {
+          case 'theory' :
+          case 'methodology': return 'cover';
+          default: return 'contain';
+        }
+      }
+    };
+    background-image: url(${
+      props=>{
+        switch(props.bg) {
+          case 'tactic' : return TacticIcon;
+          case 'principle' : return PrincipleIcon;
+          case 'story': return StoryIcon;
+          case 'theory': return TheoryIcon;
+          case 'methodology': return MethodologyIcon;
+        }
+      }
+    });
+  }
 `;
 const ToolType = styled(Link)`
   margin-right: 0.5%;
@@ -79,7 +112,7 @@ const Flag = styled.span`
 
   .isvg {
     width: 100%;
-    overflow-y: hidden;
+    overflow-y: visible;
     max-height: 160px;
     display: inline-block;
 
@@ -103,6 +136,12 @@ const Description = styled.div`
   padding: 0 10px 0 10px;
 `;
 
+// <Flag selected={props.label === 'story'}><Isvg src={StoryIcon} /></Flag>
+// <Flag selected={props.label === 'tactic'}><Isvg src={TacticIcon} /></Flag>
+// <Flag selected={props.label === 'principle'}><Isvg src={PrincipleIcon} /></Flag>
+// <Flag selected={props.label === 'theory'}><Isvg src={TheoryIcon} /></Flag>
+// <Flag selected={props.label === 'methodology'}><Isvg src={MethodologyIcon} /></Flag>
+
 function ToolTypeSelectedFull(props) {
   return (
     <Container show={props.show}>
@@ -125,15 +164,10 @@ function ToolTypeSelectedFull(props) {
             <FormattedMessage {...messages.methodologyHead} />
           </ToolType>
         </Column>
-        <Column width="40%">
+        <Column width="40%" bg={props.label}>
           <TypeName>
             <FormattedMessage {...messages[props.label + 'Head']} />
           </TypeName>
-          <Flag selected={props.label === 'story'}><Isvg src={StoryIcon} /></Flag>
-          <Flag selected={props.label === 'tactic'}><Isvg src={TacticIcon} /></Flag>
-          <Flag selected={props.label === 'principle'}><Isvg src={PrincipleIcon} /></Flag>
-          <Flag selected={props.label === 'theory'}><Isvg src={TheoryIcon} /></Flag>
-          <Flag selected={props.label === 'methodology'}><Isvg src={MethodologyIcon} /></Flag>
         </Column>
         <Column width="44%">
           <Description>
