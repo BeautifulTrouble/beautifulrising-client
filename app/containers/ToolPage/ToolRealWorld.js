@@ -17,9 +17,13 @@ import SubmitRealWorldExample from 'containers/SubmitRealWorldExample';
 import RealWorldItem from 'components/RealWorldItem';
 import RealWorldIconImage from 'assets/images/icons/real-world.svg';
 import ArrowIcon from 'assets/images/icons/arrow.svg';
-
+import styled from 'styled-components';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 
+const TitleContainer = styled.span`
+  display: inline;
+  padding-right: 10px
+`;
 import messages from './messages';
 
 export default class ToolRealWorld extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -53,7 +57,9 @@ export default class ToolRealWorld extends React.Component { // eslint-disable-l
       <RealWorldContainer>
         <RealWorldHeader>
           <RealWorldIcon src={RealWorldIconImage} type={this.props.type}/>
-          <FormattedMessage {...messages.realWorldExamplesOf} values={{title: this.props.title}}/>
+          <TitleContainer>
+            <FormattedMessage {...messages.realWorldExamplesOf} values={{title: this.props.title}}/>
+          </TitleContainer>
           <RealWorldToggle collapsed={this.state.isCollapsed} onClick={this.handleCollapseClick.bind(this)}>
             <Isvg src={ArrowIcon} />
           </RealWorldToggle>

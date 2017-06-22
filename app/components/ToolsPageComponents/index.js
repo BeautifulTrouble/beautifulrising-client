@@ -31,7 +31,7 @@ export const RealWorldToggle = styled.button`
   cursor: pointer;
   transform: ${props => props.collapsed ? 'rotate(270deg)' : 'rotate(180deg)'};
   transition: transform 0.4s ease;
-  margin-left: 5px;
+  margin-left: -10px;
   svg {
     width: 10px;
   }
