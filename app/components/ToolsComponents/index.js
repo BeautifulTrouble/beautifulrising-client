@@ -70,7 +70,7 @@ export const ToolsButton = styled.button`
   cursor: pointer;
   color:${props => props.color};
   font-weight: bold;
-
+  padding: 0;
   img { margin-right: 10px;}
   display: inline-block;
   ${
@@ -147,11 +147,11 @@ export const ToolsListItem = styled.li`
 `;
 
 export const ToolsMenu = styled.ul`
-  width: 78px;
+  width: 73px;
   float: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
   height: 100%;
   margin: 0;
-  padding: 20px 5px;
+  padding: 20px 0;
   border: solid black;
   border-width: ${props=>props.theme.lang === 'ar' ? '0 0 0 2px' : '0 2px 0 0'};
 `;
