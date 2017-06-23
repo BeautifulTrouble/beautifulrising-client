@@ -37,7 +37,7 @@ const Button = styled.button`
 const ShareArea = styled.div `
   position: absolute;
   width: 100px;
-  left: 100%;
+  ${props=>props.lang==='ar' ? 'right' : 'left'}: 100%;
   display: ${props=>props.show?'block':'none'};
 `;
 const FacebookButton = styled(Button)`
@@ -108,7 +108,7 @@ class ShareButton extends React.PureComponent { // eslint-disable-line react/pre
 
     return (
       <Container onMouseOver={this.showSocial.bind(this)} onMouseOut={this.hideSocial.bind(this)}>
-        <ShareArea show={ true /*this.state.showSocialButtons */}>
+        <ShareArea lang={this.props.intl.locale} show={ true /*this.state.showSocialButtons */}>
           <FacebookButton onClick={()=>this.handleFacebookShare(url)}>
             <Isvg src={FacebookIcon} />
           </FacebookButton>

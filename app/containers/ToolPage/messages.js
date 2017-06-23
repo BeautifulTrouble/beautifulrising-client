@@ -93,6 +93,10 @@ export default defineMessages({
   tags: {
     id: 'app.containers.ToolPage.tags',
     defaultMessage: 'Tags',
+  },
+  trainingHeader: {
+    id: 'app.containers.ToolPage.trainingHeader',
+    defaultMessage: 'Training'
   }
 
 

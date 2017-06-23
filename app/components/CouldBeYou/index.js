@@ -31,6 +31,22 @@ const ArrowContainer = styled.span`
   position: absolute;
   right: 30px;
   top: 143px;
+
+  ${props=> {
+    if (props.lang === 'ar') {
+      return `
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1) rotate(-32deg);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+
+        right: 91px;
+        top: 130px;
+      `
+    }
+  }}
 `;
 const CallToAction = styled.div`
   margin: 10px 0 20px;
@@ -49,7 +65,7 @@ function CouldBeYou(props) {
   return (
     <Container>
       <AnonImage/>
-      <ArrowContainer>
+      <ArrowContainer lang={props.intl.locale}>
         <Isvg src={BentArrowIcon} />
       </ArrowContainer>
       <CallToAction lang={props.intl.locale}>

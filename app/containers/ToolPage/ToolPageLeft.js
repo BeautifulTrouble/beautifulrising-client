@@ -62,7 +62,9 @@ export class ToolPageLeft extends React.PureComponent { // eslint-disable-line r
 
             { this.renderTags() }
             <Container>
-              <ToolsPageLeftHeader>Training</ToolsPageLeftHeader>
+              <ToolsPageLeftHeader>
+                <FormattedMessage {...messages.trainingHeader} />
+              </ToolsPageLeftHeader>
               <ToolsRequestTraining />
             </Container>
           </ToolLeftArea>

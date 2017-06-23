@@ -18,6 +18,7 @@ import ContactUs from 'containers/ContactUs';
 import messages from './messages';
 
 const MenuArea = styled.div`
+text-align: ${props=>props.lang==='ar'?'right':'left'};
 &::before {
   content: ' ';
   position: absolute;

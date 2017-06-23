@@ -20,6 +20,6 @@ export default defineMessages({
   },
   callOut: {
     id: 'app.components.ToolSnapshotArea.callOut',
-    defaultMessage: 'Hey, so far this principle is only summarized — but people like you are likely using it in all kinds of ways. Do you have insights to share on how to use this principle? Go ahead and share them through the form below...'
+    defaultMessage: 'Hey, so far this {type} is only summarized — but people like you are likely using it in all kinds of ways. Do you have insights to share on how to use this principle? Go ahead and share them through the form below...'
   }
 });

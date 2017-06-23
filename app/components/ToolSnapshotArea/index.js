@@ -7,9 +7,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl} from 'react-intl';
 import messages from './messages';
 import Markdown from 'react-remarkable';
+import typeTranslate from 'containers/HomePage/messages';
 
 const Container = styled.div``;
 const Viewport = styled.div`
@@ -48,10 +49,13 @@ const Link = styled.a`
     font-size: 18px;
     text-transform: uppercase;
     font-weight: bold;
+    ${props=>props.lang === 'ar' ? 'text-align: right;' : ''}
+
 
 `;
 
 function ToolSnapshotArea(props) {
+  const { formatMessage } = props.intl;
   return (
     <Container>
       <Viewport>
@@ -59,16 +63,20 @@ function ToolSnapshotArea(props) {
           <Markdown source={props.snapshot} />
         </SnapshotContent>
         <SnapshotCallout>
-          <FormattedMessage {...messages.callOut} />
+          <FormattedMessage {...messages.callOut} values={{type: formatMessage(typeTranslate[props.type])}}/>
         </SnapshotCallout>
         <Actions>
           <Act>
-            <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeC_EdxoO7owVnL8fjSERZlychwMhDOR-7rI1SDtpL4ijZgkg/viewform" target="_blank">
+            <Link
+              lang={props.intl.locale}
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeC_EdxoO7owVnL8fjSERZlychwMhDOR-7rI1SDtpL4ijZgkg/viewform" target="_blank">
               <FormattedMessage {...messages.viewForm} />
             </Link>
           </Act>
           <Act>
-            <Link href={`http://beautifultrouble.org/${props.type}/${props.slug}/`} target="_blank">
+            <Link
+              lang={props.intl.locale}
+              href={`http://beautifultrouble.org/${props.type}/${props.slug}/`} target="_blank">
               <FormattedMessage {...messages.seeMore} values={{name: props.title}} />
             </Link>
           </Act>
@@ -82,4 +90,4 @@ ToolSnapshotArea.propTypes = {
 
 };
 
-export default ToolSnapshotArea;
+export default injectIntl(ToolSnapshotArea);
