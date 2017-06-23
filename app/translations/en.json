@@ -31,7 +31,7 @@
   "app.components.Logo.language": "en",
   "app.components.Menu.advisoryNetMenu": "Our Advisory Network",
   "app.components.Menu.btaaMenu": "Beautiful Trouble + AA",
-  "app.components.Menu.faqMenu": "YOU STILL HAVE QUESTIONS?",
+  "app.components.Menu.faqMenu": "FAQ",
   "app.components.Menu.header": "This is the Menu component !",
   "app.components.Menu.home": "Home",
   "app.components.Menu.partnersMenu": "Partners",
