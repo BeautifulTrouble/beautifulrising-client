@@ -113,7 +113,7 @@ class RealWorldItem extends React.PureComponent {
   componentDidMount() {
 
     var node = ReactDOM.findDOMNode(this.refs.example);
-    console.log("REFS", node.clientHeight);
+
     this.setState({ exampleHeight: node.clientHeight });
   }
   render() {

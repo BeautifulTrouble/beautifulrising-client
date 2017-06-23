@@ -25,9 +25,11 @@ function toolsReducer(state = initialState, action) {
     case SET_SHOW_TOOLS:
       return state.set('show', action.data);
     case ADD_TOOL:
-      return state.setIn(['selectedTools', action.slug], action.data);
+      return state
+              .setIn(['selectedTools', action.slug], action.data);
     case REMOVE_TOOL:
-      return state.removeIn(['selectedTools', action.slug])
+      return state
+                .removeIn(['selectedTools', action.slug])
     case SET_VIEW_TYPE:
       return state.set('viewType', action.data);
     case DEFAULT_ACTION:

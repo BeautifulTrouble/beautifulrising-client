@@ -45,12 +45,29 @@ const ToolsViewType = styled(ToolsButton)`
     fill: ${props=>props.chosen&&props.toShow ? 'black' : '#AFAFAF' };
   }
 `;
+
+const MyToolsButton = styled(ToolsViewType)`
+  animation-name: zoomTools;
+  animation-duration: 1s;
+  ${props=> {
+
+    if (props.firstTime) {
+        return `
+          animation-play-state: running;
+        `;
+    } else {
+        return `animation-play-state: paused;`;
+    }
+  }}
+
+`;
 export class Tools extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
     super(props);
     this.state = {
-      chosen: NEWS_FEED //myTools
+      chosen: NEWS_FEED, //myTools
+      isFirstTime: false
     }
   }
   onToggleClick(chosen = null) {
@@ -69,7 +86,21 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    // console.log(Object.keys(prevProps.Tools.selectedTools), Object.keys(this.props.Tools.selectedTools))
+    if(Object.keys(this.props.Tools.selectedTools).length === 0
+        && Object.keys(nextProps.Tools.selectedTools).length === 1
+    ) {
+      this.setState({ isFirstTime: true });
+
+    } else {
+      this.setState({ isFirstTime: false });
+
+    }
+  }
+
   render() {
+
     return (
       <ThemeProvider theme={{ lang: this.props.language }} >
         <ToolsContainer showTools={this.props.Tools.show}>
@@ -96,14 +127,15 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
                   </ToolsViewType>
                 </ToolsMenuItem>
                 <ToolsMenuItem>
-                  <ToolsViewType
+                  <MyToolsButton
                       onClick={() => this.onToggleClick(MY_TOOLS)}
                       chosen={this.props.Tools.viewType === MY_TOOLS}
                       toShow={this.props.Tools.show}
+                      firstTime={this.state.isFirstTime}
                   >
                     <Isvg src={MyToolsIcon} />
                     <FormattedMessage {...messages.myTools} />
-                  </ToolsViewType>
+                  </MyToolsButton>
                 </ToolsMenuItem>
               </ToolsMenu>
             <ToolsArea lang={this.props.language} show={this.props.Tools.show}/>
