@@ -40,6 +40,10 @@ const Header = styled.h3`
 const Content = styled.div`
   font-size: 14px;
   line-height: 22px;
+
+  a {
+    color: #828486;
+  }
 `;
 
 function ToolsPotentialRisk(props) {
