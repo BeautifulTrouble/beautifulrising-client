@@ -24,7 +24,7 @@ import OurAdvisoryNetwork from 'components/AboutPageComponents/OurAdvisoryNetwor
 import FAQ from 'components/AboutPageComponents/FAQ';
 import BeautifulTroubleAA from 'components/AboutPageComponents/BeautifulTroubleAA';
 import { makeSelectAllToolsWithSlugIndex, makeSelectAdvisoryBoard } from 'containers/App/selectors';
-import { onboardUser } from 'containers/App/actions';
+import { onboardUser } from 'containers/OnboardingModal/actions';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 

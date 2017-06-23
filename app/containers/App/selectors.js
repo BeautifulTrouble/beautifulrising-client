@@ -83,13 +83,6 @@ const isShowTools = () => createSelector(
   }
 )
 
-const isOnboarded = () => createSelector(
-  selectGlobal,
-  (globalState) => {
-    return globalState.get('onboarded');
-  }
-)
-
 const getToolSlug = (state, props) => { return props.params.label; }
 const makeSelectToolById = createSelector(
   [ selectGlobal, getToolSlug ],
@@ -159,7 +152,6 @@ export {
   makeSelectAllToolsWithSlugIndex,
   makeSelectAdvisoryBoard,
   makeSelectLanguage,
-  isOnboarded,
   makeSelectExamples
   // makeSelectToolView,
 };

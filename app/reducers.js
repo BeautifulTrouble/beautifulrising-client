@@ -20,7 +20,8 @@ import submitRealWorldExampleReducer from 'containers/SubmitRealWorldExample/red
 import emailToolsReducer from 'containers/EmailTools/reducer';
 import newsFeedReducer from 'containers/NewsFeed/reducer';
 import submitNewsFeedReducer from 'containers/SubmitNewsFeed/reducer';
-import askTheContributorReducer from 'containers/AskTheContributor/reducer'
+import askTheContributorReducer from 'containers/AskTheContributor/reducer';
+import onboardingModalReducer from 'containers/OnboardingModal/reducer';
 /*
  * routeReducer
  *
@@ -68,6 +69,7 @@ export default function createReducer(asyncReducers) {
     newsFeed: newsFeedReducer,
     submitNewsFeed: submitNewsFeedReducer,
     askTheContributor: askTheContributorReducer,
+    onboardingModal: onboardingModalReducer,
     ...asyncReducers,
   });
 }

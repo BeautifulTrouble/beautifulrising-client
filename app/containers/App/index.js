@@ -22,7 +22,8 @@ import Tools from 'containers/Tools';
 import Footer from 'components/Footer';
 import LanguageChanger from 'containers/LanguageChanger';
 import OnboardingModal from 'containers/OnboardingModal';
-import { isShowTools, isOnboarded, makeSelectLanguage } from './selectors';
+import { isShowTools, makeSelectLanguage } from './selectors';
+import { isOnboarded } from 'containers/OnboardingModal/selectors';
 import { makeSelectLanguageData } from 'containers/LanguageProvider/selectors';
 import { loadLanguage } from 'containers/LanguageProvider/actions';
 //Themes

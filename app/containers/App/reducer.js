@@ -16,8 +16,6 @@ import {
   LOAD_DATA_SUCCESS,
   LOAD_DATA,
   LOAD_DATA_ERROR,
-  ADD_TOOL,
-  REMOVE_TOOL,
   LANGUAGE_CHANGE_RELOAD_DATA,
   USER_IS_ONBOARDED
 } from './constants';
@@ -27,7 +25,6 @@ const initialState = fromJS({
   loading: false,
   error: false,
   currentUser: false,
-  onboarded: false,
   appData: {
     information: false,
     tags: {}
@@ -37,9 +34,6 @@ const initialState = fromJS({
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
-    case USER_IS_ONBOARDED:
-      return state
-        .set('onboarded', true);
     case LOAD_DATA:
       return state
         .set('loading', true)
@@ -56,10 +50,6 @@ function appReducer(state = initialState, action) {
       return state
         .set('error', action.error)
         .set('loading', false);
-    case ADD_TOOL:
-      return state;
-    case REMOVE_TOOL:
-      return state;
     default:
       return state;
   }

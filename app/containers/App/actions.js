@@ -19,8 +19,7 @@ import {
   LOAD_DATA,
   LOAD_DATA_SUCCESS,
   LOAD_DATA_ERROR,
-  LANGUAGE_CHANGE_RELOAD_DATA,
-  USER_IS_ONBOARDED
+  LANGUAGE_CHANGE_RELOAD_DATA
 } from './constants';
 
 /**
@@ -37,12 +36,6 @@ export function loadData() {
 export function langChangeReloadData() {
   return {
     type: LANGUAGE_CHANGE_RELOAD_DATA
-  }
-}
-
-export function onboardUser() {
-  return {
-    type: USER_IS_ONBOARDED
   }
 }
 

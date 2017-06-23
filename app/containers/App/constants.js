@@ -16,4 +16,3 @@ export const LOAD_DATA_ERROR = 'App/constants/LOAD_DATA_ERROR';
 export const ADD_TOOL = 'App/constants/ADD_TOOL';
 export const REMOVE_TOOL = 'App/constants/REMOVE_TOOL';
 export const LANGUAGE_CHANGE_RELOAD_DATA = 'App/constants/LANGUAGE_CHANGE_RELOAD_DATA';
-export const USER_IS_ONBOARDED = 'App/constants/USER_IS_ONBOARDED';
