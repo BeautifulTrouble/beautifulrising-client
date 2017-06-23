@@ -23,7 +23,7 @@ import ToolPageHeader from './ToolPageHeader';
 import ToolPageLeft from './ToolPageLeft';
 import ToolPageMain from './ToolPageMain';
 import ToolPageRight from './ToolPageRight';
-
+import {BR_IMAGE_PREFIX} from 'containers/Tools/constants';
 export class ToolPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   componentDidMount() {
@@ -42,9 +42,14 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
       <ThemeProvider theme={{ lang }}>
         <div>
           <Helmet
-            title="ToolPage"
+            title={'BeautifulRising: ' + tool.title}
             meta={[
               { name: 'description', content: 'Description of ToolPage' },
+              { name: 'og:url', content: `http://beta.beautifulrising.org/tool/${tool.slug}`},
+              { name: 'og:type', content: 'article' },
+              { name: 'og:title', content: tool.title },
+              { name: 'og:description', content: tool.snapshot },
+              { name: 'og:image', content: BR_IMAGE_PREFIX+tool.image }
             ]}
           />
           <ToolHeader>
