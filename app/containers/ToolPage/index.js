@@ -45,11 +45,11 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
             title={'BeautifulRising: ' + tool.title}
             meta={[
               { name: 'description', content: 'Description of ToolPage' },
-              { name: 'og:url', content: `http://beta.beautifulrising.org/tool/${tool.slug}`},
-              { name: 'og:type', content: 'article' },
-              { name: 'og:title', content: tool.title },
-              { name: 'og:description', content: tool.snapshot },
-              { name: 'og:image', content: BR_IMAGE_PREFIX+tool.image }
+              { property: 'og:url', content: `http://beta.beautifulrising.org/tool/${tool.slug}`},
+              { property: 'og:type', content: 'article' },
+              { property: 'og:title', content: tool.title },
+              { property: 'og:description', content: tool.snapshot },
+              { property: 'og:image', content: BR_IMAGE_PREFIX+tool.image }
             ]}
           />
           <ToolHeader>
