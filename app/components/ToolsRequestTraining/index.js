@@ -7,7 +7,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import Markdown from 'react-remarkable';
 import messages from './messages';
 
 const Training = styled.div`
@@ -17,10 +18,11 @@ line-height: 22px;
 a {
   color: #828486;
 }`;
-function ToolsRequestTraining() {
+function ToolsRequestTraining(props) {
+  const {formatMessage} = props.intl;
   return (
     <Training>
-      <FormattedHTMLMessage {...messages.requestTraining} />
+      <Markdown source={ formatMessage(messages.requestTraining, { form: formatMessage(messages.trainingForm) })} />
     </Training>
   );
 }
@@ -29,4 +31,4 @@ ToolsRequestTraining.propTypes = {
 
 };
 
-export default ToolsRequestTraining;
+export default injectIntl(ToolsRequestTraining);

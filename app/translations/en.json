@@ -105,7 +105,7 @@
   "app.components.ToolWhyItFailed.header": "Why it Failed",
   "app.components.ToolsComponents.header": "This is the ToolsComponents component !",
   "app.components.ToolsPotentialRisk.potentialRiskHeader": "Potential Risks",
-  "app.components.ToolsRequestTraining.requestTraining": "You can also <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSfbN0Qb5P2ORCHYl4UPEdA-01I-ixPP9TRjEFv5c05HGguwrA/viewform\" target=\"_blank\">request</a> a Beautiful Rising training",
+  "app.components.ToolsRequestTraining.requestTraining": "You can also [request]({form}) a Beautiful Rising training",
   "app.components.TrainingMenu.header": "Training + Resources",
   "app.components.TrainingMenu.otherResources": "Other Resources",
   "app.components.TrainingMenu.requestTraining": "Request a Training",
