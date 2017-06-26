@@ -12,6 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import Markdown from 'react-remarkable';
 
 import AdderRemover from 'containers/Tools/AdderRemover';
+import ContinentIcon from 'components/ContinentIcon';
 import { ToolHeaderContainer,
           ToolHeaderViewport,
           ToolHeaderType,
@@ -34,6 +35,12 @@ const Content = styled.div`
   width: calc(100% - 90px);
   height: 100%;
   padding-top: 50px;
+`;
+
+const Viewport = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
 `;
 const ShareContainer = styled.div`
   font-size: 14px; line-height: 22px;
@@ -75,27 +82,30 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
       <ToolHeaderContainer backgroundImage={BR_IMAGE_PREFIX+this.props.image}>
         <ToolHeaderViewport showOverflow={this.props['module-type'] !== 'snapshot'}>
           <Content>
-            <ToolHeaderType type={this.props.type}>
-              <FormattedMessage {...messages[this.props.type]} />
-            </ToolHeaderType>
-            <ToolHeaderTitle color={'white'}>{this.props.title}</ToolHeaderTitle>
-            <AdderRemover
-              slug={this.props.slug}
-              title={this.props.title}
-              type={this.props.type}
-              snapshot={this.props.snapshot}
-              addText={(<FormattedMessage {...messages.addTool} />)}
-              removeText={(<FormattedMessage {...messages.removeTool} />)}
-            />
-            <ShareContainer>
-              <ShareButton {...this.props}>
-                <Isvg src={ShareIcon} className={'share-button'} />
-                <FormattedMessage {...messages.share}/>
-              </ShareButton>
-            </ShareContainer>
-            <ToolPageCaption show={this.props['image-caption'] !== undefined}>
-              <Markdown source={'/ ' + this.props['image-caption']} />
-            </ToolPageCaption>
+            <Viewport>
+              <ToolHeaderType type={this.props.type}>
+                <FormattedMessage {...messages[this.props.type]} />
+              </ToolHeaderType>
+              <ToolHeaderTitle color={'white'}>{this.props.title}</ToolHeaderTitle>
+              <AdderRemover
+                slug={this.props.slug}
+                title={this.props.title}
+                type={this.props.type}
+                snapshot={this.props.snapshot}
+                addText={(<FormattedMessage {...messages.addTool} />)}
+                removeText={(<FormattedMessage {...messages.removeTool} />)}
+              />
+              <ShareContainer>
+                <ShareButton {...this.props}>
+                  <Isvg src={ShareIcon} className={'share-button'} />
+                  <FormattedMessage {...messages.share}/>
+                </ShareButton>
+              </ShareContainer>
+              <ToolPageCaption show={this.props['image-caption'] !== undefined}>
+                <Markdown source={'/ ' + this.props['image-caption']} />
+              </ToolPageCaption>
+              <ContinentIcon {...this.props}/>
+            </Viewport>
           </Content>
           { this.getBanner() }
         </ToolHeaderViewport>
