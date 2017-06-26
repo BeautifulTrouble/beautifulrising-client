@@ -21,6 +21,7 @@ import RealizationImage from 'assets/images/about/realization.svg';
 
 import CircledImage from 'components/CircledImage';
 
+const WORKSHOPS = ['myanmar', 'jordan', 'zimbabwe', 'bangladesh', 'uganda', 'mexico'];
 const MainBox = styled.div`
   width: 100%;
 `;
@@ -123,7 +124,7 @@ class OurProcess extends React.Component {
           {groups.map((item,ind) => { return(
             <ListItem key={ind}>
 
-              <Image src={require('assets/images/workshops/' + item.get('name') + '.png')} />
+              <Image src={require('assets/images/workshops/' + WORKSHOPS[ind] + '.png')} />
               <h4>{item.get('name')}</h4>
               <ol>
                 {item.get('participants') ?

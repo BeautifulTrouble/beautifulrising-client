@@ -24,18 +24,18 @@ class Logo extends React.Component {
   render() {
     const {formatMessage} = this.props.intl;
     const language = this.props.intl.locale;
-    const logo = formatMessage(messages.logoLanguage);
+    const lang = formatMessage(messages.logoLanguage);
 
     if (this.props.isReversed !== undefined && this.props.isReversed) {
       return (
         <Title withBg={this.props.withBg} top={this.props.top} left={this.props.left} lang={language}>
-          <Link to='/'><img src={require(`assets/images/logo-reverse-${logo}.png`)} /></Link>
+          <Link to='/'><img alt={`assets/images/logo-reverse-${lang}.png`} src={require(`assets/images/logo-reverse-${lang}.png`)} /></Link>
         </Title>
       );
     } else {
       return (
         <Title withBg={this.props.withBg} top={this.props.top} left={this.props.left} lang={language}>
-          <Link to='/'><img src={require(`assets/images/logo-${logo}.png`)} /></Link>
+          <Link to='/'><img src={require(`assets/images/logo-${lang}.png`)} /></Link>
         </Title>
       );
     }
