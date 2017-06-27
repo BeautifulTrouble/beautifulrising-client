@@ -136,7 +136,7 @@
   "app.containers.HomePage.header": "This is Home",
   "app.containers.HomePage.methodology": "methodology",
   "app.containers.HomePage.principle": "principle",
-  "app.containers.HomePage.searchResults": "Search results for <strong>\"{label}\"</strong>. {count} results found",
+  "app.containers.HomePage.searchResults": "Search results for <strong>\"{label}\"</strong>. ({count}) results found",
   "app.containers.HomePage.sortBy": "Sort By",
   "app.containers.HomePage.story": "story",
   "app.containers.HomePage.tactic": "tactic",

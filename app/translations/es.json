@@ -136,7 +136,7 @@
   "app.containers.HomePage.header": "This is Home",
   "app.containers.HomePage.methodology": "METODOLOGÍA",
   "app.containers.HomePage.principle": "PRINCIPIO",
-  "app.containers.HomePage.searchResults": "",
+  "app.containers.HomePage.searchResults": "Buscar resultados para {label}",
   "app.containers.HomePage.sortBy": "Ordenar por",
   "app.containers.HomePage.story": "historia",
   "app.containers.HomePage.tactic": "TÁCTICA",
