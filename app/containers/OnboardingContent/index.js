@@ -108,6 +108,7 @@ const HeaderArea = styled.div`
   background-size: cover;
   background-color: rgba(0,0,0,0.6);
 
+
   color: white;
 `;
 const LogoArea = styled.div`
@@ -120,7 +121,7 @@ const SubTitle = styled.h2`
   margin: 0;
 `;
 const Spiel = styled.div`
-  width: 500px;
+  width: 42%;
   font-size: 14px;
   line-height: 22px;
 `;
