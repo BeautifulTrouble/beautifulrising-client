@@ -60,6 +60,11 @@ export const ToolHeaderType = styled(ToolType)`
   margin-bottom: 20px;
   padding: 0;
   line-height: 36px;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `;
 
 export const ToolHeaderTitle = styled(ToolTitle)`

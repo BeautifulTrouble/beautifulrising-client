@@ -5,7 +5,7 @@
  */
 
 import React, { PropTypes } from 'react';
-
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
@@ -84,7 +84,9 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
           <Content>
             <Viewport>
               <ToolHeaderType type={this.props.type}>
-                <FormattedMessage {...messages[this.props.type]} />
+                <Link to={`/type/${this.props.type}`}>
+                  <FormattedMessage {...messages[this.props.type]} />
+                </Link>
               </ToolHeaderType>
               <ToolHeaderTitle color={'white'}>{this.props.title}</ToolHeaderTitle>
               <AdderRemover
