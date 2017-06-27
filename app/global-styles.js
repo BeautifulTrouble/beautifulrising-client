@@ -11,6 +11,13 @@ import KaffBold from 'assets/fonts/Kaff-Bold.woff';
 
 
 injectGlobal`
+  @font-face {
+    font-family: 'Greta';
+    src: url(https://s3.amazonaws.com/fonts.tptq-arabic.com/WF-000156-000039-000051-f4ee0957afcbb2233d42dc7777d1e102.eot);
+    src: url("https://s3.amazonaws.com/fonts.tptq-arabic.com/WF-000156-000039-000051-f4ee0957afcbb2233d42dc7777d1e102.eot?#iefix") format("embedded-opentype"),
+     url("https://s3.amazonaws.com/fonts.tptq-arabic.com/WF-000156-000039-000051-f4ee0957afcbb2233d42dc7777d1e102.woff2") format("woff2"),
+     url("https://s3.amazonaws.com/fonts.tptq-arabic.com/WF-000156-000039-000051-f4ee0957afcbb2233d42dc7777d1e102.woff") format("woff");
+  }
 
   @font-face {
     font-family: 'Paint Hand';
@@ -79,7 +86,7 @@ injectGlobal`
   }
 
   h1,h2,h3,h4,h5 {
-    font-family: 'KnockOut', 'Kaff Bold', Helvetica, Arial, sans-serif;
+    font-family: 'KnockOut', 'Greta', Helvetica, Arial, sans-serif;
     text-transform: uppercase;
     font-weight: normal;
   }
