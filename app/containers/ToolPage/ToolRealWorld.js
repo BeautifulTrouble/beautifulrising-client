@@ -24,6 +24,8 @@ const TitleContainer = styled.span`
   display: inline;
   padding-right: 10px
 `;
+
+const ContentArea = styled.div``;
 import messages from './messages';
 
 export default class ToolRealWorld extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -46,9 +48,9 @@ export default class ToolRealWorld extends React.Component { // eslint-disable-l
       return null;
 
     return (
-      <div show={this.state.isCollapsed}>
+      <ContentArea show={this.state.isCollapsed}>
         {this.props['real-world-examples'].map((item, index)=>(<RealWorldItem key={index} pos={index} {...item} type={this.props.type} toolImage={this.props.image}/>))}
-      </div>
+      </ContentArea>
     )
 
   }
