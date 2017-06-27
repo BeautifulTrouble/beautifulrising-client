@@ -47,6 +47,7 @@ const SearchResultsContainer = styled.div`
 const SearchResultsText = styled.span``;
 
 const ClearButton = styled.button`
+
   outline: none;
   font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
   font-weight: 800;
@@ -54,8 +55,18 @@ const ClearButton = styled.button`
   text-transform: uppercase;
   padding-bottom: 20px;
   cursor: pointer;
-
+  position: relative;
   * { vertical-align: middle; }
+
+  &::before {
+    content: '☒';
+    font-size: 21px;
+    position: absolute;
+    left: -12px;
+    top: -3px;
+    font-weight: 100;
+    font-family: 'Avenir';
+  }
 `;
 const Container = styled.div`
   transition: padding-top 0.6s ease;
@@ -112,7 +123,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     return (
       <SearchResultsContainer>
         <SearchResultsText>
-          <ClearButton onClick={this.handleClearSearch.bind(this)}>☒ <FormattedMessage {...messages.clearSearch} /></ClearButton>
+          <ClearButton onClick={this.handleClearSearch.bind(this)}><FormattedMessage {...messages.clearSearch} /></ClearButton>
           <FormattedHTMLMessage {...messages.searchResults} values={{label: this.props.params.label, count: this.props.sorted ? this.props.sorted.length : 0 }} />
         </SearchResultsText>
       </SearchResultsContainer>
