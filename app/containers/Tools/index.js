@@ -48,7 +48,7 @@ const ToolsViewType = styled(ToolsButton)`
 
 const MyToolsButton = styled(ToolsViewType)`
   ${props=> {
-    console.log("~~~~", props);
+
     if (props.firstTime !== undefined && props.firstTime) {
 
     return `

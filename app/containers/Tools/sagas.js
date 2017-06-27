@@ -19,7 +19,7 @@ export function* listenToPageChange() {
 // This one opens and closes the Tools area for onboarding
 export function* checkIfOnboarding() {
   const tools = yield select(getTools)
-  // console.log(tools.get('selectedTools'),tools.get('selectedTools').size);
+  //
   if (tools.get('selectedTools').size === 1) {
     yield put(setViewType(MY_TOOLS));
     yield put(showToolsForOnboarding());

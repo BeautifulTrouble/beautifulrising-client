@@ -24,7 +24,7 @@ const initialState = fromJS({
 });
 
 function toolsReducer(state = initialState, action) {
-  console.log(state, action);
+
   switch (action.type) {
     case SET_SHOW_TOOLS:
       return state.set('show', action.data);
