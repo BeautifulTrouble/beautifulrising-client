@@ -40,7 +40,7 @@ import messages from './messages';
 
 const SearchResultsContainer = styled.div`
   text-align: left;
-  padding-left: 42px;
+  padding-left: 59px;
   color: #828486;
   font-size: 14px;
 `;
