@@ -27,7 +27,10 @@ export const SelectedToolTitle = styled.h3`
   line-height: 1;
   font-size: 32px;
   position: relative;
-
+  a {
+    color: black;
+    text-decoration: none;
+  }
   &::after {
     content: url(${props => props.flag });
     position: absolute;
