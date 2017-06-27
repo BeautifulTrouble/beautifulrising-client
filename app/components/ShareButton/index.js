@@ -89,7 +89,7 @@ class ShareButton extends React.PureComponent { // eslint-disable-line react/pre
   }
 
   handleClick(ev) {
-    console.log("XXX");
+
     this.setState({showSocialButtons: !this.state.showSocialButtons});
   }
 

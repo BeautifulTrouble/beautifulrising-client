@@ -11,16 +11,20 @@ import {
   REMOVE_TOOL,
   SET_SHOW_TOOLS,
   SET_VIEW_TYPE,
-  NEWS_FEED
+  NEWS_FEED,
+  NEW_USER_TOOL_ONBOARDING,
+  TOOL_ONBOARDING_FINISHED
 } from './constants';
 
 const initialState = fromJS({
   show: false,
+  onboardShow: false,
   selectedTools: {},
   viewType: NEWS_FEED
 });
 
 function toolsReducer(state = initialState, action) {
+
   switch (action.type) {
     case SET_SHOW_TOOLS:
       return state.set('show', action.data);
@@ -32,6 +36,10 @@ function toolsReducer(state = initialState, action) {
                 .removeIn(['selectedTools', action.slug])
     case SET_VIEW_TYPE:
       return state.set('viewType', action.data);
+    case NEW_USER_TOOL_ONBOARDING:
+      return state.set('onboardShow', true);
+    case TOOL_ONBOARDING_FINISHED:
+      return state.set('onboardShow', false);
     case DEFAULT_ACTION:
       return state;
     default:

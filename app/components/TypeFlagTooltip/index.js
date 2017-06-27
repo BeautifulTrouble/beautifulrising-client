@@ -7,12 +7,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import messages from 'containers/HomePage/messages';
 
 const Container = styled.div`
   position: absolute;
-  left: 0;
+  ${p=>p.lang==='ar'?'right':'left'}: 0;
   border: 2px solid;
   font-weight: bold;
   bottom: 110px;
@@ -24,17 +24,17 @@ const Container = styled.div`
 
 const TypeTile = styled.span`
   display: inline-block;
-  background-image: url(${props=>require('assets/images/type-tile/' + props.type + '.png')});
+  background-image: url(${props=>require('assets/images/type/' + props.type + '-icon.svg')});
   background-size: cover;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
 `;
 
 const TypeName = styled.div`
   font-family: 'Avenir', 'Kaff Bold';
   font-size: 10px;
   text-transform: capitalize;
-  text-decoration: underline;
   margin-top: -10px;
 `;
 
@@ -42,35 +42,44 @@ const TypeName = styled.div`
 
 const Viewport = styled.div``;
 const List = styled.ul`margin: 0; padding: 0`;
-const Item = styled.li`display: inline-block;
+const Item = styled.li`
+  display: inline-block;
   text-align: center;
   position: relative;
   white-space: nowrap;
-  padding-right: 10px;
+  padding-${p=>p.lang==='ar'?'left':'right'}: 10px;
   &::after {
     position: absolute;
     top: 10px;
-    right: -3px;
+    ${p=>p.lang==='ar'?'left':'right'}: -3px;
     content: '+';
     display: inline-block;
     padding: 0px 3px;
   }
 
+  &:first-child .typeName {
+    text-decoration: underline;
+  }
+
   &:last-child {
-    padding-right: 0px;
+    padding-${p=>p.lang==='ar'?'left':'right'}: 0px;
     &::after { content: ''; }
   }
 `;
 
 function TypeFlagTooltip(props) {
+  const lang = props.intl.locale;
+  const types = props.type !== 'story' ?
+                    [ {name: props.type, show: true}, ...props.truths.filter(item=>item.name != props.type)] :
+                    props.truths;
   return (
-    <Container show={props.show}>
+    <Container show={props.show} lang={lang}>
       <Viewport>
         <List>
-          {props.truths.map((item, ind) =>  !item.show ? null : (
-            <Item key={ind}>
+          {types.map((item, ind) =>  !item.show ? null : (
+            <Item key={ind} lang={lang}>
               <TypeTile type={item.name} />
-              <TypeName>
+              <TypeName class={'typeName'}>
                 <FormattedMessage {...messages[item.name]} />
               </TypeName>
             </Item>))}
@@ -84,4 +93,4 @@ TypeFlagTooltip.propTypes = {
 
 };
 
-export default TypeFlagTooltip;
+export default injectIntl(TypeFlagTooltip);

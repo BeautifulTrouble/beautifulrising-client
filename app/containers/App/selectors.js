@@ -79,7 +79,7 @@ const makeSelectAllTags = createSelector(
 const isShowTools = () => createSelector(
   selectTools,
   (toolsState) => {
-    return toolsState.get('show');
+    return toolsState.get('show') || toolsState.get('onboardShow');
   }
 )
 

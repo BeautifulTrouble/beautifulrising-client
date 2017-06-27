@@ -20,3 +20,6 @@ export const SET_VIEW_TYPE = 'app/Tools/SET_VIEW_TYPE';
 
 export const TWITTER_FEED= 'app/Tools/TWITTER_FEED';
 export const FACEBOOK_FEED= 'app/Tools/FACEBOOK_FEED';
+
+export const NEW_USER_TOOL_ONBOARDING = 'app/Tools/NEW_USER_TOOL_ONBOARDING';
+export const TOOL_ONBOARDING_FINISHED = 'app/Tools/TOOL_ONBOARDING_FINISHED';

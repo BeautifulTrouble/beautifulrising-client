@@ -183,8 +183,8 @@ export const ToolsContainer = styled.div`
 
   ${props=>props.theme.lang == 'ar' ? 'left: 50%' : 'right: 50%;'}
   transform: translateX(${(props) => props.showTools ?
-      (props=>props.theme.lang == 'ar' ? '-675px' : '675px') :
-      (props=>props.theme.lang == 'ar' ? '-630px' : '630px') });
+      (props=>props.theme.lang == 'ar' ? '-685px' : '685px') :
+      (props=>props.theme.lang == 'ar' ? '-640px' : '640px') });
   transition: transform 0.5s, width 0.5s;
   overflow-x: hidden;
   overflow-y: hidden;

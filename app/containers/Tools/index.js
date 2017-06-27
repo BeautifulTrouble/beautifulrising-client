@@ -47,16 +47,19 @@ const ToolsViewType = styled(ToolsButton)`
 `;
 
 const MyToolsButton = styled(ToolsViewType)`
-  animation-name: zoomTools;
-  animation-duration: 1s;
   ${props=> {
 
-    if (props.firstTime) {
-        return `
-          animation-play-state: running;
-        `;
+    if (props.firstTime !== undefined && props.firstTime) {
+
+    return `
+      &.animate {
+        animation-play-state: running;
+        animation-name: zoomTools;
+        animation-duration: 1s;
+      }
+    `;
     } else {
-        return `animation-play-state: paused;`;
+        // return `animation-play-state: paused;`;
     }
   }}
 
@@ -87,7 +90,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log(Object.keys(prevProps.Tools.selectedTools), Object.keys(this.props.Tools.selectedTools))
+    // 
     if(Object.keys(this.props.Tools.selectedTools).length === 0
         && Object.keys(nextProps.Tools.selectedTools).length === 1
     ) {
@@ -103,14 +106,14 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
 
     return (
       <ThemeProvider theme={{ lang: this.props.language }} >
-        <ToolsContainer showTools={this.props.Tools.show}>
+        <ToolsContainer showTools={this.props.Tools.show || this.props.Tools.onboardShow }>
           <ToolsViewport>
               <ToolsMenu>
                 <ToolsMenuItem>
                   <ToolsButton
                     onClick={() => this.onToggleClick(null)}
                     rotate={true}
-                    toShow={this.props.Tools.show}
+                    toShow={this.props.Tools.show || this.props.Tools.onboardShow}
                     lang={this.props.language}
                   >
                     <Isvg src={ArrowIcon} />
@@ -130,15 +133,16 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
                   <MyToolsButton
                       onClick={() => this.onToggleClick(MY_TOOLS)}
                       chosen={this.props.Tools.viewType === MY_TOOLS}
-                      toShow={this.props.Tools.show}
-                      firstTime={this.state.isFirstTime}
+                      toShow={this.props.Tools.show || this.props.Tools.onboardShow}
+                      firstTime={this.props.Tools.onboardShow}
+                      className={this.props.Tools.onboardShow ? 'animate' : ''}
                   >
                     <Isvg src={MyToolsIcon} />
                     <FormattedMessage {...messages.myTools} />
                   </MyToolsButton>
                 </ToolsMenuItem>
               </ToolsMenu>
-            <ToolsArea lang={this.props.language} show={this.props.Tools.show}/>
+            <ToolsArea lang={this.props.language} show={this.props.Tools.show || this.props.Tools.onboardShow}/>
           </ToolsViewport>
         </ToolsContainer>
       </ThemeProvider>
