@@ -38,7 +38,7 @@ const selectToolsDomain = (state) => state.get('tools');
 const isToolsShown = createSelector(
   selectToolsDomain,
   (tools) =>  {
-    return tools.get('show');
+    return tools.get('show') || tools.get('onboardShow');
   }
 );
 

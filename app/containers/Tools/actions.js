@@ -9,7 +9,9 @@ import {
   ADD_TOOL,
   REMOVE_TOOL,
   DEFAULT_ACTION,
-  SET_VIEW_TYPE
+  SET_VIEW_TYPE,
+  NEW_USER_TOOL_ONBOARDING,
+  TOOL_ONBOARDING_FINISHED
 } from './constants';
 
 export function setShowTools(showTools) {
@@ -23,6 +25,18 @@ export function setViewType(viewType) {
   return {
     type: SET_VIEW_TYPE,
     data: viewType
+  }
+}
+
+export function showToolsForOnboarding() {
+  return {
+    type: NEW_USER_TOOL_ONBOARDING
+  }
+}
+
+export function hideToolsAfterOnboarded() {
+  return {
+    type: TOOL_ONBOARDING_FINISHED
   }
 }
 

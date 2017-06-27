@@ -72,11 +72,11 @@ export class TypeFlag extends React.PureComponent {
     return (
       <FlagContainer lang={this.props.intl.locale} type={this.props.type} onMouseOver={this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)}>
         <FlagViewport>
-          <TypeFlagTooltip truths={truths} show={this.state.showTooltip}/>
-          <Flag show={this.props.isTactic} src={oneTruth ? BigTacticFlag : TacticFlag}/>
-          <Flag show={this.props.isMethodology} src={oneTruth ? BigMethodologyFlag : MethodologyFlag}/>
-          <Flag show={this.props.isPrinciple} src={oneTruth ? BigPrincipleFlag : PrincipleFlag}/>
-          <Flag show={this.props.isTheory} src={oneTruth ? BigTheoryFlag : TheoryFlag}/>
+          <TypeFlagTooltip type={this.props.type} truths={truths} show={this.state.showTooltip} />
+          <Flag show={this.props.isTactic} src={oneTruth ? BigTacticFlag : TacticFlag} />
+          <Flag show={this.props.isMethodology} src={oneTruth ? BigMethodologyFlag : MethodologyFlag} />
+          <Flag show={this.props.isPrinciple} src={oneTruth ? BigPrincipleFlag : PrincipleFlag} />
+          <Flag show={this.props.isTheory} src={oneTruth ? BigTheoryFlag : TheoryFlag} />
         </FlagViewport>
       </FlagContainer>
     );
