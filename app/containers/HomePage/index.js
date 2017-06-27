@@ -184,7 +184,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           <LeftHeader>
             <FormattedMessage {...messages.tags} />
           </LeftHeader>
-          <Tags />
+          <Tags {...this.props} />
         </LeftSection>
         <Stage lang={lang}>
           {this.getSearchResultsHeader()}
