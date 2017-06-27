@@ -30,11 +30,11 @@ const List = styled.ul``;
 
 const ListItem = styled.li`list-style: none;
   width: ${props=>props.theme.itemWidth};
-  margin-right: ${props=>props.theme.itemMargin};
+  margin-${p=>p.lang==='ar'?'left':'right'}: ${props=>props.theme.itemMargin};
   display: inline-block;
   vertical-align: top;
   margin-bottom: 50px;
-  text-align: left;
+  text-align: ${p=>p.lang==='ar'?'right':'left'};
 
   &:last-child {
     .circledContainer {
@@ -46,14 +46,14 @@ const ListItem = styled.li`list-style: none;
   h1 {
     font-size: 30px;
     margin-bottom: 5px;
-    text-align: left;
+    text-align: ${p=>p.lang==='ar'?'right':'left'};
   }
 
   p {
-    text-align: left;
+    text-align: ${p=>p.lang==='ar'?'right':'left'};
     font-size: 14px;
     line-height: 22px;
-    padding-left: 10px;
+    padding-${p=>p.lang==='ar'?'right':'left'}: 10px;
     font-family: 'Avenir', 'Kaff', sans-serif;
 
     a {
@@ -70,8 +70,8 @@ const ListItem = styled.li`list-style: none;
   h4 {
     margin: 0;
     text-transform: uppercase;
-    text-align: left;
-    padding-left: 20px;
+    text-align: ${p=>p.lang==='ar'?'right':'left'};
+    padding-${p=>p.lang==='ar'?'right':'left'}: 20px;
     &::before {
       content: ' ';
       display: block;
@@ -84,7 +84,7 @@ const ListItem = styled.li`list-style: none;
   ol {
     li {
       font-size: 12px;
-      text-align: left;
+      text-align: ${p=>p.lang==='ar'?'right':'left'};
       line-height: 20px;
     }
   }
@@ -107,7 +107,7 @@ const ParticipantsContainer = styled.div`
 const Image = styled.img`
   height: 120px;
   margin-bottom: 30px;
-  margin-left: 20px;
+  margin-${p=>p.lang==='ar'?'right':'left'}: 20px;
 `;
 class OurProcess extends React.Component {
 
@@ -116,15 +116,15 @@ class OurProcess extends React.Component {
     if (!this.props.participants || !this.props.participants.get('groups')) return null;
 
     const groups = this.props.participants.get('groups')
-
+    const lang = this.props.intl.locale;
     if (!groups) return null;
 
     return (
-        <List>
+        <List lang={lang}>
           {groups.map((item,ind) => { return(
-            <ListItem key={ind}>
+            <ListItem key={ind} lang={lang}>
 
-              <Image src={require('assets/images/workshops/' + WORKSHOPS[ind] + '.png')} />
+              <Image lang={lang} src={require('assets/images/workshops/' + WORKSHOPS[ind] + '.png')} />
               <h4>{item.get('name')}</h4>
               <ol>
                 {item.get('participants') ?
@@ -149,10 +149,9 @@ class OurProcess extends React.Component {
 
   render() {
     const theme = themeFourColumns;
-    const {formatMessage} = this.props.intl;
-
+    const {formatMessage, locale} = this.props.intl;
     return (
-      <AboutSection id='process' name='process' style={{textAlign: 'center'}}>
+      <AboutSection id='process' name='process' lang={locale}>
         { this.props.hideHeader ?  null : this.renderHeader() }
         <ThemeProvider theme={themeFourColumns}>
             <List>

@@ -6,7 +6,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-
+import {injectIntl} from 'react-intl';
 const Container = styled.div``;
 const Viewport = styled.div`
   position: relative;
@@ -18,14 +18,6 @@ const ResourceTypeList = styled.ul`
 const ResourceType = styled.li`
   list-style: none;
   position:relative;
-  &::before {
-    content: '____';
-    position: absolute;
-    top: -19px;
-    left: 0;
-    font-weight: 800;
-    font-family: 'Avenir Black', 'Kaff Bold';
-  }
 `;
 
 const ResourceList = styled.ul`
@@ -38,6 +30,7 @@ const Resource = styled.li`
   vertical-align: top;
   font-size: 14px;
   padding-right: 40px;
+  text-align: ${props=>props.lang==='ar'?'right':'left'};
 
   a {
     color: #828486;
@@ -45,28 +38,40 @@ const Resource = styled.li`
   }
   p {
     font-style: italic;
+    text-align: ${props=>props.lang==='ar'?'right':'left'};
   }
 `;
 
 const ResourceContainer =styled.div``;
 const Header =styled.h4`
-  font-size: 18px;
+  font-size: 19px;
   font-family: Avenir Black, sans-serif;
+
+  text-align: ${props=>props.lang==='ar'?'right':'left'};
+  position: relative;
+  &::before {
+    position: absolute;
+    content: "";
+    width: 42px;
+    border-top: 2px solid #000;
+    margin-top: -12px;
+  }
 `;
 
 function OtherResources(props) {
+  const lang = props.intl.locale;
   return (
     <Container>
       <Viewport>
         <ResourceTypeList>
         {
           props.data.get('all').map((resourceType, index) => (
-            <ResourceType key={index}>
-              <Header>{ resourceType.get('name') }</Header>
+            <ResourceType key={index} lang={lang}>
+              <Header lang={lang}>{ resourceType.get('name') }</Header>
               <ResourceContainer>
                 <ResourceList>
                 {resourceType.get('resources').map((resource, resInd)=> (
-                  <Resource key={resourceType.get('name') + resInd}>
+                  <Resource lang={lang} key={resourceType.get('name') + resInd}>
                     <a href={resource.get('link')} target='_blank'>{resource.get('title')}</a>
                     <p>{resource.get('description')}</p>
                   </Resource>
@@ -86,4 +91,4 @@ OtherResources.propTypes = {
 
 };
 
-export default OtherResources;
+export default injectIntl(OtherResources);

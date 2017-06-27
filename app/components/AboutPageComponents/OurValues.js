@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Markdown from 'react-remarkable';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection } from 'components/AboutPageComponents';
 import VisibilitySensor from 'react-visibility-sensor';
 import messages from './messages';
@@ -39,6 +39,7 @@ const Count = styled.h4`
 
 const SubListItem = styled.li`
   list-style: none;
+  text-align: ${p=>p.lang==='ar'?'right':'left'};
   h3 {
     margin: 0;
     &::before {
@@ -51,7 +52,7 @@ const SubListItem = styled.li`
   & > p {
     font-size: 14px;
     line-height: 22px;
-    padding-left: 100px;
+    padding-${p=>p.lang==='ar'?'right':'left'}: 100px;
     margin: 10px;
 
     a {
@@ -61,7 +62,7 @@ const SubListItem = styled.li`
   }
 `
 
-export default class OurValues extends React.Component {
+export class OurValues extends React.Component {
   renderHeader() {
     return (
       <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
@@ -73,9 +74,9 @@ export default class OurValues extends React.Component {
   }
   render() {
     if (!this.props.ourValues) return null;
-
+    const lang = this.props.intl.locale
     return (
-      <AboutSection id='values' name='values'>
+      <AboutSection id='values' name='values' lang={lang}>
         { this.props.hideHeader ? null : this.renderHeader() }
           <List>
             { this.props.ourValues.map((item, ind) =>
@@ -85,7 +86,7 @@ export default class OurValues extends React.Component {
                       case 'values': return (
                         <SubList key={ind}>
                           { item.get('value').map((subitem, subindex) => (
-                              <SubListItem key={subindex}>
+                              <SubListItem key={subindex} lang={lang}>
                                 <Count>{subindex + 1}</Count>
                                 <h3>{subitem.get('title')}</h3>
                                 <p>
@@ -97,14 +98,14 @@ export default class OurValues extends React.Component {
                       );
                       case 'disclaimer': return (
                         <SubList key={ind}>
-                          <SubListItem>
+                          <SubListItem lang={lang}>
                             <h3 key={ind}>{item.get('value')}</h3>
                           </SubListItem>
                         </SubList>
                       );
                       case 'disclaimer-text': return (
                         <SubList key={ind}>
-                          <SubListItem>
+                          <SubListItem lang={lang}>
                             <p key={ind} style={{color: '#828486'}}>
                               <Markdown source={item.get('value')} />
                             </p>
@@ -121,3 +122,5 @@ export default class OurValues extends React.Component {
     );
   }
 }
+
+export default injectIntl(OurValues);

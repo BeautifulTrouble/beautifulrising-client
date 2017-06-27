@@ -7,8 +7,8 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
-import { AboutSection } from 'components/AboutPageComponents';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { AboutHeader, AboutSection } from 'components/AboutPageComponents';
 import { themeThreeColumns } from 'components/CommonComponents';
 import VisibilitySensor from 'react-visibility-sensor';
 import Markdown from 'react-remarkable';
@@ -22,12 +22,12 @@ const ListItem = styled.li`list-style: none;
   display: inline-block;
   vertical-align: top;
   margin-bottom: 50px;
-  text-align: left;
+  text-align: ${p=>p.lang==='ar'?'right':'left'};
 
   h3 {
     font-size: 24px;
     margin-bottom: 5px;
-    text-align: left;
+    text-align: ${p=>p.lang==='ar'?'right':'left'};
   }
   a {
     color: #828486;
@@ -36,9 +36,9 @@ const ListItem = styled.li`list-style: none;
     width: 100%;
   }
   p {
-    text-align: left;
+    text-align: ${p=>p.lang==='ar'?'right':'left'};
     font-size: 18px;
-    padding-left: 10px;
+    padding-${p=>p.lang==='ar'?'right':'left'}: 10px;
   }`;
 
 const ImageContainer = styled.div`
@@ -70,7 +70,7 @@ font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
   border-bottom: 2px solid black;
   position: absolute;
   top: -10px;
-  left: 0;
+  ${p=>p.lang==='ar'?'right':'left'}: 0;
 }
 `;
 const Team = styled.h5`
@@ -78,29 +78,31 @@ const Team = styled.h5`
 `;
 const Content = styled.div``;
 
-export default class Partners extends React.Component {
+class Partners extends React.Component {
   renderHeader() {
+    const lang = this.props.intl.locale;
     return (
       <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
-        <h2>
+        <h2 lang={lang}>
           <FormattedMessage {...messages.partnersHeader} />
         </h2>
       </VisibilitySensor>
     );
   }
   render() {
+    const lang = this.props.intl.locale;
     return (
-      <AboutSection id='partners'>
+      <AboutSection id='partners' lang={lang}>
         { this.props.hideHeader ? null : this.renderHeader() }
         <ThemeProvider theme={themeThreeColumns}>
           <List>
             { this.props.networkPartners === undefined ? null : this.props.networkPartners.map((item, ind) => (
-              <ListItem key={ind}>
+              <ListItem key={ind} lang={lang}>
                 <a href={item.get('link')} target="_blank">
                   <ImageContainer>
                     <Image source={item.get('logo')} />
                   </ImageContainer>
-                  <Name>
+                  <Name lang={lang}>
                     {item.get('name')}
                   </Name>
                 </a>
@@ -112,3 +114,5 @@ export default class Partners extends React.Component {
     );
   }
 }
+
+export default injectIntl(Partners)
