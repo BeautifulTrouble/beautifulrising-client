@@ -90,7 +90,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log(Object.keys(prevProps.Tools.selectedTools), Object.keys(this.props.Tools.selectedTools))
+    // 
     if(Object.keys(this.props.Tools.selectedTools).length === 0
         && Object.keys(nextProps.Tools.selectedTools).length === 1
     ) {

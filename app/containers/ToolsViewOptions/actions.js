@@ -16,6 +16,7 @@ export function defaultAction() {
 }
 
 export function changeToolView(view) {
+
   return {
     type: CHANGE_TOOL_VIEW,
     view

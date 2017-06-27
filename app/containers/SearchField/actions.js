@@ -16,6 +16,7 @@ export function defaultAction() {
 }
 
 export function searchFieldChanged(text) {
+
   return {
     type: SEARCH_FIELD_CHANGED,
     text

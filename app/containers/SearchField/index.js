@@ -67,7 +67,8 @@ function mapDispatchToProps(dispatch) {
       //Change browser
       clearTimeout(timeoutHandler);
       timeoutHandler = setTimeout(() => {
-        // dispatch(searchFieldChanged(text));
+
+        dispatch(searchFieldChanged(text));
         browserHistory.push(`/search/${text}`);
       }, 500);
 

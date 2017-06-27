@@ -38,17 +38,19 @@ export default function createRoutes(store) {
     const importModules = Promise.all([
       import('containers/HomePage/reducer'),
       import('containers/HomePage/sagas'),
+      import('containers/SearchField/sagas'),
       import('containers/HomePage'),
       import('containers/ToolsViewOptions/reducer'),
-      import('containers/ToolsSortOptions/reducer')
+      import('containers/ToolsSortOptions/reducer'),
     ]);
 
     const renderRoute = loadModule(cb);
 
-    importModules.then(([reducer, sagas, component,
+    importModules.then(([reducer, sagas, searchSagas, component,
           toolsViewOptionsReducer, toolsSortOptionsReducer]) => {
       injectReducer('homePage', reducer.default);
       injectSagas(sagas.default);
+      injectSagas(searchSagas.default);
 
       injectReducer('toolsView', toolsViewOptionsReducer.default);
       injectReducer('toolsSort', toolsSortOptionsReducer.default)
