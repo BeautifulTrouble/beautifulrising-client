@@ -46,7 +46,8 @@ const Column = styled.div`
     top: 0;
     right: 0;
     width: 100%;
-    height: 180px;
+    height: 100%;
+    max-height: 160px;
     opacity: 0.3;
     z-index: -1;
     background-position: right top;
@@ -164,7 +165,7 @@ function ToolTypeSelectedFull(props) {
             <FormattedMessage {...messages.methodologyHead} />
           </ToolType>
         </Column>
-        <Column width="33%" bg={props.label}>
+        <Column width="33%" bg={props.label} style={{height: 160}}>
           <TypeName>
             <FormattedMessage {...messages[props.label + 'Head']} />
           </TypeName>
