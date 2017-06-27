@@ -150,9 +150,20 @@ export const ToolLeftArea = styled(ToolInfoSection)`
 
 
 export const ToolRightArea = styled(ToolInfoSection)`
-  width: 360px;
-  margin-left: 0.5%;
-  margin-right: 0.5%;
+  width: 368px;
+  ${props=> {
+    if (props.lang === 'ar') {
+      return `
+        margin-left: 0;
+        margin-right: 0.5%;
+      `
+    } else {
+      return `
+        margin-left: 0.5%;
+        margin-right: 0;
+      `
+    }
+  }}
 `;
 
 
