@@ -8,13 +8,13 @@ import React from 'react';
 import styled from 'styled-components';
 import Markdown from 'react-remarkable';
 import ToolTypeAllFull from 'components/ToolTypeAllFull';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection, Introduction, IntroText } from 'components/AboutPageComponents';
 import VisibilitySensor from 'react-visibility-sensor';
 
 import messages from './messages';
 
-export default class TheToolbox extends React.Component {
+export class TheToolbox extends React.Component {
 
   renderHeader() {
     return(
@@ -28,8 +28,9 @@ export default class TheToolbox extends React.Component {
     );
   }
   render() {
+    const lang = this.props.intl.locale;
     return (
-      <AboutSection id='whats-inside' name='whats-inside'>
+      <AboutSection id='whats-inside' name='whats-inside' lang={lang}>
         { this.props.hideHeader ? null : this.renderHeader() }
         <Introduction>
           <IntroText>
@@ -41,3 +42,6 @@ export default class TheToolbox extends React.Component {
     );
   }
 }
+
+
+export default injectIntl(TheToolbox);

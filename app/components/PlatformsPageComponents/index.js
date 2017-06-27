@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import VisibilitySensor from 'react-visibility-sensor';
 import messages from './messages';
 import Markdown from 'react-remarkable';
@@ -18,7 +18,7 @@ export const Header = styled.h1`
   font-size: 48px;
 `;
 const Container = styled.div`
-  padding-left: 96px;
+  ${props=>props.lang==='ar'?'padding-right':'padding-left'}: 96px;
 `;
 const Viewport = styled.div`
     display: inline-block;
@@ -26,14 +26,18 @@ const Viewport = styled.div`
 `;
 const TextContent = styled.div`
   width: 30%;
-  float: left;
+  float: ${props=>props.lang==='ar'?'right':'left'};
+  text-align: ${props=>props.lang==='ar'?'right':'left'};
+  * {
+    text-align: ${props=>props.lang==='ar'?'right':'left'};
+  }
 `;
 const Content = styled.div`
-  text-align: left;
+  text-align: ${props=>props.lang==='ar'?'right':'left'};
 `;
 const ImageContent= styled.div`
   width: 69%;
-  float: right;
+  float: ${props=>props.lang==='ar'?'right':'left'};
   height: 400px;
   display: inline-block;
   margin-top: 130px;
@@ -51,7 +55,7 @@ const Image = styled.div`
 const IconContainer = styled.div`
   position: absolute;
   top: 20px;
-  left: -120px;
+  ${props=>props.lang==='ar'?'right: -70px':'left: -120px'};
   width: 100px;
   text-align: right;
 `;
@@ -66,7 +70,7 @@ margin-bottom: 0px;
   position: absolute;
   width: 48px;
   border-bottom: 2px solid;
-  left: 0;
+  ${props=>props.lang==='ar'?'right':'left'}: 0;
 `;
 const Subtitle = styled.h3`
   font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
@@ -90,19 +94,20 @@ const ContentArea = styled.div`
 export const PlatformsSection = styled.div`
 font-size: 24px;
 `;
-export default class PlatformsPageComponents extends React.Component {
+class PlatformsPageComponents extends React.Component {
   render() {
 
     if (!this.props.content || this.props.content === undefined) return null;
+    const lang = this.props.intl.locale;
     return (
-      <Container>
+      <Container lang={lang}>
         <Viewport>
-          <IconContainer>
+          <IconContainer lang={lang}>
             <Isvg src={this.props.icon} />
           </IconContainer>
-          <TextContent>
+          <TextContent lang={lang}>
             <Content>
-              <Title>
+              <Title lang={lang}>
                 {this.props.content.get('title')}
               </Title>
               <Subtitle>
@@ -128,7 +133,7 @@ export default class PlatformsPageComponents extends React.Component {
               </CTA>
             </Content>
           </TextContent>
-          <ImageContent>
+          <ImageContent lang={lang}>
             <Image source={this.props.content.get('image')} />
           </ImageContent>
         </Viewport>
@@ -136,3 +141,5 @@ export default class PlatformsPageComponents extends React.Component {
     );
   }
 }
+
+export default injectIntl(PlatformsPageComponents);

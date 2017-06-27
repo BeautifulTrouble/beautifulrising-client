@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection } from 'components/AboutPageComponents';
 import VisibilitySensor from 'react-visibility-sensor';
 import Markdown from 'react-remarkable';
@@ -43,8 +43,9 @@ export class BeautifulTroubleAA extends React.Component {
   }
 
   render() {
+    const {locale}=this.props.intl;
     return (
-      <AboutSection id='beautiful-trouble-and-action-aid'>
+      <AboutSection id='beautiful-trouble-and-action-aid' lang={locale}>
         { this.props.hideHeader ? null : this.renderHeader() }
         <Container>
           <Content>
@@ -73,4 +74,4 @@ export class BeautifulTroubleAA extends React.Component {
   }
 }
 
-export default BeautifulTroubleAA;
+export default injectIntl(BeautifulTroubleAA);

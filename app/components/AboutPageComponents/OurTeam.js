@@ -7,7 +7,7 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection } from 'components/AboutPageComponents';
 import { themeThreeColumns } from 'components/CommonComponents';
 import VisibilitySensor from 'react-visibility-sensor';
@@ -72,7 +72,7 @@ const Team = styled.h5`
 `;
 const Content = styled.div``;
 
-export default class OurTeam extends React.Component {
+export class OurTeam extends React.Component {
   renderHeader() {
     return(
       <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
@@ -83,8 +83,9 @@ export default class OurTeam extends React.Component {
     );
   }
   render() {
+      const {locale}=this.props.intl;
       return (
-      <AboutSection id='team' style={{ textAlign: 'left' }}>
+      <AboutSection id='team' lang={locale}>
         { this.props.hideHeader ? null : this.renderHeader() }
         <ThemeProvider theme={themeThreeColumns}>
           <List>
@@ -107,3 +108,5 @@ export default class OurTeam extends React.Component {
     );
   }
 }
+
+export default injectIntl(OurTeam);

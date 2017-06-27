@@ -46,7 +46,9 @@ export class SelectedTool extends React.PureComponent { // eslint-disable-line r
     if (!tool) return null;
     return (
       <SelectedToolItem>
-        <SelectedToolTitle flag={flag}>{tool.get('title')}</SelectedToolTitle>
+        <SelectedToolTitle flag={flag}>
+          <Link to={`/tool/${tool.get('slug')}`}>{tool.get('title')}</Link>
+        </SelectedToolTitle>
         <SelectedToolSnapshot>
           {tool.get('snapshot')}
         </SelectedToolSnapshot>

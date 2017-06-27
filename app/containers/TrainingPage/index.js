@@ -8,7 +8,7 @@ import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { push,replace } from 'react-router-redux';
 import { createStructuredSelector } from 'reselect';
 import VisibilitySensor from 'react-visibility-sensor';
@@ -28,20 +28,25 @@ import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
 import messages from './messages';
 
 const Container = styled.section`
-  text-align: left;
+  text-align: ${props=>props.lang==='ar'?'right':'left'};
 `;
 const Viewport = styled.div``;
 const MenuArea = styled.div`
   width: 35%;
-  float: left;
-  padding-right: 70px;
-  border-right: 2px solid;
+  float: ${props=>props.lang==='ar'?'right':'left'};
+  padding-${props=>props.lang==='ar'?'left':'right'}: 70px;
+  border-${props=>props.lang==='ar'?'left':'right'}: 2px solid;
   position: relative;
 
 `;
-const Header = styled.h1`text-align: center`;
-const Heading = styled.h2`line-height: 40px;`;
+const Header = styled.h1`text-align: center
+`;
+const Heading = styled.h2`
+  line-height: 40px;
+  text-align: ${props=>props.lang==='ar'?'right':'left'};
+`;
 const Lead = styled.div`
+  text-align: ${props=>props.lang==='ar'?'right':'left'};
   a {
     color: #828486;
   }
@@ -51,7 +56,7 @@ padding: 0;
 margin: 0;
 `;
 const LinkItem = styled.li`
-  text-align: left;
+  text-align: ${props=>props.lang==='ar'?'right':'left'};
   list-style: none;
   color: ${props => props.isSelected ? 'black' : '#828486'};
   text-transform: uppercase;
@@ -60,6 +65,7 @@ const LinkItem = styled.li`
 
   position: relative;
   button {
+    text-align: ${props=>props.lang==='ar'?'right':'left'};
     text-decoration: ${props => props.isSelected ? 'none' : 'underline'};
   }
 
@@ -67,13 +73,13 @@ const LinkItem = styled.li`
     display: ${props => props.isSelected ? 'block' : 'none'};
     content: '______';
     position: absolute;
-    left: 350px;
+    ${props=>props.lang==='ar'?'right':'left'}: 350px;
     top: 25%;
     transform: translate(0,-50%);
   }
 `;
 const Button = styled.button`
-  text-align: left;
+  text-align: ${props=>props.lang==='ar'?'right':'left'};
   outline: none;
   cursor: pointer;
 
@@ -88,12 +94,16 @@ const Banner = styled.img``;
 
 const ContentArea = styled.div`
   width: 60%;
-  float: right;
-  padding-left: 100px;
+  text-align: ${props=>props.lang==='ar'?'right':'left'};
+  float: ${props=>props.lang==='ar'?'right':'left'};
+  padding-${props=>props.lang==='ar'?'right':'left'}: 100px;
+  * {
+    text-align: ${props=>props.lang==='ar'?'right':'left'};
+  }
 `;
 const Content = styled.div`
   display: ${props => props.isVisible ? 'block' : 'none'} !important;
-  padding-right: 170px;
+  padding-${props=>props.lang==='ar'?'left':'right'}: 170px;
   font-size: 14px;
   margin-top: 40px;
 `;
@@ -137,6 +147,7 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
 
   render() {
     const section = this.props.params.section;
+    const lang = this.props.intl.locale;
 
     if (!this.props.data.size || !this.props.data || this.props.data === undefined) {
       return null;
@@ -157,16 +168,16 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
             <Header>
               <FormattedMessage {...messages.header} />
             </Header>
-            <TrainingArea>
-              <MenuArea>
-                <Heading>{trouble.get('heading')}</Heading>
-                <Lead>
+            <TrainingArea lang={lang}>
+              <MenuArea lang={lang}>
+                <Heading lang={lang}>{trouble.get('heading')}</Heading>
+                <Lead lang={lang}>
                   <Markdown source={trouble.get('lead')} />
                 </Lead>
-                <MenuList>
+                <MenuList lang={lang}>
                 {trouble.get('content').map((item, ind) => {
                   return (
-                    <LinkItem key={ind} isSelected={this.state.selected === ind}>
+                    <LinkItem lang={lang} key={ind} isSelected={this.state.selected === ind}>
                       <Button onClick={()=>this.handleClick(ind)}>
                         {item.get('heading')}
                       </Button>
@@ -175,7 +186,7 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
                 })}
                 </MenuList>
               </MenuArea>
-              <ContentArea>
+              <ContentArea lang={lang}>
                 <Banner src={TrainingBanner} />
                 {trouble.get('content').map((item, ind) => {
                   return (
@@ -188,7 +199,7 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
             </TrainingArea>
 
             <OtherResourcesArea>
-              <Heading>
+              <Heading lang={lang}>
                 <FormattedMessage {...messages.otherResources} />
               </Heading>
               <OtherResources data={this.props.data.get('resources')}/>
@@ -218,4 +229,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrainingPage);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(TrainingPage));

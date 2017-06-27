@@ -6,7 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
 import AdderRemover from 'containers/Tools/AdderRemover';
@@ -81,8 +81,9 @@ export class ToolPageRight extends React.PureComponent { // eslint-disable-line 
   }
 
   render() {
+    const lang = this.props.intl.locale;
     return (
-      <ToolRightArea>
+      <ToolRightArea lang={lang}>
         <ToolsPotentialRisk content={this.props['potential-risks']} type={this.props.type} />
 
         <ToolsPageRelatedToolsHeader>
@@ -119,4 +120,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ToolPageRight);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(ToolPageRight));

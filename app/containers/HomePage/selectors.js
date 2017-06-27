@@ -74,7 +74,21 @@ const makeSelectLanguage = createSelector(
                 return item.authors && (item.authors.filter(author=> author.toLowerCase().includes(authorMatches[1].toLowerCase())).length > 0);
             }) : [];
           } else {
-            return label ? data.filter(item => isFullTool(item) && item.title.toLowerCase().search(label.toLowerCase()) >= 0) : data.filter(item => isFullTool(item))
+            const searchIndices = [
+                'title',
+                'full-write-up',
+                'short-write-up',
+                'type',
+                'image-caption',
+                'pull-quote'
+            ];
+            return label ? data.filter(
+                              item => {
+                                  const searchBase = searchIndices.map(key => item[key]).join(' ').toLowerCase();
+                                  return isFullTool(item) && searchBase.search(label.toLowerCase()) >= 0
+                              }
+                           )
+                         : data.filter(item => isFullTool(item));
           }
          default:
           return data.filter(item => isFullTool(item));

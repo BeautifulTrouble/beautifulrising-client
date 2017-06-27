@@ -44,7 +44,7 @@ h2 {
   font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
   margin-top: 40px;
   padding: 15px 20px;
-  text-align: left;
+  text-align: ${p=>p.lang==='ar'?'right':'left'};
   position: relative;
   margin-bottom: 80px;
 
@@ -55,7 +55,7 @@ h2 {
     border-right: 1px solid;
     width: 1PX;
     bottom: -65px;
-    left: 50%;
+    ${p=>p.lang==='ar'?'right':'left'}: 50%;
   }
 }
 

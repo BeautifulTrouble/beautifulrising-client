@@ -7,7 +7,7 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection } from 'components/AboutPageComponents';
 import { themeThreeColumns } from 'components/CommonComponents';
 import VisibilitySensor from 'react-visibility-sensor';
@@ -15,7 +15,7 @@ import Markdown from 'react-remarkable';
 import messages from './messages';
 
 const List = styled.ul`
-text-align: left;
+text-align: ${p=>p.lang==='ar'?'right':'left'};
 `;
 
 const ListItem = styled.li`list-style: none;
@@ -29,15 +29,15 @@ const ListItem = styled.li`list-style: none;
     font-size: 19px;
     letter-spacing: 0px;
     margin-bottom: 5px;
-    text-align: left;
+    text-align: ${p=>p.lang==='ar'?'right':'left'};
     font-family: 'Avenir Black', 'Kaff Bold';
   }
 
   p {
-    text-align: left;
+    text-align: ${p=>p.lang==='ar'?'right':'left'};
     font-size: 14px;
     line-height: 22px;
-    padding-left: 10px;
+    padding-${p=>p.lang==='ar'?'right':'left'}: 10px;
   }`;
 
 const Image = styled.div`
@@ -56,7 +56,7 @@ const Team = styled.h5`
 `;
 const Content = styled.div``;
 
-export default class FAQ extends React.Component {
+export class FAQ extends React.Component {
   renderHeader() {
     return(
       <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
@@ -67,13 +67,14 @@ export default class FAQ extends React.Component {
     )
   }
   render() {
+    const {locale}=this.props.intl;
     return (
-      <AboutSection id='faq'>
+      <AboutSection id='faq' lang={locale}>
         { this.props.hideHeader ? null : this.renderHeader()}
-        <List>
+        <List lang={locale}>
           { this.props.questions === undefined ? null : this.props.questions.map((item, ind) => {
               return (
-                <ListItem key={ind}>
+                <ListItem key={ind}  lang={locale}>
                   <h3>{item.get('question')}</h3>
                   <Content>
                     <Markdown source={item.get('answer')} />
@@ -87,3 +88,5 @@ export default class FAQ extends React.Component {
     );
   }
 }
+
+export default injectIntl(FAQ);

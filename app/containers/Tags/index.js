@@ -32,18 +32,24 @@ const TagListItem = styled.li`
   &:last-child {
     span { display: none; }
   }
+  font-family: ${props=>props.selected ? 'Avenir Black' : 'Avenir'};
+
   font-size: 12px;
   line-height: 18px;
   * { vertical-align: middle; }
   span {
     font-family: 'Avenir Black', 'Kaff Bold';
   }
+
+  a {
+    text-decoration: ${props=>props.selected ? 'normal' : 'underline'};
+    color: ${props=>props.selected ? 'black' : '#828486'};
+  }
 `;
 
 const TagLink = styled(Link)`
-  font-size: 12px;
-  color: #828486;
-  text-decoration: underline;
+  font-size: 14px;
+  line-height: 22px;
   vertical-align: middle;
 `;
 
@@ -54,11 +60,12 @@ const TagDivider = styled(() => (<span> / </span>))`
 export class Tags extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   render() {
+    const selected = this.props.params ? this.props.params.label : '';
     return (
       <TagBlock align={this.props.align}>
         <TagList>
           {this.props.tags.map((item) => (
-            <TagListItem key={item.key}>
+            <TagListItem key={item.key} selected={item.key===selected}>
               <TagLink to={`/tag/${item.key}`}>{item.value}</TagLink>
               <TagDivider />
             </TagListItem>

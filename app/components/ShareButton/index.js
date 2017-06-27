@@ -38,7 +38,15 @@ const ShareArea = styled.div `
   position: absolute;
   width: 100px;
   ${props=>props.lang==='ar' ? 'right' : 'left'}: 100%;
-  display: ${props=>props.show?'block':'none'};
+  // display: ${props=>props.show?'block':'none'};
+  opacity: ${p=>p.show?1:0};
+  visibility: ${p=>p.show?'visible':'hidden'};
+  transition: opacity 0.2s ease;
+
+  a, button {
+
+
+  }
 `;
 const FacebookButton = styled(Button)`
 
@@ -71,17 +79,6 @@ class ShareButton extends React.PureComponent { // eslint-disable-line react/pre
     }
   }
 
-  handleShowSocial() {
-    this.setState({ showSocialButtons: !this.state.showSocialButtons });
-  }
-
-  showSocial() {
-    this.setState({ showSocialButtons: true });
-  }
-
-  hideSocial() {
-    this.setState({ showSocialButtons: false });
-  }
   renderDefault() {
     return (
       <span>
@@ -89,6 +86,11 @@ class ShareButton extends React.PureComponent { // eslint-disable-line react/pre
         <FormattedMessage {...messages.share} />
       </span>
     )
+  }
+
+  handleClick(ev) {
+    console.log("XXX");
+    this.setState({showSocialButtons: !this.state.showSocialButtons});
   }
 
   handleTwitterClick(title, url) {
@@ -107,8 +109,8 @@ class ShareButton extends React.PureComponent { // eslint-disable-line react/pre
 
 
     return (
-      <Container onMouseOver={this.showSocial.bind(this)} onMouseOut={this.hideSocial.bind(this)}>
-        <ShareArea lang={this.props.intl.locale} show={ true /*this.state.showSocialButtons */}>
+      <Container>
+        <ShareArea lang={this.props.intl.locale} show={ this.state.showSocialButtons }>
           <FacebookButton onClick={()=>this.handleFacebookShare(url)}>
             <Isvg src={FacebookIcon} />
           </FacebookButton>
@@ -119,7 +121,7 @@ class ShareButton extends React.PureComponent { // eslint-disable-line react/pre
             <Isvg src={MailIcon} />
           </MailButton>
         </ShareArea>
-        <Button>
+        <Button onClick={this.handleClick.bind(this)}>
           { this.props.children
                 ? React.Children.toArray(this.props.children)
                 : this.renderDefault() }

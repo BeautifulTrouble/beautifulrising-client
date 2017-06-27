@@ -7,7 +7,7 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection, Introduction, IntroText } from 'components/AboutPageComponents';
 import { themeThreeColumns } from 'components/CommonComponents';
 import VisibilitySensor from 'react-visibility-sensor';
@@ -84,7 +84,7 @@ const AdvisoryNetworkIntro = styled(IntroText)`
   width: 33%;
   padding: 0;
 `
-export default class OurAdvisoryNetwork extends React.Component {
+export class OurAdvisoryNetwork extends React.Component {
   renderHeader() {
     return (
       <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
@@ -97,8 +97,9 @@ export default class OurAdvisoryNetwork extends React.Component {
     );
   }
   render() {
+    const {locale} = this.props.intl;
     return (
-      <AdvisoryNetworkSection id='advisory-network' style={{ textAlign: 'left' }}>
+      <AdvisoryNetworkSection lang={locale} id='advisory-network' style={{ textAlign: locale=='ar'?'right':'left' }}>
         { this.props.hideHeader ? null : this.renderHeader() }
         <Introduction>
           <AdvisoryNetworkIntro>
@@ -123,3 +124,5 @@ export default class OurAdvisoryNetwork extends React.Component {
     );
   }
 }
+
+export default injectIntl(OurAdvisoryNetwork);
