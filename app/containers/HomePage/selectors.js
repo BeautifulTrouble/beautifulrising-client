@@ -31,7 +31,11 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
    }
  );
 
- const isFullTool = (item) => item['module-type'] === 'gallery' || item['module-type'] === 'full' ;
+ const isFullTool = (item, lang) => {
+  return (item['module-type'] === 'gallery' || item['module-type'] === 'full') &&
+  (!item['lang-missing'] || item['lang-missing'].length !== 3);
+ }
+
 
 const selectToolsDomain = (state) => state.get('tools');
 
@@ -50,16 +54,16 @@ const makeSelectLanguage = createSelector(
 );
 
  const makeSelectAllTools = createSelector(
-   [selectGlobal, selectFilter, selectLabel, allTags, selectRegion],
-   (globalState, filter, label, tags, region) => {
+   [selectGlobal, selectFilter, selectLabel, allTags, selectRegion, makeSelectLanguage],
+   (globalState, filter, label, tags, region, lang) => {
      let data = globalState.getIn(['appData', 'information']);
      if (data) {
        switch (filter) {
          case TAG_FILTER:
-          return data.filter(item => isFullTool(item) && item.tags && item.tags.map(i=>slugify(i)).includes(label));
+          return data.filter(item => isFullTool(item, lang) && item.tags && item.tags.map(i=>slugify(i)).includes(label));
           break;
          case TYPE_FILTER:
-          const result = data.filter(item => isFullTool(item) && item.type === label);
+          const result = data.filter(item => isFullTool(item, lang) && item.type === label);
 
           if (region !== undefined && region) {
             return result.filter(item => slugify(item.region) === region);
@@ -85,13 +89,13 @@ const makeSelectLanguage = createSelector(
             return label ? data.filter(
                               item => {
                                   const searchBase = searchIndices.map(key => item[key]).join(' ').toLowerCase();
-                                  return isFullTool(item) && searchBase.search(label.toLowerCase()) >= 0
+                                  return isFullTool(item, lang) && searchBase.search(label.toLowerCase()) >= 0
                               }
                            )
-                         : data.filter(item => isFullTool(item));
+                         : data.filter(item => isFullTool(item, lang));
           }
          default:
-          return data.filter(item => isFullTool(item));
+          return data.filter(item => isFullTool(item, lang));
 
        }
      }
