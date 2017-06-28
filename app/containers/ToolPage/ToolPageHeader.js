@@ -61,10 +61,10 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
   getBanner() {
     if(this.props['module-type'] === 'snapshot') {
       return (<TypeOverlay type={this.props.type}
-        isPrinciple={this.props.type === "principle" || (this.props['key-principles'] && this.props['key-principles'].length > 0)}
-        isMethodology={this.props.type === "methodology" || (this.props['key-methodologies'] && this.props['key-methodologies'].length > 0)}
-        isTactic={this.props.type === "tactic" || (this.props['key-tactics'] && this.props['key-tactics'].length > 0)}
-        isTheory={this.props.type === "theory" || (this.props['key-theories'] && this.props['key-theories'].length > 0)}
+        isPrinciple={this.props.type === "principle"}
+        isMethodology={this.props.type === "methodology"}
+        isTactic={this.props.type === "tactic"}
+        isTheory={this.props.type === "theory"}
       />)
     } else if ( ['full', 'gallery'].includes(this.props['module-type'])) {
       return (<TypeFlag type={this.props.type}

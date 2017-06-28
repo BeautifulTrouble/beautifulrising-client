@@ -42,6 +42,8 @@ const FlagViewport = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  background-image: url(${p=>p.bgimage});
+  background-repeat: repeat;
 `;
 const Flag = styled(Isvg)`
   display: ${props=>props.show?'block':'none'};
@@ -52,16 +54,20 @@ const Flag = styled(Isvg)`
 
 function TypeOverlay(props) {
 
+  const getTypeImage = (type) => {
+    console.log(type);
+    switch(type) {
+      case 'tactic': return BigTacticFlag;
+      case 'methodology': return BigMethodologyFlag;
+      case 'principle': return BigPrincipleFlag;
+      case 'theory': return BigTheoryFlag;
+    }
+  }
   //iF there's only one truth here, we show big flag.
-  const oneTruth = [props.isTactic, props.isMethodology, props.isPrinciple, props.isTheory].filter(item=>item).length == 1;
+  console.log(getTypeImage(props.type));
   return (
     <FlagContainer type={props.type}>
-      <FlagViewport>
-        <Flag show={props.isTactic} src={oneTruth ? BigTacticFlag : TacticFlag}/>
-        <Flag show={props.isMethodology} src={oneTruth ? BigMethodologyFlag : MethodologyFlag}/>
-        <Flag show={props.isPrinciple} src={oneTruth ? BigPrincipleFlag : PrincipleFlag}/>
-        <Flag show={props.isTheory} src={oneTruth ? BigTheoryFlag : TheoryFlag}/>
-      </FlagViewport>
+      <FlagViewport bgimage={getTypeImage(props.type)}></FlagViewport>
     </FlagContainer>
   );
 }
