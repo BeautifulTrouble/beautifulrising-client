@@ -31,6 +31,15 @@ const ListItem = styled.li`list-style: none;
     margin-bottom: 5px;
     text-align: ${p=>p.lang==='ar'?'right':'left'};
     font-family: 'Avenir Black', 'Kaff Bold';
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: "";
+      width: 42px;
+      border-top: 2px solid #000;
+      margin-top: -12px;
+    }
   }
 
   p {
