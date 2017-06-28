@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage , injectIntl } from 'react-intl';
 import messages from '../ToolTypeArea/messages';
 
 import Isvg from 'react-inlinesvg';
@@ -29,7 +29,7 @@ const Container = styled.section`
 `;
 const Viewport = styled.div`
   vertical-align: top;
-  text-align: left;
+  text-align: ${p=>p.lang==='ar'?'right':'left'};
   padding: 30px 20px;
   border-width: 0 2px 2px;
   border-style: solid;
@@ -47,18 +47,18 @@ const Viewport = styled.div`
 const Column = styled.div`
   text-align: center;
   width: ${props=>props.width}
-  float: left;
+  float: ${p=>p.lang==='ar'?'right':'left'};
 `;
 const ToolType = styled(Link)`
-  margin-right: 0.5%;
+  margin-${p=>p.lang==='ar'?'left':'right'}: 0.5%;
   display: inline-block;
-  text-align: left;
+  text-align: ${p=>p.lang==='ar'?'right':'left'};
   vertical-align: bottom;
   font-size: ${(props)=>props.selected ? '30px':'14px'};
   text-decoration: ${(props)=>props.selected ? 'none':'underline'};
   font-family: ${props=>props.selected?'Knockout, \'GretaCondensedSemibold\'':'Avenir, Kaff'}, sans-serif;
   text-transform: uppercase;
-  margin-right: 10px;
+  margin-${p=>p.lang==='ar'?'left':'right'}: 10px;
   margin-bottom: ${(props)=>props.selected ? '4px':'0'};
   color: ${(props)=>props.selected ? 'black':'#828486'};
   font-weight: ${props=>props.selected ? 'normal' : 'bold'};
@@ -101,24 +101,25 @@ const FlagContainer = styled.div`
 `;
 
 function ToolTypeSelectedPartial(props) {
+  const lang = props.intl.locale;
   return (
     <Container show={props.show}>
-      <Viewport>
+      <Viewport lang={lang}>
           <LinkArea>
-            <ToolType to={'/'}>All</ToolType>
-            <ToolType to={'/type/story'} selected={props.label === 'story'}>
+            <ToolType lang={lang} to={'/'}>All</ToolType>
+            <ToolType lang={lang} to={'/type/story'} selected={props.label === 'story'}>
               <FormattedMessage {...messages.storyHead} />
             </ToolType>
-            <ToolType to={'/type/tactic'} selected={props.label === 'tactic'}>
+            <ToolType lang={lang} to={'/type/tactic'} selected={props.label === 'tactic'}>
               <FormattedMessage {...messages.tacticHead} />
             </ToolType>
-            <ToolType to={'/type/principle'} selected={props.label === 'principle'}>
+            <ToolType lang={lang} to={'/type/principle'} selected={props.label === 'principle'}>
               <FormattedMessage {...messages.principleHead} />
             </ToolType>
-            <ToolType to={'/type/theory'} selected={props.label === 'theory'}>
+            <ToolType lang={lang} to={'/type/theory'} selected={props.label === 'theory'}>
               <FormattedMessage {...messages.theoryHead} />
             </ToolType>
-            <ToolType to={'/type/methodology'} selected={props.label === 'methodology'}>
+            <ToolType lang={lang} to={'/type/methodology'} selected={props.label === 'methodology'}>
               <FormattedMessage {...messages.methodologyHead} />
             </ToolType>
           </LinkArea>
@@ -139,4 +140,4 @@ ToolTypeSelectedPartial.propTypes = {
 
 };
 
-export default ToolTypeSelectedPartial;
+export default injectIntl(ToolTypeSelectedPartial);

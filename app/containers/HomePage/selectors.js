@@ -79,12 +79,21 @@ const makeSelectLanguage = createSelector(
             }) : [];
           } else {
             const searchIndices = [
-                'title',
-                'full-write-up',
-                'short-write-up',
-                'type',
-                'image-caption',
-                'pull-quote'
+              "short-write-up",
+              "full-write-up",
+              "snapshot",
+              "image-caption",
+              "epigraphs",
+              "why-it-worked",
+              "why-it-failed",
+              "key-theories",
+              "key-principles",
+              "key-tactics",
+              "key-methodologies",
+              "tags",
+              "authors",
+              "title",
+              "slug"
             ];
             return label ? data.filter(
                               item => {

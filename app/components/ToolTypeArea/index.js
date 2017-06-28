@@ -39,7 +39,7 @@ const AllContainer = styled.div`
 const TypeArrow = styled.button`
   position: absolute;
   bottom: 10px;
-  right: 10px;
+  ${p=>p.lang==='ar'?'left':'right'}: 10px;
   cursor: pointer;
   outline: none;
   transform: ${props=>props.lookRight ? 'rotate(270deg)' : 'rotate(180deg)'};
@@ -80,7 +80,7 @@ class ToolTypeArea extends React.Component { // eslint-disable-line react/prefer
         <AllContainer lang={this.props.lang}>
           <ToolTypeAllFull lang={this.props.lang} show={onTop} {...this.props} />
           <ToolTypeAllPartial lang={this.props.lang} show={!onTop} {...this.props} />
-          <TypeArrow lookRight={!onTop}>
+          <TypeArrow lang={this.props.lang} lookRight={!onTop}>
             <Isvg src={ArrowIcon} />
           </TypeArrow>
         </AllContainer>
@@ -91,7 +91,7 @@ class ToolTypeArea extends React.Component { // eslint-disable-line react/prefer
         <div>
           <ToolTypeSelectedFull lang={this.props.lang}  show={onTop} {...this.props}/>
           <ToolTypeSelectedPartial lang={this.props.lang} show={!onTop} {...this.props}/>
-          <TypeArrow lookRight={!onTop}>
+          <TypeArrow lang={this.props.lang} lookRight={!onTop}>
             <Isvg src={ArrowIcon} />
           </TypeArrow>
         </div>

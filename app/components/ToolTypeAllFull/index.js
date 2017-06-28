@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import messages from '../ToolTypeArea/messages';
 import Isvg from 'react-inlinesvg';
 import MethodologyIcon from 'assets/images/type/methodologies-option.svg';
@@ -82,23 +82,24 @@ const Desc = styled.p`
 `
 
 function ToolTypeAllFull(props) {
+  const lang = props.intl.locale;
   return (
-    <Container {...props} >
-      <Viewport lang={props.lang}>
+    <Container {...props} lang={lang}>
+      <Viewport lang={lang}>
         <Row>
-            <ToolType to={'/type/story'} lang={props.lang}>
+            <ToolType to={'/type/story'} lang={lang}>
               <Head><FormattedMessage {...messages.storyHead} />
               </Head>
               <Isvg src={StoryIcon} />
             </ToolType>
 
-            <ToolType to={'/type/story'} style={{paddingTop: 35}} lang={props.lang}>
+            <ToolType to={'/type/story'} style={{paddingTop: 35}} lang={lang}>
               <Desc><FormattedMessage {...messages.storyDesc} /></Desc>
             </ToolType>
         </Row>
 
         <Row>
-          <ToolType to={'/type/tactic'} lang={props.lang}>
+          <ToolType to={'/type/tactic'} lang={lang}>
             <Head>
               <FormattedMessage {...messages.tacticHead} />
             </Head>
@@ -106,19 +107,19 @@ function ToolTypeAllFull(props) {
             <Desc><FormattedMessage {...messages.tacticDesc} /></Desc>
           </ToolType>
 
-          <ToolType to={'/type/principle'} lang={props.lang}>
+          <ToolType to={'/type/principle'} lang={lang}>
             <Head><FormattedMessage {...messages.principleHead} /></Head>
             <Isvg src={PrincipleIcon} />
             <Desc><FormattedMessage {...messages.principleDesc} /></Desc>
           </ToolType>
 
-          <ToolType to={'/type/theory'} lang={props.lang}>
+          <ToolType to={'/type/theory'} lang={lang}>
             <Head><FormattedMessage {...messages.theoryHead} /></Head>
             <Isvg src={TheoryIcon} />
             <Desc><FormattedMessage {...messages.theoryDesc} /></Desc>
           </ToolType>
 
-          <ToolType to={'/type/methodology'} lang={props.lang}>
+          <ToolType to={'/type/methodology'} lang={lang}>
             <Head><FormattedMessage {...messages.methodologyHead} /></Head>
             <Isvg src={MethodologyIcon} />
             <Desc><FormattedMessage {...messages.methodologyDesc} /></Desc>
@@ -133,4 +134,4 @@ ToolTypeAllFull.propTypes = {
 
 };
 
-export default ToolTypeAllFull;
+export default injectIntl(ToolTypeAllFull);

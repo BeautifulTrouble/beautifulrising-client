@@ -18,11 +18,11 @@ const List = styled.ul``;
 
 const ListItem = styled.li`list-style: none;
   width: ${props=>props.theme.itemWidth};
-  margin-right: ${props=>props.theme.itemMargin};
+  margin-${p=>p.lang==='ar'?'left':'right'}: ${props=>props.theme.itemMargin};
   display: inline-block;
   vertical-align: top;
   margin-bottom: 50px;
-  text-align: left;
+  text-align: ${p=>p.lang==='ar'?'right':'left'};
 
   h3 {
 
@@ -30,7 +30,7 @@ const ListItem = styled.li`list-style: none;
     font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
     margin: 0;
     margin-top: 15px;
-    text-align: left;
+    text-align: ${p=>p.lang==='ar'?'right':'left'};
     text-transform: uppercase;
     letter-spacing: 0;
 
@@ -44,10 +44,10 @@ const ListItem = styled.li`list-style: none;
   }
 
   p {
-    text-align: left;
+    text-align: ${p=>p.lang==='ar'?'right':'left'};
     font-size: 14px;
     line-height: 22px;
-    padding-right: 30px;
+    padding-${p=>p.lang==='ar'?'left':'right'}: 30px;
 
     a {
       color: #828486;
@@ -72,15 +72,16 @@ const Team = styled.h5`
 const Content = styled.div``;
 
 const AdvisoryNetworkSection =styled(AboutSection)`
+  text-align: ${p=>p.lang==='ar'?'right':'left'};
   h2 {
     &::after {
-      left: 83%;
+      ${p=>p.lang==='ar'?'right':'left'}: 83%;
     }
   }
 `;
 
 const AdvisoryNetworkIntro = styled(IntroText)`
-  margin-left: 82%;
+  margin-${p=>p.lang==='ar'?'right':'left'}: 82%;
   width: 33%;
   padding: 0;
 `
@@ -99,10 +100,10 @@ export class OurAdvisoryNetwork extends React.Component {
   render() {
     const {locale} = this.props.intl;
     return (
-      <AdvisoryNetworkSection lang={locale} id='advisory-network' style={{ textAlign: locale=='ar'?'right':'left' }}>
+      <AdvisoryNetworkSection lang={locale} id='advisory-network'>
         { this.props.hideHeader ? null : this.renderHeader() }
         <Introduction>
-          <AdvisoryNetworkIntro>
+          <AdvisoryNetworkIntro lang={locale}>
             <Markdown source={this.props.introText}/>
           </AdvisoryNetworkIntro>
         </Introduction>

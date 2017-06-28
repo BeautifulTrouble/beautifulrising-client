@@ -155,22 +155,22 @@ class OurProcess extends React.Component {
         { this.props.hideHeader ?  null : this.renderHeader() }
         <ThemeProvider theme={themeFourColumns}>
             <List>
-              <ListItem>
+              <ListItem lang={locale}>
                 <CircledImage src={InspirationImage} />
                 <Markdown source={formatMessage(messages.inspiration)} />
               </ListItem>
 
-              <ListItem>
+              <ListItem lang={locale}>
                 <CircledImage src={DefinitionImage} />
                 <Markdown source={formatMessage(messages.definition)} />
               </ListItem>
 
-              <ListItem>
+              <ListItem lang={locale}>
                 <CircledImage src={PrototypingImage} />
                 <Markdown source={formatMessage(messages.prototyping)} />
               </ListItem>
 
-              <ListItem>
+              <ListItem lang={locale}>
                 <CircledImage src={RealizationImage} />
                 <Markdown source={formatMessage(messages.realization)} />
               </ListItem>

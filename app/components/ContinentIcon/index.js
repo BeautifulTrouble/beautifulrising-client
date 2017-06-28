@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import Isvg from 'react-inlinesvg';
 import messages from './messages';
 import Africa from 'assets/images/regions/africa.svg';
@@ -20,8 +20,8 @@ import NorthAmerica from 'assets/images/regions/north-america.svg';
 
 const Content = styled.div`
   top: 0;
-  right: 50px;
-  text-align: right;
+  ${p=>p.lang==='ar'?'left':'right'}: 50px;
+  text-align: ${p=>p.lang==='ar'?'left':'right'};
   position: absolute;
 `;
 
@@ -57,8 +57,9 @@ class ContinentIcon extends React.PureComponent {
   render() {
     if (this.props.type !== "story") return null;
 
+    const lang = this.props.intl.locale;
     return (
-      <Content>
+      <Content lang={lang}>
         <WhereWhen>{`${this.props.where} ${this.props.when}`}</WhereWhen>
         <Continent>
           <Isvg src={this.getRegionIcon(this.props.region)} />
@@ -72,4 +73,4 @@ ContinentIcon.propTypes = {
 
 };
 
-export default ContinentIcon;
+export default injectIntl(ContinentIcon);

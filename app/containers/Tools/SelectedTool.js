@@ -6,7 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import makeSelectTools from './selectors';
 import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
@@ -43,23 +43,24 @@ export class SelectedTool extends React.PureComponent { // eslint-disable-line r
   render() {
     const flag = this.getFlag();
     const tool = this.props.allData.get(this.props.slug);
+    const lang = this.props.intl.locale;
     if (!tool) return null;
     return (
-      <SelectedToolItem>
-        <SelectedToolTitle flag={flag}>
+      <SelectedToolItem lang={lang}>
+        <SelectedToolTitle flag={flag} lang={lang}>
           <Link to={`/tool/${tool.get('slug')}`}>{tool.get('title')}</Link>
         </SelectedToolTitle>
-        <SelectedToolSnapshot>
+        <SelectedToolSnapshot lang={lang}>
           {tool.get('snapshot')}
         </SelectedToolSnapshot>
-        <SelectedToolCommands>
-          <SelectedToolCommandItem>
+        <SelectedToolCommands lang={lang}>
+          <SelectedToolCommandItem  lang={lang}>
             <AdderRemover {...this.props}>
               <Isvg src={RemoveSmallIcon} />
               <FormattedMessage {...messages.remove} />
             </AdderRemover>
           </SelectedToolCommandItem>
-          <SelectedToolCommandItem>
+          <SelectedToolCommandItem  lang={lang}>
             <ShareButton {...this.props}>
               <Isvg src={ShareSmallIcon} />
               <FormattedMessage {...messages.share} />
@@ -89,4 +90,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SelectedTool);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(SelectedTool));

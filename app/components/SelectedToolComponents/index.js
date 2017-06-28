@@ -19,7 +19,7 @@ function SelectedToolComponents() {
 }
 
 export const SelectedToolItem = styled.div`
-  text-align: left;
+  text-align: ${p=>p.lang==='ar'?'right':'left'};
 `;
 export const SelectedToolTitle = styled.h3`
   margin: 20px 0 0;
@@ -47,7 +47,7 @@ export const SelectedToolCommands = styled.ul`margin: 0; padding: 0`;
 export const SelectedToolCommandItem = styled.li`
   display: inline-block;
   width: 49%;
-  text-align: left;
+  text-align: ${p=>p.lang==='ar'?'right':'left'};
   text-transform: uppercase;
   button { text-transform: uppercase; font-weight: bold; }
   font-size: 14px;

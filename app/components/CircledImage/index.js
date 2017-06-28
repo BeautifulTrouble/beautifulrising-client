@@ -6,7 +6,8 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import Isvg from 'react-inlinesvg'
+import Isvg from 'react-inlinesvg';
+import { injectIntl } from 'react-intl';
 const CircledContainer = styled.div`
   width: 65%;
   padding: 20px 0;
@@ -21,7 +22,7 @@ const CircledContainer = styled.div`
     height: 1px;
     border-bottom: 2px solid;
     top: 50%;
-    left: 50%;
+    ${p=>p.lang==='ar'?'right':'left'}: 50%;
     position: absolute;
   }
 
@@ -38,16 +39,17 @@ const CircleBackdrop = styled.div`
   padding-bottom: 100%;
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  ${p=>p.lang==='ar'?'right':'left'}: 50%;
+  transform: ${p=>p.lang==='ar'?'translate(50%, -50%)':'translate(-50%, -50%)'};
   border: 2px solid;
   border-radius: 50%;
 `;
 
 function CircledImage(props) {
+  const lang = props.intl.locale;
   return (
-    <CircledContainer className={'circledContainer'}>
-      <CircleBackdrop />
+    <CircledContainer lang={lang} className={'circledContainer'}>
+      <CircleBackdrop lang={lang} />
       <Isvg src={props.src} />
     </CircledContainer>
   );
@@ -57,4 +59,4 @@ CircledImage.propTypes = {
 
 };
 
-export default CircledImage;
+export default injectIntl(CircledImage);

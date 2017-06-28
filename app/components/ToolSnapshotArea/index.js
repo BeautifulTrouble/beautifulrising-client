@@ -14,7 +14,7 @@ import typeTranslate from 'containers/HomePage/messages';
 
 const Container = styled.div``;
 const Viewport = styled.div`
-  text-align: left;
+  text-align: ${p=>p.lang==='ar'?'right':'left'};
 `;
 const SnapshotContent = styled.div``;
 const Actions = styled.ul`
@@ -32,10 +32,10 @@ const Act = styled.li`list-style: none;
   width: 45%;
   display: inline-block;
   &:first-child {
-    float: left;
+    float: ${p=>p.lang==='ar'?'right':'left'};
   }
   &:last-child {
-    float: right;
+    float: ${p=>p.lang==='ar'?'left':'right'};
   }
 `;
 
@@ -55,10 +55,10 @@ const Link = styled.a`
 `;
 
 function ToolSnapshotArea(props) {
-  const { formatMessage } = props.intl;
+  const { formatMessage, locale } = props.intl;
   return (
     <Container>
-      <Viewport>
+      <Viewport lang={locale}>
         <SnapshotContent>
           <Markdown source={props.snapshot} />
         </SnapshotContent>

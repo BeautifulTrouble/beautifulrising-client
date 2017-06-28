@@ -22,12 +22,12 @@ const Header = styled.h3`
   text-transform: uppercase;
   position: relative;
   margin: 0;
-  padding-left: 46px;
+  padding-${p=>p.theme.lang==='ar'?'right':'left'}: 46px;
   padding-bottom: 0;
   .isvg.loaded {
     position: absolute;
     top: 6px;
-    left: 0;
+    ${p=>p.theme.lang==='ar'?'right':'left'}: 0;
   }
   * {
     line-height: 1;
@@ -48,12 +48,13 @@ const Content = styled.div`
 
 function ToolsPotentialRisk(props) {
   if (!props.content || props.content.trim().length == 0) return null;
+  const lang = props.intl.locale;
   return (
-    <ThemeProvider theme={{ lang: props.intl.locale }}>
+    <ThemeProvider theme={{ lang: lang }}>
       <Container>
         <Viewport>
-          <Header>
-            <PotentialRiskIcon src={PotentialRiskIconImage} type={props.type} />
+          <Header >
+            <PotentialRiskIcon src={PotentialRiskIconImage} lang={lang} type={props.type} />
             <FormattedMessage {...messages.potentialRiskHeader} />
           </Header>
           <Content>

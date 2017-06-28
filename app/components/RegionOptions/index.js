@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import messages from './messages';
 
 import Isvg from 'react-inlinesvg';
@@ -25,7 +25,7 @@ const Container = styled.section`
 `;
 const Viewport = styled.div`
   position: relative;
-  text-align: left;
+  text-align: ${p=>p.lang==='ar'?'right':'left'};
 `;
 
 const Subheader = styled.h3`
@@ -42,7 +42,7 @@ const Subheader = styled.h3`
     border: solid;
     width: 0px !important;
     position: absolute;
-    right: 30px;
+    ${p=>p.lang==='ar'?'left':'right'}: 30px;
     bottom: -20px;
     border-width: 0 1px 0 0;
   }
@@ -69,13 +69,14 @@ const RegionLink = styled(Link)`
 `;
 
 function RegionOptions(props) {
+  const lang = props.intl.locale;
   return (
     <Container inline={!props.showHeader}>
-      <Viewport>
-        <Subheader show={props.showHeader}>
+      <Viewport lang={lang}>
+        <Subheader lang={lang} show={props.showHeader}>
           <FormattedMessage {...messages.header} />
         </Subheader>
-        <RegionList>
+        <RegionList lang={lang}>
           <Region>
             <RegionLink to={'/type/story/africa'} selected={props.region === 'africa'}>
               <Isvg src={Africa} />
@@ -121,4 +122,4 @@ RegionOptions.propTypes = {
 
 };
 
-export default RegionOptions;
+export default injectIntl(RegionOptions);
