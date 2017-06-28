@@ -30,7 +30,7 @@ const getIcon = (region) => {
 
 const Container = styled.div`
   display: inline-block;
-
+  svg { height: 32px; }
   svg, svg * {
     fill: ${props=> props.type?getToolTypeColor(props.type):(props.color || 'black')};
   }

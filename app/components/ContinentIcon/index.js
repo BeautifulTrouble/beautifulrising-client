@@ -26,6 +26,7 @@ const Content = styled.div`
 `;
 
 const Continent = styled.div`
+  svg { height: 40px; margin-top: 10px;}
   svg * {
     fill: #08eb8c;
   }
