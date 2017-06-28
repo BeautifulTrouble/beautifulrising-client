@@ -205,9 +205,11 @@ export const BlockContainer = styled(ToolContainer)`
   background-image: ${props => props.background};
   background-size: cover;
   background-position: center;
-  width: 260px;
-  height: 260px;
-
+  width: 250px;
+  height: 250px;
+  margin: 10px;
+  margin-${p=>p.lang==='ar'?'left':'right'}: 15px;
+  margin-${p=>p.lang==='ar'?'right':'left'}: 5px;
 `;
 export const BlockViewport = styled(ToolViewport)`
   background-color: rgba(0,0,0,0.5);
