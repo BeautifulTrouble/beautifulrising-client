@@ -11,15 +11,19 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import messages from 'containers/HomePage/messages';
 
 const Container = styled.div`
+
   position: absolute;
-  ${p=>p.lang==='ar'?'right':'left'}: 0;
+  ${p=>p.lang==='ar'?'right':'left'}: 50%;
+  transform: ${p=>p.lang==='ar'?'translateX(50%)':'translateX(-50%)'};
   border: 2px solid;
   font-weight: bold;
   bottom: 110px;
   padding: 3px;
   display: ${props=>props.show?'block':'none'};
+  // display: block;
   background-color: white;
-  // max-width: 500px;
+  text-align: center;
+
 `;
 
 const TypeTile = styled.span`
@@ -34,24 +38,25 @@ const TypeTile = styled.span`
 const TypeName = styled.div`
   font-family: 'Avenir', 'Kaff Bold';
   font-size: 10px;
-  text-transform: capitalize;
+  text-transform: ${p=>p.lang==='ar'?'capitalize':'uppercase'};
   margin-top: -10px;
+  text-decoration: ${p=>p.mainType?'underline':'none'};
 `;
 
 
 
 const Viewport = styled.div``;
-const List = styled.ul`margin: 0; padding: 0`;
+const List = styled.ul`margin: 0; padding: 0;`;
 const Item = styled.li`
-  display: inline-block;
+  display: table-cell;
   text-align: center;
   position: relative;
   white-space: nowrap;
-  padding-${p=>p.lang==='ar'?'left':'right'}: 10px;
+  padding-${p=>p.lang==='ar'?'left':'right'}: 15px;
   &::after {
     position: absolute;
-    top: 10px;
-    ${p=>p.lang==='ar'?'left':'right'}: -3px;
+    top: 2px;
+    ${p=>p.lang==='ar'?'left':'right'}: -1px;
     content: '+';
     display: inline-block;
     padding: 0px 3px;
@@ -79,7 +84,7 @@ function TypeFlagTooltip(props) {
           {types.map((item, ind) =>  !item.show ? null : (
             <Item key={ind} lang={lang}>
               <TypeTile type={item.name} />
-              <TypeName class={'typeName'}>
+              <TypeName mainType={item.name===props.type} class={'typeName'}>
                 <FormattedMessage {...messages[item.name]} />
               </TypeName>
             </Item>))}
