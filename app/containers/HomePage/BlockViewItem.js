@@ -55,7 +55,7 @@ class BlockViewItem extends React.Component {
      const { locale } = this.props.intl;
      return (
       <BlockContainer
-            lang={this.props.lang}
+            lang={locale}
             onMouseOver={this.handleMouseOver.bind(this)}
             onMouseOut={this.handleMouseOut.bind(this)}
             background={`url(${BR_IMAGE_PREFIX + this.props.image})`}>
@@ -83,7 +83,7 @@ class BlockViewItem extends React.Component {
                   <Markdown source={this.props.snapshot} /></BlockSpiel>
 
             { this.props.type === 'story' ?
-                <RegionContainer lang={this.props.lang} show={!this.state.mouseOver}>
+                <RegionContainer lang={locale} show={!this.state.mouseOver}>
                   <RegionIcon type={this.props.type} region={slugify(this.props.region)} />
                 </RegionContainer>
               : null }

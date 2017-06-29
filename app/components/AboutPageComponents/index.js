@@ -52,7 +52,7 @@ h2 {
     content: ' ';
     position: absolute;
     height: 80px;
-    border-right: 1px solid;
+    border-right: ${p=>p.hideHeader ? '4px solid' : '40px'};
     width: 1PX;
     bottom: -65px;
     ${p=>p.lang==='ar'?'right':'left'}: 50%;

@@ -30,14 +30,14 @@ export class TheToolbox extends React.Component {
   render() {
     const lang = this.props.intl.locale;
     return (
-      <AboutSection id='whats-inside' name='whats-inside' lang={lang}>
+      <AboutSection id='whats-inside' name='whats-inside' lang={lang} hideHeader={this.props.hideHeader}>
         { this.props.hideHeader ? null : this.renderHeader() }
         <Introduction>
           <IntroText>
             <Markdown source={this.props.whatsInside}/>
           </IntroText>
         </Introduction>
-        <ToolTypeAllFull show={true} />
+        <ToolTypeAllFull show={true} showLine={false}/>
       </AboutSection>
     );
   }

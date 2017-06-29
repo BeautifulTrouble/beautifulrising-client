@@ -26,7 +26,7 @@ const Container = styled.section`
       height: 40px;
       width: 1px;
       left: 50%;
-      border-right: 1px solid;
+      border-right: ${p=>p.showLine?'1px solid':'none'};
     }
 `;
 const Viewport = styled.div`
@@ -88,7 +88,7 @@ const Desc = styled.p`
 function ToolTypeAllFull(props) {
   const lang = props.intl.locale;
   return (
-    <Container {...props} lang={lang}>
+    <Container {...props} lang={lang} showLine={props.showLine}>
       <Viewport lang={lang}>
         <Row>
             <ToolType to={'/type/story'} lang={lang}>
