@@ -29,6 +29,13 @@ const makeSelectAllToolsWithSlugIndex = () => createSelector(
     }
 );
 
+const makeSelectSlugged = () => createSelector(
+  [selectGlobal],
+  (globalState) => {
+      return indexBy(Immutable.fromJS(globalState.getIn(['appData', 'information'])), 'slug');
+    }
+);
+
 const makeSelectAdvisoryBoard = () => createSelector(
     [selectGlobal],
     (globalState) => {
@@ -152,6 +159,7 @@ export {
   makeSelectAllToolsWithSlugIndex,
   makeSelectAdvisoryBoard,
   makeSelectLanguage,
-  makeSelectExamples
+  makeSelectExamples,
+  makeSelectSlugged
   // makeSelectToolView,
 };

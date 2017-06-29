@@ -18,6 +18,7 @@ export const Header = styled.h1`
   font-size: 48px;
 `;
 const Container = styled.div`
+  margin-top: 30px;
   ${props=>props.lang==='ar'?'padding-right':'padding-left'}: 96px;
 `;
 const Viewport = styled.div`
@@ -64,6 +65,7 @@ const Title = styled.h1`
 margin-top: 0;
 position: relative;
 margin-bottom: 0px;
+font-size: 48px;
 
 &::before {
   content: ' ';

@@ -40,6 +40,7 @@ const MenuArea = styled.div`
 
 `;
 const Header = styled.h1`text-align: center
+  font-size: 48px;
 `;
 const Heading = styled.h2`
   line-height: 40px;
@@ -88,7 +89,8 @@ const Button = styled.button`
   font-weight: bold;
   font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
   margin-bottom: 18px;
-  font-size: 15px;
+  font-size: 16px;
+  line-height: 22px;
 `;
 const Banner = styled.img``;
 

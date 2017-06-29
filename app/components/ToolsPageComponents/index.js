@@ -155,7 +155,7 @@ export const ToolLeftArea = styled(ToolInfoSection)`
 
 
 export const ToolRightArea = styled(ToolInfoSection)`
-  width: 368px;
+  width: 360px;
   ${props=> {
     if (props.lang === 'ar') {
       return `
@@ -177,7 +177,7 @@ export const ToolRightArea = styled(ToolInfoSection)`
 **/
 
 export const ToolMainArea = styled(ToolInfoSection)`
-  width: calc(100% - 545px);
+  width: calc(100% - 537px);
   margin-left: 0.5%;
   padding: ${props=>props.theme.lang==='ar' ? '20px 90px 20px 20px' : '20px 20px 20px 90px'};
 `;
