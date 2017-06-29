@@ -59,7 +59,8 @@ export const TextButton = styled.span`
   font-weight: 600;
   font-family: ${props => props.selected ? 'Avenir Black': 'Avenir'};
   text-transform: uppercase;
-  font-size: 14PX;
+  font-size: ${p=>p.ar?'13px':'14px'};
+  line-height: ${p=>p.ar?'24px':'22px'};
 `;
 
 export const BorderedButton = styled.button`

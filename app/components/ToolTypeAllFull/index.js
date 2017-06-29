@@ -31,7 +31,7 @@ const Container = styled.section`
 `;
 const Viewport = styled.div`
   * {
-    text-align: ${props=>props.lang==='ar' ? 'right' : 'left'};
+    // text-align: ${props=>props.lang==='ar' ? 'right' : 'left'};
   }
 `;
 const Row = styled.div`
@@ -49,6 +49,7 @@ const ToolType = styled(Link)`
   width: 205px;
   display: inline-block;
   vertical-align: top;
+  text-align: ${props=>props.lang==='ar' ? 'right' : 'left'};
   margin-right: ${props=>props.lang==='ar' ? 'auto' : '30px'};
   margin-left: ${props=>props.lang==='ar' ? '30px' : 'auto'}
   text-decoration: none;
@@ -67,11 +68,14 @@ const ToolType = styled(Link)`
 const Head = styled.h3`
   margin: 0;
   text-transform: uppercase;
+  font-size: ${p=>p.ar?'30px':'30px'};
+  line-height: ${p=>p.ar?'40px':'1'};
+  letter-spacing: ${p=>p.ar?'1px':'1px'};
 `;
 const Desc = styled.p`
   margin: 0;
-  line-height: 22px;
-  font-size: 14px;
+  font-size: ${p=>p.ar?'13px':'14px'};
+  line-height: ${p=>p.ar?'24px':'22px'};
   margin-top: 5px;
 
   &::after {
@@ -88,41 +92,42 @@ function ToolTypeAllFull(props) {
       <Viewport lang={lang}>
         <Row>
             <ToolType to={'/type/story'} lang={lang}>
-              <Head><FormattedMessage {...messages.storyHead} />
+              <Head ar={lang==='ar'}>
+                <FormattedMessage {...messages.storyHead} />
               </Head>
               <Isvg src={StoryIcon} />
             </ToolType>
 
             <ToolType to={'/type/story'} style={{paddingTop: 35}} lang={lang}>
-              <Desc><FormattedMessage {...messages.storyDesc} /></Desc>
+              <Desc ar={lang==='ar'}><FormattedMessage {...messages.storyDesc} /></Desc>
             </ToolType>
         </Row>
 
         <Row>
           <ToolType to={'/type/tactic'} lang={lang}>
-            <Head>
+            <Head ar={lang==='ar'}>
               <FormattedMessage {...messages.tacticHead} />
             </Head>
             <Isvg src={TacticIcon} />
-            <Desc><FormattedMessage {...messages.tacticDesc} /></Desc>
+            <Desc ar={lang==='ar'}><FormattedMessage {...messages.tacticDesc} /></Desc>
           </ToolType>
 
           <ToolType to={'/type/principle'} lang={lang}>
-            <Head><FormattedMessage {...messages.principleHead} /></Head>
+            <Head ar={lang==='ar'}><FormattedMessage {...messages.principleHead} /></Head>
             <Isvg src={PrincipleIcon} />
-            <Desc><FormattedMessage {...messages.principleDesc} /></Desc>
+            <Desc ar={lang==='ar'}><FormattedMessage {...messages.principleDesc} /></Desc>
           </ToolType>
 
           <ToolType to={'/type/theory'} lang={lang}>
-            <Head><FormattedMessage {...messages.theoryHead} /></Head>
+            <Head ar={lang==='ar'}><FormattedMessage {...messages.theoryHead} /></Head>
             <Isvg src={TheoryIcon} />
-            <Desc><FormattedMessage {...messages.theoryDesc} /></Desc>
+            <Desc ar={lang==='ar'}><FormattedMessage {...messages.theoryDesc} /></Desc>
           </ToolType>
 
           <ToolType to={'/type/methodology'} lang={lang}>
-            <Head><FormattedMessage {...messages.methodologyHead} /></Head>
+            <Head ar={lang==='ar'}><FormattedMessage {...messages.methodologyHead} /></Head>
             <Isvg src={MethodologyIcon} />
-            <Desc><FormattedMessage {...messages.methodologyDesc} /></Desc>
+            <Desc ar={lang==='ar'}><FormattedMessage {...messages.methodologyDesc} /></Desc>
           </ToolType>
         </Row>
       </Viewport>

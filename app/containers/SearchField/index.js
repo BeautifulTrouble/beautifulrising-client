@@ -22,7 +22,8 @@ const SearchBox = styled.input`
   width: 100%;
   padding: 20px 10px 10px;
   border: 2px solid black;
-  font-size: 14px;
+  font-size: ${p=>p.ar?'13px':'14px'};
+  line-height: ${p=>p.ar?'24px':'22px'};
   font-style: italic;
 `;
 
@@ -42,11 +43,11 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
   }
 
   render() {
-    const {formatMessage} = this.props.intl;
+    const {formatMessage, locale} = this.props.intl;
     return (
       <SearchContainer>
         <SearchForm>
-          <SearchBox ref={'SearchBox'} type='text' onChange={this.props.onChange} placeholder={formatMessage(messages.placeholder)} />
+          <SearchBox ref={'SearchBox'} ar={locale==='ar'} type='text' onChange={this.props.onChange} placeholder={formatMessage(messages.placeholder)} />
         </SearchForm>
       </SearchContainer>
     );

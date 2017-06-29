@@ -3,7 +3,7 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import {slugify} from 'utils/tags';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import Link from 'components/Link';
 import AdderRemover from 'containers/Tools/AdderRemover';
 
@@ -52,6 +52,7 @@ class BlockViewItem extends React.Component {
    }
 
    render() {
+     const { locale } = this.props.intl;
      return (
       <BlockContainer
             lang={this.props.lang}
@@ -65,10 +66,10 @@ class BlockViewItem extends React.Component {
                   forceShow={this.state.forceShow}
                   style={this.props.position}
             >
-              <ToolType type={this.props.type}>
+              <ToolType ar={locale==='ar'} type={this.props.type}>
                 <FormattedMessage { ...messages[this.props.type] } />
               </ToolType>
-              <ToolTitle color={'white'}>
+              <ToolTitle ar={locale==='ar'} color={'white'}>
                 {this.props.title}
               </ToolTitle>
               <BlockAddRem onMouseOver={this.handleForceShow.bind(this)} onMouseOut={this.handleRemoveForce.bind(this)}>
@@ -100,4 +101,4 @@ BlockViewItem.propTypes = {
   slug: PropTypes.string.isRequired,
 };
 
-export default BlockViewItem;
+export default injectIntl(BlockViewItem);

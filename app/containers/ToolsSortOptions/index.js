@@ -6,7 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import makeSelectToolsSortOptions from './selectors';
 import { changeSortOption } from './actions';
@@ -19,14 +19,15 @@ import IconButton from 'components/IconButton';
 
 export class ToolsSortOptions extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
+    const { locale } = this.props.intl;
     return (
       <div>
         <IconButton width="49%" onClick={this.props.clickAlphabeticalSort}>
-          <TextButton selected={this.props.ToolsSortOptions.chosen === SORT_ALPHABETICAL}>
+          <TextButton ar={locale==='ar'} selected={this.props.ToolsSortOptions.chosen === SORT_ALPHABETICAL}>
             <FormattedMessage {...messages.alphabeticalButton} />
           </TextButton>
         </IconButton>
-        <IconButton width="49%" onClick={this.props.clickNewestSort}>
+        <IconButton ar={locale==='ar'} width="49%" onClick={this.props.clickNewestSort}>
           <TextButton selected={this.props.ToolsSortOptions.chosen === SORT_NEWEST}>
             <FormattedMessage {...messages.newestButton} />
           </TextButton>
@@ -56,4 +57,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ToolsSortOptions);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(ToolsSortOptions));
