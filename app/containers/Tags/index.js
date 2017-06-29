@@ -6,7 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { makeSelectAllTags } from 'containers/App/selectors';
 import MenuBlock from 'components/MenuBlock';
@@ -32,10 +32,17 @@ const TagListItem = styled.li`
   &:last-child {
     span { display: none; }
   }
-  font-family: ${props=>props.selected ? 'Avenir Black' : 'Avenir'};
+  ${p=>{
+    if ( p.ar ) {
+      return `font-family: ${p.selected ? 'Kaff Bold' : 'Kaff'};`;
+    } else {
+      return `font-family: ${p.selected ? 'Avenir Black' : 'Avenir'};`;
+    }
+  }}
 
-  font-size: 12px;
-  line-height: 18px;
+
+  font-size: ${p=>p.ar?'13px':'12px'};
+  line-height: ${p=>p.ar?'24px':'18px'};
   * { vertical-align: middle; }
   span {
     font-family: 'Avenir Black', 'Kaff Bold';
@@ -61,11 +68,12 @@ export class Tags extends React.PureComponent { // eslint-disable-line react/pre
 
   render() {
     const selected = this.props.params ? this.props.params.label : '';
+    const { locale } = this.props.intl;
     return (
       <TagBlock align={this.props.align}>
         <TagList>
           {this.props.tags.map((item) => (
-            <TagListItem key={item.key} selected={item.key===selected}>
+            <TagListItem ar={locale==='ar'} key={item.key} selected={item.key===selected}>
               <TagLink to={`/tag/${item.key}`}>{item.value}</TagLink>
               <TagDivider />
             </TagListItem>
@@ -96,4 +104,4 @@ const mapStateToProps = (state, props) => {
 // }
 
 // export default connect(mapStateToProps, mapDispatchToProps)(Tags);
-export default connect(mapStateToProps)(Tags);
+export default connect(mapStateToProps)(injectIntl(Tags));
