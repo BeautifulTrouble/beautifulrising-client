@@ -116,5 +116,6 @@ injectGlobal`
 
   .ReactModal__Body--open {
     overflow-y: hidden;
+    overflow: hidden;
   }
 `;
