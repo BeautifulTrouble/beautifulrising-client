@@ -13,6 +13,6 @@ export default styled.section`
   max-width:1100px;
   width: 100%;
   position: relative;
-  margin-left: ${(props) => props.showTools ? (props.lang==='ar' ? '460px' : '-460px') : '0'};
-  transition: margin-left 0.5s;
+  left: ${(props) => props.showTools ? (props.lang==='ar' ? '230px' : '-230px') : '0'};
+  transition: left 0.5s;
 `;
