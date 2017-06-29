@@ -36,7 +36,7 @@ const FlagViewport = styled.div`
   position: relative;
   width: 264px;
   min-height: 100px;
-  overflow: visible;
+  overflow: hidden;
 `;
 const Flag = styled(Isvg)`
   position: absolute;
