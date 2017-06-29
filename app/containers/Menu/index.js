@@ -39,7 +39,7 @@ function Menu(props) {
   const lang = props.intl.locale;
   return (
     <MenuArea lang={lang}>
-      <Logo top={'16px'} left={'116px'} />
+      <Logo top={'17px'} left={'115px'} />
       { window.location.pathname.match(/^\/(type|tag|search)*/) ? null :
           (<Home to="/">
             <FormattedMessage {...messages.home} />
