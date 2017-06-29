@@ -7,14 +7,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { CommonLeftHeader } from 'components/CommonComponents';
 import Markdown from 'react-remarkable';
 import messages from './messages';
 
 const Header = styled(CommonLeftHeader)`
   border: none;
-  text-align: left;
+  text-align: ${p=>p.lang==='ar'?'right':'left'};
   margin-top: 40px;
   font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
   font-size: 19px;
@@ -22,7 +22,7 @@ const Header = styled(CommonLeftHeader)`
   line-height: 22px;
 `;
 const Content = styled.div`
-  text-align: left;
+  text-align: ${p=>p.lang==='ar'?'right':'left'};
   font-size: 14px;
   line-height: 22px;
 
@@ -40,12 +40,13 @@ const Content = styled.div`
 function ToolHowToUse(props) {
   if (!props.text) return null;
 
+  const lang = props.intl.locale;
   return (
     <div>
-      <Header>
+      <Header lang={lang}>
         <FormattedMessage {...messages.header} />
       </Header>
-      <Content>
+      <Content lang={lang}>
         <Markdown source={props.text.replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)")} />
       </Content>
     </div>
@@ -56,4 +57,4 @@ ToolHowToUse.propTypes = {
 
 };
 
-export default ToolHowToUse;
+export default injectIntl(ToolHowToUse);

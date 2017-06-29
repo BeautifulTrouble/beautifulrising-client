@@ -71,7 +71,7 @@
   "app.components.ShareButton.emailMessage": "Checkout this awesome tool from BeautifulRising.org {url}",
   "app.components.ShareButton.emailSubject": "Read about \"{title}\" at BeautifulRising.org",
   "app.components.ShareButton.header": "Share",
-  "app.components.ToolHowToUse.header": "Why it Worked",
+  "app.components.ToolHowToUse.header": "How to use",
   "app.components.ToolKeyItems.header": "This is the ToolKeyItems component !",
   "app.components.ToolKeyItems.keyMethodology": "Key Methodology",
   "app.components.ToolKeyItems.keyPrinciple": "Key Principle",
