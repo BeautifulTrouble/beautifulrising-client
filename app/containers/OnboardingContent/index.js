@@ -12,9 +12,8 @@ import ArrowIcon from 'assets/images/icons/arrow.svg';
 import Background from 'assets/images/modal.jpg';
 import CloseIcon from 'assets/images/icons/close.svg'
 import { createStructuredSelector } from 'reselect';
-
+import { Map } from 'immutable';
 import { connect } from 'react-redux';
-
 import TheToolbox from 'components/AboutPageComponents/TheToolbox';
 import Partners from 'components/AboutPageComponents/Partners';
 import OurValues from 'components/AboutPageComponents/OurValues';
@@ -25,7 +24,7 @@ import FAQ from 'components/AboutPageComponents/FAQ';
 import BeautifulTroubleAA from 'components/AboutPageComponents/BeautifulTroubleAA';
 import { makeSelectAllToolsWithSlugIndex, makeSelectAdvisoryBoard } from 'containers/App/selectors';
 import { onboardUser } from 'containers/OnboardingModal/actions';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import messages from './messages';
 
 import aboutMessages from 'components/AboutPageComponents/messages';
@@ -39,7 +38,7 @@ const Header = styled.h2`
   font-weight: 800;
   text-transform: uppercase;
   border-bottom: 2px solid;
-  padding-left: 20px;
+  ${p=>p.lang==='ar'?'padding-right':'padding-left'}: 20px;
   width: 100%;
   display: inline-block;
   padding-bottom: 15px;
@@ -51,7 +50,7 @@ const Content = styled.div`
 const Button = styled.button`
   outline: none;
   cursor: pointer;
-  text-align: left;
+  text-align: ${p=>p.lang==='ar'?'right':'left'};
 `;
 const List = styled.ul`
   padding: 0;
@@ -62,7 +61,7 @@ const CloseButton = styled(Button)`
   border: 1px solid black;
   padding: 0;
   position: absolute;
-  right: -27px;
+  ${p=>p.lang==='ar'?'left':'right'}: -27px;
   top: 27px;
 `;
 const OnboardedButton = styled(Button)`
@@ -78,27 +77,36 @@ const OnboardedButton = styled(Button)`
   padding: 10px 21px;
   position: absolute;
   bottom: -100px;
-  left: 50%;
-  transform: translate(-50%,0);
+  ${p=>p.lang==='ar'?'right':'left'}: 50%;
+  transform: ${p=>p.lang==='ar'?'translate(50%,0)':'translate(-50%,0)'};
 `;
 
 const ListItem = styled.li`
   list-style: none;
-  padding-right: 30px;
-  button { width: 100%; margin-right: 20px;}
+  text-align: ${p=>p.lang==='ar'?'right':'left'};
+  padding-${p=>p.lang==='ar'?'left':'right'}: 30px;
+  button { width: 100%; margin-${p=>p.lang==='ar'?'left':'right'}: 20px;}
   h2 {
     font-size: 20px;
   }
   button svg {
-    transform: ${props=>props.selected ? 'rotate(270deg)' : 'rotate(180deg)'};
     transition: transform 0.4s ease;
     width: 10px;
     display: inline-block;
     vertical-align: top;
-    margin: 3px 0 0 8px;
+    margin: 3px 0 0;
+    margin-${p=>p.lang==='ar'?'right':'left'}: 8px;
     * {
       fill: ${props=>props.selected ? 'black' : '#AFAFAF'};
     }
+
+    ${p=> {
+      if (p.lang==='ar') {
+        return `transform: ${p.selected ? 'rotate(270deg)' : 'rotate(360deg)'}`;
+      } else {
+        return `transform: ${p.selected ? 'rotate(270deg)' : 'rotate(180deg)'}`;
+      }
+    }};
   }
 `;
 
@@ -111,6 +119,9 @@ const HeaderArea = styled.div`
 
   color: white;
 `;
+const Arrow = styled(Isvg)`
+  // float: ${p=>p.lang==='ar'?'right':'left'};
+`
 const LogoArea = styled.div`
 
   svg, svg * {
@@ -154,36 +165,40 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
 
   render() {
     const PAGE_STRUCTURE = this.renderData();
+    const lang = this.props.intl.locale;
+    const about = PAGE_STRUCTURE==null? Map() :
+                    this.props.aboutData.get('about');
 
     return (
       <Container>
         <Viewport>
           <HeaderArea>
             <Overlay>
-              <CloseButton onClick={this.handleClose.bind(this)}>
+              <CloseButton lang={lang} onClick={this.handleClose.bind(this)}>
                 <Isvg src={CloseIcon}/>
               </CloseButton>
-              <OnboardedButton onClick={this.handleClose.bind(this)}>
-                <FormattedMessage {...messages.onboardedMessage} />
+              <OnboardedButton lang={lang} onClick={this.handleClose.bind(this)}>
+                {about.getIn(['modal','dismiss'])}
               </OnboardedButton>
               <LogoArea>
                 <Logo top={'20px'} left={'40px'} isReversed={true}/>
               </LogoArea>
               <SubTitle>
-                <FormattedMessage {...messages.welcomeMessage} />
+                {about.getIn(['modal','welcome'])}
               </SubTitle>
               <Spiel>
-                <FormattedMessage {...messages.welcomeSpiel} />
+                {about.getIn(['modal','introduction'])}
               </Spiel>
             </Overlay>
           </HeaderArea>
           <List >
-            { PAGE_STRUCTURE.map((item, index) => (
+            { (PAGE_STRUCTURE||[]).map((item, index) => (
 
-                <ListItem key={index} selected={this.state.chosen === index}>
-                  <Button onClick={() => this.handleClick(index)}><Header>
-                      {item.title}
-                      <Isvg src={ArrowIcon} />
+                <ListItem lang={lang} key={index} selected={this.state.chosen === index}>
+                  <Button lang={lang} onClick={() => this.handleClick(index)}>
+                      <Header lang={lang}>
+                        {item.title}
+                        <Arrow src={ArrowIcon} lang={lang}/>
                       </Header>
                     </Button>
                   <Content show={this.state.chosen === index}>
@@ -200,26 +215,29 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
   }
 
   renderData() {
+    if (this.props.aboutData.size == 0 || !this.props.aboutData || this.props.aboutData == undefined) return null;
+    const about = this.props.aboutData.get('about');
+    const misc = this.props.aboutData.getIn(['about', 'misc']);
     return [
       {
-        title: <FormattedMessage {...messages.toolbox} />,
+        title: misc.get('whats-inside'),
         content: <TheToolbox hideHeader={true}
                   whatsInside = { this.props.aboutData.getIn(['about','whats-inside', 'introduction']) }
                 />
       },
       {
-        title: <FormattedMessage {...messages.howDidWeMake} />,
+        title: misc.get('process'),
         content: <OurProcess hideHeader={true}
                     participants={this.props.aboutData.get('workshop-participants')}/>
       },
       {
-        title: <FormattedMessage {...messages.values} />,
+        title: misc.get('values'),
         content: <OurValues hideHeader={true}
             ourValues={this.props.aboutData.getIn(['about', 'values'])}
         />
       },
       {
-        title: <FormattedMessage {...messages.advisoryNetwork} />,
+        title: misc.get('advisory-network'),
         content: <OurAdvisoryNetwork
             hideHeader={true}
             advisoryNetwork = {this.props.advisoryBoard}
@@ -227,7 +245,7 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
         />
       },
       {
-        title: <FormattedMessage {...messages.team} />,
+        title: misc.get('team'),
         content: <OurTeam
             hideHeader={true}
             teamMembers={this.props.aboutData.getIn(['about', 'team-members'])}
@@ -235,21 +253,21 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
         />
       },
       {
-        title: <FormattedMessage {...messages.btaa} />,
+        title: misc.get('beautiful-trouble-and-action-aid'),
         content: <BeautifulTroubleAA
             hideHeader={true}
             allData={this.props.aboutData}
         />
       },
       {
-        title: <FormattedMessage {...messages.partners} />,
+        title: misc.get('partners'),
         content: <Partners
           hideHeader={true}
             networkPartners={this.props.aboutData.getIn(['about', 'network-partners'])}
         />
       },
       {
-        title: <FormattedMessage {...messages.faq} />,
+        title: misc.get('faq'),
         content: <FAQ
             hideHeader={true}
             questions={this.props.aboutData.getIn(['about', 'questions'])}
@@ -277,4 +295,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(OnboardingContent);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(OnboardingContent));

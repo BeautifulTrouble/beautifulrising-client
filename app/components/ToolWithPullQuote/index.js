@@ -7,13 +7,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import Markdown from 'react-remarkable';
-
+import { injectIntl } from 'react-intl';
 const Content = styled.div``;
 const Viewport = styled.div``;
 const PullQuote = styled.blockquote`
-  float: left;
+  float: ${p=>p.ar?'right':'left'};
   padding: 0;
-  margin: 10px 20px 10px 0;
+  margin: 10px 0 10px 0;
+  margin-${p=>p.ar?'left':'right'}: 20px;
   font-size: 22px;
   line-height: 30px;
   max-width: 45%;
@@ -29,16 +30,17 @@ const PullQuote = styled.blockquote`
     border-bottom: 2px solid;
     position: absolute;
     top: 0;
-    left: 0;
+    ${p=>p.ar?'right':'left'}: 0;
   }
 `;
 class ToolWithPullQuote extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   render() {
+    const {locale} = this.props.intl;
     const count = 2 + ((Math.random() * 100) % 2);
     let contents = this.props.content.map((item, ind) => { return (<Markdown key={ind} source={item} />) });
 
-    contents.splice(count, 0, (<PullQuote key={Math.random()}>"{this.props.pullQuote}"</PullQuote>));
+    contents.splice(count, 0, (<PullQuote ar={locale==='ar'} key={Math.random()}>"{this.props.pullQuote}"</PullQuote>));
 
     return (
       <Content>
@@ -54,4 +56,4 @@ ToolWithPullQuote.propTypes = {
 
 };
 
-export default ToolWithPullQuote;
+export default injectIntl(ToolWithPullQuote);

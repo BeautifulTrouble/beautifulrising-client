@@ -25,6 +25,7 @@ const FlagContainer = styled.div`
   position: absolute;
   ${props=>props.lang === 'ar' ? 'right' : 'left'}: -200px;
   top: 125px;
+  z-index: 1000;
 
   svg circle,
   svg line,
@@ -36,7 +37,7 @@ const FlagViewport = styled.div`
   position: relative;
   width: 264px;
   min-height: 100px;
-  overflow: visible;
+  overflow: hidden;
 `;
 const Flag = styled(Isvg)`
   position: absolute;
@@ -71,8 +72,8 @@ export class TypeFlag extends React.PureComponent {
     ];
     return (
       <FlagContainer lang={this.props.intl.locale} type={this.props.type} onMouseOver={this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)}>
+        <TypeFlagTooltip type={this.props.type} truths={truths} show={this.state.showTooltip} />
         <FlagViewport>
-          <TypeFlagTooltip type={this.props.type} truths={truths} show={this.state.showTooltip} />
           <Flag show={this.props.isTactic} src={oneTruth ? BigTacticFlag : TacticFlag} />
           <Flag show={this.props.isMethodology} src={oneTruth ? BigMethodologyFlag : MethodologyFlag} />
           <Flag show={this.props.isPrinciple} src={oneTruth ? BigPrincipleFlag : PrincipleFlag} />

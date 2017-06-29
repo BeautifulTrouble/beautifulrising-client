@@ -57,14 +57,14 @@ const Example = styled.div`
 
   z-index: 100;
   font-size: 12px;
-  width: 390px;
+  width: 342px;
   border: 2px solid black;
 
   ${props=> {
     if(props.pos % 2 == 1) {
       return `
       margin-top: -22px;
-      margin-left: 28px;
+      margin-left: 83px;
     `
 
     } else {

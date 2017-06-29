@@ -98,8 +98,7 @@ export const ToolsButton = styled.button`
 export const ToolsListMenu = styled.ul`
     padding: 0;
     padding: 10px 0 10px;
-    border: 2px solid;
-    border-width: 0 0 3px;
+    border-bottom: 2px solid black;
     margin: 0;
     display: ${props=>props.show?'block':'none'};
 
@@ -116,7 +115,8 @@ export const ToolsListMenuItem = styled.li`
 
 export const ToolType = styled.h3`
   margin: 0;
-  font-size: 22px;
+  font-size: ${p=>p.ar?'35px':'22px'};
+  letter-spacing: ${p=>p.ar?'3px':'0'};
   padding-top: 20px;
   font-family: 'Paint Hand', 'Massira Spray', serif;
   color: ${props => getToolTypeColor(props.type) }
@@ -127,7 +127,8 @@ export const ToolTitle = styled.h1`
   letter-spacing: 1px;
   font-weight: normal;
   margin: 0;
-  line-height: 1;
+  font-size: ${p=>p.ar?'30px':'22px'};
+  line-height: ${p=>p.ar?'40px':'1'};
   > a {
     color: ${props=>props.color || 'black'};
   }

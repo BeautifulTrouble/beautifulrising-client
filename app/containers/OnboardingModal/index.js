@@ -7,24 +7,27 @@
 import React from 'react';
 import Modal from 'react-modal';
 import Isvg from 'react-inlinesvg';
-
+import { injectIntl } from 'react-intl';
 import OnboardingContent from 'containers/OnboardingContent';
 import MenuIcon from 'assets/images/icons/menu.svg';
 import CloseIcon from 'assets/images/icons/close.svg';
 import styled from 'styled-components';
+import LanguageChanger from 'containers/LanguageChanger';
 
-const customStyles = {
+const customStyles = (lang) => { return {
   overlay: {
     backgroundColor: 'hsla(0,0%,58%,.75)',
     zIndex: 600,
     overflow: 'auto',
   },
   content : {
+    direction: `${lang==='ar' ? 'rtl':'ltr'}`,
+    textAlign: `${lang==='ar' ? 'right':'left'}`,
     top                   : '57px',
-    left                  : '50%',
-    right                 : 'auto',
+    left                  : `${lang==='ar' ? 'auto':'50%'}`,
+    right                 : `${lang==='ar' ? '50%':'auto'}`,
     bottom                : 'auto',
-    transform             : 'translate(-50%, 0)',
+    transform             : `${lang==='ar' ? 'translate(50%,0)':'translate(-50%,0)'}`,
     padding: '0',
     width: '1100px',
     // minHeight: '80vh',
@@ -33,13 +36,13 @@ const customStyles = {
     border: '2px solid',
     paddingBottom: '40px'
   }
-};
+}};
 
 const Button = styled.button`
   cursor: pointer;
   outline: none;
   position: absolute;
-  left: 10px;
+  ${p=>p.lang==='ar'?'right':'left'}: 10px;
   top: 10px;
 `;
 
@@ -54,7 +57,7 @@ const CloseBox = styled.div`{
   position: absolute;
   padding: 10px;
   top: 0;
-  left: 0;
+  ${p=>p.lang==='ar'?'right':'left'}: 0;
   width: 100%;
   border: 2px solid;
   background-color: white;
@@ -100,10 +103,15 @@ export class OnboardingModal extends React.Component {
     this.setState({modalIsOpen: false});
   }
 
+  renderLanguageChanger() {
+    return (<LanguageChanger zIndex={1000} />);
+  }
   render() {
+    const lang = this.props.intl.locale;
     return (
       <Viewport>
-        <Button onClick={this.openModal}>
+        {this.renderLanguageChanger()}
+        <Button lang={lang} onClick={this.openModal}>
           <Isvg src={MenuIcon} />
           <MenuText>MENU</MenuText>
         </Button>
@@ -111,7 +119,7 @@ export class OnboardingModal extends React.Component {
           isOpen={this.props.isOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
-          style={customStyles}
+          style={customStyles(lang)}
           contentLabel="Example Modal"
         >
             <OnboardingContent />
@@ -126,4 +134,4 @@ OnboardingModal.propTypes = {
 
 };
 
-export default OnboardingModal;
+export default injectIntl(OnboardingModal);

@@ -3,7 +3,7 @@ import KnockOut from 'assets/fonts/Knockout-HTF67-FullBantamwtMod.otf';
 import AvenirBlack from 'assets/fonts/Avenir-Black.ttf';
 import AvenirBook from 'assets/fonts/Avenir-Book.ttf';
 import PaintHand from 'assets/fonts/Paint-hand_fixed.ttf';
-import MassiraSpray from 'assets/fonts/Massira-Spray.woff';
+import MassiraSpray from 'assets/fonts/Massira-Spray-Small.woff';
 import KaffRegular from 'assets/fonts/Kaff-Regular.woff';
 import KaffBold from 'assets/fonts/Kaff-Bold.woff';
 
@@ -116,5 +116,6 @@ injectGlobal`
 
   .ReactModal__Body--open {
     overflow-y: hidden;
+    overflow: hidden;
   }
 `;

@@ -33,7 +33,7 @@ const Subtitle = styled.h2`
   letter-spacing: 0;
   border-bottom: 2px solid;
   padding-bottom: 20px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   margin-left: 30px;
   margin-right: 30px;
 `;
@@ -41,7 +41,7 @@ const Subsubtitle = styled.h3`
   font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
   font-size: 18px;
   letter-spacing: 0;
-  margin-top: 60px;
+  margin-top: 30px;
 `;
 
 const Content = styled.div`

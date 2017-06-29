@@ -24,8 +24,8 @@ export const SelectedToolItem = styled.div`
 export const SelectedToolTitle = styled.h3`
   margin: 20px 0 0;
   padding: 0;
-  line-height: 1;
-  font-size: 32px;
+  line-height: 30px;
+  font-size: 30px;
   position: relative;
   a {
     color: black;

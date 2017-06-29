@@ -17,7 +17,7 @@ import messages from './messages';
 
 const customStyles = {
   overlay: {
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(149, 149, 149, 0.75)',
     zIndex: 600
   },
   content : {

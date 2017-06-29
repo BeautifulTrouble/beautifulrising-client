@@ -43,6 +43,8 @@ const SnapshotCallout = styled.div`
   font-weight: bold;
   color: black;
   margin-bottom: 5px;
+  font-size: 14px;
+  line-height: 22px;
 `;
 const Link = styled.a`
     color: #838486;

@@ -26,6 +26,9 @@ const Content = styled.div`
   font-size: 14px;
   line-height: 22px
 
+  div, div *, * {
+    text-align: ${props=>props.lang==='ar' ? 'right' : 'left'};
+  }
   img {
     width: 100%;
   }
@@ -34,7 +37,7 @@ const Content = styled.div`
   }
 `;
 
-function ToolTextSection(props) {
+function ToolWhyItWorked(props) {
   if (!props.text) return null;
 
   return (
@@ -49,8 +52,8 @@ function ToolTextSection(props) {
   );
 }
 
-ToolTextSection.propTypes = {
+ToolWhyItWorked.propTypes = {
 
 };
 
-export default injectIntl(ToolTextSection);
+export default injectIntl(ToolWhyItWorked);

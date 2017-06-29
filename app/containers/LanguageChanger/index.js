@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { changeLocale, loadLanguage } from 'containers/LanguageProvider/actions';
 import { createStructuredSelector } from 'reselect';
 import styled from 'styled-components';
-
+import { injectIntl } from 'react-intl';
 import { makeSelectLanguage } from 'containers/App/selectors';
 import { loadData, langChangeReloadData } from '../App/actions';
 
@@ -18,7 +18,7 @@ const Container = styled.div`
   position: fixed;
   ${props=>props.lang==='ar'?'left: 50%': 'right:50%'}
   top: 10px;
-  z-index: 500;
+  z-index: ${p=>p.zIndex?p.zIndex:500};
   transform: ${props=>props.lang==='ar'?'translate(-530px,0)':'translate(530px,0)'};
 `;
 const Viewport = styled.div``;
@@ -46,16 +46,16 @@ const Item = styled.li`
 
 export class LanguageChanger extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   handleClick(e) {
-    if (this.props.language !== e.target.value) {
+    if (this.props.intl.locale !== e.target.value) {
       this.props.handleChangeLocale(e.target.value);
       this.props.handleChangeLocationSignal();
     }
   }
 
   render() {
-    const lang = this.props.language;
+    const lang = this.props.intl.locale;
     return (
-      <Container lang={lang}>
+      <Container lang={lang} zIndex={this.props.zIndex}>
         <Viewport lang={lang}>
           <List>
             <Item lang={lang}>
@@ -100,4 +100,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LanguageChanger);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(LanguageChanger));
