@@ -18,7 +18,7 @@ const Container = styled.div`
   border: 2px solid;
   font-weight: bold;
   bottom: 110px;
-  padding: 3px;
+  padding: 12px 8px 3px;
   display: ${props=>props.show?'block':'none'};
   // display: block;
   background-color: white;
@@ -68,6 +68,7 @@ const Item = styled.li`
 
   &:last-child {
     padding-${p=>p.lang==='ar'?'left':'right'}: 0px;
+    padding-${p=>p.lang==='ar'?'right':'left'}: 5px;
     &::after { content: ''; }
   }
 `;
