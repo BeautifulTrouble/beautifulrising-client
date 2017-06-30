@@ -5,7 +5,7 @@
  */
 
 import React, { PropTypes } from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { Link } from 'react-router';
 import Isvg from 'react-inlinesvg';
 import TwitterIcon from 'assets/images/icons/twitter.svg';
@@ -31,9 +31,14 @@ const EmailLink = styled(MenuLink)`
   font-weight: none;
 `;
 
+const SubscribeCTA = styled.p`
+  font-size: ${p=>p.theme.ar?'13px':'14px'};
+  line-height: ${p=>p.theme.ar?'24px':'22px'};
+`;
 const FormContainer = styled.div`
   border: 1px solid;
-  font-size: 14px;
+  font-size: ${p=>p.theme.ar?'13px':'14px'};
+  line-height: ${p=>p.theme.ar?'24px':'22px'};
   padding: 8px;
   &::after {
     content: '';
@@ -100,27 +105,30 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
     )
   }
   render() {
+    const { locale } = this.props.intl;
     return (
-      <MenuBlock>
-        <MenuTitle>
-          <FormattedMessage {...messages.header} />
-        </MenuTitle>
-        <EmailLink to='mailto:info@beautifulrising.org'>info@beautifulrising.org</EmailLink>
-        <div>
-          <SocialLink to='https://twitter.com/beautrising' target='_blank'>
-            <Isvg src={TwitterIcon} />
-          </SocialLink>
-          <SocialLink to='https://facebook.com/beautifulrising' target='_blank'>
-            <Isvg src={FacebookIcon} />
-          </SocialLink>
-          <p>
-            <FormattedMessage {...messages.subscribe} />
-          </p>
-        </div>
+      <ThemeProvider theme={{ar: locale==='ar', lang: locale }}>
+        <MenuBlock>
+          <MenuTitle>
+            <FormattedMessage {...messages.header} />
+          </MenuTitle>
+          <EmailLink to='mailto:info@beautifulrising.org'>info@beautifulrising.org</EmailLink>
+          <div>
+            <SocialLink to='https://twitter.com/beautrising' target='_blank'>
+              <Isvg src={TwitterIcon} />
+            </SocialLink>
+            <SocialLink to='https://facebook.com/beautifulrising' target='_blank'>
+              <Isvg src={FacebookIcon} />
+            </SocialLink>
+            <SubscribeCTA>
+              <FormattedMessage {...messages.subscribe} />
+            </SubscribeCTA>
+          </div>
 
-          { !this.props.ContactUs.complete ? this.renderForm() : this.renderResponse() }
+            { !this.props.ContactUs.complete ? this.renderForm() : this.renderResponse() }
 
-      </MenuBlock>
+        </MenuBlock>
+      </ThemeProvider>
     );
   }
 }
