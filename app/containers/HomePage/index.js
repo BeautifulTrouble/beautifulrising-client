@@ -189,7 +189,15 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
         <Stage lang={lang}>
           {this.getSearchResultsHeader()}
           <ToolList>
-            { this.props.sorted ? this.props.sorted.map((tool, index) => { return (<ListItem position={this.randomizePosition(tool)} lang={this.props.language} key={tool['_id']} {...tool}/>) }) : null }
+            { this.props.sorted ?
+                this.props.sorted.map((tool, index) => {
+                  return (
+                    <ListItem
+                          position={this.randomizePosition(tool)}
+                          lang={this.props.language} {...tool}
+                          key={tool['slug'] + '--' + tool['_id']}
+                          />)
+                }) : null }
           </ToolList>
         </Stage>
       </Container>

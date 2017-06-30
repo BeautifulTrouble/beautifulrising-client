@@ -55,7 +55,7 @@ const Flag = styled(Isvg)`
 function TypeOverlay(props) {
 
   const getTypeImage = (type) => {
-    console.log(type);
+    
     switch(type) {
       case 'tactic': return BigTacticFlag;
       case 'methodology': return BigMethodologyFlag;
@@ -64,7 +64,7 @@ function TypeOverlay(props) {
     }
   }
   //iF there's only one truth here, we show big flag.
-  console.log(getTypeImage(props.type));
+  
   return (
     <FlagContainer type={props.type}>
       <FlagViewport bgimage={getTypeImage(props.type)}></FlagViewport>
