@@ -57,7 +57,7 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
 
     return (
       <ThemeProvider theme={theme}>
-        <Page lang={this.props.intl.locale} >
+        <Page>
           <OnboardingModal isOpen={!this.props.isOnboarded} />
           <LanguageChanger />
           <Header lang={this.props.language} />

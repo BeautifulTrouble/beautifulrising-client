@@ -21,8 +21,9 @@ const Content = styled.div``;
 const TableMenu = styled.table`border: 0;`;
 const Row = styled.tr``;
 const Column = styled.td`
-  font-size: 14px; padding: 10px;
+  padding: 10px;
   line-height: 22px;
+  font-size: 14px; 
   a {
     color: #828486;
     em { font-style: italic; }
