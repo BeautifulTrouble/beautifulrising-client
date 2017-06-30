@@ -29,10 +29,10 @@ export function* initializeBRStaticText() {
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
   let staticTextHandler = yield select(getStaticTextHandler);
-  console.log("Calling checking Static Text");
+  
   // If staticText is null, load staticText onthe fly
   if (!staticTextHandler.get('staticText')) {
-    console.log("Static Text is null")
+    
     yield put(loadStaticText());
   }
 }
@@ -40,13 +40,13 @@ export function* initializeBRStaticText() {
 export function* listenForLanguageChange() {
   let language = yield select(getLanguage);
   const chosenLanguage = language !== undefined ? language.get('locale') : 'en';
-  console.log("Watcher creating!");
+  
   const watcher = yield takeLatest(LOAD_STATIC_TEXT, getStaticText, chosenLanguage);
 
-  console.log("Watching watcher!");
+  
   yield take(CHANGE_LOCALE);
 
-  console.log("Watching watcher!");
+  
   yield cancel(watcher);
 }
 

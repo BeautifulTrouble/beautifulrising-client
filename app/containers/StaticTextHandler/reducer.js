@@ -20,18 +20,18 @@ const initialState = fromJS({
 function staticTextHandlerReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_STATIC_TEXT:
-      console.log(state, action);
+      
       return state
               .set('loading', true)
               .set('error', false);
     case LOAD_STATIC_TEXT_SUCCESS:
-      console.log(state, action);
+      
       return state
               .set('staticText', action)
               .set('loading', false)
               .set('error', false);
     case LOAD_STATIC_TEXT_ERROR:
-      console.log(state, action);
+      
       return state
               .set('error', true)
               .set('loading', false);
