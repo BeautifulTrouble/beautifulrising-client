@@ -57,7 +57,7 @@ export const TextButton = styled.span`
   color: ${(props) => props.selected ? '#000000' : '#b3b3b3'};
   text-decoration: ${props => props.selected ? 'none' : 'underline'};
   font-weight: 600;
-  font-family: ${props => props.selected ? 'Avenir Black': 'Avenir'};
+  font-family: ${props => props.selected ? 'Avenir Black, Kaff Bold': 'Avenir, Kaff'};
   text-transform: uppercase;
   font-size: ${p=>p.ar?'13px':'14px'};
   line-height: ${p=>p.ar?'24px':'22px'};
