@@ -41,6 +41,13 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    //Refresh if label is different
+    if (nextProps.params.label !== this.props.params.label) {
+      this.setState({ showFull: false });
+    }
+  }
+
   handleShowClick() {
     this.setState({ showFull : !this.state.showFull })
   }
