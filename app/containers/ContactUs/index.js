@@ -12,7 +12,7 @@ import TwitterIcon from 'assets/images/icons/twitter.svg';
 import FacebookIcon from 'assets/images/icons/facebook.svg';
 
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import makeSelectContactUs from './selectors';
 import messages from './messages';
@@ -35,15 +35,24 @@ const FormContainer = styled.div`
   border: 1px solid;
   font-size: 14px;
   padding: 8px;
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
 
   input[type=email] {
     width: calc(100% - 70px);
     outline: none;
     padding: 2px;
+    float: ${p=>p.ar?'right':'left'};
+    text-align: ${p=>p.ar?'right':'left'};
   }
   button {
     outline: none;
     width: 70px;
+    text-align: ${p=>p.ar?'left':'right'};
+    float: ${p=>p.ar?'right':'left'};
     text-transform: uppercase;
     text-decoration: underline;
     font-weight: bold;
@@ -51,6 +60,8 @@ const FormContainer = styled.div`
   }
 `;
 
+const InputEmail = styled.input``;
+const SubmitButton = styled.button``;
 export class ContactUs extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
@@ -67,12 +78,14 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
     this.props.onSubmitForm(evt, this.state.email);
   }
   renderForm() {
+    const {locale} = this.props.intl;
     return (
-      <FormContainer>
+      <FormContainer ar={locale==='ar'}>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <input type='email' name='email' onChange={this.handleChange.bind(this)} placeholder='samir@gmail.com'/><button>
+          <InputEmail type='email' name='email' onChange={this.handleChange.bind(this)} placeholder='samir@gmail.com'/>
+          <SubmitButton>
             <FormattedMessage {...messages.submit} />
-          </button>
+          </SubmitButton>
         </form>
       </FormContainer>
 
@@ -130,4 +143,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactUs);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(ContactUs));

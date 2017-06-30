@@ -25,7 +25,6 @@ const FlagContainer = styled.div`
   position: absolute;
   ${props=>props.lang === 'ar' ? 'right' : 'left'}: -200px;
   top: 125px;
-  z-index: 1000;
 
   svg circle,
   svg line,
