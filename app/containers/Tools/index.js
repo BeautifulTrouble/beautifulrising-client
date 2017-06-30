@@ -6,7 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 
 import makeSelectTools, {makeSelectLanguage} from './selectors';
@@ -40,6 +40,8 @@ height: 100%;
 `;
 
 const ToolsViewType = styled(ToolsButton)`
+  font-size: ${p=>p.ar?'13px':'14px'};
+  line-height: ${p=>p.ar?'24px':'22px'};
   color: ${props=>props.chosen&&props.toShow ? 'black' : '#AFAFAF' };
   svg, svg * {
     fill: ${props=>props.chosen&&props.toShow ? 'black' : '#AFAFAF' };
@@ -90,7 +92,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
   }
 
   componentWillReceiveProps(nextProps) {
-    // 
+    //
     if(Object.keys(this.props.Tools.selectedTools).length === 0
         && Object.keys(nextProps.Tools.selectedTools).length === 1
     ) {
@@ -103,6 +105,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
   }
 
   render() {
+    const {locale} = this.props.intl;
 
     return (
       <ThemeProvider theme={{ lang: this.props.language }} >
@@ -121,6 +124,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
                 </ToolsMenuItem>
                 <ToolsMenuItem>
                   <ToolsViewType
+                    ar={locale==='ar'}
                     onClick={() => this.onToggleClick(NEWS_FEED)}
                     chosen={this.props.Tools.viewType === NEWS_FEED}
                     toShow={this.props.Tools.show}
@@ -131,6 +135,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
                 </ToolsMenuItem>
                 <ToolsMenuItem>
                   <MyToolsButton
+                      ar={locale==='ar'}
                       onClick={() => this.onToggleClick(MY_TOOLS)}
                       chosen={this.props.Tools.viewType === MY_TOOLS}
                       toShow={this.props.Tools.show || this.props.Tools.onboardShow}
@@ -171,4 +176,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Tools);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(Tools));
