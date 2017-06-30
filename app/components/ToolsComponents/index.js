@@ -127,7 +127,7 @@ export const ToolTitle = styled.h1`
   letter-spacing: 1px;
   font-weight: normal;
   margin: 0;
-  font-size: ${p=>p.ar?'30px':'22px'};
+  font-size: ${p=>p.ar?'30px':'30px'};
   line-height: ${p=>p.ar?'40px':'1'};
   > a {
     color: ${props=>props.color || 'black'};
