@@ -16,6 +16,7 @@ export function loadStaticText() {
 }
 
 export function staticTextLoaded(data) {
+  console.log(data);
   return {
     type: LOAD_STATIC_TEXT_SUCCESS,
     data
