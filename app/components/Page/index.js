@@ -16,10 +16,6 @@ export default styled.section`
   ${p=> {
     if (p.lang === 'ar') {
       return `
-        span,p {
-          font-size: 13px;
-          line-height: 24px;
-        }
       `;
     }
   }}
