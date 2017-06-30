@@ -53,12 +53,12 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
             ]}
           />
           <ToolHeader>
-            <ToolPageHeader {...tool} />
+            <ToolPageHeader {...tool} key={'header'}/>
           </ToolHeader>
           <ToolInformation>
-            <ToolPageLeft {...tool} />
-            <ToolPageMain {...tool} />
-            <ToolPageRight {...tool} />
+            <ToolPageLeft {...tool} key={'page-left'}/>
+            <ToolPageMain {...tool} key={'page-main'}/>
+            <ToolPageRight {...tool} key={'page-right'}/>
           </ToolInformation>
         </div>
       </ThemeProvider>
