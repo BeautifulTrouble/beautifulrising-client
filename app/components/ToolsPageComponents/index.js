@@ -209,7 +209,13 @@ export const ToolReadContent = styled.div`
   }
 `;
 export const ToolReadShortContent = styled(ToolReadContent)``;
-export const ToolReadFullContent = styled(ToolReadContent)``;
+export const ToolReadFullContent = styled(ToolReadContent)`
+&::after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+`;
 
 export const LearnMoreList = styled.ul`padding: 0; margin: 0;`;
 export const LearnMoreItem = styled.li`

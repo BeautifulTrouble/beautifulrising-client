@@ -7,11 +7,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import Markdown from 'react-remarkable';
+import { injectIntl } from 'react-intl';
 
 const Container = styled.section`text-align: left;`;
 const Viewport = styled.div``;
 const Content = styled.div`
   padding-left: 15px;
+  text-align: ${p=>p.ar?'right':'left'};
   & p:last-child {
     color: gray;
   }
@@ -20,8 +22,9 @@ const Content = styled.div`
 class ToolEpigraph extends React.Component {
 
   renderEpigraph(item) {
+    const {locale} = this.props.intl;
     return(
-      <Content key={item}>
+      <Content key={item} ar={locale === 'ar'}>
         <Markdown source={item}/>
       </Content>
     )
@@ -43,4 +46,4 @@ ToolEpigraph.propTypes = {
 
 };
 
-export default ToolEpigraph;
+export default injectIntl(ToolEpigraph);
