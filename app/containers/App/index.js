@@ -15,6 +15,7 @@ import React from 'react';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
+import { injectIntl } from 'react-intl';
 import Page from 'components/Page';
 import Header from 'containers/Header';
 import Body from 'components/Body';
@@ -56,7 +57,7 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
 
     return (
       <ThemeProvider theme={theme}>
-        <Page lang={this.props.language} >
+        <Page lang={this.props.intl.locale} >
           <OnboardingModal isOpen={!this.props.isOnboarded} />
           <LanguageChanger />
           <Header lang={this.props.language} />
@@ -89,4 +90,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(App));

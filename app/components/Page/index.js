@@ -12,4 +12,15 @@ export default styled.section`
   text-align: center;
   position: relative;
   direction: ${props=>props.lang==='ar'?'rtl': 'ltr'};
+
+  ${p=> {
+    if (p.lang === 'ar') {
+      return `
+        span,p {
+          font-size: 13px;
+          line-height: 24px;
+        }
+      `;
+    }
+  }}
 `;
