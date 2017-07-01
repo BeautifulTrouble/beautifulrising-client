@@ -51,9 +51,9 @@ class ToolKeyItems extends React.PureComponent { // eslint-disable-line react/pr
             try {
               const [header, content] = item;
               return (<KeyItemListItem key={ind} >
-                        <TypeSubheader type={type}>
+                        {ind>0?null:<TypeSubheader type={type}>
                           <FormattedMessage {...messages[type]} />
-                        </TypeSubheader>
+                        </TypeSubheader>}
                         <Header>{header}</Header>
                         <Content>
                           <Markdown source={content} />
