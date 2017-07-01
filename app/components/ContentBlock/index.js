@@ -23,7 +23,6 @@ const ArabicContentTheme = `
 `;
 
 export default styled.div`
-  ${p=>{ console.log(p, p.theme); }}
   ${p=>p.theme.isArabic ?
       ArabicContentTheme :
       LatinContentTheme
