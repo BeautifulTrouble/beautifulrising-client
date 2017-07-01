@@ -25,12 +25,14 @@ injectGlobal`
   }
 
   @font-face {
-    font-family: 'Avenir Book';
+    font-family: 'Avenir';
+    font-weight: 400;
     src: url(${AvenirBook});
   }
 
   @font-face {
-    font-family: 'Avenir Black';
+    font-family: 'Avenir';
+    font-weight: 800;
     src: url(${AvenirBlack});
   }
 
@@ -45,8 +47,9 @@ injectGlobal`
   }
 
   @font-face {
-    font-family: 'Kaff Bold';
+    font-family: 'Kaff';
     font-weight: bold;
+    font-weight: 800;
     font-style: normal;
     src: url(${KaffBold});
   }
@@ -73,7 +76,7 @@ injectGlobal`
     color: #828486;
     em { font-style: italic; }
   }
-  body,p,input,textarea {
+  body,p, input,textarea {
     font-family: 'Avenir', 'Kaff', Helvetica, Arial, sans-serif;
   }
   h1,h2,h3,h4,h5 {

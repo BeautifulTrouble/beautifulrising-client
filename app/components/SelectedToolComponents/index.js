@@ -39,10 +39,9 @@ export const SelectedToolTitle = styled.h3`
   }
 
 `;
-export const SelectedToolSnapshot = styled.p`
-font-size: 14px;
-line-height: 22px;
+export const SelectedToolSnapshot = styled.div`
 margin: 0 0 10px ;`;
+
 export const SelectedToolCommands = styled.ul`margin: 0; padding: 0`;
 export const SelectedToolCommandItem = styled.li`
   display: inline-block;
@@ -50,7 +49,6 @@ export const SelectedToolCommandItem = styled.li`
   text-align: ${p=>p.lang==='ar'?'right':'left'};
   text-transform: uppercase;
   button { text-transform: uppercase; font-weight: bold; }
-  font-size: 14px;
   color: #959595;
   svg * {
     fill: #959595;

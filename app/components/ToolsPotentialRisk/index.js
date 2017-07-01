@@ -10,6 +10,9 @@ import PotentialRiskIconImage from 'assets/images/icons/potential-risk.svg';
 import { PotentialRiskIcon } from 'components/ToolsComponents';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+
 import Markdown from 'react-remarkable';
 import messages from './messages';
 
@@ -39,32 +42,24 @@ const Header = styled.h3`
   border-bottom: 5px solid;
   padding-bottom: 0;
 `;
-const Content = styled.div`
-  font-size: 14px;
-  line-height: 22px;
-
-  a {
-    color: #828486;
-  }
-`;
 
 function ToolsPotentialRisk(props) {
   if (!props.content || props.content.trim().length == 0) return null;
   const lang = props.intl.locale;
   return (
-    <ThemeProvider theme={{ lang: lang }}>
+    <LanguageThemeProvider>
       <Container>
         <Viewport>
           <Header >
             <PotentialRiskIcon src={PotentialRiskIconImage} lang={lang} type={props.type} />
             <HeaderName><FormattedMessage {...messages.potentialRiskHeader} /></HeaderName>
           </Header>
-          <Content>
+          <ContentBlock>
             <Markdown source={props.content} />
-          </Content>
+          </ContentBlock>
         </Viewport>
       </Container>
-    </ThemeProvider>
+    </LanguageThemeProvider>
   );
 }
 

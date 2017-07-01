@@ -9,6 +9,10 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { makeSelectAllTags } from 'containers/App/selectors';
+
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+
 import MenuBlock from 'components/MenuBlock';
 import MenuTitle from 'components/MenuTitle';
 import MenuList from 'components/MenuList';
@@ -25,7 +29,12 @@ import styled from 'styled-components';
 const TagBlock = styled.div`
   text-align: ${props=>props.align || 'center'}`
 ;
-const TagList = styled.ul`margin: 0; padding: 0; line-height: 1.2; margin-top: 12px;`;
+const TagList = styled.ul`
+  margin: 0;
+  padding: 0;
+  margin-top: 12px;
+  text-align: center;
+`;
 const TagListItem = styled.li`
   display: inline;
   vertical-align: middle;
@@ -39,10 +48,6 @@ const TagListItem = styled.li`
       return `font-family: ${p.selected ? 'Avenir Black' : 'Avenir'};`;
     }
   }}
-
-
-  font-size: ${p=>p.ar?'13px':'12px'};
-  line-height: ${p=>p.ar?'24px':'18px'};
   * { vertical-align: middle; }
   span {
     font-family: 'Avenir Black', 'Kaff Bold';
@@ -55,8 +60,6 @@ const TagListItem = styled.li`
 `;
 
 const TagLink = styled(Link)`
-  font-size: 14px;
-  line-height: 22px;
   vertical-align: middle;
 `;
 
@@ -70,16 +73,20 @@ export class Tags extends React.PureComponent { // eslint-disable-line react/pre
     const selected = this.props.params ? this.props.params.label : '';
     const { locale } = this.props.intl;
     return (
-      <TagBlock align={this.props.align}>
-        <TagList>
-          {this.props.tags.map((item) => (
-            <TagListItem ar={locale==='ar'} key={item.key} selected={item.key===selected}>
-              <TagLink to={`/tag/${item.key}`}>{item.value}</TagLink>
-              <TagDivider />
-            </TagListItem>
-          ))}
-        </TagList>
-      </TagBlock>
+      <LanguageThemeProvider>
+        <TagBlock align={this.props.align}>
+          <ContentBlock>
+            <TagList>
+              {this.props.tags.map((item) => (
+                <TagListItem ar={locale==='ar'} key={item.key} selected={item.key===selected}>
+                  <TagLink to={`/tag/${item.key}`}>{item.value}</TagLink>
+                  <TagDivider />
+                </TagListItem>
+              ))}
+            </TagList>
+          </ContentBlock>
+        </TagBlock>
+      </LanguageThemeProvider>
     );
   }
 }

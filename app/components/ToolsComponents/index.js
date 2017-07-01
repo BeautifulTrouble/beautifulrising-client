@@ -68,7 +68,7 @@ export const PotentialRiskIcon = styled(Isvg)`
 export const ToolsButton = styled.button`
   outline: none;
   cursor: pointer;
-  color:${props => props.color};
+  ${p => p.color ? `color: ${p.color};` : ''}
   font-weight: bold;
   padding: 0;
   img { margin-right: 10px;}
@@ -86,8 +86,6 @@ export const ToolsButton = styled.button`
   transition:  transform 0.4s ease;
 
   text-transform: uppercase;
-  font-size: 14px;
-  line-height: 22px;
 
   svg, svg * {
     fill: ${props=>props.color ? props.color : (props.toShow ? 'black' : '#828486')};
@@ -119,7 +117,7 @@ export const ToolType = styled.h3`
   letter-spacing: ${p=>p.ar?'3px':'0'};
   padding-top: 20px;
   font-family: 'Paint Hand', 'Massira Spray', serif;
-  color: ${props => getToolTypeColor(props.type) }
+  color: ${props => getToolTypeColor(props.type) };
 `;
 
 export const ToolTitle = styled.h1`

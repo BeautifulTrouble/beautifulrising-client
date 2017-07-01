@@ -14,6 +14,9 @@ import CloseIcon from 'assets/images/icons/close.svg'
 import { createStructuredSelector } from 'reselect';
 import { Map } from 'immutable';
 import { connect } from 'react-redux';
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+
 import TheToolbox from 'components/AboutPageComponents/TheToolbox';
 import Partners from 'components/AboutPageComponents/Partners';
 import OurValues from 'components/AboutPageComponents/OurValues';
@@ -132,8 +135,6 @@ const SubTitle = styled.h2`
 `;
 const Spiel = styled.div`
   width: 42%;
-  font-size: 14px;
-  line-height: 22px;
 `;
 const Overlay = styled.div`
   width: 100%;
@@ -169,47 +170,51 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
                     this.props.aboutData.get('about');
 
     return (
-      <Container>
-        <Viewport>
-          <HeaderArea>
-            <Overlay>
-              <CloseButton lang={lang} onClick={this.handleClose.bind(this)}>
-                <Isvg src={CloseIcon}/>
-              </CloseButton>
-              <OnboardedButton lang={lang} onClick={this.handleClose.bind(this)}>
-                {about.getIn(['modal','dismiss'])}
-              </OnboardedButton>
-              <LogoArea>
-                <Logo top={'20px'} left={'40px'} isReversed={true}/>
-              </LogoArea>
-              <SubTitle>
-                {about.getIn(['modal','welcome'])}
-              </SubTitle>
-              <Spiel>
-                {about.getIn(['modal','introduction'])}
-              </Spiel>
-            </Overlay>
-          </HeaderArea>
-          <List >
-            { (PAGE_STRUCTURE||[]).map((item, index) => (
+      <LanguageThemeProvider>
+        <Container>
+          <Viewport>
+            <HeaderArea>
+              <Overlay>
+                <CloseButton lang={lang} onClick={this.handleClose.bind(this)}>
+                  <Isvg src={CloseIcon}/>
+                </CloseButton>
+                <OnboardedButton lang={lang} onClick={this.handleClose.bind(this)}>
+                  {about.getIn(['modal','dismiss'])}
+                </OnboardedButton>
+                <LogoArea>
+                  <Logo top={'20px'} left={'40px'} isReversed={true}/>
+                </LogoArea>
+                <SubTitle>
+                  {about.getIn(['modal','welcome'])}
+                </SubTitle>
+                <Spiel>
+                  <ContentBlock>
+                    {about.getIn(['modal','introduction'])}
+                  </ContentBlock>
+                </Spiel>
+              </Overlay>
+            </HeaderArea>
+            <List >
+              { (PAGE_STRUCTURE||[]).map((item, index) => (
 
-                <ListItem lang={lang} key={index} selected={this.state.chosen === index}>
-                  <Button lang={lang} onClick={() => this.handleClick(index)}>
-                      <Header lang={lang}>
-                        {item.title}
-                        <Arrow src={ArrowIcon} lang={lang}/>
-                      </Header>
-                    </Button>
-                  <Content show={this.state.chosen === index}>
-                    {item.content}
-                  </Content>
-                </ListItem>
-            ))
+                  <ListItem lang={lang} key={index} selected={this.state.chosen === index}>
+                    <Button lang={lang} onClick={() => this.handleClick(index)}>
+                        <Header lang={lang}>
+                          {item.title}
+                          <Arrow src={ArrowIcon} lang={lang}/>
+                        </Header>
+                      </Button>
+                    <Content show={this.state.chosen === index}>
+                      {item.content}
+                    </Content>
+                  </ListItem>
+              ))
 
-            }
-          </List>
-        </Viewport>
-      </Container>
+              }
+            </List>
+          </Viewport>
+        </Container>
+      </LanguageThemeProvider>
     );
   }
 

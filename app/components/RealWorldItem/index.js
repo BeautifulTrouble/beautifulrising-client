@@ -8,6 +8,8 @@ import React, {PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 // positions;
 const TOP = [0,2];
 const BOTTOM = [1,3];
@@ -83,7 +85,7 @@ const Example = styled.div`
   // left: ${props=>LEFT.includes(props.pos) ? '-10px' : 'auto' };
   // right: ${props=>RIGHT.includes(props.pos) ? '-10px' : 'auto' };
 `;
-const ExampleTitle = styled.h3`
+const ExampleTitle = styled.h5`
   line-height: 1;
   margin: 0;
   padding: 0;
@@ -118,21 +120,25 @@ class RealWorldItem extends React.PureComponent {
   }
   render() {
     return (
-      <RealWorldItemContainer>
-        <ImageBackgroundTop type={this.props.type} image={this.props.image} pos={this.props.pos}/>
-          <Example ref={'example'} pos={this.props.pos}>
-            <ExampleTitle>
-              <a href={this.props.link} target='_blank'>
-                {this.props.title}
-              </a>
-            </ExampleTitle>
-            <ExampleDescription>
-              {this.props.description}
-            </ExampleDescription>
-          </Example>
-        <ImageBackgroundBottom type={this.props.type} image={this.props.image}
-              pos={this.props.pos} marginTop={this.state.exampleHeight}/>
-      </RealWorldItemContainer>
+      <LanguageThemeProvider>
+        <RealWorldItemContainer>
+          <ImageBackgroundTop type={this.props.type} image={this.props.image} pos={this.props.pos}/>
+            <Example ref={'example'} pos={this.props.pos}>
+              <ExampleTitle>
+                <a href={this.props.link} target='_blank'>
+                  {this.props.title}
+                </a>
+              </ExampleTitle>
+              <ExampleDescription>
+                <ContentBlock>
+                  {this.props.description}
+                </ContentBlock>
+              </ExampleDescription>
+            </Example>
+          <ImageBackgroundBottom type={this.props.type} image={this.props.image}
+                pos={this.props.pos} marginTop={this.state.exampleHeight}/>
+        </RealWorldItemContainer>
+      </LanguageThemeProvider>
     );
   }
 

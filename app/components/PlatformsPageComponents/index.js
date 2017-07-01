@@ -9,6 +9,9 @@ import styled from 'styled-components';
 
 import { FormattedMessage, injectIntl } from 'react-intl';
 import VisibilitySensor from 'react-visibility-sensor';
+
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import messages from './messages';
 import Markdown from 'react-remarkable';
 import Isvg from 'react-inlinesvg';
@@ -88,10 +91,6 @@ const CTA = styled.div`
   a { color: #828486; }
 `;
 
-const ContentArea = styled.div`
-  font-size: 14px;
-  line-height: 22px;
-`;
 
 export const PlatformsSection = styled.div`
 font-size: 24px;
@@ -102,44 +101,46 @@ class PlatformsPageComponents extends React.Component {
     if (!this.props.content || this.props.content === undefined) return null;
     const lang = this.props.intl.locale;
     return (
-      <Container lang={lang}>
-        <Viewport>
-          <IconContainer lang={lang}>
-            <Isvg src={this.props.icon} />
-          </IconContainer>
-          <TextContent lang={lang}>
-            <Content>
-              <Title lang={lang}>
-                {this.props.content.get('title')}
-              </Title>
-              <Subtitle>
-                {this.props.content.get('introduction')}
-              </Subtitle>
+      <LanguageThemeProvider>
+        <Container lang={lang}>
+          <Viewport>
+            <IconContainer lang={lang}>
+              <Isvg src={this.props.icon} />
+            </IconContainer>
+            <TextContent lang={lang}>
+              <Content>
+                <Title lang={lang}>
+                  {this.props.content.get('title')}
+                </Title>
+                <Subtitle>
+                  {this.props.content.get('introduction')}
+                </Subtitle>
 
-              <Subtitle>
-                <FormattedMessage {...messages.what} />
-              </Subtitle>
-              <ContentArea>
-                <Markdown source={this.props.content.get('what')} />
-              </ContentArea>
+                <Subtitle>
+                  <FormattedMessage {...messages.what} />
+                </Subtitle>
+                <ContentBlock>
+                  <Markdown source={this.props.content.get('what')} />
+                </ContentBlock>
 
-              <Subtitle>
-                <FormattedMessage {...messages.how} />
-              </Subtitle>
-              <ContentArea>
-                <Markdown source={this.props.content.get('how')} />
-              </ContentArea>
+                <Subtitle>
+                  <FormattedMessage {...messages.how} />
+                </Subtitle>
+                <ContentBlock>
+                  <Markdown source={this.props.content.get('how')} />
+                </ContentBlock>
 
-              <CTA>
-                <Markdown source={this.props.content.get('get')} />
-              </CTA>
-            </Content>
-          </TextContent>
-          <ImageContent lang={lang}>
-            <Image source={this.props.content.get('image')} />
-          </ImageContent>
-        </Viewport>
-      </Container>
+                <CTA>
+                  <Markdown source={this.props.content.get('get')} />
+                </CTA>
+              </Content>
+            </TextContent>
+            <ImageContent lang={lang}>
+              <Image source={this.props.content.get('image')} />
+            </ImageContent>
+          </Viewport>
+        </Container>
+      </LanguageThemeProvider>
     );
   }
 }

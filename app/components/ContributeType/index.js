@@ -6,20 +6,20 @@
 
 import React from 'react';
 import styled from 'styled-components';
-
 import { FormattedMessage, injectIntl } from 'react-intl';
-import messages from './messages';
+import Isvg from 'react-inlinesvg';
+import Markdown from 'react-remarkable';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import ContentBlock from 'components/ContentBlock';
+import typeMessages from 'components/ToolTypeArea/messages';
 
 import StoryIcon from 'assets/images/type/stories.svg';
 import TacticIcon from 'assets/images/type/tactics.svg';
 import MethodologyIcon from 'assets/images/type/methodologies.svg';
 import TheoryIcon from 'assets/images/type/theories.svg';
 import PrincipleIcon from 'assets/images/type/principle.svg';
-import Isvg from 'react-inlinesvg';
-import Markdown from 'react-remarkable';
 
-import typeMessages from 'components/ToolTypeArea/messages';
-
+import messages from './messages';
 
 const Container = styled.div``;
 const Viewport = styled.div``;
@@ -50,10 +50,7 @@ const TypeName = styled.h3`
 `;
 
 const Spiel = styled.div`
-  font-size: 14px;
-  text-align: left;
   margin-top: 5px;
-  line-height: 1.2;
   padding: 70px 0 0;
   position:relative;
 
@@ -69,12 +66,8 @@ const Spiel = styled.div`
   }
 `;
 const CallToAction = styled.div`
-  text-align: left;
-
   a {
-    color: #828486;
     font-weight: bold;
-    font-size: 14px;
   }
 `;
 const Content = styled.div`
@@ -118,37 +111,43 @@ class ContributeType extends React.PureComponent { // eslint-disable-line react/
   render() {
     const { formatMessage } = this.props.intl;
     return (
-      <Container>
-        <Viewport>
-          <TypeList>
-            {DATA.map((item, index) => (
-              <Type key={index}>
-                <Button value={index} onClick={()=>this.handleClick(index)}>
-                  <TypeName>{item.label}</TypeName>
-                  <Isvg src={item.icon} />
-                </Button>
-                <Content show={this.state.chosen === index}>
-                  <Spiel>
-                    {item.description}
-                  </Spiel>
-                  <CallToAction>
-                    <Markdown source={formatMessage(messages.callToAction)} />
-                  </CallToAction>
-                </Content>
-              </Type>
-            ))}
-          </TypeList>
-          <Examples>
-            <Subtitle>
-              <FormattedMessage {...messages.examples} values={{
-                type: DATA[this.state.chosen].label
-              }}/>
-            </Subtitle>
+      <LanguageThemeProvider>
+        <Container>
+          <Viewport>
+            <TypeList>
+              {DATA.map((item, index) => (
+                <Type key={index}>
+                  <Button value={index} onClick={()=>this.handleClick(index)}>
+                    <TypeName>{item.label}</TypeName>
+                    <Isvg src={item.icon} />
+                  </Button>
+                  <Content show={this.state.chosen === index}>
+                    <Spiel>
+                      <ContentBlock>
+                        {item.description}
+                      </ContentBlock>
+                    </Spiel>
+                    <CallToAction>
+                      <ContentBlock>
+                        <Markdown source={formatMessage(messages.callToAction)} />
+                      </ContentBlock>
+                    </CallToAction>
+                  </Content>
+                </Type>
+              ))}
+            </TypeList>
+            <Examples>
+              <Subtitle>
+                <FormattedMessage {...messages.examples} values={{
+                  type: DATA[this.state.chosen].label
+                }}/>
+              </Subtitle>
 
-            {this.props.examples[DATA[this.state.chosen].type]}
-          </Examples>
-        </Viewport>
-      </Container>
+              {this.props.examples[DATA[this.state.chosen].type]}
+            </Examples>
+          </Viewport>
+        </Container>
+      </LanguageThemeProvider>
     );
   }
 }

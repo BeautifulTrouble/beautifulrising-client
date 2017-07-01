@@ -24,6 +24,9 @@ import MenuList from 'components/MenuList';
 import MenuListItem from 'components/MenuListItem';
 import MenuTitle from 'components/MenuTitle';
 
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+
 const Header = styled.h3``;
 const SocialLink = styled(Link)`text-decoration: none;`;
 const EmailLink = styled(MenuLink)`
@@ -35,10 +38,8 @@ const SubscribeCTA = styled.p`
   font-size: ${p=>p.theme.ar?'13px':'14px'};
   line-height: ${p=>p.theme.ar?'24px':'22px'};
 `;
-const FormContainer = styled.div`
+const FormContainer = styled(ContentBlock)`
   border: 1px solid;
-  font-size: ${p=>p.theme.ar?'13px':'14px'};
-  line-height: ${p=>p.theme.ar?'24px':'22px'};
   padding: 8px;
   &::after {
     content: '';
@@ -50,14 +51,14 @@ const FormContainer = styled.div`
     width: calc(100% - 70px);
     outline: none;
     padding: 2px;
-    float: ${p=>p.ar?'right':'left'};
-    text-align: ${p=>p.ar?'right':'left'};
+    float: ${p=>p.theme.isArabic?'right':'left'};
+    text-align: ${p=>p.theme.isArabic?'right':'left'};
   }
   button {
     outline: none;
     width: 70px;
-    text-align: ${p=>p.ar?'left':'right'};
-    float: ${p=>p.ar?'right':'left'};
+    text-align: ${p=>p.theme.isArabic?'left':'right'};
+    float: ${p=>p.theme.isArabic?'right':'left'};
     text-transform: uppercase;
     text-decoration: underline;
     font-weight: bold;
@@ -85,14 +86,16 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
   renderForm() {
     const {locale} = this.props.intl;
     return (
-      <FormContainer ar={locale==='ar'}>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <InputEmail type='email' name='email' onChange={this.handleChange.bind(this)} placeholder='samir@gmail.com'/>
-          <SubmitButton>
-            <FormattedMessage {...messages.submit} />
-          </SubmitButton>
-        </form>
-      </FormContainer>
+      <LanguageThemeProvider>
+        <FormContainer>
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <InputEmail type='email' name='email' onChange={this.handleChange.bind(this)} placeholder='samir@gmail.com'/>
+            <SubmitButton>
+              <FormattedMessage {...messages.submit} />
+            </SubmitButton>
+          </form>
+        </FormContainer>
+      </LanguageThemeProvider>
 
     );
   }

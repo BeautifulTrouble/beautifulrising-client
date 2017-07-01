@@ -10,6 +10,9 @@ import styled from 'styled-components';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import ContentBlock from 'components/ContentBlock';
+
 import { ToolLeftArea, ToolsPageLeftHeader, ToolsPageContributor } from 'components/ToolsPageComponents';
 import makeSelectAskTheContributor from './selectors';
 import { selectAuthor } from 'containers/Author/selectors';
@@ -23,9 +26,9 @@ const Container = styled.div`
 const Form = styled.form`
 border: 2px solid black;
 text-align: left;
- * { font-size: 14px; line-height: 22px; padding: 3px; }
+ * { padding: 3px; }
 `;
-const Header = styled.h3`
+const Header = styled.h5`
   font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
   letter-spacing: 0;
   line-height: 1;
@@ -64,27 +67,31 @@ export class AskTheContributor extends React.PureComponent { // eslint-disable-l
 
     const {formatMessage} = this.props.intl;
     return (
-      <Container>
-        <Header>
-          <FormattedMessage {...messages.header} />
-        </Header>
-        <Subheader>
-          <FormattedMessage {...messages.subheader} values={{author: this.props.count > 1 ? 'the authors' : this.props.author.title }}/>
-        </Subheader>
-        <Form onSubmit={this.handleSubmit.bind(this)}>
-          <TextArea name='question'
-              required={true}
-              onChange={this.handleTextAreaChange.bind(this)} placeholder={formatMessage(messages.questionPlaceholder)}></TextArea>
-          <Email name='email'
-              required={true}
-              onChange={this.handleEmailChange.bind(this)} type='email' placeholder={formatMessage(messages.emailPlaceholder)}/>
-          <SubmitContainer>
-            <Submit>
-              <FormattedMessage {...messages.submit} />
-            </Submit>
-          </SubmitContainer>
-        </Form>
-      </Container>
+      <LanguageThemeProvider>
+        <Container>
+          <Header>
+            <FormattedMessage {...messages.header} />
+          </Header>
+          <Subheader>
+            <FormattedMessage {...messages.subheader} values={{author: this.props.count > 1 ? 'the authors' : this.props.author.title }}/>
+          </Subheader>
+          <Form onSubmit={this.handleSubmit.bind(this)}>
+            <ContentBlock>
+              <TextArea name='question'
+                  required={true}
+                  onChange={this.handleTextAreaChange.bind(this)} placeholder={formatMessage(messages.questionPlaceholder)}></TextArea>
+              <Email name='email'
+                  required={true}
+                  onChange={this.handleEmailChange.bind(this)} type='email' placeholder={formatMessage(messages.emailPlaceholder)}/>
+              <SubmitContainer>
+                <Submit>
+                  <FormattedMessage {...messages.submit} />
+                </Submit>
+              </SubmitContainer>
+            </ContentBlock>
+          </Form>
+        </Container>
+      </LanguageThemeProvider>
     );
   }
 }

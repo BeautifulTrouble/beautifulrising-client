@@ -62,9 +62,6 @@ export const AuthorLink = styled(Link)`
 
 export const AuthorDesc = styled.div`
   margin: 2px;
-  line-height: 22px;
-  font-size: 14px;
-  text-align: left;
 `;
 
 export default AuthorComponents;

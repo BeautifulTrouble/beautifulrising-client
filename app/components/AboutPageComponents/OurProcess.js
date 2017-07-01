@@ -10,7 +10,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 import VisibilitySensor from 'react-visibility-sensor';
 import Markdown from 'react-remarkable';
 
-
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
 import { AboutSection } from 'components/AboutPageComponents';
 import { themeFourColumns } from 'components/CommonComponents';
@@ -162,35 +162,48 @@ class OurProcess extends React.Component {
     </VisibilitySensor>);
   }
 
+  renderProcess() {
+    const {locale, formatMessage} = this.props.intl;
+    return (
+      <LanguageThemeProvider theme={themeFourColumns}>
+          <List>
+            {PROCESSES.map(item=>(
+              <ListItem key={item.icon} lang={locale}>
+                <CircledImage src={item.icon} />
+                <ContentBlock>
+                  <Markdown source={formatMessage(item.text)} />
+                </ContentBlock>
+              </ListItem>
+            ))}
+          </List>
+      </LanguageThemeProvider>
+    )
+  }
+
+  renderParticipants() {
+    return (
+      <LanguageThemeProvider theme={themeFourColumns}>
+        <ParticipantsContainer>
+          <h3>
+            <FormattedMessage {...messages.participantsHeader} />
+          </h3>
+          {this.renderProjects()}
+        </ParticipantsContainer>
+      </LanguageThemeProvider>
+    );
+  }
+
   render() {
     const theme = themeFourColumns;
     const {formatMessage, locale} = this.props.intl;
     return (
-      <AboutSection id='process' name='process' lang={locale}>
-        { this.props.hideHeader ?  null : this.renderHeader() }
-        <ThemeProvider theme={themeFourColumns}>
-            <List>
-              {PROCESSES.map(item=>(
-                <ListItem key={item.icon} lang={locale}>
-                  <CircledImage src={item.icon} />
-                  <ContentBlock>
-                    <Markdown source={formatMessage(item.text)} />
-                  </ContentBlock>
-                </ListItem>
-              ))}
-            </List>
-        </ThemeProvider>
-
-
-        <ThemeProvider theme={themeFourColumns}>
-          <ParticipantsContainer>
-            <h3>
-              <FormattedMessage {...messages.participantsHeader} />
-            </h3>
-            {this.renderProjects()}
-          </ParticipantsContainer>
-        </ThemeProvider>
-      </AboutSection>
+      <LanguageThemeProvider>
+        <AboutSection id='process' name='process' lang={locale}>
+          { this.props.hideHeader ?  null : this.renderHeader() }
+          { this.renderProcess() }
+          {this.renderParticipants() }
+        </AboutSection>
+      </LanguageThemeProvider>
     );
   }
 }

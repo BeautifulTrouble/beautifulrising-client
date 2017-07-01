@@ -5,11 +5,12 @@
 */
 
 import React from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection } from 'components/AboutPageComponents';
 import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import VisibilitySensor from 'react-visibility-sensor';
 import Markdown from 'react-remarkable';
 import messages from './messages';
@@ -40,30 +41,32 @@ export class BeautifulTroubleAA extends React.Component {
   render() {
     const {locale}=this.props.intl;
     return (
-      <AboutSection id='beautiful-trouble-and-action-aid' lang={locale}>
-        { this.props.hideHeader ? null : this.renderHeader() }
-        <Container>
-          <ContentBlock>
-            <TableMenu>
-              <Row>
-                <Column colSpan={"2"} style={{ padding: '0 25%', textAlign: 'center'}}>
-                  <Markdown source={this.props.allData.getIn(['about', 'beautiful-trouble-and-action-aid', 'introduction'])} />
-                </Column>
-              </Row>
-              <Row>
-                <Column>
-                  <Markdown source={this.props.allData.getIn(['about', 'beautiful-trouble-and-action-aid', 'bt'])} />
-                  <Image src={BeautifulTroubleLogo} />
-                </Column>
-                <Column>
-                  <Markdown source={this.props.allData.getIn(['about', 'beautiful-trouble-and-action-aid', 'aa'])} />
-                  <Image src={ActionAidLogo} />
-                </Column>
-              </Row>
-            </TableMenu>
-          </ContentBlock>
-        </Container>
-      </AboutSection>
+      <LanguageThemeProvider>
+        <AboutSection id='beautiful-trouble-and-action-aid' lang={locale}>
+          { this.props.hideHeader ? null : this.renderHeader() }
+          <Container>
+            <ContentBlock>
+              <TableMenu>
+                <Row>
+                  <Column colSpan={"2"} style={{ padding: '0 25%', textAlign: 'center'}}>
+                    <Markdown source={this.props.allData.getIn(['about', 'beautiful-trouble-and-action-aid', 'introduction'])} />
+                  </Column>
+                </Row>
+                <Row>
+                  <Column>
+                    <Markdown source={this.props.allData.getIn(['about', 'beautiful-trouble-and-action-aid', 'bt'])} />
+                    <Image src={BeautifulTroubleLogo} />
+                  </Column>
+                  <Column>
+                    <Markdown source={this.props.allData.getIn(['about', 'beautiful-trouble-and-action-aid', 'aa'])} />
+                    <Image src={ActionAidLogo} />
+                  </Column>
+                </Row>
+              </TableMenu>
+            </ContentBlock>
+          </Container>
+        </AboutSection>
+      </LanguageThemeProvider>
     );
 
   }

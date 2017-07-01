@@ -9,6 +9,10 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import styled, { ThemeProvider } from 'styled-components';
+import SmallHeaderBlock from 'components/SmallHeaderBlock';
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+
 import makeSelectSubmitRealWorldExample from './selectors';
 import messages from './messages';
 
@@ -45,13 +49,9 @@ const Form =  styled.form`
     margin: 5px;
   }
 `;
-const Header = styled.h3`
+const Header = styled(SmallHeaderBlock)`
   margin: 0;
-  text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
-  font-size: 19px;
-  letter-spacing: 0;
   margin-bottom: 5px;
-  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
 `;
 
 const TextInput = styled.input`
@@ -62,10 +62,8 @@ const TextArea = styled.textarea`
   font-size: 14px;
   line-height: 22px;
 `;
-const Instruction = styled.p`
-  font-size: 14px;
-  text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
-`;
+const Instruction = styled.div``;
+
 export class SubmitRealWorldExample extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
@@ -113,17 +111,19 @@ export class SubmitRealWorldExample extends React.PureComponent { // eslint-disa
   render() {
     const {formatMessage} = this.props.intl;
     return (
-      <ThemeProvider theme={{ lang: this.props.intl.locale }}>
+      <LanguageThemeProvider>
         <Container>
           <Header>
             <FormattedMessage {...messages.header} values={{type: this.props.type}} />
           </Header>
           <Instruction>
-            <FormattedMessage {...messages.instruction} />
+            <ContentBlock>
+              <FormattedMessage {...messages.instruction} />
+            </ContentBlock>
           </Instruction>
           { this.props.realWorldEx.complete ? this.renderComplete() : this.renderForm() }
         </Container>
-      </ThemeProvider>
+      </LanguageThemeProvider>
     );
   }
 }

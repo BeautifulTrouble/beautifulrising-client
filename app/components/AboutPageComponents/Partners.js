@@ -57,7 +57,7 @@ const Image = styled.div`
   background-repeat: no-repeat;
 `;
 
-const Name = styled.h3`
+const Name = styled.h5`
 font-size: 14px !important;
 text-transform: uppercase;
 position: relative;

@@ -11,6 +11,9 @@ import { push } from 'react-router-redux';
 import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import Tags from 'containers/Tags';
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+
 import { BLOCK_VIEW, LIST_VIEW } from 'containers/ToolsViewOptions/constants';
 import { makeSelectToolById,
           makeSelectData,
@@ -39,10 +42,8 @@ import Header from './Header';
 import messages from './messages';
 
 const SearchResultsContainer = styled.div`
-  text-align: left;
   padding-left: 59px;
   color: #828486;
-  font-size: 14px;
 `;
 const SearchResultsText = styled.span``;
 
@@ -127,12 +128,16 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     if (!this.props.params.filter || this.props.params.filter !== 'search' || !this.props.params.label) return;
 
     return (
-      <SearchResultsContainer>
-        <SearchResultsText>
-          <ClearButton onClick={this.handleClearSearch.bind(this)}><FormattedMessage {...messages.clearSearch} /></ClearButton>
-          <FormattedHTMLMessage {...messages.searchResults} values={{label: this.props.params.label, count: this.props.sorted ? this.props.sorted.length : 0 }} />
-        </SearchResultsText>
-      </SearchResultsContainer>
+      <LanguageThemeProvider>
+        <SearchResultsContainer>
+          <ContentBlock>
+            <SearchResultsText>
+              <ClearButton onClick={this.handleClearSearch.bind(this)}><FormattedMessage {...messages.clearSearch} /></ClearButton>
+              <FormattedHTMLMessage {...messages.searchResults} values={{label: this.props.params.label, count: this.props.sorted ? this.props.sorted.length : 0 }} />
+            </SearchResultsText>
+          </ContentBlock>
+        </SearchResultsContainer>
+      </LanguageThemeProvider>
     );
   }
   getDirection() {

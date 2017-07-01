@@ -5,7 +5,8 @@
 */
 
 import React from 'react';
-import styled from 'styled-components';
+import styled, {ThemeProvider} from 'styled-components';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import Markdown from 'react-remarkable';
 import ContentBlock from 'components/ContentBlock';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -54,13 +55,15 @@ const SubListItem = styled.li`
       border-bottom: 2px solid;
     }
   }
-  & > p {
-    padding-${p=>p.lang==='ar'?'right':'left'}: 100px;
-    margin: 10px;
-  }
 `
 
+const SubListContentBlock = styled(ContentBlock)`
+  padding-${p=>p.theme.ar?'right':'left'}: 100px !important;
+  margin: 10px;
+`;
+
 export class OurValues extends React.Component {
+
   renderHeader() {
     return (
       <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
@@ -74,49 +77,53 @@ export class OurValues extends React.Component {
     if (!this.props.ourValues) return null;
     const lang = this.props.intl.locale
     return (
-      <AboutSection id='values' name='values' lang={lang}>
-        { this.props.hideHeader ? null : this.renderHeader() }
-          <List>
-            { this.props.ourValues.map((item, ind) =>
-                  {
-                    switch(item.get('type')) {
-                      case 'introduction': return null;
-                      case 'values': return (
-                        <SubList key={ind}>
-                          { item.get('value').map((subitem, subindex) => (
-                              <SubListItem key={subindex} lang={lang}>
-                                <Count>{subindex + 1}</Count>
-                                <h3>{subitem.get('title')}</h3>
-                                <ContentBlock>
-                                  <Markdown source={subitem.get('description')} />
-                                </ContentBlock>
-                              </SubListItem>
-                          )) }
-                        </SubList>
-                      );
-                      case 'disclaimer': return (
-                        <SubList key={ind}>
-                          <SubListItem lang={lang}>
-                            <h3 key={ind}>{item.get('value')}</h3>
-                          </SubListItem>
-                        </SubList>
-                      );
-                      case 'disclaimer-text': return (
-                        <SubList key={ind}>
-                          <SubListItem lang={lang}>
-                            <p key={ind} style={{color: '#828486'}}>
-                              <Markdown source={item.get('value')} />
-                            </p>
-                          </SubListItem>
-                        </SubList>
-                      );
+      <LanguageThemeProvider>
+        <AboutSection id='values' name='values' lang={lang}>
+          { this.props.hideHeader ? null : this.renderHeader() }
+            <List>
+              { this.props.ourValues.map((item, ind) =>
+                    {
+                      switch(item.get('type')) {
+                        case 'introduction': return null;
+                        case 'values': return (
+                          <SubList key={ind}>
+                            { item.get('value').map((subitem, subindex) => (
+                                <SubListItem key={subindex} lang={lang}>
+                                  <Count>{subindex + 1}</Count>
+                                  <h3>{subitem.get('title')}</h3>
+                                  <SubListContentBlock>
+                                    <Markdown source={subitem.get('description')} />
+                                  </SubListContentBlock>
+                                </SubListItem>
+                            )) }
+                          </SubList>
+                        );
+                        case 'disclaimer': return (
+                          <SubList key={ind}>
+                            <SubListItem lang={lang}>
+                              <h3 key={ind}>{item.get('value')}</h3>
+                            </SubListItem>
+                          </SubList>
+                        );
+                        case 'disclaimer-text': return (
+                          <SubList key={ind}>
+                            <SubListItem lang={lang}>
+                              <SubListContentBlock>
+                                <p key={ind} style={{color: '#828486'}}>
+                                  <Markdown source={item.get('value')} />
+                                </p>
+                              </SubListContentBlock>
+                            </SubListItem>
+                          </SubList>
+                        );
+                     }
                    }
-                 }
-              )
-            }
-          </List>
+                )
+              }
+            </List>
 
-      </AboutSection>
+        </AboutSection>
+      </LanguageThemeProvider>
     );
   }
 }

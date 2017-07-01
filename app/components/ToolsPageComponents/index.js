@@ -7,6 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import ContentBlock from 'components/ContentBlock';
 import { ToolType, ToolTitle } from 'components/ToolsComponents';
 import { CommonLeftHeader } from 'components/CommonComponents';
 import { Link } from 'react-router';
@@ -185,7 +186,7 @@ export const ToolMainArea = styled(ToolInfoSection)`
   padding: ${props=>props.theme.lang==='ar' ? '20px 90px 20px 20px' : '20px 20px 20px 90px'};
 `;
 
-export const ToolMainContent = styled.div`
+export const ToolMainContent = styled(ContentBlock)`
   text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
 `;
 
@@ -199,14 +200,7 @@ export const ToolMainContentHeader = styled(CommonLeftHeader)`
   letter-spacing: 0;
   margin: 10px 0;
 `;
-export const ToolReadContent = styled.div`
-  font-size: 14px;
-  line-height: 22px;
-
-  a {
-    color: #838486;
-  }
-
+export const ToolReadContent = styled(ContentBlock)`
   img {
     width: 100%;
   }
@@ -226,11 +220,8 @@ export const LearnMoreItem = styled.li`
   margin: 0;
   list-style: none;
   margin-bottom: 10px;
-  font-size: 14px;
 `;
 export const LearnMoreItemLink = styled(Link)`
-  color: #828486;
-  font-weight: 700;
   text-decoration: underline;
 `;
 export const LearnMoreItemSource = styled.span``;

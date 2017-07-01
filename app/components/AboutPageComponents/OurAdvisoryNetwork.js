@@ -7,6 +7,7 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection, Introduction, IntroText } from 'components/AboutPageComponents';
 import { themeThreeColumns } from 'components/CommonComponents';
@@ -97,30 +98,32 @@ export class OurAdvisoryNetwork extends React.Component {
   render() {
     const {locale} = this.props.intl;
     return (
-      <AdvisoryNetworkSection lang={locale} id='advisory-network'>
-        { this.props.hideHeader ? null : this.renderHeader() }
-        <Introduction>
-          <AdvisoryNetworkIntro lang={locale}>
-            <ContentBlock>
-              <Markdown source={this.props.introText}/>
-            </ContentBlock>
-          </AdvisoryNetworkIntro>
-        </Introduction>
-        <ThemeProvider theme={themeThreeColumns}>
-          <List>
-            { this.props.advisoryNetwork.map((item, ind) => (
-              <ListItem key={ind}>
-                <Image source={item['image']} />
-                <Name>{item['person']}</Name>
-                <Team>ADVISORY NETWORK</Team>
-                <ContentBlock>
-                  <Markdown source={item['team-bio']} />
-                </ContentBlock>
-              </ListItem>
-            ))}
-          </List>
-        </ThemeProvider>
-      </AdvisoryNetworkSection>
+      <LanguageThemeProvider>
+        <AdvisoryNetworkSection lang={locale} id='advisory-network'>
+          { this.props.hideHeader ? null : this.renderHeader() }
+          <Introduction>
+            <AdvisoryNetworkIntro lang={locale}>
+              <ContentBlock>
+                <Markdown source={this.props.introText}/>
+              </ContentBlock>
+            </AdvisoryNetworkIntro>
+          </Introduction>
+          <ThemeProvider theme={themeThreeColumns}>
+            <List>
+              { this.props.advisoryNetwork.map((item, ind) => (
+                <ListItem key={ind}>
+                  <Image source={item['image']} />
+                  <Name>{item['person']}</Name>
+                  <Team>ADVISORY NETWORK</Team>
+                  <ContentBlock>
+                    <Markdown source={item['team-bio']} />
+                  </ContentBlock>
+                </ListItem>
+              ))}
+            </List>
+          </ThemeProvider>
+        </AdvisoryNetworkSection>
+      </LanguageThemeProvider>
     );
   }
 }

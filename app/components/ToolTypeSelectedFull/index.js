@@ -16,6 +16,9 @@ import StoryIcon from 'assets/images/type/stories-optionflag.svg';
 import TacticIcon from 'assets/images/type/tactics-optionflag.svg';
 import TheoryIcon from 'assets/images/type/theories-optionflag.svg';
 
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+
 import RegionOptions from 'components/RegionOptions';
 
 const Container = styled.section`
@@ -37,20 +40,20 @@ border-style: solid;
 const Column = styled.div`
   text-align: center;
   width: ${props=>props.width}
-  float: ${p=>p.lang==='ar'?'right':'left'};
+  float: ${p=>p.theme.isArabic?'right':'left'};
   position: relative;
 
   &::after {
     content: ' ';
     position: absolute;
     top: 0;
-    ${p=>p.lang==='ar'?'left':'right'}: 0;
+    ${p=>p.theme.isArabic?'left':'right'}: 0;
     width: 100%;
     height: 100%;
     max-height: 160px;
     opacity: 0.3;
     z-index: -1;
-    background-position: ${p=>p.lang==='ar'?'left':'right'} top;
+    background-position: ${p=>p.theme.isArabic?'left':'right'} top;
     background-repeat: no-repeat;
     background-size: ${
       props=>{
@@ -75,11 +78,11 @@ const Column = styled.div`
   }
 `;
 const ToolType = styled(Link)`
-  margin-${p=>p.lang==='ar'?'left':'right'}: 0.5%;
+  margin-${p=>p.theme.isArabic==='ar'?'left':'right'}: 0.5%;
   display: block;
-  text-align: ${p=>p.lang==='ar'?'right':'left'};
+  text-align: ${p=>p.theme.isArabic==='ar'?'right':'left'};
   vertical-align: top;
-  opacity: ${(props)=>props.selected?'0':'1'};
+  opacity: ${p=>p.selected?'0':'1'};
   color: #828486;
   text-transform: uppercase;
   font-weight: bold;
@@ -125,15 +128,13 @@ const Flag = styled.span`
 `;
 
 const TypeName = styled.h1`
-  text-align: ${p=>p.lang==='ar'?'left':'right'};
+  text-align: ${p=>p.theme.isArabic?'left':'right'};
   margin-top: 20px;
   text-transform: uppercase;
-  margin-${p=>p.lang==='ar'?'left':'right'}: 10px;
+  margin-${p=>p.theme.isArabic?'left':'right'}: 10px;
 `;
 
-const Description = styled.div`
-  font-size: 14px;
-  text-align: ${p=>p.lang==='ar'?'right':'left'};
+const Description = styled(ContentBlock)`
   padding: 0 10px 0 10px;
 `;
 
@@ -144,41 +145,42 @@ const Description = styled.div`
 // <Flag selected={props.label === 'methodology'}><Isvg src={MethodologyIcon} /></Flag>
 
 function ToolTypeSelectedFull(props) {
-  const lang = props.intl.locale;
   return (
-    <Container show={props.show}>
-      <Viewport>
-        <Column width="15%" lang={lang}>
-          <ToolType lang={lang} to={'/'}>All</ToolType>
-          <ToolType lang={lang} to={'/type/story'} selected={props.label === 'story'}>
-            <FormattedMessage {...messages.storyHead} />
-          </ToolType>
-          <ToolType lang={lang} to={'/type/tactic'} selected={props.label === 'tactic'}>
-            <FormattedMessage {...messages.tacticHead} />
-          </ToolType>
-          <ToolType lang={lang} to={'/type/principle'} selected={props.label === 'principle'}>
-            <FormattedMessage {...messages.principleHead} />
-          </ToolType>
-          <ToolType lang={lang} to={'/type/theory'} selected={props.label === 'theory'}>
-            <FormattedMessage {...messages.theoryHead} />
-          </ToolType>
-          <ToolType lang={lang} to={'/type/methodology'} selected={props.label === 'methodology'}>
-            <FormattedMessage {...messages.methodologyHead} />
-          </ToolType>
-        </Column>
-        <Column lang={lang} width="33%" bg={props.label} style={{height: 160}}>
-          <TypeName lang={lang}>
-            <FormattedMessage {...messages[props.label + 'Head']} />
-          </TypeName>
-        </Column>
-        <Column lang={lang} width="50%">
-          <Description lang={lang}>
-            <FormattedMessage {...messages[props.label + 'Long']} />
-          </Description>
-          { props.label === 'story' ? <RegionOptions {...props} showHeader={true}/> : null}
-        </Column>
-      </Viewport>
-    </Container>
+    <LanguageThemeProvider>
+      <Container show={props.show}>
+        <Viewport>
+          <Column width="15%">
+            <ToolType to={'/'}>All</ToolType>
+            <ToolType to={'/type/story'} selected={props.label === 'story'}>
+              <FormattedMessage {...messages.storyHead} />
+            </ToolType>
+            <ToolType to={'/type/tactic'} selected={props.label === 'tactic'}>
+              <FormattedMessage {...messages.tacticHead} />
+            </ToolType>
+            <ToolType to={'/type/principle'} selected={props.label === 'principle'}>
+              <FormattedMessage {...messages.principleHead} />
+            </ToolType>
+            <ToolType to={'/type/theory'} selected={props.label === 'theory'}>
+              <FormattedMessage {...messages.theoryHead} />
+            </ToolType>
+            <ToolType to={'/type/methodology'} selected={props.label === 'methodology'}>
+              <FormattedMessage {...messages.methodologyHead} />
+            </ToolType>
+          </Column>
+          <Column width="33%" bg={props.label} style={{height: 160}}>
+            <TypeName>
+              <FormattedMessage {...messages[props.label + 'Head']} />
+            </TypeName>
+          </Column>
+          <Column width="50%">
+            <Description>
+              <FormattedMessage {...messages[props.label + 'Long']} />
+            </Description>
+            { props.label === 'story' ? <RegionOptions {...props} showHeader={true}/> : null}
+          </Column>
+        </Viewport>
+      </Container>
+    </LanguageThemeProvider>
   );
 }
 
@@ -186,4 +188,4 @@ ToolTypeSelectedFull.propTypes = {
 
 };
 
-export default injectIntl(ToolTypeSelectedFull);
+export default ToolTypeSelectedFull;

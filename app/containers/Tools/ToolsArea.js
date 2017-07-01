@@ -9,6 +9,8 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import Isvg from 'react-inlinesvg';
 
 import makeSelectTools from './selectors';
@@ -61,10 +63,6 @@ const DownloadPDFContainer = styled.div`
   h3 {
     margin: 0; padding: 0;
   }
-  span {
-    font-size: 14px;
-    line-height: 22px;
-  }
 
   a {
     &::before { display: block; content: ' ';}
@@ -72,10 +70,8 @@ const DownloadPDFContainer = styled.div`
     display: inline-block;
     border: 2px;
     text-transform: uppercase;
-    font-size: 14px;
     margin-top: 10px;
     font-weight: bold;
-
   }
   border-bottom: 2px solid;
 `;
@@ -118,70 +114,74 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
   render() {
     const lang=this.props.intl.locale;
     return (
-      <ToolsListContainer show={this.props.show} lang={this.props.lang} rotate={true}>
-        <ToolsListMenu lang={lang} show={this.props.Tools.viewType === NEWS_FEED}>
-          <ToolsListMenuItem>
-            <ToolsButton toShow={this.state.newsFeed === TWITTER_FEED} onClick={()=>this.handleNewsFeedChange(TWITTER_FEED)}>
-              <Isvg src={TwitterIcon} />
-            </ToolsButton>
-          </ToolsListMenuItem>
-          <ToolsListMenuItem>
-            <ToolsButton toShow={this.state.newsFeed === FACEBOOK_FEED} onClick={()=>this.handleNewsFeedChange(FACEBOOK_FEED)}>
-              <Isvg src={FacebookIcon} />
-            </ToolsButton>
-          </ToolsListMenuItem>
-        </ToolsListMenu>
+      <LanguageThemeProvider>
+        <ToolsListContainer show={this.props.show} lang={this.props.lang} rotate={true}>
+          <ToolsListMenu lang={lang} show={this.props.Tools.viewType === NEWS_FEED}>
+            <ToolsListMenuItem>
+              <ToolsButton toShow={this.state.newsFeed === TWITTER_FEED} onClick={()=>this.handleNewsFeedChange(TWITTER_FEED)}>
+                <Isvg src={TwitterIcon} />
+              </ToolsButton>
+            </ToolsListMenuItem>
+            <ToolsListMenuItem>
+              <ToolsButton toShow={this.state.newsFeed === FACEBOOK_FEED} onClick={()=>this.handleNewsFeedChange(FACEBOOK_FEED)}>
+                <Isvg src={FacebookIcon} />
+              </ToolsButton>
+            </ToolsListMenuItem>
+          </ToolsListMenu>
 
-        <ToolsListMenu lang={lang} show={this.props.Tools.viewType === MY_TOOLS}>
-          <ToolsListMenuItem>
-            <ToolsButton
-              onClick={()=>this.handleClick(DOWNDLOAD_PDF)}
-              toShow={this.state.chosen === DOWNDLOAD_PDF }
+          <ToolsListMenu lang={lang} show={this.props.Tools.viewType === MY_TOOLS}>
+            <ToolsListMenuItem>
+              <ToolsButton
+                onClick={()=>this.handleClick(DOWNDLOAD_PDF)}
+                toShow={this.state.chosen === DOWNDLOAD_PDF }
+                >
+                <Isvg src={PDFIcon} />
+              </ToolsButton>
+            </ToolsListMenuItem>
+            <ToolsListMenuItem>
+              <ToolsButton
+                 onClick={()=>this.handleClick(SEND_EMAIL)}
+                 toShow={this.state.chosen === SEND_EMAIL }
               >
-              <Isvg src={PDFIcon} />
-            </ToolsButton>
-          </ToolsListMenuItem>
-          <ToolsListMenuItem>
-            <ToolsButton
-               onClick={()=>this.handleClick(SEND_EMAIL)}
-               toShow={this.state.chosen === SEND_EMAIL }
-            >
-              <Isvg src={EmailIcon} />
-            </ToolsButton>
-          </ToolsListMenuItem>
-        </ToolsListMenu>
+                <Isvg src={EmailIcon} />
+              </ToolsButton>
+            </ToolsListMenuItem>
+          </ToolsListMenu>
 
 
-        <Container show={ this.props.Tools.viewType === NEWS_FEED }>
-          <NewsFeed />
-        </Container>
-
-        <Container show={ this.props.Tools.viewType === MY_TOOLS }>
-          <EmailContainer show={this.state.chosen === SEND_EMAIL} >
-            <EmailTools />
-          </EmailContainer>
-          <DownloadPDFContainer show={this.state.chosen === DOWNDLOAD_PDF}>
-            <h3>Download PDF</h3>
-            <FormattedMessage {...messages.pdfSpiel} />
-            <Link to={this.buildPDFLink()} target='_blank'>Download PDF</Link>
-          </DownloadPDFContainer>
-
-          <Container show={Map(this.props.Tools.selectedTools).toList().size === 0}>
-            <EmptyToolsMessage/>
+          <Container show={ this.props.Tools.viewType === NEWS_FEED }>
+            <NewsFeed />
           </Container>
 
-          <ToolsList>
-            {
-              Map(this.props.Tools.selectedTools).toList().reverse().map((item) => (
-                  <ToolsListItem key={item.slug}>
-                    <SelectedTool {...item} />
-                  </ToolsListItem>
+          <Container show={ this.props.Tools.viewType === MY_TOOLS }>
+            <EmailContainer show={this.state.chosen === SEND_EMAIL} >
+              <EmailTools />
+            </EmailContainer>
+            <DownloadPDFContainer show={this.state.chosen === DOWNDLOAD_PDF}>
+              <h3>Download PDF</h3>
+              <ContentBlock>
+                <FormattedMessage {...messages.pdfSpiel} />
+                <Link to={this.buildPDFLink()} target='_blank'>Download PDF</Link>
+              </ContentBlock>
+            </DownloadPDFContainer>
+
+            <Container show={Map(this.props.Tools.selectedTools).toList().size === 0}>
+              <EmptyToolsMessage/>
+            </Container>
+
+            <ToolsList>
+              {
+                Map(this.props.Tools.selectedTools).toList().reverse().map((item) => (
+                    <ToolsListItem key={item.slug}>
+                      <SelectedTool {...item} />
+                    </ToolsListItem>
+                  )
                 )
-              )
-            }
-          </ToolsList>
-        </Container>
-      </ToolsListContainer>
+              }
+            </ToolsList>
+          </Container>
+        </ToolsListContainer>
+      </LanguageThemeProvider>
     );
   }
 }

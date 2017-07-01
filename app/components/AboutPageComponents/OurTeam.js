@@ -7,6 +7,8 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection } from 'components/AboutPageComponents';
 import { themeThreeColumns } from 'components/CommonComponents';
@@ -76,26 +78,28 @@ export class OurTeam extends React.Component {
   render() {
       const {locale}=this.props.intl;
       return (
-      <AboutSection id='team' lang={locale}>
-        { this.props.hideHeader ? null : this.renderHeader() }
-        <ThemeProvider theme={themeThreeColumns}>
-          <List>
-            { !this.props.teamMembers ? null : this.props.teamMembers.map((item, ind) => {
-                const teamMember = this.props.allData.get(item);
-                return (
-                  <ListItem key={ind}>
-                    <Image source={teamMember.get('image')} />
-                    <Name>{teamMember.get('person')}</Name>
-                    <Team>{teamMember.get('team-title')}</Team>
-                    <ContentBlock>
-                      <Markdown source={teamMember.get('team-bio')} />
-                    </ContentBlock>
-                  </ListItem>
-                );
-            })}
-          </List>
-        </ThemeProvider>
-      </AboutSection>
+      <LanguageThemeProvider>
+        <AboutSection id='team' lang={locale}>
+          { this.props.hideHeader ? null : this.renderHeader() }
+          <ThemeProvider theme={themeThreeColumns}>
+            <List>
+              { !this.props.teamMembers ? null : this.props.teamMembers.map((item, ind) => {
+                  const teamMember = this.props.allData.get(item);
+                  return (
+                    <ListItem key={ind}>
+                      <Image source={teamMember.get('image')} />
+                      <Name>{teamMember.get('person')}</Name>
+                      <Team>{teamMember.get('team-title')}</Team>
+                      <ContentBlock>
+                        <Markdown source={teamMember.get('team-bio')} />
+                      </ContentBlock>
+                    </ListItem>
+                  );
+              })}
+            </List>
+          </ThemeProvider>
+        </AboutSection>
+      </LanguageThemeProvider>
     );
   }
 }

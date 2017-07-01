@@ -15,6 +15,8 @@ import VisibilitySensor from 'react-visibility-sensor';
 import styled from 'styled-components';
 import Markdown from 'react-remarkable';
 
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import ContentBlock from 'components/ContentBlock';
 import TrainingBanner from 'assets/images/about/training.jpg';
 import PlatformsPageComponents from 'components/PlatformsPageComponents';
 import OtherResources  from 'components/OtherResources';
@@ -46,12 +48,8 @@ const Heading = styled.h2`
   line-height: 40px;
   text-align: ${props=>props.lang==='ar'?'right':'left'};
 `;
-const Lead = styled.div`
-  text-align: ${props=>props.lang==='ar'?'right':'left'};
-  a {
-    color: #828486;
-  }
-`;
+const Lead = styled.div``;
+
 const MenuList = styled.ul`
 padding: 0;
 margin: 0;
@@ -96,17 +94,12 @@ const Banner = styled.img``;
 
 const ContentArea = styled.div`
   width: 60%;
-  text-align: ${props=>props.lang==='ar'?'right':'left'};
   float: ${props=>props.lang==='ar'?'right':'left'};
   padding-${props=>props.lang==='ar'?'right':'left'}: 100px;
-  * {
-    text-align: ${props=>props.lang==='ar'?'right':'left'};
-  }
 `;
 const Content = styled.div`
   display: ${props => props.isVisible ? 'block' : 'none'} !important;
   padding-${props=>props.lang==='ar'?'left':'right'}: 170px;
-  font-size: 14px;
   margin-top: 40px;
 `;
 
@@ -158,7 +151,7 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
     const trouble = this.props.data.get('trouble');
 
     return (
-      <div>
+      <LanguageThemeProvider>
         <Helmet
           title="TrainingPage"
           meta={[
@@ -173,8 +166,10 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
             <TrainingArea lang={lang}>
               <MenuArea lang={lang}>
                 <Heading lang={lang}>{trouble.get('heading')}</Heading>
-                <Lead lang={lang}>
-                  <Markdown source={trouble.get('lead')} />
+                <Lead>
+                  <ContentBlock>
+                    <Markdown source={trouble.get('lead')} />
+                  </ContentBlock>
                 </Lead>
                 <MenuList lang={lang}>
                 {trouble.get('content').map((item, ind) => {
@@ -189,14 +184,16 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
                 </MenuList>
               </MenuArea>
               <ContentArea lang={lang}>
-                <Banner src={TrainingBanner} />
-                {trouble.get('content').map((item, ind) => {
-                  return (
-                    <Content key={ind} isVisible={ ind === this.state.selected }>
-                      <Markdown source={item.get('text')} />
-                    </Content>
-                  );
-                })}
+                <ContentBlock>
+                  <Banner src={TrainingBanner} />
+                  {trouble.get('content').map((item, ind) => {
+                    return (
+                      <Content key={ind} isVisible={ ind === this.state.selected }>
+                        <Markdown source={item.get('text')} />
+                      </Content>
+                    );
+                  })}
+                </ContentBlock>
               </ContentArea>
             </TrainingArea>
 
@@ -208,7 +205,7 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
             </OtherResourcesArea>
           </Viewport>
         </Container>
-      </div>
+      </LanguageThemeProvider>
     );
   }
 }

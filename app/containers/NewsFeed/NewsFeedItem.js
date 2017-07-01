@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router';
+import ContentBlock from 'components/ContentBlock';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import Timestamp from 'react-timestamp';
 import messages from './messages';
 import { twitterFollow } from 'utils/social';
@@ -16,19 +18,14 @@ const Viewport = styled.div`
 position: relative`;
 
 const Source = styled(Link)`
-  font-weight: bold;
+  font-weight: 800;
   text-transform: uppercase;
-  font-size: 14px;
   display: block;
-  font-weight: bold;
   color: black;
   text-decoration: none;
-  line-height: 22px;
 `;
 const Handle = styled(Link)`
-line-height: 22px;
-text-decoration: none;
-  font-size: 14px;
+  text-decoration: none;
   display: block;
   color: gray;
   &::before { content: '@'; }
@@ -38,16 +35,10 @@ const Image = styled.img`
   float: ${props=>props.lang === 'ar' ? 'right' : 'left' };
   ${props=>props.lang === 'ar' ? 'margin-left' : 'margin-right' }: 5px;
   width: 40px;
-
-
 `;
 const Content = styled.span`
-font-size: 14px;
-line-height: 22px;
 margin-top: 15px;
 display: inline-block;
-a { color: gray; }
-
 `;
 const CallToAction = styled.div`
 color: gray;
@@ -60,7 +51,6 @@ text-align: right !important;
     text-transform: uppercase;
     font-weight: bold;
     text-decoration: underline;
-    font-size:14px;
     cursor: pointer;
   }
 `;
@@ -75,18 +65,24 @@ const TweetTimestamp = styled(Timestamp)`
 function NewsFeedItem(props) {
 
   return (
-    <ItemContainer>
-      <Viewport>
-        <Image src={props.image_http} lang={props.intl.locale}/>
-        <Source to={props.user_link} target='_blank'>{props.user_name}</Source>
-        <Handle to={props.user_link} target='_blank'>{props.user_handle}</Handle>
-        <Content dangerouslySetInnerHTML={{__html: props.content_html}}></Content>
-        <TweetTimestamp time={props.timestamp / 1000} format='full' />
-        <CallToAction>
-          <button onClick={()=>twitterFollow(props.user_handle)}><FormattedMessage {...messages.follow} /></button>
-        </CallToAction>
-      </Viewport>
-    </ItemContainer>
+    <LanguageThemeProvider>
+      <ItemContainer>
+        <Viewport>
+          <ContentBlock>
+            <Image src={props.image_http} lang={props.intl.locale}/>
+            <Source to={props.user_link} target='_blank'>{props.user_name}</Source>
+            <Handle to={props.user_link} target='_blank'>{props.user_handle}</Handle>
+            <Content dangerouslySetInnerHTML={{__html: props.content_html}}></Content>
+          </ContentBlock>
+          <TweetTimestamp time={props.timestamp / 1000} format='full' />
+          <CallToAction>
+            <ContentBlock>
+              <button onClick={()=>twitterFollow(props.user_handle)}><FormattedMessage {...messages.follow} /></button>
+            </ContentBlock>
+          </CallToAction>
+        </Viewport>
+      </ItemContainer>
+    </LanguageThemeProvider>
   )
 }
 
