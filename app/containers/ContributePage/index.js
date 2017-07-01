@@ -22,15 +22,14 @@ import ContributeType from 'components/ContributeType';
 
 import { makeSelectAllToolsWithSlugIndex,
           makeSelectExamples} from 'containers/App/selectors';
-
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import SmallHeaderBlock from 'components/SmallHeaderBlock';
 import messages from './messages';
 
 
 const Title = styled.h1`font-size: 48px;`;
-const Subtitle = styled.h2`
-  font-size: 19px;
-  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
-  letter-spacing: 0;
+const Subtitle = styled(SmallHeaderBlock)`
   border-bottom: 2px solid;
   padding-bottom: 20px;
   margin-bottom: 40px;
@@ -38,18 +37,15 @@ const Subtitle = styled.h2`
   margin-right: 30px;
 `;
 const Subsubtitle = styled.h3`
-  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
+  font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
   font-size: 18px;
   letter-spacing: 0;
   margin-top: 30px;
   margin-bottom: 0px;
 `;
 
-const Content = styled.div`
+const Content = styled(ContentBlock)`
   padding: 10px 60px;
-  font-size: 14px;
-  line-height: 22px;
-
 `;
 
 const Divider = styled.div`
@@ -96,7 +92,7 @@ export class ContributePage extends React.Component { // eslint-disable-line rea
 
     const storyEx = this.props.storyExamples;
     return (
-      <div>
+      <LanguageThemeProvider>
         <Helmet
           title="ContributePage"
           meta={[
@@ -138,7 +134,7 @@ export class ContributePage extends React.Component { // eslint-disable-line rea
             }}
           />
         </ContributeTypeContainer>
-      </div>
+      </LanguageThemeProvider>
     );
   }
 }

@@ -25,12 +25,14 @@ injectGlobal`
   }
 
   @font-face {
-    font-family: 'Avenir Book';
+    font-family: 'Avenir';
+    font-weight: 400;
     src: url(${AvenirBook});
   }
 
   @font-face {
-    font-family: 'Avenir Black';
+    font-family: 'Avenir';
+    font-weight: 800;
     src: url(${AvenirBlack});
   }
 
@@ -45,8 +47,9 @@ injectGlobal`
   }
 
   @font-face {
-    font-family: 'Kaff Bold';
+    font-family: 'Kaff';
     font-weight: bold;
+    font-weight: 800;
     font-style: normal;
     src: url(${KaffBold});
   }
@@ -69,14 +72,23 @@ injectGlobal`
     height: 100%;
     width: 100%;
   }
-
-  body,p,input,textarea {
+  #app {
+    overflow-x: hidden;
+  }
+  a {
+    color: #828486;
+    em { font-style: italic; }
+  }
+  body,p, input,textarea {
     font-family: 'Avenir', 'Kaff', Helvetica, Arial, sans-serif;
   }
-  p {
-    font-size: 14px;
-    line-height: 22px;
+  h1,h2,h3,h4,h5 {
+    font-family: 'KnockOut', 'Greta', Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
 
+  p {
     a {
       color: #828486;
     }
@@ -85,11 +97,7 @@ injectGlobal`
     font-family: 'Avenir', 'Kaff', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
-  h1,h2,h3,h4,h5 {
-    font-family: 'KnockOut', 'Greta', Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: normal;
-  }
+
 
   h1 {
     font-size: 50px;

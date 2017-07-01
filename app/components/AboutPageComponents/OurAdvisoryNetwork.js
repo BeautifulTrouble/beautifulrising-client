@@ -6,7 +6,8 @@
 
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection, Introduction, IntroText } from 'components/AboutPageComponents';
 import { themeThreeColumns } from 'components/CommonComponents';
@@ -18,19 +19,19 @@ const List = styled.ul``;
 
 const ListItem = styled.li`list-style: none;
   width: ${props=>props.theme.itemWidth};
-  margin-${p=>p.lang==='ar'?'left':'right'}: ${props=>props.theme.itemMargin};
+  margin-${p=>p.theme.isArabic?'left':'right'}: ${props=>props.theme.itemMargin};
   display: inline-block;
   vertical-align: top;
   margin-bottom: 50px;
-  text-align: ${p=>p.lang==='ar'?'right':'left'};
+  text-align: ${p=>p.theme.isArabic?'right':'left'};
 
   h3 {
 
     font-size: 19px;
-    font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
+    font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
     margin: 0;
     margin-top: 15px;
-    text-align: ${p=>p.lang==='ar'?'right':'left'};
+    text-align: ${p=>p.theme.isArabic?'right':'left'};
     text-transform: uppercase;
     letter-spacing: 0;
 
@@ -39,15 +40,12 @@ const ListItem = styled.li`list-style: none;
     margin: 0;
     font-size: 14px;
     text-transform: uppercase;
-    font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
+    font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
     letter-spacing: 0;
   }
 
   p {
-    text-align: ${p=>p.lang==='ar'?'right':'left'};
-    font-size: 14px;
-    line-height: 22px;
-    padding-${p=>p.lang==='ar'?'left':'right'}: 30px;
+    padding-${p=>p.theme.isArabic?'left':'right'}: 30px;
 
     a {
       color: #828486;
@@ -72,16 +70,16 @@ const Team = styled.h5`
 const Content = styled.div``;
 
 const AdvisoryNetworkSection =styled(AboutSection)`
-  text-align: ${p=>p.lang==='ar'?'right':'left'};
+  text-align: ${p=>p.theme.isArabic?'right':'left'};
   h2 {
     &::after {
-      ${p=>p.lang==='ar'?'right':'left'}: 83%;
+      ${p=>p.theme.isArabic?'right':'left'}: 83%;
     }
   }
 `;
 
 const AdvisoryNetworkIntro = styled(IntroText)`
-  margin-${p=>p.lang==='ar'?'right':'left'}: 82%;
+  margin-${p=>p.theme.isArabic?'right':'left'}: 82%;
   width: 33%;
   padding: 0;
 `
@@ -100,28 +98,32 @@ export class OurAdvisoryNetwork extends React.Component {
   render() {
     const {locale} = this.props.intl;
     return (
-      <AdvisoryNetworkSection lang={locale} id='advisory-network'>
-        { this.props.hideHeader ? null : this.renderHeader() }
-        <Introduction>
-          <AdvisoryNetworkIntro lang={locale}>
-            <Markdown source={this.props.introText}/>
-          </AdvisoryNetworkIntro>
-        </Introduction>
-        <ThemeProvider theme={themeThreeColumns}>
-          <List>
-            { this.props.advisoryNetwork.map((item, ind) => (
-              <ListItem key={ind}>
-                <Image source={item['image']} />
-                <Name>{item['person']}</Name>
-                <Team>ADVISORY NETWORK</Team>
-                <Content>
-                  <Markdown source={item['team-bio']} />
-                </Content>
-              </ListItem>
-            ))}
-          </List>
-        </ThemeProvider>
-      </AdvisoryNetworkSection>
+      <LanguageThemeProvider>
+        <AdvisoryNetworkSection lang={locale} id='advisory-network'>
+          { this.props.hideHeader ? null : this.renderHeader() }
+          <Introduction>
+            <AdvisoryNetworkIntro lang={locale}>
+              <ContentBlock>
+                <Markdown source={this.props.introText}/>
+              </ContentBlock>
+            </AdvisoryNetworkIntro>
+          </Introduction>
+          <ThemeProvider theme={themeThreeColumns}>
+            <List>
+              { this.props.advisoryNetwork.map((item, ind) => (
+                <ListItem key={ind}>
+                  <Image source={item['image']} />
+                  <Name>{item['person']}</Name>
+                  <Team>ADVISORY NETWORK</Team>
+                  <ContentBlock>
+                    <Markdown source={item['team-bio']} />
+                  </ContentBlock>
+                </ListItem>
+              ))}
+            </List>
+          </ThemeProvider>
+        </AdvisoryNetworkSection>
+      </LanguageThemeProvider>
     );
   }
 }

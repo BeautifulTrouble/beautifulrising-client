@@ -9,6 +9,8 @@ import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
+
+import ContentBlock from 'components/ContentBlock';
 import Isvg from 'react-inlinesvg';
 
 import messages from './messages';
@@ -68,7 +70,7 @@ export const PotentialRiskIcon = styled(Isvg)`
 export const ToolsButton = styled.button`
   outline: none;
   cursor: pointer;
-  color:${props => props.color};
+  ${p => p.color ? `color: ${p.color};` : ''}
   font-weight: bold;
   padding: 0;
   img { margin-right: 10px;}
@@ -86,8 +88,6 @@ export const ToolsButton = styled.button`
   transition:  transform 0.4s ease;
 
   text-transform: uppercase;
-  font-size: 14px;
-  line-height: 22px;
 
   svg, svg * {
     fill: ${props=>props.color ? props.color : (props.toShow ? 'black' : '#828486')};
@@ -115,11 +115,11 @@ export const ToolsListMenuItem = styled.li`
 
 export const ToolType = styled.h3`
   margin: 0;
-  font-size: ${p=>p.ar?'35px':'22px'};
+  font-size: ${p=>p.ar?'35px':'20px'};
   letter-spacing: ${p=>p.ar?'3px':'0'};
   padding-top: 20px;
   font-family: 'Paint Hand', 'Massira Spray', serif;
-  color: ${props => getToolTypeColor(props.type) }
+  color: ${props => getToolTypeColor(props.type) };
 `;
 
 export const ToolTitle = styled.h1`
@@ -186,7 +186,7 @@ export const ToolsContainer = styled.div`
   transform: translateX(${(props) => props.showTools ?
       (props=>props.theme.lang == 'ar' ? '-685px' : '685px') :
       (props=>props.theme.lang == 'ar' ? '-640px' : '640px') });
-  transition: transform 0.5s, width 0.5s;
+  transition: transform 0.3s ease, width 0.3s ease;
   overflow-x: hidden;
   overflow-y: hidden;
   `;
@@ -209,8 +209,10 @@ export const BlockContainer = styled(ToolContainer)`
   width: 250px;
   height: 250px;
   margin: 10px;
-  margin-${p=>p.lang==='ar'?'left':'right'}: 15px;
-  margin-${p=>p.lang==='ar'?'right':'left'}: 5px;
+  margin-${p=>p.lang==='ar'?'right':'left'}: 17px;
+  margin-${p=>p.lang==='ar'?'left':'right'}: 2px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 `;
 export const BlockViewport = styled(ToolViewport)`
   background-color: rgba(0,0,0,0.5);
@@ -219,7 +221,7 @@ export const BlockViewport = styled(ToolViewport)`
   height: 100%;
   position: relative;
 `;
-export const BlockSpiel = styled.div`
+export const BlockSpiel = styled(ContentBlock)`
   color: ${props=>getToolTypeColor(props.type)};
   position: absolute;
   top: 0;

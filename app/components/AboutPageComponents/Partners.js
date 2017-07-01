@@ -57,12 +57,12 @@ const Image = styled.div`
   background-repeat: no-repeat;
 `;
 
-const Name = styled.h3`
+const Name = styled.h5`
 font-size: 14px !important;
 text-transform: uppercase;
 position: relative;
 
-font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
+font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
 &::before {
   content: ' ';
   width: 42px;

@@ -7,6 +7,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+
 import { FormattedMessage, injectIntl} from 'react-intl';
 import messages from './messages';
 import Markdown from 'react-remarkable';
@@ -39,13 +42,10 @@ const Act = styled.li`list-style: none;
   }
 `;
 
-const SnapshotCallout = styled.div`
-  font-weight: bold;
+const SnapshotCallout = styled(ContentBlock)`
+  font-weight: 800;
   color: black;
   margin-bottom: 5px;
-  font-size: 14px;
-  line-height: 22px;
-  ${props=>props.lang === 'ar' ? 'font-family: Kaff Bold;' : ''}
 `;
 const Link = styled.a`
     color: #838486;

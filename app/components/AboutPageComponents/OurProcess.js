@@ -6,13 +6,15 @@
 
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-
 import { injectIntl, FormattedMessage } from 'react-intl';
+import VisibilitySensor from 'react-visibility-sensor';
+import Markdown from 'react-remarkable';
+
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import ContentBlock from 'components/ContentBlock';
 import { AboutSection } from 'components/AboutPageComponents';
 import { themeFourColumns } from 'components/CommonComponents';
 import messages from './messages';
-import VisibilitySensor from 'react-visibility-sensor';
-import Markdown from 'react-remarkable';
 
 import InspirationImage from 'assets/images/about/inspiration.svg';
 import DefinitionImage from 'assets/images/about/definition.svg';
@@ -51,16 +53,7 @@ const ListItem = styled.li`list-style: none;
   }
 
   p {
-    text-align: ${p=>p.lang==='ar'?'right':'left'};
-    font-size: 14px;
-    line-height: 22px;
     padding-${p=>p.lang==='ar'?'right':'left'}: 10px;
-    font-family: 'Avenir', 'Kaff', sans-serif;
-
-    a {
-      color: #828486;
-      em { font-style: italic; }
-    }
   }
 
   h2 {
@@ -94,7 +87,7 @@ const ListItem = styled.li`list-style: none;
 const ParticipantsContainer = styled.div`
   h3 {
     font-size: 16px;
-    font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
+    font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
     letter-spacing: 0;
     text-transform: uppercase;
     margin-bottom: 20px;
@@ -110,6 +103,25 @@ const Image = styled.img`
   margin-bottom: 30px;
   margin-${p=>p.lang==='ar'?'right':'left'}: 20px;
 `;
+
+const PROCESSES = [
+  {
+    icon: InspirationImage,
+    text: messages.inspiration
+  },
+  {
+    icon: DefinitionImage,
+    text: messages.definition
+  },
+  {
+    icon: PrototypingImage,
+    text: messages.prototyping
+  },
+  {
+    icon: RealizationImage,
+    text: messages.realization
+  }
+]
 class OurProcess extends React.Component {
 
   renderProjects() {
@@ -127,11 +139,13 @@ class OurProcess extends React.Component {
 
               <Image lang={lang} src={require('assets/images/workshops/' + WORKSHOPS[ind] + '.png')} />
               <h4>{item.get('name')}</h4>
-              <ol>
-                {item.get('participants') ?
-                    item.get('participants').map((participant, ind2) =>( <li key={ind2}>{participant}</li> ))
-                    : null }
-              </ol>
+              <ContentBlock>
+                <ol>
+                  {item.get('participants') ?
+                      item.get('participants').map((participant, ind2) =>( <li key={ind2}>{participant}</li> ))
+                      : null }
+                </ol>
+              </ContentBlock>
             </ListItem>
             )}
           )}
@@ -148,46 +162,48 @@ class OurProcess extends React.Component {
     </VisibilitySensor>);
   }
 
+  renderProcess() {
+    const {locale, formatMessage} = this.props.intl;
+    return (
+      <LanguageThemeProvider theme={themeFourColumns}>
+          <List>
+            {PROCESSES.map(item=>(
+              <ListItem key={item.icon} lang={locale}>
+                <CircledImage src={item.icon} />
+                <ContentBlock>
+                  <Markdown source={formatMessage(item.text)} />
+                </ContentBlock>
+              </ListItem>
+            ))}
+          </List>
+      </LanguageThemeProvider>
+    )
+  }
+
+  renderParticipants() {
+    return (
+      <LanguageThemeProvider theme={themeFourColumns}>
+        <ParticipantsContainer>
+          <h3>
+            <FormattedMessage {...messages.participantsHeader} />
+          </h3>
+          {this.renderProjects()}
+        </ParticipantsContainer>
+      </LanguageThemeProvider>
+    );
+  }
+
   render() {
     const theme = themeFourColumns;
     const {formatMessage, locale} = this.props.intl;
     return (
-      <AboutSection id='process' name='process' lang={locale}>
-        { this.props.hideHeader ?  null : this.renderHeader() }
-        <ThemeProvider theme={themeFourColumns}>
-            <List>
-              <ListItem lang={locale}>
-                <CircledImage src={InspirationImage} />
-                <Markdown source={formatMessage(messages.inspiration)} />
-              </ListItem>
-
-              <ListItem lang={locale}>
-                <CircledImage src={DefinitionImage} />
-                <Markdown source={formatMessage(messages.definition)} />
-              </ListItem>
-
-              <ListItem lang={locale}>
-                <CircledImage src={PrototypingImage} />
-                <Markdown source={formatMessage(messages.prototyping)} />
-              </ListItem>
-
-              <ListItem lang={locale}>
-                <CircledImage src={RealizationImage} />
-                <Markdown source={formatMessage(messages.realization)} />
-              </ListItem>
-            </List>
-        </ThemeProvider>
-
-
-        <ThemeProvider theme={themeFourColumns}>
-          <ParticipantsContainer>
-            <h3>
-              <FormattedMessage {...messages.participantsHeader} />
-            </h3>
-            {this.renderProjects()}
-          </ParticipantsContainer>
-        </ThemeProvider>
-      </AboutSection>
+      <LanguageThemeProvider>
+        <AboutSection id='process' name='process' lang={locale}>
+          { this.props.hideHeader ?  null : this.renderHeader() }
+          { this.renderProcess() }
+          {this.renderParticipants() }
+        </AboutSection>
+      </LanguageThemeProvider>
     );
   }
 }

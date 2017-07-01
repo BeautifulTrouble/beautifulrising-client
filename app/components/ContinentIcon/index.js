@@ -9,6 +9,9 @@ import styled from 'styled-components';
 
 import { FormattedMessage, injectIntl } from 'react-intl';
 import Isvg from 'react-inlinesvg';
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+
 import messages from './messages';
 import Africa from 'assets/images/regions/africa.svg';
 import APOceania from 'assets/images/regions/asia-pacific-oceania.svg';
@@ -32,9 +35,7 @@ const Continent = styled.div`
   }
 `;
 const WhereWhen = styled.div`
-  font-family: 'Avenir Black';
-  font-size: 14px;
-  line-height: 22px;
+  font-weight: 800;
   color: white;
   text-transform: uppercase;
 `;
@@ -60,12 +61,18 @@ class ContinentIcon extends React.PureComponent {
 
     const lang = this.props.intl.locale;
     return (
-      <Content lang={lang}>
-        <WhereWhen>{`${this.props.where} ${this.props.when}`}</WhereWhen>
-        <Continent>
-          <Isvg src={this.getRegionIcon(this.props.region)} />
-        </Continent>
-      </Content>
+        <Content lang={lang}>
+          <WhereWhen>
+            <LanguageThemeProvider>
+              <ContentBlock>
+                {`${this.props.where} ${this.props.when}`}
+              </ContentBlock>
+            </LanguageThemeProvider>
+          </WhereWhen>
+          <Continent>
+            <Isvg src={this.getRegionIcon(this.props.region)} />
+          </Continent>
+        </Content>
     );
   }
 }

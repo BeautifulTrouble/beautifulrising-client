@@ -6,6 +6,8 @@
 
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection } from 'components/AboutPageComponents';
@@ -22,37 +24,28 @@ const ListItem = styled.li`list-style: none;
   display: inline-block;
   vertical-align: top;
   margin-bottom: 50px;
-  text-align: left;
+  text-align: ${p=>p.theme.isArabic?'right':'left'};
 
   h3 {
-
     font-size: 19px;
-    font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
+    font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
     margin: 0;
     margin-top: 15px;
-    text-align: left;
+    text-align: ${p=>p.theme.isArabic?'right':'left'};
     text-transform: uppercase;
     letter-spacing: 0;
-
   }
+
   h5 {
     margin: 0;
     font-size: 14px;
     text-transform: uppercase;
-    font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
+    font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
     letter-spacing: 0;
   }
 
-  p {
-    text-align: left;
-    font-size: 14px;
-    line-height: 22px;
-    padding-right: 30px;
-
-    a {
-      color: #828486;
-    }
-  }`;
+  p { padding-${p=>p.theme.isArabic?'left':'right'}: 30px; }
+`;
 
 const Image = styled.div`
   display: inline-block;
@@ -70,7 +63,6 @@ const Name = styled.h3``;
 const Team = styled.h5`
   text-transform: uppercase;
 `;
-const Content = styled.div``;
 
 export class OurTeam extends React.Component {
   renderHeader() {
@@ -85,26 +77,28 @@ export class OurTeam extends React.Component {
   render() {
       const {locale}=this.props.intl;
       return (
-      <AboutSection id='team' lang={locale}>
-        { this.props.hideHeader ? null : this.renderHeader() }
-        <ThemeProvider theme={themeThreeColumns}>
-          <List>
-            { !this.props.teamMembers ? null : this.props.teamMembers.map((item, ind) => {
-                const teamMember = this.props.allData.get(item);
-                return (
-                  <ListItem key={ind}>
-                    <Image source={teamMember.get('image')} />
-                    <Name>{teamMember.get('person')}</Name>
-                    <Team>{teamMember.get('team-title')}</Team>
-                    <Content>
-                      <Markdown source={teamMember.get('team-bio')} />
-                    </Content>
-                  </ListItem>
-                );
-            })}
-          </List>
-        </ThemeProvider>
-      </AboutSection>
+      <LanguageThemeProvider>
+        <AboutSection id='team' lang={locale}>
+          { this.props.hideHeader ? null : this.renderHeader() }
+          <ThemeProvider theme={themeThreeColumns}>
+            <List>
+              { !this.props.teamMembers ? null : this.props.teamMembers.map((item, ind) => {
+                  const teamMember = this.props.allData.get(item);
+                  return (
+                    <ListItem key={ind}>
+                      <Image source={teamMember.get('image')} />
+                      <Name>{teamMember.get('person')}</Name>
+                      <Team>{teamMember.get('team-title')}</Team>
+                      <ContentBlock>
+                        <Markdown source={teamMember.get('team-bio')} />
+                      </ContentBlock>
+                    </ListItem>
+                  );
+              })}
+            </List>
+          </ThemeProvider>
+        </AboutSection>
+      </LanguageThemeProvider>
     );
   }
 }

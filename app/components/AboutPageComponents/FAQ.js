@@ -7,6 +7,10 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
+import SmallHeaderBlock from 'components/SmallHeaderBlock';
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection } from 'components/AboutPageComponents';
 import { themeThreeColumns } from 'components/CommonComponents';
@@ -24,30 +28,26 @@ const ListItem = styled.li`list-style: none;
   display: inline-block;
   vertical-align: top;
   margin-bottom: 34px;
+`
+;
 
-  h3 {
-    font-size: 19px;
-    letter-spacing: 0px;
-    margin-bottom: 5px;
-    text-align: ${p=>p.lang==='ar'?'right':'left'};
-    font-family: 'Avenir Black', 'Kaff Bold';
-    position: relative;
+const FAQHeader = styled(SmallHeaderBlock)`
+  letter-spacing: 0px;
+  margin-bottom: 5px;
+  position: relative;
 
-    &::before {
-      position: absolute;
-      content: "";
-      width: 42px;
-      border-top: 2px solid #000;
-      margin-top: -12px;
-    }
+  &::before {
+    position: absolute;
+    content: "";
+    width: 42px;
+    border-top: 2px solid #000;
+    margin-top: -12px;
   }
+`;
 
-  p {
-    text-align: ${p=>p.lang==='ar'?'right':'left'};
-    font-size: 14px;
-    line-height: 22px;
-    padding-${p=>p.lang==='ar'?'right':'left'}: 10px;
-  }`;
+const FAQContent = styled(ContentBlock)`
+  padding-${p=>p.theme.isArabic?'right':'left'}: 100px;
+`;
 
 const Image = styled.div`
   display: inline-block;
@@ -78,22 +78,24 @@ export class FAQ extends React.Component {
   render() {
     const {locale}=this.props.intl;
     return (
-      <AboutSection id='faq' lang={locale}>
-        { this.props.hideHeader ? null : this.renderHeader()}
-        <List lang={locale}>
-          { this.props.questions === undefined ? null : this.props.questions.map((item, ind) => {
-              return (
-                <ListItem key={ind}  lang={locale}>
-                  <h3>{item.get('question')}</h3>
-                  <Content>
-                    <Markdown source={item.get('answer')} />
-                  </Content>
-                </ListItem>
-              )
-            })
-          }
-        </List>
-      </AboutSection>
+      <LanguageThemeProvider>
+        <AboutSection id='faq' lang={locale}>
+          { this.props.hideHeader ? null : this.renderHeader()}
+          <List lang={locale}>
+            { this.props.questions === undefined ? null : this.props.questions.map((item, ind) => {
+                return (
+                  <ListItem key={ind}  lang={locale}>
+                    <FAQHeader>{item.get('question')}</FAQHeader>
+                    <FAQContent>
+                      <Markdown source={item.get('answer')} />
+                    </FAQContent>
+                  </ListItem>
+                )
+              })
+            }
+          </List>
+        </AboutSection>
+      </LanguageThemeProvider>
     );
   }
 }

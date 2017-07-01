@@ -25,7 +25,7 @@ const Viewport = styled.div``;
 const Button = styled.button`
   outline: none;
   cursor: pointer;
-  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
+  font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
   color: ${props=>props.selected ? 'black' : '#828486'};
   text-decoration: ${props=>props.selected ? 'none' : 'underline'};
   font-size: 14px;

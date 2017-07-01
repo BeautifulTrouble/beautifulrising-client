@@ -6,7 +6,8 @@
 
 import React from 'react';
 import styled from 'styled-components';
-
+import SmallSectionHeader from 'components/SmallSectionHeader';
+import ContentBlock from 'components/ContentBlock';
 import { ToolType, ToolTitle } from 'components/ToolsComponents';
 import { CommonLeftHeader } from 'components/CommonComponents';
 import { Link } from 'react-router';
@@ -82,20 +83,17 @@ export const ToolsPageLeftHeader = styled(CommonLeftHeader)`
   padding: 0;
 
 `
-export const ToolsPageRightHeader = styled(CommonLeftHeader)`
-  text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
+export const ToolsPageRightHeader = styled(SmallSectionHeader)`
   border: 0;
-  font-size: 30px;
+  margin-bottom: 5px;
 `;
 
-export const ToolsPageContributor = styled(ToolsPageLeftHeader)`
+export const ToolsPageContributor = styled(SmallSectionHeader)`
   font-size: 40px;
   margin: 0;
   padding: 0;
   line-height: 40px;
   margin-top: 32px;
-
-  text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
 `;
 
 export const ToolPageCaption = styled.div`
@@ -103,18 +101,19 @@ export const ToolPageCaption = styled.div`
   bottom: 10px;
   color: white;
   padding-${props=>props.theme.lang==='ar'?'left':'right'}: 50px;
-  font-size: 15px;
+  font-size: 14px;
   display: ${props=>props.show ? 'block' : 'none'};
 
   a { color: white; }
 `;
-export const ToolsPageRelatedToolsHeader = styled(ToolsPageLeftHeader)`
+export const ToolsPageRelatedToolsHeader = styled(SmallSectionHeader)`
   font-size: 40px;
   border: none;
   background-color: #f7f7f7;
   padding: ${props=>props.theme.lang==='ar'?'10px 20px 10px 5px':'10px 5px 10px 20px'};
   margin-bottom: 10px;
   margin-top: 30px;
+
 `;
 
 export const ToolsRelatedArea = styled.div`
@@ -185,28 +184,15 @@ export const ToolMainArea = styled(ToolInfoSection)`
   padding: ${props=>props.theme.lang==='ar' ? '20px 90px 20px 20px' : '20px 20px 20px 90px'};
 `;
 
-export const ToolMainContent = styled.div`
+export const ToolMainContent = styled(ContentBlock)`
   text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
 `;
 
 export const ToolMainContentHeader = styled(CommonLeftHeader)`
-  text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
   border: none;
-
-  font-size: 19px;
-  line-height: 22px;
-  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
-  letter-spacing: 0;
   margin: 10px 0;
 `;
-export const ToolReadContent = styled.div`
-  font-size: 14px;
-  line-height: 22px;
-
-  a {
-    color: #838486;
-  }
-
+export const ToolReadContent = styled(ContentBlock)`
   img {
     width: 100%;
   }
@@ -226,12 +212,10 @@ export const LearnMoreItem = styled.li`
   margin: 0;
   list-style: none;
   margin-bottom: 10px;
-  font-size: 14px;
 `;
 export const LearnMoreItemLink = styled(Link)`
-  color: #828486;
-  font-weight: 700;
   text-decoration: underline;
+  font-weight: 800;
 `;
 export const LearnMoreItemSource = styled.span``;
 

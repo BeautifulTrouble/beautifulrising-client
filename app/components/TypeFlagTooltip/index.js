@@ -36,7 +36,7 @@ const TypeTile = styled.span`
 `;
 
 const TypeName = styled.div`
-  font-family: 'Avenir', 'Kaff Bold';
+  font-family: 'Avenir', 'Kaff';
   font-size: 10px;
   text-transform: ${p=>p.lang==='ar'?'capitalize':'uppercase'};
   margin-top: -10px;

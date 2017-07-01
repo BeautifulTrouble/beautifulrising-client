@@ -10,6 +10,10 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { emailModules, emailModulesComplete, emailModulesError } from './actions';
+
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import ContentBlock from 'components/ContentBlock';
+
 import makeSelectEmailTools from './selectors';
 import messages from './messages';
 
@@ -22,7 +26,6 @@ const Container = styled.div`
 const Viewport = styled.div``;
 const Form = styled.form`
 border: 1px solid;
-font-size: 14px;
 padding: 8px;
 
 input[type=email] {
@@ -45,7 +48,7 @@ const TextInput = styled.input``;
 const Button = styled.button``;
 const Title = styled.h3`margin: 0`;
 const Message = styled.p`margin: 0 0 10px`;
-const FormContainer = styled.div`
+const FormContainer = styled(ContentBlock)`
 `;
 
 export class EmailTools extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -74,24 +77,25 @@ export class EmailTools extends React.PureComponent { // eslint-disable-line rea
 
   render() {
     return (
-      <Container>
-        <Title>
-          <FormattedMessage {...messages.header} />
-        </Title>
-        <Message>
-          <FormattedMessage {...messages.instruction} />
-        </Message>
-        {this.props.EmailTools.complete ? this.renderCompleteMessage() : null}
-        <FormContainer>
-          <Form onSubmit={this.handleSubmit.bind(this)}>
-            <TextInput type='email' name='email' onChange={this.handleChange.bind(this)} placeholder='samir@gmail.com'/>
-            <Button>
-              <FormattedMessage {...messages.submit} />
-            </Button>
-          </Form>
-        </FormContainer>
-
-      </Container>
+      <LanguageThemeProvider>
+        <Container>
+          <Title>
+            <FormattedMessage {...messages.header} />
+          </Title>
+          <Message>
+            <FormattedMessage {...messages.instruction} />
+          </Message>
+          {this.props.EmailTools.complete ? this.renderCompleteMessage() : null}
+          <FormContainer>
+            <Form onSubmit={this.handleSubmit.bind(this)}>
+              <TextInput type='email' name='email' onChange={this.handleChange.bind(this)} placeholder='samir@gmail.com'/>
+              <Button>
+                <FormattedMessage {...messages.submit} />
+              </Button>
+            </Form>
+          </FormContainer>
+        </Container>
+      </LanguageThemeProvider>
     );
   }
 }

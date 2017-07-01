@@ -8,6 +8,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
 import makeSelectTools, {makeSelectLanguage} from './selectors';
 import messages from './messages';
@@ -108,7 +109,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
     const {locale} = this.props.intl;
 
     return (
-      <ThemeProvider theme={{ lang: this.props.language }} >
+      <LanguageThemeProvider>
         <ToolsContainer showTools={this.props.Tools.show || this.props.Tools.onboardShow }>
           <ToolsViewport>
               <ToolsMenu>
@@ -150,7 +151,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
             <ToolsArea lang={this.props.language} show={this.props.Tools.show || this.props.Tools.onboardShow}/>
           </ToolsViewport>
         </ToolsContainer>
-      </ThemeProvider>
+      </LanguageThemeProvider>
     );
   }
 }

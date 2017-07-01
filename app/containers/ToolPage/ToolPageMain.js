@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import ToolSnapshotArea from 'components/ToolSnapshotArea';
-
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import AdderRemover from 'containers/Tools/AdderRemover';
 import { BorderedButton } from 'components/CommonComponents';
 import { ToolMainArea,
@@ -129,23 +129,25 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
     // If snapshot, render the snapshot area...
     const snapshotArea = this.props['module-type'] === 'snapshot' ? this.renderSnapshot() : null;
     return (
-      <ToolMainArea>
-          { this.checkContentLength()}
-          <ToolHowToUse text={this.props['how-to-use']} />
-          <ToolWhyItWorked text={this.props['why-it-worked']} />
-          <ToolWhyItFailed text={this.props['why-it-failed']} />
-          <ToolKeyItems
-            keyTactics={this.props['key-modules'] ? this.props['key-modules']['key-tactics'] : []}
-            keyPrinciples={this.props['key-modules'] ? this.props['key-modules']['key-principles']  : []}
-            keyTheories={this.props['key-modules'] ? this.props['key-modules']['key-theories'] : [] }
-            keyMethodologies={this.props['key-modules'] ? this.props['key-modules']['key-methodologies'] : [] }
-          />
-          <ToolLearnMore {...this.props} />
+      <LanguageThemeProvider>
+        <ToolMainArea>
+            { this.checkContentLength()}
+            <ToolHowToUse text={this.props['how-to-use']} />
+            <ToolWhyItWorked text={this.props['why-it-worked']} />
+            <ToolWhyItFailed text={this.props['why-it-failed']} />
+            <ToolKeyItems
+              keyTactics={this.props['key-modules'] ? this.props['key-modules']['key-tactics'] : []}
+              keyPrinciples={this.props['key-modules'] ? this.props['key-modules']['key-principles']  : []}
+              keyTheories={this.props['key-modules'] ? this.props['key-modules']['key-theories'] : [] }
+              keyMethodologies={this.props['key-modules'] ? this.props['key-modules']['key-methodologies'] : [] }
+            />
+            <ToolLearnMore {...this.props} />
 
-          {snapshotArea}
+            {snapshotArea}
 
-          { this.renderRealWorldExample() }
-      </ToolMainArea>
+            { this.renderRealWorldExample() }
+        </ToolMainArea>
+      </LanguageThemeProvider>
     );
   }
 }

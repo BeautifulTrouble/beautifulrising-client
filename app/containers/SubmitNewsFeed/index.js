@@ -9,28 +9,26 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import styled from 'styled-components';
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import makeSelectSubmitNewsFeed from './selectors';
 import messages from './messages';
 
-const Header = styled.div`
-  font-weight: bold;
+const Header = styled(ContentBlock)`
+  font-weight: 800;
   color: black;
-  font-size: 14px;
-  line-height: 22px;
   margin: 10px 0;
 `;
 
-const FormContainer = styled.div`
+const FormContainer = styled(ContentBlock)`
   border: 1px solid;
-  font-size: 14px;
   padding: 8px;
-  text-align: ${props=>props.lang==='ar' ? 'right' : 'left'};
 
   input[type=email] {
     width: calc(100% - 50px);
     outline: none;
     padding: 2px;
-    text-align: ${props=>props.lang==='ar' ? 'right' : 'left'};
+    text-align: ${p=>p.theme.ar ? 'right' : 'left'};
   }
   button {
     outline: none;
@@ -40,7 +38,7 @@ const FormContainer = styled.div`
     font-weight: bold;
     cursor: pointer;
     color: #828486;
-    float: ${props=>props.lang==='ar' ? 'left' : 'right'};
+    float: ${p=>p.theme.ar ? 'left' : 'right'};
   }
 `;
 export class SubmitNewsFeed extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -73,13 +71,14 @@ export class SubmitNewsFeed extends React.PureComponent { // eslint-disable-line
   }
 
   render() {
+    const { locale } = this.props.intl;
     return (
-      <div>
+      <LanguageThemeProvider>
         <Header>
           <FormattedMessage {...messages.header} />
           { this.renderForm() }
         </Header>
-      </div>
+      </LanguageThemeProvider>
     );
   }
 }

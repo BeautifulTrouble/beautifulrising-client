@@ -10,7 +10,8 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import Markdown from 'react-remarkable';
-
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import ContentBlock from 'components/ContentBlock';
 import AdderRemover from 'containers/Tools/AdderRemover';
 import ContinentIcon from 'components/ContinentIcon';
 import { ToolHeaderContainer,
@@ -43,8 +44,6 @@ const Viewport = styled.div`
   position: relative;
 `;
 const ShareContainer = styled.div`
-  font-size: 14px; line-height: 22px;
-
   display: block;
   margin-top: 11px;
   svg * {
@@ -54,11 +53,12 @@ const ShareContainer = styled.div`
     margin-right: 10px;
   }
   color: white;
-  * { color: white; font-family: 'Avenir Black', 'Kaff Bold'; text-transform: uppercase; }
+  font-weight: 800;
 `;
 const CTA = styled.span`
   font-size: ${p=>p.theme.ar?'16px':'14px'};
-  font-family: ${p=>p.theme.ar?'Kaff Bold':'Avenir Black'};
+  font-family: 'Avenir', 'Kaff';
+  font-weight: 800;
 `;
 export class ToolPageHeader extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -84,7 +84,7 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
   render() {
     const { locale } = this.props.intl;
     return (
-      <ThemeProvider theme={{ar: locale==='ar', lang: locale}}>
+      <LanguageThemeProvider>
         <ToolHeaderContainer backgroundImage={BR_IMAGE_PREFIX+this.props.image}>
           <ToolHeaderViewport showOverflow={this.props['module-type'] !== 'snapshot'}>
             <Content>
@@ -105,10 +105,12 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
                 />
                 <ShareContainer>
                   <ShareButton {...this.props}>
-                    <Isvg src={ShareIcon} className={'share-button'} />
-                    <CTA>
-                      <FormattedMessage {...messages.share}/>
-                    </CTA>
+                    <ContentBlock>
+                      <Isvg src={ShareIcon} className={'share-button'} />
+                      <CTA>
+                        <FormattedMessage {...messages.share}/>
+                      </CTA>
+                    </ContentBlock>
                   </ShareButton>
                 </ShareContainer>
                 <ToolPageCaption show={this.props['image-caption'] !== undefined}>
@@ -120,7 +122,7 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
             { this.getBanner() }
           </ToolHeaderViewport>
         </ToolHeaderContainer>
-      </ThemeProvider>
+      </LanguageThemeProvider>
     );
   }
 }

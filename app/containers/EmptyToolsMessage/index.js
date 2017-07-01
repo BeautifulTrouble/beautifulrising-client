@@ -11,31 +11,31 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
 import AdderRemover from 'containers/Tools/AdderRemover';
-const Container = styled.div`
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+const Container = styled(ContentBlock)`
   padding: 10px;
-  * {
-    font-size: 14px;
-    line-height: 22px;
-  }
 `;
 
-const CallToAction = styled.div`
-  font-weight: bold;
+const CallToAction = styled(ContentBlock)`
+  font-weight: 800;
 `;
 export class EmptyToolsMessage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   render() {
     return (
-      <Container>
-        <FormattedMessage {...messages.header} />
-        <CallToAction>
-          <FormattedMessage {...messages.instruction}
-            values={{
-              icon: (<AdderRemover color={'black'} slug={null}/>)
-            }}
-          />
-        </CallToAction>
-      </Container>
+      <LanguageThemeProvider>
+        <Container>
+          <FormattedMessage {...messages.header} />
+          <CallToAction>
+            <FormattedMessage {...messages.instruction}
+              values={{
+                icon: (<AdderRemover color={'black'} slug={null}/>)
+              }}
+            />
+          </CallToAction>
+        </Container>
+      </LanguageThemeProvider>
     );
   }
 }
