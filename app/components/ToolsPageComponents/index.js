@@ -242,8 +242,19 @@ text-transform: uppercase;
 font-size: 40px;
 line-height: 36px;
 
-padding-left: 48px;
-text-indent: -48px;
+${p=> {
+  if (p.theme.ar) {
+    return `
+      padding-right: 60px;
+      text-indent: -60px;
+    `;
+  } else {
+    return `
+      padding-left: 48px;
+      text-indent: -48px;
+    `;
+  }
+}}
 
 border-bottom: 6px solid black;
 `;

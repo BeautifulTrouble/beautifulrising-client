@@ -6,7 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { RealWorldIcon } from 'components/ToolsComponents';
 import Isvg from 'react-inlinesvg';
@@ -17,7 +17,7 @@ import SubmitRealWorldExample from 'containers/SubmitRealWorldExample';
 import RealWorldItem from 'components/RealWorldItem';
 import RealWorldIconImage from 'assets/images/icons/real-world.svg';
 import ArrowIcon from 'assets/images/icons/arrow.svg';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 
 const TitleContainer = styled.span`
@@ -28,7 +28,7 @@ const TitleContainer = styled.span`
 const ContentArea = styled.div``;
 import messages from './messages';
 
-export default class ToolRealWorld extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class ToolRealWorld extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
     super(props);
@@ -55,22 +55,27 @@ export default class ToolRealWorld extends React.Component { // eslint-disable-l
 
   }
   render() {
+    const {locale} = this.props.intl;
     return (
-      <RealWorldContainer>
-        <RealWorldHeader>
-          <RealWorldIcon src={RealWorldIconImage} type={this.props.type}/>
-          <TitleContainer>
-            <FormattedMessage {...messages.realWorldExamplesOf} values={{title: this.props.title}}/>
-          </TitleContainer>
-          <RealWorldToggle collapsed={this.state.isCollapsed} onClick={this.handleCollapseClick.bind(this)}>
-            <Isvg src={ArrowIcon} />
-          </RealWorldToggle>
-        </RealWorldHeader>
-        <RealWorldItems show={this.state.isCollapsed}>
-          {this.generateRealWorldList()}
-          <SubmitRealWorldExample {...this.props} />
-        </RealWorldItems>
-      </RealWorldContainer>
+      <ThemeProvider theme={{ ar: locale==='ar', lang: locale }}>
+        <RealWorldContainer>
+          <RealWorldHeader>
+            <RealWorldIcon src={RealWorldIconImage} type={this.props.type}/>
+            <TitleContainer>
+              <FormattedMessage {...messages.realWorldExamplesOf} values={{title: this.props.title}}/>
+            </TitleContainer>
+            <RealWorldToggle collapsed={this.state.isCollapsed} onClick={this.handleCollapseClick.bind(this)}>
+              <Isvg src={ArrowIcon} />
+            </RealWorldToggle>
+          </RealWorldHeader>
+          <RealWorldItems show={this.state.isCollapsed}>
+            {this.generateRealWorldList()}
+            <SubmitRealWorldExample {...this.props} />
+          </RealWorldItems>
+        </RealWorldContainer>
+      </ThemeProvider>
     );
   }
 }
+
+export default injectIntl(ToolRealWorld);
