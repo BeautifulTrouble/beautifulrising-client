@@ -8,6 +8,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Isvg from 'react-inlinesvg';
 
+import SmallHeaderBlock from 'components/SmallHeaderBlock';
 import { TYPE_STORIES, TYPE_TACTICS, TYPE_PRINCIPLES,
           TYPE_THEORIES, TYPE_METHODOLOGIES } from './constants';
 
@@ -74,11 +75,8 @@ export const BorderedButton = styled.button`
 `;
 
 
-export const CommonLeftHeader = styled.h2`
-  font-size: 18px;
-  text-transform: uppercase;
+export const CommonLeftHeader = styled(SmallHeaderBlock)`
   padding: 5px 2px;
-  text-align: center;
   border-bottom: 2px solid black;
   margin: 0;
 `;

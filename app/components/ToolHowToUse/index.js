@@ -16,12 +16,7 @@ import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
 const Header = styled(CommonLeftHeader)`
   border: none;
-  text-align: ${p=>p.lang==='ar'?'right':'left'};
   margin-top: 40px;
-  font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
-  font-size: 19px;
-  letter-spacing: 0;
-  line-height: 22px;
 `;
 const Content = styled.div`
   img { width: 100%; }
@@ -34,7 +29,7 @@ function ToolHowToUse(props) {
   const lang = props.intl.locale;
   return (
     <LanguageThemeProvider>
-      <Header lang={lang}>
+      <Header>
         <FormattedMessage {...messages.header} />
       </Header>
       <Content lang={lang}>

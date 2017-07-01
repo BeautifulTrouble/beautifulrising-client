@@ -6,6 +6,8 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import SmallHeaderBlock from 'components/SmallHeaderBlock';
+
 import { Link } from 'react-router';
 const AUTHOR_BASE_IMAGE = "https://beautifulrising.org/assets/content/small-";
 
@@ -43,15 +45,10 @@ export const AuthorImage = styled.span`
   border: 2px solid black;
 `;
 
-export const AuthorName = styled.h3`
-  font-size: 19px;
-  line-height: 19px;
-  text-transform: uppercase;
-  text-align: left;
+export const AuthorName = styled(SmallHeaderBlock)`
   margin-bottom: 2px;
   margin-top: 2px;
-  font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
-  letter-spacing: 0;
+  line-height: 19px;
 `;
 
 export const AuthorLink = styled(Link)`

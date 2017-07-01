@@ -8,6 +8,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import SmallHeaderBlock from 'components/SmallHeaderBlock';
 import {injectIntl} from 'react-intl';
 const Container = styled.div``;
 const Viewport = styled.div`
@@ -40,12 +41,7 @@ const Resource = styled.li`
 `;
 
 const ResourceContainer =styled.div``;
-const Header =styled.h4`
-  font-size: 19px;
-  font-family: Avenir, Kaff, sans-serif;
-  font-weight: 800;
-
-  text-align: ${props=>props.lang==='ar'?'right':'left'};
+const Header =styled(SmallHeaderBlock)`
   position: relative;
   &::before {
     position: absolute;

@@ -20,9 +20,6 @@ const Header = styled(CommonLeftHeader)`
   text-align: ${p=>p.theme.isArabic ? 'right' : 'left'};
   margin-top: 40px;
 
-  font-size: 19px;
-  line-height: 22px;
-  font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
 `;
 const Content = styled(ContentBlock)`
   img {

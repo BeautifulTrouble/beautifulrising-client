@@ -12,6 +12,8 @@ import ContentBlock from 'components/ContentBlock';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection } from 'components/AboutPageComponents';
 import VisibilitySensor from 'react-visibility-sensor';
+import SmallHeaderBlock from 'components/SmallHeaderBlock';
+
 import messages from './messages';
 
 const List = styled.ul`
@@ -43,18 +45,15 @@ const Count = styled.h4`
 const SubListItem = styled.li`
   list-style: none;
   text-align: ${p=>p.lang==='ar'?'right':'left'};
-  h3 {
-    margin: 0;
-    font-size: 19px;
-    font-family: Avenir, Kaff Bold;
-    font-weight: 800;
-    letter-spacing: 0;
-    &::before {
-      content: ' ';
-      width: 42px;
-      height: 1px;
-      border-bottom: 2px solid;
-    }
+`;
+
+const ValueHeader = styled(SmallHeaderBlock)`
+  margin: 0;
+  &::before {
+    content: ' ';
+    width: 42px;
+    height: 1px;
+    border-bottom: 2px solid;
   }
 `
 
@@ -91,7 +90,7 @@ export class OurValues extends React.Component {
                             { item.get('value').map((subitem, subindex) => (
                                 <SubListItem key={subindex} lang={lang}>
                                   <Count>{subindex + 1}</Count>
-                                  <h3>{subitem.get('title')}</h3>
+                                  <ValueHeader>{subitem.get('title')}</ValueHeader>
                                   <SubListContentBlock>
                                     <Markdown source={subitem.get('description')} />
                                   </SubListContentBlock>

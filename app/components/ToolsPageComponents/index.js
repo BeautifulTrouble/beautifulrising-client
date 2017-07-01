@@ -191,13 +191,7 @@ export const ToolMainContent = styled(ContentBlock)`
 `;
 
 export const ToolMainContentHeader = styled(CommonLeftHeader)`
-  text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
   border: none;
-
-  font-size: 19px;
-  line-height: 22px;
-  font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
-  letter-spacing: 0;
   margin: 10px 0;
 `;
 export const ToolReadContent = styled(ContentBlock)`

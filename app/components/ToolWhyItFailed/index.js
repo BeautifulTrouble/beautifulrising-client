@@ -18,10 +18,6 @@ const Header = styled(CommonLeftHeader)`
   border: none;
   text-align: ${props=>props.lang==='ar' ? 'right' : 'left'};
   margin-top: 40px;
-
-  font-size: 19px;
-  line-height: 22px;
-  font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
 `;
 const Content = styled(ContentBlock)`
   img { width: 100%; }
