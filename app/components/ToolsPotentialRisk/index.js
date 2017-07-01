@@ -17,16 +17,18 @@ const Container = styled.div`
   text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
 `;
 const Viewport = styled.div``;
+const HeaderName = styled.span`
+  margin-top: ${p=>p.theme.lang==='ar'?'-4px':'0'};
+`;
 const Header = styled.h3`
-  font-size: 40px;
+  font-size: ${p=>p.theme.lang==='ar'?'30px':'40px'};
   text-transform: uppercase;
   position: relative;
   margin: 0;
   padding-${p=>p.theme.lang==='ar'?'right':'left'}: 46px;
-  padding-bottom: 0;
   .isvg.loaded {
     position: absolute;
-    top: 6px;
+    top: ${p=>p.theme.lang==='ar'?'0':'6px'};
     ${p=>p.theme.lang==='ar'?'right':'left'}: 0;
   }
   * {
@@ -55,7 +57,7 @@ function ToolsPotentialRisk(props) {
         <Viewport>
           <Header >
             <PotentialRiskIcon src={PotentialRiskIconImage} lang={lang} type={props.type} />
-            <FormattedMessage {...messages.potentialRiskHeader} />
+            <HeaderName><FormattedMessage {...messages.potentialRiskHeader} /></HeaderName>
           </Header>
           <Content>
             <Markdown source={props.content} />

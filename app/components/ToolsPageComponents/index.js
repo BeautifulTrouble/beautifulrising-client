@@ -157,6 +157,8 @@ export const ToolLeftArea = styled(ToolInfoSection)`
 
 export const ToolRightArea = styled(ToolInfoSection)`
   width: 360px;
+  padding-top: 30px;
+
   ${props=> {
     if (props.lang === 'ar') {
       return `
