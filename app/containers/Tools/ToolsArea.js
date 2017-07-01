@@ -105,7 +105,7 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
   }
 
   buildPDFLink () {
-    const slugs = Map(this.props.Tools.selectedTools).toList().map(item=>item.slug).join(',');
+    const slugs = Map(this.props.Tools.selectedTools).toList().reverse().map(item=>item.slug).join(',');
     const lang = this.props.intl.locale;
 
     return `https://api.beautifulrising.org/pdf/download?tools=${encodeURIComponent(slugs)}&lang=${lang}`
@@ -172,7 +172,7 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
 
           <ToolsList>
             {
-              Map(this.props.Tools.selectedTools).toList().map((item) => (
+              Map(this.props.Tools.selectedTools).toList().reverse().map((item) => (
                   <ToolsListItem key={item.slug}>
                     <SelectedTool {...item} />
                   </ToolsListItem>
