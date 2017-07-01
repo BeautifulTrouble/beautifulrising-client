@@ -61,18 +61,18 @@ class ContinentIcon extends React.PureComponent {
 
     const lang = this.props.intl.locale;
     return (
-      <LanguageThemeProvider>
         <Content lang={lang}>
           <WhereWhen>
-            <ContentBlock>
-              {`${this.props.where} ${this.props.when}`}
-            </ContentBlock>
+            <LanguageThemeProvider>
+              <ContentBlock>
+                {`${this.props.where} ${this.props.when}`}
+              </ContentBlock>
+            </LanguageThemeProvider>
           </WhereWhen>
           <Continent>
             <Isvg src={this.getRegionIcon(this.props.region)} />
           </Continent>
         </Content>
-      </LanguageThemeProvider>
     );
   }
 }
