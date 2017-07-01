@@ -25,11 +25,12 @@ const ListItem = styled.li`
 const Count = styled.h4`
   display: inline-block;
   border: 2px solid;
-  border-width: 0 0 3px;
-  padding: 10px 20px 5px 5px;;
+  border-width: 0 0 2px;
+  padding: 10px 20px 2px 5px;
   margin: 0;
   font-size: 30px;
   font-family: 'KnockOut', 'Greta';
+  margin-bottom: 4px;
   &::after {
     content: ' ';
     display: block;
@@ -42,6 +43,9 @@ const SubListItem = styled.li`
   text-align: ${p=>p.lang==='ar'?'right':'left'};
   h3 {
     margin: 0;
+    font-size: 19px;
+    font-family: Avenir Black, Kaff Bold;
+    letter-spacing: 0;
     &::before {
       content: ' ';
       width: 42px;

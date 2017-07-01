@@ -135,10 +135,10 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
           <ToolWhyItWorked text={this.props['why-it-worked']} />
           <ToolWhyItFailed text={this.props['why-it-failed']} />
           <ToolKeyItems
-            keyTactics={this.props['key-tactics']}
-            keyPrinciples={this.props['key-principles']}
-            keyTheories={this.props['key-theories']}
-            keyMethodologies={this.props['key-methodologies']}
+            keyTactics={this.props['key-modules'] ? this.props['key-modules']['key-tactics'] : []}
+            keyPrinciples={this.props['key-modules'] ? this.props['key-modules']['key-principles']  : []}
+            keyTheories={this.props['key-modules'] ? this.props['key-modules']['key-theories'] : [] }
+            keyMethodologies={this.props['key-modules'] ? this.props['key-modules']['key-methodologies'] : [] }
           />
           <ToolLearnMore {...this.props} />
 

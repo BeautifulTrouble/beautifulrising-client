@@ -22,13 +22,14 @@ const KeyItemListItem = styled.div`
 `;
 const Header = styled.h3`
 text-align: ${props=>props.theme.lang==='ar' ? 'right' : 'left'};
+
 margin: 0;
 padding: 0;`;
 const TypeSubheader = styled.h4`
   font-family: 'Paint Hand', 'Massira Spray';
-  letter-spacing: 0;
-  font-size: 20px;
-  line-height: 22px;
+  letter-spacing: ${p=>p.theme.ar?'3px':'0'};
+  font-size: ${p=>p.theme.ar?'28px':'20px'};
+  line-height: ${p=>p.theme.ar?'40px':'22px'};
   text-align: ${props=> props.theme.lang==='ar' ? 'right' : 'left'} ;
   color: ${props=>getToolTypeColor(props.type)};
   margin: 0;
@@ -43,13 +44,13 @@ const Content = styled.div`
 class ToolKeyItems extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   generateKeyItems(list, type) {
     if (!list || list === undefined || list.length == 0) return null;
-
+    const { locale } = this.props.intl;
     return (
-      <ThemeProvider theme={{ lang: this.props.intl.locale }}>
+      <ThemeProvider theme={{ ar: locale==='ar', lang: locale }}>
       <KeyItemList>
         { list.map((item,ind)=> {
             try {
-              const [full, header, content] = item.match(/^(.*?) - (.*)$/i, item);
+              const [header, content] = item;
               return (<KeyItemListItem key={ind} >
                         <TypeSubheader type={type}>
                           <FormattedMessage {...messages[type]} />
