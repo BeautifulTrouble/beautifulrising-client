@@ -137,7 +137,7 @@
   "app.containers.HomePage.methodology": "منهجية",
   "app.containers.HomePage.principle": "مبدأ",
   "app.containers.HomePage.searchResults": "نتائج البحث الخاصة بـ {label}",
-  "app.containers.HomePage.sortBy": "ترتيب حسب",
+  "app.containers.HomePage.sortBy": "طريقة العرض",
   "app.containers.HomePage.story": "قصة",
   "app.containers.HomePage.tactic": "تكتيك",
   "app.containers.HomePage.tags": "شعارات",
