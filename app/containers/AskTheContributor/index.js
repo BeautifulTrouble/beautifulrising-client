@@ -26,7 +26,7 @@ const Container = styled.div`
 const Form = styled.form`
 border: 2px solid black;
 text-align: left;
- * { padding: 3px; }
+ div > * { padding: 3px; }
 `;
 const Header = styled.h5`
   font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;

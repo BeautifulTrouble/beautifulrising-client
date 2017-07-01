@@ -100,8 +100,8 @@ export class OurValues extends React.Component {
                         );
                         case 'disclaimer': return (
                           <SubList key={ind}>
-                            <SubListItem lang={lang}>
-                              <h3 key={ind}>{item.get('value')}</h3>
+                            <SubListItem lang={lang} style={{paddingTop: 40}}>
+                              <ValueHeader>{item.get('value')}</ValueHeader>
                             </SubListItem>
                           </SubList>
                         );

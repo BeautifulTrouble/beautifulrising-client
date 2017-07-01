@@ -10,13 +10,15 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { push,replace } from 'react-router-redux';
-
+import styled from 'styled-components';
 //For listening
 import { browserHistory } from 'react-router';
 import { createStructuredSelector } from 'reselect';
 
 import { loadData } from 'containers/App/actions';
 
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import ContentBlock from 'components/ContentBlock';
 import TheToolbox from 'components/AboutPageComponents/TheToolbox';
 import Partners from 'components/AboutPageComponents/Partners';
 import OurValues from 'components/AboutPageComponents/OurValues';
@@ -30,7 +32,9 @@ import { makeSelectAllToolsWithSlugIndex, makeSelectAdvisoryBoard } from 'contai
 import msg from './messages';
 
 
-
+const Spiel = styled(ContentBlock)`
+  text-align: center;
+`
 const Msg = FormattedMessage;
 
 export class AboutPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -122,7 +126,7 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
 
   render() {
     return (
-      <div>
+      <LanguageThemeProvider>
         <Helmet
           title="AboutPage"
           meta={[
@@ -131,7 +135,7 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
         />
 
         <h1><Msg {...msg.header} /></h1>
-        <p><Msg {...msg.description} /></p>
+        <Spiel><Msg {...msg.description} /></Spiel>
 
         <TheToolbox
             ref={"/about/whats-inside"}
@@ -184,7 +188,7 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
             onChange={this.componentIsVisible.bind(this) }
             questions={this.props.aboutData.getIn(['about', 'questions'])}
         />
-      </div>
+      </LanguageThemeProvider>
     );
   }
 }

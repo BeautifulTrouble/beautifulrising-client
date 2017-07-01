@@ -6,7 +6,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-
+import ContentBlock from 'components/ContentBlock';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
@@ -22,7 +22,7 @@ export const Introduction = styled.div`
   width: 100%;
   padding-bottom: 20px;
 `;
-export const IntroText = styled.div`
+export const IntroText = styled(ContentBlock)`
   width: 50%;
   margin-${p=>p.lang==='ar'?'right':'left'}: 50%;
   transform: translateX(${p=>p.lang==='ar'?'50%':'-50%'});

@@ -36,10 +36,8 @@ export class TheToolbox extends React.Component {
         <AboutSection id='whats-inside' name='whats-inside' lang={lang} hideHeader={this.props.hideHeader}>
           { this.props.hideHeader ? null : this.renderHeader() }
           <Introduction>
-            <IntroText lang={lang}>
-              <ContentBlock>
-                <Markdown source={this.props.whatsInside}/>
-              </ContentBlock>
+            <IntroText>
+              <Markdown source={this.props.whatsInside}/>
             </IntroText>
           </Introduction>
           <ToolTypeAllFull show={true} showLine={false}/>

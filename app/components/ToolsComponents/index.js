@@ -9,6 +9,8 @@ import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
+
+import ContentBlock from 'components/ContentBlock';
 import Isvg from 'react-inlinesvg';
 
 import messages from './messages';
@@ -113,7 +115,7 @@ export const ToolsListMenuItem = styled.li`
 
 export const ToolType = styled.h3`
   margin: 0;
-  font-size: ${p=>p.ar?'35px':'22px'};
+  font-size: ${p=>p.ar?'35px':'20px'};
   letter-spacing: ${p=>p.ar?'3px':'0'};
   padding-top: 20px;
   font-family: 'Paint Hand', 'Massira Spray', serif;
@@ -217,7 +219,7 @@ export const BlockViewport = styled(ToolViewport)`
   height: 100%;
   position: relative;
 `;
-export const BlockSpiel = styled.div`
+export const BlockSpiel = styled(ContentBlock)`
   color: ${props=>getToolTypeColor(props.type)};
   position: absolute;
   top: 0;

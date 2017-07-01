@@ -101,7 +101,7 @@ export const ToolPageCaption = styled.div`
   bottom: 10px;
   color: white;
   padding-${props=>props.theme.lang==='ar'?'left':'right'}: 50px;
-  font-size: 15px;
+  font-size: 14px;
   display: ${props=>props.show ? 'block' : 'none'};
 
   a { color: white; }
