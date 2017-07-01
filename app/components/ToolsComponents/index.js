@@ -209,8 +209,10 @@ export const BlockContainer = styled(ToolContainer)`
   width: 250px;
   height: 250px;
   margin: 10px;
-  margin-${p=>p.lang==='ar'?'left':'right'}: 15px;
-  margin-${p=>p.lang==='ar'?'right':'left'}: 5px;
+  margin-${p=>p.lang==='ar'?'right':'left'}: 17px;
+  margin-${p=>p.lang==='ar'?'left':'right'}: 2px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 `;
 export const BlockViewport = styled(ToolViewport)`
   background-color: rgba(0,0,0,0.5);
