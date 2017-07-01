@@ -6,7 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import Isvg from 'react-inlinesvg';
 
@@ -26,8 +26,11 @@ import { removeTool, addTool } from './actions';
 
 const CallToAction = styled.span`
   text-transform: uppercase;
-  font-family: Avenir Black;
+  font-family: ${p=>p.ar?'Kaff Bold':'Avenir Black'};
+  font-size: ${p=>p.ar?'16px':'14px'};
   line-height: 22px;
+  padding-top: 12px;
+  display: inline-block;
 `;
 
 export class AdderRemover extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -44,7 +47,7 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
 
   buildRemove() {
     return (
-      <CallToAction>
+      <CallToAction ar={this.props.intl.locale==='ar'}>
         <img src={RemoveToolIcon}/>{ this.props.removeText || ""}
       </CallToAction>
     )
@@ -52,35 +55,36 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
 
   buildAdd() {
     return (
-      <CallToAction>
+      <CallToAction ar={this.props.intl.locale==='ar'}>
         <img src={AddToolIcon}/>{ this.props.addText || "" }
       </CallToAction>
     );
   }
 
   render() {
+    const {locale} = this.props.intl;
     // {React.Children.toArray(this.props.children)}
     if (this.props.slug === null) {
-      return (<ToolsButton color={this.props.color || "white"} onClick={null}><Isvg src={AddToolIcon}/></ToolsButton>);
+      return (<ToolsButton ar={locale==='ar'} color={this.props.color || "white"} onClick={null}><Isvg src={AddToolIcon}/></ToolsButton>);
     }
 
     if (this.props.children !== undefined) {
-      
+
       return (
-        <ToolsButton onClick={this.onButtonClick.bind(this)}>
+        <ToolsButton ar={locale==='ar'} onClick={this.onButtonClick.bind(this)}>
           {React.Children.toArray(this.props.children)}
         </ToolsButton>
       );
     } else {
       if (this.props.showFull) {
-        
-        return (<ToolsButton onClick={this.onButtonClick.bind(this)}>
+
+        return (<ToolsButton ar={locale==='ar'} onClick={this.onButtonClick.bind(this)}>
           {this.props.toolIsSelected ? "Remove" : "Add"}
         </ToolsButton>);
       } else {
-        
+
         return (
-          <ToolsButton color={this.props.color || "white"} onClick={this.onButtonClick.bind(this)}>
+          <ToolsButton ar={locale==='ar'} color={this.props.color || "white"} onClick={this.onButtonClick.bind(this)}>
             {this.props.toolIsSelected && this.props.toolIsSelected !== undefined ? this.buildRemove() : this.buildAdd()}
           </ToolsButton>
         );
@@ -112,4 +116,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdderRemover);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(AdderRemover));

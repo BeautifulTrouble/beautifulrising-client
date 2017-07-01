@@ -30,7 +30,7 @@ const Header = styled.h3`
   letter-spacing: 0;
   line-height: 1;
   font-size: 14px;
-  line-height: 22px;
+  line-height: 20px;
 `;
 const TextArea = styled.textarea`border: 0; border-bottom: 2px solid black; width: 100%; height: 100px; resize: none;`;
 const Email = styled.input`border: 0; border-bottom: 2px solid black; width: 100%;`;

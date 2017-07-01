@@ -32,7 +32,7 @@ const Subheader = styled.h3`
   width: 50%;
   padding: 2px;
   border: solid;
-  border-width: 0 0 3px;
+  border-width: 0 0 2px;
   position: relative;
   display: ${props=> !props.show ? 'none' : 'block'};
 
@@ -64,7 +64,7 @@ const Disabled = styled.span`
 
 const RegionLink = styled(Link)`
   svg, svg * {
-    fill: ${props => props.selected ? 'black' : 'rgb(179, 180, 180)'}
+    fill: ${props => props.selected ? 'black' : '#828486'}
   }
 `;
 

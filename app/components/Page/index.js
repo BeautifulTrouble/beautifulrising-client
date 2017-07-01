@@ -11,12 +11,23 @@ export default styled.section`
   width: 100%;
   text-align: center;
   position: relative;
-  direction: ${props=>props.lang==='ar'?'rtl': 'ltr'};
-
-  ${p=> {
-    if (p.lang === 'ar') {
-      return `
-      `;
-    }
-  }}
+  direction: ${p=>p.theme.lang==='ar'?'rtl': 'ltr'};
+  * {
+    ${p=>p.theme.lang==='ar'?'rtl': 'ltr'};
+  }
+  div > p, div > span, span > p, li > a {
+    ${p=> {
+      if (p.theme.lang === 'ar') {
+        return `
+          font-size: 13px;
+          line-height: 24px;
+        `;
+      } else {
+        return `
+          font-size: 14px;
+          line-height: 22px;
+        `;
+      }
+    }}
+  }
 `;

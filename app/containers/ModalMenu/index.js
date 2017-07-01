@@ -40,7 +40,7 @@ const Button = styled.button`
   cursor: pointer;
   outline: none;
   position: absolute;
-  ${props=>props.lang==='ar'?'right':'left'}: 10px;
+  ${props=>props.lang==='ar'?'right':'left'}: -1px;
   top: 10px;
 `;
 

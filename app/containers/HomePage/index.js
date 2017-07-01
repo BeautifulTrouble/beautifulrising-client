@@ -28,7 +28,7 @@ import { LeftHeader, LeftContainer } from 'components/HomePageComponents';
 import Stage from 'components/Stage';
 
 import { loadData } from '../App/actions';
-import makeSelectHomePage, { makeSelectToolView, makeSelectAllTools, isToolsShown, makeSortedTools, makeSelectLanguage } from './selectors';
+import makeSelectHomePage, { makeSelectSearchFieldValue, makeSelectToolView, makeSelectAllTools, isToolsShown, makeSortedTools, makeSelectLanguage } from './selectors';
 import styled from 'styled-components';
 
 
@@ -109,6 +109,12 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   }
 
   getViewMode() {
+    if (this.props.params.label !== undefined &&
+        this.props.params.label !== '' &&
+        this.props.params.filter === 'search') {
+      return ListViewItem;
+    }
+
     return this.props.viewTool === BLOCK_VIEW ? BlockViewItem : ListViewItem;
   }
 
@@ -161,7 +167,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             { name: 'description', content: 'Description of HomePage' },
           ]}
         />
-        <Header {...this.props} lang={lang}/>
+        <Header lang={lang} {...this.props}/>
         <LeftSection lang={lang}>
 
           <LeftHeader>
@@ -218,7 +224,8 @@ const mapStateToProps = (state, props) => {
     tools: makeSelectAllTools(state, props),
     sorted: makeSortedTools(state, props),
     language: makeSelectLanguage(state, props),
-    showTools: isToolsShown(state, props)
+    showTools: isToolsShown(state, props),
+    searchText: makeSelectSearchFieldValue(state, props)
   }
 };
 

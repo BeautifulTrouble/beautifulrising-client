@@ -42,6 +42,7 @@ const Subsubtitle = styled.h3`
   font-size: 18px;
   letter-spacing: 0;
   margin-top: 30px;
+  margin-bottom: 0px;
 `;
 
 const Content = styled.div`

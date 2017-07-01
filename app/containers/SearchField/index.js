@@ -35,11 +35,9 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
   }
 
   componentDidMount() {
-
     if (this.props.filter === 'search') {
-      ReactDOM.findDOMNode(this.refs['SearchBox']).value = this.props.label;
+      ReactDOM.findDOMNode(this.refs['SearchBox']).value = this.props.label === undefined ? '' : this.props.label;
     }
-
   }
 
   render() {

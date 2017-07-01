@@ -110,7 +110,7 @@ class ShareButton extends React.PureComponent { // eslint-disable-line react/pre
 
     return (
       <Container>
-        <ShareArea lang={this.props.intl.locale} show={ this.state.showSocialButtons }>
+        <ShareArea className={'shareArea'} lang={this.props.intl.locale} show={ this.state.showSocialButtons }>
           <FacebookButton onClick={()=>this.handleFacebookShare(url)}>
             <Isvg src={FacebookIcon} />
           </FacebookButton>

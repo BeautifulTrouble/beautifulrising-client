@@ -45,14 +45,14 @@ const SnapshotCallout = styled.div`
   margin-bottom: 5px;
   font-size: 14px;
   line-height: 22px;
+  ${props=>props.lang === 'ar' ? 'font-family: Kaff Bold;' : ''}
 `;
 const Link = styled.a`
     color: #838486;
-    font-size: 18px;
+    font-size: ${props=>props.lang === 'ar' ? '16px' : '18px'};
     text-transform: uppercase;
     font-weight: bold;
     ${props=>props.lang === 'ar' ? 'text-align: right;' : ''}
-
 
 `;
 
@@ -64,7 +64,7 @@ function ToolSnapshotArea(props) {
         <SnapshotContent>
           <Markdown source={props.snapshot} />
         </SnapshotContent>
-        <SnapshotCallout>
+        <SnapshotCallout lang={locale}>
           <FormattedMessage {...messages.callOut} values={{type: formatMessage(typeTranslate[props.type])}}/>
         </SnapshotCallout>
         <Actions>

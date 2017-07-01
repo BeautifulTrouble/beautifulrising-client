@@ -39,12 +39,13 @@ export const AuthorImage = styled.span`
   display: inline-block;
   background-size: cover;
   background-repeat: no-repeat;
-
+  background-position: center center;
   border: 2px solid black;
 `;
 
 export const AuthorName = styled.h3`
   font-size: 19px;
+  line-height: 19px;
   text-transform: uppercase;
   text-align: left;
   margin-bottom: 2px;

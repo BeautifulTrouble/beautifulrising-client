@@ -55,6 +55,12 @@ export const SelectedToolCommandItem = styled.li`
   svg * {
     fill: #959595;
   }
+
+  .shareArea {
+    top: -30px;
+    ${p=>p.theme.lang==='ar'?'right':'left'}: 20px;
+    background-color: lightgray;
+  }
 `;
 
 export default SelectedToolComponents;

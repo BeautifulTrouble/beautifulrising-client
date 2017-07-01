@@ -26,7 +26,8 @@ const MainBox = styled.div`
   width: 100%;
 `;
 
-const List = styled.ul``;
+const List = styled.ul`
+`;
 
 const ListItem = styled.li`list-style: none;
   width: ${props=>props.theme.itemWidth};

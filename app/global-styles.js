@@ -118,4 +118,10 @@ injectGlobal`
     overflow-y: hidden;
     overflow: hidden;
   }
+
+  .ReactModal__Overlay--after-open {
+    .circledContainer::after {
+        width: 138px !important;
+    }
+  }
 `;

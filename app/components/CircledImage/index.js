@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import Isvg from 'react-inlinesvg';
 import { injectIntl } from 'react-intl';
 const CircledContainer = styled.div`
-  width: 65%;
+  width: 160px;
   padding: 20px 0;
   height: 160px;
   vertical-align: middle;
@@ -18,7 +18,7 @@ const CircledContainer = styled.div`
 
   &::after {
     content: ' ';
-    width: 108%;
+    width: 170px;
     height: 1px;
     border-bottom: 2px solid;
     top: 50%;

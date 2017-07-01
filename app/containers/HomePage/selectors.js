@@ -14,6 +14,7 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
  const selectGlobal = (state) => { return state.get('global') };
  const selectToolsView = (state) => { return state.get('toolsView') }
  const selectLanguage = (state) => state.get('language');
+ const selectSearchField = (state) => state.get('searchField');
 
  const selectFilter = (state, props) => { return props.params.filter; }
  const selectLabel = (state, props) => { return props.params.label; }
@@ -52,6 +53,11 @@ const makeSelectLanguage = createSelector(
     return languageState.get('locale');
   }
 );
+
+const makeSelectSearchFieldValue = createSelector(
+  [selectSearchField],
+  searchField => searchField.get('searchField')
+)
 
  const makeSelectAllTools = createSelector(
    [selectGlobal, selectFilter, selectLabel, allTags, selectRegion, makeSelectLanguage],
@@ -168,5 +174,6 @@ export {
   makeSortedTools,
   makeSelectLanguage,
   allTags,
-  isToolsShown
+  isToolsShown,
+  makeSelectSearchFieldValue
 };

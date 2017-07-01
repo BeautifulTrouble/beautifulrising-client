@@ -37,7 +37,7 @@ class ToolWithPullQuote extends React.PureComponent { // eslint-disable-line rea
 
   render() {
     const {locale} = this.props.intl;
-    const count = 2 + ((Math.random() * 100) % 2);
+    const count = 1 + ((Math.random() * 100) % 2);
     let contents = this.props.content.map((item, ind) => { return (<Markdown key={ind} source={item} />) });
 
     contents.splice(count, 0, (<PullQuote ar={locale==='ar'} key={Math.random()}>"{this.props.pullQuote}"</PullQuote>));

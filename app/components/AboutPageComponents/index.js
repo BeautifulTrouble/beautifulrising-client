@@ -38,7 +38,7 @@ position: relative;
 h2 {
   text-transform: uppercase;
   border: 2px solid;
-  border-width: 0 0 3px;
+  border-width: 0 0 2px;
   font-size: 19px;
   letter-spacing: 0;
   font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
@@ -52,7 +52,7 @@ h2 {
     content: ' ';
     position: absolute;
     height: 80px;
-    border-right: ${p=>p.hideHeader ? '4px solid' : '40px'};
+    border-right: ${p=>p.hideHeader ? '0px solid' : '1px solid'};
     width: 1PX;
     bottom: -65px;
     ${p=>p.lang==='ar'?'right':'left'}: 50%;

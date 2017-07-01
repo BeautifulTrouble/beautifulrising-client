@@ -58,7 +58,6 @@ const List = styled.ul`
 `;
 const CloseButton = styled(Button)`
   background: white;
-  border: 1px solid black;
   padding: 0;
   position: absolute;
   ${p=>p.lang==='ar'?'left':'right'}: -27px;
