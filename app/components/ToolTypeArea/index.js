@@ -78,7 +78,7 @@ class ToolTypeArea extends React.Component { // eslint-disable-line react/prefer
       //All
       return (
         <AllContainer lang={this.props.lang}>
-          <ToolTypeAllFull lang={this.props.lang} show={onTop} {...this.props} />
+          <ToolTypeAllFull showLine={true} lang={this.props.lang} show={onTop} {...this.props} />
           <ToolTypeAllPartial lang={this.props.lang} show={!onTop} {...this.props} />
           <TypeArrow lang={this.props.lang} lookRight={!onTop}>
             <Isvg src={ArrowIcon} />
