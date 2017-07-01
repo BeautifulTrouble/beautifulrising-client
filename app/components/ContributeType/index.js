@@ -11,6 +11,7 @@ import Isvg from 'react-inlinesvg';
 import Markdown from 'react-remarkable';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
+import SmallSectionHeader from 'components/SmallSectionHeader';
 import typeMessages from 'components/ToolTypeArea/messages';
 
 import StoryIcon from 'assets/images/type/stories.svg';
@@ -44,9 +45,9 @@ const Type = styled.li`
   }
 `;
 
-const TypeName = styled.h3`
+const TypeName = styled(SmallSectionHeader)`
   margin-bottom: 0;
-  text-align: left
+  border: 0;
 `;
 
 const Spiel = styled.div`

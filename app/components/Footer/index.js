@@ -27,7 +27,7 @@ margin-right: 20px;
 }
 
 `;
-const Viewport = styled.div`margin-left: 16%; width: 66%;`;
+const Viewport = styled.div`margin-${p=>p.isArabic?'right':'left'}: 16%; width: 66%;`;
 const Content = styled.div`
 
   p {
@@ -45,11 +45,11 @@ class Footer extends React.Component {
 
   render () {
 
-    const {formatMessage} = this.props.intl;
+    const {formatMessage, locale} = this.props.intl;
 
     return (
       <Container>
-        <Viewport>
+        <Viewport isArabic={locale==='ar'}>
           <Isvg src={CreativeCommonsIcon} />
           <Content>
             <Markdown source={formatMessage(messages.footer)} />
