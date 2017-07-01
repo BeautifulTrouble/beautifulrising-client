@@ -31,7 +31,12 @@ import { SelectedToolItem, SelectedToolTitle,
 import AdderRemover from './AdderRemover';
 
 const SelectedToolCommandContent = styled(ContentBlock)`
-  display: inline-block;
+  display: inline;
+`;
+const GrayShareIcon = styled(Isvg)`
+  svg, svg * {
+    fill: #959595 !important;
+  }
 `;
 export class SelectedTool extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -72,7 +77,7 @@ export class SelectedTool extends React.PureComponent { // eslint-disable-line r
             </SelectedToolCommandItem>
             <SelectedToolCommandItem  lang={lang}>
               <ShareButton {...this.props}>
-                <Isvg src={ShareSmallIcon} />
+                <GrayShareIcon src={ShareSmallIcon} />
                 <SelectedToolCommandContent>
                   <FormattedMessage {...messages.share} />
                 </SelectedToolCommandContent>
