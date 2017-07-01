@@ -57,7 +57,7 @@ const ShareContainer = styled.div`
 `;
 const CTA = styled.span`
   font-size: ${p=>p.theme.ar?'16px':'14px'};
-  font-family: ${p=>p.theme.ar?'Kaff':'Avenir'};
+  font-family: 'Avenir', 'Kaff';
   font-weight: 800;
 `;
 export class ToolPageHeader extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function

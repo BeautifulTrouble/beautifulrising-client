@@ -21,6 +21,7 @@ import { submitExample } from './actions';
 const Container = styled.div`
 `;
 const Form =  styled.form`
+  margin-top: 10px;
   border: 2px solid;
   text-align: ${props=>props.theme.lang === 'ar' ? 'left' : 'right'};
   input {

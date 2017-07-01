@@ -14,5 +14,5 @@ export default styled.section`
   width: 100%;
   position: relative;
   left: ${(props) => props.showTools ? (props.lang==='ar' ? '230px' : '-230px') : '0'};
-  transition: left 0.5s;
+  transition: left 0.3s ease;
 `;

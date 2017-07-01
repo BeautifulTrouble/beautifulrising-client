@@ -215,6 +215,7 @@ export const LearnMoreItem = styled.li`
 `;
 export const LearnMoreItemLink = styled(Link)`
   text-decoration: underline;
+  font-weight: 800;
 `;
 export const LearnMoreItemSource = styled.span``;
 

@@ -28,7 +28,7 @@ const HeaderContainer = styled.div`
     height: 4px;
     background-color: white;
     ${props=>props.lang==='ar' ? (props.showTools?'right: 326px':'right: 96px') : (props.showTools?'left: 325px':'left: 95px')};
-    transition: left 0.5s ease, right 0.5s ease;
+    transition: left 0.3s ease, right 0.3s ease;
   }
 `;
 

@@ -27,7 +27,7 @@ margin-right: 20px;
 }
 
 `;
-const Viewport = styled.div``;
+const Viewport = styled.div`margin-left: 16%; width: 66%;`;
 const Content = styled.div`
 
   p {

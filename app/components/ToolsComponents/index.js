@@ -186,7 +186,7 @@ export const ToolsContainer = styled.div`
   transform: translateX(${(props) => props.showTools ?
       (props=>props.theme.lang == 'ar' ? '-685px' : '685px') :
       (props=>props.theme.lang == 'ar' ? '-640px' : '640px') });
-  transition: transform 0.5s, width 0.5s;
+  transition: transform 0.3s ease, width 0.3s ease;
   overflow-x: hidden;
   overflow-y: hidden;
   `;
