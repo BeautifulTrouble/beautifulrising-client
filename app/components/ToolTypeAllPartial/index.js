@@ -8,6 +8,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router';
 import { FormattedMessage } from 'react-intl';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import messages from '../ToolTypeArea/messages';
 import Isvg from 'react-inlinesvg';
 import MethodologyIcon from 'assets/images/type/methodologies-option.svg';
@@ -25,14 +26,14 @@ const Row = styled.div`
 `;
 const ToolType = styled(Link)`
   width: 19%;
-  margin-right: 0.5%;
+  margin-${p=>p.theme.isArabic?'left':'right'}: 0.5%;
   display: inline-block;
   height: 100px
-  text-align: left;
+  text-align: ${p=>p.theme.isArabic?'right':'left'};
   vertical-align: top;
   text-transform: uppercase;
   color: black;
-  text-decoration: none;  
+  text-decoration: none;
 
   * {
     vertical-align: top;
@@ -57,35 +58,37 @@ const Desc = styled.p`
 
 function ToolTypeAllPartial(props) {
   return (
-    <Container {...props}>
-      <Viewport>
-        <Row>
-          <ToolType to={'/type/story'}>
-            <Head><FormattedMessage {...messages.storyHead} /></Head>
-            <Isvg src={StoryIcon} />
-          </ToolType>
-          <ToolType to={'/type/tactic'}>
-            <Head><FormattedMessage {...messages.tacticHead} /></Head>
-            <Isvg src={TacticIcon} />
-          </ToolType>
+    <LanguageThemeProvider>
+      <Container {...props}>
+        <Viewport>
+          <Row>
+            <ToolType to={'/type/story'}>
+              <Head><FormattedMessage {...messages.storyHead} /></Head>
+              <Isvg src={StoryIcon} />
+            </ToolType>
+            <ToolType to={'/type/tactic'}>
+              <Head><FormattedMessage {...messages.tacticHead} /></Head>
+              <Isvg src={TacticIcon} />
+            </ToolType>
 
-          <ToolType to={'/type/principle'}>
-            <Head><FormattedMessage {...messages.principleHead} /></Head>
-            <Isvg src={PrincipleIcon} />
-          </ToolType>
+            <ToolType to={'/type/principle'}>
+              <Head><FormattedMessage {...messages.principleHead} /></Head>
+              <Isvg src={PrincipleIcon} />
+            </ToolType>
 
-          <ToolType to={'/type/theory'}>
-            <Head><FormattedMessage {...messages.theoryHead} /></Head>
-            <Isvg src={TheoryIcon} />
-          </ToolType>
+            <ToolType to={'/type/theory'}>
+              <Head><FormattedMessage {...messages.theoryHead} /></Head>
+              <Isvg src={TheoryIcon} />
+            </ToolType>
 
-          <ToolType to={'/type/methodology'}>
-            <Head><FormattedMessage {...messages.methodologyHead} /></Head>
-            <Isvg src={MethodologyIcon} />
-          </ToolType>
-        </Row>
-      </Viewport>
-    </Container>
+            <ToolType to={'/type/methodology'}>
+              <Head><FormattedMessage {...messages.methodologyHead} /></Head>
+              <Isvg src={MethodologyIcon} />
+            </ToolType>
+          </Row>
+        </Viewport>
+      </Container>
+    </LanguageThemeProvider>
   );
 }
 
