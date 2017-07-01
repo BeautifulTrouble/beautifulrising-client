@@ -21,8 +21,8 @@ const RegionContainer = styled.div`
   top: 10px;
   opacity: ${props=>props.show?'1':'0'};
   transition: opacity 0.3s ease;
-  ${props=>props.lang==='ar' ? 'left: 10px;' : 'right: 10px;'}
-  svg {  width: 50px; height: 50px;}
+  ${props=>props.lang==='ar' ? 'left: 2px;' : 'right: 2px;'}
+  svg {  height: 32px;}
 `;
 
 class BlockViewItem extends React.Component {
