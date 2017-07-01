@@ -28,6 +28,7 @@ const Button = styled.button`
   font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
   color: ${props=>props.selected ? 'black' : '#828486'};
   text-decoration: ${props=>props.selected ? 'none' : 'underline'};
+  font-size: 14px;
 `;
 
 const List = styled.ul`
