@@ -56,7 +56,7 @@ export const ToolHeader = styled.section`
 `;
 
 export const ToolHeaderType = styled(ToolType)`
-  font-size: 40px;
+  font-size: ${p=>p.theme.ar?'50px':'40px'};
   margin-bottom: 20px;
   padding: 0;
   line-height: 36px;
@@ -68,7 +68,8 @@ export const ToolHeaderType = styled(ToolType)`
 `;
 
 export const ToolHeaderTitle = styled(ToolTitle)`
-  font-size: 80px;
+  font-size: ${p=>p.theme.ar?'80px':'80px'};
+  letter-spacing: ${p=>p.theme.ar?'3px':'auto'};
   margin: 0 0 20px;
   padding: 0;
   line-height: 70px;
