@@ -7,6 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Markdown from 'react-remarkable';
+import ContentBlock from 'components/ContentBlock';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection } from 'components/AboutPageComponents';
 import VisibilitySensor from 'react-visibility-sensor';
@@ -54,15 +55,8 @@ const SubListItem = styled.li`
     }
   }
   & > p {
-    font-size: 14px;
-    line-height: 22px;
     padding-${p=>p.lang==='ar'?'right':'left'}: 100px;
     margin: 10px;
-
-    a {
-      color: #828486;
-      em { font-style: italic; }
-    }
   }
 `
 
@@ -93,9 +87,9 @@ export class OurValues extends React.Component {
                               <SubListItem key={subindex} lang={lang}>
                                 <Count>{subindex + 1}</Count>
                                 <h3>{subitem.get('title')}</h3>
-                                <p>
+                                <ContentBlock>
                                   <Markdown source={subitem.get('description')} />
-                                </p>
+                                </ContentBlock>
                               </SubListItem>
                           )) }
                         </SubList>

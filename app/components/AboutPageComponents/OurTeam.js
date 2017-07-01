@@ -6,7 +6,7 @@
 
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-
+import ContentBlock from 'components/ContentBlock';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection } from 'components/AboutPageComponents';
 import { themeThreeColumns } from 'components/CommonComponents';
@@ -43,16 +43,8 @@ const ListItem = styled.li`list-style: none;
     letter-spacing: 0;
   }
 
-  p {
-    text-align: left;
-    font-size: 14px;
-    line-height: 22px;
-    padding-right: 30px;
-
-    a {
-      color: #828486;
-    }
-  }`;
+  p { padding-right: 30px; }
+`;
 
 const Image = styled.div`
   display: inline-block;
@@ -70,7 +62,6 @@ const Name = styled.h3``;
 const Team = styled.h5`
   text-transform: uppercase;
 `;
-const Content = styled.div``;
 
 export class OurTeam extends React.Component {
   renderHeader() {
@@ -96,9 +87,9 @@ export class OurTeam extends React.Component {
                     <Image source={teamMember.get('image')} />
                     <Name>{teamMember.get('person')}</Name>
                     <Team>{teamMember.get('team-title')}</Team>
-                    <Content>
+                    <ContentBlock>
                       <Markdown source={teamMember.get('team-bio')} />
-                    </Content>
+                    </ContentBlock>
                   </ListItem>
                 );
             })}

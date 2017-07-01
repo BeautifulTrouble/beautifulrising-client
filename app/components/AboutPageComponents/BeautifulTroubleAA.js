@@ -9,6 +9,7 @@ import styled from 'styled-components';
 
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection } from 'components/AboutPageComponents';
+import ContentBlock from 'components/ContentBlock';
 import VisibilitySensor from 'react-visibility-sensor';
 import Markdown from 'react-remarkable';
 import messages from './messages';
@@ -17,17 +18,10 @@ import ActionAidLogo from 'assets/images/about/aa-logo.png';
 import BeautifulTroubleLogo from 'assets/images/about/bt-logo.png';
 
 const Container = styled.div``;
-const Content = styled.div``;
 const TableMenu = styled.table`border: 0;`;
 const Row = styled.tr``;
 const Column = styled.td`
   padding: 10px;
-  line-height: 22px;
-  font-size: 14px; 
-  a {
-    color: #828486;
-    em { font-style: italic; }
-  }
 `;
 
 const Image = styled.img``;
@@ -49,7 +43,7 @@ export class BeautifulTroubleAA extends React.Component {
       <AboutSection id='beautiful-trouble-and-action-aid' lang={locale}>
         { this.props.hideHeader ? null : this.renderHeader() }
         <Container>
-          <Content>
+          <ContentBlock>
             <TableMenu>
               <Row>
                 <Column colSpan={"2"} style={{ padding: '0 25%', textAlign: 'center'}}>
@@ -67,7 +61,7 @@ export class BeautifulTroubleAA extends React.Component {
                 </Column>
               </Row>
             </TableMenu>
-          </Content>
+          </ContentBlock>
         </Container>
       </AboutSection>
     );

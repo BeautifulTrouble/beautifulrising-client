@@ -69,14 +69,20 @@ injectGlobal`
     height: 100%;
     width: 100%;
   }
-
+  a {
+    color: #828486;
+    em { font-style: italic; }
+  }
   body,p,input,textarea {
     font-family: 'Avenir', 'Kaff', Helvetica, Arial, sans-serif;
   }
-  p {
-    font-size: 14px;
-    line-height: 22px;
+  h1,h2,h3,h4,h5 {
+    font-family: 'KnockOut', 'Greta', Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
 
+  p {
     a {
       color: #828486;
     }
@@ -85,11 +91,7 @@ injectGlobal`
     font-family: 'Avenir', 'Kaff', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
-  h1,h2,h3,h4,h5 {
-    font-family: 'KnockOut', 'Greta', Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: normal;
-  }
+
 
   h1 {
     font-size: 50px;

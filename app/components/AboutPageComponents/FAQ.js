@@ -6,7 +6,7 @@
 
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-
+import ContentBlock from 'components/ContentBlock';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection } from 'components/AboutPageComponents';
 import { themeThreeColumns } from 'components/CommonComponents';
@@ -43,9 +43,6 @@ const ListItem = styled.li`list-style: none;
   }
 
   p {
-    text-align: ${p=>p.lang==='ar'?'right':'left'};
-    font-size: 14px;
-    line-height: 22px;
     padding-${p=>p.lang==='ar'?'right':'left'}: 10px;
   }`;
 
@@ -85,9 +82,9 @@ export class FAQ extends React.Component {
               return (
                 <ListItem key={ind}  lang={locale}>
                   <h3>{item.get('question')}</h3>
-                  <Content>
+                  <ContentBlock>
                     <Markdown source={item.get('answer')} />
-                  </Content>
+                  </ContentBlock>
                 </ListItem>
               )
             })

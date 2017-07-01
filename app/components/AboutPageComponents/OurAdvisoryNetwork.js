@@ -6,7 +6,7 @@
 
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-
+import ContentBlock from 'components/ContentBlock';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection, Introduction, IntroText } from 'components/AboutPageComponents';
 import { themeThreeColumns } from 'components/CommonComponents';
@@ -44,9 +44,6 @@ const ListItem = styled.li`list-style: none;
   }
 
   p {
-    text-align: ${p=>p.lang==='ar'?'right':'left'};
-    font-size: 14px;
-    line-height: 22px;
     padding-${p=>p.lang==='ar'?'left':'right'}: 30px;
 
     a {
@@ -104,7 +101,9 @@ export class OurAdvisoryNetwork extends React.Component {
         { this.props.hideHeader ? null : this.renderHeader() }
         <Introduction>
           <AdvisoryNetworkIntro lang={locale}>
-            <Markdown source={this.props.introText}/>
+            <ContentBlock>
+              <Markdown source={this.props.introText}/>
+            </ContentBlock>
           </AdvisoryNetworkIntro>
         </Introduction>
         <ThemeProvider theme={themeThreeColumns}>
@@ -114,9 +113,9 @@ export class OurAdvisoryNetwork extends React.Component {
                 <Image source={item['image']} />
                 <Name>{item['person']}</Name>
                 <Team>ADVISORY NETWORK</Team>
-                <Content>
+                <ContentBlock>
                   <Markdown source={item['team-bio']} />
-                </Content>
+                </ContentBlock>
               </ListItem>
             ))}
           </List>
