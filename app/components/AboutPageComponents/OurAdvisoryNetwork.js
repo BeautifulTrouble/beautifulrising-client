@@ -28,7 +28,7 @@ const ListItem = styled.li`list-style: none;
   h3 {
 
     font-size: 19px;
-    font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
+    font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
     margin: 0;
     margin-top: 15px;
     text-align: ${p=>p.lang==='ar'?'right':'left'};
@@ -40,7 +40,7 @@ const ListItem = styled.li`list-style: none;
     margin: 0;
     font-size: 14px;
     text-transform: uppercase;
-    font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
+    font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
     letter-spacing: 0;
   }
 

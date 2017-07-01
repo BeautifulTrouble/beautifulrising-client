@@ -54,7 +54,7 @@ const CallToAction = styled.div`
     font-size: 19px;
     line-height: 22px;
     margin: 0;
-    font-family: 'Avenir Black', 'Kaff Bold';
+    font-weight: 800; font-family: 'Avenir', 'Kaff Bold';
     text-align: ${props=>props.lang==='ar' ? 'right' : 'left'};
     text-transform: uppercase;
   }

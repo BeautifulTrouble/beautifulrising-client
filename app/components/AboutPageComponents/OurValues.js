@@ -46,7 +46,8 @@ const SubListItem = styled.li`
   h3 {
     margin: 0;
     font-size: 19px;
-    font-family: Avenir Black, Kaff Bold;
+    font-family: Avenir, Kaff Bold;
+    font-weight: 800;
     letter-spacing: 0;
     &::before {
       content: ' ';

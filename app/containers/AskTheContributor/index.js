@@ -29,7 +29,7 @@ text-align: left;
  * { padding: 3px; }
 `;
 const Header = styled.h5`
-  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
+  font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
   letter-spacing: 0;
   line-height: 1;
   font-size: 14px;

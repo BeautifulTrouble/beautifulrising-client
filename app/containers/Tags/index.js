@@ -41,16 +41,12 @@ const TagListItem = styled.li`
   &:last-child {
     span { display: none; }
   }
-  ${p=>{
-    if ( p.ar ) {
-      return `font-family: ${p.selected ? 'Kaff Bold' : 'Kaff'};`;
-    } else {
-      return `font-family: ${p.selected ? 'Avenir Black' : 'Avenir'};`;
-    }
-  }}
+  font-family: 'Avenir, Kaff';
+  font-weight: ${p=>p.selected ? 800 : 400 };
+
   * { vertical-align: middle; }
   span {
-    font-family: 'Avenir Black', 'Kaff Bold';
+    font-weight: 800; font-family: 'Avenir', 'Kaff';
   }
 
   a {

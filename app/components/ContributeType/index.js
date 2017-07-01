@@ -82,7 +82,7 @@ const Examples = styled.div`
 
 const Subtitle = styled.h2`
   font-size: 18px;
-  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
+  font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
   letter-spacing: 0;
   padding-bottom: 20px;
   margin-bottom: 60px;

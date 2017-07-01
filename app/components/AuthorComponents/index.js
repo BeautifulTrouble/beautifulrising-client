@@ -50,7 +50,7 @@ export const AuthorName = styled.h3`
   text-align: left;
   margin-bottom: 2px;
   margin-top: 2px;
-  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
+  font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
   letter-spacing: 0;
 `;
 

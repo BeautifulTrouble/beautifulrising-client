@@ -90,7 +90,7 @@ const ExampleTitle = styled.h5`
   margin: 0;
   padding: 0;
   font-size: 14px;
-  font-family: 'Avenir Black', sans-serif;
+  font-weight: 800; font-family: 'Avenir', sans-serif;
   letter-spacing: 0;
   a {
     color: black;

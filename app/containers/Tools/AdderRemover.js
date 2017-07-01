@@ -26,7 +26,8 @@ import { removeTool, addTool } from './actions';
 
 const CallToAction = styled.span`
   text-transform: uppercase;
-  font-family: ${p=>p.ar?'Kaff Bold':'Avenir Black'};
+  font-family: ${p=>p.ar?'Kaff':'Avenir'};
+  font-weight: 800;
   font-size: ${p=>p.ar?'16px':'14px'};
   line-height: 22px;
   padding-top: 12px;

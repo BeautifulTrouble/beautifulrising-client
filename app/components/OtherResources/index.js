@@ -42,7 +42,8 @@ const Resource = styled.li`
 const ResourceContainer =styled.div``;
 const Header =styled.h4`
   font-size: 19px;
-  font-family: Avenir Black, sans-serif;
+  font-family: Avenir, Kaff, sans-serif;
+  font-weight: 800;
 
   text-align: ${props=>props.lang==='ar'?'right':'left'};
   position: relative;

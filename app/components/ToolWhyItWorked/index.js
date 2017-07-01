@@ -22,7 +22,7 @@ const Header = styled(CommonLeftHeader)`
 
   font-size: 19px;
   line-height: 22px;
-  font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
+  font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
 `;
 const Content = styled(ContentBlock)`
   img {

@@ -87,7 +87,7 @@ const ListItem = styled.li`list-style: none;
 const ParticipantsContainer = styled.div`
   h3 {
     font-size: 16px;
-    font-family: 'Avenir Black', 'Kaff Bold', sans-serif;
+    font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
     letter-spacing: 0;
     text-transform: uppercase;
     margin-bottom: 20px;
