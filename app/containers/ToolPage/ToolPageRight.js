@@ -10,6 +10,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
 import AdderRemover from 'containers/Tools/AdderRemover';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import { ToolRightArea, ToolsPageRelatedToolsHeader, ToolsPageRightHeader, ToolsRelatedArea, ToolsRelatedContainer } from 'components/ToolsPageComponents';
 import ToolsRelatedTool from 'components/ToolsRelatedTool';
 import ToolsPotentialRisk from 'components/ToolsPotentialRisk';
@@ -83,25 +84,27 @@ export class ToolPageRight extends React.PureComponent { // eslint-disable-line 
   render() {
     const lang = this.props.intl.locale;
     return (
-      <ToolRightArea lang={lang}>
-        <ToolsPotentialRisk content={this.props['potential-risks']} type={this.props.type} />
+        <LanguageThemeProvider>
+          <ToolRightArea lang={lang}>
+            <ToolsPotentialRisk content={this.props['potential-risks']} type={this.props.type} />
 
-        <ToolsPageRelatedToolsHeader>
-          <FormattedMessage {...messages.relatedTools} />
-        </ToolsPageRelatedToolsHeader>
-        <ToolsRelatedArea>
-          { this.getRelatedTactics() }
+            <ToolsPageRelatedToolsHeader>
+              <FormattedMessage {...messages.relatedTools} />
+            </ToolsPageRelatedToolsHeader>
+            <ToolsRelatedArea>
+              { this.getRelatedTactics() }
 
-          { this.getRelatedPrinciples() }
+              { this.getRelatedPrinciples() }
 
-          { this.getRelatedTheories() }
+              { this.getRelatedTheories() }
 
-          { this.getRelatedMethodologies() }
+              { this.getRelatedMethodologies() }
 
-          { this.getRelatedStories() }
+              { this.getRelatedStories() }
 
-        </ToolsRelatedArea>
-      </ToolRightArea>
+            </ToolsRelatedArea>
+          </ToolRightArea>
+        </LanguageThemeProvider>
     );
   }
 }

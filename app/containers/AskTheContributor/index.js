@@ -29,7 +29,7 @@ text-align: left;
  * { padding: 3px; }
 `;
 const Header = styled.h5`
-  font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
+  font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
   letter-spacing: 0;
   line-height: 1;
   font-size: 14px;
@@ -73,7 +73,9 @@ export class AskTheContributor extends React.PureComponent { // eslint-disable-l
             <FormattedMessage {...messages.header} />
           </Header>
           <Subheader>
-            <FormattedMessage {...messages.subheader} values={{author: this.props.count > 1 ? 'the authors' : this.props.author.title }}/>
+            <ContentBlock>
+              <FormattedMessage {...messages.subheader} values={{author: this.props.count > 1 ? 'the authors' : this.props.author.title }}/>
+            </ContentBlock>
           </Subheader>
           <Form onSubmit={this.handleSubmit.bind(this)}>
             <ContentBlock>

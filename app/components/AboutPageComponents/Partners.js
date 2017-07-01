@@ -62,7 +62,7 @@ font-size: 14px !important;
 text-transform: uppercase;
 position: relative;
 
-font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
+font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
 &::before {
   content: ' ';
   width: 42px;

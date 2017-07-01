@@ -78,7 +78,7 @@ font-size: 48px;
   ${props=>props.lang==='ar'?'right':'left'}: 0;
 `;
 const Subtitle = styled.h3`
-  font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
+  font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
   font-size: 16px;
   letter-spacing: 0px;
   margin-bottom: 5px;

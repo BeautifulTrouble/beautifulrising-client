@@ -37,7 +37,7 @@ const Viewport = styled.div`
 position: relative;
 `;
 const Header = styled.h2`
-  font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
+  font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
   font-weight: 800;
   text-transform: uppercase;
   border-bottom: 2px solid;
@@ -67,7 +67,7 @@ const CloseButton = styled(Button)`
   top: 27px;
 `;
 const OnboardedButton = styled(Button)`
-  font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
+  font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
   font-weight: 800;
   font-size: 12px;
   text-align: center;

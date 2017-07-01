@@ -25,6 +25,7 @@ const Button = styled.button`
   padding: 0; margin: 0;
   cursor: pointer;
   padding: 5px;
+  text-transform: uppercase;
   span svg {
     width: 20px;
     height: 20px;

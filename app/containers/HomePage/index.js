@@ -50,7 +50,7 @@ const SearchResultsText = styled.span``;
 const ClearButton = styled.button`
 
   outline: none;
-  font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
+  font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
   font-weight: 800;
   padding-right: 24px;
   text-transform: uppercase;
@@ -160,58 +160,60 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     const lang = this.props.language;
     const ListItem = this.getViewMode();
     return (
-      <Container
-          dir={this.getDirection()}
-          full={this.props.params.filter !== 'type'}
-          isStory = {this.props.params.label === 'story'}
-          shorten = {this.state.scrollY > 10}
-          >
-        <Helmet
-          title="HomePage"
-          meta={[
-            { name: 'description', content: 'Description of HomePage' },
-          ]}
-        />
-        <Header lang={lang} {...this.props}/>
-        <LeftSection lang={lang}>
+      <LanguageThemeProvider>
+        <Container
+            dir={this.getDirection()}
+            full={this.props.params.filter !== 'type'}
+            isStory = {this.props.params.label === 'story'}
+            shorten = {this.state.scrollY > 10}
+            >
+          <Helmet
+            title="HomePage"
+            meta={[
+              { name: 'description', content: 'Description of HomePage' },
+            ]}
+          />
+          <Header lang={lang} {...this.props}/>
+          <LeftSection lang={lang}>
 
-          <LeftHeader>
-            <FormattedMessage {...messages.viewAs} />
-          </LeftHeader>
+            <LeftHeader>
+              <FormattedMessage {...messages.viewAs} />
+            </LeftHeader>
 
-          <LeftContainer>
-            <ToolsViewOptions />
-          </LeftContainer>
+            <LeftContainer>
+              <ToolsViewOptions />
+            </LeftContainer>
 
-          <LeftHeader>
-            <FormattedMessage {...messages.sortBy} />
-          </LeftHeader>
+            <LeftHeader>
+              <FormattedMessage {...messages.sortBy} />
+            </LeftHeader>
 
-          <LeftContainer>
-            <ToolsSortOptions />
-          </LeftContainer>
+            <LeftContainer>
+              <ToolsSortOptions />
+            </LeftContainer>
 
 
-          <LeftHeader>
-            <FormattedMessage {...messages.tags} />
-          </LeftHeader>
-          <Tags {...this.props} />
-        </LeftSection>
-        <Stage lang={lang}>
-          {this.getSearchResultsHeader()}
-          <ToolList>
-            { this.props.sorted ?
-                this.props.sorted.map((tool, index) => {
-                  return (
-                    <ListItem
-                          position={this.randomizePosition(tool)}
-                          lang={this.props.language} {...tool}
-                          key={tool['slug'] + '--' + tool['_id']}
-                          />)
-                }) : null }
-          </ToolList>
-        </Stage>
-      </Container>
+            <LeftHeader>
+              <FormattedMessage {...messages.tags} />
+            </LeftHeader>
+            <Tags {...this.props} align={'center'} />
+          </LeftSection>
+          <Stage lang={lang}>
+            {this.getSearchResultsHeader()}
+            <ToolList>
+              { this.props.sorted ?
+                  this.props.sorted.map((tool, index) => {
+                    return (
+                      <ListItem
+                            position={this.randomizePosition(tool)}
+                            lang={this.props.language} {...tool}
+                            key={tool['slug'] + '--' + tool['_id']}
+                            />)
+                  }) : null }
+            </ToolList>
+          </Stage>
+        </Container>
+      </LanguageThemeProvider>
     );
   }
 }

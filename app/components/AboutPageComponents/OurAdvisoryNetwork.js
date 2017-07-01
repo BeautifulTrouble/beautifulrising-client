@@ -19,19 +19,19 @@ const List = styled.ul``;
 
 const ListItem = styled.li`list-style: none;
   width: ${props=>props.theme.itemWidth};
-  margin-${p=>p.lang==='ar'?'left':'right'}: ${props=>props.theme.itemMargin};
+  margin-${p=>p.theme.isArabic?'left':'right'}: ${props=>props.theme.itemMargin};
   display: inline-block;
   vertical-align: top;
   margin-bottom: 50px;
-  text-align: ${p=>p.lang==='ar'?'right':'left'};
+  text-align: ${p=>p.theme.isArabic?'right':'left'};
 
   h3 {
 
     font-size: 19px;
-    font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
+    font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
     margin: 0;
     margin-top: 15px;
-    text-align: ${p=>p.lang==='ar'?'right':'left'};
+    text-align: ${p=>p.theme.isArabic?'right':'left'};
     text-transform: uppercase;
     letter-spacing: 0;
 
@@ -40,12 +40,12 @@ const ListItem = styled.li`list-style: none;
     margin: 0;
     font-size: 14px;
     text-transform: uppercase;
-    font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
+    font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
     letter-spacing: 0;
   }
 
   p {
-    padding-${p=>p.lang==='ar'?'left':'right'}: 30px;
+    padding-${p=>p.theme.isArabic?'left':'right'}: 30px;
 
     a {
       color: #828486;
@@ -70,16 +70,16 @@ const Team = styled.h5`
 const Content = styled.div``;
 
 const AdvisoryNetworkSection =styled(AboutSection)`
-  text-align: ${p=>p.lang==='ar'?'right':'left'};
+  text-align: ${p=>p.theme.isArabic?'right':'left'};
   h2 {
     &::after {
-      ${p=>p.lang==='ar'?'right':'left'}: 83%;
+      ${p=>p.theme.isArabic?'right':'left'}: 83%;
     }
   }
 `;
 
 const AdvisoryNetworkIntro = styled(IntroText)`
-  margin-${p=>p.lang==='ar'?'right':'left'}: 82%;
+  margin-${p=>p.theme.isArabic?'right':'left'}: 82%;
   width: 33%;
   padding: 0;
 `

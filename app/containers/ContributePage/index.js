@@ -37,7 +37,7 @@ const Subtitle = styled(SmallHeaderBlock)`
   margin-right: 30px;
 `;
 const Subsubtitle = styled.h3`
-  font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
+  font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
   font-size: 18px;
   letter-spacing: 0;
   margin-top: 30px;

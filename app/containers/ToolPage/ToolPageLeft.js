@@ -10,6 +10,8 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import styled, { ThemeProvider} from 'styled-components';
 import CouldBeYou from 'components/CouldBeYou';
+import SmallSectionHeader from 'components/SmallSectionHeader';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ToolsRequestTraining from 'components/ToolsRequestTraining';
 import Tags from 'containers/Tags';
 import Author from 'containers/Author';
@@ -29,9 +31,9 @@ export class ToolPageLeft extends React.PureComponent { // eslint-disable-line r
     if (this.props['module-type'] === 'snapshot' ) return null;
     return (
       <Container>
-        <ToolsPageLeftHeader>
+        <SmallSectionHeader>
           <FormattedMessage {...messages.tags} />
-        </ToolsPageLeftHeader>
+        </SmallSectionHeader>
         <Tags align="left" tags={this.props.tags ? this.props.tags.map(item=>item.toLowerCase()) : null} />
       </Container>
     )
@@ -48,7 +50,7 @@ export class ToolPageLeft extends React.PureComponent { // eslint-disable-line r
   render() {
     const lang = this.props.intl.locale;
     return (
-        <ThemeProvider theme={{ lang: lang}}>
+        <LanguageThemeProvider>
           <ToolLeftArea>
             <ToolsPageContributor>
               <FormattedMessage {...messages.contributedByHeader} />
@@ -62,13 +64,13 @@ export class ToolPageLeft extends React.PureComponent { // eslint-disable-line r
 
             { this.renderTags() }
             <Container>
-              <ToolsPageLeftHeader>
+              <SmallSectionHeader>
                 <FormattedMessage {...messages.trainingHeader} />
-              </ToolsPageLeftHeader>
+              </SmallSectionHeader>
               <ToolsRequestTraining />
             </Container>
           </ToolLeftArea>
-        </ThemeProvider>
+        </LanguageThemeProvider>
     );
   }
 }

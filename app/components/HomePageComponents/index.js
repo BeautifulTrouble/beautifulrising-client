@@ -7,6 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { CommonLeftHeader } from 'components/CommonComponents';
+import SmallSectionHeader from 'components/SmallSectionHeader';
 
 function HomePageComponents() {
   return (
@@ -20,9 +21,8 @@ HomePageComponents.propTypes = {
 };
 
 
-export const LeftHeader = styled(CommonLeftHeader)`
-  font-size: 30px;
-  line-height: 1;
+export const LeftHeader = styled(SmallSectionHeader)`
+  text-align: center;
 `;
 
 export const LeftContainer = styled.div`

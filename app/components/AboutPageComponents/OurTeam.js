@@ -24,27 +24,27 @@ const ListItem = styled.li`list-style: none;
   display: inline-block;
   vertical-align: top;
   margin-bottom: 50px;
-  text-align: left;
+  text-align: ${p=>p.theme.isArabic?'right':'left'};
 
   h3 {
     font-size: 19px;
-    font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
+    font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
     margin: 0;
     margin-top: 15px;
-    text-align: left;
+    text-align: ${p=>p.theme.isArabic?'right':'left'};
     text-transform: uppercase;
     letter-spacing: 0;
   }
-  
+
   h5 {
     margin: 0;
     font-size: 14px;
     text-transform: uppercase;
-    font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
+    font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
     letter-spacing: 0;
   }
 
-  p { padding-right: 30px; }
+  p { padding-${p=>p.theme.isArabic?'left':'right'}: 30px; }
 `;
 
 const Image = styled.div`

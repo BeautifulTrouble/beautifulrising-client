@@ -85,7 +85,7 @@ const Button = styled.button`
   text-decoration: none;
   text-transform: uppercase;
   font-weight: bold;
-  font-weight: 800; font-family: 'Avenir', 'Kaff Bold', sans-serif;
+  font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
   margin-bottom: 18px;
   font-size: 16px;
   line-height: 22px;

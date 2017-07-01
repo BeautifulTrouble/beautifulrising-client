@@ -23,6 +23,8 @@ const TableMenu = styled.table`border: 0;`;
 const Row = styled.tr``;
 const Column = styled.td`
   padding: 10px;
+  width: 50%;
+  vertical-align: top;
 `;
 
 const Image = styled.img``;

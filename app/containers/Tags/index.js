@@ -26,14 +26,13 @@ import messages from './messages';
 
 import styled from 'styled-components';
 
-const TagBlock = styled.div`
+const TagBlock = styled(ContentBlock)`
   text-align: ${props=>props.align || 'center'}`
 ;
 const TagList = styled.ul`
   margin: 0;
   padding: 0;
   margin-top: 12px;
-  text-align: center;
 `;
 const TagListItem = styled.li`
   display: inline;
@@ -41,7 +40,7 @@ const TagListItem = styled.li`
   &:last-child {
     span { display: none; }
   }
-  font-family: 'Avenir, Kaff';
+  font-family: Avenir, Kaff;
   font-weight: ${p=>p.selected ? 800 : 400 };
 
   * { vertical-align: middle; }
@@ -71,16 +70,14 @@ export class Tags extends React.PureComponent { // eslint-disable-line react/pre
     return (
       <LanguageThemeProvider>
         <TagBlock align={this.props.align}>
-          <ContentBlock>
-            <TagList>
-              {this.props.tags.map((item) => (
-                <TagListItem ar={locale==='ar'} key={item.key} selected={item.key===selected}>
-                  <TagLink to={`/tag/${item.key}`}>{item.value}</TagLink>
-                  <TagDivider />
-                </TagListItem>
-              ))}
-            </TagList>
-          </ContentBlock>
+          <TagList>
+            {this.props.tags.map((item) => (
+              <TagListItem ar={locale==='ar'} key={item.key} selected={item.key===selected}>
+                <TagLink to={`/tag/${item.key}`}>{item.value}</TagLink>
+                <TagDivider />
+              </TagListItem>
+            ))}
+          </TagList>
         </TagBlock>
       </LanguageThemeProvider>
     );

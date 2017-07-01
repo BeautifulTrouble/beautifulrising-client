@@ -6,7 +6,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-
+import SmallSectionHeader from 'components/SmallSectionHeader';
 import ContentBlock from 'components/ContentBlock';
 import { ToolType, ToolTitle } from 'components/ToolsComponents';
 import { CommonLeftHeader } from 'components/CommonComponents';
@@ -83,20 +83,17 @@ export const ToolsPageLeftHeader = styled(CommonLeftHeader)`
   padding: 0;
 
 `
-export const ToolsPageRightHeader = styled(CommonLeftHeader)`
-  text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
+export const ToolsPageRightHeader = styled(SmallSectionHeader)`
   border: 0;
-  font-size: 30px;
+  margin-bottom: 5px;
 `;
 
-export const ToolsPageContributor = styled(ToolsPageLeftHeader)`
+export const ToolsPageContributor = styled(SmallSectionHeader)`
   font-size: 40px;
   margin: 0;
   padding: 0;
   line-height: 40px;
   margin-top: 32px;
-
-  text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
 `;
 
 export const ToolPageCaption = styled.div`
@@ -109,13 +106,14 @@ export const ToolPageCaption = styled.div`
 
   a { color: white; }
 `;
-export const ToolsPageRelatedToolsHeader = styled(ToolsPageLeftHeader)`
+export const ToolsPageRelatedToolsHeader = styled(SmallSectionHeader)`
   font-size: 40px;
   border: none;
   background-color: #f7f7f7;
   padding: ${props=>props.theme.lang==='ar'?'10px 20px 10px 5px':'10px 5px 10px 20px'};
   margin-bottom: 10px;
   margin-top: 30px;
+
 `;
 
 export const ToolsRelatedArea = styled.div`
