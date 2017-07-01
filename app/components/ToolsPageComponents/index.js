@@ -238,7 +238,7 @@ export const LearnMoreItemSource = styled.span``;
 export const RealWorldHeader = styled.h1`
 text-transform: uppercase;
 font-size: 40px;
-line-height: 1;
+line-height: 36px;
 
 padding-left: 48px;
 text-indent: -48px;

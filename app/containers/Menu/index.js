@@ -40,8 +40,8 @@ function Menu(props) {
   return (
     <MenuArea lang={lang}>
       <Logo top={'17px'} left={'115px'} />
-      { window.location.pathname.match(/^\/(type|tag|search)*/) ? null :
-          (<Home to="/">
+      { window.location.pathname.match(/^\/(type|tag|search)|^\/$/) ? null :
+          (<Home to="/" onClick={props.onClick}>
             <FormattedMessage {...messages.home} />
           </Home>)
       }
