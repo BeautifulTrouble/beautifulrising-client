@@ -38,7 +38,7 @@ position: relative;
 h2 {
   text-transform: uppercase;
   border: 2px solid;
-  border-width: 0 0 3px;
+  border-width: 0 0 2px;
   font-size: 19px;
   letter-spacing: 0;
   font-family: 'Avenir Black', 'Kaff Bold', sans-serif;

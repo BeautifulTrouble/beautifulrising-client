@@ -42,9 +42,9 @@ height: 100%;
 const ToolsViewType = styled(ToolsButton)`
   font-size: ${p=>p.ar?'13px':'14px'};
   line-height: ${p=>p.ar?'24px':'22px'};
-  color: ${props=>props.chosen&&props.toShow ? 'black' : '#AFAFAF' };
+  color: ${props=>props.chosen&&props.toShow ? 'black' : '#828486' };
   svg, svg * {
-    fill: ${props=>props.chosen&&props.toShow ? 'black' : '#AFAFAF' };
+    fill: ${props=>props.chosen&&props.toShow ? 'black' : '#828486' };
   }
 `;
 

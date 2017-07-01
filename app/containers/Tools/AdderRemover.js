@@ -29,6 +29,8 @@ const CallToAction = styled.span`
   font-family: ${p=>p.ar?'Kaff Bold':'Avenir Black'};
   font-size: ${p=>p.ar?'16px':'14px'};
   line-height: 22px;
+  padding-top: 12px;
+  display: inline-block;
 `;
 
 export class AdderRemover extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
