@@ -223,7 +223,7 @@ export const LearnMoreItemSource = styled.span``;
 // RealWorldContainer
 export const RealWorldHeader = styled.h1`
 text-transform: uppercase;
-font-size: 40px;
+font-size: ${p=>p.theme.isArabic ? '36px' : '40px'};
 line-height: 36px;
 
 ${p=> {
