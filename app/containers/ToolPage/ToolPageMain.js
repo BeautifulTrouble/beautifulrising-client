@@ -128,6 +128,7 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
   render() {
     // If snapshot, render the snapshot area...
     const snapshotArea = this.props['module-type'] === 'snapshot' ? this.renderSnapshot() : null;
+    console.log(this.props);
     return (
       <LanguageThemeProvider>
         <ToolMainArea>

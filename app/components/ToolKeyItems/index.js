@@ -18,15 +18,18 @@ import Markdown from 'react-remarkable';
 const Container = styled.section``;
 const Viewport = styled.div``;
 
-const KeyItemList = styled.div``;
+const KeyItemList = styled.div`
+margin-top: 36px;
+`;
 const KeyItemListItem = styled.div`
-  margin: 20px 0;
+  margin: 10px 0;
 `;
 const Header = styled.h3`
 text-align: ${props=>props.theme.lang==='ar' ? 'right' : 'left'};
-
+line-height: 30px;
 margin: 0;
-padding: 0;`;
+padding: 0;
+`;
 const TypeSubheader = styled.h4`
   font-family: 'Paint Hand', 'Massira Spray';
   letter-spacing: ${p=>p.theme.isArabic?'3px':'0'};
@@ -71,6 +74,7 @@ class ToolKeyItems extends React.PureComponent { // eslint-disable-line react/pr
 
 
   render() {
+    console.log(this.props);
     return (
       <LanguageThemeProvider>
         <Container>
