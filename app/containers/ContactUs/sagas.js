@@ -1,22 +1,30 @@
 import { take, call, cancel, put, select,takeLatest } from 'redux-saga/effects';
-import { SEND_SUBSCRIPTION, SUBSCRIPTION_COMPLETE, ERROR_SUBSCRIBING } from './constants';
+import { SEND_SUBSCRIPTION, SUBSCRIPTION_COMPLETE, ERROR_SUBSCRIBING, SUBSCRIPTION_ENDPOINT } from './constants';
 import { subscriptionComplete, errorSubscribing } from './actions';
+import fetchJsonp from 'fetch-jsonp';
 // Individual exports for testing
 import request from 'utils/request';
 
 export const getContactUs = (state) => state.get('contactUs');
-const endpoint = '/&subscribe=Subscribe';
 export function* subscribeUser() {
   // getContactUs.get(email);
   const contactUs = yield select(getContactUs);
-  const requestURL = `${endpoint}&EMAIL=${encodeURIComponent(contactUs.get('email'))}`;
+  const requestURL = `${SUBSCRIPTION_ENDPOINT}&EMAIL=${encodeURIComponent(contactUs.get('email'))}`;
 
   try {
-    // const data = yield call(request, requestURL);
+    console.log(requestURL)
 
-    /** LOADING AREA **/
+    // fetchJsonp(requestURL)
+    //   .then(function(response) {
+    //
+    //   })
+    const data = yield call(request, requestURL, { mode: 'no-cors'});
+    //
+    console.log("PUT", data)
+    // /** LOADING AREA **/
     yield put(subscriptionComplete());
   } catch (err) {
+
     yield call(put, errorSubscribing(err));
   }
 }

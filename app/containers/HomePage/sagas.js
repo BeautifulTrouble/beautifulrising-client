@@ -12,7 +12,7 @@ export const getLanguage = (state) => state.get('language');
 export function* getData(lang) {
   const requestURL = `https://api.beautifulrising.org/api/v1/all?lang=${lang}`;
   try {
-    
+
     const data = yield call(request, requestURL);
     /** LOADING AREA **/
     yield put(dataLoaded(data));

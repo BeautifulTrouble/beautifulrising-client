@@ -30,21 +30,20 @@ export function* submitHashtag() {
       )
     };
 
-    console.log("SUBMITTED", requestUrl, options);
+
     //TODO Insert request call here
     const data = yield put( request( requestUrl, options ) )
 
     yield put(hashtagSubmissionSuccess());
 
   } catch(e) {
-    console.log("Error ::: ", e);
     hashtagSubmissionFailure(e);
   }
 
 
 }
 export function* listenForHashtagSubmissions() {
-  console.log("WAITING FOR HASHTAG TO BE SUBMITTED");
+  
   yield takeLatest(SUBMIT_HASHTAG, submitHashtag);
 }
 

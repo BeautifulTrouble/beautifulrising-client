@@ -16,8 +16,8 @@ const initialState = fromJS({
   hashtag: null,
   captcha: null,
   submitting: false,
-  error: false
-
+  error: false,
+  complete: false
 });
 
 function submitNewsFeedReducer(state = initialState, action) {
@@ -28,7 +28,8 @@ function submitNewsFeedReducer(state = initialState, action) {
               .set('captcha', action.data.captcha)
               .set('hashtag', action.data.hashtag);
     case SUBMIT_HASHTAG_SUCCESS:
-      return initialState;
+      return state.set('submitting', false)
+              .set('complete', true);
     case SUBMIT_HASHTAG_FAIL:
       return state
               .set('error', true)
