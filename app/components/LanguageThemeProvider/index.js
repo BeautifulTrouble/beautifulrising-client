@@ -16,7 +16,7 @@ class LanguageThemeProvider extends React.PureComponent { // eslint-disable-line
   render() {
     const {locale} = this.props.intl;
     return (
-      <ThemeProvider theme={{ isArabic: locale==='ar', lang: locale, ...this.props.theme }}>
+      <ThemeProvider theme={{ ar: locale==='ar', isArabic: locale==='ar', lang: locale, ...this.props.theme }}>
         <Container>
           {React.Children.toArray(this.props.children)}
         </Container>
