@@ -22,7 +22,7 @@ export default function ToolLearnMoreItem(props) { // eslint-disable-line react/
     <LanguageThemeProvider>
       <LearnMoreItem>
         <ContentBlock>
-          <LearnMoreItemLink to={props.link}>{props.title}</LearnMoreItemLink>
+          <LearnMoreItemLink href={props.link} target='_blank'>{props.title}</LearnMoreItemLink>
           {props.source !== '' ? (<LearnMoreItemSource> | {props.source}</LearnMoreItemSource>) : null }
         </ContentBlock>
       </LearnMoreItem>

@@ -213,7 +213,7 @@ export const LearnMoreItem = styled.li`
   list-style: none;
   margin-bottom: 10px;
 `;
-export const LearnMoreItemLink = styled(Link)`
+export const LearnMoreItemLink = styled.a`
   text-decoration: underline;
   font-weight: 800;
 `;
