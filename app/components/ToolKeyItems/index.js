@@ -74,7 +74,7 @@ class ToolKeyItems extends React.PureComponent { // eslint-disable-line react/pr
 
 
   render() {
-    console.log(this.props);
+    
     return (
       <LanguageThemeProvider>
         <Container>

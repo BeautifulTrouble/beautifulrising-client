@@ -42,7 +42,7 @@ export class ToolPageLeft extends React.PureComponent { // eslint-disable-line r
   renderAskContributors() {
     return (
       <Container>
-        <AskTheContributor slug={this.props.authors[0]} count={this.props.authors.length}/>
+        <AskTheContributor authors={this.props.authors} slug={this.props.authors[0]} count={this.props.authors.length}/>
       </Container>
     )
   }

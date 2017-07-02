@@ -9,7 +9,9 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
+import Recaptcha from 'react-google-invisible-recaptcha';
 
+import { RECAPTCHA_SITE_KEY } from 'components/CommonComponents/constants';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
 
@@ -50,7 +52,8 @@ export class AskTheContributor extends React.PureComponent { // eslint-disable-l
     super(props);
     this.state = {
       email: '',
-      question: ''
+      question: '',
+      authors: props.authors
     }
   }
   handleTextAreaChange(evt) {
@@ -60,7 +63,12 @@ export class AskTheContributor extends React.PureComponent { // eslint-disable-l
     this.setState({ email: evt.target.value })
   }
   handleSubmit(evt) {
-    this.props.onFormSubmit(this.state.email, this.state.question, evt);
+    if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+    this.recaptcha.execute();
+  }
+  handleRecaptcha(resp) {
+
+    this.props.onFormSubmit({...this.state, captcha: resp});
   }
 
   render() {
@@ -74,7 +82,7 @@ export class AskTheContributor extends React.PureComponent { // eslint-disable-l
           </Header>
           <Subheader>
             <ContentBlock>
-              <FormattedMessage {...messages.subheader} values={{author: this.props.count > 1 ? 'the authors' : this.props.author.title }}/>
+              <FormattedMessage {...messages.subheader} values={{author: this.props.count > 1 ? 'the authors' : this.props.authors[0].title }}/>
             </ContentBlock>
           </Subheader>
           <Form onSubmit={this.handleSubmit.bind(this)}>
@@ -89,6 +97,11 @@ export class AskTheContributor extends React.PureComponent { // eslint-disable-l
                 <Submit>
                   <FormattedMessage {...messages.submit} />
                 </Submit>
+                <Recaptcha
+                  ref={ ref=> this.recaptcha = ref }
+                  sitekey={ RECAPTCHA_SITE_KEY }
+                  onResolved={this.handleRecaptcha.bind(this)}
+                />
               </SubmitContainer>
             </ContentBlock>
           </Form>
@@ -100,7 +113,8 @@ export class AskTheContributor extends React.PureComponent { // eslint-disable-l
 
 AskTheContributor.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  slug: PropTypes.string.isRequired
+  slug: PropTypes.string.isRequired,
+  authors: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state, props) => {
@@ -112,9 +126,8 @@ const mapStateToProps = (state, props) => {
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    onFormSubmit: (email, question, evt) => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(askContributorQuestion(email, question));
+    onFormSubmit: (options) => {
+      dispatch(askContributorQuestion(options));
     }
   };
 }
