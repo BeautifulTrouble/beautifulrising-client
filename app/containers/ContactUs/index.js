@@ -108,6 +108,7 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
     )
   }
   render() {
+    
     const { locale } = this.props.intl;
     return (
       <ThemeProvider theme={{ar: locale==='ar', lang: locale }}>

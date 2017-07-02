@@ -34,6 +34,7 @@ function contactUsReducer(state = initialState, action) {
                 .set('subscribing', true)
                 .set('complete', false);
     case SUBSCRIPTION_COMPLETE:
+      
       return state
               .set('subscribing', false)
               .set('complete', true)

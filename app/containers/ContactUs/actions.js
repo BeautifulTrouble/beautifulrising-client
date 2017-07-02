@@ -27,6 +27,7 @@ export function sendSubscription(email) {
 }
 
 export function subscriptionComplete() {
+  
   return {
     type: SUBSCRIPTION_COMPLETE
   }

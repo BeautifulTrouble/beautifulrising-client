@@ -9,6 +9,7 @@ import LanguageProvider from 'containers/LanguageProvider/sagas';
 import NewsFeed from 'containers/NewsFeed/sagas';
 import Tools from 'containers/Tools/sagas';
 import StaticTextHandler from 'containers/StaticTextHandler/sagas';
+import SubmitNewsFeed from 'containers/SubmitNewsFeed/sagas';
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -33,6 +34,8 @@ export default function createRoutes(store) {
   injectSagas(Tools);
 
   injectSagas(StaticTextHandler);
+
+  injectSagas(SubmitNewsFeed);
 
   // TODO Re-examine this
   // injectSagas(LanguageProvider);

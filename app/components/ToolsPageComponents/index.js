@@ -57,7 +57,7 @@ export const ToolHeader = styled.section`
 `;
 
 export const ToolHeaderType = styled(ToolType)`
-  font-size: ${p=>p.theme.ar?'50px':'40px'};
+  font-size: ${p=>p.theme.isArabic?'50px':'40px'};
   margin-bottom: 20px;
   padding: 0;
   line-height: 36px;
@@ -89,10 +89,10 @@ export const ToolsPageRightHeader = styled(SmallSectionHeader)`
 `;
 
 export const ToolsPageContributor = styled(SmallSectionHeader)`
-  font-size: 40px;
+  font-size: ${p=>p.theme.isArabic?'25px':'40px'};
+  line-height: ${p=>p.theme.isArabic?'25px':'40px'};
   margin: 0;
   padding: 0;
-  line-height: 40px;
   margin-top: 32px;
 `;
 
@@ -213,7 +213,7 @@ export const LearnMoreItem = styled.li`
   list-style: none;
   margin-bottom: 10px;
 `;
-export const LearnMoreItemLink = styled(Link)`
+export const LearnMoreItemLink = styled.a`
   text-decoration: underline;
   font-weight: 800;
 `;
@@ -223,7 +223,7 @@ export const LearnMoreItemSource = styled.span``;
 // RealWorldContainer
 export const RealWorldHeader = styled.h1`
 text-transform: uppercase;
-font-size: 40px;
+font-size: ${p=>p.theme.isArabic ? '36px' : '40px'};
 line-height: 36px;
 
 ${p=> {

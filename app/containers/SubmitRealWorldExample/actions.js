@@ -17,10 +17,10 @@ export function defaultAction() {
   };
 }
 
-export function submitExample({url, title, description}) {
+export function submitExample({url, title, description, captcha, documentLink, documentTitle }) {
   return {
     type: SUBMIT_EXAMPLE,
-    data: { url, title, description }
+    data: { url, title, description, captcha, documentLink, documentTitle  }
   }
 }
 

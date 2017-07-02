@@ -17,10 +17,11 @@ export function defaultAction() {
   };
 }
 
-export function askContributorQuestion(email, question) {
+export function askContributorQuestion({captcha, authors, email, question}) {
+  
   return {
     type: CONTRIB_QUESTION_ASKED,
-    data: { email, question }
+    data: { email, question, captcha, authors }
   }
 }
 

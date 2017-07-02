@@ -9,6 +9,9 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import styled, { ThemeProvider } from 'styled-components';
+import Recaptcha from 'react-google-invisible-recaptcha';
+
+import { RECAPTCHA_SITE_KEY } from 'components/CommonComponents/constants';
 import SmallHeaderBlock from 'components/SmallHeaderBlock';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
@@ -72,12 +75,32 @@ export class SubmitRealWorldExample extends React.PureComponent { // eslint-disa
     this.state = {
       url: '',
       title: '',
-      description: ''
+      description: '',
+      documentLink: props.document_link,
+      documentTitle: props.document_title
     }
   }
 
   handleSubmit(evt) {
-    this.props.onFormSubmit(evt, { ...this.state });
+    if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+    // this.props.onFormSubmit(evt, { ...this.state });
+    
+    if (this.state.url === '' ||
+        this.state.title === '' ||
+        this.state.description === '') {
+          
+      this.recaptcha.reset()
+    } else {
+      
+      this.recaptcha.execute();
+      
+    }
+  }
+
+  handleRecaptcha(captchaResponse) {
+    console.log(captchaResponse)
+    
+    this.props.onFormSubmit(captchaResponse, { ...this.state });
   }
 
   handleChange(evt) {
@@ -105,6 +128,11 @@ export class SubmitRealWorldExample extends React.PureComponent { // eslint-disa
         <button>
           <FormattedMessage {...messages.submit} />
         </button>
+        <Recaptcha
+          ref={ ref=> this.recaptcha = ref }
+          sitekey={ RECAPTCHA_SITE_KEY }
+          onResolved={this.handleRecaptcha.bind(this)}
+        />
       </Form>
     );
   }
@@ -140,9 +168,9 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    onFormSubmit: (evt, values) => {
+    onFormSubmit: (captchaResponse, values) => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(submitExample(values));
+      dispatch(submitExample({...values, captcha: captchaResponse}));
     }
   };
 }

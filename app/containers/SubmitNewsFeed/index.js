@@ -9,10 +9,14 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import styled from 'styled-components';
+import Recaptcha from 'react-google-invisible-recaptcha';
+
+import { RECAPTCHA_SITE_KEY } from 'components/CommonComponents/constants';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import makeSelectSubmitNewsFeed from './selectors';
 import messages from './messages';
+import { submitHashtag } from './actions';
 
 const Header = styled(ContentBlock)`
   font-weight: 800;
@@ -54,8 +58,16 @@ export class SubmitNewsFeed extends React.PureComponent { // eslint-disable-line
   }
 
   handleSubmit(evt) {
-    this.props.onSubmitForm(evt, this.state.email);
+    if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+
+    this.recaptcha.execute();
   }
+
+  handleRecaptcha(resp) {
+
+    this.props.onFormSubmit({...this.state, captcha: resp});
+  }
+
   renderForm() {
     return (
       <FormContainer lang={this.props.intl.locale}>
@@ -64,6 +76,11 @@ export class SubmitNewsFeed extends React.PureComponent { // eslint-disable-line
           <button>
             <FormattedMessage {...messages.submit} />
           </button>
+          <Recaptcha
+            ref={ ref=> this.recaptcha = ref }
+            sitekey={ RECAPTCHA_SITE_KEY }
+            onResolved={this.handleRecaptcha.bind(this)}
+          />
         </form>
       </FormContainer>
 
@@ -94,6 +111,9 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    onFormSubmit: (options) => {
+      dispatch(submitHashtag(options));
+    }
   };
 }
 
