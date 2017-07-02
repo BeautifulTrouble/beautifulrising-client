@@ -17,7 +17,7 @@ const Container = styled.div`
   transform: ${p=>p.lang==='ar'?'translateX(50%)':'translateX(-50%)'};
   border: 2px solid;
   font-weight: bold;
-  bottom: 110px;
+  top: -65px;
   padding: 12px 8px 3px;
   display: ${props=>props.show?'block':'none'};
   // display: block;
