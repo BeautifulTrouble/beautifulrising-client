@@ -44,7 +44,7 @@ const CallToAction = styled.div`
 color: gray;
 display: block;
 margin: 5px 0;
-text-align: right !important;
+text-align: ${p=>p.theme.isArabic ? 'left': 'right'} !important;
 
   button {
     color: gray;
@@ -76,9 +76,7 @@ function NewsFeedItem(props) {
           </ContentBlock>
           <TweetTimestamp time={props.timestamp / 1000} format='full' />
           <CallToAction>
-            <ContentBlock>
-              <button onClick={()=>twitterFollow(props.user_handle)}><FormattedMessage {...messages.follow} /></button>
-            </ContentBlock>
+            <button onClick={()=>twitterFollow(props.user_handle)}><FormattedMessage {...messages.follow} /></button>
           </CallToAction>
         </Viewport>
       </ItemContainer>
