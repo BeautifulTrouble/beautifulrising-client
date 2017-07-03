@@ -59,7 +59,6 @@ export class SubmitNewsFeed extends React.PureComponent { // eslint-disable-line
 
   handleSubmit(evt) {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-
     this.recaptcha.execute();
   }
 
