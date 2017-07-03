@@ -7,6 +7,7 @@ import { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
+import { persistStore, autoRehydrate } from 'redux-persist-immutable'
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -21,6 +22,7 @@ export default function configureStore(initialState = {}, history) {
 
   const enhancers = [
     applyMiddleware(...middlewares),
+    autoRehydrate()
   ];
 
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
@@ -37,6 +39,9 @@ export default function configureStore(initialState = {}, history) {
     fromJS(initialState),
     composeEnhancers(...enhancers)
   );
+
+  // begin periodically persisting the store
+  persistStore(store, {blacklist: ['route', 'contactUs', 'submitRealWorldExample', 'newsFeed', 'global']});
 
   // Extensions
   store.runSaga = sagaMiddleware.run;

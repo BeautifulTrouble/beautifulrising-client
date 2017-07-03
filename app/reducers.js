@@ -9,6 +9,20 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 
+import tagsReducer from 'containers/Tags/reducer';
+import globalReducer from 'containers/App/reducer';
+import toolsViewOptionsReducer from 'containers/ToolsViewOptions/reducer';
+import toolsSortOptionsReducer from 'containers/ToolsSortOptions/reducer';
+import searchFieldReducer from 'containers/SearchField/reducer';
+import toolsReducer from 'containers/Tools/reducer';
+import contactUsReducer from 'containers/ContactUs/reducer';
+import submitRealWorldExampleReducer from 'containers/SubmitRealWorldExample/reducer';
+import emailToolsReducer from 'containers/EmailTools/reducer';
+import newsFeedReducer from 'containers/NewsFeed/reducer';
+import submitNewsFeedReducer from 'containers/SubmitNewsFeed/reducer';
+import askTheContributorReducer from 'containers/AskTheContributor/reducer';
+import onboardingModalReducer from 'containers/OnboardingModal/reducer';
+import staticTextHandlerReducer from 'containers/StaticTextHandler/reducer';
 /*
  * routeReducer
  *
@@ -44,6 +58,20 @@ export default function createReducer(asyncReducers) {
   return combineReducers({
     route: routeReducer,
     language: languageProviderReducer,
+    tags: tagsReducer,
+    searchField: searchFieldReducer,
+    global: globalReducer,
+    toolsView: toolsViewOptionsReducer,
+    toolsSort: toolsSortOptionsReducer,
+    tools: toolsReducer,
+    contactUs: contactUsReducer,
+    submitRealWorldExample: submitRealWorldExampleReducer,
+    emailTools: emailToolsReducer,
+    newsFeed: newsFeedReducer,
+    submitNewsFeed: submitNewsFeedReducer,
+    askTheContributor: askTheContributorReducer,
+    onboardingModal: onboardingModalReducer,
+    staticTextHandler: staticTextHandlerReducer,
     ...asyncReducers,
   });
 }

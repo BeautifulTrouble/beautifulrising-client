@@ -15,6 +15,9 @@ import { Provider } from 'react-redux';
 import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { useScroll } from 'react-router-scroll';
+
+import FontFaceObserver from 'fontfaceobserver';
+
 import 'sanitize.css/sanitize.css';
 
 // Import root app
@@ -74,7 +77,18 @@ const render = (messages) => {
           render={
             // Scroll to top when going to a new page, imitating default browser
             // behaviour
-            applyRouterMiddleware(useScroll())
+            applyRouterMiddleware(useScroll((prevRouterProps, { routes }) => {
+              //Added this to get ignoreScrollBehavior in
+              if (routes.some(route => route.ignoreScrollBehavior)) {
+                return false;
+              }
+
+              if (routes.some(route => route.scrollToTop)) {
+                return [0, 0];
+              }
+
+              return true;
+            }))
           }
         />
       </LanguageProvider>

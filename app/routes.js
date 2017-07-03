@@ -3,6 +3,13 @@
 // See http://blog.mxstbr.com/2016/01/react-apps-with-pages for more information
 // about the code splitting business
 import { getAsyncInjectors } from 'utils/asyncInjectors';
+import ContactUs from 'containers/ContactUs/sagas';
+import EmailTools from 'containers/EmailTools/sagas';
+import LanguageProvider from 'containers/LanguageProvider/sagas';
+import NewsFeed from 'containers/NewsFeed/sagas';
+import Tools from 'containers/Tools/sagas';
+import StaticTextHandler from 'containers/StaticTextHandler/sagas';
+import SubmitNewsFeed from 'containers/SubmitNewsFeed/sagas';
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -15,33 +22,170 @@ const loadModule = (cb) => (componentModule) => {
 export default function createRoutes(store) {
   // Create reusable async injectors using getAsyncInjectors factory
   const { injectReducer, injectSagas } = getAsyncInjectors(store); // eslint-disable-line no-unused-vars
+  injectSagas(ContactUs);
+
+  //enable email everywhere
+  injectSagas(EmailTools);
+
+  //get news feed
+  injectSagas(NewsFeed);
+
+  //close tools when changing locs
+  injectSagas(Tools);
+
+  injectSagas(StaticTextHandler);
+
+  injectSagas(SubmitNewsFeed);
+
+  // TODO Re-examine this
+  // injectSagas(LanguageProvider);
+
+  const getHomePageComponent = (nextState, cb) => {
+    const importModules = Promise.all([
+      import('containers/HomePage/reducer'),
+      import('containers/HomePage/sagas'),
+      // import('containers/SearchField/sagas'),
+      import('containers/HomePage'),
+      import('containers/ToolsViewOptions/reducer'),
+      import('containers/ToolsSortOptions/reducer'),
+    ]);
+
+    const renderRoute = loadModule(cb);
+
+    importModules.then(([reducer, sagas, /*searchSagas,*/ component,
+          toolsViewOptionsReducer, toolsSortOptionsReducer]) => {
+      injectReducer('homePage', reducer.default);
+      injectSagas(sagas.default);
+      // injectSagas(searchSagas.default);
+
+      injectReducer('toolsView', toolsViewOptionsReducer.default);
+      injectReducer('toolsSort', toolsSortOptionsReducer.default)
+
+      renderRoute(component);
+    });
+
+    importModules.catch(errorLoading);
+  };
 
   return [
     {
       path: '/',
-      name: 'home',
+      name: 'homePage',
+      getComponent: getHomePageComponent,
+    },
+    {
+      path: '/tool(/:label)*',
+      name: 'tool',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/HomePage'),
-        ]);
 
-        const renderRoute = loadModule(cb);
+          const importModules = Promise.all([
+            import('containers/ToolPage/reducer'),
+            import('containers/ToolPage/sagas'),
+            import('containers/SubmitRealWorldExample/sagas'),
+            import('containers/AskTheContributor/sagas'),
+            import('containers/ToolPage'),
+          ]);
 
-        importModules.then(([component]) => {
-          renderRoute(component);
-        });
+          const renderRoute = loadModule(cb);
 
-        importModules.catch(errorLoading);
+          importModules.then(([reducer, sagas, worldExampleSagas, askContributor, component]) => {
+            injectReducer('tool', reducer.default);
+            injectSagas(sagas.default);
+            injectSagas(worldExampleSagas.default);
+            injectSagas(askContributor.default);
+            renderRoute(component);
+          });
+
+          importModules.catch(errorLoading);
+
       },
     },
     {
-      path: '/about',
+      path: '/about(/:section)*',
       name: 'about',
+      ignoreScrollBehavior: true, //for useScroll
       getComponent(nextState, cb) {
-        import('containers/AboutPage')
-          .then(loadModule(cb))
-          .catch(errorLoading)
+
+          const importModules = Promise.all([
+            import('containers/AboutPage/sagas'),
+            import('containers/AboutPage'),
+          ]);
+
+          const renderRoute = loadModule(cb);
+
+          importModules.then(([sagas, component]) => {
+            injectSagas(sagas.default);
+            renderRoute(component);
+          });
+
+          importModules.catch(errorLoading);
+
       },
+    },
+    {
+      path: '/contribute(/:section)*',
+      name: 'contribute',
+      ignoreScrollBehavior: true, //for useScroll
+      getComponent(nextState, cb) {
+
+          const importModules = Promise.all([
+            import('containers/AboutPage/sagas'),
+            import('containers/ContributePage'),
+          ]);
+
+          const renderRoute = loadModule(cb);
+
+          importModules.then(([sagas, component]) => {
+            injectSagas(sagas.default);
+            renderRoute(component);
+          });
+
+          importModules.catch(errorLoading);
+
+      },
+    },
+    {
+      path: '/resources(/:section)*',
+      name: 'resources',
+      ignoreScrollBehavior: true, //for useScroll
+      getComponent(nextState, cb) {
+
+          const importModules = Promise.all([
+            import('containers/AboutPage/sagas'),
+            import('containers/TrainingPage'),
+          ]);
+
+          const renderRoute = loadModule(cb);
+          importModules.then(([sagas, component]) => {
+            injectSagas(sagas.default);
+            renderRoute(component);
+          });
+          importModules.catch(errorLoading);
+      },
+    },
+    {
+      path: '/platforms(/:section)*',
+      name: 'platforms',
+      ignoreScrollBehavior: true, //for useScroll
+      getComponent(nextState, cb) {
+
+          const importModules = Promise.all([
+            import('containers/AboutPage/sagas'),
+            import('containers/PlatformsPage'),
+          ]);
+
+          const renderRoute = loadModule(cb);
+          importModules.then(([sagas, component]) => {
+            injectSagas(sagas.default);
+            renderRoute(component);
+          });
+          importModules.catch(errorLoading);
+      },
+    },
+    {
+      path: '/:filter(type|tag|search)(/:label(/:region)*)*',
+      name: 'homePage',
+      getComponent: getHomePageComponent,
     },
     {
       path: '*',

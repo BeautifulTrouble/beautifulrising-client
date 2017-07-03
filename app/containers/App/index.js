@@ -12,22 +12,82 @@
  */
 
 import React from 'react';
-import Header from 'components/Header';
+import { createStructuredSelector } from 'reselect';
+import { connect } from 'react-redux';
+import styled, { ThemeProvider } from 'styled-components';
+import { injectIntl } from 'react-intl';
+import Page from 'components/Page';
+import Header from 'containers/Header';
+import Body from 'components/Body';
+import Tools from 'containers/Tools';
+import Footer from 'components/Footer';
+import LanguageChanger from 'containers/LanguageChanger';
+import OnboardingModal from 'containers/OnboardingModal';
+import { isShowTools, makeSelectLanguage } from './selectors';
+import { isOnboarded } from 'containers/OnboardingModal/selectors';
+import { makeSelectLanguageData } from 'containers/LanguageProvider/selectors';
+import { loadLanguage } from 'containers/LanguageProvider/actions';
+//Themes
 
-export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+const Content = styled.section`
+min-height: 80vh;
+
+&::after {
+  content: ' ';
+  display: block;
+  clear: both;
+}`;
+
+class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
     children: React.PropTypes.node,
   };
 
+  componentDidMount() {
+
+    // TODO Load language if feasible
+    // if (!this.props.languageData) {
+    //   this.props.onLanguageLoad()
+    // }
+  }
+
   render() {
+    const theme = {lang: this.props.language};
+
     return (
-      <div>
-        <Header />
-        <div>
-          {React.Children.toArray(this.props.children)}
-        </div>
-      </div>
+      <ThemeProvider theme={theme}>
+        <Page>
+          <OnboardingModal isOpen={!this.props.isOnboarded} />
+          <LanguageChanger />
+          <Header lang={this.props.language} />
+          <Body showTools={this.props.isShowTools} lang={this.props.language} >
+            <Tools />
+            <Content>
+              {React.Children.toArray(this.props.children)}
+            </Content>
+            <Footer />
+          </Body>
+        </Page>
+      </ThemeProvider>
     );
   }
 }
+
+const mapStateToProps = createStructuredSelector({
+  isOnboarded: isOnboarded(),
+  isShowTools: isShowTools(),
+  language: makeSelectLanguage(),
+  languageData: makeSelectLanguageData()
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+    onLanguageLoad: (evt) => {
+      dispatch(loadLanguage())
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(App));

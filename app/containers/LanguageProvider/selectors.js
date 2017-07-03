@@ -14,7 +14,17 @@ const makeSelectLocale = () => createSelector(
   (languageState) => languageState.get('locale')
 );
 
+const makeSelectLanguageData = () => createSelector(
+  selectLanguage,
+  (languageState) => {
+
+
+    return languageState.get('data')
+  }
+)
+
 export {
   selectLanguage,
   makeSelectLocale,
+  makeSelectLanguageData,
 };

@@ -8,6 +8,10 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   header: {
     id: 'app.containers.AboutPage.header',
-    defaultMessage: 'This is AboutPage container !',
+    defaultMessage: 'ABOUT',
   },
+  description: {
+    id: 'app.containers.AboutPage.description',
+    defaultMessage: 'Beautiful Rising harnesses the insights of changemakers worldwide to help make our movements more strategic, creative and effective.'
+  }
 });
