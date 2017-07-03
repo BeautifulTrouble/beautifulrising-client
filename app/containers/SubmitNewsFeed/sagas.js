@@ -12,7 +12,7 @@ export function* submitHashtag() {
   const hashtag = hashtagSubmit.get('hashtag');
   const captcha = hashtagSubmit.get('captcha');
 
-  console.log("Submitted!! ", hashtag, captcha)
+
 
   try {
     const requestUrl = `https://api.beautifulrising.org/intake/newsfeed-suggestion`;
@@ -43,7 +43,7 @@ export function* submitHashtag() {
 
 }
 export function* listenForHashtagSubmissions() {
-  
+
   yield takeLatest(SUBMIT_HASHTAG, submitHashtag);
 }
 

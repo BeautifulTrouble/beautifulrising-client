@@ -12,7 +12,7 @@ import {
 } from './constants';
 
 export function submitHashtag({ hashtag, captcha }) {
-  console.log("XXX submit Hashtag", hashtag, captcha)
+
   return {
     type: SUBMIT_HASHTAG,
     data: { hashtag, captcha }

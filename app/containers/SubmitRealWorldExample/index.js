@@ -98,7 +98,7 @@ export class SubmitRealWorldExample extends React.PureComponent { // eslint-disa
   }
 
   handleRecaptcha(captchaResponse) {
-    console.log(captchaResponse)
+    
     
     this.props.onFormSubmit(captchaResponse, { ...this.state });
   }

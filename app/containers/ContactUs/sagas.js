@@ -1,7 +1,6 @@
 import { take, call, cancel, put, select,takeLatest } from 'redux-saga/effects';
 import { SEND_SUBSCRIPTION, SUBSCRIPTION_COMPLETE, ERROR_SUBSCRIBING, SUBSCRIPTION_ENDPOINT } from './constants';
 import { subscriptionComplete, errorSubscribing } from './actions';
-import fetchJsonp from 'fetch-jsonp';
 // Individual exports for testing
 import request from 'utils/request';
 
@@ -12,15 +11,13 @@ export function* subscribeUser() {
   const requestURL = `${SUBSCRIPTION_ENDPOINT}&EMAIL=${encodeURIComponent(contactUs.get('email'))}`;
 
   try {
-    console.log(requestURL)
-
     // fetchJsonp(requestURL)
     //   .then(function(response) {
     //
     //   })
     const data = yield call(request, requestURL, { mode: 'no-cors'});
     //
-    console.log("PUT", data)
+
     // /** LOADING AREA **/
     yield put(subscriptionComplete());
   } catch (err) {
