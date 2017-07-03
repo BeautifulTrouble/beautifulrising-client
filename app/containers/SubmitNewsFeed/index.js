@@ -32,7 +32,7 @@ const FormContainer = styled(ContentBlock)`
     width: calc(100% - 50px);
     outline: none;
     padding: 2px;
-    text-align: ${p=>p.theme.ar ? 'right' : 'left'};
+    text-align: ${p=>p.theme.isArabic ? 'right' : 'left'};
   }
   button {
     outline: none;
@@ -42,7 +42,7 @@ const FormContainer = styled(ContentBlock)`
     font-weight: bold;
     cursor: pointer;
     color: #828486;
-    float: ${p=>p.theme.ar ? 'left' : 'right'};
+    float: ${p=>p.theme.isArabic ? 'left' : 'right'};
   }
 `;
 export class SubmitNewsFeed extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -69,7 +69,7 @@ export class SubmitNewsFeed extends React.PureComponent { // eslint-disable-line
 
   renderForm() {
     return (
-      <FormContainer lang={this.props.intl.locale}>
+      <FormContainer>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input type='hashtag' name='hashtag' onChange={this.handleChange.bind(this)} placeholder='#'/>
           <button>

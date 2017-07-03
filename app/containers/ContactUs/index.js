@@ -35,8 +35,8 @@ const EmailLink = styled(MenuLink)`
 `;
 
 const SubscribeCTA = styled.p`
-  font-size: ${p=>p.theme.ar?'13px':'14px'};
-  line-height: ${p=>p.theme.ar?'24px':'22px'};
+  font-size: ${p=>p.theme.isArabic?'13px':'14px'};
+  line-height: ${p=>p.theme.isArabic?'24px':'22px'};
 `;
 const FormContainer = styled(ContentBlock)`
   border: 1px solid;
@@ -108,10 +108,10 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
     )
   }
   render() {
-    
+
     const { locale } = this.props.intl;
     return (
-      <ThemeProvider theme={{ar: locale==='ar', lang: locale }}>
+      <LanguageThemeProvider>
         <MenuBlock>
           <MenuTitle>
             <FormattedMessage {...messages.header} />
@@ -130,9 +130,8 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
           </div>
 
             { !this.props.ContactUs.complete ? this.renderForm() : this.renderResponse() }
-
         </MenuBlock>
-      </ThemeProvider>
+      </LanguageThemeProvider>
     );
   }
 }

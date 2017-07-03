@@ -58,7 +58,7 @@ const ValueHeader = styled(SmallHeaderBlock)`
 `
 
 const SubListContentBlock = styled(ContentBlock)`
-  padding-${p=>p.theme.ar?'right':'left'}: 100px !important;
+  padding-${p=>p.theme.isArabic?'right':'left'}: 100px !important;
   margin: 10px;
 `;
 

@@ -6,6 +6,7 @@
 
 import React from 'react';
 import {ThemeProvider} from 'styled-components';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
 import MenuLink from 'components/MenuLink';
 import MenuBlock from 'components/MenuBlock';
@@ -19,7 +20,7 @@ import messages from './messages';
 function ContributeMenu(props) {
   const { locale } = props.intl;
   return (
-    <ThemeProvider theme={{ar: locale==='ar', lang: locale }}>
+    <LanguageThemeProvider>
       <MenuBlock>
         <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
         <MenuList>
@@ -30,7 +31,7 @@ function ContributeMenu(props) {
           </MenuListItem>
         </MenuList>
       </MenuBlock>
-    </ThemeProvider>
+    </LanguageThemeProvider>
   );
 }
 

@@ -7,6 +7,7 @@
 import React from 'react';
 import {ThemeProvider} from 'styled-components';
 
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import MenuLink from 'components/MenuLink';
 import MenuBlock from 'components/MenuBlock';
 import MenuList from 'components/MenuList';
@@ -17,9 +18,8 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import messages from './messages';
 
 function TrainingMenu(props) {
-  const { locale } = props.intl;
   return (
-    <ThemeProvider theme={{ar: locale==='ar', lang: locale }}>
+    <LanguageThemeProvider>
       <MenuBlock>
         <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
         <MenuList>
@@ -35,7 +35,7 @@ function TrainingMenu(props) {
           </MenuListItem>
         </MenuList>
       </MenuBlock>
-    </ThemeProvider>
+    </LanguageThemeProvider>
   );
 }
 

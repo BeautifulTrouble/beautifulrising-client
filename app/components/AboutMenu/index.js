@@ -57,7 +57,6 @@ function AboutMenu(props) {
     <LanguageThemeProvider>
       <MenuBlock>
         <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
-        <ContentBlock>
           <MenuList>
             {
               ABOUT_MENU.map(item => (
@@ -69,7 +68,6 @@ function AboutMenu(props) {
               ))
             }
           </MenuList>
-        </ContentBlock>
       </MenuBlock>
     </LanguageThemeProvider>
   );

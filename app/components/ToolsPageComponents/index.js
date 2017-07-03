@@ -69,8 +69,8 @@ export const ToolHeaderType = styled(ToolType)`
 `;
 
 export const ToolHeaderTitle = styled(ToolTitle)`
-  font-size: ${p=>p.theme.ar?'80px':'80px'};
-  letter-spacing: ${p=>p.theme.ar?'3px':'auto'};
+  font-size: ${p=>p.theme.isArabic?'80px':'80px'};
+  letter-spacing: ${p=>p.theme.isArabic?'3px':'1px'};
   margin: 0 0 20px;
   padding: 0;
   line-height: 70px;
@@ -227,7 +227,7 @@ font-size: ${p=>p.theme.isArabic ? '36px' : '40px'};
 line-height: 36px;
 
 ${p=> {
-  if (p.theme.ar) {
+  if (p.theme.isArabic) {
     return `
       padding-right: 60px;
       text-indent: -60px;

@@ -7,6 +7,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import MenuLink from 'components/MenuLink';
 import MenuBlock from 'components/MenuBlock';
 import MenuList from 'components/MenuList';
@@ -19,7 +20,7 @@ import messages from './messages';
 
 function PlatformsMenu(props) {
   return (
-    <ThemeProvider theme={{ar: props.intl.locale === 'ar', lang: props.intl.locale }}>
+    <LanguageThemeProvider>
       <MenuBlock>
         <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
         <MenuSubtitle>
@@ -43,7 +44,7 @@ function PlatformsMenu(props) {
           </MenuListItem>
         </MenuList>
       </MenuBlock>
-    </ThemeProvider>
+    </LanguageThemeProvider>
   );
 }
 
