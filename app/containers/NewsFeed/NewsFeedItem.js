@@ -69,7 +69,7 @@ function NewsFeedItem(props) {
       <ItemContainer>
         <Viewport>
           <ContentBlock>
-            <Image src={props.image_http} lang={props.intl.locale}/>
+            <Image src={props.image_https} lang={props.intl.locale}/>
             <Source to={props.user_link} target='_blank'>{props.user_name}</Source>
             <Handle to={props.user_link} target='_blank'>{props.user_handle}</Handle>
             <Content dangerouslySetInnerHTML={{__html: props.content_html}}></Content>
