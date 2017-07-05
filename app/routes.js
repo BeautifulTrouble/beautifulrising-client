@@ -187,7 +187,7 @@ export default function createRoutes(store) {
       path: '/ar(/:items)*',
       name: 'arabic',
       onEnter: function(nextState, replace) {
-        const nextPath = `/${nextState.params.items}${nextState.params.splat}`;
+        const nextPath = nextState.params.items ? `/${nextState.params.items}${nextState.params.splat}` : '/';
         replace(nextPath);
         setTimeout(function() {
           store.dispatch(changeLocale("ar"));
@@ -198,7 +198,7 @@ export default function createRoutes(store) {
       path: '/en(/:items)*',
       name: 'english',
       onEnter: function(nextState, replace){
-        const nextPath = `/${nextState.params.items}${nextState.params.splat}`;
+        const nextPath = nextState.params.items ? `/${nextState.params.items}${nextState.params.splat}` : '/';
         replace(nextPath);
         setTimeout(function() {
           store.dispatch(changeLocale("en"));
@@ -210,7 +210,7 @@ export default function createRoutes(store) {
       path: '/es(/:items)*',
       name: 'homePage',
       onEnter: function(nextState, replace, next) {
-        const nextPath = `/${nextState.params.items}${nextState.params.splat}`;
+        const nextPath = nextState.params.items ? `/${nextState.params.items}${nextState.params.splat}` : '/';
 
         replace(nextPath);
         setTimeout(function() {
