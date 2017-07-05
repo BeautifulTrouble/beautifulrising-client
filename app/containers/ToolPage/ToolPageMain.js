@@ -5,11 +5,12 @@
  */
 
 import React, { PropTypes } from 'react';
-import Markdown from 'react-remarkable';
-
+import Markdown from 'react-markdown';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
+import { RouterLink } from 'utils/markdown';
 import ToolSnapshotArea from 'components/ToolSnapshotArea';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import AdderRemover from 'containers/Tools/AdderRemover';
@@ -55,7 +56,10 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
     if (!this.props['short-write-up']) return null;
     return(
       <ToolReadShortContent>
-        <Markdown source={this.props['short-write-up'].replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)") } />
+        <Markdown
+          source={this.props['short-write-up'].replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)") }
+          renderers={{Link: RouterLink}}
+        />
       </ToolReadShortContent>
     );
   }
@@ -78,7 +82,10 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
         <ToolEpigraph {...this.props}/>
         { this.props['pull-quote'] !== ''
             ? this.renderWithPullQuote(imageReplaced)
-            : <Markdown source={imageReplaced} />
+            : <Markdown
+                source={imageReplaced}
+                renderers={{Link: RouterLink}}
+              />
         }
       </ToolReadFullContent>
     );
@@ -128,7 +135,7 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
   render() {
     // If snapshot, render the snapshot area...
     const snapshotArea = this.props['module-type'] === 'snapshot' ? this.renderSnapshot() : null;
-    
+    console.log(this.props);
     return (
       <LanguageThemeProvider>
         <ToolMainArea>

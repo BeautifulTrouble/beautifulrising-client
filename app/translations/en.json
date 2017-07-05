@@ -114,6 +114,7 @@
   "app.components.TypeFlagTooltip.header": "This is the TypeFlagTooltip component !",
   "app.components.TypeMenu.header": "This is the TypeMenu component !",
   "app.components.TypeMenu.stories": "Stories",
+  "app.components.WhyItWorked.header": "Why it Worked",
   "app.containers.AboutPage.description": "Beautiful Rising harnesses the insights of changemakers worldwide to help make our movements more strategic, creative and effective.",
   "app.containers.AboutPage.header": "ABOUT",
   "app.containers.AskTheContributor.emailPlaceholder": "Enter your email for the contributor to get back to you",

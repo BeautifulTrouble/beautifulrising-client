@@ -12,7 +12,8 @@ import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { getToolTypeColor } from 'components/CommonComponents';
 import messages from './messages';
-import Markdown from 'react-remarkable';
+import { RouterLink } from 'utils/markdown';
+import Markdown from 'react-markdown';
 
 
 const Container = styled.section``;
@@ -59,7 +60,10 @@ class ToolKeyItems extends React.PureComponent { // eslint-disable-line react/pr
                         </TypeSubheader>}
                         <Header>{header}</Header>
                         <Content>
-                          <Markdown source={content} />
+                          <Markdown
+                              source={content}
+                              renderers={{Link: RouterLink}}
+                          />
                         </Content>
                       </KeyItemListItem>)
             } catch (e) {
@@ -74,7 +78,7 @@ class ToolKeyItems extends React.PureComponent { // eslint-disable-line react/pr
 
 
   render() {
-    
+
     return (
       <LanguageThemeProvider>
         <Container>

@@ -13,7 +13,8 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
-import Markdown from 'react-remarkable';
+import { RouterLink } from 'utils/markdown';
+import Markdown from 'react-markdown';
 import messages from './messages';
 
 const Container = styled.div`
@@ -55,7 +56,7 @@ function ToolsPotentialRisk(props) {
             <HeaderName><FormattedMessage {...messages.potentialRiskHeader} /></HeaderName>
           </Header>
           <ContentBlock>
-            <Markdown source={props.content} />
+            <Markdown source={props.content} renderers={{Link: RouterLink}} />
           </ContentBlock>
         </Viewport>
       </Container>

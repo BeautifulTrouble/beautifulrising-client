@@ -114,6 +114,7 @@
   "app.components.TypeFlagTooltip.header": "",
   "app.components.TypeMenu.header": "",
   "app.components.TypeMenu.stories": "قصص",
+  "app.components.WhyItWorked.header": "لماذا نجح",
   "app.containers.AboutPage.description": "يستفيد مشروع النضال الجميل من رؤى صانعي التغيير في جميع أنحاء العالم للمساعدة في جعل حركاتنا الاجتماعية أكثر استراتيجية وإبداعاً وفاعلية.",
   "app.containers.AboutPage.header": "عنا",
   "app.containers.AskTheContributor.emailPlaceholder": "",

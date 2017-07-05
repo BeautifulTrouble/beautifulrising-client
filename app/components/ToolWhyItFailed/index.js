@@ -11,7 +11,8 @@ import { FormattedMessage, injectIntl} from 'react-intl';
 import { CommonLeftHeader } from 'components/CommonComponents';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
-import Markdown from 'react-remarkable';
+import {RouterLink} from 'utils/markdown';
+import Markdown from 'react-markdown';
 import messages from './messages';
 
 const Header = styled(CommonLeftHeader)`
@@ -33,7 +34,10 @@ function ToolTextSection(props) {
         <FormattedMessage {...messages.header} />
       </Header>
       <Content lang={props.intl.locale}>
-        <Markdown source={props.text.replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)")} />
+        <Markdown
+            source={props.text.replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)")}
+            renderers={{Link: RouterLink}}
+        />
       </Content>
     </LanguageThemeProvider>
   );
