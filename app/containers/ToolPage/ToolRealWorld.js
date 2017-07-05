@@ -23,7 +23,9 @@ import styled, { ThemeProvider } from 'styled-components';
 
 const TitleContainer = styled.span`
   display: inline;
-  padding-right: 10px
+  padding-right: 10px;
+  font-size: 30px;
+  line-height: 36px;
 `;
 
 const ContentArea = styled.div``;
