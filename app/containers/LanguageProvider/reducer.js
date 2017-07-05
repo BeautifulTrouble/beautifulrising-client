@@ -27,6 +27,7 @@ const initialState = fromJS({
 function languageProviderReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_LOCALE:
+      
       return state
         .set('locale', action.locale);
     case LOAD_LANGUAGE:
@@ -35,7 +36,7 @@ function languageProviderReducer(state = initialState, action) {
               .set('complete', false)
               .set('error', false);
     case LOADING_LANGUAGE_COMPLETE:
-      
+
       return state.set('data', action.data)
                 .set('complete', true)
                 .set('loading', false)
