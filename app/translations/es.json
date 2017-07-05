@@ -158,6 +158,7 @@
   "app.containers.SubmitRealWorldExample.submit": "Enviar",
   "app.containers.SubmitRealWorldExample.title": "Dale un título breve a tu ejemplo",
   "app.containers.SubmitRealWorldExample.url": "Copia y pega el URL del video, imagen, gif o audio",
+  "app.containers.Tags.clearTags": "Borrar selección",
   "app.containers.Tags.header": "Tags",
   "app.containers.ToolPage.addTool": "GUARDAR ESTE MÓDULO",
   "app.containers.ToolPage.contributedByHeader": "APORTADO POR",

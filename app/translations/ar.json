@@ -158,6 +158,7 @@
   "app.containers.SubmitRealWorldExample.submit": "رفع",
   "app.containers.SubmitRealWorldExample.title": "اعط عنواناً قصيراً لمثالك",
   "app.containers.SubmitRealWorldExample.url": "انسخ + الصق رابط الفيديو، أو الصورة، أو الصور بامتداد جي آي إف، أو ملفات الصوت",
+  "app.containers.Tags.clearTags": "مسح التحديد",
   "app.containers.Tags.header": "شعارات",
   "app.containers.ToolPage.addTool": "حفظ هذه الوحدة",
   "app.containers.ToolPage.contributedByHeader": "تمت المساهمة من قبل",
