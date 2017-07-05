@@ -158,10 +158,13 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
               <EmailTools />
             </EmailContainer>
             <DownloadPDFContainer show={this.state.chosen === DOWNDLOAD_PDF}>
-              <h3>Download PDF</h3>
+              <h3><FormattedMessage {...messages.pdfHeader} /></h3>
               <ContentBlock>
                 <FormattedMessage {...messages.pdfSpiel} />
-                <Link to={this.buildPDFLink()} target='_blank'>Download PDF</Link>
+                <br/>
+                <Link to={this.buildPDFLink()} target='_blank'>
+                  <FormattedMessage {...messages.pdfCTA} />
+                </Link>
               </ContentBlock>
             </DownloadPDFContainer>
 
