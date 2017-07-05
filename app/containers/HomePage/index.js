@@ -25,6 +25,7 @@ import ToolsViewOptions from 'containers/ToolsViewOptions';
 import ToolsSortOptions from 'containers/ToolsSortOptions';
 
 import LeftSection from 'components/LeftSection';
+import ClearButton from 'components/ClearButton';
 
 import { LeftHeader, LeftContainer } from 'components/HomePageComponents';
 
@@ -47,28 +48,6 @@ const SearchResultsContainer = styled.div`
 `;
 const SearchResultsText = styled.span``;
 
-const ClearButton = styled.button`
-
-  outline: none;
-  font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
-  font-weight: 800;
-  padding-right: 24px;
-  text-transform: uppercase;
-  padding-bottom: 20px;
-  cursor: pointer;
-  position: relative;
-  * { vertical-align: middle; }
-
-  &::before {
-    content: '☒';
-    font-size: 21px;
-    position: absolute;
-    left: -12px;
-    top: -3px;
-    font-weight: 100;
-    font-family: 'Avenir';
-  }
-`;
 const Container = styled.div`
   transition: padding-top 0.6s ease;
   ${props=> {
@@ -196,7 +175,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             <LeftHeader>
               <FormattedMessage {...messages.tags} />
             </LeftHeader>
-            <Tags {...this.props} align={'center'} />
+            <Tags {...this.props} align={'center'} showClear={true}/>
           </LeftSection>
           <Stage lang={lang}>
             {this.getSearchResultsHeader()}

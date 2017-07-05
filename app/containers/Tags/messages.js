@@ -10,4 +10,8 @@ export default defineMessages({
     id: 'app.containers.Tags.header',
     defaultMessage: 'Tags',
   },
+  clearTags: {
+    id: 'app.containers.Tags.clearTags',
+    defaultMessage: 'Clear selection'
+  }
 });
