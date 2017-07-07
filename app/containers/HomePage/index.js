@@ -147,7 +147,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             shorten = {this.state.scrollY > 10}
             >
           <Helmet
-            title="HomePage"
+            title="BeautifulRising"
             meta={[
               { name: 'description', content: 'Description of HomePage' },
             ]}
