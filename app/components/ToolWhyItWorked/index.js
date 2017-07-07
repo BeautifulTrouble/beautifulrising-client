@@ -32,7 +32,7 @@ const Content = styled(ContentBlock)`
 `;
 
 function ToolWhyItWorked(props) {
-  console.log(props, props.text);
+  
   if (props.text === undefined || props.text.length == 0) return null;
 
   return (
