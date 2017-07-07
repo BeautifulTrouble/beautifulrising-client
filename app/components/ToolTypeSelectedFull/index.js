@@ -78,9 +78,9 @@ const Column = styled.div`
   }
 `;
 const ToolType = styled(Link)`
-  margin-${p=>p.theme.isArabic==='ar'?'left':'right'}: 0.5%;
+  margin-${p=>p.theme.isArabic ?'left':'right'}: 0.5%;
   display: block;
-  text-align: ${p=>p.theme.isArabic==='ar'?'right':'left'};
+  text-align: ${p=>p.theme.isArabic ?'right':'left'};
   vertical-align: top;
   opacity: ${p=>p.selected?'0':'1'};
   color: #828486;

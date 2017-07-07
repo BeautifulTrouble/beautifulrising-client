@@ -264,7 +264,7 @@ export const ListViewport = styled(ToolViewport)`
     border-bottom: 2px solid;
     position: absolute;
     top: 0px;
-    left: 50px;
+    ${p=>p.theme.isArabic?'right: 9px;':'left: 50px;'};
   }
 
   h3 {
