@@ -53,6 +53,11 @@ const ArrowContainer = styled.span`
 `;
 const CallToAction = styled(SmallHeaderBlock)`
   margin: 10px 0 20px;
+  margin-top: 17px;
+  p {
+    margin: 0;
+    line-height: 19px;
+  }
 `;
 
 function CouldBeYou(props) {
