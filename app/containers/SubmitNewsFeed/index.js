@@ -29,14 +29,14 @@ const FormContainer = styled(ContentBlock)`
   padding: 8px;
 
   input[type=email] {
-    width: calc(100% - 50px);
+    width: calc(100% - 80px);
     outline: none;
     padding: 2px;
     text-align: ${p=>p.theme.isArabic ? 'right' : 'left'};
   }
   button {
     outline: none;
-    width: auto;
+    width: 70px;
     text-transform: uppercase;
     text-decoration: underline;
     font-weight: bold;
