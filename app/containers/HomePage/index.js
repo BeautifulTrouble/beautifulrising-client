@@ -43,7 +43,7 @@ import Header from './Header';
 import messages from './messages';
 
 const SearchResultsContainer = styled.div`
-  padding-left: 59px;
+  padding-${p=>p.theme.isArabic?'right':'left'}: 59px;
   color: #828486;
 `;
 const SearchResultsText = styled.span``;
