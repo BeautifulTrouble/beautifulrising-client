@@ -24,7 +24,7 @@ const Button = styled.button`
   outline: none;
   padding: 0; margin: 0;
   cursor: pointer;
-  padding: 5px;
+  padding: 2px;
   text-transform: uppercase;
   span svg {
     width: 20px;
@@ -112,12 +112,12 @@ class ShareButton extends React.PureComponent { // eslint-disable-line react/pre
     return (
       <Container>
         <ShareArea className={'shareArea'} lang={this.props.intl.locale} show={ this.state.showSocialButtons }>
-          <FacebookButton onClick={()=>this.handleFacebookShare(url)}>
-            <Isvg src={FacebookIcon} />
-          </FacebookButton>
           <TwitterButton onClick={()=>this.handleTwitterClick(this.props.title, url)}>
             <Isvg src={TwitterIcon} />
           </TwitterButton>
+          <FacebookButton onClick={()=>this.handleFacebookShare(url)}>
+            <Isvg src={FacebookIcon} />
+          </FacebookButton>
           <MailButton href={`mailto:?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailMessage)}`}>
             <Isvg src={MailIcon} />
           </MailButton>

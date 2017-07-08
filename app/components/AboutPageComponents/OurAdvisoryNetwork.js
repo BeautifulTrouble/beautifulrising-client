@@ -103,7 +103,7 @@ export class OurAdvisoryNetwork extends React.Component {
           { this.props.hideHeader ? null : this.renderHeader() }
           <Introduction>
             <AdvisoryNetworkIntro lang={locale}>
-              <ContentBlock>
+              <ContentBlock style={{textAlign: 'center'}}>
                 <Markdown source={this.props.introText}/>
               </ContentBlock>
             </AdvisoryNetworkIntro>

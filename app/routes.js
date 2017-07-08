@@ -10,7 +10,7 @@ import NewsFeed from 'containers/NewsFeed/sagas';
 import Tools from 'containers/Tools/sagas';
 import StaticTextHandler from 'containers/StaticTextHandler/sagas';
 import SubmitNewsFeed from 'containers/SubmitNewsFeed/sagas';
-
+import {changeLocale} from 'containers/LanguageProvider/actions';
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
 };
@@ -180,6 +180,43 @@ export default function createRoutes(store) {
             renderRoute(component);
           });
           importModules.catch(errorLoading);
+      },
+    },
+    // Entrance
+    {
+      path: '/ar(/:items)*',
+      name: 'arabic',
+      onEnter: function(nextState, replace) {
+        const nextPath = nextState.params.items ? `/${nextState.params.items}${nextState.params.splat}` : '/';
+        replace(nextPath);
+        setTimeout(function() {
+          store.dispatch(changeLocale("ar"));
+          next();
+        }, 50);      }
+    },
+    {
+      path: '/en(/:items)*',
+      name: 'english',
+      onEnter: function(nextState, replace){
+        const nextPath = nextState.params.items ? `/${nextState.params.items}${nextState.params.splat}` : '/';
+        replace(nextPath);
+        setTimeout(function() {
+          store.dispatch(changeLocale("en"));
+          next();
+        }, 50);
+      }
+    },
+    {
+      path: '/es(/:items)*',
+      name: 'homePage',
+      onEnter: function(nextState, replace, next) {
+        const nextPath = nextState.params.items ? `/${nextState.params.items}${nextState.params.splat}` : '/';
+
+        replace(nextPath);
+        setTimeout(function() {
+          store.dispatch(changeLocale("es"));
+          next();
+        }, 50);
       },
     },
     {

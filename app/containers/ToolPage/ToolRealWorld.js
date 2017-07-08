@@ -10,7 +10,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { RealWorldIcon } from 'components/ToolsComponents';
 import Isvg from 'react-inlinesvg';
-import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import LatinThemeProvider from 'components/LatinThemeProvider';
 import { LearnMoreList, ToolMainContent,
         ToolMainContentHeader, RealWorldContainer,
         RealWorldHeader, RealWorldToggle, RealWorldItems } from 'components/ToolsPageComponents';
@@ -23,7 +23,9 @@ import styled, { ThemeProvider } from 'styled-components';
 
 const TitleContainer = styled.span`
   display: inline;
-  padding-right: 10px
+  padding-right: 10px;
+  font-size: 30px;
+  line-height: 36px;
 `;
 
 const ContentArea = styled.div``;
@@ -58,7 +60,7 @@ class ToolRealWorld extends React.Component { // eslint-disable-line react/prefe
   render() {
     const {locale} = this.props.intl;
     return (
-      <LanguageThemeProvider>
+      <LatinThemeProvider>
         <RealWorldContainer>
           <RealWorldHeader>
             <RealWorldIcon src={RealWorldIconImage} type={this.props.type}/>
@@ -74,7 +76,7 @@ class ToolRealWorld extends React.Component { // eslint-disable-line react/prefe
             <SubmitRealWorldExample {...this.props} />
           </RealWorldItems>
         </RealWorldContainer>
-      </LanguageThemeProvider>
+      </LatinThemeProvider>
     );
   }
 }

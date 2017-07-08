@@ -12,6 +12,7 @@ import {
 } from './constants';
 
 export function changeLocale(languageLocale) {
+
   return {
     type: CHANGE_LOCALE,
     locale: languageLocale,
@@ -19,7 +20,7 @@ export function changeLocale(languageLocale) {
 }
 
 export function loadLanguage() {
-  
+
   return {
     type: LOAD_LANGUAGE
   };

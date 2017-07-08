@@ -117,6 +117,7 @@ export const ToolType = styled.h3`
   margin: 0;
   font-size: ${p=>p.ar?'35px':'20px'};
   letter-spacing: ${p=>p.ar?'3px':'0'};
+  text-align: ${p=>p.theme.isArabic?'right':'left'};
   padding-top: 20px;
   font-family: 'Paint Hand', 'Massira Spray', serif;
   color: ${props => getToolTypeColor(props.type) };
@@ -127,8 +128,11 @@ export const ToolTitle = styled.h1`
   letter-spacing: 1px;
   font-weight: normal;
   margin: 0;
-  font-size: ${p=>p.ar?'30px':'30px'};
-  line-height: ${p=>p.ar?'40px':'1'};
+  margin-bottom: ${p=>p.theme.isArabic?'5px':'0'};
+  text-align: ${p=>p.theme.isArabic?'right':'left'};
+  font-size: ${p=>p.theme.isArabic?'30px':'30px'};
+  line-height: 1;
+
   > a {
     color: ${props=>props.color || 'black'};
   }
@@ -140,7 +144,7 @@ margin: 0;
 `;
 export const ToolsListItem = styled.li`
   list-style: none;
-  margin: 10px;
+  margin: 10px 10px 20px;
   border-top: 2px solid;
 
   &:first-child {
@@ -242,6 +246,7 @@ export const BlockViewTitleArea = styled.div`
   transition: opacity 0.2s;
 `;
 export const BlockAddRem = styled.div`
+  text-align: ${p=>p.theme.isArabic?'right':'left'};
 `;
 
 //List View
@@ -264,7 +269,7 @@ export const ListViewport = styled(ToolViewport)`
     border-bottom: 2px solid;
     position: absolute;
     top: 0px;
-    left: 50px;
+    ${p=>p.theme.isArabic?'right: 9px;':'left: 50px;'};
   }
 
   h3 {

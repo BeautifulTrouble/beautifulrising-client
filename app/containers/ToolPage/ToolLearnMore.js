@@ -8,7 +8,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import LatinThemeProvider from 'components/LatinThemeProvider';
 import AdderRemover from 'containers/Tools/AdderRemover';
 import { LearnMoreList, ToolMainContent, ToolMainContentHeader } from 'components/ToolsPageComponents';
 import ToolLearnMoreItem from './ToolLearnMoreItem';
@@ -20,7 +20,7 @@ export default function ToolLearnMore(props) { // eslint-disable-line react/pref
 
   if (props['learn-more'] && props['learn-more'].length > 0)
     return (
-      <LanguageThemeProvider>
+      <LatinThemeProvider>
         <ToolMainContent>
           <ToolMainContentHeader>
             <FormattedMessage {...messages.learnMore} />
@@ -29,7 +29,7 @@ export default function ToolLearnMore(props) { // eslint-disable-line react/pref
             {props['learn-more'].map(item=><ToolLearnMoreItem key={item.link} {...item}/>)}
           </LearnMoreList>
         </ToolMainContent>
-      </LanguageThemeProvider>
+      </LatinThemeProvider>
     );
 
   return null;

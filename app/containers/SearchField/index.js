@@ -40,11 +40,16 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
     }
   }
 
+  handleSubmit(evt) {
+    if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+    this.props.searchItems(ReactDOM.findDOMNode(this.refs['SearchBox']).value);
+  }
+
   render() {
     const {formatMessage, locale} = this.props.intl;
     return (
       <SearchContainer>
-        <SearchForm>
+        <SearchForm onSubmit={this.handleSubmit.bind(this)}>
           <SearchBox ref={'SearchBox'} ar={locale==='ar'} type='text' onChange={this.props.onChange} placeholder={formatMessage(messages.placeholder)} />
         </SearchForm>
       </SearchContainer>
@@ -72,6 +77,10 @@ function mapDispatchToProps(dispatch) {
       }, 500);
 
     },
+    searchItems: (text) => {
+      clearTimeout(timeoutHandler);
+      browserHistory.push(`/search/${text}`);
+    }
   };
 }
 

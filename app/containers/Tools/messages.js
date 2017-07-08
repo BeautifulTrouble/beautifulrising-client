@@ -29,5 +29,13 @@ export default defineMessages({
   pdfSpiel: {
     id: 'app.containers.Tools.pdfSpiel',
     defaultMessage: 'Click the button below to download a PDF version of your chosen tools'
+  },
+  pdfHeader: {
+    id: 'app.containers.Tools.pdfHeader',
+    defaultMessage: 'Download PDF'
+  },
+  pdfCTA: {
+    id: 'app.containers.Tools.pdfCTA',
+    defaultMessage: 'Download PDF'
   }
 });

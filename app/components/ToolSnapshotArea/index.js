@@ -19,7 +19,7 @@ const Container = styled.div``;
 const Viewport = styled.div`
   text-align: ${p=>p.lang==='ar'?'right':'left'};
 `;
-const SnapshotContent = styled.div``;
+const SnapshotContent = styled(ContentBlock)``;
 const Actions = styled.ul`
   padding: 0;
   margin: 0;

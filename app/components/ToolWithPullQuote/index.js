@@ -6,7 +6,8 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import Markdown from 'react-remarkable';
+import Markdown from 'react-markdown';
+import { RouterLink } from 'utils/markdown';
 import { injectIntl } from 'react-intl';
 const Content = styled.div``;
 const Viewport = styled.div``;
@@ -44,8 +45,10 @@ class ToolWithPullQuote extends React.PureComponent { // eslint-disable-line rea
   render() {
     const {locale} = this.props.intl;
     const count = 1 + ((Math.random() * 100) % 2);
-    let contents = this.props.content.map((item, ind) => { return (<Markdown key={ind} source={item} />) });
-    let pullQuote = <Markdown source={this.props.pullQuote} />
+    let contents = this.props.content.map((item, ind) => { return (<Markdown key={ind} source={item} renderers={{Link: RouterLink}} />) });
+    let pullQuote = <Markdown
+                      source={this.props.pullQuote}
+                      renderers={{Link: RouterLink}} />
     contents.splice(count, 0, (<PullQuote ar={locale==='ar'} key={Math.random()}>"{pullQuote}"</PullQuote>));
 
     return (

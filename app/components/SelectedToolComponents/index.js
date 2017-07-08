@@ -55,9 +55,13 @@ export const SelectedToolCommandItem = styled.li`
   }
 
   .shareArea {
-    top: -30px;
-    ${p=>p.theme.lang==='ar'?'right':'left'}: 20px;
-    background-color: lightgray;
+    bottom: -20px;
+    ${p=>p.theme.lang==='ar'?'right':'left'}: 0px;
+    background: transparent;
+
+    span svg * {
+      fill: #b2b2b2;
+    }
   }
 `;
 

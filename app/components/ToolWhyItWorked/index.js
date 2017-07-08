@@ -12,7 +12,8 @@ import { CommonLeftHeader } from 'components/CommonComponents';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
-import Markdown from 'react-remarkable';
+import { RouterLink } from 'utils/markdown';
+import Markdown from 'react-markdown';
 import messages from './messages';
 
 const Header = styled(CommonLeftHeader)`
@@ -31,7 +32,8 @@ const Content = styled(ContentBlock)`
 `;
 
 function ToolWhyItWorked(props) {
-  if (!props.text) return null;
+  
+  if (props.text === undefined || props.text.length == 0) return null;
 
   return (
     <LanguageThemeProvider>
@@ -39,7 +41,10 @@ function ToolWhyItWorked(props) {
         <FormattedMessage {...messages.header} />
       </Header>
       <Content>
-        <Markdown source={props.text.replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)")} />
+        <Markdown
+          source={props.text.replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)")}
+          renderers={{Link: RouterLink}}
+        />
       </Content>
     </LanguageThemeProvider>
   );

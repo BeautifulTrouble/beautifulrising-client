@@ -46,9 +46,23 @@ const Header = styled.h2`
   display: inline-block;
   padding-bottom: 15px;
   margin-bottom: 0;
+  position:relative;
+
+  &::after {
+    content: ' ';
+    position: absolute;
+    height: 80px;
+    border-right: 1px solid;
+    width: 1PX;
+    bottom: -65px;
+    left: ${p=>p.leftLine || '50%'};
+    opacity: ${p=>p.showLine?'1':'0'};
+    transition: opacity 0.3s ease;
+  }
 `;
 const Content = styled.div`
   display: ${props=>props.show ? 'block' : 'none'};
+  padding-top: 50px;
 `;
 const Button = styled.button`
   outline: none;
@@ -199,7 +213,7 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
 
                   <ListItem lang={lang} key={index} selected={this.state.chosen === index}>
                     <Button lang={lang} onClick={() => this.handleClick(index)}>
-                        <Header lang={lang}>
+                        <Header lang={lang} leftLine={item.left} showLine={this.state.chosen === index}>
                           {item.title}
                           <Arrow src={ArrowIcon} lang={lang}/>
                         </Header>
@@ -241,6 +255,7 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
         />
       },
       {
+        left: '80%',
         title: misc.get('advisory-network'),
         content: <OurAdvisoryNetwork
             hideHeader={true}

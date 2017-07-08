@@ -10,7 +10,8 @@ import styled from 'styled-components';
 import ContentBlock from 'components/ContentBlock';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { CommonLeftHeader } from 'components/CommonComponents';
-import Markdown from 'react-remarkable';
+import { RouterLink } from 'utils/markdown';
+import Markdown from 'react-markdown';
 import messages from './messages';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
@@ -34,7 +35,10 @@ function ToolHowToUse(props) {
       </Header>
       <Content lang={lang}>
         <ContentBlock>
-          <Markdown source={props.text.replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)")} />
+          <Markdown
+              source={props.text.replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)")}
+              renderers={{Link: RouterLink}}
+          />
         </ContentBlock>
       </Content>
     </LanguageThemeProvider>

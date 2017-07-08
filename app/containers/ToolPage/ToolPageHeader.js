@@ -9,7 +9,10 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import Markdown from 'react-remarkable';
+import Markdown from 'react-markdown';
+import Isvg from 'react-inlinesvg';
+import styled, {ThemeProvider} from 'styled-components';
+
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
 import AdderRemover from 'containers/Tools/AdderRemover';
@@ -20,14 +23,12 @@ import { ToolHeaderContainer,
           ToolHeaderTitle,
           ToolPageCaption} from 'components/ToolsPageComponents';
 import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
-
-import Isvg from 'react-inlinesvg';
+import { RouterLink } from 'utils/markdown';
 import ShareIcon from 'assets/images/icons/share-small.svg';
 import ShareButton from 'components/ShareButton';
 import TypeFlag from 'components/TypeFlag';
 import TypeOverlay from 'components/TypeOverlay';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
-import styled, {ThemeProvider} from 'styled-components';
 import messages from './messages';
 
 const Content = styled.div`
@@ -84,9 +85,9 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
   render() {
     const { locale } = this.props.intl;
     return (
-      <LanguageThemeProvider>
-        <ToolHeaderContainer backgroundImage={BR_IMAGE_PREFIX+this.props.image}>
-          <ToolHeaderViewport showOverflow={this.props['module-type'] !== 'snapshot'}>
+      <ToolHeaderContainer backgroundImage={BR_IMAGE_PREFIX+this.props.image}>
+        <ToolHeaderViewport showOverflow={this.props['module-type'] !== 'snapshot'}>
+          <LanguageThemeProvider>
             <Content>
               <Viewport>
                 <ToolHeaderType type={this.props.type}>
@@ -114,15 +115,17 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
                   </ShareButton>
                 </ShareContainer>
                 <ToolPageCaption show={this.props['image-caption'] !== undefined}>
-                  <Markdown source={'/ ' + this.props['image-caption']} />
+                  <Markdown
+                    source={'/ ' + this.props['image-caption']}
+                    renderers={{Link: RouterLink }} />
                 </ToolPageCaption>
                 <ContinentIcon {...this.props}/>
               </Viewport>
             </Content>
             { this.getBanner() }
-          </ToolHeaderViewport>
-        </ToolHeaderContainer>
-      </LanguageThemeProvider>
+          </LanguageThemeProvider>
+        </ToolHeaderViewport>
+      </ToolHeaderContainer>
     );
   }
 }
