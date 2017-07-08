@@ -128,9 +128,11 @@ export const ToolTitle = styled.h1`
   letter-spacing: 1px;
   font-weight: normal;
   margin: 0;
+  margin-bottom: ${p=>p.theme.isArabic?'5px':'0'};
   text-align: ${p=>p.theme.isArabic?'right':'left'};
-  font-size: ${p=>p.ar?'30px':'30px'};
-  line-height: ${p=>p.ar?'40px':'1'};
+  font-size: ${p=>p.theme.isArabic?'30px':'30px'};
+  line-height: 1;
+
   > a {
     color: ${props=>props.color || 'black'};
   }
