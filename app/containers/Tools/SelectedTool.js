@@ -77,7 +77,6 @@ export class SelectedTool extends React.PureComponent { // eslint-disable-line r
             </SelectedToolCommandItem>
             <SelectedToolCommandItem  lang={lang}>
               <ShareButton {...this.props}>
-                <GrayShareIcon src={ShareSmallIcon} />
                 <SelectedToolCommandContent>
                   <FormattedMessage {...messages.share} />
                 </SelectedToolCommandContent>
