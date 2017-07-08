@@ -78,6 +78,7 @@ function mapDispatchToProps(dispatch) {
 
     },
     searchItems: (text) => {
+      clearTimeout(timeoutHandler);
       browserHistory.push(`/search/${text}`);
     }
   };
