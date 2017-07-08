@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 import ContentBlock from 'components/ContentBlock';
-import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import LatinThemeProvider from 'components/LatinThemeProvider';
 // positions;
 const TOP = [0,2];
 const BOTTOM = [1,3];
@@ -120,7 +120,7 @@ class RealWorldItem extends React.PureComponent {
   }
   render() {
     return (
-      <LanguageThemeProvider>
+      <LatinThemeProvider>
         <RealWorldItemContainer>
           <ImageBackgroundTop type={this.props.type} image={this.props.image} pos={this.props.pos}/>
             <Example ref={'example'} pos={this.props.pos}>
@@ -138,7 +138,7 @@ class RealWorldItem extends React.PureComponent {
           <ImageBackgroundBottom type={this.props.type} image={this.props.image}
                 pos={this.props.pos} marginTop={this.state.exampleHeight}/>
         </RealWorldItemContainer>
-      </LanguageThemeProvider>
+      </LatinThemeProvider>
     );
   }
 
