@@ -42,7 +42,7 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
 
   handleSubmit(evt) {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-    this.props.searchItems(text);
+    this.props.searchItems(ReactDOM.findDOMNode(this.refs['SearchBox']).value);
   }
 
   render() {
