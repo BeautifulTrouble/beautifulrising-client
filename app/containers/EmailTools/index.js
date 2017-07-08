@@ -47,7 +47,7 @@ button {
 const TextInput = styled.input``;
 const Button = styled.button``;
 const Title = styled.h3`margin: 0; line-height: 1`;
-const Message = styled.p`margin: 0 0 10px`;
+const Message = styled(ContentBlock)`margin: 0 0 10px`;
 const FormContainer = styled(ContentBlock)`
 `;
 
