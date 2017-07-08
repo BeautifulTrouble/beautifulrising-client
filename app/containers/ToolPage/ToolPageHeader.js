@@ -85,9 +85,9 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
   render() {
     const { locale } = this.props.intl;
     return (
-      <LanguageThemeProvider>
-        <ToolHeaderContainer backgroundImage={BR_IMAGE_PREFIX+this.props.image}>
-          <ToolHeaderViewport showOverflow={this.props['module-type'] !== 'snapshot'}>
+      <ToolHeaderContainer backgroundImage={BR_IMAGE_PREFIX+this.props.image}>
+        <ToolHeaderViewport showOverflow={this.props['module-type'] !== 'snapshot'}>
+          <LanguageThemeProvider>
             <Content>
               <Viewport>
                 <ToolHeaderType type={this.props.type}>
@@ -123,9 +123,9 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
               </Viewport>
             </Content>
             { this.getBanner() }
-          </ToolHeaderViewport>
-        </ToolHeaderContainer>
-      </LanguageThemeProvider>
+          </LanguageThemeProvider>
+        </ToolHeaderViewport>
+      </ToolHeaderContainer>
     );
   }
 }
