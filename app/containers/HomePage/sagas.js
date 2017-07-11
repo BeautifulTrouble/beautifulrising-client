@@ -11,9 +11,7 @@ export const getLanguage = (state) => state.get('language');
 export function* getData(lang) {
 
   const requestURL = getEndpoint(lang);
-
-  console.log("Request URL ::: ", requestURL);
-
+  
   try {
 
     const data = yield call(request, requestURL);
