@@ -148,10 +148,6 @@ export const ToolHeaderViewport = styled.div`
 export const ToolLeftArea = styled(ToolInfoSection)`
   width: 165px;
   text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
-
-  * {
-    text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
-  }
 `;
 
 
@@ -187,6 +183,9 @@ export const ToolMainArea = styled(ToolInfoSection)`
 
 export const ToolMainContent = styled(ContentBlock)`
   text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
+`;
+
+export const ToolLearnMoreContent = styled(ToolMainContent)`
   margin-top: 72px;
 `;
 
@@ -237,7 +236,7 @@ ${p=> {
     `;
   } else {
     return `
-      padding-${p=>p.theme.isArabic ? 'right' : 'left' }: 48px;
+      padding-left: 48px;
       text-indent: -48px;
     `;
   }

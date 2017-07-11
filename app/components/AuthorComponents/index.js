@@ -25,6 +25,7 @@ AuthorComponents.propTypes = {
 export const AuthorContainer = styled.section`
   margin-top: 10px;
   margin-bottom: 30px;
+  direction: ${p=>p.theme.isArabic?'rtl':'ltr'} !important;
 `;
 
 export const AuthorImageArea = styled.div`
@@ -49,6 +50,7 @@ export const AuthorName = styled(SmallHeaderBlock)`
   margin-bottom: 2px;
   margin-top: 2px;
   line-height: 19px;
+  text-align: ${p=>p.theme.isArabic?'right':'left'} !important;
 `;
 
 export const AuthorLink = styled(Link)`
@@ -59,6 +61,7 @@ export const AuthorLink = styled(Link)`
 
 export const AuthorDesc = styled.div`
   margin: 2px;
+  text-align: ${p=>p.theme.isArabic?'right':'left'} !important;
 `;
 
 export default AuthorComponents;

@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
-import { TAG_FILTER, TYPE_FILTER, SEARCH_FILTER,
-          MODULE_TYPE_UNTRANSLATED, MODULE_TYPE_FULL, MODULE_TYPE_GALLERY } from './constants';
+import { TAG_FILTER, TYPE_FILTER, SEARCH_FILTER } from './constants';
+import { MODULE_TYPE_UNTRANSLATED, MODULE_TYPE_FULL, MODULE_TYPE_GALLERY } from 'components/CommonComponents/constants';
 import { SORT_NEWEST, SORT_ALPHABETICAL } from 'containers/ToolsSortOptions/constants';
 import {slugify} from 'utils/tags';
 
