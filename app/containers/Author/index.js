@@ -23,9 +23,9 @@ export class Author extends React.PureComponent { // eslint-disable-line react/p
     const latterName = name.join(' ');
 
     const isLatin = this.props.author['lang-missing'].includes('bio') ;
-    console.log(this.props.author['lang-missing'], isLatin);
+
     const ThemeProvider = isLatin ? LatinThemeProvider : LanguageThemeProvider;
-    console.log(ThemeProvider);
+
     return (
       <ThemeProvider>
         <AuthorContainer>
