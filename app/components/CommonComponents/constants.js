@@ -11,7 +11,7 @@ export const TYPE_METHODOLOGIES = 'methodology';
 export const RECAPTCHA_SITE_KEY = '6LeCpCgTAAAAAFc4TwetXb1yBzJvaYo-FvrQvAlx';
 
 export const PRODUCTION_ENDPOINT = 'https://api.beautifulrising.org/api/v1/all';
-export const DEVELOPMENT_ENDPOINT = 'http://api-develop.beautifulrising.org/api/v1/all';
+export const DEVELOPMENT_ENDPOINT = 'https://api-develop.beautifulrising.org/api/v1/all';
 
 export const MODULE_TYPE_FULL = 'full';
 export const MODULE_TYPE_GALLERY = 'gallery';
