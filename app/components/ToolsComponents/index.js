@@ -254,7 +254,6 @@ export const ListContainer = styled(ToolContainer)`
   width: 48%;
   height: 190px;
   text-align: left;
-
 `;
 
 export const ListViewport = styled(ToolViewport)`

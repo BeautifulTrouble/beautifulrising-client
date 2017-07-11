@@ -187,6 +187,7 @@ export const ToolMainArea = styled(ToolInfoSection)`
 
 export const ToolMainContent = styled(ContentBlock)`
   text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
+  margin-top: 72px;
 `;
 
 export const ToolMainContentHeader = styled(CommonLeftHeader)`
