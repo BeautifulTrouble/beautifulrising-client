@@ -3,11 +3,18 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
 import { LOAD_DATA } from 'containers/App/constants';
 import { dataLoaded, dataLoadingError } from 'containers/App/actions';
+import request, { getEndpoint } from 'utils/request';
 
 import request from 'utils/request';
 
+export const getLanguage = (state) => state.get('language');
+
 export function* getData() {
-  const requestURL = `https://api.beautifulrising.org/api/v1/all?lang=en`;
+
+  let language = yield select(getLanguage);
+  const chosenLanguage = language !== undefined ? language.get('locale') : 'en';
+  const requestURL = getEndpoint(chosenLanguage);
+
   try {
 
     const data = yield call(request, requestURL);

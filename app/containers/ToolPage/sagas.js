@@ -5,12 +5,13 @@ import { LOAD_DATA } from 'containers/App/constants';
 import { CHANGE_LOCALE } from 'containers/LanguageProvider/constants';
 import { dataLoaded, dataLoadingError } from 'containers/App/actions';
 
-import request from 'utils/request';
+import request, { getEndpoint } from 'utils/request';
 
 export const getLanguage = (state) => state.get('language');
 
 export function* getToolsData(lang) {
-  const requestURL = `https://api.beautifulrising.org/api/v1/all?lang=${lang}`;
+  const requestURL = getEndpoint(lang);
+
   try {
 
     const data = yield call(request, requestURL);
