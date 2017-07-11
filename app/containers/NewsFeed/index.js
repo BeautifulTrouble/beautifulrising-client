@@ -20,6 +20,7 @@ import messages from './messages';
 import NewsFeedItem from './NewsFeedItem';
 
 import { WEBSOCKET_URL } from './constants';
+import { FACEBOOK_FEED, TWITTER_FEED } from 'containers/Tools/constants';
 
 const Container = styled.div`
   padding: 20px;
@@ -51,7 +52,15 @@ export class NewsFeed extends React.PureComponent { // eslint-disable-line react
             <FormattedMessage {...messages.header} />
             <SubmitNewsFeed />
             <NewsFeedArea>
-              { this.props.NewsFeed.newsFeed.map( (item, idx) => <NewsFeedItem {...item} key={idx}/> )}
+              { this.props.NewsFeed.newsFeed
+                  .filter((item) => {
+                    if (this.props.feedType === TWITTER_FEED) {
+                      return item.type === 'twitter';
+                    } else if (this.props.feedType === FACEBOOK_FEED){
+                      return item.type === 'facebook';
+                    }
+                  })
+                  .map( (item, idx) => <NewsFeedItem {...item} key={idx}/> )}
             </NewsFeedArea>
           </ContentBlock>
         </Container>
