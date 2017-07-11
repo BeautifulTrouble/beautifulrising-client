@@ -1,4 +1,5 @@
 import 'whatwg-fetch';
+import { PRODUCTION_ENDPOINT, DEVELOPMENT_ENDPOINT } from 'components/CommonComponents/constants';
 
 /**
  * Parses the JSON returned by a network request
@@ -26,6 +27,14 @@ function checkStatus(response) {
   const error = new Error(response.statusText);
   error.response = response;
   throw error;
+}
+
+export function getEndpoint(lang = 'en') {
+    if (process.env.NODE_ENV === 'production') {
+      return `${PRODUCTION_ENDPOINT}?lang=${lang}`;
+    } else {
+      return `${DEVELOPMENT_ENDPOINT}?lang=${lang}`;;
+    }
 }
 
 /**

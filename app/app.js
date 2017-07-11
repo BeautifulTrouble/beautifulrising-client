@@ -11,6 +11,7 @@ import 'babel-polyfill';
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactGA from 'react-ga';
 import { Provider } from 'react-redux';
 import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -54,6 +55,13 @@ import createRoutes from './routes';
 const initialState = {};
 const store = configureStore(initialState, browserHistory);
 
+// Initializing Google Analytics
+ReactGA.initialize('UA-53723508-2');
+
+const logPageView = () => {
+  ReactGA.set({ page: window.location.pathname + window.location.search });
+  ReactGA.pageview(window.location.pathname + window.location.search);
+};
 // Sync history and store, as the react-router-redux reducer
 // is under the non-default key ("routing"), selectLocationState
 // must be provided for resolving how to retrieve the "route" in the state
@@ -74,6 +82,7 @@ const render = (messages) => {
         <Router
           history={history}
           routes={rootRoute}
+          onUpdate={logPageView}
           render={
             // Scroll to top when going to a new page, imitating default browser
             // behaviour

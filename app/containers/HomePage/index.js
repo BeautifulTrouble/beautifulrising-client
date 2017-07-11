@@ -49,7 +49,7 @@ const SearchResultsContainer = styled.div`
 const SearchResultsText = styled.span``;
 
 const Container = styled.div`
-  transition: padding-top 0.6s ease;
+  // transition: padding-top 0.3s ease;
   ${props=> {
     if(!props.shorten) {
       return `padding-top: ${props.full ? '490px' : props.isStory ? '440px' : '360px'};`
@@ -186,7 +186,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                       <ListItem
                             position={this.randomizePosition(tool)}
                             lang={this.props.language} {...tool}
-                            key={tool['slug'] + '--' + tool['_id']}
+                            key={tool['document_id']}
                             />)
                   }) : null }
             </ToolList>
