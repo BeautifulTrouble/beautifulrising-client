@@ -227,6 +227,7 @@ export const RealWorldHeader = styled.h1`
 text-transform: uppercase;
 font-size: ${p=>p.theme.isArabic ? '36px' : '40px'};
 line-height: 36px;
+text-align: ${p=>p.theme.isArabic ? 'right' : 'left'};
 
 ${p=> {
   if (p.theme.isArabic) {
@@ -236,7 +237,7 @@ ${p=> {
     `;
   } else {
     return `
-      padding-left: 48px;
+      padding-${p=>p.theme.isArabic ? 'right' : 'left' }: 48px;
       text-indent: -48px;
     `;
   }
