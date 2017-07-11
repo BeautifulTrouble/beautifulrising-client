@@ -27,7 +27,7 @@ import {BR_IMAGE_PREFIX} from 'containers/Tools/constants';
 export class ToolPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   componentDidMount() {
-    if (!this.props.toolData.getIn(['tool'])._id) {
+    if (!this.props.toolData.getIn(['tool']).document_id) {
       this.props.onPageLoad();
     }
   }
@@ -36,7 +36,7 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
     const tool = this.props.toolData.getIn(['tool']);
     const lang = this.props.intl.locale;
 
-    if (!tool._id) return null;
+    if (!tool.document_id) return null;
 
     return (
       <ThemeProvider theme={{ lang }}>
