@@ -148,10 +148,6 @@ export const ToolHeaderViewport = styled.div`
 export const ToolLeftArea = styled(ToolInfoSection)`
   width: 165px;
   text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
-
-  * {
-    text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
-  }
 `;
 
 
@@ -187,6 +183,9 @@ export const ToolMainArea = styled(ToolInfoSection)`
 
 export const ToolMainContent = styled(ContentBlock)`
   text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
+`;
+
+export const ToolLearnMoreContent = styled(ToolMainContent)`
   margin-top: 72px;
 `;
 
@@ -227,6 +226,7 @@ export const RealWorldHeader = styled.h1`
 text-transform: uppercase;
 font-size: ${p=>p.theme.isArabic ? '36px' : '40px'};
 line-height: 36px;
+text-align: ${p=>p.theme.isArabic ? 'right' : 'left'};
 
 ${p=> {
   if (p.theme.isArabic) {

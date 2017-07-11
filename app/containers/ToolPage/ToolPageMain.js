@@ -21,6 +21,7 @@ import { ToolMainArea,
          ToolReadFullContent } from 'components/ToolsPageComponents';
 
 
+
 import ToolHowToUse from 'components/ToolHowToUse';
 import ToolWhyItWorked from 'components/ToolWhyItWorked';
 import ToolWhyItFailed from 'components/ToolWhyItFailed';
@@ -30,6 +31,8 @@ import ToolWithPullQuote from 'components/ToolWithPullQuote';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 import ToolLearnMore from './ToolLearnMore';
 import ToolRealWorld from './ToolRealWorld';
+import ToolUntranslated from './ToolUntranslated';
+import { PROP_FULL_WRITE_UP, PROP_SHORT_WRITE_UP } from './constants';
 
 import messages from './messages';
 
@@ -53,11 +56,11 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
     this.setState({ showFull : !this.state.showFull })
   }
   generateShortContent() {
-    if (!this.props['short-write-up']) return null;
+    if (!this.props[PROP_SHORT_WRITE_UP] ) return null;
     return(
       <ToolReadShortContent>
         <Markdown
-          source={this.props['short-write-up'].replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)") }
+          source={this.props[PROP_SHORT_WRITE_UP].replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)") }
           renderers={{Link: RouterLink}}
         />
       </ToolReadShortContent>
@@ -100,7 +103,13 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
   }
 
   checkContentLength() {
-    if( this.props['full-write-up']) {
+    if( this.props.lang[PROP_FULL_WRITE_UP] ) {
+
+      //Check translation status for Full Writeup
+      if (
+        !this.props.showIfUntranslated(PROP_FULL_WRITE_UP)
+      ) return null;
+
       return (
         <ToolMainContent>
           {this.generateContent()}
@@ -112,6 +121,10 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
         </ToolMainContent>
       );
     } else {
+      if (
+        !this.props.showIfUntranslated(PROP_SHORT_WRITE_UP)
+      ) return null;
+
       return (
         <ToolMainContent>
           {this.generateShortContent()}
@@ -128,26 +141,34 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
   }
 
   renderSnapshot() {
+
     return (
       <ToolSnapshotArea  {...this.props} />
     );
   }
   render() {
     // If snapshot, render the snapshot area...
-    const snapshotArea = this.props['module-type'] === 'snapshot' ? this.renderSnapshot() : null;
-    
+    const snapshotArea = this.props['module-type'] === 'snapshot'
+                          ? this.renderSnapshot() : null;
+
     return (
       <LanguageThemeProvider>
         <ToolMainArea>
+            <ToolUntranslated {...this.props} />
             { this.checkContentLength()}
-            <ToolHowToUse text={this.props['how-to-use']} />
-            <ToolWhyItWorked text={this.props['why-it-worked']} />
-            <ToolWhyItFailed text={this.props['why-it-failed']} />
+            <ToolHowToUse show={this.props.showIfUntranslated('how-to-use')} text={this.props['how-to-use']} />
+            <ToolWhyItWorked show={this.props.showIfUntranslated('why-it-worked')} text={this.props['why-it-worked']} />
+            <ToolWhyItFailed show={this.props.showIfUntranslated('why-it-failed')} text={this.props['why-it-failed']} />
             <ToolKeyItems
               keyTactics={this.props['key-modules'] ? this.props['key-modules']['key-tactics'] : []}
               keyPrinciples={this.props['key-modules'] ? this.props['key-modules']['key-principles']  : []}
               keyTheories={this.props['key-modules'] ? this.props['key-modules']['key-theories'] : [] }
               keyMethodologies={this.props['key-modules'] ? this.props['key-modules']['key-methodologies'] : [] }
+
+              showTactics = { this.props.showIfUntranslated('key-tactics')}
+              showPrinciples = { this.props.showIfUntranslated('key-principles')}
+              showTheories = { this.props.showIfUntranslated('key-theories')}
+              showMethodologies = { this.props.showIfUntranslated('key-methodologies')}
             />
             <ToolLearnMore {...this.props} />
 

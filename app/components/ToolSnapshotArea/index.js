@@ -58,12 +58,16 @@ const Link = styled.a`
 
 function ToolSnapshotArea(props) {
   const { formatMessage, locale } = props.intl;
+  const snapshotContent = !props.showIfUntranslated('snapshot')
+                            ? null
+                            : (<SnapshotContent>
+                                  <Markdown source={props.snapshot} />
+                                </SnapshotContent>);
+
   return (
     <Container>
       <Viewport lang={locale}>
-        <SnapshotContent>
-          <Markdown source={props.snapshot} />
-        </SnapshotContent>
+        { snapshotContent }
         <SnapshotCallout lang={locale}>
           <FormattedMessage {...messages.callOut} values={{type: formatMessage(typeTranslate[props.type])}}/>
         </SnapshotCallout>

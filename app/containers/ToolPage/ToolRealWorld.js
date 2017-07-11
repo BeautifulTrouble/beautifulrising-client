@@ -11,6 +11,7 @@ import { createStructuredSelector } from 'reselect';
 import { RealWorldIcon } from 'components/ToolsComponents';
 import Isvg from 'react-inlinesvg';
 import LatinThemeProvider from 'components/LatinThemeProvider';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import { LearnMoreList, ToolMainContent,
         ToolMainContentHeader, RealWorldContainer,
         RealWorldHeader, RealWorldToggle, RealWorldItems } from 'components/ToolsPageComponents';
@@ -60,23 +61,27 @@ class ToolRealWorld extends React.Component { // eslint-disable-line react/prefe
   render() {
     const {locale} = this.props.intl;
     return (
-      <LatinThemeProvider>
+
         <RealWorldContainer>
-          <RealWorldHeader>
-            <RealWorldIcon src={RealWorldIconImage} type={this.props.type}/>
-            <TitleContainer>
-              <FormattedMessage {...messages.realWorldExamplesOf} values={{title: this.props.title}}/>
-            </TitleContainer>
-            <RealWorldToggle collapsed={this.state.isCollapsed} onClick={this.handleCollapseClick.bind(this)}>
-              <Isvg src={ArrowIcon} />
-            </RealWorldToggle>
-          </RealWorldHeader>
-          <RealWorldItems show={this.state.isCollapsed}>
-            {this.generateRealWorldList()}
-            <SubmitRealWorldExample {...this.props} />
-          </RealWorldItems>
+          <LanguageThemeProvider>
+            <RealWorldHeader>
+              <RealWorldIcon src={RealWorldIconImage} type={this.props.type}/>
+              <TitleContainer>
+                <FormattedMessage {...messages.realWorldExamplesOf} values={{title: this.props.title}}/>
+              </TitleContainer>
+              <RealWorldToggle collapsed={this.state.isCollapsed} onClick={this.handleCollapseClick.bind(this)}>
+                <Isvg src={ArrowIcon} />
+              </RealWorldToggle>
+            </RealWorldHeader>
+          </LanguageThemeProvider>
+          <LatinThemeProvider>
+            <RealWorldItems show={this.state.isCollapsed}>
+              {this.generateRealWorldList()}
+              <SubmitRealWorldExample {...this.props} />
+            </RealWorldItems>
+          </LatinThemeProvider>
         </RealWorldContainer>
-      </LatinThemeProvider>
+
     );
   }
 }

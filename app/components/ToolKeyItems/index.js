@@ -83,10 +83,10 @@ class ToolKeyItems extends React.PureComponent { // eslint-disable-line react/pr
       <LanguageThemeProvider>
         <Container>
           <Viewport>
-            {this.generateKeyItems(this.props.keyTactics, "tactic")}
-            {this.generateKeyItems(this.props.keyPrinciples, "principle")}
-            {this.generateKeyItems(this.props.keyTheories, "theory")}
-            {this.generateKeyItems(this.props.keyMethodologies, "methodology")}
+            {this.props.showTactics ? this.generateKeyItems(this.props.keyTactics, "tactic") : null}
+            {this.props.showPrinciples ? this.generateKeyItems(this.props.keyPrinciples, "principle") : null}
+            {this.props.showTheories ? this.generateKeyItems(this.props.keyTheories, "theory") : null}
+            {this.props.showMethodologies ? this.generateKeyItems(this.props.keyMethodologies, "methodology") : null}
           </Viewport>
         </Container>
       </LanguageThemeProvider>
