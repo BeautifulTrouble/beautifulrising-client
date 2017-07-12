@@ -46,7 +46,7 @@ export class NewsFeed extends React.PureComponent { // eslint-disable-line react
 
   }
   render() {
-    console.log(this.props.NewsFeed);
+    
     const FeedItem = this.props.feedType === TWITTER_FEED ? NewsFeedItem : FacebookFeedItem;
     return (
       <LanguageThemeProvider>
