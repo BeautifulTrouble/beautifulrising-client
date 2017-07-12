@@ -5,7 +5,7 @@ import { List, Map } from 'immutable';
 // Initializing Websocket
 function initWebsocket() {
   return eventChannel(emitter => {
-    let ws = new WebSocket('wss://api.beautifulrising.org:7801');
+    let ws = new WebSocket(WEBSOCKET_URL);
 
 
     ws.onopen = () => {
