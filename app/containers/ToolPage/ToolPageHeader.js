@@ -114,7 +114,11 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
                     </ContentBlock>
                   </ShareButton>
                 </ShareContainer>
-                <ToolPageCaption show={this.props['image-caption'] !== undefined}>
+                <ToolPageCaption
+                  show={
+                      this.props['image-caption'] !== undefined
+                      && this.props.showIfUntranslated('image-caption')
+                  }>
                   <Markdown
                     source={'/ ' + this.props['image-caption']}
                     renderers={{Link: RouterLink }} />

@@ -7,7 +7,7 @@
 import React, {PropTypes} from 'react';
 import styled from 'styled-components';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import Link from 'components/Link';
 import AdderRemover from 'containers/Tools/AdderRemover';
 import messages from './messages';
@@ -17,8 +17,10 @@ import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
 class ListViewItem extends React.Component {
 
   render() {
+    const { locale } = this.props.intl;
+
     return (
-      <ListContainer>
+      <ListContainer lang={locale}>
         <ListViewport>
           <LanguageThemeProvider>
             <ToolType type={this.props.type}>
@@ -42,4 +44,4 @@ ListViewItem.propTypes = {
   slug: PropTypes.string.isRequired,
 };
 
-export default ListViewItem;
+export default injectIntl(ListViewItem);

@@ -186,7 +186,7 @@ export default function createRoutes(store) {
     {
       path: '/ar(/:items)*',
       name: 'arabic',
-      onEnter: function(nextState, replace) {
+      onEnter: function(nextState, replace, next) {
         const nextPath = nextState.params.items ? `/${nextState.params.items}${nextState.params.splat}` : '/';
         replace(nextPath);
         setTimeout(function() {
@@ -197,7 +197,7 @@ export default function createRoutes(store) {
     {
       path: '/en(/:items)*',
       name: 'english',
-      onEnter: function(nextState, replace){
+      onEnter: function(nextState, replace, next){
         const nextPath = nextState.params.items ? `/${nextState.params.items}${nextState.params.splat}` : '/';
         replace(nextPath);
         setTimeout(function() {

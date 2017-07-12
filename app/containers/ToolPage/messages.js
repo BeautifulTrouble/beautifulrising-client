@@ -97,6 +97,14 @@ export default defineMessages({
   trainingHeader: {
     id: 'app.containers.ToolPage.trainingHeader',
     defaultMessage: 'Training'
+  },
+  translationNeeded: {
+    id: 'app.containers.ToolPage.translationNeeded',
+    defaultMessage: 'This tool has not yet been translated into English. Click [here]({link}) to read the original. Beautiful Rising is translated by volunteers. If you are interested in translating this tool, please fill out [this form]({form}), or send your translation to info@beautifulrising.org. Thanks!'
+  },
+  needsTranslationForm: {
+    id: 'app.containers.ToolPage.needsTranslationForm',
+    defaultMessage: 'https://docs.google.com/forms/d/e/1FAIpQLSdNIM8BZK8PBPRaMwcHe8vQPaq82xtsPkloav5qNAzDeEwHHA/viewform'
   }
 
 

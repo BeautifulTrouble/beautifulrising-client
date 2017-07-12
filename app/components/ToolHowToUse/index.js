@@ -26,6 +26,7 @@ const Content = styled.div`
 
 function ToolHowToUse(props) {
   if (!props.text) return null;
+  if (!props.show) return null;
 
   const lang = props.intl.locale;
   return (

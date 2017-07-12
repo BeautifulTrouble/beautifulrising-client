@@ -27,7 +27,8 @@ const Content = styled(ContentBlock)`
 
 function ToolTextSection(props) {
   if (!props.text) return null;
-
+  if (!props.show) return null;
+  
   return (
     <LanguageThemeProvider>
       <Header lang={props.intl.locale}>

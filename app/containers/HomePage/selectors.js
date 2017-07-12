@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { TAG_FILTER, TYPE_FILTER, SEARCH_FILTER } from './constants';
+import { MODULE_TYPE_UNTRANSLATED, MODULE_TYPE_FULL, MODULE_TYPE_GALLERY } from 'components/CommonComponents/constants';
 import { SORT_NEWEST, SORT_ALPHABETICAL } from 'containers/ToolsSortOptions/constants';
 import {slugify} from 'utils/tags';
 
@@ -33,8 +34,8 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
  );
 
  const isFullTool = (item, lang) => {
-  return (item['module-type'] === 'gallery' || item['module-type'] === 'full') &&
-  (!item['lang-missing'] || item['lang-missing'].length !== 3);
+  return item['module-type-effective'] === MODULE_TYPE_GALLERY
+         || item['module-type-effective'] === MODULE_TYPE_FULL;
  }
 
 
@@ -104,7 +105,7 @@ const makeSelectSearchFieldValue = createSelector(
             return label ? data.filter(
                               item => {
                                   const searchBase = searchIndices.map(key => item[key]).join(' ').toLowerCase();
-                                  return isFullTool(item, lang) && searchBase.search(label.toLowerCase()) >= 0
+                                  return item['module-type-effective'] !== MODULE_TYPE_UNTRANSLATED && searchBase.search(label.toLowerCase()) >= 0
                               }
                            )
                          : data.filter(item => isFullTool(item, lang));

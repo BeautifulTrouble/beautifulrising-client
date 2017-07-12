@@ -13,9 +13,6 @@ export default styled.section`
 
   text-align: ${props=>props.lang==='ar' ? 'right' : 'left'};
 
-  * {
-    text-align: ${props=>props.lang==='ar' ? 'right' : 'left'};
-  }
   &:after {
     clear: both;
   }

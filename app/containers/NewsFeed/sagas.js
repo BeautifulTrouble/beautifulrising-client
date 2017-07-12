@@ -6,14 +6,14 @@ import { List, Map } from 'immutable';
 function initWebsocket() {
   return eventChannel(emitter => {
     let ws = new WebSocket(WEBSOCKET_URL);
-    
+
 
     ws.onopen = () => {
-      
+
       ws.send('hello server')
     }
     ws.onerror = (error) => {
-      
+
       console.dir(error)
     }
     ws.onmessage = (e) => {
@@ -24,11 +24,11 @@ function initWebsocket() {
         console.error(`Error parsing : ${e.data}`)
       }
       if (msg) {
-        
+
         return emitter({ type: ADD_TO_NEWSFEED, data: List(msg) });
         // const { payload: book } = msg
         // const channel = msg.channel
-        // 
+        //
         // switch (channel) {
         //   case 'ADD_BOOK':
         //     return emitter({ type: ADD_BOOK, book })
@@ -41,7 +41,7 @@ function initWebsocket() {
     }
     // unsubscribe function
     return () => {
-      
+
     }
   })
 }

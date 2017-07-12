@@ -32,9 +32,11 @@ const Content = styled(ContentBlock)`
 `;
 
 function ToolWhyItWorked(props) {
-  
+
   if (props.text === undefined || props.text.length == 0) return null;
 
+  if (!props.show) return null;
+  
   return (
     <LanguageThemeProvider>
       <Header lang={props.intl.locale}>

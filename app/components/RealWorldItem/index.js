@@ -28,6 +28,8 @@ const ImageBackground = styled.div`
   width: 100%;
   height: 300px;
   background-size: cover;
+  position: relative;
+  z-index: 0;
 `;
 
 const ImageBackgroundTop =styled(ImageBackground)`
@@ -42,10 +44,13 @@ const RealWorldItemContainer = styled.div`
     // min-height: 300px;
     // position: relative;
     // margin-bottom: 30px;
-
+    text-align: left;
     width: 100%;
-    position: relative;
     padding: 22px;
+    direction: ltr;
+    * {
+      direction: ltr;
+    }
 
     &::after {
       content: ' ';
@@ -56,7 +61,7 @@ const RealWorldItemContainer = styled.div`
 const Example = styled.div`
   padding: 5px 10px;
   background-color: white;
-
+  position: relative;
   z-index: 100;
   font-size: 12px;
   width: 342px;
@@ -66,24 +71,17 @@ const Example = styled.div`
     if(props.pos % 2 == 1) {
       return `
       margin-top: -22px;
-      margin-left: 83px;
+      margin-left: 90px;
     `
 
     } else {
       return `
-        position: absolute;
-        bottom: 302px;
-        left: 0;
-        margin-top: ${props=>props.marginTop};
+        margin-left: -20px;
+        bottom: -20px;
       `;
     }
 
   }}
-  // position: absolute;
-  // top: ${props=>TOP.includes(props.pos) ? '-10px' : 'auto' };
-  // bottom: ${props=>BOTTOM.includes(props.pos) ? '-10px' : 'auto' };
-  // left: ${props=>LEFT.includes(props.pos) ? '-10px' : 'auto' };
-  // right: ${props=>RIGHT.includes(props.pos) ? '-10px' : 'auto' };
 `;
 const ExampleTitle = styled.h5`
   line-height: 1;
@@ -113,22 +111,24 @@ class RealWorldItem extends React.PureComponent {
     }
   }
   componentDidMount() {
-
     var node = ReactDOM.findDOMNode(this.refs.example);
 
     this.setState({ exampleHeight: node.clientHeight });
   }
+
   render() {
     return (
       <LatinThemeProvider>
         <RealWorldItemContainer>
           <ImageBackgroundTop type={this.props.type} image={this.props.image} pos={this.props.pos}/>
             <Example ref={'example'} pos={this.props.pos}>
-              <ExampleTitle>
-                <a href={this.props.link} target='_blank'>
-                  {this.props.title}
-                </a>
-              </ExampleTitle>
+              <ContentBlock>
+                <ExampleTitle>
+                  <a href={this.props.link} target='_blank'>
+                    {this.props.title}
+                  </a>
+                </ExampleTitle>
+              </ContentBlock>
               <ExampleDescription>
                 <ContentBlock>
                   {this.props.description}
@@ -136,7 +136,7 @@ class RealWorldItem extends React.PureComponent {
               </ExampleDescription>
             </Example>
           <ImageBackgroundBottom type={this.props.type} image={this.props.image}
-                pos={this.props.pos} marginTop={this.state.exampleHeight}/>
+                pos={this.props.pos} />
         </RealWorldItemContainer>
       </LatinThemeProvider>
     );

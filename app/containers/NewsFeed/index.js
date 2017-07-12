@@ -18,8 +18,10 @@ import SubmitNewsFeed from 'containers/SubmitNewsFeed';
 import makeSelectNewsFeed from './selectors';
 import messages from './messages';
 import NewsFeedItem from './NewsFeedItem';
+import FacebookFeedItem from './FacebookFeedItem';
 
 import { WEBSOCKET_URL } from './constants';
+import { FACEBOOK_FEED, TWITTER_FEED } from 'containers/Tools/constants';
 
 const Container = styled.div`
   padding: 20px;
@@ -44,6 +46,8 @@ export class NewsFeed extends React.PureComponent { // eslint-disable-line react
 
   }
   render() {
+    console.log(this.props.NewsFeed);
+    const FeedItem = this.props.feedType === TWITTER_FEED ? NewsFeedItem : FacebookFeedItem;
     return (
       <LanguageThemeProvider>
         <Container>
@@ -51,7 +55,15 @@ export class NewsFeed extends React.PureComponent { // eslint-disable-line react
             <FormattedMessage {...messages.header} />
             <SubmitNewsFeed />
             <NewsFeedArea>
-              { this.props.NewsFeed.newsFeed.map( (item, idx) => <NewsFeedItem {...item} key={idx}/> )}
+              { this.props.NewsFeed.newsFeed
+                  .filter((item) => {
+                    if (this.props.feedType === TWITTER_FEED) {
+                      return item.type === 'twitter';
+                    } else if (this.props.feedType === FACEBOOK_FEED){
+                      return item.type === 'facebook';
+                    }
+                  })
+                  .map( (item, idx) => <FeedItem {...item} key={idx}/> )}
             </NewsFeedArea>
           </ContentBlock>
         </Container>

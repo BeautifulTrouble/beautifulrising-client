@@ -14,7 +14,7 @@ const selectAuthor = createSelector(
   [selectGlobalData, getAuthorSlug],
   (substate, slug) => {
     const appData = substate.getIn(['appData', 'information']);
-    const author = appData.filter((item) => item['_id'] === `person:${slug}`)
+    const author = appData.filter((item) => `${item['type']}:${item['slug']}` === `person:${slug}`)
     return author ? author[0] : null;
   }
 )

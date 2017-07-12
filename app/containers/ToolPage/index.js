@@ -24,19 +24,40 @@ import ToolPageLeft from './ToolPageLeft';
 import ToolPageMain from './ToolPageMain';
 import ToolPageRight from './ToolPageRight';
 import {BR_IMAGE_PREFIX} from 'containers/Tools/constants';
+import { MODULE_TYPE_UNTRANSLATED } from 'components/CommonComponents/constants';
+
 export class ToolPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      showUntranslated: false
+    };
+  }
   componentDidMount() {
-    if (!this.props.toolData.getIn(['tool'])._id) {
+    if (!this.props.toolData.getIn(['tool']).document_id) {
       this.props.onPageLoad();
     }
+  }
+
+  showUntranslatedText() {
+    this.setState({ showUntranslated: true });
+  }
+
+  showIfUntranslated(attr) {
+    const tool = this.props.toolData.getIn(['tool']);
+
+    if ( tool['module-type-effective'] !== MODULE_TYPE_UNTRANSLATED ) {
+       return true
+    }
+
+    return this.state.showUntranslated && tool['lang-missing'].includes(attr);
   }
 
   render() {
     const tool = this.props.toolData.getIn(['tool']);
     const lang = this.props.intl.locale;
-
-    if (!tool._id) return null;
+    if (!tool.document_id) return null;
 
     return (
       <ThemeProvider theme={{ lang }}>
@@ -53,12 +74,20 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
             ]}
           />
           <ToolHeader>
-            <ToolPageHeader {...tool} key={'header'}/>
+            <ToolPageHeader {...tool}
+                showIfUntranslated={this.showIfUntranslated.bind(this)}
+                key={'header'}/>
           </ToolHeader>
           <ToolInformation>
-            <ToolPageLeft {...tool} key={'page-left'}/>
-            <ToolPageMain {...tool} params={this.props.params} key={'page-main'}/>
-            <ToolPageRight {...tool} key={'page-right'}/>
+            <ToolPageLeft {...tool}
+                showIfUntranslated={this.showIfUntranslated.bind(this)}
+                key={'page-left'}/>
+            <ToolPageMain {...tool}
+                showIfUntranslated={this.showIfUntranslated.bind(this)}
+                params={this.props.params} key={'page-main'}/>
+            <ToolPageRight {...tool}
+                showIfUntranslated={this.showIfUntranslated.bind(this)}
+                key={'page-right'}/>
           </ToolInformation>
         </div>
       </ThemeProvider>

@@ -33,7 +33,7 @@ const initialState = fromJS({
 });
 
 function appReducer(state = initialState, action) {
-  
+
   switch (action.type) {
     case LOAD_DATA:
       return state
@@ -44,7 +44,7 @@ function appReducer(state = initialState, action) {
       return state
         .setIn(['appData', 'information'], action.data)
         //TODO: Not sure if best practice
-        .setIn(['appData', 'tags'], action.data.filter(item=>item._id === 'text:tags')[0]['all'])
+        .setIn(['appData', 'tags'], action.data.filter(item=>`${item.type}:${item.slug}` === 'text:tags')[0]['all'])
         .set('loading', false)
         ;
     case LOAD_DATA_ERROR:

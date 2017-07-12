@@ -254,7 +254,6 @@ export const ListContainer = styled(ToolContainer)`
   width: 48%;
   height: 190px;
   text-align: left;
-
 `;
 
 export const ListViewport = styled(ToolViewport)`
@@ -276,9 +275,8 @@ export const ListViewport = styled(ToolViewport)`
     padding-top: 5px;
   }
 `;
-export const ListSpiel = styled.p`
+export const ListSpiel = styled(ContentBlock)`
   margin: 0;
-  font-size: 12px;
 `;
 export const ListDivider = styled.h3`
   color: black;

@@ -150,7 +150,7 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
 
 
           <Container show={ this.props.Tools.viewType === NEWS_FEED }>
-            <NewsFeed />
+            <NewsFeed feedType={this.state.newsFeed}/>
           </Container>
 
           <Container show={ this.props.Tools.viewType === MY_TOOLS }>

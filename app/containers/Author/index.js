@@ -12,6 +12,7 @@ import {AuthorContainer, AuthorImageArea, AuthorLink,
         AuthorImage, AuthorName, AuthorDesc} from 'components/AuthorComponents';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import LatinThemeProvider from 'components/LatinThemeProvider';
 import {selectAuthor} from './selectors';
 
 export class Author extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -20,8 +21,13 @@ export class Author extends React.PureComponent { // eslint-disable-line react/p
     let name = this.props.author.title.split(' ');
     const firstName = name.shift();
     const latterName = name.join(' ');
+
+    const isLatin = this.props.author['lang-missing'].includes('bio') ;
+
+    const ThemeProvider = isLatin ? LatinThemeProvider : LanguageThemeProvider;
+
     return (
-      <LanguageThemeProvider>
+      <ThemeProvider>
         <AuthorContainer>
             <AuthorLink to={`/search/authors!${this.props.slug}`}>
               <AuthorImage image={this.props.author.image} />
@@ -36,7 +42,7 @@ export class Author extends React.PureComponent { // eslint-disable-line react/p
             </ContentBlock>
           </AuthorDesc>
         </AuthorContainer>
-      </LanguageThemeProvider>
+      </ThemeProvider>
     );
   }
 }

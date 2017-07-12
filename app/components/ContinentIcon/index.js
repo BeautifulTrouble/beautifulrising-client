@@ -60,12 +60,14 @@ class ContinentIcon extends React.PureComponent {
     if (this.props.type !== "story") return null;
 
     const lang = this.props.intl.locale;
+    const where = this.props.where !== undefined ? this.props.where : '';
+    const when = this.props.when !== undefined ? this.props.when : '';
     return (
         <Content lang={lang}>
           <WhereWhen>
             <LanguageThemeProvider>
               <ContentBlock>
-                {`${this.props.where} ${this.props.when}`}
+                {`${where} ${when}`}
               </ContentBlock>
             </LanguageThemeProvider>
           </WhereWhen>
