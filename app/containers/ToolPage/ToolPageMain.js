@@ -103,13 +103,8 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
   }
 
   checkContentLength() {
-    if( this.props.lang[PROP_FULL_WRITE_UP] ) {
 
-      //Check translation status for Full Writeup
-      if (
-        !this.props.showIfUntranslated(PROP_FULL_WRITE_UP)
-      ) return null;
-
+    if( this.props.showIfUntranslated(PROP_FULL_WRITE_UP) && this.props['full-write-up'] ) {
       return (
         <ToolMainContent>
           {this.generateContent()}
