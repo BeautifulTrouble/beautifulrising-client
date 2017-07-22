@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import VisibilitySensor from 'react-visibility-sensor';
 
 import ContentBlock from 'components/ContentBlock';
@@ -49,14 +49,14 @@ class Platform extends React.Component {
                 </Subtitle>
 
                 <Subtitle>
-                  <FormattedMessage {...messages.what} />
+                  {this.props.misc.get('what')}
                 </Subtitle>
                 <ContentBlock>
                   <Markdown source={this.props.content.get('what')} />
                 </ContentBlock>
 
                 <Subtitle>
-                  <FormattedMessage {...messages.how} />
+                  {this.props.misc.get('how')}
                 </Subtitle>
                 <ContentBlock>
                   <Markdown source={this.props.content.get('how')} />
