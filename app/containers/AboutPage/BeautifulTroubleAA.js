@@ -8,7 +8,7 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { AboutSection } from 'components/AboutPageComponents';
+import AboutSection from 'components/AboutPage/AboutSection';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import VisibilitySensor from 'react-visibility-sensor';

@@ -12,7 +12,7 @@ import Markdown from 'react-remarkable';
 
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
-import { AboutSection } from 'components/AboutPageComponents';
+import AboutSection from 'components/AboutPage/AboutSection';
 import { themeFourColumns } from 'components/CommonComponents';
 import messages from './messages';
 

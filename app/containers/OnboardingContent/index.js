@@ -31,8 +31,6 @@ import { onboardUser } from 'containers/OnboardingModal/actions';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import messages from './messages';
 
-import aboutMessages from 'components/AboutPageComponents/messages';
-
 const Container = styled.section``;
 const Viewport = styled.div`
 position: relative;

@@ -12,7 +12,8 @@ import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { AboutSection } from 'components/AboutPageComponents';
+import AboutSection from 'components/AboutPage/AboutSection';
+
 import { themeThreeColumns } from 'components/CommonComponents';
 import VisibilitySensor from 'react-visibility-sensor';
 import Markdown from 'react-remarkable';

@@ -11,7 +11,9 @@ import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ToolTypeAllFull from 'containers/ToolTypeAllFull';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { AboutSection, Introduction, IntroText } from 'components/AboutPageComponents';
+import IntroText from 'components/AboutPage/IntroText';
+import Introduction from 'components/AboutPage/Introduction';
+import AboutSection from 'components/AboutPage/AboutSection';
 import VisibilitySensor from 'react-visibility-sensor';
 
 import messages from './messages';

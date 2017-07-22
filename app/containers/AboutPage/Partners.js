@@ -8,7 +8,7 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { AboutHeader, AboutSection } from 'components/AboutPageComponents';
+import AboutSection from 'components/AboutPage/AboutSection';
 import { themeThreeColumns } from 'components/CommonComponents';
 import VisibilitySensor from 'react-visibility-sensor';
 import Markdown from 'react-remarkable';

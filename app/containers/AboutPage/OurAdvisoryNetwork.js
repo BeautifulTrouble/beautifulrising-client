@@ -9,7 +9,10 @@ import styled, { ThemeProvider } from 'styled-components';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { AboutSection, Introduction, IntroText } from 'components/AboutPageComponents';
+import IntroText from 'components/AboutPage/IntroText';
+import Introduction from 'components/AboutPage/Introduction';
+import AboutSection from 'components/AboutPage/AboutSection';
+
 import { themeThreeColumns } from 'components/CommonComponents';
 import VisibilitySensor from 'react-visibility-sensor';
 import Markdown from 'react-remarkable';
