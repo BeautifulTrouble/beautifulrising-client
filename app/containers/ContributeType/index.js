@@ -9,11 +9,15 @@ import styled from 'styled-components';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import Isvg from 'react-inlinesvg';
 import Markdown from 'react-remarkable';
+
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
 import SmallSectionHeader from 'components/SmallSectionHeader';
 import typeMessages from 'components/ToolTypeArea/messages';
 
+/*Components*/
 import Button from 'components/ContributeType/Button';
 import CallToAction from 'components/ContributeType/CallToAction';
 import Content from 'components/ContributeType/Content';
@@ -31,7 +35,7 @@ import TheoryIcon from 'assets/images/type/theories.svg';
 import PrincipleIcon from 'assets/images/type/principle.svg';
 
 import messages from './messages';
-
+import keys from './constants';
 
 class ContributeType extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -97,32 +101,32 @@ const DATA = [
   {
     type: 'story',
     icon: StoryIcon,
-    label: (<FormattedMessage {...typeMessages.storyHead} />),
-    description: (<FormattedMessage {...typeMessages.storyDesc} />)
+    label: (<TranslatableStaticText text={key.KEY_TYPES_STORIES} />),
+    description: (<TranslatableStaticText text={key.KEY_DEF_STORY_SHORT} />)
   },
   {
     type: 'tactic',
     icon: TacticIcon,
-    label: (<FormattedMessage {...typeMessages.tacticHead} />),
-    description: (<FormattedMessage {...typeMessages.tacticDesc} />)
+    label: (<TranslatableStaticText text={key.KEY_TYPES_TACTICS} />),
+    description: (<TranslatableStaticText text={key.KEY_DEF_TACTIC_SHORT} />)
   },
   {
     type: 'principle',
     icon: PrincipleIcon,
-    label: (<FormattedMessage {...typeMessages.principleHead} />),
-    description: (<FormattedMessage {...typeMessages.principleDesc} />)
+    label: (<TranslatableStaticText text={key.KEY_TYPES_PRINCIPLES} />),
+    description: (<TranslatableStaticText text={key.KEY_DEF_PRINCIPLE_SHORT} />)
   },
   {
     type: 'theory',
     icon: TheoryIcon,
-    label: (<FormattedMessage {...typeMessages.theoryHead} />),
-    description: (<FormattedMessage {...typeMessages.theoryDesc} />)
+    label: (<TranslatableStaticText text={key.KEY_TYPES_THEORIES} />),
+    description: (<TranslatableStaticText text={key.KEY_DEF_THEORY_SHORT} />)
   },
   {
     type: 'methodology',
     icon: MethodologyIcon,
-    label: (<FormattedMessage {...typeMessages.methodologyHead} />),
-    description: (<FormattedMessage {...typeMessages.methodologyDesc} />)
+    label: (<TranslatableStaticText text={key.KEY_TYPES_METHODOLOGIES} />),
+    description: (<TranslatableStaticText text={key.KEY_DEF_METHODOLOGY_SHORT} />)
   },
 
 ];
