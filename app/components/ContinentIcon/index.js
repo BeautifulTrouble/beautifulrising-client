@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import Isvg from 'react-inlinesvg';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';

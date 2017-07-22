@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import Markdown from 'react-remarkable';
 import Isvg from 'react-inlinesvg';
 
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import messages from './messages';
 
 const Container = styled.section`
