@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import Markdown from 'react-remarkable';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
-import ToolTypeAllFull from 'components/ToolTypeAllFull';
+import ToolTypeAllFull from 'containers/ToolTypeAllFull';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { AboutSection, Introduction, IntroText } from 'components/AboutPageComponents';
 import VisibilitySensor from 'react-visibility-sensor';

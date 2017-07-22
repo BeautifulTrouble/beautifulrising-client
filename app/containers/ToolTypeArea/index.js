@@ -10,10 +10,10 @@ import styled from 'styled-components';
 import Isvg from 'react-inlinesvg';
 
 import { FormattedMessage } from 'react-intl';
-import ToolTypeAllFull from 'components/ToolTypeAllFull';
-import ToolTypeAllPartial from 'components/ToolTypeAllPartial';
-import ToolTypeSelectedFull from 'components/ToolTypeSelectedFull';
-import ToolTypeSelectedPartial from 'components/ToolTypeSelectedPartial';
+import ToolTypeAllFull from 'containers/ToolTypeAllFull';
+import ToolTypeAllPartial from 'containers/ToolTypeAllPartial';
+import ToolTypeSelectedFull from 'containers/ToolTypeSelectedFull';
+import ToolTypeSelectedPartial from 'containers/ToolTypeSelectedPartial';
 import ArrowIcon from 'assets/images/icons/arrow.svg';
 
 import messages from './messages';
