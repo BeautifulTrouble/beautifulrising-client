@@ -22,7 +22,7 @@ import newsFeedReducer from 'containers/NewsFeed/reducer';
 import submitNewsFeedReducer from 'containers/SubmitNewsFeed/reducer';
 import askTheContributorReducer from 'containers/AskTheContributor/reducer';
 import onboardingModalReducer from 'containers/OnboardingModal/reducer';
-import staticTextHandlerReducer from 'containers/StaticTextHandler/reducer';
+import translatableStaticTextReducer from 'containers/TranslatableStaticText/reducer';
 /*
  * routeReducer
  *
@@ -71,7 +71,7 @@ export default function createReducer(asyncReducers) {
     submitNewsFeed: submitNewsFeedReducer,
     askTheContributor: askTheContributorReducer,
     onboardingModal: onboardingModalReducer,
-    staticTextHandler: staticTextHandlerReducer,
+    translatableStaticText: translatableStaticTextReducer,
     ...asyncReducers,
   });
 }
