@@ -5,10 +5,9 @@
 import { getAsyncInjectors } from 'utils/asyncInjectors';
 import ContactUs from 'containers/ContactUs/sagas';
 import EmailTools from 'containers/EmailTools/sagas';
-import LanguageProvider from 'containers/LanguageProvider/sagas';
 import NewsFeed from 'containers/NewsFeed/sagas';
 import Tools from 'containers/Tools/sagas';
-import StaticTextHandler from 'containers/StaticTextHandler/sagas';
+import TranslatableStaticText from 'containers/TranslatableStaticText/sagas';
 import SubmitNewsFeed from 'containers/SubmitNewsFeed/sagas';
 import {changeLocale} from 'containers/LanguageProvider/actions';
 const errorLoading = (err) => {
@@ -33,7 +32,7 @@ export default function createRoutes(store) {
   //close tools when changing locs
   injectSagas(Tools);
 
-  injectSagas(StaticTextHandler);
+  injectSagas(TranslatableStaticText);
 
   injectSagas(SubmitNewsFeed);
 

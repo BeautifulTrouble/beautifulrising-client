@@ -14,32 +14,34 @@ import MenuList from 'components/MenuList';
 import MenuListItem from 'components/MenuListItem';
 import MenuTitle from 'components/MenuTitle';
 import MenuSubtitle from 'components/MenuSubtitle';
+import TranslatableStaticText from 'containers/TranslatableStaticText';
 
 import { FormattedMessage, injectIntl} from 'react-intl';
-import messages from './messages';
+import keys from './constants';
 
 function PlatformsMenu(props) {
+
   return (
     <LanguageThemeProvider>
       <MenuBlock>
-        <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
+        <MenuTitle><TranslatableStaticText text={keys.KEY_PLATFORMS_HEADER}/></MenuTitle>
         <MenuSubtitle>
-          <FormattedMessage {...messages.subheader} />
+          <TranslatableStaticText text={keys.KEY_PLATFORMS_SUBHEADER} />
         </MenuSubtitle>
         <MenuList>
           <MenuListItem>
             <MenuLink to="/platforms/chatbot" onClick={props.onClick}>
-              <FormattedMessage {...messages.chatbot} />
+              <TranslatableStaticText text={keys.KEY_PLATFORMS_CHAT_BOT} />
             </MenuLink>
           </MenuListItem>
           <MenuListItem>
             <MenuLink to="/platforms/game" onClick={props.onClick}>
-              <FormattedMessage {...messages.game} />
+              <TranslatableStaticText text={keys.KEY_PLATFORMS_GAME} />
             </MenuLink>
           </MenuListItem>
           <MenuListItem>
             <MenuLink to="/platforms/pdf" onClick={props.onClick}>
-              <FormattedMessage {...messages.pdf} />
+              <TranslatableStaticText text={keys.KEY_PLATFORMS_PDF} />
             </MenuLink>
           </MenuListItem>
         </MenuList>
