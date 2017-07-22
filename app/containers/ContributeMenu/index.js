@@ -14,7 +14,7 @@ import MenuList from 'components/MenuList';
 import MenuListItem from 'components/MenuListItem';
 import MenuTitle from 'components/MenuTitle';
 import { KEY_CONTRIBUTE_HEADER, KEY_HOW_DOES_IT_WORK} from './constants';
-import messages from './constants';
+
 function ContributeMenu(props) {
   return (
     <LanguageThemeProvider>
