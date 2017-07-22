@@ -17,14 +17,15 @@ import { connect } from 'react-redux';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
-import TheToolbox from 'components/AboutPageComponents/TheToolbox';
-import Partners from 'components/AboutPageComponents/Partners';
-import OurValues from 'components/AboutPageComponents/OurValues';
-import OurTeam from 'components/AboutPageComponents/OurTeam';
-import OurProcess from 'components/AboutPageComponents/OurProcess';
-import OurAdvisoryNetwork from 'components/AboutPageComponents/OurAdvisoryNetwork';
-import FAQ from 'components/AboutPageComponents/FAQ';
-import BeautifulTroubleAA from 'components/AboutPageComponents/BeautifulTroubleAA';
+import FAQ from 'containers/AboutPage/FAQ';
+import TheToolbox from 'containers/AboutPage/TheToolbox';
+import Partners from 'containers/AboutPage/Partners';
+import OurValues from 'containers/AboutPage/OurValues';
+import OurTeam from 'containers/AboutPage/OurTeam';
+import OurProcess from 'containers/AboutPage/OurProcess';
+import OurAdvisoryNetwork from 'containers/AboutPage/OurAdvisoryNetwork';
+import BeautifulTroubleAA from 'containers/AboutPage/BeautifulTroubleAA';
+
 import { makeSelectAllToolsWithSlugIndex, makeSelectAdvisoryBoard } from 'containers/App/selectors';
 import { onboardUser } from 'containers/OnboardingModal/actions';
 import { FormattedMessage, injectIntl } from 'react-intl';

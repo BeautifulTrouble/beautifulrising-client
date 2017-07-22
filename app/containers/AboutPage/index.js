@@ -17,17 +17,19 @@ import { createStructuredSelector } from 'reselect';
 
 import { loadData } from 'containers/App/actions';
 
+import { makeSelectAllToolsWithSlugIndex, makeSelectAdvisoryBoard } from 'containers/App/selectors';
+
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
-import TheToolbox from 'components/AboutPageComponents/TheToolbox';
-import Partners from 'components/AboutPageComponents/Partners';
-import OurValues from 'components/AboutPageComponents/OurValues';
-import OurTeam from 'components/AboutPageComponents/OurTeam';
-import OurProcess from 'components/AboutPageComponents/OurProcess';
-import OurAdvisoryNetwork from 'components/AboutPageComponents/OurAdvisoryNetwork';
-import FAQ from 'components/AboutPageComponents/FAQ';
-import BeautifulTroubleAA from 'components/AboutPageComponents/BeautifulTroubleAA';
-import { makeSelectAllToolsWithSlugIndex, makeSelectAdvisoryBoard } from 'containers/App/selectors';
+
+import FAQ from './FAQ';
+import TheToolbox from './TheToolbox';
+import Partners from './Partners';
+import OurValues from './OurValues';
+import OurTeam from './OurTeam';
+import OurProcess from './OurProcess';
+import OurAdvisoryNetwork from './OurAdvisoryNetwork';
+import BeautifulTroubleAA from './BeautifulTroubleAA';
 
 import msg from './messages';
 
