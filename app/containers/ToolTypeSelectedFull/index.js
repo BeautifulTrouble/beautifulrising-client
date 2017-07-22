@@ -19,7 +19,7 @@ import TheoryIcon from 'assets/images/type/theories-optionflag.svg';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
-import RegionOptions from 'components/RegionOptions';
+import RegionOptions from 'containers/RegionOptions';
 
 const Container = styled.section`
   display: ${props=>props.show ? 'block' : 'none'};

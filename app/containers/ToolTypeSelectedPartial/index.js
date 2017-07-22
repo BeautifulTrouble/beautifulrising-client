@@ -11,7 +11,7 @@ import { FormattedMessage , injectIntl } from 'react-intl';
 import messages from '../ToolTypeArea/messages';
 
 import Isvg from 'react-inlinesvg';
-import RegionOptions from 'components/RegionOptions';
+import RegionOptions from 'containers/RegionOptions';
 import MethodologyIcon from 'assets/images/type/methodologies-optionflag.svg';
 import PrincipleIcon from 'assets/images/type/principles-optionflag.svg';
 import StoryIcon from 'assets/images/type/stories-optionflag.svg';

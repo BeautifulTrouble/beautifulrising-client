@@ -20,53 +20,13 @@ import LatinAmericaCaribbean from 'assets/images/regions/latin-america-caribbean
 import MiddleEast from 'assets/images/regions/middle-east.svg';
 import NorthAmerica from 'assets/images/regions/north-america.svg';
 
-const Container = styled.section`
-  display: ${props=>props.inline?'inline-block':'block'};
-`;
-const Viewport = styled.div`
-  position: relative;
-  text-align: ${p=>p.lang==='ar'?'right':'left'};
-`;
-
-const Subheader = styled.h3`
-  width: 50%;
-  padding: 2px;
-  border: solid;
-  border-width: 0 0 2px;
-  position: relative;
-  display: ${props=> !props.show ? 'none' : 'block'};
-
-  &::after {
-    content: ' ';
-    height: 40px;
-    border: solid;
-    width: 0px !important;
-    position: absolute;
-    ${p=>p.lang==='ar'?'left':'right'}: 30px;
-    bottom: -20px;
-    border-width: 0 1px 0 0;
-  }
-`;
-
-const RegionList = styled.ul`
-  padding: 0; margin: 0;
-`;
-
-const Region = styled.li`
-  display: inline-block;
-`;
-
-const Disabled = styled.span`
-  svg, svg * {
-    fill: #dfdfdf !important;
-  }
-`;
-
-const RegionLink = styled(Link)`
-  svg, svg * {
-    fill: ${props => props.selected ? 'black' : '#828486'}
-  }
-`;
+import Container from 'components/RegionOptions/Container';
+import Viewport from 'components/RegionOptions/Viewport';
+import Subheader from 'components/RegionOptions/Subheader';
+import RegionList from 'components/RegionOptions/RegionList';
+import Region from 'components/RegionOptions/Region';
+import Disabled from 'components/RegionOptions/Disabled';
+import RegionLink from 'components/RegionOptions/RegionLink';
 
 function RegionOptions(props) {
   const lang = props.intl.locale;
