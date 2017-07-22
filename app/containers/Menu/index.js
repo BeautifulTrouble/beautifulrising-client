@@ -10,10 +10,10 @@ import styled from 'styled-components';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import MenuLink from 'components/MenuLink';
 import Logo from 'components/Logo';
-import AboutMenu from 'components/AboutMenu';
-import ContributeMenu from 'components/ContributeMenu';
-import PlatformsMenu from 'components/PlatformsMenu';
-import TrainingMenu from 'components/TrainingMenu';
+import AboutMenu from 'containers/AboutMenu';
+import ContributeMenu from 'containers/ContributeMenu';
+import PlatformsMenu from 'containers/PlatformsMenu';
+import TrainingMenu from 'containers/TrainingMenu';
 import ContactUs from 'containers/ContactUs';
 import messages from './messages';
 
