@@ -15,9 +15,9 @@ export class TranslatableStaticText extends React.PureComponent { // eslint-disa
 
   //Use to retrieve message from static text
   retrieveMessage() {
-    
 
-    const keys = this.props.text.split(".");
+
+    const keys = this.props.id.split(".");
     let message = this.props.staticText.data;
     keys.forEach(key => {
       if (!message) return null;
@@ -38,7 +38,7 @@ export class TranslatableStaticText extends React.PureComponent { // eslint-disa
 
 TranslatableStaticText.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({

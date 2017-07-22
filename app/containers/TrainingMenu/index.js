@@ -25,16 +25,16 @@ function TrainingMenu(props) {
   return (
     <LanguageThemeProvider>
       <MenuBlock>
-        <MenuTitle><TranslatableStaticText text={keys.KEY_TRAINING_HEADER} /></MenuTitle>
+        <MenuTitle><TranslatableStaticText id={keys.KEY_TRAINING_HEADER} /></MenuTitle>
         <MenuList>
           <MenuListItem>
             <MenuLink to="/resources/training" onClick={props.onClick}>
-              <TranslatableStaticText text={keys.KEY_TRAINING} />
+              <TranslatableStaticText id={keys.KEY_TRAINING} />
             </MenuLink>
           </MenuListItem>
           <MenuListItem>
             <MenuLink to="/resources/other" onClick={props.onClick}>
-              <TranslatableStaticText text={keys.KEY_OTHER} />
+              <TranslatableStaticText id={keys.KEY_OTHER} />
             </MenuLink>
           </MenuListItem>
         </MenuList>

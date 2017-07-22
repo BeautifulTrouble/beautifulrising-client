@@ -4,24 +4,24 @@
  *
  */
 
- import React, { PropTypes } from 'react';
- import ReactDOM from 'react-dom';
- import { connect } from 'react-redux';
- import Helmet from 'react-helmet';
- import { FormattedMessage } from 'react-intl';
- import { push,replace } from 'react-router-redux';
- import { createStructuredSelector } from 'reselect';
- import VisibilitySensor from 'react-visibility-sensor';
-import ContributeType from 'components/ContributeType';
- import { loadData } from 'containers/App/actions';
- import styled from 'styled-components';
+import React, { PropTypes } from 'react';
+import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+import Helmet from 'react-helmet';
+import { FormattedMessage } from 'react-intl';
+import { push,replace } from 'react-router-redux';
+import { createStructuredSelector } from 'reselect';
+import VisibilitySensor from 'react-visibility-sensor';
+import ContributeType from 'containers/ContributeType';
+import { loadData } from 'containers/App/actions';
+import styled from 'styled-components';
 
- import BlockViewItem from 'containers/HomePage/BlockViewItem';
- //For listening
- import { browserHistory } from 'react-router';
+import BlockViewItem from 'containers/HomePage/BlockViewItem';
+//For listening
+import { browserHistory } from 'react-router';
 
 import { makeSelectAllToolsWithSlugIndex,
-          makeSelectExamples} from 'containers/App/selectors';
+        makeSelectExamples} from 'containers/App/selectors';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import SmallHeaderBlock from 'components/SmallHeaderBlock';

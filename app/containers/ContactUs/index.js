@@ -58,7 +58,7 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
           <form onSubmit={this.handleSubmit.bind(this)}>
             <input type='email' name='email' onChange={this.handleChange.bind(this)} placeholder='samir@gmail.com'/>
             <button>
-              <TranslatableStaticText text={key.KEY_CONTACT_US_SUBMIT} />
+              <TranslatableStaticText id={key.KEY_CONTACT_US_SUBMIT} />
             </button>
           </form>
         </FormContainer>
@@ -81,7 +81,7 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
       <LanguageThemeProvider>
         <MenuBlock>
           <MenuTitle>
-            <TranslatableStaticText text={key.KEY_CONTACT_US_HEADER} />
+            <TranslatableStaticText id={key.KEY_CONTACT_US_HEADER} />
           </MenuTitle>
           <EmailLink to='mailto:info@beautifulrising.org'>info@beautifulrising.org</EmailLink>
           <div>
@@ -92,7 +92,7 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
               <Isvg src={FacebookIcon} />
             </SocialLink>
             <SubscribeCTA>
-              <TranslatableStaticText text={key.KEY_CONTACT_US_SUBSCRIBE} />
+              <TranslatableStaticText id={key.KEY_CONTACT_US_SUBSCRIBE} />
             </SubscribeCTA>
           </div>
 

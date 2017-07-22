@@ -20,12 +20,12 @@ function ContributeMenu(props) {
     <LanguageThemeProvider>
       <MenuBlock>
         <MenuTitle>
-          <TranslatableStaticText text={KEY_CONTRIBUTE_HEADER} />
+          <TranslatableStaticText id={KEY_CONTRIBUTE_HEADER} />
         </MenuTitle>
         <MenuList>
           <MenuListItem>
             <MenuLink to="/contribute/how-it-works" onClick={props.onClick}>
-              <TranslatableStaticText text={KEY_HOW_DOES_IT_WORK} />
+              <TranslatableStaticText id={KEY_HOW_DOES_IT_WORK} />
             </MenuLink>
           </MenuListItem>
         </MenuList>

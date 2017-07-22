@@ -101,32 +101,32 @@ const DATA = [
   {
     type: 'story',
     icon: StoryIcon,
-    label: (<TranslatableStaticText text={key.KEY_TYPES_STORIES} />),
-    description: (<TranslatableStaticText text={key.KEY_DEF_STORY_SHORT} />)
+    label: (<TranslatableStaticText id={keys.KEY_TYPES_STORIES} />),
+    description: (<TranslatableStaticText id={keys.KEY_DEF_STORY_SHORT} />)
   },
   {
     type: 'tactic',
     icon: TacticIcon,
-    label: (<TranslatableStaticText text={key.KEY_TYPES_TACTICS} />),
-    description: (<TranslatableStaticText text={key.KEY_DEF_TACTIC_SHORT} />)
+    label: (<TranslatableStaticText id={keys.KEY_TYPES_TACTICS} />),
+    description: (<TranslatableStaticText id={keys.KEY_DEF_TACTIC_SHORT} />)
   },
   {
     type: 'principle',
     icon: PrincipleIcon,
-    label: (<TranslatableStaticText text={key.KEY_TYPES_PRINCIPLES} />),
-    description: (<TranslatableStaticText text={key.KEY_DEF_PRINCIPLE_SHORT} />)
+    label: (<TranslatableStaticText id={keys.KEY_TYPES_PRINCIPLES} />),
+    description: (<TranslatableStaticText id={keys.KEY_DEF_PRINCIPLE_SHORT} />)
   },
   {
     type: 'theory',
     icon: TheoryIcon,
-    label: (<TranslatableStaticText text={key.KEY_TYPES_THEORIES} />),
-    description: (<TranslatableStaticText text={key.KEY_DEF_THEORY_SHORT} />)
+    label: (<TranslatableStaticText id={keys.KEY_TYPES_THEORIES} />),
+    description: (<TranslatableStaticText id={keys.KEY_DEF_THEORY_SHORT} />)
   },
   {
     type: 'methodology',
     icon: MethodologyIcon,
-    label: (<TranslatableStaticText text={key.KEY_TYPES_METHODOLOGIES} />),
-    description: (<TranslatableStaticText text={key.KEY_DEF_METHODOLOGY_SHORT} />)
+    label: (<TranslatableStaticText id={keys.KEY_TYPES_METHODOLOGIES} />),
+    description: (<TranslatableStaticText id={keys.KEY_DEF_METHODOLOGY_SHORT} />)
   },
 
 ];

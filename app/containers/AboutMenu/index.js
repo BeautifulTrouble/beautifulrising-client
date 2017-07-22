@@ -25,7 +25,7 @@ function AboutMenu(props) {
     <LanguageThemeProvider>
       <MenuBlock>
         <MenuTitle>
-          <TranslatableStaticText text={KEY_MENU_ABOUT} />
+          <TranslatableStaticText id={KEY_MENU_ABOUT} />
         </MenuTitle>
         <MenuList>
           {
@@ -33,7 +33,7 @@ function AboutMenu(props) {
 
               <MenuListItem key={item.to}>
                 <MenuLink to={item.to}  onClick={props.onClick}>
-                  <TranslatableStaticText text={item.text} />
+                  <TranslatableStaticText id={item.text} />
                 </MenuLink>
               </MenuListItem>
             ))

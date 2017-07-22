@@ -24,24 +24,24 @@ function PlatformsMenu(props) {
   return (
     <LanguageThemeProvider>
       <MenuBlock>
-        <MenuTitle><TranslatableStaticText text={keys.KEY_PLATFORMS_HEADER}/></MenuTitle>
+        <MenuTitle><TranslatableStaticText id={keys.KEY_PLATFORMS_HEADER}/></MenuTitle>
         <MenuSubtitle>
-          <TranslatableStaticText text={keys.KEY_PLATFORMS_SUBHEADER} />
+          <TranslatableStaticText id={keys.KEY_PLATFORMS_SUBHEADER} />
         </MenuSubtitle>
         <MenuList>
           <MenuListItem>
             <MenuLink to="/platforms/chatbot" onClick={props.onClick}>
-              <TranslatableStaticText text={keys.KEY_PLATFORMS_CHAT_BOT} />
+              <TranslatableStaticText id={keys.KEY_PLATFORMS_CHAT_BOT} />
             </MenuLink>
           </MenuListItem>
           <MenuListItem>
             <MenuLink to="/platforms/game" onClick={props.onClick}>
-              <TranslatableStaticText text={keys.KEY_PLATFORMS_GAME} />
+              <TranslatableStaticText id={keys.KEY_PLATFORMS_GAME} />
             </MenuLink>
           </MenuListItem>
           <MenuListItem>
             <MenuLink to="/platforms/pdf" onClick={props.onClick}>
-              <TranslatableStaticText text={keys.KEY_PLATFORMS_PDF} />
+              <TranslatableStaticText id={keys.KEY_PLATFORMS_PDF} />
             </MenuLink>
           </MenuListItem>
         </MenuList>
