@@ -5,28 +5,27 @@
 */
 
 import React from 'react';
-import {ThemeProvider} from 'styled-components';
-import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import MenuLink from 'components/MenuLink';
 import MenuBlock from 'components/MenuBlock';
 import MenuList from 'components/MenuList';
 import MenuListItem from 'components/MenuListItem';
 import MenuTitle from 'components/MenuTitle';
-
-import { FormattedMessage, injectIntl } from 'react-intl';
-import messages from './messages';
-
+import { KEY_CONTRIBUTE_HEADER, KEY_HOW_DOES_IT_WORK} from './constants';
+import messages from './constants';
 function ContributeMenu(props) {
-  const { locale } = props.intl;
   return (
     <LanguageThemeProvider>
       <MenuBlock>
-        <MenuTitle><FormattedMessage {...messages.header} /></MenuTitle>
+        <MenuTitle>
+          <TranslatableStaticText text={KEY_CONTRIBUTE_HEADER} />
+        </MenuTitle>
         <MenuList>
           <MenuListItem>
             <MenuLink to="/contribute/how-it-works" onClick={props.onClick}>
-              <FormattedMessage {...messages.howItWorks} />
+              <TranslatableStaticText text={KEY_HOW_DOES_IT_WORK} />
             </MenuLink>
           </MenuListItem>
         </MenuList>
@@ -39,4 +38,4 @@ ContributeMenu.propTypes = {
 
 };
 
-export default injectIntl(ContributeMenu);
+export default ContributeMenu;
