@@ -25,19 +25,19 @@ function translatableStaticTextReducer(state = initialState, action) {
       return state;
 
     case LOAD_LANGUAGE:
-      console.log("Loading Language", action);
+      
       return state
               .set('loading', true)
               .set('complete', false)
               .set('error', false);
     case LOADING_LANGUAGE_COMPLETE:
-      console.log("Language Loaded", action);
+      
       return state.set('data', action.data)
                 .set('complete', true)
                 .set('loading', false)
                 .set('error', false)
     case LOADING_LANGUAGE_ERROR:
-    console.log("Language Loaded Error", action);
+    
       return state.set('data', null)
                 .set('loading', false)
                 .set('complete', false)

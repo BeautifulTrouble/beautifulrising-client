@@ -20,7 +20,7 @@ import { FormattedMessage, injectIntl} from 'react-intl';
 import keys from './constants';
 
 function PlatformsMenu(props) {
-  console.log("~~~~", keys.KEY_PLATFORMS_HEADER);
+
   return (
     <LanguageThemeProvider>
       <MenuBlock>

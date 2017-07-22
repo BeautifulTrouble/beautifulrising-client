@@ -49,7 +49,7 @@ const Item = styled.li`
 export class LanguageChanger extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   handleClick(e) {
     if (this.props.intl.locale !== e.target.value) {
-      console.log("CHANGE LOCATION");
+      
       this.props.handleChangeLocale(e.target.value);
       this.props.handleChangeLocationSignal();
     }

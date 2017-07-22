@@ -20,7 +20,7 @@ import { ABOUT_MENU, KEY_MENU_ABOUT } from './constants';
 
 function AboutMenu(props) {
   const { locale } = props.intl;
-  console.log("About Menu", ABOUT_MENU);
+  
   return (
     <LanguageThemeProvider>
       <MenuBlock>

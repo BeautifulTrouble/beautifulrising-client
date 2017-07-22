@@ -15,8 +15,8 @@ export class TranslatableStaticText extends React.PureComponent { // eslint-disa
 
   //Use to retrieve message from static text
   retrieveMessage() {
-    console.log("_____");
-    console.log(this.props.text);
+    
+
     const keys = this.props.text.split(".");
     let message = this.props.staticText.data;
     keys.forEach(key => {

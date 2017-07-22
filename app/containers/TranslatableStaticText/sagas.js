@@ -14,14 +14,14 @@ export const getTranslatableStaticText = (state) => state.get('translatableStati
 
 export function* loadLanguageItem() {
   // getContactUs.get(email);
-    console.log("XXXX");
+    
 
 
   const language = yield select(getLanguage);
 
 
   const requestURL = `https://api.beautifulrising.org/api/v1/text/ui?lang=${language.get('locale')}`;
-  console.log("Loading Via TranslatableStaticText", requestURL);
+  
 
   try {
     const data = yield call(request, requestURL);
@@ -39,9 +39,9 @@ export function* loadLanguageItem() {
 export function* initialLoadingCall() {
   // See example in containers/HomePage/sagas.js
 
-  console.log("XXXX", LOAD_LANGUAGE);
+  
   const action = yield takeLatest(LOAD_LANGUAGE, loadLanguageItem);
-  console.log("XXXX", action);
+  
   // yield take(CHANGE_LOCALE);
   //
   // yield cancel(action);
@@ -51,9 +51,9 @@ export function* initialLoadingCall() {
 
 export function* languageChanged() {
 
-  console.log("XXXX", CHANGE_LOCALE);
+  
   const action = yield takeLatest(CHANGE_LOCALE, loadLanguageItem);
-  console.log("XXXX");
+  
   // yield take(CHANGE_LOCALE);
 }
 
