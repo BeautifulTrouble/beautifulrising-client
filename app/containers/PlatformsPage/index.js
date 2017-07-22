@@ -17,15 +17,13 @@ import ChatbotIcon from 'assets/images/platform/chatbot.svg';
 import GameIcon from 'assets/images/platform/game.svg';
 import PDFIcon from 'assets/images/platform/pdf.svg';
 
-import PlatformsPageComponents, { Header } from 'components/PlatformsPageComponents';
+import Platform from 'containers/Platform';
+import Header from 'components/PlatformsPage/Header';
+
 import { loadData } from 'containers/App/actions';
 
 //For listening
 import { browserHistory } from 'react-router';
-
-import Chatbot from 'components/PlatformsPageComponents/Chatbot';
-import Game from 'components/PlatformsPageComponents/Game';
-import PDF from 'components/PlatformsPageComponents/PDF';
 
 import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
 
@@ -98,7 +96,7 @@ export class PlatformsPage extends React.Component { // eslint-disable-line reac
 
         <VisibilitySensor onChange={(isVisible) => this.componentIsVisible(isVisible, '/platforms/chatbot')}>
           <div>
-            <PlatformsPageComponents
+            <Platform
               ref="/platforms/chatbot"
               targetRoute="/platforms/chatbot"
               content={ this.props.aboutData.getIn(['platforms', 'chatbot'])}
@@ -110,7 +108,7 @@ export class PlatformsPage extends React.Component { // eslint-disable-line reac
 
         <VisibilitySensor onChange={(isVisible) => this.componentIsVisible(isVisible, '/platforms/game')}>
           <div>
-            <PlatformsPageComponents
+            <Platform
               ref="/platforms/game"
               targetRoute="/platforms/game"
               content={this.props.aboutData.getIn(['platforms', 'game'])}
@@ -122,7 +120,7 @@ export class PlatformsPage extends React.Component { // eslint-disable-line reac
 
         <VisibilitySensor onChange={(isVisible) => this.componentIsVisible(isVisible, '/platforms/pdf')}>
           <div>
-            <PlatformsPageComponents
+            <Platform
               ref="/platforms/pdf"
               targetRoute="/platforms/pdf"
               content={ this.props.aboutData.getIn(['platforms', 'pdf'])}
