@@ -186,6 +186,7 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
         <Partners
             ref="/about/partners"
             targetRoute="/about/partners"
+            header = { this.props.aboutData.getIn(['about', 'misc', 'partners'])}
             onChange={ this.componentIsVisible.bind(this) }
             networkPartners={this.props.aboutData.getIn(['about', 'network-partners'])}
         />
