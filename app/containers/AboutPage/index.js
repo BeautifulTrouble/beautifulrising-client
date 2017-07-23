@@ -148,7 +148,9 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
         <OurProcess ref={"/about/process"}
               targetRoute="/about/process"
               onChange={this.componentIsVisible.bind(this) }
+              header = { this.props.aboutData.getIn(['about', 'misc', 'process'])}
               participants={this.props.aboutData.get('workshop-participants')}
+              processes={this.props.aboutData.getIn(['about', 'process']) ? this.props.aboutData.getIn(['about', 'process']).toJS() : null}
               />
 
         <OurValues

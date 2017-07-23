@@ -27,8 +27,7 @@ We’ve conducted six ‘jam sessions’ around the world with diverse groups of
   },
   prototyping: {
     id: 'app.components.AboutPageComponents.prototyping',
-    defaultMessage: `# PROTOTYPING
-In each jam session, low-fidelity prototypes of the toolbox were presented to activists to take apart and put back together based on their needs and challenges.`,
+    defaultMessage: `In each jam session, low-fidelity prototypes of the toolbox were presented to activists to take apart and put back together based on their needs and challenges.`,
   },
   realization: {
     id: 'app.components.AboutPageComponents.realization',
