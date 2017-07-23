@@ -33,7 +33,7 @@ import SocialLink from 'components/MenuContactUs/SocialLink';
 import SubscribeCTA from 'components/MenuContactUs/SubscribeCTA';
 
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
-import key from './constants';
+import staticText from './staticText';
 
 export class ContactUs extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -58,7 +58,7 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
           <form onSubmit={this.handleSubmit.bind(this)}>
             <input type='email' name='email' onChange={this.handleChange.bind(this)} placeholder='samir@gmail.com'/>
             <button>
-              <TranslatableStaticText text={key.KEY_CONTACT_US_SUBMIT} />
+              <TranslatableStaticText {...staticText.submit} />
             </button>
           </form>
         </FormContainer>
@@ -81,7 +81,7 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
       <LanguageThemeProvider>
         <MenuBlock>
           <MenuTitle>
-            <TranslatableStaticText text={key.KEY_CONTACT_US_HEADER} />
+            <TranslatableStaticText {...staticText.header} />
           </MenuTitle>
           <EmailLink to='mailto:info@beautifulrising.org'>info@beautifulrising.org</EmailLink>
           <div>
@@ -92,7 +92,7 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
               <Isvg src={FacebookIcon} />
             </SocialLink>
             <SubscribeCTA>
-              <TranslatableStaticText text={key.KEY_CONTACT_US_SUBSCRIBE} />
+              <TranslatableStaticText {...staticText.subscribe} />
             </SubscribeCTA>
           </div>
 

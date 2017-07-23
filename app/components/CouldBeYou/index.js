@@ -13,7 +13,7 @@ import Markdown from 'react-remarkable';
 import SmallHeaderBlock from 'components/SmallHeaderBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import messages from './messages';
 
 const Container = styled.div`

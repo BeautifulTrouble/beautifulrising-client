@@ -18,23 +18,23 @@ import MenuTitle from 'components/MenuTitle';
 
 import { FormattedMessage, injectIntl } from 'react-intl';
 import messages from './messages';
-import keys from './constants';
+import staticText from './staticText';
 
 
 function TrainingMenu(props) {
   return (
     <LanguageThemeProvider>
       <MenuBlock>
-        <MenuTitle><TranslatableStaticText text={keys.KEY_TRAINING_HEADER} /></MenuTitle>
+        <MenuTitle><TranslatableStaticText {...staticText.header} /></MenuTitle>
         <MenuList>
           <MenuListItem>
             <MenuLink to="/resources/training" onClick={props.onClick}>
-              <TranslatableStaticText text={keys.KEY_TRAINING} />
+              <TranslatableStaticText  {...staticText.training} />
             </MenuLink>
           </MenuListItem>
           <MenuListItem>
             <MenuLink to="/resources/other" onClick={props.onClick}>
-              <TranslatableStaticText text={keys.KEY_OTHER} />
+              <TranslatableStaticText {...staticText.other} />
             </MenuLink>
           </MenuListItem>
         </MenuList>

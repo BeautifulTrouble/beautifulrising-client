@@ -20,12 +20,12 @@ import { ABOUT_MENU, KEY_MENU_ABOUT } from './constants';
 
 function AboutMenu(props) {
   const { locale } = props.intl;
-  
+
   return (
     <LanguageThemeProvider>
       <MenuBlock>
         <MenuTitle>
-          <TranslatableStaticText text={KEY_MENU_ABOUT} />
+          <TranslatableStaticText id={KEY_MENU_ABOUT} />
         </MenuTitle>
         <MenuList>
           {
@@ -33,7 +33,7 @@ function AboutMenu(props) {
 
               <MenuListItem key={item.to}>
                 <MenuLink to={item.to}  onClick={props.onClick}>
-                  <TranslatableStaticText text={item.text} more={console.log(item.text)}/>
+                  <TranslatableStaticText id={item.text} />
                 </MenuLink>
               </MenuListItem>
             ))
