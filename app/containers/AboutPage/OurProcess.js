@@ -74,7 +74,6 @@ class OurProcess extends React.Component {
   renderProcess() {
     const { locale } = this.props.intl;
     const {processes} = this.props;
-    console.log("PRocesses", processes);
     if (!processes) return null;
     // processes[0] is the list
     return (
