@@ -10,10 +10,11 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
 import AdderRemover from 'containers/Tools/AdderRemover';
-import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import ToolsPotentialRisk from 'containers/ToolsPotentialRisk';
+
 import { ToolRightArea, ToolsPageRelatedToolsHeader, ToolsPageRightHeader, ToolsRelatedArea, ToolsRelatedContainer } from 'components/ToolsPageComponents';
 import ToolsRelatedTool from 'components/ToolsRelatedTool';
-import ToolsPotentialRisk from 'components/ToolsPotentialRisk';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import messages from './messages';
 
 // import { makeSelectToolById } from 'containers/Tool/selectors';
