@@ -8,8 +8,10 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { push } from 'react-router-redux';
-import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+
 import { createStructuredSelector } from 'reselect';
+
+import TranslatableStaticText from 'containers/TranslatableStaticText';
 import Tags from 'containers/Tags';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
@@ -27,38 +29,22 @@ import ToolsSortOptions from 'containers/ToolsSortOptions';
 import LeftSection from 'components/LeftSection';
 import ClearButton from 'components/ClearButton';
 
-import { LeftHeader, LeftContainer } from 'components/HomePageComponents';
+import { LeftHeader, LeftContainer } from 'components/HomePage';
 
 import Stage from 'components/Stage';
 
 import { loadData } from '../App/actions';
 import makeSelectHomePage, { makeSelectSearchFieldValue, makeSelectToolView, makeSelectAllTools, isToolsShown, makeSortedTools, makeSelectLanguage } from './selectors';
-import styled from 'styled-components';
 
+import SearchResultsContainer from 'components/HomePage/SearchResultsContainer';
+import Container from 'components/HomePage/Container' ;
 
 import ToolList from './ToolList';
 import BlockViewItem from './BlockViewItem';
 import ListViewItem from './ListViewItem';
 import Header from './Header';
-import messages from './messages';
+import staticText from './staticText';
 
-const SearchResultsContainer = styled.div`
-  padding-${p=>p.theme.isArabic?'right':'left'}: 59px;
-  color: #828486;
-`;
-const SearchResultsText = styled.span``;
-
-const Container = styled.div`
-  // transition: padding-top 0.3s ease;
-  ${props=> {
-    if(!props.shorten) {
-      return `padding-top: ${props.full ? '490px' : props.isStory ? '440px' : '360px'};`
-    } else {
-      return `padding-top: ${props.full ? '290px' : props.isStory ? '240px' : '160px'};`
-    }
-  }
-  }
-`;
 
 const TOP=0,MIDDLE=1,BOTTOM=2;
 
@@ -110,10 +96,12 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
       <LanguageThemeProvider>
         <SearchResultsContainer>
           <ContentBlock>
-            <SearchResultsText>
-              <ClearButton onClick={this.handleClearSearch.bind(this)}><FormattedMessage {...messages.clearSearch} /></ClearButton>
-              <FormattedHTMLMessage {...messages.searchResults} values={{label: this.props.params.label, count: this.props.sorted ? this.props.sorted.length : 0 }} />
-            </SearchResultsText>
+            <span>
+              <ClearButton onClick={this.handleClearSearch.bind(this)}>
+                <TranslatableStaticText {...staticText.clearSearch} />
+              </ClearButton>
+              <TranslatableStaticText {...staticText.searchResults} values={{query: this.props.params.label, count: this.props.sorted ? this.props.sorted.length : 0 }} />
+            </span>
           </ContentBlock>
         </SearchResultsContainer>
       </LanguageThemeProvider>
@@ -156,7 +144,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           <LeftSection lang={lang}>
 
             <LeftHeader>
-              <FormattedMessage {...messages.viewAs} />
+              <TranslatableStaticText {...staticText.viewAs} />
             </LeftHeader>
 
             <LeftContainer>
@@ -164,7 +152,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             </LeftContainer>
 
             <LeftHeader>
-              <FormattedMessage {...messages.sortBy} />
+              <TranslatableStaticText {...staticText.sortBy} />
             </LeftHeader>
 
             <LeftContainer>
@@ -173,7 +161,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 
 
             <LeftHeader>
-              <FormattedMessage {...messages.tags} />
+              <TranslatableStaticText {...staticText.tags} />
             </LeftHeader>
             <Tags {...this.props} align={'center'} showClear={true}/>
           </LeftSection>

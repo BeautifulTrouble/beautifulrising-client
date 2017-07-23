@@ -13,7 +13,6 @@ import ToolTypeArea from 'containers/ToolTypeArea';
 import SearchField from 'containers/SearchField';
 
 import Link from 'components/Link';
-import TypeMenu from 'components/TypeMenu';
 
 import messages from './messages';
 
