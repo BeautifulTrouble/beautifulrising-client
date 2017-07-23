@@ -8,7 +8,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import { Link } from 'react-router';
-import { FormattedMessage } from 'react-intl';
 
 import ContentBlock from 'components/ContentBlock';
 import Isvg from 'react-inlinesvg';
@@ -19,20 +18,6 @@ import { TYPE_STORIES, TYPE_TACTICS, TYPE_PRINCIPLES,
           TYPE_THEORIES, TYPE_METHODOLOGIES } from './constants';
 
 import RealWorldIconImage from 'assets/images/icons/real-world.svg';
-
-
-
-function ToolsComponents() {
-  return (
-    <div>
-      <FormattedMessage {...messages.header} />
-    </div>
-  );
-}
-
-ToolsComponents.propTypes = {
-
-};
 
 export const getToolTypeColor = (type) => {
   switch(type) {
@@ -285,4 +270,3 @@ export const ListDivider = styled.h3`
   margin-top: 0px;
   width: 60px;
 `;
-export default ToolsComponents;
