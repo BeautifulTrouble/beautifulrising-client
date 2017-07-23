@@ -11,16 +11,12 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import Recaptcha from 'react-google-invisible-recaptcha';
 
+import { ToolLeftArea, ToolsPageLeftHeader, ToolsPageContributor } from 'components/ToolsPageComponents';
+import { selectAuthor } from 'containers/Author/selectors';
+
+import ContentBlock from 'components/ContentBlock';
 import { RECAPTCHA_SITE_KEY } from 'components/CommonComponents/constants';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
-import ContentBlock from 'components/ContentBlock';
-
-import { ToolLeftArea, ToolsPageLeftHeader, ToolsPageContributor } from 'components/ToolsPageComponents';
-import makeSelectAskTheContributor from './selectors';
-import { selectAuthor } from 'containers/Author/selectors';
-import { askContributorQuestion } from './actions';
-import messages from './messages';
-
 
 import Container from 'components/AskTheContributor/Container';
 import Form from 'components/AskTheContributor/Form';
@@ -29,6 +25,10 @@ import TextArea from 'components/AskTheContributor/TextArea';
 import Email from 'components/AskTheContributor/Email';
 import SubmitContainer from 'components/AskTheContributor/SubmitContainer';
 import Submit from 'components/AskTheContributor/Submit';
+
+import { askContributorQuestion } from './actions';
+import messages from './messages';
+import makeSelectAskTheContributor from './selectors';
 
 export class AskTheContributor extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
