@@ -14,7 +14,7 @@ import TacticFlag from 'assets/images/flag/tactic.svg';
 import TheoryFlag from 'assets/images/flag/theory.svg';
 import { injectIntl } from 'react-intl';
 
-import TypeFlagTooltip from 'components/TypeFlagTooltip';
+import TypeFlagTooltip from 'containers/TypeFlagTooltip';
 import BigMethodologyFlag from 'assets/images/flag/big-methodology.svg';
 import BigPrincipleFlag from 'assets/images/flag/big-principle.svg';
 import BigTacticFlag from 'assets/images/flag/big-tactic.svg';
