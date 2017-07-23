@@ -17,39 +17,12 @@ import ContentBlock from 'components/ContentBlock';
 import makeSelectEmailTools from './selectors';
 import messages from './messages';
 
-const Container = styled.div`
-  padding: 5px;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-  border-bottom: 2px solid;
-`;
-const Viewport = styled.div``;
-const Form = styled.form`
-border: 1px solid;
-padding: 8px;
-
-input[type=email] {
-  width: calc(100% - 70px);
-  outline: none;
-  padding: 2px;
-}
-button {
-  outline: none;
-  width: 70px;
-  cursor: pointer;
-  text-transform: uppercase;
-  text-decoration: underline;
-  font-weight: bold;
-  color: #828486;
-}
-
-`;
-const TextInput = styled.input``;
-const Button = styled.button``;
-const Title = styled.h3`margin: 0; line-height: 1`;
-const Message = styled(ContentBlock)`margin: 0 0 10px`;
-const FormContainer = styled(ContentBlock)`
-`;
+const Container =
+const Form =
+const TextInput =
+const Button =
+const Title =
+const Message =
 
 export class EmailTools extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -86,14 +59,14 @@ export class EmailTools extends React.PureComponent { // eslint-disable-line rea
             <FormattedMessage {...messages.instruction} />
           </Message>
           {this.props.EmailTools.complete ? this.renderCompleteMessage() : null}
-          <FormContainer>
+          <ContentBlock>
             <Form onSubmit={this.handleSubmit.bind(this)}>
               <TextInput type='email' name='email' onChange={this.handleChange.bind(this)} placeholder='samir@gmail.com'/>
               <Button>
                 <FormattedMessage {...messages.submit} />
               </Button>
             </Form>
-          </FormContainer>
+          </ContentBlock>
         </Container>
       </LanguageThemeProvider>
     );
