@@ -6,10 +6,6 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  header: {
-    id: 'app.components.ToolKeyItems.header',
-    defaultMessage: 'This is the ToolKeyItems component !',
-  },
   tactic: {
     id: 'app.components.ToolKeyItems.keyTactic',
     defaultMessage: 'Key Tactic',
