@@ -13,19 +13,19 @@ import MenuBlock from 'components/MenuBlock';
 import MenuList from 'components/MenuList';
 import MenuListItem from 'components/MenuListItem';
 import MenuTitle from 'components/MenuTitle';
-import { KEY_CONTRIBUTE_HEADER, KEY_HOW_DOES_IT_WORK} from './constants';
+import staticText from './staticText';
 
 function ContributeMenu(props) {
   return (
     <LanguageThemeProvider>
       <MenuBlock>
         <MenuTitle>
-          <TranslatableStaticText id={KEY_CONTRIBUTE_HEADER} />
+          <TranslatableStaticText {...staticText.header} />
         </MenuTitle>
         <MenuList>
           <MenuListItem>
             <MenuLink to="/contribute/how-it-works" onClick={props.onClick}>
-              <TranslatableStaticText id={KEY_HOW_DOES_IT_WORK} />
+              <TranslatableStaticText {...staticText.howItWorks} />
             </MenuLink>
           </MenuListItem>
         </MenuList>

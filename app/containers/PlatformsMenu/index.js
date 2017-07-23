@@ -17,31 +17,31 @@ import MenuSubtitle from 'components/MenuSubtitle';
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 
 import { FormattedMessage, injectIntl} from 'react-intl';
-import keys from './constants';
+import staticText from './staticText';
 
 function PlatformsMenu(props) {
 
   return (
     <LanguageThemeProvider>
       <MenuBlock>
-        <MenuTitle><TranslatableStaticText id={keys.KEY_PLATFORMS_HEADER}/></MenuTitle>
+        <MenuTitle><TranslatableStaticText {...staticText.header}/></MenuTitle>
         <MenuSubtitle>
-          <TranslatableStaticText id={keys.KEY_PLATFORMS_SUBHEADER} />
+          <TranslatableStaticText {...staticText.subheader} />
         </MenuSubtitle>
         <MenuList>
           <MenuListItem>
             <MenuLink to="/platforms/chatbot" onClick={props.onClick}>
-              <TranslatableStaticText id={keys.KEY_PLATFORMS_CHAT_BOT} />
+              <TranslatableStaticText {...staticText.chatbot} />
             </MenuLink>
           </MenuListItem>
           <MenuListItem>
             <MenuLink to="/platforms/game" onClick={props.onClick}>
-              <TranslatableStaticText id={keys.KEY_PLATFORMS_GAME} />
+              <TranslatableStaticText {...staticText.game} />
             </MenuLink>
           </MenuListItem>
           <MenuListItem>
             <MenuLink to="/platforms/pdf" onClick={props.onClick}>
-              <TranslatableStaticText id={keys.KEY_PLATFORMS_PDF} />
+              <TranslatableStaticText {...staticText.pdf} />
             </MenuLink>
           </MenuListItem>
         </MenuList>
