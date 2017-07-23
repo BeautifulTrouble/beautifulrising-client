@@ -8,7 +8,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { FormattedMessage, injectIntl} from 'react-intl';
-import { CommonLeftHeader } from 'components/CommonComponents';
+import CommonLeftHeader from 'components/CommonComponents/CommonLeftHeader';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import {RouterLink} from 'utils/markdown';
@@ -28,7 +28,7 @@ const Content = styled(ContentBlock)`
 function ToolTextSection(props) {
   if (!props.text) return null;
   if (!props.show) return null;
-  
+
   return (
     <LanguageThemeProvider>
       <Header lang={props.intl.locale}>

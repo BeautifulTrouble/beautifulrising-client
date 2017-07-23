@@ -22,7 +22,7 @@ import { ToolMainArea,
 
 
 
-import ToolHowToUse from 'components/ToolHowToUse';
+import ToolHowToUse from 'containers/ToolHowToUse';
 import ToolWhyItWorked from 'components/ToolWhyItWorked';
 import ToolWhyItFailed from 'components/ToolWhyItFailed';
 import ToolKeyItems from 'components/ToolKeyItems';

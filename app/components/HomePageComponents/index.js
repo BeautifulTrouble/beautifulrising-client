@@ -6,7 +6,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { CommonLeftHeader } from 'components/CommonComponents';
+import CommonLeftHeader from 'components/CommonComponents/CommonLeftHeader';
 import SmallSectionHeader from 'components/SmallSectionHeader';
 
 function HomePageComponents() {

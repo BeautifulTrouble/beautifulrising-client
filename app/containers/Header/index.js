@@ -7,7 +7,6 @@
 import React from 'react';
 // import Link from 'components/Link';
 import Logo from 'components/Logo';
-import TypeMenu from 'components/TypeMenu';
 import styled, { ThemeProvider } from 'styled-components';
 import ModalMenu from 'containers/ModalMenu';
 import Link from 'components/Link';

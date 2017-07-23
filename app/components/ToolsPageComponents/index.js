@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import SmallSectionHeader from 'components/SmallSectionHeader';
 import ContentBlock from 'components/ContentBlock';
 import { ToolType, ToolTitle } from 'components/ToolsComponents';
-import { CommonLeftHeader } from 'components/CommonComponents';
+import CommonLeftHeader from 'components/CommonComponents/CommonLeftHeader';
 import { Link } from 'react-router';
 
 function ToolsPageComponents() {

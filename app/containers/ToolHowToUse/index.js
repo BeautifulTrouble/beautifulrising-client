@@ -7,22 +7,19 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ContentBlock from 'components/ContentBlock';
+
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { CommonLeftHeader } from 'components/CommonComponents';
 import { RouterLink } from 'utils/markdown';
 import Markdown from 'react-markdown';
-import messages from './messages';
-import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
-const Header = styled(CommonLeftHeader)`
-  border: none;
-  margin-top: 40px;
-`;
-const Content = styled.div`
-  img { width: 100%; }
-  li { margin-bottom: 20px; }
-`;
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+
+import ContentBlock from 'components/ContentBlock';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import Header from 'components/ToolHowToUse/Header';
+import Content from 'components/ToolHowToUse/Content';
+
+import staticText from './staticText';
 
 function ToolHowToUse(props) {
   if (!props.text) return null;
@@ -32,7 +29,7 @@ function ToolHowToUse(props) {
   return (
     <LanguageThemeProvider>
       <Header>
-        <FormattedMessage {...messages.header} />
+        <TranslatableStaticText {...staticText.header} />
       </Header>
       <Content lang={lang}>
         <ContentBlock>
