@@ -24,7 +24,7 @@ import { ToolMainArea,
 
 import ToolHowToUse from 'containers/ToolHowToUse';
 import ToolWhyItWorked from 'components/ToolWhyItWorked';
-import ToolWhyItFailed from 'components/ToolWhyItFailed';
+import ToolWhyItFailed from 'containers/ToolWhyItFailed';
 import ToolKeyItems from 'containers/ToolKeyItems';
 import ToolEpigraph from 'components/ToolEpigraph';
 import ToolWithPullQuote from 'components/ToolWithPullQuote';

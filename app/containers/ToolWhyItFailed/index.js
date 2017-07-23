@@ -6,33 +6,31 @@
 
 import React from 'react';
 import styled from 'styled-components';
-
+import Markdown from 'react-markdown';
 import { FormattedMessage, injectIntl} from 'react-intl';
+
+import {RouterLink} from 'utils/markdown';
+
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+
 import CommonLeftHeader from 'components/CommonComponents/CommonLeftHeader';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
-import {RouterLink} from 'utils/markdown';
-import Markdown from 'react-markdown';
+import Header from 'components/ToolWhyItFailed/Header';
+import Content from 'components/ToolWhyItFailed/Content';
+
 import messages from './messages';
+import staticText from './staticText';
 
-const Header = styled(CommonLeftHeader)`
-  border: none;
-  text-align: ${props=>props.lang==='ar' ? 'right' : 'left'};
-  margin-top: 40px;
-`;
-const Content = styled(ContentBlock)`
-  img { width: 100%; }
-  li { margin-bottom: 20px; }
-`;
 
-function ToolTextSection(props) {
+function ToolWhyItFailed(props) {
   if (!props.text) return null;
   if (!props.show) return null;
 
   return (
     <LanguageThemeProvider>
       <Header lang={props.intl.locale}>
-        <FormattedMessage {...messages.header} />
+        <TranslatableStaticText {...staticText.header} />
       </Header>
       <Content lang={props.intl.locale}>
         <Markdown
@@ -44,8 +42,8 @@ function ToolTextSection(props) {
   );
 }
 
-ToolTextSection.propTypes = {
+ToolWhyItFailed.propTypes = {
 
 };
 
-export default injectIntl(ToolTextSection);
+export default injectIntl(ToolWhyItFailed);
