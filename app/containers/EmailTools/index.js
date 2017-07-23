@@ -17,12 +17,12 @@ import ContentBlock from 'components/ContentBlock';
 import makeSelectEmailTools from './selectors';
 import messages from './messages';
 
-const Container =
-const Form =
-const TextInput =
-const Button =
-const Title =
-const Message =
+import Container from 'components/EmailTools/Container';
+import Form from 'components/EmailTools/Form';
+import TextInput from 'components/EmailTools/TextInput';
+import Button from 'components/EmailTools/Button';
+import Title from 'components/EmailTools/Title';
+import Message from 'components/EmailTools/Message';
 
 export class EmailTools extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {

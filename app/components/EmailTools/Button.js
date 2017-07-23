@@ -1,4 +1,6 @@
-styled.button`
+import styled from 'styled-components';
+
+export default styled.button`
   outline: none;
   width: 70px;
   cursor: pointer;

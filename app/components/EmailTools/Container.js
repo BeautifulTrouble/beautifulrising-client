@@ -1,4 +1,6 @@
-styled.div`
+import styled from 'styled-components';
+
+export default styled.div`
   padding: 5px;
   padding-bottom: 10px;
   margin-bottom: 10px;
