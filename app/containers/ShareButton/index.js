@@ -6,21 +6,26 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import { injectIntl } from 'react-intl';
+import Isvg from 'react-inlinesvg';
 
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { twitterShare, facebookShare } from 'utils/social';
+
+
 import messages from './messages';
 import ShareIcon from 'assets/images/icons/share-small.svg';
 import FacebookIcon from 'assets/images/icons/facebook.svg';
 import TwitterIcon from 'assets/images/icons/twitter.svg';
 import MailIcon from 'assets/images/icons/email.svg';
-import { twitterShare, facebookShare } from 'utils/social';
-import Isvg from 'react-inlinesvg';
 
-const Container =
-const ShareArea =
-const FacebookButton =
-const TwitterButton =
-const MailButton =
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+
+import Container from 'components/ShareButton/Container';
+import ShareArea from 'components/ShareButton/ShareArea';
+import Button from 'components/ShareButton/Button';
+import FacebookButton from 'components/ShareButton/FacebookButton';
+import TwitterButton from 'components/ShareButton/TwitterButton';
+import MailButton from 'components/ShareButton/MailButton';
 
 class ShareButton extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -35,7 +40,7 @@ class ShareButton extends React.PureComponent { // eslint-disable-line react/pre
     return (
       <span>
         <Isvg src={ShareIcon} />
-        <FormattedMessage {...messages.share} />
+        <TranslatableStaticText {...staticText.share} />
       </span>
     )
   }

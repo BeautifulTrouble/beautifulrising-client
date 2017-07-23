@@ -27,7 +27,7 @@ import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
 
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
-import ShareButton from 'components/ShareButton';
+import ShareButton from 'containers/ShareButton';
 import SelectedToolItem from 'components/SelectedTool/SelectedToolItem';
 import SelectedToolTitle from 'components/SelectedTool/SelectedToolTitle';
 import SelectedToolSnapshot from 'components/SelectedTool/SelectedToolSnapshot';

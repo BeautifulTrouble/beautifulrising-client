@@ -25,7 +25,7 @@ import { ToolHeaderContainer,
 import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
 import { RouterLink } from 'utils/markdown';
 import ShareIcon from 'assets/images/icons/share-small.svg';
-import ShareButton from 'components/ShareButton';
+import ShareButton from 'containers/ShareButton';
 import TypeFlag from 'components/TypeFlag';
 import TypeOverlay from 'components/TypeOverlay';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
