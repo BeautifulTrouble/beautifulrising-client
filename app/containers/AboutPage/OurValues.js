@@ -20,56 +20,19 @@ const List = styled.ul`
   text-align: left;
   padding-left: 0;
 `;
-const SubList = styled.ul``;
 
-const ListItem = styled.li`
-  list-style: none;
-  text-align: left;
-`
-const Count = styled.h4`
-  display: inline-block;
-  border: 2px solid;
-  border-width: 0 0 2px;
-  padding: 10px 20px 2px 5px;
-  margin: 0;
-  font-size: 30px;
-  font-family: 'KnockOut', 'Greta';
-  margin-bottom: 4px;
-  &::after {
-    content: ' ';
-    display: block;
-    clear: both;
-  }
-`;
-
-const SubListItem = styled.li`
-  list-style: none;
-  text-align: ${p=>p.lang==='ar'?'right':'left'};
-`;
-
-const ValueHeader = styled(SmallHeaderBlock)`
-  margin: 0;
-  &::before {
-    content: ' ';
-    width: 42px;
-    height: 1px;
-    border-bottom: 2px solid;
-  }
-`
-
-const SubListContentBlock = styled(ContentBlock)`
-  padding-${p=>p.theme.isArabic?'right':'left'}: 100px !important;
-  margin: 10px;
-`;
+import ListItem from 'components/AboutPage/Values/ListItem';
+import Count from 'components/AboutPage/Values/Count';
+import SubListItem from 'components/AboutPage/Values/SubListItem';
+import ValueHeader from 'components/AboutPage/Values/ValueHeader';
+import SubListContentBlock from 'components/AboutPage/Values/SubListContentBlock';
 
 export class OurValues extends React.Component {
 
   renderHeader() {
     return (
       <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
-        <h2>
-          <FormattedMessage {...messages.ourValuesHeader} />
-        </h2>
+        <h2>{this.props.header}</h2>
       </VisibilitySensor>
     )
   }
@@ -86,7 +49,7 @@ export class OurValues extends React.Component {
                       switch(item.get('type')) {
                         case 'introduction': return null;
                         case 'values': return (
-                          <SubList key={ind}>
+                          <ul key={ind}>
                             { item.get('value').map((subitem, subindex) => (
                                 <SubListItem key={subindex} lang={lang}>
                                   <Count>{subindex + 1}</Count>
@@ -96,17 +59,17 @@ export class OurValues extends React.Component {
                                   </SubListContentBlock>
                                 </SubListItem>
                             )) }
-                          </SubList>
+                          </ul>
                         );
                         case 'disclaimer': return (
-                          <SubList key={ind}>
+                          <ul key={ind}>
                             <SubListItem lang={lang} style={{paddingTop: 40}}>
                               <ValueHeader>{item.get('value')}</ValueHeader>
                             </SubListItem>
-                          </SubList>
+                          </ul>
                         );
                         case 'disclaimer-text': return (
-                          <SubList key={ind}>
+                          <ul key={ind}>
                             <SubListItem lang={lang}>
                               <SubListContentBlock>
                                 <p key={ind} style={{color: '#828486'}}>
@@ -114,7 +77,7 @@ export class OurValues extends React.Component {
                                 </p>
                               </SubListContentBlock>
                             </SubListItem>
-                          </SubList>
+                          </ul>
                         );
                      }
                    }

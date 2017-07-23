@@ -156,6 +156,7 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
         <OurValues
             ref="/about/values"
             targetRoute="/about/values"
+            header = { this.props.aboutData.getIn(['about', 'misc', 'values'])}
             onChange={this.componentIsVisible.bind(this) }
             ourValues={this.props.aboutData.getIn(['about', 'values'])}
         />
