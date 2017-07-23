@@ -22,15 +22,20 @@ function CommonComponents() {
 
 export const getToolTypeColor = (type) => {
   switch(type) {
-    case TYPE_STORIES:
+    case "story":
+    case "stories":
       return "#08eb8c";
-    case TYPE_TACTICS:
+    case "tactic":
+    case "tactics":
       return "#ff9200";
-    case TYPE_PRINCIPLES:
+    case "principle":
+    case "principles":
       return "#166ce3";
-    case TYPE_THEORIES:
+    case "theory":
+    case "theories":
       return "#f93732";
-    case TYPE_METHODOLOGIES:
+    case "methodology":
+    case "methodologies":
       return "#b700c2";
   }
 }
