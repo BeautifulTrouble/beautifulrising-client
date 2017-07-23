@@ -8,13 +8,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { FormattedMessage, injectIntl } from 'react-intl';
-import messages from 'containers/HomePage/messages';
+
+import TranslatableStaticText from 'containers/TranslatableStaticText';
 
 import Container from 'components/TypeFlagTooltip/Container';
 import TypeTile from 'components/TypeFlagTooltip/TypeTile';
 import TypeName from 'components/TypeFlagTooltip/TypeName';
 import List from 'components/TypeFlagTooltip/List';
 import Item from 'components/TypeFlagTooltip/Item';
+
+import staticText from './staticText';
 
 function TypeFlagTooltip(props) {
   const lang = props.intl.locale;
@@ -29,7 +32,7 @@ function TypeFlagTooltip(props) {
             <Item key={ind} lang={lang}>
               <TypeTile type={item.name} />
               <TypeName mainType={item.name===props.type} class={'typeName'}>
-                <FormattedMessage {...messages[item.name]} />
+                <TranslatableStaticText {...staticText[item.name]} />
               </TypeName>
             </Item>))}
         </List>
