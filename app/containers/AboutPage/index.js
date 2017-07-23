@@ -163,6 +163,7 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
             targetRoute="/about/advisory-network"
             onChange={this.componentIsVisible.bind(this) }
             advisoryNetwork = {this.props.advisoryBoard}
+            header = { this.props.aboutData.getIn(['about', 'misc', 'advisory-network'])}
             introText = { this.props.aboutData.getIn(['about', 'advisory-network', 'introduction'])}
         />
         <OurTeam

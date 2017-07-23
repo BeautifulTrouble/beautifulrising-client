@@ -6,95 +6,28 @@
 
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
+import Markdown from 'react-remarkable';
+import VisibilitySensor from 'react-visibility-sensor';
+import { FormattedMessage, injectIntl } from 'react-intl';
+
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
-import { FormattedMessage, injectIntl } from 'react-intl';
-import IntroText from 'components/AboutPage/IntroText';
 import Introduction from 'components/AboutPage/Introduction';
-import AboutSection from 'components/AboutPage/AboutSection';
-
 import { themeThreeColumns } from 'components/CommonComponents';
-import VisibilitySensor from 'react-visibility-sensor';
-import Markdown from 'react-remarkable';
+import AdvisoryNetworkListItem from 'components/AboutPage/AdvisoryNetworkListItem';
+import AdvisoryNetworkImage from 'components/AboutPage/AdvisoryNetworkImage';
+import AdvisoryNetworkSection from 'components/AboutPage/AdvisoryNetworkSection';
+import AdvisoryNetworkIntro from 'components/AboutPage/AdvisoryNetworkIntro';
+
 import messages from './messages';
 
-const List = styled.ul``;
-
-const ListItem = styled.li`list-style: none;
-  width: ${props=>props.theme.itemWidth};
-  margin-${p=>p.theme.isArabic?'left':'right'}: ${props=>props.theme.itemMargin};
-  display: inline-block;
-  vertical-align: top;
-  margin-bottom: 50px;
-  text-align: ${p=>p.theme.isArabic?'right':'left'};
-
-  h3 {
-
-    font-size: 19px;
-    font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
-    margin: 0;
-    margin-top: 15px;
-    text-align: ${p=>p.theme.isArabic?'right':'left'};
-    text-transform: uppercase;
-    letter-spacing: 0;
-
-  }
-  h5 {
-    margin: 0;
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
-    letter-spacing: 0;
-  }
-
-  p {
-    padding-${p=>p.theme.isArabic?'left':'right'}: 30px;
-
-    a {
-      color: #828486;
-    }
-  }`;
-
-const Image = styled.div`
-  display: inline-block;
-  width: 150px;
-  height: 150px;
-  background-image: url(${props=> `https://www.beautifulrising.org/assets/content/small-${props.source}`})
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: 2px solid;
-`;
-
-const Name = styled.h3`
-`;
-const Team = styled.h5`
-`;
-const Content = styled.div``;
-
-const AdvisoryNetworkSection =styled(AboutSection)`
-  text-align: ${p=>p.theme.isArabic?'right':'left'};
-  h2 {
-    &::after {
-      ${p=>p.theme.isArabic?'right':'left'}: 83%;
-    }
-  }
-`;
-
-const AdvisoryNetworkIntro = styled(IntroText)`
-  margin-${p=>p.theme.isArabic?'right':'left'}: 82%;
-  width: 33%;
-  padding: 0;
-`
 export class OurAdvisoryNetwork extends React.Component {
   renderHeader() {
     return (
       <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
-        <div>
-          <h2>
-            <FormattedMessage {...messages.ourAdvisoryNetworkHeader} />
-          </h2>
-        </div>
+        <h2>
+          {this.props.header}
+        </h2>
       </VisibilitySensor>
     );
   }
@@ -112,18 +45,18 @@ export class OurAdvisoryNetwork extends React.Component {
             </AdvisoryNetworkIntro>
           </Introduction>
           <ThemeProvider theme={themeThreeColumns}>
-            <List>
+            <ul>
               { this.props.advisoryNetwork.map((item, ind) => (
-                <ListItem key={ind}>
-                  <Image source={item['image']} />
-                  <Name>{item['person']}</Name>
-                  <Team>ADVISORY NETWORK</Team>
+                <AdvisoryNetworkListItem key={ind}>
+                  <AdvisoryNetworkImage source={item['image']} />
+                  <h3>{item['person']}</h3>
+                  <h5>ADVISORY NETWORK</h5>
                   <ContentBlock>
                     <Markdown source={item['team-bio']} />
                   </ContentBlock>
-                </ListItem>
+                </AdvisoryNetworkListItem>
               ))}
-            </List>
+            </ul>
           </ThemeProvider>
         </AdvisoryNetworkSection>
       </LanguageThemeProvider>
