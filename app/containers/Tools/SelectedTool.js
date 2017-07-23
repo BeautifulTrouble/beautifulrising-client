@@ -26,8 +26,12 @@ import StoryFlag from 'assets/images/type/story-small.svg';
 
 import { Link } from 'react-router';
 
-import { SelectedToolItem, SelectedToolTitle,
-          SelectedToolSnapshot, SelectedToolCommands, SelectedToolCommandItem } from 'components/SelectedToolComponents';
+import SelectedToolItem from 'components/SelectedTool/SelectedToolItem';
+import SelectedToolTitle from 'components/SelectedTool/SelectedToolTitle';
+import SelectedToolSnapshot from 'components/SelectedTool/SelectedToolSnapshot';
+import SelectedToolCommands from 'components/SelectedTool/SelectedToolCommands';
+import SelectedToolCommandItem from 'components/SelectedTool/SelectedToolCommandItem';
+
 import AdderRemover from './AdderRemover';
 
 const SelectedToolCommandContent = styled(ContentBlock)`
