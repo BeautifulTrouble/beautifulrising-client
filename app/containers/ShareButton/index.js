@@ -16,60 +16,11 @@ import MailIcon from 'assets/images/icons/email.svg';
 import { twitterShare, facebookShare } from 'utils/social';
 import Isvg from 'react-inlinesvg';
 
-const Container = styled.div`
-  position: relative;
-  display: inline-block;
-`;
-const Button = styled.button`
-  outline: none;
-  padding: 0; margin: 0;
-  cursor: pointer;
-  padding: 2px;
-  text-transform: uppercase;
-  span svg {
-    width: 20px;
-    height: 20px;
-
-    * {
-      fill: white ;
-    }
-  }
-`;
-const ShareArea = styled.div `
-  position: absolute;
-  width: 100px;
-  ${props=>props.lang==='ar' ? 'right' : 'left'}: 100%;
-  // display: ${props=>props.show?'block':'none'};
-  opacity: ${p=>p.show?1:0};
-  visibility: ${p=>p.show?'visible':'hidden'};
-  transition: opacity 0.2s ease;
-
-  a, button {
-
-
-  }
-`;
-const FacebookButton = styled(Button)`
-
-`;
-const TwitterButton = styled(Button)`
-
-`;
-
-const MailButton = styled.a`
-  outline: none;
-  padding: 0; margin: 0;
-  cursor: pointer;
-  padding: 5px;
-  span svg {
-    width: 20px;
-    height: 20px;
-
-    * {
-      fill: white ;
-    }
-  }
-`
+const Container =
+const ShareArea =
+const FacebookButton =
+const TwitterButton =
+const MailButton =
 
 class ShareButton extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
