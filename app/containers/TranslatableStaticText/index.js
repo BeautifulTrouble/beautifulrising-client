@@ -24,7 +24,7 @@ export class TranslatableStaticText extends React.PureComponent { // eslint-disa
       message = message[key];
     });
 
-    return message;
+    return message || this.props.defaultMessage;
   }
 
   render() {
