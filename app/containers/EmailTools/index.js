@@ -9,13 +9,10 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import { emailModules, emailModulesComplete, emailModulesError } from './actions';
 
+import TranslatableStaticText from 'containers/TranslatableStaticText';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
-
-import makeSelectEmailTools from './selectors';
-import messages from './messages';
 
 import Container from 'components/EmailTools/Container';
 import Form from 'components/EmailTools/Form';
@@ -23,6 +20,11 @@ import TextInput from 'components/EmailTools/TextInput';
 import Button from 'components/EmailTools/Button';
 import Title from 'components/EmailTools/Title';
 import Message from 'components/EmailTools/Message';
+
+import { emailModules, emailModulesComplete, emailModulesError } from './actions';
+import staticText from './staticText';
+import makeSelectEmailTools from './selectors';
+import messages from './messages';
 
 export class EmailTools extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -53,17 +55,17 @@ export class EmailTools extends React.PureComponent { // eslint-disable-line rea
       <LanguageThemeProvider>
         <Container>
           <Title>
-            <FormattedMessage {...messages.header} />
+            <TranslatableStaticText {...staticText.header} />
           </Title>
           <Message>
-            <FormattedMessage {...messages.instruction} />
+            <TranslatableStaticText {...staticText.instruction} />
           </Message>
           {this.props.EmailTools.complete ? this.renderCompleteMessage() : null}
           <ContentBlock>
             <Form onSubmit={this.handleSubmit.bind(this)}>
               <TextInput type='email' name='email' onChange={this.handleChange.bind(this)} placeholder='samir@gmail.com'/>
               <Button>
-                <FormattedMessage {...messages.submit} />
+                <TranslatableStaticText {...staticText.submit} />
               </Button>
             </Form>
           </ContentBlock>
