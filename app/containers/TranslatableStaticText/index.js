@@ -8,7 +8,6 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import makeSelectTranslatableStaticText from './selectors';
-import _ from 'lodash';
 
 import { loadLanguage } from './actions';
 
@@ -16,7 +15,6 @@ export class TranslatableStaticText extends React.PureComponent { // eslint-disa
 
   constructor() {
     super();
-    _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
   }
 
   //Use to retrieve message from static text
@@ -34,8 +32,18 @@ export class TranslatableStaticText extends React.PureComponent { // eslint-disa
 
   build(message, values) {
     if (values) {
-      var compiled = _.template(message);
-      return compiled(values);
+      let splits = message.split(/({{.*?}})/);
+      const regex = new RegExp("{{\s*(.*?)\s*}}", "gi");
+      return splits.map(item => {
+        var match;
+        if (match = regex.exec(item)) {
+    		    return values[match[1]];
+        } else {
+    		    return item;
+        }
+      })
+      // var compiled = _.template(message);
+      // return compiled(values);
     }
 
     return message;
@@ -95,10 +103,19 @@ const injectStaticText = (WrappedComponent) => {
     }
 
     build(message, values) {
-
       if (values) {
-        var compiled = _.template(message);
-        return compiled(values);
+        let splits = message.split(/({{.*?}})/);
+        const regex = new RegExp("{{\s*(.*?)\s*}}", "gi");
+        return splits.map(item => {
+          var match;
+          if (match = regex.exec(item)) {
+      		    return values[match[1]];
+          } else {
+      		    return item;
+          }
+        })
+        // var compiled = _.template(message);
+        // return compiled(values);
       }
 
       return message;

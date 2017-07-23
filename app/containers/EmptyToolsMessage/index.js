@@ -8,27 +8,28 @@ import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+
+import TranslatableStaticText from 'containers/TranslatableStaticText';
 import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
 import AdderRemover from 'containers/Tools/AdderRemover';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
-const Container = styled(ContentBlock)`
-  padding: 10px;
-`;
+import Container from 'components/EmptyToolsMessage/Container';
+import CallToAction from 'components/EmptyToolsMessage/CallToAction';
 
-const CallToAction = styled(ContentBlock)`
-  font-weight: 800;
-`;
+import messages from './messages';
+import staticText from './staticText';
+
+
 export class EmptyToolsMessage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   render() {
     return (
       <LanguageThemeProvider>
         <Container>
-          <FormattedMessage {...messages.header} />
+          <TranslatableStaticText {...staticText.header} />
           <CallToAction>
-            <FormattedMessage {...messages.instruction}
+            <TranslatableStaticText {...staticText.instruction}
               values={{
                 icon: (<AdderRemover color={'black'} slug={null}/>)
               }}
