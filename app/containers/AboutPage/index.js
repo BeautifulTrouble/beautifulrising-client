@@ -142,6 +142,7 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
         <TheToolbox
             ref={"/about/whats-inside"}
             targetRoute="/about/whats-inside"
+            header = { this.props.aboutData.getIn(['about', 'misc', 'whats-inside'])}
             onChange={ this.componentIsVisible.bind(this) }
             whatsInside = { this.props.aboutData.getIn(['about','whats-inside', 'introduction']) }
         />

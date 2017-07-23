@@ -22,31 +22,14 @@ import { askContributorQuestion } from './actions';
 import messages from './messages';
 
 
-const Container = styled.div`
-  width: 100%;
-`;
-const Form = styled.form`
-border: 2px solid black;
-text-align: left;
- div > * { padding: 3px; }
-`;
-const Header = styled.h5`
-  font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
-  letter-spacing: 0;
-  line-height: 1;
-  font-size: 14px;
-  line-height: 20px;
-`;
-const TextArea = styled.textarea`border: 0; border-bottom: 2px solid black; width: 100%; height: 100px; resize: none;`;
-const Email = styled.input`border: 0; border-bottom: 2px solid black; width: 100%;`;
-const SubmitContainer = styled.div`text-align: right;`;
-const Submit = styled.button`
-  text-transform: uppercase;
-  font-weight: bold;
-  color: #828486;
-  text-decoration: underline;
-`;
-const Subheader = styled.p``;
+import Container from 'components/AskTheContributor/Container';
+import Form from 'components/AskTheContributor/Form';
+import Header from 'components/AskTheContributor/Header';
+import TextArea from 'components/AskTheContributor/TextArea';
+import Email from 'components/AskTheContributor/Email';
+import SubmitContainer from 'components/AskTheContributor/SubmitContainer';
+import Submit from 'components/AskTheContributor/Submit';
+
 export class AskTheContributor extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
@@ -67,7 +50,6 @@ export class AskTheContributor extends React.PureComponent { // eslint-disable-l
     this.recaptcha.execute();
   }
   handleRecaptcha(resp) {
-
     this.props.onFormSubmit({...this.state, captcha: resp});
   }
 
@@ -80,11 +62,11 @@ export class AskTheContributor extends React.PureComponent { // eslint-disable-l
           <Header>
             <FormattedMessage {...messages.header} />
           </Header>
-          <Subheader>
+          <div>
             <ContentBlock>
               <FormattedMessage {...messages.subheader} values={{author: this.props.count > 1 ? 'the authors' : this.props.authors[0].title }}/>
             </ContentBlock>
-          </Subheader>
+          </div>
           <Form onSubmit={this.handleSubmit.bind(this)}>
             <ContentBlock>
               <TextArea name='question'
