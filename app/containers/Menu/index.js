@@ -5,36 +5,21 @@
 */
 
 import React from 'react';
-import styled from 'styled-components';
 
-import { FormattedMessage, injectIntl } from 'react-intl';
-import MenuLink from 'components/MenuLink';
+import { injectIntl } from 'react-intl';
 import Logo from 'components/Logo';
 import AboutMenu from 'containers/AboutMenu';
 import ContributeMenu from 'containers/ContributeMenu';
 import PlatformsMenu from 'containers/PlatformsMenu';
 import TrainingMenu from 'containers/TrainingMenu';
 import ContactUs from 'containers/ContactUs';
-import messages from './messages';
 
-const MenuArea = styled.div`
-text-align: ${props=>props.lang==='ar'?'right':'left'};
-&::before {
-  content: ' ';
-  position: absolute;
-  top: 67px;
-  left: ${props=>props.lang==='ar'?'3px':'115px'};
-  background-color: white;
-  z-index: 0;
-  width: 182px;
-  height: 20px;
-}
-`;
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+import staticText from './staticText';
 
-const Home = styled(MenuLink)`
-  padding: 25px;
-  border-bottom: solid 2px black;
-`;
+import MenuArea from 'components/Menu/MenuArea';
+import Home from 'components/Menu/Home';
+
 function Menu(props) {
   const lang = props.intl.locale;
   return (
@@ -42,7 +27,7 @@ function Menu(props) {
       <Logo top={'17px'} left={'115px'} />
       { window.location.pathname.match(/^\/(type|tag|search)|^\/$/) ? null :
           (<Home to="/" onClick={props.onClick}>
-            <FormattedMessage {...messages.home} />
+            <TranslatableStaticText {...staticText.home} />
           </Home>)
       }
       <AboutMenu onClick={props.onClick} />
