@@ -7,7 +7,6 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';

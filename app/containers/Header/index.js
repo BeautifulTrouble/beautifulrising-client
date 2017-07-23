@@ -10,7 +10,7 @@ import Logo from 'components/Logo';
 import styled, { ThemeProvider } from 'styled-components';
 import ModalMenu from 'containers/ModalMenu';
 import Link from 'components/Link';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import messages from './messages';
 
 
