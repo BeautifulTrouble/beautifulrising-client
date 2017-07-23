@@ -15,7 +15,6 @@ import TranslatableStaticText from 'containers/TranslatableStaticText';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
 import SmallSectionHeader from 'components/SmallSectionHeader';
-import typeMessages from 'components/ToolTypeArea/messages';
 
 /*Components*/
 import Button from 'components/ContributeType/Button';
@@ -36,6 +35,8 @@ import PrincipleIcon from 'assets/images/type/principle.svg';
 
 import messages from './messages';
 import keys from './constants';
+import staticText from './staticText';
+
 
 class ContributeType extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
