@@ -19,10 +19,10 @@ import InspirationImage from 'assets/images/about/inspiration.svg';
 import DefinitionImage from 'assets/images/about/definition.svg';
 import PrototypingImage from 'assets/images/about/prototyping.svg';
 import RealizationImage from 'assets/images/about/realization.svg';
-import ProcessListItem from 'components/AboutPage/ProcessListItem';
-import ProcessParticipantsContainer from 'components/AboutPage/ProcessParticipantsContainer';
-import ProcessImage from 'components/AboutPage/ProcessImage';
 
+import ProcessListItem from 'components/AboutPage/Process/ProcessListItem';
+import ProcessParticipantsContainer from 'components/AboutPage/Process/ProcessParticipantsContainer';
+import ProcessImage from 'components/AboutPage/Process/ProcessImage';
 import CircledImage from 'components/CircledImage';
 
 import messages from './messages';

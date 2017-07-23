@@ -16,9 +16,9 @@ import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import { themeThreeColumns } from 'components/CommonComponents';
 
 import AboutSection from 'components/AboutPage/AboutSection';
-import TeamListItem from 'components/AboutPage/TeamListItem';
-import TeamImage from 'components/AboutPage/TeamImage';
-import TeamName from 'components/AboutPage/TeamName';
+import TeamListItem from 'components/AboutPage/Team/TeamListItem';
+import TeamImage from 'components/AboutPage/Team/TeamImage';
+import TeamName from 'components/AboutPage/Team/TeamName';
 
 export class OurTeam extends React.Component {
   renderHeader() {

@@ -12,10 +12,10 @@ import { injectIntl } from 'react-intl';
 
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import AboutSection from 'components/AboutPage/AboutSection';
-import FAQList from 'components/AboutPage/FAQList';
-import FAQListItem from 'components/AboutPage/FAQListItem';
-import FAQHeader from 'components/AboutPage/FAQHeader';
-import FAQContent from 'components/AboutPage/FAQContent';
+import FAQList from 'components/AboutPage/FAQ/FAQList';
+import FAQListItem from 'components/AboutPage/FAQ/FAQListItem';
+import FAQHeader from 'components/AboutPage/FAQ/FAQHeader';
+import FAQContent from 'components/AboutPage/FAQ/FAQContent';
 
 
 export class FAQ extends React.Component {

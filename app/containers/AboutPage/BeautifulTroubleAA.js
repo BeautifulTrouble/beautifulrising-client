@@ -17,9 +17,9 @@ import Markdown from 'react-remarkable';
 import ActionAidLogo from 'assets/images/about/aa-logo.png';
 import BeautifulTroubleLogo from 'assets/images/about/bt-logo.png';
 
-import BTAATableMenu from 'components/AboutPage/BTAATableMenu';
-import BTAARow from 'components/AboutPage/BTAARow';
-import BTAAColumn from 'components/AboutPage/BTAAColumn';
+import BTAATableMenu from 'components/AboutPage/BTAA/BTAATableMenu';
+import BTAARow from 'components/AboutPage/BTAA/BTAARow';
+import BTAAColumn from 'components/AboutPage/BTAA/BTAAColumn';
 
 import messages from './messages';
 
@@ -43,21 +43,23 @@ export class BeautifulTroubleAA extends React.Component {
           <div>
             <ContentBlock>
               <BTAATableMenu>
-                <BTAARow>
-                  <BTAAColumn colSpan={"2"} style={{ padding: '0 25%', textAlign: 'center'}}>
-                    <Markdown source={this.props.allData.getIn(['about', 'beautiful-trouble-and-action-aid', 'introduction'])} />
-                  </BTAAColumn>
-                </BTAARow>
-                <BTAARow>
-                  <BTAAColumn>
-                    <Markdown source={this.props.allData.getIn(['about', 'beautiful-trouble-and-action-aid', 'bt'])} />
-                    <img src={BeautifulTroubleLogo} />
-                  </BTAAColumn>
-                  <BTAAColumn>
-                    <Markdown source={this.props.allData.getIn(['about', 'beautiful-trouble-and-action-aid', 'aa'])} />
-                    <img src={ActionAidLogo} />
-                  </BTAAColumn>
-                </BTAARow>
+                <tbody>
+                  <BTAARow>
+                    <BTAAColumn colSpan={"2"} style={{ padding: '0 25%', textAlign: 'center'}}>
+                      <Markdown source={this.props.allData.getIn(['about', 'beautiful-trouble-and-action-aid', 'introduction'])} />
+                    </BTAAColumn>
+                  </BTAARow>
+                  <BTAARow>
+                    <BTAAColumn>
+                      <Markdown source={this.props.allData.getIn(['about', 'beautiful-trouble-and-action-aid', 'bt'])} />
+                      <img src={BeautifulTroubleLogo} />
+                    </BTAAColumn>
+                    <BTAAColumn>
+                      <Markdown source={this.props.allData.getIn(['about', 'beautiful-trouble-and-action-aid', 'aa'])} />
+                      <img src={ActionAidLogo} />
+                    </BTAAColumn>
+                  </BTAARow>
+                </tbody>
               </BTAATableMenu>
             </ContentBlock>
           </div>

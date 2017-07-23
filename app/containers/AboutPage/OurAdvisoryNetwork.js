@@ -14,10 +14,10 @@ import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import Introduction from 'components/AboutPage/Introduction';
 import { themeThreeColumns } from 'components/CommonComponents';
-import AdvisoryNetworkListItem from 'components/AboutPage/AdvisoryNetworkListItem';
-import AdvisoryNetworkImage from 'components/AboutPage/AdvisoryNetworkImage';
-import AdvisoryNetworkSection from 'components/AboutPage/AdvisoryNetworkSection';
-import AdvisoryNetworkIntro from 'components/AboutPage/AdvisoryNetworkIntro';
+import AdvisoryNetworkListItem from 'components/AboutPage/AdvisoryNetwork/AdvisoryNetworkListItem';
+import AdvisoryNetworkImage from 'components/AboutPage/AdvisoryNetwork/AdvisoryNetworkImage';
+import AdvisoryNetworkSection from 'components/AboutPage/AdvisoryNetwork/AdvisoryNetworkSection';
+import AdvisoryNetworkIntro from 'components/AboutPage/AdvisoryNetwork/AdvisoryNetworkIntro';
 
 import messages from './messages';
 
