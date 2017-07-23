@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { RouterLink } from 'utils/markdown';
-import ToolSnapshotArea from 'components/ToolSnapshotArea';
+import ToolSnapshotArea from 'containers/ToolSnapshotArea';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import AdderRemover from 'containers/Tools/AdderRemover';
 import { BorderedButton } from 'components/CommonComponents';
