@@ -58,7 +58,6 @@ export class AskTheContributor extends React.PureComponent { // eslint-disable-l
   render() {
 
     const { buildMessage } = this.props.translatable;
-    console.log(this.props);
     return (
       <LanguageThemeProvider>
         <Container>

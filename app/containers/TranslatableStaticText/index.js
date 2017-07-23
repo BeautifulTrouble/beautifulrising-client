@@ -33,7 +33,6 @@ export class TranslatableStaticText extends React.PureComponent { // eslint-disa
   }
 
   build(message, values) {
-    console.log(message, values);
     if (values) {
       var compiled = _.template(message);
       return compiled(values);
