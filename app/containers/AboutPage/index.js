@@ -187,6 +187,7 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
         <FAQ
             ref="/about/faq"
             targetRoute="/about/faq"
+            allData={this.props.aboutData}
             onChange={this.componentIsVisible.bind(this) }
             questions={this.props.aboutData.getIn(['about', 'questions'])}
         />

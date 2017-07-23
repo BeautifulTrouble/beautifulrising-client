@@ -13,7 +13,6 @@ import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import VisibilitySensor from 'react-visibility-sensor';
 import Markdown from 'react-remarkable';
-import messages from './messages';
 
 import ActionAidLogo from 'assets/images/about/aa-logo.png';
 import BeautifulTroubleLogo from 'assets/images/about/bt-logo.png';
@@ -22,13 +21,14 @@ import BTAATableMenu from 'components/AboutPage/BTAATableMenu';
 import BTAARow from 'components/AboutPage/BTAARow';
 import BTAAColumn from 'components/AboutPage/BTAAColumn';
 
+import messages from './messages';
 
 export class BeautifulTroubleAA extends React.Component {
   renderHeader() {
     return (
       <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
         <h2>
-          <FormattedMessage {...messages.beautifulTroubleAAHeader} />
+          {this.props.allData.getIn(['about', 'misc', 'beautiful-trouble-and-action-aid'])}
         </h2>
       </VisibilitySensor>
     )
