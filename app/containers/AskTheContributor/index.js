@@ -7,17 +7,19 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import Recaptcha from 'react-google-invisible-recaptcha';
 
 import { ToolLeftArea, ToolsPageLeftHeader, ToolsPageContributor } from 'components/ToolsPageComponents';
 import { selectAuthor } from 'containers/Author/selectors';
+import {injectStaticText} from 'containers/TranslatableStaticText';
 
 import ContentBlock from 'components/ContentBlock';
 import { RECAPTCHA_SITE_KEY } from 'components/CommonComponents/constants';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
+import TranslatableStaticText from 'containers/TranslatableStaticText';
 import Container from 'components/AskTheContributor/Container';
 import Form from 'components/AskTheContributor/Form';
 import Header from 'components/AskTheContributor/Header';
@@ -27,8 +29,8 @@ import SubmitContainer from 'components/AskTheContributor/SubmitContainer';
 import Submit from 'components/AskTheContributor/Submit';
 
 import { askContributorQuestion } from './actions';
-import messages from './messages';
 import makeSelectAskTheContributor from './selectors';
+import staticText from './staticText';
 
 export class AskTheContributor extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -55,29 +57,30 @@ export class AskTheContributor extends React.PureComponent { // eslint-disable-l
 
   render() {
 
-    const {formatMessage} = this.props.intl;
+    const { buildMessage } = this.props.translatable;
+    console.log(this.props);
     return (
       <LanguageThemeProvider>
         <Container>
           <Header>
-            <FormattedMessage {...messages.header} />
+            <TranslatableStaticText {...staticText.header} />
           </Header>
           <div>
             <ContentBlock>
-              <FormattedMessage {...messages.subheader} values={{author: this.props.count > 1 ? 'the authors' : this.props.authors[0].title }}/>
+              <TranslatableStaticText {...staticText.subheader} values={{name: (this.props.count > 1 ? 'the authors' : this.props.author.title ) }}/>
             </ContentBlock>
           </div>
           <Form onSubmit={this.handleSubmit.bind(this)}>
             <ContentBlock>
               <TextArea name='question'
                   required={true}
-                  onChange={this.handleTextAreaChange.bind(this)} placeholder={formatMessage(messages.questionPlaceholder)}></TextArea>
+                  onChange={this.handleTextAreaChange.bind(this)} placeholder={buildMessage(staticText.questionPlaceholder)}></TextArea>
               <Email name='email'
                   required={true}
-                  onChange={this.handleEmailChange.bind(this)} type='email' placeholder={formatMessage(messages.emailPlaceholder)}/>
+                  onChange={this.handleEmailChange.bind(this)} type='email' placeholder={buildMessage(staticText.emailPlaceholder)}/>
               <SubmitContainer>
                 <Submit>
-                  <FormattedMessage {...messages.submit} />
+                  <TranslatableStaticText {...staticText.submit} />
                 </Submit>
                 <Recaptcha
                   ref={ ref=> this.recaptcha = ref }
@@ -114,4 +117,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(AskTheContributor));
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(injectStaticText(AskTheContributor)));

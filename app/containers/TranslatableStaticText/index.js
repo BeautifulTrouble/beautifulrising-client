@@ -20,34 +20,39 @@ export class TranslatableStaticText extends React.PureComponent { // eslint-disa
   }
 
   //Use to retrieve message from static text
-  retrieveMessage() {
 
-
-    const keys = this.props.id.split(".");
+  getStaticMessage({id, defaultMessage}){
+    const keys = id.split(".");
     let message = this.props.staticText.data;
     keys.forEach(key => {
       if (!message) return null;
       message = message[key];
     });
 
-    return message || this.props.defaultMessage;
+    return message || defaultMessage;
   }
 
-  buildFromTemplate(message) {
-    if (this.props.values) {
+  build(message, values) {
+    console.log(message, values);
+    if (values) {
       var compiled = _.template(message);
-      return compiled(this.props.values);
+      return compiled(values);
     }
 
     return message;
   }
 
+  buildMessage({id, defaultMessage}, values) {
+    const template = this.getStaticMessage({id, defaultMessage});
+    const extrapolate = this.build(template, values);
+    return extrapolate;
+  }
+
   render() {
-    const message = this.retrieveMessage();
-    const extrapolate = this.buildFromTemplate(message);
+    const message = this.buildMessage({...this.props}, this.props.values);
 
     return (
-      <span>{extrapolate}</span>
+      <span>{message}</span>
     );
   }
 }
@@ -68,3 +73,57 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TranslatableStaticText);
+
+
+//injectStaticText
+const injectStaticText = (WrappedComponent) => {
+
+  class ConnectedStaticText extends React.Component {
+    constructor() {
+      super();
+    }
+
+    getStaticMessage({id, defaultMessage}){
+
+      const keys = id.split(".");
+      let message = this.props.staticText.data;
+      keys.forEach(key => {
+        if (!message) return null;
+        message = message[key];
+      });
+
+      return message || defaultMessage;
+    }
+
+    build(message, values) {
+
+      if (values) {
+        var compiled = _.template(message);
+        return compiled(values);
+      }
+
+      return message;
+    }
+
+    buildMessage({id, defaultMessage}, values) {
+
+      const template = this.getStaticMessage({id, defaultMessage});
+      const extrapolate = this.build(template, values);
+
+      return extrapolate;
+    }
+
+    render() {
+
+      return <WrappedComponent
+                translatable={{
+                    buildMessage: this.buildMessage.bind(this)
+                }}
+                {...this.props} />
+    }
+  }
+
+  return connect(mapStateToProps, mapDispatchToProps)(ConnectedStaticText);
+}
+
+export {injectStaticText};
