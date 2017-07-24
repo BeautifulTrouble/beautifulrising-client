@@ -18,7 +18,6 @@ import Markdown from 'react-remarkable';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
 import TrainingBanner from 'assets/images/about/training.jpg';
-import PlatformsPageComponents from 'components/PlatformsPageComponents';
 import OtherResources  from 'components/OtherResources';
 import { loadData } from 'containers/App/actions';
 

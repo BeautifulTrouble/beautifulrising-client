@@ -25,7 +25,7 @@ import { WEBSOCKET_URL } from './constants';
 import { FACEBOOK_FEED, TWITTER_FEED } from 'containers/Tools/constants';
 
 import Container from 'components/NewsFeed/Container';
-import NewsFeedArea from 'components/NewsFeed/Container';
+import NewsFeedArea from 'components/NewsFeed/NewsFeedArea';
 
 export class NewsFeed extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
