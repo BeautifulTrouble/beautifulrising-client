@@ -6,16 +6,17 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import makeSelectToolsSortOptions from './selectors';
 import { changeSortOption } from './actions';
 import { SORT_NEWEST, SORT_ALPHABETICAL } from './constants';
-import messages from './messages';
 
 import {TextButton} from 'components/CommonComponents';
 
 import IconButton from 'components/IconButton';
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+import staticText from './staticText';
 
 export class ToolsSortOptions extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -24,12 +25,12 @@ export class ToolsSortOptions extends React.PureComponent { // eslint-disable-li
       <div>
         <IconButton width="49%" onClick={this.props.clickAlphabeticalSort}>
           <TextButton ar={locale==='ar'} selected={this.props.ToolsSortOptions.chosen === SORT_ALPHABETICAL}>
-            <FormattedMessage {...messages.alphabeticalButton} />
+            <TranslatableStaticText {...staticText.alphabeticalButton} />
           </TextButton>
         </IconButton>
         <IconButton ar={locale==='ar'} width="49%" onClick={this.props.clickNewestSort}>
           <TextButton selected={this.props.ToolsSortOptions.chosen === SORT_NEWEST}>
-            <FormattedMessage {...messages.newestButton} />
+            <TranslatableStaticText {...staticText.newestButton} />
           </TextButton>
         </IconButton>
       </div>
