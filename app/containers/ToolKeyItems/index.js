@@ -7,7 +7,7 @@
 import React, {PropTypes} from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { RouterLink } from 'utils/markdown';
 import Markdown from 'react-markdown';
 

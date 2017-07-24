@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Markdown from 'react-markdown';
-import { FormattedMessage, injectIntl} from 'react-intl';
+import { injectIntl} from 'react-intl';
 
 import {RouterLink} from 'utils/markdown';
 

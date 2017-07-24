@@ -12,7 +12,7 @@ import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 
-import { FormattedMessage, injectIntl} from 'react-intl';
+import { injectIntl} from 'react-intl';
 import messages from './messages';
 import Markdown from 'react-remarkable';
 import typeTranslate from 'containers/HomePage/messages';

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router';
 import ContentBlock from 'components/ContentBlock';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import Timestamp from 'react-timestamp';
 import messages from './messages';

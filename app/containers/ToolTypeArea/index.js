@@ -9,7 +9,6 @@ import styled from 'styled-components';
 
 import Isvg from 'react-inlinesvg';
 
-import { FormattedMessage } from 'react-intl';
 import ToolTypeAllFull from 'containers/ToolTypeAllFull';
 import ToolTypeAllPartial from 'containers/ToolTypeAllPartial';
 import ToolTypeSelectedFull from 'containers/ToolTypeSelectedFull';
