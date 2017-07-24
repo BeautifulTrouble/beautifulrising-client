@@ -7,9 +7,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router';
-import { FormattedMessage } from 'react-intl';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
-import messages from '../ToolTypeArea/messages';
+
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+import staticText from '../ToolTypeArea/staticText';
+
 import Isvg from 'react-inlinesvg';
 import MethodologyIcon from 'assets/images/type/methodologies-option.svg';
 import PrincipleIcon from 'assets/images/type/principles-option.svg';
@@ -63,26 +65,26 @@ function ToolTypeAllPartial(props) {
         <Viewport>
           <Row>
             <ToolType to={'/type/story'}>
-              <Head><FormattedMessage {...messages.storyHead} /></Head>
+              <Head><TranslatableStaticText {...staticText.storyHead} /></Head>
               <Isvg src={StoryIcon} />
             </ToolType>
             <ToolType to={'/type/tactic'}>
-              <Head><FormattedMessage {...messages.tacticHead} /></Head>
+              <Head><TranslatableStaticText {...staticText.tacticHead} /></Head>
               <Isvg src={TacticIcon} />
             </ToolType>
 
             <ToolType to={'/type/principle'}>
-              <Head><FormattedMessage {...messages.principleHead} /></Head>
+              <Head><TranslatableStaticText {...staticText.principleHead} /></Head>
               <Isvg src={PrincipleIcon} />
             </ToolType>
 
             <ToolType to={'/type/theory'}>
-              <Head><FormattedMessage {...messages.theoryHead} /></Head>
+              <Head><TranslatableStaticText {...staticText.theoryHead} /></Head>
               <Isvg src={TheoryIcon} />
             </ToolType>
 
             <ToolType to={'/type/methodology'}>
-              <Head><FormattedMessage {...messages.methodologyHead} /></Head>
+              <Head><TranslatableStaticText {...staticText.methodologyHead} /></Head>
               <Isvg src={MethodologyIcon} />
             </ToolType>
           </Row>
