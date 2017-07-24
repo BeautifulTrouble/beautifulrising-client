@@ -46,7 +46,7 @@ const Button = styled.button`
 `;
 
 const MenuText = styled.span`{
-  text-transform: 'uppercase';
+  text-transform: uppercase;
   font-weight: bold;
   display: block;
   margin-top: 2px;

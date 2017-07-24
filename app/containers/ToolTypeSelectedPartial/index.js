@@ -108,7 +108,9 @@ function ToolTypeSelectedPartial(props) {
     <Container show={props.show}>
       <Viewport lang={lang}>
           <LinkArea>
-            <ToolType lang={lang} to={'/'}>All</ToolType>
+            <ToolType lang={lang} to={'/'}>
+              <TranslatableStaticText {...staticText.allHead} />
+            </ToolType>
             <ToolType lang={lang} to={'/type/story'} selected={props.label === 'story'}>
               <TranslatableStaticText {...staticText.storyHead} />
             </ToolType>

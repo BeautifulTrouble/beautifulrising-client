@@ -11,6 +11,9 @@ import Markdown from 'react-remarkable';
 import Isvg from 'react-inlinesvg';
 
 import { injectIntl } from 'react-intl';
+import { injectStaticText } from 'containers/TranslatableStaticText';
+
+import staticText from './staticText';
 import messages from './messages';
 
 const Container = styled.section`
@@ -45,14 +48,14 @@ class Footer extends React.Component {
 
   render () {
 
-    const {formatMessage, locale} = this.props.intl;
-
+    const {locale} = this.props.intl;
+    const {buildMessage} = this.props.translatable;
     return (
       <Container>
         <Viewport isArabic={locale==='ar'}>
           <Isvg src={CreativeCommonsIcon} />
           <Content>
-            <Markdown source={formatMessage(messages.footer)} />
+            <Markdown source={buildMessage(staticText.footer)} />
           </Content>
         </Viewport>
       </Container>
@@ -65,4 +68,4 @@ Footer.propTypes = {
 
 };
 
-export default injectIntl(Footer);
+export default injectIntl(injectStaticText(Footer));

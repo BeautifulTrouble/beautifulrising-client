@@ -153,7 +153,9 @@ function ToolTypeSelectedFull(props) {
       <Container show={props.show}>
         <Viewport>
           <Column width="15%">
-            <ToolType to={'/'}>All</ToolType>
+            <ToolType to={'/'}>
+              <TranslatableStaticText {...staticText.allHead} />
+            </ToolType>
             <ToolType to={'/type/story'} selected={props.label === 'story'}>
               <TranslatableStaticText {...staticText.storyHead} />
             </ToolType>
