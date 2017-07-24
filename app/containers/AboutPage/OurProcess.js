@@ -6,7 +6,7 @@
 
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import VisibilitySensor from 'react-visibility-sensor';
 import Markdown from 'react-remarkable';
 
@@ -14,114 +14,24 @@ import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
 import AboutSection from 'components/AboutPage/AboutSection';
 import { themeFourColumns } from 'components/CommonComponents';
-import messages from './messages';
 
 import InspirationImage from 'assets/images/about/inspiration.svg';
 import DefinitionImage from 'assets/images/about/definition.svg';
 import PrototypingImage from 'assets/images/about/prototyping.svg';
 import RealizationImage from 'assets/images/about/realization.svg';
 
+import ProcessListItem from 'components/AboutPage/Process/ProcessListItem';
+import ProcessParticipantsContainer from 'components/AboutPage/Process/ProcessParticipantsContainer';
+import ProcessImage from 'components/AboutPage/Process/ProcessImage';
 import CircledImage from 'components/CircledImage';
 
+import messages from './messages';
+import staticText from './staticText';
+
 const WORKSHOPS = ['myanmar', 'jordan', 'zimbabwe', 'bangladesh', 'uganda', 'mexico'];
-const MainBox = styled.div`
-  width: 100%;
-`;
 
-const List = styled.ul`
-`;
+const [STEPS, SUBHEADING, WORKSHOP] = [0, 1, 2];
 
-const ListItem = styled.li`list-style: none;
-  width: ${props=>props.theme.itemWidth};
-  margin-${p=>p.lang==='ar'?'left':'right'}: ${props=>props.theme.itemMargin};
-  display: inline-block;
-  vertical-align: top;
-  margin-bottom: 50px;
-  text-align: ${p=>p.lang==='ar'?'right':'left'};
-
-  &:last-child {
-    .circledContainer {
-      &::after {
-        display: none;
-      }
-    }
-  }
-  h1 {
-    font-size: 30px;
-    margin-bottom: 5px;
-    text-align: ${p=>p.lang==='ar'?'right':'left'};
-  }
-
-  p {
-    padding-${p=>p.lang==='ar'?'right':'left'}: 10px;
-  }
-
-  h2 {
-    font-size: 21px;
-    text-transform: uppercase;
-  }
-
-  h4 {
-    margin: 0;
-    text-transform: uppercase;
-    text-align: ${p=>p.lang==='ar'?'right':'left'};
-    padding-${p=>p.lang==='ar'?'right':'left'}: 20px;
-    &::before {
-      content: ' ';
-      display: block;
-      clear: both;
-      width: 42px;
-      border-bottom: 2px solid;
-    }
-  }
-
-  ol {
-    li {
-      font-size: 12px;
-      text-align: ${p=>p.lang==='ar'?'right':'left'};
-      line-height: 20px;
-    }
-  }
-`;
-
-const ParticipantsContainer = styled.div`
-  h3 {
-    font-size: 16px;
-    font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
-    letter-spacing: 0;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-
-  h4 {
-    font-size: 30px;
-  }
-`;
-
-const Image = styled.img`
-  height: 120px;
-  margin-bottom: 30px;
-  margin-${p=>p.lang==='ar'?'right':'left'}: 20px;
-`;
-
-const PROCESSES = [
-  {
-    icon: InspirationImage,
-    text: messages.inspiration
-  },
-  {
-    icon: DefinitionImage,
-    text: messages.definition
-  },
-  {
-    icon: PrototypingImage,
-    text: messages.prototyping
-  },
-  {
-    icon: RealizationImage,
-    text: messages.realization
-  }
-]
 class OurProcess extends React.Component {
 
   renderProjects() {
@@ -133,11 +43,11 @@ class OurProcess extends React.Component {
     if (!groups) return null;
 
     return (
-        <List lang={lang}>
+        <ul lang={lang}>
           {groups.map((item,ind) => { return(
-            <ListItem key={ind} lang={lang}>
+            <ProcessListItem key={ind} lang={lang}>
 
-              <Image lang={lang} src={require('assets/images/workshops/' + WORKSHOPS[ind] + '.png')} />
+              <ProcessImage lang={lang} src={require('assets/images/workshops/' + WORKSHOPS[ind] + '.png')} />
               <h4>{item.get('name')}</h4>
               <ContentBlock>
                 <ol>
@@ -146,56 +56,60 @@ class OurProcess extends React.Component {
                       : null }
                 </ol>
               </ContentBlock>
-            </ListItem>
+            </ProcessListItem>
             )}
           )}
-        </List>
+        </ul>
       )
 
   }
 
   renderHeader() {
-    return (<VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
-      <h2>
-        <FormattedMessage {...messages.ourProcessHeader} />
-      </h2>
+    return (
+    <VisibilitySensor onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
+      <h2>{this.props.header}</h2>
     </VisibilitySensor>);
   }
 
   renderProcess() {
-    const {locale, formatMessage} = this.props.intl;
+    const { locale } = this.props.intl;
+    const {processes} = this.props;
+    if (!processes) return null;
+    // processes[0] is the list
     return (
       <LanguageThemeProvider theme={themeFourColumns}>
-          <List>
-            {PROCESSES.map(item=>(
-              <ListItem key={item.icon} lang={locale}>
-                <CircledImage src={item.icon} />
+          <ul>
+            {processes[STEPS].value.map(item=>(
+              <ProcessListItem key={item.image} lang={locale}>
+                <CircledImage src={`https://beautifulrising.org/${item.image}`} />
                 <ContentBlock>
-                  <Markdown source={formatMessage(item.text)} />
+                  <h1>{item.title}</h1>
+                  <Markdown source={item.description} />
                 </ContentBlock>
-              </ListItem>
+              </ProcessListItem>
             ))}
-          </List>
+          </ul>
       </LanguageThemeProvider>
     )
   }
 
   renderParticipants() {
+    const {processes} = this.props;
+    if (!processes) return null;
+
     return (
       <LanguageThemeProvider theme={themeFourColumns}>
-        <ParticipantsContainer>
-          <h3>
-            <FormattedMessage {...messages.participantsHeader} />
-          </h3>
+        <ProcessParticipantsContainer>
+          <h3>{processes[SUBHEADING].value}</h3>
           {this.renderProjects()}
-        </ParticipantsContainer>
+        </ProcessParticipantsContainer>
       </LanguageThemeProvider>
     );
   }
 
   render() {
-    const theme = themeFourColumns;
-    const {formatMessage, locale} = this.props.intl;
+    const {locale} = this.props.intl;
+
     return (
       <LanguageThemeProvider>
         <AboutSection id='process' name='process' lang={locale}>

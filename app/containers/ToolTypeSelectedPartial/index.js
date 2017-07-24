@@ -7,8 +7,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router';
-import { FormattedMessage , injectIntl } from 'react-intl';
-import messages from '../ToolTypeArea/messages';
+import { injectIntl } from 'react-intl';
+
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+import staticText from '../ToolTypeArea/staticText';
 
 import Isvg from 'react-inlinesvg';
 import RegionOptions from 'containers/RegionOptions';
@@ -106,21 +108,23 @@ function ToolTypeSelectedPartial(props) {
     <Container show={props.show}>
       <Viewport lang={lang}>
           <LinkArea>
-            <ToolType lang={lang} to={'/'}>All</ToolType>
+            <ToolType lang={lang} to={'/'}>
+              <TranslatableStaticText {...staticText.allHead} />
+            </ToolType>
             <ToolType lang={lang} to={'/type/story'} selected={props.label === 'story'}>
-              <FormattedMessage {...messages.storyHead} />
+              <TranslatableStaticText {...staticText.storyHead} />
             </ToolType>
             <ToolType lang={lang} to={'/type/tactic'} selected={props.label === 'tactic'}>
-              <FormattedMessage {...messages.tacticHead} />
+              <TranslatableStaticText {...staticText.tacticHead} />
             </ToolType>
             <ToolType lang={lang} to={'/type/principle'} selected={props.label === 'principle'}>
-              <FormattedMessage {...messages.principleHead} />
+              <TranslatableStaticText {...staticText.principleHead} />
             </ToolType>
             <ToolType lang={lang} to={'/type/theory'} selected={props.label === 'theory'}>
-              <FormattedMessage {...messages.theoryHead} />
+              <TranslatableStaticText {...staticText.theoryHead} />
             </ToolType>
             <ToolType lang={lang} to={'/type/methodology'} selected={props.label === 'methodology'}>
-              <FormattedMessage {...messages.methodologyHead} />
+              <TranslatableStaticText {...staticText.methodologyHead} />
             </ToolType>
           </LinkArea>
           { props.label === 'story' ? <RegionOptions {...props} showHeader={false}/> : null}

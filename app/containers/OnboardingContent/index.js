@@ -28,7 +28,7 @@ import BeautifulTroubleAA from 'containers/AboutPage/BeautifulTroubleAA';
 
 import { makeSelectAllToolsWithSlugIndex, makeSelectAdvisoryBoard } from 'containers/App/selectors';
 import { onboardUser } from 'containers/OnboardingModal/actions';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import messages from './messages';
 
 const Container = styled.section``;

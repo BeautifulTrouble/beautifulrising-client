@@ -6,12 +6,10 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
-import makeSelectTools, {makeSelectLanguage} from './selectors';
-import messages from './messages';
 import styled from 'styled-components';
 import Isvg from 'react-inlinesvg';
 
@@ -32,7 +30,12 @@ import { NEWS_FEED, MY_TOOLS } from './constants';
 import { ThemeProvider } from 'styled-components';
 
 import ToolsArea from './ToolsArea';
+import makeSelectTools, {makeSelectLanguage} from './selectors';
+import messages from './messages';
 import { setShowTools, setViewType } from './actions';
+
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+import staticText from './staticText';
 
 const ToolsOpenerCloser = styled.div``;
 
@@ -131,7 +134,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
                     toShow={this.props.Tools.show}
                     >
                     <Isvg src={NewsFeedIcon} />
-                    <FormattedMessage {...messages.newsFeed} />
+                    <TranslatableStaticText {...staticText.newsFeed} />
                   </ToolsViewType>
                 </ToolsMenuItem>
                 <ToolsMenuItem>
@@ -144,7 +147,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
                       className={this.props.Tools.onboardShow ? 'animate' : ''}
                   >
                     <Isvg src={MyToolsIcon} />
-                    <FormattedMessage {...messages.myTools} />
+                    <TranslatableStaticText {...staticText.myTools} />
                   </MyToolsButton>
                 </ToolsMenuItem>
               </ToolsMenu>

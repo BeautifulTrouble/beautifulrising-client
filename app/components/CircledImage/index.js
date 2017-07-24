@@ -50,7 +50,7 @@ function CircledImage(props) {
   return (
     <CircledContainer lang={lang} className={'circledContainer'}>
       <CircleBackdrop lang={lang} />
-      <Isvg src={props.src} />
+      <img src={props.src} />
     </CircledContainer>
   );
 }

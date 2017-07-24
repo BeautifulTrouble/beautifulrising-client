@@ -7,8 +7,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router';
-import { FormattedMessage, injectIntl } from 'react-intl';
-import messages from '../ToolTypeArea/messages';
+import { injectIntl } from 'react-intl';
+
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+import staticText from '../ToolTypeArea/staticText';
+
 import Isvg from 'react-inlinesvg';
 import MethodologyIcon from 'assets/images/type/methodologies-optionflag.svg';
 import PrincipleIcon from 'assets/images/type/principles-optionflag.svg';
@@ -150,31 +153,33 @@ function ToolTypeSelectedFull(props) {
       <Container show={props.show}>
         <Viewport>
           <Column width="15%">
-            <ToolType to={'/'}>All</ToolType>
+            <ToolType to={'/'}>
+              <TranslatableStaticText {...staticText.allHead} />
+            </ToolType>
             <ToolType to={'/type/story'} selected={props.label === 'story'}>
-              <FormattedMessage {...messages.storyHead} />
+              <TranslatableStaticText {...staticText.storyHead} />
             </ToolType>
             <ToolType to={'/type/tactic'} selected={props.label === 'tactic'}>
-              <FormattedMessage {...messages.tacticHead} />
+              <TranslatableStaticText {...staticText.tacticHead} />
             </ToolType>
             <ToolType to={'/type/principle'} selected={props.label === 'principle'}>
-              <FormattedMessage {...messages.principleHead} />
+              <TranslatableStaticText {...staticText.principleHead} />
             </ToolType>
             <ToolType to={'/type/theory'} selected={props.label === 'theory'}>
-              <FormattedMessage {...messages.theoryHead} />
+              <TranslatableStaticText {...staticText.theoryHead} />
             </ToolType>
             <ToolType to={'/type/methodology'} selected={props.label === 'methodology'}>
-              <FormattedMessage {...messages.methodologyHead} />
+              <TranslatableStaticText {...staticText.methodologyHead} />
             </ToolType>
           </Column>
           <Column width="33%" bg={props.label} style={{height: 160}}>
             <TypeName>
-              <FormattedMessage {...messages[props.label + 'Head']} />
+              <TranslatableStaticText {...staticText[props.label + 'Head']} />
             </TypeName>
           </Column>
           <Column width="50%">
             <Description>
-              <FormattedMessage {...messages[props.label + 'Long']} />
+              <TranslatableStaticText {...staticText[props.label + 'Long']} />
             </Description>
             { props.label === 'story' ? <RegionOptions {...props} showHeader={true}/> : null}
           </Column>

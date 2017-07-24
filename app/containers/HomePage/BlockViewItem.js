@@ -3,9 +3,13 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import Markdown from 'react-remarkable';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 
+import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
 import {slugify} from 'utils/tags';
+
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+
 import Link from 'components/Link';
 import AdderRemover from 'containers/Tools/AdderRemover';
 import {ToolType, ToolTitle, BlockContainer,
@@ -13,19 +17,11 @@ import {ToolType, ToolTitle, BlockContainer,
 
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import RegionIcon from 'components/RegionIcon';
-import messages from './messages';
-import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
 
+import staticText from './staticText';
 //Positions
 
-const RegionContainer = styled.div`
-  position: absolute;
-  top: 10px;
-  opacity: ${props=>props.show?'1':'0'};
-  transition: opacity 0.3s ease;
-  ${props=>props.lang==='ar' ? 'left: 2px;' : 'right: 2px;'}
-  svg {  height: 32px;}
-`;
+import RegionContainer from 'components/HomePage/RegionContainer';
 
 class BlockViewItem extends React.Component {
 
@@ -70,7 +66,7 @@ class BlockViewItem extends React.Component {
                       style={this.props.position}
                 >
                   <ToolType ar={locale==='ar'} type={this.props.type}>
-                    <FormattedMessage { ...messages[this.props.type] } />
+                    <TranslatableStaticText { ...staticText[this.props.type] } />
                   </ToolType>
                   <ToolTitle ar={locale==='ar'} color={'white'}>
                     {this.props.title}

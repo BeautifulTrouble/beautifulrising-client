@@ -6,11 +6,12 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { makeSelectAllTags } from 'containers/App/selectors';
 import { push } from 'react-router-redux';
 
+import TranslatableStaticText from 'containers/TranslatableStaticText';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
@@ -23,57 +24,18 @@ import ClearButton from 'components/ClearButton';
 
 import {slugify} from 'utils/tags'
 
+import TagBlock from 'components/Tags/TagBlock';
+import TagList from 'components/Tags/TagList';
+import TagListItem from 'components/Tags/TagListItem';
+import TagLink from 'components/Tags/TagLink';
+import TagDivider from 'components/Tags/TagDivider';
+import ClearButtonContainer from 'components/Tags/ClearButtonContainer';
+
 import makeSelectTags from './selectors';
 import messages from './messages';
+import staticText from './staticText';
 
-import styled from 'styled-components';
 
-const TagBlock = styled(ContentBlock)`
-  text-align: ${props=>props.align || 'center'}`
-;
-const TagList = styled.ul`
-  margin: 0;
-  padding: 0;
-  margin-top: 12px;
-`;
-const TagListItem = styled.li`
-  display: inline;
-  vertical-align: middle;
-  &:last-child {
-    span { display: none; }
-  }
-  font-family: Avenir, Kaff;
-  font-weight: ${p=>p.selected ? 800 : 400 };
-
-  * { vertical-align: middle; }
-  span {
-    font-weight: 800; font-family: 'Avenir', 'Kaff';
-  }
-
-  a {
-    text-decoration: ${props=>props.selected ? 'normal' : 'underline'};
-    color: ${props=>props.selected ? 'black' : '#828486'};
-  }
-`;
-
-const TagLink = styled(Link)`
-  vertical-align: middle;
-`;
-
-const TagDivider = styled(() => (<span> / </span>))`
-  vertical-align: middle;
-  display: inline-block;
-`;
-
-const ClearButtonContainer = styled.div`
-  text-align: center;
-  padding-top: 20px;
-  color: #828486;
-  button {
-    padding-right: 0;
-    padding-left: 0;
-  }
-`;
 export class Tags extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   handleClearTags() {
@@ -87,7 +49,7 @@ export class Tags extends React.PureComponent { // eslint-disable-line react/pre
     return (
       <ClearButtonContainer>
         <ClearButton onClick={this.handleClearTags.bind(this)}>
-          <FormattedMessage {...messages.clearTags} />
+          <TranslatableStaticText {...staticText.clearTags} />
         </ClearButton>
       </ClearButtonContainer>
     );

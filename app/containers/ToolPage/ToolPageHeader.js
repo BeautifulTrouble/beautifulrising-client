@@ -7,7 +7,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import Markdown from 'react-markdown';
 import Isvg from 'react-inlinesvg';
@@ -30,6 +30,10 @@ import TypeFlag from 'components/TypeFlag';
 import TypeOverlay from 'components/TypeOverlay';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 import messages from './messages';
+
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+import staticText from './staticText';
+
 
 const Content = styled.div`
   position: absolute;
@@ -92,7 +96,7 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
               <Viewport>
                 <ToolHeaderType type={this.props.type}>
                   <Link to={`/type/${this.props.type}`}>
-                    <FormattedMessage {...messages[this.props.type]} />
+                    <TranslatableStaticText {...staticText[this.props.type]} />
                   </Link>
                 </ToolHeaderType>
                 <ToolHeaderTitle color={'white'}>{this.props.title}</ToolHeaderTitle>
@@ -101,15 +105,15 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
                   title={this.props.title}
                   type={this.props.type}
                   snapshot={this.props.snapshot}
-                  addText={(<FormattedMessage {...messages.addTool} />)}
-                  removeText={(<FormattedMessage {...messages.removeTool} />)}
+                  addText={(<TranslatableStaticText {...staticText.addTool} />)}
+                  removeText={(<TranslatableStaticText {...staticText.removeTool} />)}
                 />
                 <ShareContainer>
                   <ShareButton {...this.props}>
                     <ContentBlock>
                       <Isvg src={ShareIcon} className={'share-button'} />
                       <CTA>
-                        <FormattedMessage {...messages.share}/>
+                        <TranslatableStaticText {...staticText.share}/>
                       </CTA>
                     </ContentBlock>
                   </ShareButton>

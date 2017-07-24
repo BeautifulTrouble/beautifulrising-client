@@ -6,67 +6,25 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import styled, { ThemeProvider } from 'styled-components';
 import Recaptcha from 'react-google-invisible-recaptcha';
 
+import TranslatableStaticText, { injectStaticText } from 'containers/TranslatableStaticText';
 import { RECAPTCHA_SITE_KEY } from 'components/CommonComponents/constants';
 import SmallHeaderBlock from 'components/SmallHeaderBlock';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
 import makeSelectSubmitRealWorldExample from './selectors';
-import messages from './messages';
-
 import { submitExample } from './actions';
 
-const Container = styled.div`
-`;
-const Form =  styled.form`
-  margin-top: 10px;
-  border: 2px solid;
-  text-align: ${props=>props.theme.lang === 'ar' ? 'left' : 'right'};
-  input {
-    border-bottom: 2px solid;
-    text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
-    width: 100%;
-    padding: 5px;
-  }
+import Form from 'components/SubmitRealWorldExample/Form';
+import Header from 'components/SubmitRealWorldExample/Header';
+import TextInput from 'components/SubmitRealWorldExample/TextInput';
+import TextArea from 'components/SubmitRealWorldExample/TextArea';
 
-  textarea {
-    width: 100%;
-    padding: 5px;
-    resize: none;
-    height: 50px;
-    outline: none;
-  }
+import staticText from './staticText';
 
-  button {
-    outline: none;
-    cursor: pointer;
-    width: 70px;
-    text-transform: uppercase;
-    text-decoration: underline;
-    font-weight: bold;
-    color: #828486;
-    margin: 5px;
-  }
-`;
-const Header = styled(SmallHeaderBlock)`
-  margin: 0;
-  margin-bottom: 5px;
-`;
-
-const TextInput = styled.input`
-font-size: 14px;
-line-height: 22px;
-`;
-const TextArea = styled.textarea`
-  font-size: 14px;
-  line-height: 22px;
-`;
-const Instruction = styled.div``;
 
 export class SubmitRealWorldExample extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -84,22 +42,22 @@ export class SubmitRealWorldExample extends React.PureComponent { // eslint-disa
   handleSubmit(evt) {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
     // this.props.onFormSubmit(evt, { ...this.state });
-    
+
     if (this.state.url === '' ||
         this.state.title === '' ||
         this.state.description === '') {
-          
+
       this.recaptcha.reset()
     } else {
-      
+
       this.recaptcha.execute();
-      
+
     }
   }
 
   handleRecaptcha(captchaResponse) {
-    
-    
+
+
     this.props.onFormSubmit(captchaResponse, { ...this.state });
   }
 
@@ -117,16 +75,16 @@ export class SubmitRealWorldExample extends React.PureComponent { // eslint-disa
   }
 
   renderForm() {
-    const {formatMessage} = this.props.intl;
+    const {buildMessage} = this.props.translatable;
     return (
 
       <Form onSubmit={this.handleSubmit.bind(this)}>
         <TextInput type='text' name='url'
-          placeholder={formatMessage(messages.url)} onChange={this.handleChange.bind(this)} />
-        <TextInput type='text' name='title' placeholder={formatMessage(messages.title)}  onChange={this.handleChange.bind(this)} />
-        <TextArea name='description' placeholder={formatMessage(messages.description)} onChange={this.handleChange.bind(this)} ></TextArea>
+          placeholder={buildMessage(staticText.url)} onChange={this.handleChange.bind(this)} />
+        <TextInput type='text' name='title' placeholder={buildMessage(staticText.title)}  onChange={this.handleChange.bind(this)} />
+        <TextArea name='description' placeholder={buildMessage(staticText.description)} onChange={this.handleChange.bind(this)} ></TextArea>
         <button>
-          <FormattedMessage {...messages.submit} />
+          <TranslatableStaticText {...staticText.submit} />
         </button>
         <Recaptcha
           ref={ ref=> this.recaptcha = ref }
@@ -138,20 +96,19 @@ export class SubmitRealWorldExample extends React.PureComponent { // eslint-disa
   }
 
   render() {
-    const {formatMessage} = this.props.intl;
     return (
       <LanguageThemeProvider>
-        <Container>
+        <div>
           <Header>
-            <FormattedMessage {...messages.header} values={{type: this.props.type}} />
+            <TranslatableStaticText {...staticText.header} values={{type: this.props.type}} />
           </Header>
-          <Instruction>
+          <div>
             <ContentBlock>
-              <FormattedMessage {...messages.instruction} />
+              <TranslatableStaticText {...staticText.instruction} />
             </ContentBlock>
-          </Instruction>
+          </div>
           { this.props.realWorldEx.complete ? this.renderComplete() : this.renderForm() }
-        </Container>
+        </div>
       </LanguageThemeProvider>
     );
   }
@@ -175,4 +132,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(SubmitRealWorldExample));
+export default connect(mapStateToProps, mapDispatchToProps)(injectStaticText(SubmitRealWorldExample));

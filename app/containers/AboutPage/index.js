@@ -142,18 +142,22 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
         <TheToolbox
             ref={"/about/whats-inside"}
             targetRoute="/about/whats-inside"
+            header = { this.props.aboutData.getIn(['about', 'misc', 'whats-inside'])}
             onChange={ this.componentIsVisible.bind(this) }
             whatsInside = { this.props.aboutData.getIn(['about','whats-inside', 'introduction']) }
         />
         <OurProcess ref={"/about/process"}
               targetRoute="/about/process"
               onChange={this.componentIsVisible.bind(this) }
+              header = { this.props.aboutData.getIn(['about', 'misc', 'process'])}
               participants={this.props.aboutData.get('workshop-participants')}
+              processes={this.props.aboutData.getIn(['about', 'process']) ? this.props.aboutData.getIn(['about', 'process']).toJS() : null}
               />
 
         <OurValues
             ref="/about/values"
             targetRoute="/about/values"
+            header = { this.props.aboutData.getIn(['about', 'misc', 'values'])}
             onChange={this.componentIsVisible.bind(this) }
             ourValues={this.props.aboutData.getIn(['about', 'values'])}
         />
@@ -163,11 +167,13 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
             targetRoute="/about/advisory-network"
             onChange={this.componentIsVisible.bind(this) }
             advisoryNetwork = {this.props.advisoryBoard}
+            header = { this.props.aboutData.getIn(['about', 'misc', 'advisory-network'])}
             introText = { this.props.aboutData.getIn(['about', 'advisory-network', 'introduction'])}
         />
         <OurTeam
             ref="/about/team"
             targetRoute="/about/team"
+            header = { this.props.aboutData.getIn(['about', 'misc', 'team']) }
             onChange={this.componentIsVisible.bind(this) }
             teamMembers={this.props.aboutData.getIn(['about', 'team-members'])}
             allData={this.props.aboutData}
@@ -181,12 +187,14 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
         <Partners
             ref="/about/partners"
             targetRoute="/about/partners"
+            header = { this.props.aboutData.getIn(['about', 'misc', 'partners'])}
             onChange={ this.componentIsVisible.bind(this) }
             networkPartners={this.props.aboutData.getIn(['about', 'network-partners'])}
         />
         <FAQ
             ref="/about/faq"
             targetRoute="/about/faq"
+            allData={this.props.aboutData}
             onChange={this.componentIsVisible.bind(this) }
             questions={this.props.aboutData.getIn(['about', 'questions'])}
         />

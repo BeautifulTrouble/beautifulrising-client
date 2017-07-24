@@ -16,7 +16,7 @@ import MenuTitle from 'components/MenuTitle';
 import MenuSubtitle from 'components/MenuSubtitle';
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 
-import { FormattedMessage, injectIntl} from 'react-intl';
+import { injectIntl} from 'react-intl';
 import staticText from './staticText';
 
 function PlatformsMenu(props) {

@@ -10,7 +10,7 @@ import Markdown from 'react-remarkable';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ToolTypeAllFull from 'containers/ToolTypeAllFull';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import IntroText from 'components/AboutPage/IntroText';
 import Introduction from 'components/AboutPage/Introduction';
 import AboutSection from 'components/AboutPage/AboutSection';
@@ -24,9 +24,7 @@ export class TheToolbox extends React.Component {
     return(
       <VisibilitySensor  onChange={(isVisible) => this.props.onChange(isVisible, this.props.targetRoute)}>
         <div>
-          <h2>
-            <FormattedMessage {...messages.theToolboxHeader} />
-          </h2>
+          <h2>{this.props.header}</h2>
         </div>
       </VisibilitySensor>
     );

@@ -96,7 +96,7 @@ const ExampleTitle = styled.h5`
     text-transform: uppercase;
   }
 `;
-const ExampleDescription = styled.p`
+const ExampleDescription = styled.div`
   font-style: italic;
   margin: 5px 0 0;
   padding: 0;

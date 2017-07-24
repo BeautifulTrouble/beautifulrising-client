@@ -6,15 +6,19 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
 import AdderRemover from 'containers/Tools/AdderRemover';
-import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import ToolsPotentialRisk from 'containers/ToolsPotentialRisk';
+
 import { ToolRightArea, ToolsPageRelatedToolsHeader, ToolsPageRightHeader, ToolsRelatedArea, ToolsRelatedContainer } from 'components/ToolsPageComponents';
 import ToolsRelatedTool from 'components/ToolsRelatedTool';
-import ToolsPotentialRisk from 'components/ToolsPotentialRisk';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import messages from './messages';
+
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+import staticText from './staticText';
 
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 
@@ -25,7 +29,7 @@ export class ToolPageRight extends React.PureComponent { // eslint-disable-line 
     return (
       <ToolsRelatedContainer>
         <ToolsPageRightHeader>
-          <FormattedMessage {...messages.tactics} />
+          <TranslatableStaticText {...staticText.tactics} />
         </ToolsPageRightHeader>
         <ToolsRelatedTool type={"tactic"} relatedTools={this.props.tactics} dict={this.props.toolsList}/>
       </ToolsRelatedContainer>
@@ -37,7 +41,7 @@ export class ToolPageRight extends React.PureComponent { // eslint-disable-line 
     return (
       <ToolsRelatedContainer>
         <ToolsPageRightHeader>
-          <FormattedMessage {...messages.principles} />
+          <TranslatableStaticText {...staticText.principles} />
         </ToolsPageRightHeader>
         <ToolsRelatedTool type={"principle"} relatedTools={this.props.principles} dict={this.props.toolsList}/>
       </ToolsRelatedContainer>
@@ -49,7 +53,7 @@ export class ToolPageRight extends React.PureComponent { // eslint-disable-line 
     return (
       <ToolsRelatedContainer>
         <ToolsPageRightHeader>
-          <FormattedMessage {...messages.theories} />
+          <TranslatableStaticText {...staticText.theories} />
         </ToolsPageRightHeader>
         <ToolsRelatedTool type={"theory"} relatedTools={this.props.theories} dict={this.props.toolsList}/>
       </ToolsRelatedContainer>
@@ -62,7 +66,7 @@ export class ToolPageRight extends React.PureComponent { // eslint-disable-line 
     return(
       <ToolsRelatedContainer>
         <ToolsPageRightHeader>
-          <FormattedMessage {...messages.methodologies} />
+          <TranslatableStaticText {...staticText.methodologies} />
         </ToolsPageRightHeader>
         <ToolsRelatedTool type={"methodology"} relatedTools={this.props.methodologies} dict={this.props.toolsList}/>
       </ToolsRelatedContainer>
@@ -74,7 +78,7 @@ export class ToolPageRight extends React.PureComponent { // eslint-disable-line 
     return (
       <ToolsRelatedContainer>
         <ToolsPageRightHeader>
-          <FormattedMessage {...messages.stories} />
+          <TranslatableStaticText {...staticText.stories} />
         </ToolsPageRightHeader>
         <ToolsRelatedTool type={"story"} relatedTools={this.props.stories} dict={this.props.toolsList}/>
       </ToolsRelatedContainer>
@@ -89,7 +93,7 @@ export class ToolPageRight extends React.PureComponent { // eslint-disable-line 
             <ToolsPotentialRisk content={this.props['potential-risks']} type={this.props.type} />
 
             <ToolsPageRelatedToolsHeader>
-              <FormattedMessage {...messages.relatedTools} />
+              <TranslatableStaticText {...staticText.relatedTools} />
             </ToolsPageRelatedToolsHeader>
             <ToolsRelatedArea>
               { this.getRelatedTactics() }

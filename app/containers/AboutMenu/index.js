@@ -14,7 +14,7 @@ import MenuList from 'components/MenuList';
 import MenuListItem from 'components/MenuListItem';
 import MenuTitle from 'components/MenuTitle';
 
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import messages from './messages';
 import { ABOUT_MENU, KEY_MENU_ABOUT } from './constants';
 

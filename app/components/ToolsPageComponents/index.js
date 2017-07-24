@@ -9,19 +9,9 @@ import styled from 'styled-components';
 import SmallSectionHeader from 'components/SmallSectionHeader';
 import ContentBlock from 'components/ContentBlock';
 import { ToolType, ToolTitle } from 'components/ToolsComponents';
-import { CommonLeftHeader } from 'components/CommonComponents';
+import CommonLeftHeader from 'components/CommonComponents/CommonLeftHeader';
 import { Link } from 'react-router';
 
-function ToolsPageComponents() {
-  return (
-    <div>
-    </div>
-  );
-}
-
-ToolsPageComponents.propTypes = {
-
-};
 
 export const ToolInformation = styled.section`
   width: 100%;
@@ -248,5 +238,3 @@ border-bottom: 6px solid black;
 export const RealWorldContainer = styled(ToolMainContent)`
 margin-top: 30px;
 `;
-
-export default ToolsPageComponents;

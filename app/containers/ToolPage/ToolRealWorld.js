@@ -6,7 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { RealWorldIcon } from 'components/ToolsComponents';
 import Isvg from 'react-inlinesvg';
@@ -22,6 +22,9 @@ import ArrowIcon from 'assets/images/icons/arrow.svg';
 import styled, { ThemeProvider } from 'styled-components';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+import staticText from './staticText';
+
 const TitleContainer = styled.span`
   display: inline;
   padding-right: 10px;
@@ -30,7 +33,6 @@ const TitleContainer = styled.span`
 `;
 
 const ContentArea = styled.div``;
-import messages from './messages';
 
 class ToolRealWorld extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -59,7 +61,6 @@ class ToolRealWorld extends React.Component { // eslint-disable-line react/prefe
 
   }
   render() {
-    const {locale} = this.props.intl;
     return (
 
         <RealWorldContainer>
@@ -67,7 +68,7 @@ class ToolRealWorld extends React.Component { // eslint-disable-line react/prefe
             <RealWorldHeader>
               <RealWorldIcon src={RealWorldIconImage} type={this.props.type}/>
               <TitleContainer>
-                <FormattedMessage {...messages.realWorldExamplesOf} values={{title: this.props.title}}/>
+                <TranslatableStaticText {...staticText.realWorldExamplesOf} values={{title: this.props.title}}/>
               </TitleContainer>
               <RealWorldToggle collapsed={this.state.isCollapsed} onClick={this.handleCollapseClick.bind(this)}>
                 <Isvg src={ArrowIcon} />
@@ -86,4 +87,4 @@ class ToolRealWorld extends React.Component { // eslint-disable-line react/prefe
   }
 }
 
-export default injectIntl(ToolRealWorld);
+export default ToolRealWorld;

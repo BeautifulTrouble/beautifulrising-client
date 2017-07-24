@@ -20,7 +20,7 @@ import Page from 'components/Page';
 import Header from 'containers/Header';
 import Body from 'components/Body';
 import Tools from 'containers/Tools';
-import Footer from 'components/Footer';
+import Footer from 'containers/Footer';
 import LanguageChanger from 'containers/LanguageChanger';
 import OnboardingModal from 'containers/OnboardingModal';
 import { isShowTools, makeSelectLanguage, makeSelectStaticText } from './selectors';
@@ -46,10 +46,10 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
   componentDidMount() {
 
     // TODO Load language if feasible
-    
+
 
     if (!this.props.staticText) {
-      
+
       this.props.onLanguageLoad()
     }
   }
