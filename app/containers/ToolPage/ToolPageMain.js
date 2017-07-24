@@ -8,10 +8,9 @@ import React, { PropTypes } from 'react';
 import Markdown from 'react-markdown';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { RouterLink } from 'utils/markdown';
-import ToolSnapshotArea from 'components/ToolSnapshotArea';
+import ToolSnapshotArea from 'containers/ToolSnapshotArea';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import AdderRemover from 'containers/Tools/AdderRemover';
 import { BorderedButton } from 'components/CommonComponents';
@@ -22,10 +21,10 @@ import { ToolMainArea,
 
 
 
-import ToolHowToUse from 'components/ToolHowToUse';
-import ToolWhyItWorked from 'components/ToolWhyItWorked';
-import ToolWhyItFailed from 'components/ToolWhyItFailed';
-import ToolKeyItems from 'components/ToolKeyItems';
+import ToolHowToUse from 'containers/ToolHowToUse';
+import ToolWhyItWorked from 'containers/ToolWhyItWorked';
+import ToolWhyItFailed from 'containers/ToolWhyItFailed';
+import ToolKeyItems from 'containers/ToolKeyItems';
 import ToolEpigraph from 'components/ToolEpigraph';
 import ToolWithPullQuote from 'components/ToolWithPullQuote';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
@@ -34,7 +33,9 @@ import ToolRealWorld from './ToolRealWorld';
 import ToolUntranslated from './ToolUntranslated';
 import { PROP_FULL_WRITE_UP, PROP_SHORT_WRITE_UP } from './constants';
 
-import messages from './messages';
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+import staticText from './staticText';
+
 
 export class ToolPageMain extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -110,8 +111,8 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
           {this.generateContent()}
           <BorderedButton onClick={this.handleShowClick.bind(this)}>
             {this.state.showFull
-                ? (<FormattedMessage {...messages.showLess}/>)
-                : (<FormattedMessage {...messages.showMore}/>) }
+                ? (<TranslatableStaticText {...staticText.showLess}/>)
+                : (<TranslatableStaticText {...staticText.showMore}/>) }
           </BorderedButton>
         </ToolMainContent>
       );

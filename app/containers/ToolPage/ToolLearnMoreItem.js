@@ -6,7 +6,6 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import ContentBlock from 'components/ContentBlock';
 import LatinThemeProvider from 'components/LatinThemeProvider';

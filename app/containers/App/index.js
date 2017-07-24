@@ -20,13 +20,12 @@ import Page from 'components/Page';
 import Header from 'containers/Header';
 import Body from 'components/Body';
 import Tools from 'containers/Tools';
-import Footer from 'components/Footer';
+import Footer from 'containers/Footer';
 import LanguageChanger from 'containers/LanguageChanger';
 import OnboardingModal from 'containers/OnboardingModal';
-import { isShowTools, makeSelectLanguage } from './selectors';
+import { isShowTools, makeSelectLanguage, makeSelectStaticText } from './selectors';
 import { isOnboarded } from 'containers/OnboardingModal/selectors';
-import { makeSelectLanguageData } from 'containers/LanguageProvider/selectors';
-import { loadLanguage } from 'containers/LanguageProvider/actions';
+import { loadLanguage } from 'containers/TranslatableStaticText/actions';
 //Themes
 
 const Content = styled.section`
@@ -47,9 +46,12 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
   componentDidMount() {
 
     // TODO Load language if feasible
-    // if (!this.props.languageData) {
-    //   this.props.onLanguageLoad()
-    // }
+
+
+    if (!this.props.staticText) {
+
+      this.props.onLanguageLoad()
+    }
   }
 
   render() {
@@ -78,13 +80,13 @@ const mapStateToProps = createStructuredSelector({
   isOnboarded: isOnboarded(),
   isShowTools: isShowTools(),
   language: makeSelectLanguage(),
-  languageData: makeSelectLanguageData()
+  staticText: makeSelectStaticText()
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    onLanguageLoad: (evt) => {
+    onLanguageLoad: function() {
       dispatch(loadLanguage())
     }
   };

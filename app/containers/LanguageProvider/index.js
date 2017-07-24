@@ -11,9 +11,7 @@ import { connect } from 'react-redux';
 import { createSelector, createStructuredSelector } from 'reselect';
 import { IntlProvider } from 'react-intl';
 
-import { loadLanguage } from './actions';
-
-import { makeSelectLocale, makeSelectLanguageData } from './selectors';
+import { makeSelectLocale } from './selectors';
 
 export class LanguageProvider extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -26,7 +24,6 @@ export class LanguageProvider extends React.PureComponent { // eslint-disable-li
   }
 
   render() {
-    
     return (
       <IntlProvider
             locale={this.props.locale}
@@ -37,6 +34,7 @@ export class LanguageProvider extends React.PureComponent { // eslint-disable-li
       </IntlProvider>
     );
   }
+
 }
 
 LanguageProvider.propTypes = {
@@ -48,7 +46,7 @@ LanguageProvider.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   locale: makeSelectLocale(),
-  languageData: makeSelectLanguageData()
+  // languageData: makeSelectLanguageData()
 });
 
 function mapDispatchToProps(dispatch) {

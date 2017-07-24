@@ -7,14 +7,20 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { injectIntl } from 'react-intl';
+
 import { createStructuredSelector } from 'reselect';
 import makeSelectSearchField from './selectors';
 import messages from './messages';
 import {searchFieldChanged} from './actions';
 
+import { injectStaticText } from 'containers/TranslatableStaticText';
+
 import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
+
+import staticText from './staticText';
+
 
 const SearchContainer = styled.div``;
 const SearchForm = styled.form``;
@@ -46,11 +52,12 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
   }
 
   render() {
-    const {formatMessage, locale} = this.props.intl;
+    const {locale} = this.props.intl;
+    const {buildMessage} = this.props.translatable;
     return (
       <SearchContainer>
         <SearchForm onSubmit={this.handleSubmit.bind(this)}>
-          <SearchBox ref={'SearchBox'} ar={locale==='ar'} type='text' onChange={this.props.onChange} placeholder={formatMessage(messages.placeholder)} />
+          <SearchBox ref={'SearchBox'} ar={locale==='ar'} type='text' onChange={this.props.onChange} placeholder={buildMessage(staticText.placeholder)} />
         </SearchForm>
       </SearchContainer>
     );
@@ -84,4 +91,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(SearchField));
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(injectStaticText(SearchField)));

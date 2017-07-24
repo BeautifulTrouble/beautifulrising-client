@@ -8,7 +8,7 @@ import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { push,replace } from 'react-router-redux';
 import { createStructuredSelector } from 'reselect';
 import VisibilitySensor from 'react-visibility-sensor';
@@ -27,7 +27,8 @@ import { browserHistory } from 'react-router';
 
 import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
 
-import messages from './messages';
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+import staticText from './staticText';
 
 const Container = styled.section`
   text-align: ${props=>props.lang==='ar'?'right':'left'};
@@ -161,7 +162,7 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
         <Container>
           <Viewport>
             <Header>
-              <FormattedMessage {...messages.header} />
+              <TranslatableStaticText {...staticText.header} />
             </Header>
             <TrainingArea lang={lang}>
               <MenuArea lang={lang}>
@@ -199,7 +200,7 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
 
             <OtherResourcesArea>
               <Heading lang={lang}>
-                <FormattedMessage {...messages.otherResources} />
+                <TranslatableStaticText {...staticText.otherResources} />
               </Heading>
               <OtherResources data={this.props.data.get('resources')}/>
             </OtherResourcesArea>

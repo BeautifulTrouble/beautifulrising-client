@@ -7,7 +7,8 @@
 import React, { PropTypes } from 'react';
 import { push } from 'react-router';
 import { connect } from 'react-redux';
-import { changeLocale, loadLanguage } from 'containers/LanguageProvider/actions';
+import { changeLocale } from 'containers/LanguageProvider/actions';
+import { loadLanguage } from 'containers/TranslatableStaticText/actions';
 import { createStructuredSelector } from 'reselect';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
@@ -48,6 +49,7 @@ const Item = styled.li`
 export class LanguageChanger extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   handleClick(e) {
     if (this.props.intl.locale !== e.target.value) {
+      
       this.props.handleChangeLocale(e.target.value);
       this.props.handleChangeLocationSignal();
     }

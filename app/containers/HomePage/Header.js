@@ -7,12 +7,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { FormattedMessage, injectIntl } from 'react-intl';
-import messages from './messages';
-import Link from 'components/Link';
-import TypeMenu from 'components/TypeMenu';
-import ToolTypeArea from 'components/ToolTypeArea';
+import { injectIntl } from 'react-intl';
+
+import ToolTypeArea from 'containers/ToolTypeArea';
 import SearchField from 'containers/SearchField';
+
+import Link from 'components/Link';
+
+import messages from './messages';
 
 const HeaderContainer = styled.div`
   width: 1080px;

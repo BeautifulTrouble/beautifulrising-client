@@ -6,45 +6,22 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import styled from 'styled-components';
 import Recaptcha from 'react-google-invisible-recaptcha';
 
+import TranslatableStaticText from 'containers/TranslatableStaticText';
 import { RECAPTCHA_SITE_KEY } from 'components/CommonComponents/constants';
-import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import Header from 'components/SubmitNewsFeed/Header';
+import FormContainer from 'components/SubmitNewsFeed/FormContainer';
+
 import makeSelectSubmitNewsFeed from './selectors';
-import messages from './messages';
 import { submitHashtag } from './actions';
+import staticText from './staticText';
 
-const Header = styled(ContentBlock)`
-  font-weight: 800;
-  color: black;
-  margin: 10px 0;
-`;
 
-const FormContainer = styled(ContentBlock)`
-  border: 1px solid;
-  padding: 8px;
-
-  input[type=email] {
-    width: calc(100% - 80px);
-    outline: none;
-    padding: 2px;
-    text-align: ${p=>p.theme.isArabic ? 'right' : 'left'};
-  }
-  button {
-    outline: none;
-    width: 70px;
-    text-transform: uppercase;
-    text-decoration: underline;
-    font-weight: bold;
-    cursor: pointer;
-    color: #828486;
-    float: ${p=>p.theme.isArabic ? 'left' : 'right'};
-  }
-`;
 export class SubmitNewsFeed extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
@@ -73,7 +50,7 @@ export class SubmitNewsFeed extends React.PureComponent { // eslint-disable-line
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input type='hashtag' name='hashtag' onChange={this.handleChange.bind(this)} placeholder='#'/>
           <button>
-            <FormattedMessage {...messages.submit} />
+            <TranslatableStaticText {...staticText.submit} />
           </button>
           <Recaptcha
             ref={ ref=> this.recaptcha = ref }
@@ -91,9 +68,9 @@ export class SubmitNewsFeed extends React.PureComponent { // eslint-disable-line
     return (
       <LanguageThemeProvider>
         <Header>
-          <FormattedMessage {...messages.header} />
-          { this.renderForm() }
+          <TranslatableStaticText {...staticText.header} />
         </Header>
+        { this.renderForm() }
       </LanguageThemeProvider>
     );
   }

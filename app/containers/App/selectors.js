@@ -4,10 +4,16 @@ import {slugify} from 'utils/tags';
 const selectGlobal = (state) => state.get('global');
 const selectTools = (state) => state.get('tools');
 const selectLanguage = (state) => state.get('language');
+const selectTranslatableStaticText = (state) => state.get('translatableStaticText');
 
 const makeSelectLanguage = () => createSelector(
   [selectLanguage],
   (languageState) => languageState.get('locale')
+)
+
+const makeSelectStaticText = () => createSelector(
+  [selectTranslatableStaticText],
+  (staticTextState) => staticTextState.get('data')
 )
 /* This will take all items */
 /* Source: https://stackoverflow.com/questions/33830745/immutablejs-convert-list-to-indexed-map */
@@ -160,6 +166,7 @@ export {
   makeSelectAdvisoryBoard,
   makeSelectLanguage,
   makeSelectExamples,
-  makeSelectSlugged
+  makeSelectSlugged,
+  makeSelectStaticText
   // makeSelectToolView,
 };

@@ -6,7 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 
 import ContentBlock from 'components/ContentBlock';
@@ -37,6 +37,9 @@ import { ToolsButton, ToolsListMenu, ToolsListMenuItem,
           ToolsList, ToolsListItem } from 'components/ToolsComponents';
 
 import SelectedTool from './SelectedTool';
+
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+import staticText from './staticText';
 
 export const ToolsListContainer = styled.div`
     width: calc(100% - 73px);
@@ -158,12 +161,12 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
               <EmailTools />
             </EmailContainer>
             <DownloadPDFContainer show={this.state.chosen === DOWNDLOAD_PDF}>
-              <h3><FormattedMessage {...messages.pdfHeader} /></h3>
+              <h3><TranslatableStaticText {...staticText.pdfHeader} /></h3>
               <ContentBlock>
-                <FormattedMessage {...messages.pdfSpiel} />
+                <TranslatableStaticText {...staticText.pdfSpiel} />
                 <br/>
                 <Link to={this.buildPDFLink()} target='_blank'>
-                  <FormattedMessage {...messages.pdfCTA} />
+                  <TranslatableStaticText {...staticText.pdfCTA} />
                 </Link>
               </ContentBlock>
             </DownloadPDFContainer>

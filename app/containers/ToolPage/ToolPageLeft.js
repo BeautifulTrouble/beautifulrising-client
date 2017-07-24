@@ -6,7 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import styled, { ThemeProvider} from 'styled-components';
 import CouldBeYou from 'components/CouldBeYou';
@@ -20,7 +20,9 @@ import AskTheContributor from 'containers/AskTheContributor';
 import { ToolLeftArea, ToolsPageLeftHeader, ToolsPageContributor } from 'components/ToolsPageComponents';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 
-import messages from './messages';
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+import staticText from './staticText';
+
 
 const Container = styled.div`
   margin-bottom: 30px;
@@ -32,7 +34,7 @@ export class ToolPageLeft extends React.PureComponent { // eslint-disable-line r
     return (
       <Container>
         <SmallSectionHeader>
-          <FormattedMessage {...messages.tags} />
+          <TranslatableStaticText {...staticText.tags} />
         </SmallSectionHeader>
         <Tags align="left" tags={this.props.tags ? this.props.tags.map(item=>item.toLowerCase()) : null} />
       </Container>
@@ -53,7 +55,7 @@ export class ToolPageLeft extends React.PureComponent { // eslint-disable-line r
         <LanguageThemeProvider>
           <ToolLeftArea>
             <ToolsPageContributor>
-              <FormattedMessage {...messages.contributedByHeader} />
+              <TranslatableStaticText {...staticText.contributedByHeader} />
             </ToolsPageContributor>
             { this.props.authors && this.props.authors.length > 0 ?
                 this.props.authors.map(item=><Author key={item} slug={item}/>) :
@@ -65,7 +67,7 @@ export class ToolPageLeft extends React.PureComponent { // eslint-disable-line r
             { this.renderTags() }
             <Container>
               <SmallSectionHeader>
-                <FormattedMessage {...messages.trainingHeader} />
+                <TranslatableStaticText {...staticText.trainingHeader} />
               </SmallSectionHeader>
               <ToolsRequestTraining />
             </Container>

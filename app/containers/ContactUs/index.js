@@ -18,56 +18,23 @@ import makeSelectContactUs from './selectors';
 import messages from './messages';
 import { sendSubscription } from './actions';
 
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+
 import MenuLink from 'components/MenuLink';
 import MenuBlock from 'components/MenuBlock';
 import MenuList from 'components/MenuList';
 import MenuListItem from 'components/MenuListItem';
 import MenuTitle from 'components/MenuTitle';
 
-import ContentBlock from 'components/ContentBlock';
+import Header from 'components/MenuContactUs/Header';
+import EmailLink from 'components/MenuContactUs/EmailLink';
+import FormContainer from 'components/MenuContactUs/FormContainer';
+import SocialLink from 'components/MenuContactUs/SocialLink';
+import SubscribeCTA from 'components/MenuContactUs/SubscribeCTA';
+
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import staticText from './staticText';
 
-const Header = styled.h3``;
-const SocialLink = styled(Link)`text-decoration: none;`;
-const EmailLink = styled(MenuLink)`
-  text-transform: none;
-  font-weight: none;
-`;
-
-const SubscribeCTA = styled.p`
-  font-size: ${p=>p.theme.isArabic?'13px':'14px'};
-  line-height: ${p=>p.theme.isArabic?'24px':'22px'};
-`;
-const FormContainer = styled(ContentBlock)`
-  border: 1px solid;
-  padding: 8px;
-  &::after {
-    content: '';
-    display: block;
-    clear: both;
-  }
-
-  input[type=email] {
-    width: calc(100% - 70px);
-    outline: none;
-    padding: 2px;
-    float: ${p=>p.theme.isArabic?'right':'left'};
-    text-align: ${p=>p.theme.isArabic?'right':'left'};
-  }
-  button {
-    outline: none;
-    width: 70px;
-    text-align: ${p=>p.theme.isArabic?'left':'right'};
-    float: ${p=>p.theme.isArabic?'right':'left'};
-    text-transform: uppercase;
-    text-decoration: underline;
-    font-weight: bold;
-    color: #828486;
-  }
-`;
-
-const InputEmail = styled.input``;
-const SubmitButton = styled.button``;
 export class ContactUs extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
@@ -89,10 +56,10 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
       <LanguageThemeProvider>
         <FormContainer>
           <form onSubmit={this.handleSubmit.bind(this)}>
-            <InputEmail type='email' name='email' onChange={this.handleChange.bind(this)} placeholder='samir@gmail.com'/>
-            <SubmitButton>
-              <FormattedMessage {...messages.submit} />
-            </SubmitButton>
+            <input type='email' name='email' onChange={this.handleChange.bind(this)} placeholder='samir@gmail.com'/>
+            <button>
+              <TranslatableStaticText {...staticText.submit} />
+            </button>
           </form>
         </FormContainer>
       </LanguageThemeProvider>
@@ -114,7 +81,7 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
       <LanguageThemeProvider>
         <MenuBlock>
           <MenuTitle>
-            <FormattedMessage {...messages.header} />
+            <TranslatableStaticText {...staticText.header} />
           </MenuTitle>
           <EmailLink to='mailto:info@beautifulrising.org'>info@beautifulrising.org</EmailLink>
           <div>
@@ -125,7 +92,7 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
               <Isvg src={FacebookIcon} />
             </SocialLink>
             <SubscribeCTA>
-              <FormattedMessage {...messages.subscribe} />
+              <TranslatableStaticText {...staticText.subscribe} />
             </SubscribeCTA>
           </div>
 
