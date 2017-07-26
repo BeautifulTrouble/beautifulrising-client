@@ -12,4 +12,5 @@ export default styled(ContentBlock)`
   width: 20%;
   display: inline-block;
   vertical-align: top;
+  align-items: stretch;
 `;

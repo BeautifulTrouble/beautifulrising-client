@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 export default styled.div`
 width: 1100px;
-display: inline-block;
 text-align: ${props=>props.lang==='ar'?'right':'left'};
+display: inline-block;
 &::before {
   // content: ' ';
   // position: absolute;

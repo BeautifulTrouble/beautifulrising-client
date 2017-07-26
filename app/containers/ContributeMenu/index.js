@@ -19,17 +19,17 @@ function ContributeMenu(props) {
   return (
 
       <MenuBlock>
-      <LanguageThemeProvider>
-        <MenuTitle>
-          <TranslatableStaticText {...staticText.header} />
-        </MenuTitle>
-        <MenuList>
-          <MenuListItem>
-            <MenuLink to="/contribute/how-it-works" onClick={props.onClick}>
-              <TranslatableStaticText {...staticText.howItWorks} />
-            </MenuLink>
-          </MenuListItem>
-        </MenuList>
+        <LanguageThemeProvider>
+          <MenuTitle>
+            <TranslatableStaticText {...staticText.header} />
+          </MenuTitle>
+          <MenuList>
+            <MenuListItem>
+              <MenuLink to="/contribute/how-it-works" onClick={props.onClick}>
+                <TranslatableStaticText {...staticText.howItWorks} />
+              </MenuLink>
+            </MenuListItem>
+          </MenuList>
         </LanguageThemeProvider>
       </MenuBlock>
 
