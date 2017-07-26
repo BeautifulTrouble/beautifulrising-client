@@ -6,10 +6,12 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import Isvg from 'react-inlinesvg';
 
 import { injectIntl } from 'react-intl';
 
 import ToolTypeArea from 'containers/ToolTypeArea';
+
 import SearchField from 'containers/SearchField';
 import ToolsViewOptions from 'containers/ToolsViewOptions';
 import ToolsSortOptions from 'containers/ToolsSortOptions';
@@ -19,7 +21,7 @@ import {TextButton} from 'components/CommonComponents';
 import IconButton from 'components/IconButton';
 import ArrowIcon from 'assets/images/icons/arrow.svg';
 
-import Isvg from 'react-inlinesvg';
+import TypeDetails from 'containers/TypeDetails';
 import Link from 'components/Link';
 
 
@@ -86,6 +88,7 @@ class Header extends React.PureComponent {
   }
   render() {
     const lang = this.props.intl.locale;
+    const showTypeDetails=this.props.params.filter==="type";
     return (
       <HeaderContainer lang={lang} {...this.props}>
         <FilterSection>
@@ -104,6 +107,7 @@ class Header extends React.PureComponent {
           <ToolsViewOptions />
         </FilterSection>
         <TagArea show={true} {...this.props} show={this.state.isTagsAreaShown} hideTagArea={this.hideTagArea.bind(this)}/>
+        <TypeDetails show={showTypeDetails} {...this.props.params} />
       </HeaderContainer>
     );
   }
