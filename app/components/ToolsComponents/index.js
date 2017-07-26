@@ -187,17 +187,6 @@ export const ToolContainer = styled.div`
   text-align: left;
 `;
 
-export const BlockSpiel = styled(ContentBlock)`
-  color: ${props=>getToolTypeColor(props.type)};
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 10px;
-  font-weight: 800;
-  opacity: ${props=>props.show?(props.forceShow?'0':'1'):'0'};
-  transition: opacity 0.2s;
-`;
-
 export const BlockAddRem = styled.div`
   text-align: ${p=>p.theme.isArabic?'right':'left'};
 `;
