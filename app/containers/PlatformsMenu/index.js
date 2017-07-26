@@ -22,8 +22,9 @@ import staticText from './staticText';
 function PlatformsMenu(props) {
 
   return (
-    <LanguageThemeProvider>
+
       <MenuBlock>
+      <LanguageThemeProvider>
         <MenuTitle><TranslatableStaticText {...staticText.header}/></MenuTitle>
         <MenuSubtitle>
           <TranslatableStaticText {...staticText.subheader} />
@@ -45,8 +46,9 @@ function PlatformsMenu(props) {
             </MenuLink>
           </MenuListItem>
         </MenuList>
+        </LanguageThemeProvider>
       </MenuBlock>
-    </LanguageThemeProvider>
+
   );
 }
 

@@ -52,33 +52,42 @@ const MenuText = styled.span`{
   margin-top: 2px;
 }`;
 
-const CloseBox = styled.div`{
-  position: absolute;
-  padding: 10px;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
+const CloseBox = styled.div`
   text-align: ${props=>props.lang==='ar'?'right':'left'};
-  width: 1100px;
-  border: 2px solid;
-  background-color: white;
-
-}`;
-
-const MenuContainer= styled.div`{
-  border: 2px solid;
-  padding: 75px 0px 20px;
-  overflow: auto;
+  padding: 35px 0;
+  top: 0;
   width: 1100px;
   display: inline-block;
-}`;
-const CloseButton = styled.button`{
+  height: 122px;
+`;
 
-}`;
+const MenuContainer= styled.div`
+  border: solid black;
+  border-width: 2px 2px 0;
+  // padding: 0 0px 20px;
+  overflow: auto;
+  width: 100%;
+  text-align: center;
 
-const Viewport = styled.div`{
+  &::after {
+    display: block;
+    content: ' ';
+    clear: both;
+  }
+`;
+const CloseButton = styled.button`
+
+`;
+
+const Viewport = styled.div`
   position: relative;
-}`;
+`;
+
+const MenuSection = styled.section`
+  width: 100%;
+  border-bottom: 2px solid black;
+`;
+
 
 export class ModalMenu extends React.Component {
   constructor() {
@@ -124,12 +133,16 @@ export class ModalMenu extends React.Component {
           contentLabel="Example Modal"
         >
           <MenuContainer>
-            <CloseBox lang={lang}>
-              <CloseButton onClick={this.closeModal.bind(this)}>
-                <Isvg src={CloseIcon} />
-              </CloseButton>
-            </CloseBox>
-            <Menu onClick={this.closeModal.bind(this)} />
+            <MenuSection>
+              <CloseBox lang={lang}>
+                <CloseButton onClick={this.closeModal.bind(this)}>
+                  <Isvg src={CloseIcon} />
+                </CloseButton>
+              </CloseBox>
+            </MenuSection>
+            <MenuSection>
+              <Menu onClick={this.closeModal.bind(this)} />
+            </MenuSection>
           </MenuContainer>
         </Modal>
       </Viewport>

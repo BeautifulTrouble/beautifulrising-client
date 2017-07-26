@@ -18,7 +18,7 @@ import { loadData, langChangeReloadData } from '../App/actions';
 const Container = styled.div`
   position: absolute;
   ${props=>props.lang==='ar'?'left: 50%': 'right:50%'}
-  top: 10px;
+  top: 45px;
   z-index: ${p=>p.zIndex?p.zIndex:500};
   transform: ${props=>props.lang==='ar'?'translate(-530px,0)':'translate(530px,0)'};
 `;

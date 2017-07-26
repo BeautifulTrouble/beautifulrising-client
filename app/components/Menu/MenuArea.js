@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 export default styled.div`
+width: 1100px;
+display: inline-block;
 text-align: ${props=>props.lang==='ar'?'right':'left'};
 &::before {
   // content: ' ';
@@ -10,5 +12,11 @@ text-align: ${props=>props.lang==='ar'?'right':'left'};
   // z-index: 0;
   // width: 182px;
   // height: 20px;
+}
+
+&::after {
+  content: ' ';
+  display: block;
+  clear: both;
 }
 `;

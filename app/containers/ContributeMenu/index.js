@@ -17,8 +17,9 @@ import staticText from './staticText';
 
 function ContributeMenu(props) {
   return (
-    <LanguageThemeProvider>
+
       <MenuBlock>
+      <LanguageThemeProvider>
         <MenuTitle>
           <TranslatableStaticText {...staticText.header} />
         </MenuTitle>
@@ -29,8 +30,9 @@ function ContributeMenu(props) {
             </MenuLink>
           </MenuListItem>
         </MenuList>
+        </LanguageThemeProvider>
       </MenuBlock>
-    </LanguageThemeProvider>
+
   );
 }
 

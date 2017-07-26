@@ -22,25 +22,25 @@ function AboutMenu(props) {
   const { locale } = props.intl;
 
   return (
-    <LanguageThemeProvider>
       <MenuBlock>
-        <MenuTitle>
-          <TranslatableStaticText id={KEY_MENU_ABOUT} />
-        </MenuTitle>
-        <MenuList>
-          {
-            ABOUT_MENU.map(item => (
+        <LanguageThemeProvider>
+          <MenuTitle>
+            <TranslatableStaticText id={KEY_MENU_ABOUT} />
+          </MenuTitle>
+          <MenuList>
+            {
+              ABOUT_MENU.map(item => (
 
-              <MenuListItem key={item.to}>
-                <MenuLink to={item.to}  onClick={props.onClick}>
-                  <TranslatableStaticText id={item.text} />
-                </MenuLink>
-              </MenuListItem>
-            ))
-          }
-        </MenuList>
+                <MenuListItem key={item.to}>
+                  <MenuLink to={item.to}  onClick={props.onClick}>
+                    <TranslatableStaticText id={item.text} />
+                  </MenuLink>
+                </MenuListItem>
+              ))
+            }
+          </MenuList>
+        </LanguageThemeProvider>
       </MenuBlock>
-    </LanguageThemeProvider>
   );
 }
 
