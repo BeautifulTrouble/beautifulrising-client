@@ -23,8 +23,9 @@ import staticText from './staticText';
 
 function TrainingMenu(props) {
   return (
-    <LanguageThemeProvider>
+
       <MenuBlock>
+      <LanguageThemeProvider>
         <MenuTitle><TranslatableStaticText {...staticText.header} /></MenuTitle>
         <MenuList>
           <MenuListItem>
@@ -38,8 +39,8 @@ function TrainingMenu(props) {
             </MenuLink>
           </MenuListItem>
         </MenuList>
+        </LanguageThemeProvider>
       </MenuBlock>
-    </LanguageThemeProvider>
   );
 }
 

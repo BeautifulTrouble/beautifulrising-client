@@ -17,20 +17,22 @@ import staticText from './staticText';
 
 function ContributeMenu(props) {
   return (
-    <LanguageThemeProvider>
+
       <MenuBlock>
-        <MenuTitle>
-          <TranslatableStaticText {...staticText.header} />
-        </MenuTitle>
-        <MenuList>
-          <MenuListItem>
-            <MenuLink to="/contribute/how-it-works" onClick={props.onClick}>
-              <TranslatableStaticText {...staticText.howItWorks} />
-            </MenuLink>
-          </MenuListItem>
-        </MenuList>
+        <LanguageThemeProvider>
+          <MenuTitle>
+            <TranslatableStaticText {...staticText.header} />
+          </MenuTitle>
+          <MenuList>
+            <MenuListItem>
+              <MenuLink to="/contribute/how-it-works" onClick={props.onClick}>
+                <TranslatableStaticText {...staticText.howItWorks} />
+              </MenuLink>
+            </MenuListItem>
+          </MenuList>
+        </LanguageThemeProvider>
       </MenuBlock>
-    </LanguageThemeProvider>
+
   );
 }
 

@@ -78,8 +78,9 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
 
     const { locale } = this.props.intl;
     return (
-      <LanguageThemeProvider>
-        <MenuBlock>
+
+        <MenuBlock last={true}>
+        <LanguageThemeProvider>
           <MenuTitle>
             <TranslatableStaticText {...staticText.header} />
           </MenuTitle>
@@ -97,8 +98,9 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
           </div>
 
             { !this.props.ContactUs.complete ? this.renderForm() : this.renderResponse() }
+            </LanguageThemeProvider>
         </MenuBlock>
-      </LanguageThemeProvider>
+
     );
   }
 }

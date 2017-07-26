@@ -146,6 +146,9 @@ const Description = styled(ContentBlock)`
 
 function TypeDetails(props) {
   console.log(props);
+  if (props.filter === undefined) {
+    return null;
+  }
   return (
     <LanguageThemeProvider>
       <Container show={props.show}>

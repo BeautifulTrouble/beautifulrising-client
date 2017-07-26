@@ -22,18 +22,18 @@ const customStyles = {
     zIndex: 600
   },
   content : {
-    top                   : '0px',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    transform             : 'translate(-570px, 0)',
-    padding: '0',
-    border: 'none',
-    width: '300px',
-    height: '100%',
-    borderBottom: 'none',
-    borderWidth: 0,
+    position: 'absolute',
+    right: 'auto',
+    left: 'auto',
+    top: '0px',
+    bottom: 'auto',
+    border: '0px none',
+    background: 'rgb(255, 255, 255)',
     overflow: 'visible',
+    outline: 'none',
+    padding: '0px',
+    width: '100%',
+    textAlign: 'center'
   }
 };
 
@@ -52,30 +52,42 @@ const MenuText = styled.span`{
   margin-top: 2px;
 }`;
 
-const CloseBox = styled.div`{
-  position: absolute;
-  padding: 10px;
-  top: 0;
-  left: 0;
+const CloseBox = styled.div`
   text-align: ${props=>props.lang==='ar'?'right':'left'};
-  width: 100%;
-  border: 2px solid;
-  background-color: white;
-}`;
+  padding: 35px 0;
+  top: 0;
+  width: 1100px;
+  display: inline-block;
+  height: 122px;
+`;
 
-const MenuContainer= styled.div`{
-  border: 2px solid;
-  padding: 75px 0px 20px;
+const MenuContainer= styled.div`
+  border: solid black;
+  border-width: 2px 2px 0;
+  // padding: 0 0px 20px;
   overflow: auto;
-  height: 100vh;
-}`;
-const CloseButton = styled.button`{
+  width: 100%;
+  text-align: center;
 
-}`;
+  &::after {
+    display: block;
+    content: ' ';
+    clear: both;
+  }
+`;
+const CloseButton = styled.button`
 
-const Viewport = styled.div`{
+`;
+
+const Viewport = styled.div`
   position: relative;
-}`;
+`;
+
+const MenuSection = styled.section`
+  width: 100%;
+  border-bottom: 2px solid black;
+`;
+
 
 export class ModalMenu extends React.Component {
   constructor() {
@@ -117,21 +129,20 @@ export class ModalMenu extends React.Component {
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
-          style={{...customStyles, content: {...customStyles.content,
-            left                  : lang==='ar'?'auto':'50%',
-            right                 : lang==='ar'?'50%':'auto',
-            [lang==='ar'?'marginLeft':'marginRight']           : '-450px',
-            transform             : lang==='ar'?'translate(570px, 0)':'translate(-570px, 0)',
-          }}}
+          style={{...customStyles, content: {...customStyles.content}}}
           contentLabel="Example Modal"
         >
           <MenuContainer>
-            <CloseBox lang={lang}>
-              <CloseButton onClick={this.closeModal.bind(this)}>
-                <Isvg src={CloseIcon} />
-              </CloseButton>
-            </CloseBox>
-            <Menu onClick={this.closeModal.bind(this)} />
+            <MenuSection>
+              <CloseBox lang={lang}>
+                <CloseButton onClick={this.closeModal.bind(this)}>
+                  <Isvg src={CloseIcon} />
+                </CloseButton>
+              </CloseBox>
+            </MenuSection>
+            <MenuSection>
+              <Menu onClick={this.closeModal.bind(this)} />
+            </MenuSection>
           </MenuContainer>
         </Modal>
       </Viewport>

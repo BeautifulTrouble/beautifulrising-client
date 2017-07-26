@@ -1,14 +1,22 @@
 import styled from 'styled-components';
 export default styled.div`
+width: 1100px;
 text-align: ${props=>props.lang==='ar'?'right':'left'};
+display: inline-block;
 &::before {
+  // content: ' ';
+  // position: absolute;
+  // top: 67px;
+  // left: ${props=>props.lang==='ar'?'3px':'115px'};
+  // background-color: white;
+  // z-index: 0;
+  // width: 182px;
+  // height: 20px;
+}
+
+&::after {
   content: ' ';
-  position: absolute;
-  top: 67px;
-  left: ${props=>props.lang==='ar'?'3px':'115px'};
-  background-color: white;
-  z-index: 0;
-  width: 182px;
-  height: 20px;
+  display: block;
+  clear: both;
 }
 `;
