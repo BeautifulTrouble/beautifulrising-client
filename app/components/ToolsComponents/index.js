@@ -167,9 +167,9 @@ export const ToolsContainer = styled.div`
   position: fixed;
 
   width: ${(props) => props.showTools ? '350px' : '75px' };
-  height: calc(100vh - 170px);
+  height: calc(100vh - 200px)
   border: 2px solid black;
-  top: 93px;
+  top: 177px;
 
   ${props=>props.theme.lang == 'ar' ? 'left: 50%' : 'right: 50%;'}
   transform: translateX(${(props) => props.showTools ?
