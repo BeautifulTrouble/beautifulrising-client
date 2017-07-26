@@ -25,6 +25,7 @@ import { makeSelectToolById,
 
 import ToolsViewOptions from 'containers/ToolsViewOptions';
 import ToolsSortOptions from 'containers/ToolsSortOptions';
+import ToolTypeArea from 'containers/ToolTypeArea';
 
 import { LeftSection,
          Stage } from 'components/HomePage/Layout';
@@ -126,7 +127,9 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 
     const lang = this.props.language;
     const ListItem = this.getViewMode();
-    return (
+
+    console.log(this.props)
+;    return (
       <LanguageThemeProvider>
         <Container
             dir={this.getDirection()}
@@ -141,7 +144,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             ]}
           />
           <LeftSection lang={lang}>
-            {/*<ToolTypeArea lang={props.lang} {...props.params} />*/}
+            <ToolTypeArea lang={lang} params={this.props.params} />
           </LeftSection>
           <Stage lang={lang}>
             <Header lang={lang} {...this.props}/>
