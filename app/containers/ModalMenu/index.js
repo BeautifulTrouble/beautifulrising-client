@@ -22,18 +22,18 @@ const customStyles = {
     zIndex: 600
   },
   content : {
-    top                   : '0px',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    transform             : 'translate(-570px, 0)',
-    padding: '0',
-    border: 'none',
-    width: '300px',
-    height: '100%',
-    borderBottom: 'none',
-    borderWidth: 0,
+    position: 'absolute',
+    right: 'auto',
+    left: 'auto',
+    top: '0px',
+    bottom: 'auto',
+    border: '0px none',
+    background: 'rgb(255, 255, 255)',
     overflow: 'visible',
+    outline: 'none',
+    padding: '0px',
+    width: '100%',
+    textAlign: 'center'
   }
 };
 
@@ -56,18 +56,21 @@ const CloseBox = styled.div`{
   position: absolute;
   padding: 10px;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
   text-align: ${props=>props.lang==='ar'?'right':'left'};
-  width: 100%;
+  width: 1100px;
   border: 2px solid;
   background-color: white;
+
 }`;
 
 const MenuContainer= styled.div`{
   border: 2px solid;
   padding: 75px 0px 20px;
   overflow: auto;
-  height: 100vh;
+  width: 1100px;
+  display: inline-block;
 }`;
 const CloseButton = styled.button`{
 
@@ -117,12 +120,7 @@ export class ModalMenu extends React.Component {
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
-          style={{...customStyles, content: {...customStyles.content,
-            left                  : lang==='ar'?'auto':'50%',
-            right                 : lang==='ar'?'50%':'auto',
-            [lang==='ar'?'marginLeft':'marginRight']           : '-450px',
-            transform             : lang==='ar'?'translate(570px, 0)':'translate(-570px, 0)',
-          }}}
+          style={{...customStyles, content: {...customStyles.content}}}
           contentLabel="Example Modal"
         >
           <MenuContainer>
