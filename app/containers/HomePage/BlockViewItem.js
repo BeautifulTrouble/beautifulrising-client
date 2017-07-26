@@ -12,8 +12,11 @@ import TranslatableStaticText from 'containers/TranslatableStaticText';
 
 import Link from 'components/Link';
 import AdderRemover from 'containers/Tools/AdderRemover';
-import {ToolType, ToolTitle, BlockContainer,
-        BlockViewport, BlockSpiel, BlockAddRem, BlockViewTitleArea} from 'components/ToolsComponents';
+import {ToolType, ToolTitle, BlockSpiel, BlockAddRem} from 'components/ToolsComponents';
+
+import { BlockViewTitleArea,
+         BlockContainer,
+         BlockViewport } from 'components/HomePage/BlockView';
 
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import RegionIcon from 'components/RegionIcon';
@@ -58,12 +61,11 @@ class BlockViewItem extends React.Component {
               onMouseOut={this.handleMouseOut.bind(this)}
               background={`url(${BR_IMAGE_PREFIX + this.props.image})`}>
           <LanguageThemeProvider>
-            <BlockViewport>
+            <BlockViewport grayout={this.state.mouseOver}>
               <Link to={`/tool/${this.props.slug}`}>
                 <BlockViewTitleArea
                       show={!this.state.mouseOver}
                       forceShow={this.state.forceShow}
-                      style={this.props.position}
                 >
                   <ToolType ar={locale==='ar'} type={this.props.type}>
                     <TranslatableStaticText { ...staticText[this.props.type] } />

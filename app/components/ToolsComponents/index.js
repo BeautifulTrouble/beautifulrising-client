@@ -186,30 +186,7 @@ export const ToolContainer = styled.div`
   margin-bottom: 10px;
   text-align: left;
 `;
-export const ToolViewport = styled.div`
-  margin: 0;
-  padding: 0;
-`
-// Block View
-export const BlockContainer = styled(ToolContainer)`
-  background-image: ${props => props.background};
-  background-size: cover;
-  background-position: center;
-  width: 250px;
-  height: 250px;
-  margin: 10px;
-  margin-${p=>p.lang==='ar'?'right':'left'}: 17px;
-  margin-${p=>p.lang==='ar'?'left':'right'}: 2px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-`;
-export const BlockViewport = styled(ToolViewport)`
-  background-color: rgba(0,0,0,0.5);
-  padding: 10px;
-  width: 100%;
-  height: 100%;
-  position: relative;
-`;
+
 export const BlockSpiel = styled(ContentBlock)`
   color: ${props=>getToolTypeColor(props.type)};
   position: absolute;
@@ -221,15 +198,6 @@ export const BlockSpiel = styled(ContentBlock)`
   transition: opacity 0.2s;
 `;
 
-export const BlockViewTitleArea = styled.div`
-  position: absolute;
-  left: 10px;
-  padding-right: 10px;
-  z-index: 100;
-  width: calc(100% - 10px);
-  opacity: ${props=>props.show ? '1': (props.forceShow?'1':'0')};
-  transition: opacity 0.2s;
-`;
 export const BlockAddRem = styled.div`
   text-align: ${p=>p.theme.isArabic?'right':'left'};
 `;
@@ -241,25 +209,6 @@ export const ListContainer = styled(ToolContainer)`
   text-align: left;
 `;
 
-export const ListViewport = styled(ToolViewport)`
-  background-color: none;
-  padding: 0 10px 0 50px;
-  position: relative;
-
-  &::before{
-    content: ' ';
-    width: 53px;
-    height: 1px;
-    border-bottom: 2px solid;
-    position: absolute;
-    top: 0px;
-    ${p=>p.theme.isArabic?'right: 9px;':'left: 50px;'};
-  }
-
-  h3 {
-    padding-top: 5px;
-  }
-`;
 export const ListSpiel = styled(ContentBlock)`
   margin: 0;
 `;
