@@ -8,32 +8,39 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
+
+import styled from 'styled-components';
+
 import makeSelectToolsSortOptions from './selectors';
 import { changeSortOption } from './actions';
 import { SORT_NEWEST, SORT_ALPHABETICAL } from './constants';
 
 import {TextButton} from 'components/CommonComponents';
-
 import IconButton from 'components/IconButton';
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 import staticText from './staticText';
 
+const Container = styled.div`
+display: inline-block;
+width: auto;
+padding: 0 10px;
+`;
 export class ToolsSortOptions extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     const { locale } = this.props.intl;
     return (
-      <div>
-        <IconButton width="49%" onClick={this.props.clickAlphabeticalSort}>
+      <Container>
+        <IconButton width="auto" onClick={this.props.clickAlphabeticalSort}>
           <TextButton ar={locale==='ar'} selected={this.props.ToolsSortOptions.chosen === SORT_ALPHABETICAL}>
             <TranslatableStaticText {...staticText.alphabeticalButton} />
           </TextButton>
         </IconButton>
-        <IconButton ar={locale==='ar'} width="49%" onClick={this.props.clickNewestSort}>
+        <IconButton ar={locale==='ar'} width="auto" onClick={this.props.clickNewestSort}>
           <TextButton selected={this.props.ToolsSortOptions.chosen === SORT_NEWEST}>
             <TranslatableStaticText {...staticText.newestButton} />
           </TextButton>
         </IconButton>
-      </div>
+      </Container>
     );
   }
 }

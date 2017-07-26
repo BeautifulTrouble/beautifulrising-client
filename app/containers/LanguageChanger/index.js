@@ -16,7 +16,7 @@ import { makeSelectLanguage } from 'containers/App/selectors';
 import { loadData, langChangeReloadData } from '../App/actions';
 
 const Container = styled.div`
-  position: fixed;
+  position: absolute;
   ${props=>props.lang==='ar'?'left: 50%': 'right:50%'}
   top: 10px;
   z-index: ${p=>p.zIndex?p.zIndex:500};

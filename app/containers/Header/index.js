@@ -21,7 +21,8 @@ const Viewport = styled.div`
   display: inline-block;
 `;
 const PageHeader = styled.header`
-  position: fixed;
+  // position: fixed;
+  position: absolute;
   width: 100%;
   background-color: white;
   height: 92px;

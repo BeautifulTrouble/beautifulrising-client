@@ -11,17 +11,24 @@ import { injectIntl } from 'react-intl';
 
 import ToolTypeArea from 'containers/ToolTypeArea';
 import SearchField from 'containers/SearchField';
+import ToolsViewOptions from 'containers/ToolsViewOptions';
+import ToolsSortOptions from 'containers/ToolsSortOptions';
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+
+import {TextButton} from 'components/CommonComponents';
+import IconButton from 'components/IconButton';
 
 import Link from 'components/Link';
 
-import messages from './messages';
+import staticText from './staticText';
 
 const HeaderContainer = styled.div`
-  width: 1080px;
-  position: fixed;
-  background-color: white;
-  z-index: 200;
-  top: 92px;
+  width: 789px;
+  margin-left: 16px;
+  padding-bottom: 5px;
+  padding-top: 70px;
+  border-bottom: 2px solid black;
+  margin-bottom: 20px;
 
   &::before {
     position: absolute;
@@ -39,7 +46,16 @@ function Header(props) {
   return (
     <HeaderContainer lang={lang} {...props}>
       <SearchField {...props.params}/>
-      <ToolTypeArea lang={props.lang} {...props.params} />
+
+      <IconButton width="auto">
+        <TextButton ar={lang==='ar'} selected={true}>
+          <TranslatableStaticText {...staticText.tags} />
+        </TextButton>
+      </IconButton>
+
+      <ToolsSortOptions />
+      <ToolsViewOptions />
+      {/*<Tags {...this.props} align={'center'} showClear={true}/>*/}
     </HeaderContainer>
   );
 }

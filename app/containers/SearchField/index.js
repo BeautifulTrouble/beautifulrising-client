@@ -22,15 +22,22 @@ import { browserHistory } from 'react-router';
 import staticText from './staticText';
 
 
-const SearchContainer = styled.div``;
+const SearchContainer = styled.div`
+
+    width: 400px;
+    display: inline-block;
+    border: none;
+
+`;
 const SearchForm = styled.form``;
 const SearchBox = styled.input`
   width: 100%;
   padding: 20px 10px 10px;
-  border: 2px solid black;
+  // border: 2px solid black;
   font-size: ${p=>p.ar?'13px':'14px'};
   line-height: ${p=>p.ar?'24px':'22px'};
   font-style: italic;
+  outline: none;
 `;
 
 let timeoutHandler = null;
