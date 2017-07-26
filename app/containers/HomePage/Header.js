@@ -17,7 +17,9 @@ import TranslatableStaticText from 'containers/TranslatableStaticText';
 
 import {TextButton} from 'components/CommonComponents';
 import IconButton from 'components/IconButton';
+import ArrowIcon from 'assets/images/icons/arrow.svg';
 
+import Isvg from 'react-inlinesvg';
 import Link from 'components/Link';
 
 
@@ -48,24 +50,64 @@ const FilterSection = styled.section`
 
 `;
 
-function Header(props) {
-  const lang = props.intl.locale;
-  return (
-    <HeaderContainer lang={lang} {...props}>
-      <FilterSection>
-        <SearchField {...props.params}/>
+const TagShownIcon = styled.div`
+  display: inline-block;
+  transform: rotate(270deg);
+  opacity: ${p=>p.selected ? 1 : 0.3}
+  margin-left: 5px;
+  margin-top: -5px;
 
-        <IconButton width="auto">
-          <TextButton ar={lang==='ar'} selected={true}>
-            <TranslatableStaticText {...staticText.tags} />
-          </TextButton>
-        </IconButton>
-        <ToolsSortOptions />
-        <ToolsViewOptions />
-      </FilterSection>
-      <TagArea show={true} {...props}/>
-    </HeaderContainer>
-  );
+  svg { width: 10px !important; }
+  svg * {
+    fill: black;
+  }
+`;
+
+class Header extends React.PureComponent {
+
+  constructor() {
+    super();
+
+    this.state = {
+      isTagsAreaShown: false
+    }
+  }
+
+  toggleTagArea() {
+    this.setState({isTagsAreaShown: !this.state.isTagsAreaShown });
+  }
+
+  hideTagArea() {
+    this.setState({isTagsAreaShown: false });
+  }
+
+  showTagArea(){
+    this.setState({isTagsAreaShown: true });
+  }
+  render() {
+    const lang = this.props.intl.locale;
+    return (
+      <HeaderContainer lang={lang} {...this.props}>
+        <FilterSection>
+          <SearchField {...this.props.params}/>
+
+          <IconButton width="auto" onClick={this.toggleTagArea.bind(this)}>
+            <TextButton ar={lang==='ar'} selected={true}>
+              <TranslatableStaticText {...staticText.tags} />
+              <TagShownIcon  selected={this.state.isTagsAreaShown}>
+                <Isvg src={ArrowIcon}/>
+              </TagShownIcon>
+            </TextButton>
+          </IconButton>
+
+          <ToolsSortOptions />
+          <ToolsViewOptions />
+        </FilterSection>
+        <TagArea show={true} {...this.props} show={this.state.isTagsAreaShown} hideTagArea={this.hideTagArea.bind(this)}/>
+      </HeaderContainer>
+    );
+  }
+
 }
 
 Header.propTypes = {

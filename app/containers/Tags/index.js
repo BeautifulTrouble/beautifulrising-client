@@ -69,7 +69,7 @@ export class Tags extends React.PureComponent { // eslint-disable-line react/pre
               </TagListItem>
             ))}
           </TagList>
-          { this.props.showClear ? this.renderClearButton() : null }
+          { /*this.props.showClear ? this.renderClearButton() : null */ }
         </TagBlock>
       </LanguageThemeProvider>
     );
