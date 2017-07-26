@@ -128,7 +128,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     const lang = this.props.language;
     const ListItem = this.getViewMode();
 
-    console.log(this.props)
+
 ;    return (
       <LanguageThemeProvider>
         <Container

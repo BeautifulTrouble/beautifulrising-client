@@ -72,7 +72,7 @@ class ToolTypeArea extends React.Component { // eslint-disable-line react/prefer
 
   render() {
     const onTop = this.state.scrollY < 10;
-    console.log(this.props);
+
     return (
       <AllContainer lang={this.props.lang}>
         <ToolTypeAll lang={this.props.lang} show={true} {...this.props} />

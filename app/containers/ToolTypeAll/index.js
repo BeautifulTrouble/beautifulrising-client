@@ -63,10 +63,10 @@ const Desc = styled.p`
 `
 
 function ToolTypeAll(props) {
-  console.log(props);
+
   const {label, filter} = props.params;
 
-  console.log("LABFIL", label, filter)
+
   return (
     <LanguageThemeProvider>
       <Container {...props}>
