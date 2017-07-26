@@ -20,14 +20,13 @@ import IconButton from 'components/IconButton';
 
 import Link from 'components/Link';
 
+
+import TagArea from './TagArea';
 import staticText from './staticText';
 
 const HeaderContainer = styled.div`
   width: 789px;
   margin-left: 16px;
-  padding-bottom: 5px;
-  padding-top: 70px;
-  border-bottom: 2px solid black;
   margin-bottom: 20px;
 
   &::before {
@@ -41,21 +40,30 @@ const HeaderContainer = styled.div`
   }
 `;
 
+const FilterSection = styled.section`
+  width: 100%;
+  padding-bottom: 5px;
+  padding-top: 70px;
+  border-bottom: 2px solid black;
+
+`;
+
 function Header(props) {
   const lang = props.intl.locale;
   return (
     <HeaderContainer lang={lang} {...props}>
-      <SearchField {...props.params}/>
+      <FilterSection>
+        <SearchField {...props.params}/>
 
-      <IconButton width="auto">
-        <TextButton ar={lang==='ar'} selected={true}>
-          <TranslatableStaticText {...staticText.tags} />
-        </TextButton>
-      </IconButton>
-
-      <ToolsSortOptions />
-      <ToolsViewOptions />
-      {/*<Tags {...this.props} align={'center'} showClear={true}/>*/}
+        <IconButton width="auto">
+          <TextButton ar={lang==='ar'} selected={true}>
+            <TranslatableStaticText {...staticText.tags} />
+          </TextButton>
+        </IconButton>
+        <ToolsSortOptions />
+        <ToolsViewOptions />
+      </FilterSection>
+      <TagArea show={true} {...props}/>
     </HeaderContainer>
   );
 }
