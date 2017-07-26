@@ -15,8 +15,9 @@ const Title = styled.h1`
   position: absolute;
   background-color: ${props=>props.withBg ? 'white' : 'transparent'};
   top: ${props=> props.top || '0' };
-  ${props=>props.lang==='ar'?'right':'left'}: ${props=>props.left || '100px'};
+  left: 50%;
   margin: 0;
+  transform: translate(-50%, 0);
 `;
 
 class Logo extends React.Component {
