@@ -2,7 +2,10 @@ import {ToolViewport} from '../Tools';
 import styled from 'styled-components';
 export default styled(ToolViewport)`
   background-color: none;
-  padding: 0 10px 0 50px;
+  padding: 0;
+  padding-${props=>props.theme.isArabic?'left':'right'}: 30px;
+  padding-${props=>props.theme.isArabic?'right':'left'}: 17px;
+
   position: relative;
 
   &::before{
@@ -12,7 +15,7 @@ export default styled(ToolViewport)`
     border-bottom: 2px solid;
     position: absolute;
     top: 0px;
-    ${p=>p.theme.isArabic?'right: 9px;':'left: 50px;'};
+    ${p=>p.theme.isArabic?'right: 9px;':'left: 17px;'};
   }
 
   h3 {

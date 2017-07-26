@@ -25,13 +25,14 @@ import { makeSelectToolById,
 
 import ToolsViewOptions from 'containers/ToolsViewOptions';
 import ToolsSortOptions from 'containers/ToolsSortOptions';
+import ToolTypeArea from 'containers/ToolTypeArea';
 
-import LeftSection from 'components/LeftSection';
+import { LeftSection,
+         Stage } from 'components/HomePage/Layout';
+
 import ClearButton from 'components/ClearButton';
 
 import { LeftHeader, LeftContainer } from 'components/HomePage';
-
-import Stage from 'components/Stage';
 
 import { loadData } from '../App/actions';
 import makeSelectHomePage, { makeSelectSearchFieldValue, makeSelectToolView, makeSelectAllTools, isToolsShown, makeSortedTools, makeSelectLanguage } from './selectors';
@@ -126,7 +127,9 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 
     const lang = this.props.language;
     const ListItem = this.getViewMode();
-    return (
+
+
+;    return (
       <LanguageThemeProvider>
         <Container
             dir={this.getDirection()}
@@ -137,35 +140,14 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           <Helmet
             title="BeautifulRising"
             meta={[
-              { name: 'description', content: 'Description of HomePage' },
+              { name: 'description', content: 'BeautifulRising' },
             ]}
           />
-          <Header lang={lang} {...this.props}/>
           <LeftSection lang={lang}>
-
-            <LeftHeader>
-              <TranslatableStaticText {...staticText.viewAs} />
-            </LeftHeader>
-
-            <LeftContainer>
-              <ToolsViewOptions />
-            </LeftContainer>
-
-            <LeftHeader>
-              <TranslatableStaticText {...staticText.sortBy} />
-            </LeftHeader>
-
-            <LeftContainer>
-              <ToolsSortOptions />
-            </LeftContainer>
-
-
-            <LeftHeader>
-              <TranslatableStaticText {...staticText.tags} />
-            </LeftHeader>
-            <Tags {...this.props} align={'center'} showClear={true}/>
+            <ToolTypeArea lang={lang} params={this.props.params} />
           </LeftSection>
           <Stage lang={lang}>
+            <Header lang={lang} {...this.props}/>
             {this.getSearchResultsHeader()}
             <ToolList>
               { this.props.sorted ?

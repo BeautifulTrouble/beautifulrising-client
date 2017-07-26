@@ -21,21 +21,24 @@ import IconButton from 'components/IconButton';
 import { LIST_VIEW, BLOCK_VIEW } from './constants'
 import { changeToolView } from './actions';
 
+const Container = styled.div`
+  width: 94px;
+  display: inline-block;
+`;
 // import { makeSelectToolView } from './selectors';
-import messages from './messages';
 
 export class ToolsViewOptions extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   render() {
     return (
-      <div>
+      <Container>
         <IconButton width="49%" onClick={this.props.clickBlockView}>
           <SvgButton selected={this.props.isBlockView} src={BlockIcon}/>
         </IconButton>
         <IconButton width="49%" onClick={this.props.clickListView}>
           <SvgButton selected={this.props.isListView} src={ListIcon}/>
         </IconButton>
-      </div>
+      </Container>
     );
   }
 }

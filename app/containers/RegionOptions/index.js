@@ -28,6 +28,8 @@ import Region from 'components/RegionOptions/Region';
 import Disabled from 'components/RegionOptions/Disabled';
 import RegionLink from 'components/RegionOptions/RegionLink';
 
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+import staticText from 'containers/ToolTypeArea/staticText';
 function RegionOptions(props) {
   const lang = props.intl.locale;
   return (
@@ -37,6 +39,11 @@ function RegionOptions(props) {
           <FormattedMessage {...messages.header} />
         </Subheader>
         <RegionList lang={lang}>
+          <Region>
+            <RegionLink to={'/'}>
+              <TranslatableStaticText {...staticText.allHead} />
+            </RegionLink>
+          </Region>
           <Region>
             <RegionLink to={'/type/story/africa'} selected={props.region === 'africa'}>
               <Isvg src={Africa} />

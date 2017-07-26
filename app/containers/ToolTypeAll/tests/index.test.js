@@ -1,9 +1,9 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
-// import Stage from '../index';
+// import ToolTypeAllPartial from '../index';
 
-describe('<Stage />', () => {
+describe('<ToolTypeAllPartial />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });
