@@ -27,11 +27,11 @@ function Menu(props) {
     <MenuArea lang={lang}>
       <MenuViewport>
         <Logo top={'17px'} left={'115px'} />
-        { window.location.pathname.match(/^\/(type|tag|search)|^\/$/) ? null :
+        {/* window.location.pathname.match(/^\/(type|tag|search)|^\/$/) ? null :
             (<Home to="/" onClick={props.onClick}>
               <TranslatableStaticText {...staticText.home} />
             </Home>)
-        }
+        */}
         <AboutMenu onClick={props.onClick} />
         <PlatformsMenu onClick={props.onClick}/>
         <ContributeMenu onClick={props.onClick}/>
