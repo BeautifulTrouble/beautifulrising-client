@@ -4,5 +4,4 @@ export default styled.div`
   float: ${props=>props.lang==='ar'?'right':'left'};
   height: 400px;
   display: inline-block;
-  margin-top: 130px;
 `;
