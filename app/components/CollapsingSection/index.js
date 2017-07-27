@@ -25,7 +25,7 @@ const Header = styled.div`
 const ArrowContainer = styled.span`
   display: inline-block;
   transform: ${p=>!p.showing ? 'rotate(180deg)' : 'rotate(270deg)'};
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
   margin-left: -10px;
   margin-top: 2px;
   svg {
@@ -33,8 +33,9 @@ const ArrowContainer = styled.span`
   }
 `;
 const Content = styled.div`
-  display: ${p=>p.show?'block':'none'};
-  transition: display 0.3s ease;
+  max-height: ${p=>p.show?'100vh':'0'};
+  overflow: hidden;
+  transition: max-height 0.7s ease;
 `;
 
 const ActionButton = styled.button`
