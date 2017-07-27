@@ -27,6 +27,8 @@ import Title from 'components/PlatformsPage/Title';
 import TextContent from 'components/PlatformsPage/TextContent';
 import Viewport from 'components/PlatformsPage/Viewport';
 
+import CollapsingSection from 'components/CollapsingSection';
+
 class Platform extends React.Component {
   render() {
 
@@ -36,31 +38,42 @@ class Platform extends React.Component {
       <LanguageThemeProvider>
         <Container lang={lang}>
           <Viewport>
-            <IconContainer lang={lang}>
+            {/*<IconContainer lang={lang}>
               <Isvg src={this.props.icon} />
             </IconContainer>
+            */}
             <TextContent lang={lang}>
               <Content>
                 <Title lang={lang}>
                   {this.props.content.get('title')}
                 </Title>
-                <Subtitle>
+                <ContentBlock>
                   {this.props.content.get('introduction')}
-                </Subtitle>
-
-                <Subtitle>
-                  {this.props.misc.get('what')}
-                </Subtitle>
-                <ContentBlock>
-                  <Markdown source={this.props.content.get('what')} />
                 </ContentBlock>
 
-                <Subtitle>
-                  {this.props.misc.get('how')}
-                </Subtitle>
-                <ContentBlock>
-                  <Markdown source={this.props.content.get('how')} />
-                </ContentBlock>
+                <CollapsingSection
+                  header={
+                      (<Subtitle>
+                        {this.props.misc.get('what')}
+                      </Subtitle>)
+                  }
+                >
+                  <ContentBlock>
+                    <Markdown source={this.props.content.get('what')} />
+                  </ContentBlock>
+                </CollapsingSection>
+
+                <CollapsingSection
+                  header={
+                      (<Subtitle>
+                        {this.props.misc.get('how')}
+                      </Subtitle>)
+                  }
+                >
+                  <ContentBlock>
+                    <Markdown source={this.props.content.get('how')} />
+                  </ContentBlock>
+                </CollapsingSection>
 
                 <CTA>
                   <Markdown source={this.props.content.get('get')} />
