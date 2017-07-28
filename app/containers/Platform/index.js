@@ -29,6 +29,9 @@ import Viewport from 'components/PlatformsPage/Viewport';
 
 import CollapsingSection from 'components/CollapsingSection';
 
+const Introduction = styled(ContentBlock)`
+  margin-bottom: 26px;
+`;
 class Platform extends React.Component {
   render() {
 
@@ -47,9 +50,9 @@ class Platform extends React.Component {
                 <Title lang={lang}>
                   {this.props.content.get('title')}
                 </Title>
-                <ContentBlock>
+                <Introduction>
                   {this.props.content.get('introduction')}
-                </ContentBlock>
+                </Introduction>
 
                 <CollapsingSection
                   header={
