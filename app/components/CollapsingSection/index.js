@@ -12,11 +12,12 @@ import Isvg from 'react-inlinesvg';
 
 
 const Container = styled.div`
-  border-bottom: 2px solid black;
+
 `;
 
 const HeaderContainer = styled.div`
   padding: 4px 0 3px;
+  border-bottom: 2px solid black;
 `;
 const Header = styled.div`
   display: inline-block;
@@ -31,6 +32,10 @@ const ArrowContainer = styled.span`
   top: 10px;
   svg {
     width: 12px !important;
+    * {
+      fill: ${p=>!p.showing ? '#afafaf' : '#000000'};
+      transition: fill 0.5s ease;
+    }
   }
 `;
 const Content = styled.div`
