@@ -145,7 +145,7 @@ const Description = styled(ContentBlock)`
 // <Flag selected={props.label === 'methodology'}><Isvg src={MethodologyIcon} /></Flag>
 
 function TypeDetails(props) {
-  console.log(props);
+  
   if (props.filter === undefined) {
     return null;
   }
