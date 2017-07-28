@@ -15,7 +15,7 @@ export default styled(Link)`
   color: #828486;
   display: block;
   padding-bottom: 0px;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
   margin-top: 0;
   padding-top: 0;
 
