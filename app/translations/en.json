@@ -67,7 +67,7 @@
   "app.components.PlatformsPageComponents.how": "How to use it",
   "app.components.PlatformsPageComponents.pdfHeader": "PDF",
   "app.components.PlatformsPageComponents.what": "What It is",
-  "app.components.RegionOptions.header": "Region",
+  "app.components.RegionOptions.header": "Filter by Region",
   "app.components.SelectedToolComponents.header": "This is the SelectedToolComponents component !",
   "app.components.ShareButton.emailMessage": "Checkout this awesome tool from BeautifulRising.org {url}",
   "app.components.ShareButton.emailSubject": "Read about \"{title}\" at BeautifulRising.org",
