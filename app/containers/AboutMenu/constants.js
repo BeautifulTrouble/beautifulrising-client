@@ -28,10 +28,10 @@ export const ABOUT_MENU = [
     to: "/about/team",
     text: KEY_TEAM
   },
-  {
-    to: "/about/beautiful-trouble-and-action-aid",
-    text: KEY_BTAA
-  },
+  // {
+  //   to: "/about/beautiful-trouble-and-action-aid",
+  //   text: KEY_BTAA
+  // },
   {
     to: "/about/partners",
     text: KEY_PARTNERS
