@@ -8,16 +8,6 @@ export default styled(ToolViewport)`
 
   position: relative;
 
-  &::before{
-    content: ' ';
-    width: 53px;
-    height: 1px;
-    border-bottom: 2px solid;
-    position: absolute;
-    top: 0px;
-    ${p=>p.theme.isArabic?'right: 9px;':'left: 17px;'};
-  }
-
   h3 {
     padding-top: 5px;
   }
