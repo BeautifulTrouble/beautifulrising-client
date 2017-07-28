@@ -1,5 +1,5 @@
-import LeftSection from './LeftSection';
 import Stage from './Stage';
+import LeftSection from './LeftSection';
 
 export {
   LeftSection,
