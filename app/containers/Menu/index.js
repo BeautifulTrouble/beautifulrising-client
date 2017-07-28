@@ -23,6 +23,7 @@ import MenuViewport from 'components/Menu/MenuViewport';
 
 function Menu(props) {
   const lang = props.intl.locale;
+  
   return (
     <MenuArea lang={lang}>
       <MenuViewport>

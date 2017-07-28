@@ -2,7 +2,7 @@ import ContentBlock from 'components/ContentBlock';
 import styled from 'styled-components';
 
 export default styled(ContentBlock)`
-  border: 1px solid;
+  border: 2px solid black;
   padding: 8px;
   &::after {
     content: '';

@@ -12,11 +12,12 @@ import Isvg from 'react-inlinesvg';
 
 
 const Container = styled.div`
-  border-bottom: 2px solid black;
+
 `;
 
 const HeaderContainer = styled.div`
-  padding: 4px 0;
+  padding: 4px 0 3px;
+  border-bottom: 2px solid black;
 `;
 const Header = styled.div`
   display: inline-block;
@@ -26,10 +27,15 @@ const ArrowContainer = styled.span`
   display: inline-block;
   transform: ${p=>!p.showing ? 'rotate(180deg)' : 'rotate(270deg)'};
   transition: transform 0.5s ease;
-  margin-left: -10px;
-  margin-top: 2px;
+  position: absolute;
+  right: 20px;
+  top: 10px;
   svg {
     width: 12px !important;
+    * {
+      fill: ${p=>!p.showing ? '#afafaf' : '#000000'};
+      transition: fill 0.5s ease;
+    }
   }
 `;
 const Content = styled.div`
@@ -42,6 +48,9 @@ const ActionButton = styled.button`
   outline: none;
   padding: 0;
   cursor: pointer;
+  width: 100%;
+  padding-right: 20px;
+  position: relative;
 `;
 
 class CollapsingSection extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function

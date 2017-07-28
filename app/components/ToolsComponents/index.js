@@ -26,7 +26,7 @@ export const getToolTypeColor = (type) => {
     case TYPE_TACTICS:
       return "#ff9200";
     case TYPE_PRINCIPLES:
-      return "#166ce3";
+      return "#0088ff";
     case TYPE_THEORIES:
       return "#f93732";
     case TYPE_METHODOLOGIES:
@@ -100,7 +100,7 @@ export const ToolsListMenuItem = styled.li`
 
 export const ToolType = styled.h3`
   margin: 0;
-  font-size: ${p=>p.ar?'35px':'20px'};
+  font-size: ${p=>p.ar?'32px':'20px'};
   letter-spacing: ${p=>p.ar?'3px':'0'};
   text-align: ${p=>p.theme.isArabic?'right':'left'};
   padding-top: 20px;

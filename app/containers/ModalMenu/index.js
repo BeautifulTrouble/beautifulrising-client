@@ -117,6 +117,7 @@ export class ModalMenu extends React.Component {
 
   render() {
     const lang = this.props.intl.locale;
+    
     return (
       <Viewport>
         <Button lang={lang} onClick={this.openModal}>
