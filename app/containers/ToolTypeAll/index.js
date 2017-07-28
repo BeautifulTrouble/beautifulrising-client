@@ -68,8 +68,9 @@ const ToolDesc = styled(ContentBlock)`
   display: ${p=>p.show?'block':'none'};
   width: 200px;
   text-transform: none;
-  margin-top: 10px;
+  margin-top: 36px;
   padding-right: 30px;
+  margin-bottom: 70px;
 `;
 
 function ToolTypeAll(props) {
