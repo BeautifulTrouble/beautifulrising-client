@@ -11,10 +11,11 @@ const Container = styled.div`
   overflow: hidden;
   border-bottom: 2px solid black;
   padding: 0px 20px 15px;
+  padding-bottom: ${p=>p.show?15:0};
   position: relative;
   border-bottom: ${p=>p.show?'2px solid black':0};
   max-height: ${p=>p.show?'100vh':0};
-  transition: max-height 0.8s ease, border-bottom 0.8s ease;
+  transition: max-height 0.8s ease, border-bottom 0.8s ease, padding-bottom 0.4s ease;
 `;
 const CloseButton = styled.button`
   outline: none;

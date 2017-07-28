@@ -31,7 +31,6 @@ import staticText from './staticText';
 const HeaderContainer = styled.div`
   width: 789px;
   margin-left: 16px;
-  margin-bottom: 20px;
 
   &::before {
     position: absolute;
