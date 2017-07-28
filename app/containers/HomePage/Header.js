@@ -30,7 +30,7 @@ import staticText from './staticText';
 
 const HeaderContainer = styled.div`
   width: 789px;
-  margin-left: 16px;
+  margin-${p=>p.theme.isArabic?'right':'left'}: 16px;
 
   &::before {
     position: absolute;
@@ -48,7 +48,7 @@ const FilterSection = styled.ul`
   padding-bottom: 5px;
   padding-top: 70px;
   border-bottom: 2px solid black;
-  padding-left: 0px
+  padding-${p=>p.theme.isArabic?'right':'left'}: 0px;
   display: flex;
   list-style: none;
   margin: 0;
@@ -58,30 +58,30 @@ const FilterItem = styled.li`
   display: inline-block;
   list-style: none;
   position: relative;
-  padding-right: 24px;
-    padding-left: 0;
-    position: relative;
+  padding-${p=>p.theme.isArabic?'left':'right'}: 24px;
+  padding-${p=>p.theme.isArabic?'right':'left'}: 0;
+  position: relative;
 
   &::after {
     content: ' ';
-    border-right: 2px solid;
+    border-${p=>p.theme.isArabic?'left':'right'}: 2px solid;
     position: absolute;
     height: 12px;
-    right: 11px;
+    ${p=>p.theme.isArabic?'left':'right'}: 11px;
     top: 7px;
   }
 
   &:last-child {
-    padding-right: 0;
+    padding-${p=>p.theme.isArabic?'left':'right'}: 0;
     margin-${p=>p.theme.isArabic ? 'left' : 'right'}: -6px;
-    &::after { border-right: none; }
+    &::after { border-${p=>p.theme.isArabic?'left':'right'}: none; }
   }
 `;
 
 const TagShownIcon = styled.div`
   display: inline-block;
   transform: ${p=>p.selected?'rotate(270deg)':'rotate(180deg)'};
-  margin-left: 5px;
+  margin-${p=>p.theme.isArabic?'right':'left'}: 5px;
   margin-top: -5px;
   transition: transform 0.5s ease;
 
