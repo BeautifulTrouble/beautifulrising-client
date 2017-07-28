@@ -11,6 +11,8 @@ import { injectIntl } from 'react-intl';
 import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 import { createStructuredSelector } from 'reselect';
+import { push } from 'react-router-redux';
+
 import Isvg from 'react-inlinesvg';
 
 import makeSelectSearchField from './selectors';
@@ -18,6 +20,7 @@ import messages from './messages';
 import {searchFieldChanged} from './actions';
 import { injectStaticText } from 'containers/TranslatableStaticText';
 import SearchIcon from 'assets/images/icons/search.svg';
+import ClearIcon from 'assets/images/icons/clear.svg';
 import staticText from './staticText';
 
 
@@ -40,6 +43,12 @@ const SearchBox = styled.input`
   font-style: italic;
   outline: none;
 `;
+const ClearButton = styled.button`
+  outline: none;
+  cursor: point;
+  padding: 0 5px 0 0;
+  margin-top: -4px;
+`;
 
 let timeoutHandler = null;
 export class SearchField extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -58,10 +67,25 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
     this.props.searchItems(ReactDOM.findDOMNode(this.refs['SearchBox']).value);
   }
+
+  handleClearSearch() {
+    console.log(this.refs.SearchBox, this.refs.SearchBox.value);
+    this.props.dispatch(push('/'));
+  }
+
   renderControlButton() {
+    const { filter, label } = this.props;
+    if (filter == 'search' && (label !== undefined && label !== '')) {
+      return (
+        <ClearButton onClick={this.handleClearSearch.bind(this)}>
+          <Isvg src={ClearIcon} />
+        </ClearButton>
+      )
+    }
     return (<Isvg src={SearchIcon} />);
   }
   render() {
+    console.log("XXX", this.props);
     const {locale} = this.props.intl;
     const {buildMessage} = this.props.translatable;
     return (
@@ -84,6 +108,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
+    dispatch,
     onChange: (evt) => {
       const text = evt.target.value;
       //Change browser
