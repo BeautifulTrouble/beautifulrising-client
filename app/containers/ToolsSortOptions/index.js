@@ -23,7 +23,6 @@ import staticText from './staticText';
 const Container = styled.div`
 display: inline-block;
 width: auto;
-padding: 0 10px;
 `;
 export class ToolsSortOptions extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {

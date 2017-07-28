@@ -8,31 +8,32 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
-
+import ReactDOM from 'react-dom';
+import { browserHistory } from 'react-router';
 import { createStructuredSelector } from 'reselect';
+import Isvg from 'react-inlinesvg';
+
 import makeSelectSearchField from './selectors';
 import messages from './messages';
 import {searchFieldChanged} from './actions';
-
 import { injectStaticText } from 'containers/TranslatableStaticText';
-
-import ReactDOM from 'react-dom';
-import { browserHistory } from 'react-router';
-
+import SearchIcon from 'assets/images/icons/search.svg';
 import staticText from './staticText';
 
 
 const SearchContainer = styled.div`
 
-    width: 400px;
+    width: 100%;
     display: inline-block;
     border: none;
 
 `;
-const SearchForm = styled.form``;
+const SearchForm = styled.form`
+display: flex;
+`;
 const SearchBox = styled.input`
-  width: 100%;
-  padding: 20px 10px 10px;
+  flex-grow: 1;
+  padding: 3px 10px 5px;
   // border: 2px solid black;
   font-size: ${p=>p.ar?'13px':'14px'};
   line-height: ${p=>p.ar?'24px':'22px'};
@@ -64,6 +65,7 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
     return (
       <SearchContainer>
         <SearchForm onSubmit={this.handleSubmit.bind(this)}>
+          <Isvg src={SearchIcon} />
           <SearchBox ref={'SearchBox'} ar={locale==='ar'} type='text' onChange={this.props.onChange} placeholder={buildMessage(staticText.placeholder)} />
         </SearchForm>
       </SearchContainer>

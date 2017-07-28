@@ -16,7 +16,7 @@ import SearchField from 'containers/SearchField';
 import ToolsViewOptions from 'containers/ToolsViewOptions';
 import ToolsSortOptions from 'containers/ToolsSortOptions';
 import TranslatableStaticText from 'containers/TranslatableStaticText';
-
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import {TextButton} from 'components/CommonComponents';
 import IconButton from 'components/IconButton';
 import ArrowIcon from 'assets/images/icons/arrow.svg';
@@ -44,12 +44,38 @@ const HeaderContainer = styled.div`
   }
 `;
 
-const FilterSection = styled.section`
+const FilterSection = styled.ul`
   width: 100%;
   padding-bottom: 5px;
   padding-top: 70px;
   border-bottom: 2px solid black;
+  padding-left: 0px
+  display: flex;
+  list-style: none;
+`;
 
+const FilterItem = styled.li`
+  display: inline-block;
+  list-style: none;
+  position: relative;
+  padding-right: 24px;
+    padding-left: 0;
+    position: relative;
+
+  &::after {
+    content: ' ';
+    border-right: 2px solid;
+    position: absolute;
+    height: 12px;
+    right: 11px;
+    top: 7px;
+  }
+
+  &:last-child {
+    padding-right: 0;
+    margin-${p=>p.theme.isArabic ? 'left' : 'right'}: -6px;
+    &::after { border-right: none; }
+  }
 `;
 
 const TagShownIcon = styled.div`
@@ -90,25 +116,34 @@ class Header extends React.PureComponent {
     const lang = this.props.intl.locale;
     const showTypeDetails=this.props.params.filter==="type";
     return (
-      <HeaderContainer lang={lang} {...this.props}>
-        <FilterSection>
-          <SearchField {...this.props.params}/>
+      <LanguageThemeProvider>
+        <HeaderContainer lang={lang} {...this.props}>
+          <FilterSection>
+            <FilterItem style={{ flexGrow: 1 }}>
+              <SearchField {...this.props.params}/>
+            </FilterItem>
+            <FilterItem>
+              <IconButton width="auto" onClick={this.toggleTagArea.bind(this)}>
+                <TextButton ar={lang==='ar'} selected={true}>
+                  <TranslatableStaticText {...staticText.tags} />
+                  <TagShownIcon  selected={this.state.isTagsAreaShown}>
+                    <Isvg src={ArrowIcon}/>
+                  </TagShownIcon>
+                </TextButton>
+              </IconButton>
+            </FilterItem>
 
-          <IconButton width="auto" onClick={this.toggleTagArea.bind(this)}>
-            <TextButton ar={lang==='ar'} selected={true}>
-              <TranslatableStaticText {...staticText.tags} />
-              <TagShownIcon  selected={this.state.isTagsAreaShown}>
-                <Isvg src={ArrowIcon}/>
-              </TagShownIcon>
-            </TextButton>
-          </IconButton>
-
-          <ToolsSortOptions />
-          <ToolsViewOptions />
-        </FilterSection>
-        <TagArea show={true} {...this.props} show={this.state.isTagsAreaShown} hideTagArea={this.hideTagArea.bind(this)}/>
-        <TypeDetails show={showTypeDetails} {...this.props.params} />
-      </HeaderContainer>
+            <FilterItem>
+              <ToolsSortOptions />
+            </FilterItem>
+            <FilterItem>
+              <ToolsViewOptions />
+            </FilterItem>
+          </FilterSection>
+          <TagArea show={true} {...this.props} show={this.state.isTagsAreaShown} hideTagArea={this.hideTagArea.bind(this)}/>
+          <TypeDetails show={showTypeDetails} {...this.props.params} />
+        </HeaderContainer>
+      </LanguageThemeProvider>
     );
   }
 

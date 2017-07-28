@@ -22,7 +22,6 @@ import { LIST_VIEW, BLOCK_VIEW } from './constants'
 import { changeToolView } from './actions';
 
 const Container = styled.div`
-  width: 94px;
   display: inline-block;
 `;
 // import { makeSelectToolView } from './selectors';
@@ -32,10 +31,10 @@ export class ToolsViewOptions extends React.PureComponent { // eslint-disable-li
   render() {
     return (
       <Container>
-        <IconButton width="49%" onClick={this.props.clickBlockView}>
+        <IconButton width="auto" onClick={this.props.clickBlockView}>
           <SvgButton selected={this.props.isBlockView} src={BlockIcon}/>
         </IconButton>
-        <IconButton width="49%" onClick={this.props.clickListView}>
+        <IconButton width="auto" onClick={this.props.clickListView}>
           <SvgButton selected={this.props.isListView} src={ListIcon}/>
         </IconButton>
       </Container>
