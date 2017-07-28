@@ -19,4 +19,6 @@ export default styled(Link)`
   margin-top: 0;
   padding-top: 0;
 
+  font-size: 12px;
+
 `;
