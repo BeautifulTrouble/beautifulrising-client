@@ -78,7 +78,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   getViewMode() {
     if (this.props.params.label !== undefined &&
         this.props.params.label !== '' &&
-        this.props.params.filter === 'search') {
+        (this.props.params.filter === 'search' || this.props.params.filter == 'tag') ) {
       return ListViewItem;
     }
 

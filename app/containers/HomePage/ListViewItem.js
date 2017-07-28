@@ -43,8 +43,7 @@ class ListViewItem extends React.Component {
 
 ListViewItem.propTypes = {
   title: PropTypes.string.isRequired,
-  snapshot: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  snapshot: PropTypes.string,
   slug: PropTypes.string.isRequired,
 };
 

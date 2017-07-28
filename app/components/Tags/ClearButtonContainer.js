@@ -6,6 +6,7 @@ export default styled.div`
   text-align: center;
   color: #828486;
   button {
+    outline: none;
     padding-right: 0;
     padding-left: 0;
   }
