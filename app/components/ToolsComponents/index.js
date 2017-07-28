@@ -100,7 +100,7 @@ export const ToolsListMenuItem = styled.li`
 
 export const ToolType = styled.h3`
   margin: 0;
-  font-size: ${p=>p.ar?'35px':'20px'};
+  font-size: ${p=>p.ar?'32px':'20px'};
   letter-spacing: ${p=>p.ar?'3px':'0'};
   text-align: ${p=>p.theme.isArabic?'right':'left'};
   padding-top: 20px;
