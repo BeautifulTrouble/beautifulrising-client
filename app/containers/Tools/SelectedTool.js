@@ -40,6 +40,14 @@ import AdderRemover from './AdderRemover';
 import makeSelectTools from './selectors';
 import staticText from './staticText';
 
+const RemoveIconContainer = styled.span`
+  svg circle {
+    fill: transparent;
+  }
+  svg path {
+    fill: #B3B3B3;
+  }
+`;
 export class SelectedTool extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   getFlag() {
@@ -71,7 +79,9 @@ export class SelectedTool extends React.PureComponent { // eslint-disable-line r
           <SelectedToolCommands lang={lang}>
             <SelectedToolCommandItem  lang={lang}>
               <AdderRemover {...this.props}>
-                <Isvg src={RemoveSmallIcon} />
+                <RemoveIconContainer>
+                  <Isvg src={RemoveSmallIcon} />
+                </RemoveIconContainer>
                 <SelectedToolCommandContent>
                   <TranslatableStaticText {...staticText.removeSelected} />
                 </SelectedToolCommandContent>

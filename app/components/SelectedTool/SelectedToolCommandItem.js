@@ -7,7 +7,7 @@ export default styled.li`
   button { text-transform: uppercase; font-weight: bold; }
   color: #959595;
   svg * {
-    fill: #959595;
+    // fill: #959595;
   }
 
   .shareArea {
