@@ -78,7 +78,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   getViewMode() {
     if (this.props.params.label !== undefined &&
         this.props.params.label !== '' &&
-        this.props.params.filter === 'search') {
+        (this.props.params.filter === 'search' || this.props.params.filter == 'tag') ) {
       return ListViewItem;
     }
 
@@ -94,18 +94,15 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     if (!this.props.params.filter || this.props.params.filter !== 'search' || !this.props.params.label) return;
 
     return (
-      <LanguageThemeProvider>
-        <SearchResultsContainer>
+      <SearchResultsContainer>
+        <LanguageThemeProvider>
           <ContentBlock>
             <span>
-              <ClearButton onClick={this.handleClearSearch.bind(this)}>
-                <TranslatableStaticText {...staticText.clearSearch} />
-              </ClearButton>
               <TranslatableStaticText {...staticText.searchResults} values={{query: this.props.params.label, count: this.props.sorted ? this.props.sorted.length : 0 }} />
             </span>
           </ContentBlock>
-        </SearchResultsContainer>
-      </LanguageThemeProvider>
+        </LanguageThemeProvider>
+      </SearchResultsContainer>
     );
   }
   getDirection() {

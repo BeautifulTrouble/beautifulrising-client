@@ -52,6 +52,7 @@ const ToolType = styled(Link)`
 const BigHead = styled.h2`margin:0`;
 const Head = styled.h3`
   margin: 0;
+  font-size: ${p=>p.selected?'40px':'30px'};
 `;
 const Desc = styled.p`
   margin: 0;
@@ -67,14 +68,15 @@ const ToolDesc = styled(ContentBlock)`
   display: ${p=>p.show?'block':'none'};
   width: 200px;
   text-transform: none;
-  margin-top: 10px;
+  margin-top: 36px;
   padding-right: 30px;
+  margin-bottom: 70px;
 `;
 
 function ToolTypeAll(props) {
 
   const {label, filter} = props.params;
-
+  const isSelected = (type)=> label === type && filter === 'type';
 
   return (
     <LanguageThemeProvider>
@@ -82,43 +84,43 @@ function ToolTypeAll(props) {
         <Viewport>
           <Row>
             <ToolType to={'/'} selected={label === undefined}>
-              <BigHead><TranslatableStaticText {...staticText.allHead} /></BigHead>
+              <Head selected={label === undefined}><TranslatableStaticText {...staticText.allHead} /></Head>
             </ToolType>
-            <ToolType to={'/type/story'} selected={label === 'story' && filter === 'type'}>
-              <Head><TranslatableStaticText {...staticText.storyHead} /></Head>
+            <ToolType to={'/type/story'} selected={isSelected('story')}>
+              <Head selected={isSelected('story')}><TranslatableStaticText {...staticText.storyHead} /></Head>
               <Isvg src={StoryIcon} />
-              <ToolDesc  show={label === 'story' && filter === 'type'}>
+              <ToolDesc show={isSelected('story')}>
                 <TranslatableStaticText {...staticText.storyDesc}/>
               </ToolDesc>
             </ToolType>
-            <ToolType to={'/type/tactic'} selected={label === 'tactic' && filter === 'type'}>
-              <Head><TranslatableStaticText {...staticText.tacticHead} /></Head>
+            <ToolType to={'/type/tactic'} selected={isSelected('tactic')}>
+              <Head selected={isSelected('tactic')}><TranslatableStaticText {...staticText.tacticHead} /></Head>
               <Isvg src={TacticIcon} />
-              <ToolDesc show={label === 'tactic' && filter === 'type'}>
+              <ToolDesc show={isSelected('tactic')}>
                 <TranslatableStaticText {...staticText.tacticDesc} />
               </ToolDesc>
             </ToolType>
 
-            <ToolType to={'/type/principle'} selected={label === 'principle' && filter === 'type'}>
-              <Head><TranslatableStaticText {...staticText.principleHead} /></Head>
+            <ToolType to={'/type/principle'} selected={isSelected('principle')}>
+              <Head selected={isSelected('principle')}><TranslatableStaticText {...staticText.principleHead} /></Head>
               <Isvg src={PrincipleIcon} />
-              <ToolDesc  show={label === 'principle' && filter === 'type'}>
+              <ToolDesc  show={isSelected('principle')}>
                 <TranslatableStaticText {...staticText.principleDesc}/>
               </ToolDesc>
             </ToolType>
 
-            <ToolType to={'/type/theory'} selected={label === 'theory' && filter === 'type'}>
-              <Head><TranslatableStaticText {...staticText.theoryHead} /></Head>
+            <ToolType to={'/type/theory'} selected={isSelected('theory')}>
+              <Head selected={isSelected('theory')}><TranslatableStaticText {...staticText.theoryHead} /></Head>
               <Isvg src={TheoryIcon} />
-              <ToolDesc show={label === 'theory' && filter === 'type'}>
+              <ToolDesc show={isSelected('theory')}>
                 <TranslatableStaticText {...staticText.theoryDesc}/>
               </ToolDesc>
             </ToolType>
 
-            <ToolType to={'/type/methodology'} selected={label === 'methodology' && filter === 'type'}>
-              <Head><TranslatableStaticText {...staticText.methodologyHead} /></Head>
+            <ToolType to={'/type/methodology'} selected={isSelected('methodology')}>
+              <Head selected={isSelected('methodology')}><TranslatableStaticText {...staticText.methodologyHead} /></Head>
               <Isvg src={MethodologyIcon} />
-              <ToolDesc show={label === 'methodology' && filter === 'type'}>
+              <ToolDesc show={isSelected('methodology')}>
                 <TranslatableStaticText {...staticText.methodologyDesc}/>
               </ToolDesc>
             </ToolType>

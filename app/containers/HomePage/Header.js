@@ -31,7 +31,6 @@ import staticText from './staticText';
 const HeaderContainer = styled.div`
   width: 789px;
   margin-left: 16px;
-  margin-bottom: 20px;
 
   &::before {
     position: absolute;
@@ -52,6 +51,7 @@ const FilterSection = styled.ul`
   padding-left: 0px
   display: flex;
   list-style: none;
+  margin: 0;
 `;
 
 const FilterItem = styled.li`
@@ -80,14 +80,15 @@ const FilterItem = styled.li`
 
 const TagShownIcon = styled.div`
   display: inline-block;
-  transform: rotate(270deg);
-  opacity: ${p=>p.selected ? 1 : 0.3}
+  transform: ${p=>p.selected?'rotate(270deg)':'rotate(180deg)'};
   margin-left: 5px;
   margin-top: -5px;
+  transition: transform 0.5s ease;
 
   svg { width: 10px !important; }
   svg * {
-    fill: black;
+    fill: ${p=>p.selected?'black':'#ACACAC'};
+    transition: fill 0.5s ease;
   }
 `;
 

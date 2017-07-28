@@ -8,7 +8,7 @@ export default styled(Link)`
   margin-right: 5px;
   position: relative;
   text-decoration: none;
-  color: black;
+  color: ${p=>p.selected?'black':'#848383'};
 
   svg, svg * {
     width: 40px !important;

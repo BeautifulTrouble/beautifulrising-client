@@ -30,6 +30,12 @@ import RegionLink from 'components/RegionOptions/RegionLink';
 
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 import staticText from 'containers/ToolTypeArea/staticText';
+
+const AllRegionLink = styled(RegionLink)`
+  &::after {
+    display: none;
+  }
+`;
 function RegionOptions(props) {
   const lang = props.intl.locale;
   return (
@@ -40,9 +46,9 @@ function RegionOptions(props) {
         </Subheader>
         <RegionList lang={lang}>
           <Region>
-            <RegionLink to={'/'}>
+            <AllRegionLink to={'/type/story'}  selected={props.region === undefined}>
               <TranslatableStaticText {...staticText.allHead} />
-            </RegionLink>
+            </AllRegionLink>
           </Region>
           <Region>
             <RegionLink to={'/type/story/africa'} selected={props.region === 'africa'}>

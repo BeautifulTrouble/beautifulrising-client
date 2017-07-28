@@ -26,7 +26,7 @@ import staticText from 'containers/ToolTypeArea/staticText';
 
 const Container = styled.section`
   display: ${props=>props.show ? 'block' : 'none'};
-
+  margin-top: 42px;
 
 `;
 const Viewport = styled.div`
@@ -145,7 +145,7 @@ const Description = styled(ContentBlock)`
 // <Flag selected={props.label === 'methodology'}><Isvg src={MethodologyIcon} /></Flag>
 
 function TypeDetails(props) {
-  
+
   if (props.filter === undefined) {
     return null;
   }
