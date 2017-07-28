@@ -53,6 +53,7 @@ const BigHead = styled.h2`margin:0`;
 const Head = styled.h3`
   margin: 0;
   font-size: ${p=>p.selected?'40px':'30px'};
+  white-space: nowrap;
 `;
 const Desc = styled.p`
   margin: 0;

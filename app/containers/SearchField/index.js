@@ -58,14 +58,16 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
     this.props.searchItems(ReactDOM.findDOMNode(this.refs['SearchBox']).value);
   }
-
+  renderControlButton() {
+    return (<Isvg src={SearchIcon} />);
+  }
   render() {
     const {locale} = this.props.intl;
     const {buildMessage} = this.props.translatable;
     return (
       <SearchContainer>
         <SearchForm onSubmit={this.handleSubmit.bind(this)}>
-          <Isvg src={SearchIcon} />
+          { this.renderControlButton() }
           <SearchBox ref={'SearchBox'} ar={locale==='ar'} type='text' onChange={this.props.onChange} placeholder={buildMessage(staticText.placeholder)} />
         </SearchForm>
       </SearchContainer>
