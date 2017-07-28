@@ -50,6 +50,7 @@ export class TranslatableStaticText extends React.PureComponent { // eslint-disa
   }
 
   buildMessage({id, defaultMessage}, values) {
+    if (!id || id === undefined ) { return null; }
     const template = this.getStaticMessage({id, defaultMessage});
     const extrapolate = this.build(template, values);
     return extrapolate;
@@ -66,7 +67,6 @@ export class TranslatableStaticText extends React.PureComponent { // eslint-disa
 
 TranslatableStaticText.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -122,7 +122,7 @@ const injectStaticText = (WrappedComponent) => {
     }
 
     buildMessage({id, defaultMessage}, values) {
-
+      if (!id  || id === undefined ) { return null; }
       const template = this.getStaticMessage({id, defaultMessage});
       const extrapolate = this.build(template, values);
 

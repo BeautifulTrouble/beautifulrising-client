@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 export default styled.div`
+  position: absolute;
+  top: 0;
+  left: -15px;
   text-align: center;
-  padding-top: 20px;
   color: #828486;
   button {
     padding-right: 0;
