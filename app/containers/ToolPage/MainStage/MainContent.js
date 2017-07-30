@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import Markdown from 'react-markdown';
 
-import { BorderedButton } from 'components/CommonComponents';
-import { ContentContainer } from 'components/ToolPage/Main';
+import ContentBlock from 'components/ContentBlock';
+import { ContentContainer, ShowContentButton } from 'components/ToolPage/Main';
 import ShortContent from './ShortContent';
 import FullContent from './FullContent';
 
@@ -53,9 +53,11 @@ class MainContent extends React.PureComponent {
       return (
         <ContentContainer>
           {mainContent}
-          <BorderedButton onClick={this.handleShowClick.bind(this)}>
-            {buttonText}
-          </BorderedButton>
+          <ContentBlock>
+            <ShowContentButton onClick={this.handleShowClick.bind(this)}>
+              {buttonText}
+            </ShowContentButton>
+          </ContentBlock>
         </ContentContainer>
       );
     }
