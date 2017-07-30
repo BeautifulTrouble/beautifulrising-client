@@ -94,5 +94,9 @@ export default {
   needsTranslationForm: {
     id: 'module.needs-translation-form',
     defaultMessage: 'https://docs.google.com/forms/d/e/1FAIpQLSdNIM8BZK8PBPRaMwcHe8vQPaq82xtsPkloav5qNAzDeEwHHA/viewform'
+  },
+  byLine: {
+    id: 'module.by-line',
+    defaultMessage: 'By {{byline}}'
   }
 }
