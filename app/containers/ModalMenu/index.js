@@ -56,7 +56,7 @@ const CloseBox = styled.div`
   text-align: ${props=>props.lang==='ar'?'right':'left'};
   padding: 35px 0;
   top: 0;
-  width: 1100px;
+  width: 1170px;
   display: inline-block;
   height: 122px;
 `;
@@ -117,7 +117,7 @@ export class ModalMenu extends React.Component {
 
   render() {
     const lang = this.props.intl.locale;
-    
+
     return (
       <Viewport>
         <Button lang={lang} onClick={this.openModal}>

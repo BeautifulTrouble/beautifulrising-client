@@ -171,10 +171,7 @@ export const ToolsContainer = styled.div`
   border: 2px solid black;
   top: 177px;
 
-  ${props=>props.theme.lang == 'ar' ? 'left: 50%' : 'right: 50%;'}
-  transform: translateX(${(props) => props.showTools ?
-      (props=>props.theme.lang == 'ar' ? '-685px' : '685px') :
-      (props=>props.theme.lang == 'ar' ? '-640px' : '640px') });
+  ${props=>props.theme.lang == 'ar' ? 'left: 0;' : 'right: 0;'}
   transition: transform 0.3s ease, width 0.3s ease;
   overflow-x: hidden;
   overflow-y: hidden;
