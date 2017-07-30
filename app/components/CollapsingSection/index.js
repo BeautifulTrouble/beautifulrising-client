@@ -22,14 +22,15 @@ const HeaderContainer = styled.div`
 const Header = styled.div`
   display: inline-block;
   padding-right: 20px;
+  width: 100%;
 `;
 const ArrowContainer = styled.span`
   display: inline-block;
-  transform: ${p=>!p.showing ? 'rotate(180deg)' : 'rotate(270deg)'};
+  transform: ${p=>!p.showing ? 'rotate(180deg)' : 'rotate(270deg)'} ${p=>!p.showing ? 'translate(0, 50%)' : 'translate(100%, 0%)'};
   transition: transform 0.5s ease;
   position: absolute;
   right: 20px;
-  top: 10px;
+  top: 50%;
   svg {
     width: 12px !important;
     * {

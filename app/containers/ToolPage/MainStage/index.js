@@ -10,10 +10,10 @@ import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 import staticText from '../staticText';
 
-
 import Untranslated from './Untranslated';
 import MainContent from './MainContent';
 import ByLine from './ByLine';
+import ContributedBy from './ContributedBy';
 
 class MainStage extends React.PureComponent {
   constructor(props) {
@@ -27,6 +27,7 @@ class MainStage extends React.PureComponent {
         <Untranslated { ...this.props} />
         <MainContent { ...this.props } />
         <ToolKeyItems {...this.props} />
+        <ContributedBy {...this.props} />
       </LanguageThemeProvider>
     );
   }
