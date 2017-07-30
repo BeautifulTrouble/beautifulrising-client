@@ -8,3 +8,9 @@ stats.json
 .DS_Store
 npm-debug.log
 .idea
+**_BACKUP_**
+**/*.orig
+**/*_BASE_*
+**/*_LOCAL_*
+**/*_REMOTE_*
+
