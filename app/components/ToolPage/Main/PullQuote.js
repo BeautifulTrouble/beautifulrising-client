@@ -6,7 +6,8 @@ export default styled.blockquote`
   margin: 10px 0 10px 0;
   margin-${p=>p.ar?'left':'right'}: 20px;
   line-height: 30px;
-  max-width: 33%;
+  max-width: 230px;
+  width: 230px;
   padding: 10px 0;
   p, div, span {
     font-family: 'Paint Hand',  'Massira Spray', serif;
