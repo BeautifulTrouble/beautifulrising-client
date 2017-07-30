@@ -13,6 +13,10 @@ import { createStructuredSelector } from 'reselect';
 import AdderRemover from 'containers/Tools/AdderRemover';
 import { ToolInformation, ToolHeader } from 'components/ToolsPageComponents';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
+import HeaderContainer from 'components/ToolPage/Header';
+import Stage from 'components/ToolPage/Stage';
+import Main from 'components/ToolPage/Main';
+import Sidebar from 'components/ToolPage/Sidebar';
 
 import { loadData } from '../App/actions';
 
@@ -23,6 +27,9 @@ import Header from './Header';
 import ToolPageLeft from './ToolPageLeft';
 import ToolPageMain from './ToolPageMain';
 import ToolPageRight from './ToolPageRight';
+
+import MainStage from './MainStage';
+
 import {BR_IMAGE_PREFIX} from 'containers/Tools/constants';
 import { MODULE_TYPE_UNTRANSLATED } from 'components/CommonComponents/constants';
 
@@ -73,28 +80,37 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
               { property: 'og:image', content: BR_IMAGE_PREFIX+tool.image }
             ]}
           />
-          <ToolHeader>
+          <HeaderContainer>
             <Header {...tool}
                 showIfUntranslated={this.showIfUntranslated.bind(this)}
                 key={'header'}/>
-          </ToolHeader>
-          <ToolInformation>
-            <ToolPageLeft {...tool}
+          </HeaderContainer>
+          <Stage>
+            <Main>
+              <MainStage
+                {...tool}
                 showIfUntranslated={this.showIfUntranslated.bind(this)}
-                key={'page-left'}/>
-            <ToolPageMain {...tool}
-                showIfUntranslated={this.showIfUntranslated.bind(this)}
-                params={this.props.params} key={'page-main'}/>
-            <ToolPageRight {...tool}
-                showIfUntranslated={this.showIfUntranslated.bind(this)}
-                key={'page-right'}/>
-          </ToolInformation>
+                params={this.props.params} key={'page-main'}
+              />
+            </Main>
+            <Sidebar>
+            </Sidebar>
+          </Stage>
         </div>
       </ThemeProvider>
     );
   }
 }
-
+//
+// <ToolPageLeft {...tool}
+//     showIfUntranslated={this.showIfUntranslated.bind(this)}
+//     key={'page-left'}/>
+// <ToolPageMain {...tool}
+//     showIfUntranslated={this.showIfUntranslated.bind(this)}
+//     params={this.props.params} key={'page-main'}/>
+// <ToolPageRight {...tool}
+//     showIfUntranslated={this.showIfUntranslated.bind(this)}
+//     key={'page-right'}/>
 // <h3>{tool.type}</h3>
 // <p>{tool['short-write-up']}</p>
 // <h3>{this.props.toolData.getIn(['authors']).map(item => item.title)}</h3>
