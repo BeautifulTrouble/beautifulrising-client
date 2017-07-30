@@ -12,6 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import Markdown from 'react-markdown';
 import Isvg from 'react-inlinesvg';
 import styled, {ThemeProvider} from 'styled-components';
+import ShareButton from 'containers/ShareButton';
 
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
@@ -25,7 +26,6 @@ import { ToolHeaderContainer,
 import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
 import { RouterLink } from 'utils/markdown';
 import ShareIcon from 'assets/images/icons/share-small.svg';
-import ShareButton from 'containers/ShareButton';
 import TypeFlag from 'components/TypeFlag';
 import TypeOverlay from 'components/TypeOverlay';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
@@ -101,10 +101,7 @@ export class ToolPageHeader extends React.PureComponent { // eslint-disable-line
                 </ToolHeaderType>
                 <ToolHeaderTitle color={'white'}>{this.props.title}</ToolHeaderTitle>
                 <AdderRemover
-                  slug={this.props.slug}
-                  title={this.props.title}
-                  type={this.props.type}
-                  snapshot={this.props.snapshot}
+                  {...this.props}
                   addText={(<TranslatableStaticText {...staticText.addTool} />)}
                   removeText={(<TranslatableStaticText {...staticText.removeTool} />)}
                 />

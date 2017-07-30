@@ -19,7 +19,7 @@ import { loadData } from '../App/actions';
 import { ThemeProvider } from 'styled-components';
 import makeSelectToolPage, { makeSelectTool } from './selectors';
 import messages from './messages';
-import ToolPageHeader from './ToolPageHeader';
+import Header from './Header';
 import ToolPageLeft from './ToolPageLeft';
 import ToolPageMain from './ToolPageMain';
 import ToolPageRight from './ToolPageRight';
@@ -74,7 +74,7 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
             ]}
           />
           <ToolHeader>
-            <ToolPageHeader {...tool}
+            <Header {...tool}
                 showIfUntranslated={this.showIfUntranslated.bind(this)}
                 key={'header'}/>
           </ToolHeader>
