@@ -48,6 +48,9 @@ const RealWorldItemContainer = styled.div`
     width: 100%;
     padding: 22px;
     direction: ltr;
+    padding-bottom: 0;
+    padding-top: 36px;
+    margin-top: ${props=> props.pos%2==1 ? '0' : '-22px' };
     * {
       direction: ltr;
     }
@@ -119,7 +122,7 @@ class RealWorldItem extends React.PureComponent {
   render() {
     return (
       <LatinThemeProvider>
-        <RealWorldItemContainer>
+        <RealWorldItemContainer  pos={this.props.pos}>
           <ImageBackgroundTop type={this.props.type} image={this.props.image} pos={this.props.pos}/>
             <Example ref={'example'} pos={this.props.pos}>
               <ContentBlock>

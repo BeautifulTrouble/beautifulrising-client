@@ -16,13 +16,13 @@ import { LearnMoreItem, LearnMoreItemLink, LearnMoreItemSource } from 'component
 import messages from './messages';
 
 export default function ToolLearnMoreItem(props) { // eslint-disable-line react/prefer-stateless-function
-
   return (
     <LatinThemeProvider>
       <LearnMoreItem>
         <ContentBlock>
           <LearnMoreItemLink href={props.link} target='_blank'>{props.title}</LearnMoreItemLink>
           {props.source !== '' ? (<LearnMoreItemSource> | {props.source}</LearnMoreItemSource>) : null }
+          {props.year ? `, ${props.year}` : ''}
         </ContentBlock>
       </LearnMoreItem>
     </LatinThemeProvider>

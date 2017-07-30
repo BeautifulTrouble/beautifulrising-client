@@ -34,7 +34,7 @@ export class TranslatableStaticText extends React.PureComponent { // eslint-disa
     if (values) {
       let splits = message.split(/({{.*?}})/);
       const regex = new RegExp("{{\s*(.*?)\s*}}", "gi");
-      return splits.map((item,index) => {
+      return splits.map((item, index) => {
         var match;
         if (match = regex.exec(item)) {
     		    return (<span key={index}>{values[match[1]]}</span>);
@@ -57,6 +57,7 @@ export class TranslatableStaticText extends React.PureComponent { // eslint-disa
   }
 
   render() {
+    if (this.props.id === null || this.props.id === undefined) { return null; }
     const message = this.buildMessage({...this.props}, this.props.values);
 
     return (
@@ -67,6 +68,7 @@ export class TranslatableStaticText extends React.PureComponent { // eslint-disa
 
 TranslatableStaticText.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  id: PropTypes.string
 };
 
 const mapStateToProps = createStructuredSelector({

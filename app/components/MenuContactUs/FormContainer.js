@@ -11,7 +11,6 @@ export default styled(ContentBlock)`
   }
 
   input[type=email] {
-    width: calc(100% - 70px);
     outline: none;
     padding: 2px;
     float: ${p=>p.theme.isArabic?'right':'left'};
@@ -19,7 +18,6 @@ export default styled(ContentBlock)`
   }
   button {
     outline: none;
-    width: 70px;
     text-align: ${p=>p.theme.isArabic?'left':'right'};
     float: ${p=>p.theme.isArabic?'right':'left'};
     text-transform: uppercase;

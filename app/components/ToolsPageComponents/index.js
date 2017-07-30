@@ -182,6 +182,7 @@ export const ToolLearnMoreContent = styled(ToolMainContent)`
 export const ToolMainContentHeader = styled(CommonLeftHeader)`
   border: none;
   margin: 10px 0;
+  margin: 0;
 `;
 export const ToolReadContent = styled(ContentBlock)`
   img {
@@ -217,6 +218,7 @@ text-transform: uppercase;
 font-size: ${p=>p.theme.isArabic ? '36px' : '40px'};
 line-height: 36px;
 text-align: ${p=>p.theme.isArabic ? 'right' : 'left'};
+margin-bottom: 0;
 
 ${p=> {
   if (p.theme.isArabic) {
@@ -236,5 +238,6 @@ border-bottom: 6px solid black;
 `;
 
 export const RealWorldContainer = styled(ToolMainContent)`
-margin-top: 30px;
+  margin-top: 30px;
+  margin-bottom: 36px;
 `;
