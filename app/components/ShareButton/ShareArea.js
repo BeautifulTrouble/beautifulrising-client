@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 export default styled.div `
   position: absolute;
-  width: 100px;
 
   // display: ${props=>props.show?'block':'none'};
   opacity: ${p=>p.show?1:0};
