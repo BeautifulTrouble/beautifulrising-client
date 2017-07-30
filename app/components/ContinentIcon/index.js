@@ -23,9 +23,8 @@ import NorthAmerica from 'assets/images/regions/north-america.svg';
 
 const Content = styled.div`
   top: 0;
-  ${p=>p.lang==='ar'?'left':'right'}: 50px;
   text-align: ${p=>p.lang==='ar'?'left':'right'};
-  position: absolute;
+  margin-bottom: 20px;
 `;
 
 const Continent = styled.div`

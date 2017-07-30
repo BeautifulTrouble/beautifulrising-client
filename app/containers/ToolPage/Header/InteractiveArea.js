@@ -6,6 +6,8 @@ import AdderRemover from 'containers/Tools/AdderRemover';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ShareButton from 'containers/ShareButton';
 import ContentBlock from 'components/ContentBlock';
+import ContinentIcon from 'components/ContinentIcon';
+
 import ShareIcon from 'assets/images/icons/share-small.svg';
 
 import {CTA, ShareContainer,
@@ -21,6 +23,7 @@ class InteractiveArea extends React.PureComponent {
       <InteractiveContainer lang={locale}>
         <InteractiveViewport>
           <LanguageThemeProvider>
+            <ContinentIcon {...this.props}/>
             <AdderRemover
               {...this.props}
             />

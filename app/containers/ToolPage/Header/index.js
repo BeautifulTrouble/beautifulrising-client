@@ -9,7 +9,6 @@ import styled, {ThemeProvider} from 'styled-components';
 
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
-import ContinentIcon from 'components/ContinentIcon';
 
 import {
   Caption, Container,
@@ -80,7 +79,6 @@ export class Header extends React.PureComponent {
                     source={'/ ' + this.props['image-caption']}
                     renderers={{Link: RouterLink }} />
                 </Caption>
-                <ContinentIcon {...this.props}/>
               </ContentViewport>
             </Content>
             { this.getBanner() }
