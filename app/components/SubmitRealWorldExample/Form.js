@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 export default styled.form`
-  margin-top: 10px;
+  margin-top: 36ppx;
   border: 2px solid;
   text-align: ${props=>props.theme.lang === 'ar' ? 'left' : 'right'};
   input {

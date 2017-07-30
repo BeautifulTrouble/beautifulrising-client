@@ -21,6 +21,12 @@ import makeSelectSubmitNewsFeed from './selectors';
 import { submitHashtag } from './actions';
 import staticText from './staticText';
 
+const Form = styled.form`
+  display: flex;
+`;
+const FormItem = styled.span`
+  flex-grow: ${p=>p.grow || 0};
+`;
 
 export class SubmitNewsFeed extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -47,17 +53,21 @@ export class SubmitNewsFeed extends React.PureComponent { // eslint-disable-line
   renderForm() {
     return (
       <FormContainer>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <input type='hashtag' name='hashtag' onChange={this.handleChange.bind(this)} placeholder='#'/>
-          <button>
-            <TranslatableStaticText {...staticText.submit} />
-          </button>
+        <Form onSubmit={this.handleSubmit.bind(this)}>
+          <FormItem grow={1}>
+            <input type='hashtag' name='hashtag' onChange={this.handleChange.bind(this)} placeholder='#'/>
+          </FormItem>
+          <FormItem>
+            <button>
+              <TranslatableStaticText {...staticText.submit} />
+            </button>
+          </FormItem>
           <Recaptcha
             ref={ ref=> this.recaptcha = ref }
             sitekey={ RECAPTCHA_SITE_KEY }
             onResolved={this.handleRecaptcha.bind(this)}
           />
-        </form>
+        </Form>
       </FormContainer>
 
     );

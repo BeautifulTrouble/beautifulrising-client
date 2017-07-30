@@ -23,7 +23,12 @@ function TypeFlagTooltip(props) {
   const lang = props.intl.locale;
   const types = props.type !== 'story' ?
                     [ {name: props.type, show: true}, ...props.truths.filter(item=>item.name != props.type)] :
-                    props.truths;
+                    props.truths.filter(item=>item.show && item.show!==undefined);
+
+  if (types.length === 0) {
+    return null;
+  }
+
   return (
     <Container show={props.show} lang={lang}>
       <div>

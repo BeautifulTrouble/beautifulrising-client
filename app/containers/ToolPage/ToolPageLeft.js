@@ -30,13 +30,14 @@ const Container = styled.div`
 export class ToolPageLeft extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   renderTags() {
+    const lang = this.props.intl.locale;
     if (this.props['module-type'] === 'snapshot' ) return null;
     return (
       <Container>
         <SmallSectionHeader>
           <TranslatableStaticText {...staticText.tags} />
         </SmallSectionHeader>
-        <Tags align="left" tags={this.props.tags ? this.props.tags.map(item=>item.toLowerCase()) : null} />
+        <Tags align={lang == 'ar' ? "right" : "left"} tags={this.props.tags ? this.props.tags.map(item=>item.toLowerCase()) : null} />
       </Container>
     )
   }

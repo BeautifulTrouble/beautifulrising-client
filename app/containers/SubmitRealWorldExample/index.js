@@ -8,6 +8,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import Recaptcha from 'react-google-invisible-recaptcha';
+import styled from 'styled-components';
 
 import TranslatableStaticText, { injectStaticText } from 'containers/TranslatableStaticText';
 import { RECAPTCHA_SITE_KEY } from 'components/CommonComponents/constants';
@@ -25,6 +26,9 @@ import TextArea from 'components/SubmitRealWorldExample/TextArea';
 
 import staticText from './staticText';
 
+const SubmitExampleContainer = styled.div`
+  margin-top: 36px;
+`;
 
 export class SubmitRealWorldExample extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -97,8 +101,9 @@ export class SubmitRealWorldExample extends React.PureComponent { // eslint-disa
 
   render() {
     return (
-      <LanguageThemeProvider>
-        <div>
+
+        <SubmitExampleContainer>
+        <LanguageThemeProvider>
           <Header>
             <TranslatableStaticText {...staticText.header} values={{type: this.props.type}} />
           </Header>
@@ -108,8 +113,8 @@ export class SubmitRealWorldExample extends React.PureComponent { // eslint-disa
             </ContentBlock>
           </div>
           { this.props.realWorldEx.complete ? this.renderComplete() : this.renderForm() }
-        </div>
-      </LanguageThemeProvider>
+          </LanguageThemeProvider>
+        </SubmitExampleContainer>
     );
   }
 }
