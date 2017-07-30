@@ -31,6 +31,7 @@ const SearchBox = styled.input`
   font-size: ${p=>p.ar?'13px':'14px'};
   line-height: ${p=>p.ar?'24px':'22px'};
   font-style: italic;
+  outline: none;
 `;
 
 let timeoutHandler = null;

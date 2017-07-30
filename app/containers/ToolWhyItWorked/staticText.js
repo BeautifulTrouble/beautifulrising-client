@@ -1,6 +1,6 @@
 export default {
   header: {
-    id: 'app.components.WhyItWorked.header',
+    id: 'module.why-it-worked',
     defaultMessage: 'Why it Worked',
   },
 };
