@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-const ListItem = styled.li`
+export default styled.li`
   list-style: none;
   text-transform: uppercase;
   font-weight: bold;

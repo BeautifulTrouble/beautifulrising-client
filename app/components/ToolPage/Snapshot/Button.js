@@ -7,4 +7,11 @@ export default styled.button`
   display: inline-block;
   margin: 0;
   padding: 0;
+
+  color: black;
+  text-decoration: underline;
+
+  text-transform: uppercase;
+
+  font-weight: bold;
 `;

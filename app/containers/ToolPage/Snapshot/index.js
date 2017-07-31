@@ -1,9 +1,9 @@
 import React from 'react';
 import Modal from 'react-modal';
-
+import { injectIntl } from 'react-intl';
 import TranslatableStaticText from 'containers/TranslatableStaticText';
-import SnapshotContainer from 'component/Snapshot';
-
+import SnapshotContainer, { Button } from 'components/ToolPage/Snapshot';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import SnapshotContent from './SnapshotContent';
 import staticText from '../staticText';
 
@@ -59,9 +59,9 @@ export class Snapshot extends React.Component {
     const lang = this.props.intl.locale;
 
     return (
-      <Viewport>
+      <div>
         <Button lang={lang} onClick={this.openModal}>
-          {React.Children.toArray(this.props.children)}
+          • {React.Children.toArray(this.props.children)}
         </Button>
         <Modal
           isOpen={this.state.modalIsOpen}
@@ -70,13 +70,13 @@ export class Snapshot extends React.Component {
           style={{...customStyles, content: {...customStyles.content}}}
           contentLabel="Example Modal"
         >
-          <LanguageThemeProvider>
-            <SnapshotContainer>
+          <SnapshotContainer>
+            <LanguageThemeProvider>
               <SnapshotContent {...this.props}/>
-            </SnapshotContainer>
-          </LanguageThemeProvider>
+            </LanguageThemeProvider>
+          </SnapshotContainer>
         </Modal>
-      </Viewport>
+      </div>
     );
   }
 

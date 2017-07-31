@@ -35,11 +35,12 @@ export class SnapshotContent extends React.PureComponent {
   }
 
   render() {
+    console.log(this.props);
+    
     return (
       <Container backgroundImage={BR_IMAGE_PREFIX+this.props.image}>
         <Viewport showOverflow={this.props['module-type-effective'] !== 'snapshot'}>
           <LanguageThemeProvider>
-            <InteractiveArea {...this.props}/>
             <Content id="Content">
               <ContentViewport>
                 <ToolType type={this.props.type}>

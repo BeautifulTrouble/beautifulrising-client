@@ -19,7 +19,7 @@ import { Header,
           SidebarContent,
           RelatedHeader} from 'components/ToolPage/Sidebar';
 
-import ToolsRelatedTool from 'components/ToolsRelatedTool';
+import RelatedToolsList from './RelatedToolsList';
 
 import staticText from '../staticText';
 
@@ -36,7 +36,7 @@ class RelatedTools extends React.PureComponent {
         <RelatedHeader>
           <Isvg src={FlagImage} />
         </RelatedHeader>
-        <ToolsRelatedTool relatedTools={this.props[typeKey]} dict={this.props.toolsList}/>
+        <RelatedToolsList {...this.props} relatedTools={this.props[typeKey]} dict={this.props.toolsList}/>
       </ContentBlock>
     );
   }
