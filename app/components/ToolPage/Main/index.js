@@ -5,8 +5,10 @@ import Epigraph from './Epigraph';
 import ShowContentButton from './ShowContentButton';
 import ByLine from './ByLine';
 import CollapsingHeader from './CollapsingHeader';
+import CollapsingContent from './CollapsingContent';
 
 export default Container;
 
 export { ContentContainer, Epigraph, PullQuote,
-          ShowContentButton, ByLine, CollapsingHeader };
+          ShowContentButton, ByLine, CollapsingHeader,
+          CollapsingContent };

@@ -5,7 +5,7 @@ import { createStructuredSelector } from 'reselect';
 
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import TranslatableStaticText from 'containers/TranslatableStaticText';
-import { CollapsingHeader, ContentContainer } from 'components/ToolPage/Main';
+import { CollapsingHeader, ContentContainer, CollapsingContent } from 'components/ToolPage/Main';
 import CollapsingSection from 'components/CollapsingSection';
 import ContentBlock from 'components/ContentBlock';
 import AskTheContributor from 'containers/AskTheContributor';
@@ -50,8 +50,10 @@ class ContributedBy extends React.PureComponent {
                 </CollapsingHeader>
               )}
             >
-            {authors}
-            {askTheAuthors}
+              <CollapsingContent>
+                {authors}
+                {askTheAuthors}
+              </CollapsingContent>
             </CollapsingSection>
           </ContentBlock>
         </LanguageThemeProvider>
