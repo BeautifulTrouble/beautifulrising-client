@@ -22,15 +22,16 @@ margin: 0 0 0 23px;
 `;
 
 const ListItem = styled.li`
-  list-style: square;
+  list-style: none;
   text-transform: uppercase;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 12px;
   font-size: 14px;
 `;
 
 const ToolLink = styled(Link)`
-  color: ${props => getToolTypeColor(props.type)};
+  color: black;
+  text-decoration: underline;
 `;
 
 function ToolsRelatedTool(props) {
@@ -40,7 +41,7 @@ function ToolsRelatedTool(props) {
         <List>
           {props.relatedTools.map(item => (
             <ListItem key={item}>
-              <ToolLink type={props.type} to={`/tool/${item}`}>{props.dict.getIn([item, 'title'])}</ToolLink>
+              <ToolLink to={`/tool/${item}`}>{props.dict.getIn([item, 'title'])}</ToolLink>
             </ListItem>
           )) }
         </List>

@@ -40,7 +40,7 @@ const ArrowContainer = styled.span`
   }
 `;
 const Content = styled.div`
-  max-height: ${p=>p.show?'100vh':'0'};
+  max-height: ${p=>p.show?'5000px':'0'};
   overflow: hidden;
   transition: max-height 0.7s ease;
 `;
