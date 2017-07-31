@@ -47,7 +47,7 @@ class RealWorld extends React.Component { // eslint-disable-line react/prefer-st
       return null;
 
     return (
-      <div show={this.state.isCollapsed}>
+      <div>
         {this.props['real-world-examples'].map((item, index)=>(<RealWorldItem key={index} pos={index} {...item} type={this.props.type} toolImage={this.props.image}/>))}
       </div>
     )

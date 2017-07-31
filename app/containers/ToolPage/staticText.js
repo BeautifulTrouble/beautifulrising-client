@@ -98,5 +98,9 @@ export default {
   byLine: {
     id: 'module.by-line',
     defaultMessage: 'By {{byline}}'
+  },
+  potentialRiskHeader: {
+    id: 'module.potential-risks',
+    defaultMessage: 'Potential Risks',
   }
 }

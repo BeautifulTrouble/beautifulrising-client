@@ -14,9 +14,9 @@ import AdderRemover from 'containers/Tools/AdderRemover';
 import { ToolInformation, ToolHeader } from 'components/ToolsPageComponents';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 import HeaderContainer from 'components/ToolPage/Header';
-import Stage from 'components/ToolPage/Stage';
-import Main from 'components/ToolPage/Main';
-import Sidebar from 'components/ToolPage/Sidebar';
+import StageContainer from 'components/ToolPage/Stage';
+import MainArea from 'components/ToolPage/Main';
+import SidebarContainer from 'components/ToolPage/Sidebar';
 
 import { loadData } from '../App/actions';
 
@@ -29,6 +29,7 @@ import ToolPageMain from './ToolPageMain';
 import ToolPageRight from './ToolPageRight';
 
 import MainStage from './MainStage';
+import Sidebar from './Sidebar';
 
 import {BR_IMAGE_PREFIX} from 'containers/Tools/constants';
 import { MODULE_TYPE_UNTRANSLATED } from 'components/CommonComponents/constants';
@@ -85,17 +86,18 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
                 showIfUntranslated={this.showIfUntranslated.bind(this)}
                 key={'header'}/>
           </HeaderContainer>
-          <Stage>
-            <Main>
+          <StageContainer>
+            <MainArea>
               <MainStage
                 {...tool}
                 showIfUntranslated={this.showIfUntranslated.bind(this)}
                 params={this.props.params} key={'page-main'}
               />
-            </Main>
-            <Sidebar>
-            </Sidebar>
-          </Stage>
+            </MainArea>
+            <SidebarContainer>
+              <Sidebar {...tool} {...this.props}/>
+            </SidebarContainer>
+          </StageContainer>
         </div>
       </ThemeProvider>
     );
