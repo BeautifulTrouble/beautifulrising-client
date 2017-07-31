@@ -55,10 +55,10 @@ const ActionButton = styled.button`
 `;
 
 class CollapsingSection extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
-      showContent: false
+      showContent: props.isShown || false
     }
   }
 

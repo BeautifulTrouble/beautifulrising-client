@@ -14,6 +14,7 @@ import Untranslated from './Untranslated';
 import MainContent from './MainContent';
 import ByLine from './ByLine';
 import ContributedBy from './ContributedBy';
+import RealWorld from './RealWorld';
 
 class MainStage extends React.PureComponent {
   constructor(props) {
@@ -28,6 +29,10 @@ class MainStage extends React.PureComponent {
         <MainContent { ...this.props } />
         <ToolKeyItems {...this.props} />
         <ContributedBy {...this.props} />
+
+        {/* Show RealWorld example only on non-stories*/}
+        {this.props.type !== "story" ? <RealWorld {...this.props} /> : null}
+        
       </LanguageThemeProvider>
     );
   }
