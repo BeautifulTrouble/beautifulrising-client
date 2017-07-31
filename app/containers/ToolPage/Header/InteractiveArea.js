@@ -21,21 +21,23 @@ class InteractiveArea extends React.PureComponent {
     const { locale } = this.props.intl;
     return (
       <InteractiveContainer lang={locale}>
-        <InteractiveViewport>
-          <LanguageThemeProvider>
-            <ContinentIcon {...this.props}/>
-            <AdderRemover
-              {...this.props}
-            />
-            <ShareContainer>
-              <ShareButton {...this.props} orientation={'vertical'}>
-                <ContentBlock>
-                  <Isvg src={ShareIcon} className={'share-button'} />
-                </ContentBlock>
-              </ShareButton>
-            </ShareContainer>
-          </LanguageThemeProvider>
-        </InteractiveViewport>
+        <LanguageThemeProvider>
+          <InteractiveViewport>
+            <LanguageThemeProvider>
+              <ContinentIcon {...this.props}/>
+              <AdderRemover
+                {...this.props}
+              />
+              <ShareContainer>
+                <ShareButton {...this.props} orientation={'vertical'}>
+                  <ContentBlock>
+                    <Isvg src={ShareIcon} className={'share-button'} />
+                  </ContentBlock>
+                </ShareButton>
+              </ShareContainer>
+            </LanguageThemeProvider>
+          </InteractiveViewport>
+        </LanguageThemeProvider>
       </InteractiveContainer>
     )
   }
