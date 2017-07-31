@@ -36,7 +36,7 @@ class RelatedTools extends React.PureComponent {
         <RelatedHeader>
           <Isvg src={FlagImage} />
         </RelatedHeader>
-        <RelatedToolsList {...this.props} relatedTools={this.props[typeKey]} dict={this.props.toolsList}/>
+        <RelatedToolsList relatedTools={this.props[typeKey]} dict={this.props.toolsList}/>
       </ContentBlock>
     );
   }

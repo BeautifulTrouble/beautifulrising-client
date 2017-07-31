@@ -25,7 +25,7 @@ function RelatedToolsList(props) {
               if (props.dict.getIn([item, 'module-type-effective']) === 'snapshot' ) {
                 return (
                   <ListItem key={item}>
-                    <Snapshot {...props}>{props.dict.getIn([item, 'title'])}</Snapshot>
+                    <Snapshot {...props.dict.get(item).toJS()}>{props.dict.getIn([item, 'title'])}</Snapshot>
                   </ListItem>
                 )
               }

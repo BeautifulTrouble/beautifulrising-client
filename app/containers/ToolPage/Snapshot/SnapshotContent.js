@@ -6,6 +6,7 @@ import { createStructuredSelector } from 'reselect';
 import Markdown from 'react-markdown';
 import Isvg from 'react-inlinesvg';
 import styled, {ThemeProvider} from 'styled-components';
+import { RouterLink } from 'utils/markdown';
 
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
@@ -13,15 +14,15 @@ import ContentBlock from 'components/ContentBlock';
 import {
   Caption, Container,
   Content, ContentViewport,
-  Title, ToolType,
-  Viewport,
+  Title, ToolType
 } from 'components/ToolPage/Header';
 
+import { SnapshotText, Viewport, OverlayText } from 'components/ToolPage/Snapshot';
+
 import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
-import { RouterLink } from 'utils/markdown';
 import TypeOverlay from 'components/TypeOverlay';
 
-import TranslatableStaticText from 'containers/TranslatableStaticText';
+import TranslatableStaticText, { injectStaticText } from 'containers/TranslatableStaticText';
 import staticText from '../staticText';
 
 export class SnapshotContent extends React.PureComponent {
@@ -35,8 +36,10 @@ export class SnapshotContent extends React.PureComponent {
   }
 
   render() {
-    console.log(this.props);
-    
+    console.log("XX", this.props);
+    const { buildMessage } = this.props.translatable;
+    const callToAction = buildMessage(staticText.expandingToolbox, { link: this.props['bt-link'] });
+
     return (
       <Container backgroundImage={BR_IMAGE_PREFIX+this.props.image}>
         <Viewport showOverflow={this.props['module-type-effective'] !== 'snapshot'}>
@@ -51,9 +54,15 @@ export class SnapshotContent extends React.PureComponent {
                 <Title color={'white'}>
                   {this.props.title}
                 </Title>
+                <SnapshotText>
+                  {this.props.snapshot}
+                </SnapshotText>
               </ContentViewport>
             </Content>
             <TypeOverlay type={this.props.type} />
+            <OverlayText>
+              <Markdown source={callToAction} renderers={{Link: RouterLink}} />
+            </OverlayText>
           </LanguageThemeProvider>
         </Viewport>
       </Container>
@@ -72,4 +81,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(injectIntl(SnapshotContent));
+export default connect(null, mapDispatchToProps)(injectStaticText(injectIntl(SnapshotContent)));
