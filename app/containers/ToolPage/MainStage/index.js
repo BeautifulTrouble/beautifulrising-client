@@ -15,6 +15,7 @@ import MainContent from './MainContent';
 import ByLine from './ByLine';
 import ContributedBy from './ContributedBy';
 import RealWorld from './RealWorld';
+import LearnMore from './LearnMore';
 
 class MainStage extends React.PureComponent {
   constructor(props) {
@@ -32,7 +33,7 @@ class MainStage extends React.PureComponent {
 
         {/* Show RealWorld example only on non-stories*/}
         {this.props.type !== "story" ? <RealWorld {...this.props} /> : null}
-        
+        <LearnMore {...this.props} />
       </LanguageThemeProvider>
     );
   }
