@@ -94,5 +94,33 @@ export default {
   needsTranslationForm: {
     id: 'module.needs-translation-form',
     defaultMessage: 'https://docs.google.com/forms/d/e/1FAIpQLSdNIM8BZK8PBPRaMwcHe8vQPaq82xtsPkloav5qNAzDeEwHHA/viewform'
+  },
+  byLine: {
+    id: 'module.by-line',
+    defaultMessage: 'By {{byline}}'
+  },
+  potentialRiskHeader: {
+    id: 'module.potential-risks',
+    defaultMessage: 'Potential Risks',
+  },
+  trainingRequest: {
+    id: 'module.training-request',
+    defaultMessage: 'You can also [request]({{form}}) a Beautiful Rising training'
+  },
+  trainingForm: {
+    id: 'forms.training',
+    defaultMessage: 'https://docs.google.com/forms/d/e/1FAIpQLSfbN0Qb5P2ORCHYl4UPEdA-01I-ixPP9TRjEFv5c05HGguwrA/viewform'
+  },
+  whyItFailedHeader: {
+    id: 'module.why-it-failed',
+    defaultMessage: 'Why it Failed',
+  },
+  whyItWorkedHeader: {
+    id: 'module.why-it-worked',
+    defaultMessage: 'Why it Worked',
+  },
+  expandingToolbox: {
+    id: 'module.expanding-toolbox',
+    defaultMessage: 'This is an ever-expanding toolbox. You’re welcome to [read more]({{link}}) this tool. '
   }
 }

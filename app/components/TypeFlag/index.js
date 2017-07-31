@@ -24,7 +24,7 @@ import BigTheoryFlag from 'assets/images/flag/big-theory.svg';
 const FlagContainer = styled.div`
   position: absolute;
   ${props=>props.lang === 'ar' ? 'right' : 'left'}: -200px;
-  top: 125px;
+  top: 90px;
 
   svg circle,
   svg line,
@@ -60,6 +60,7 @@ export class TypeFlag extends React.PureComponent {
     this.setState({ showTooltip: false });
   }
   render() {
+      
     //iF there's only one truth here, we show big flag.
     const oneTruth = [this.props.isTactic, this.props.isMethodology, this.props.isPrinciple, this.props.isTheory].filter(item=>item).length == 1;
 

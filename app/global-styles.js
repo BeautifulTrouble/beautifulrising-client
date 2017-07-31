@@ -112,6 +112,7 @@ injectGlobal`
     letter-spacing: 1px;
   }
 
+  h1,h2,h3,h4,h5 { margin: 0; padding: 0; }
   body.fontLoaded {
     font-family: 'Avenir', 'Kaff', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }

@@ -23,9 +23,10 @@ AuthorComponents.propTypes = {
 };
 
 export const AuthorContainer = styled.section`
-  margin-top: 10px;
-  margin-bottom: 30px;
+  padding-top: 36px;
+  margin-bottom: 54px;
   direction: ${p=>p.theme.isArabic?'rtl':'ltr'} !important;
+  display: flex;
 `;
 
 export const AuthorImageArea = styled.div`
@@ -35,8 +36,7 @@ export const AuthorImageArea = styled.div`
 `;
 export const AuthorImage = styled.span`
   width: 100%;
-  height: 0;
-  padding-bottom: 100%;
+  height: 100%;
   background-image: url(${props=>AUTHOR_BASE_IMAGE + props.image})
 
   display: inline-block;
@@ -55,13 +55,21 @@ export const AuthorName = styled(SmallHeaderBlock)`
 
 export const AuthorLink = styled(Link)`
   color: rgb(130, 132, 134);
-  display: block;
-  width: 100%;
+  display: inline-block;
+  width: 200px;
+  height: 170px;
+  min-width: 200px;
 `;
 
 export const AuthorDesc = styled.div`
-  margin: 2px;
+  flex-grow: 1;
   text-align: ${p=>p.theme.isArabic?'right':'left'} !important;
+  display: inline-block;
+  padding-left: 28px;
+
+  p {
+    margin: 0;
+  }
 `;
 
 export default AuthorComponents;

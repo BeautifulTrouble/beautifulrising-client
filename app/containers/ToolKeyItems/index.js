@@ -25,6 +25,10 @@ import staticText from './staticText';
 
 
 class ToolKeyItems extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  constructor(props) {
+    super();
+  }
+
   generateKeyItems(list, type) {
     if (!list || list === undefined || list.length == 0) return null;
     const { locale } = this.props.intl;
@@ -58,14 +62,24 @@ class ToolKeyItems extends React.PureComponent { // eslint-disable-line react/pr
 
 
   render() {
+    const keyTactics=this.props['key-modules'] ? this.props['key-modules']['key-tactics'] : [];
+    const keyPrinciples=this.props['key-modules'] ? this.props['key-modules']['key-principles']  : [];
+    const keyTheories=this.props['key-modules'] ? this.props['key-modules']['key-theories'] : [];
+    const keyMethodologies=this.props['key-modules'] ? this.props['key-modules']['key-methodologies'] : [];
+
+    const showTactics = this.props.showIfUntranslated('key-tactics');
+    const showPrinciples = this.props.showIfUntranslated('key-principles');
+    const showTheories = this.props.showIfUntranslated('key-theories');
+    const showMethodologies = this.props.showIfUntranslated('key-methodologies');
+
     return (
       <LanguageThemeProvider>
         <section>
           <div>
-            {this.props.showTactics ? this.generateKeyItems(this.props.keyTactics, this.props.keyTactics&&this.props.keyTactics.length > 1 ? "tactics" : "tactic") : null}
-            {this.props.showPrinciples ? this.generateKeyItems(this.props.keyPrinciples, this.props.keyPrinciples&&this.props.keyPrinciples.length > 1 ? "principles" : "principle") : null}
-            {this.props.showTheories ? this.generateKeyItems(this.props.keyTheories, this.props.keyTheories&&this.props.keyTheories.length > 1 ? "theories" : "theory") : null}
-            {this.props.showMethodologies ? this.generateKeyItems(this.props.keyMethodologies, this.props.keyMethodologies&&this.props.keyMethodologies.length > 1 ? "methodologies" : "methodology") : null}
+            {showTactics ? this.generateKeyItems(keyTactics, keyTactics&&keyTactics.length > 1 ? "tactics" : "tactic") : null}
+            {showPrinciples ? this.generateKeyItems(keyPrinciples, keyPrinciples&&keyPrinciples.length > 1 ? "principles" : "principle") : null}
+            {showTheories ? this.generateKeyItems(keyTheories, keyTheories&&keyTheories.length > 1 ? "theories" : "theory") : null}
+            {showMethodologies ? this.generateKeyItems(keyMethodologies, keyMethodologies&&keyMethodologies.length > 1 ? "methodologies" : "methodology") : null}
           </div>
         </section>
       </LanguageThemeProvider>

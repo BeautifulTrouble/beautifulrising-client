@@ -9,7 +9,7 @@ import Markdown from 'react-remarkable';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import {AuthorContainer, AuthorImageArea, AuthorLink,
-        AuthorImage, AuthorName, AuthorDesc} from 'components/AuthorComponents';
+        AuthorImage, AuthorName, AuthorDesc} from 'components/Author';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import LatinThemeProvider from 'components/LatinThemeProvider';
@@ -29,13 +29,13 @@ export class Author extends React.PureComponent { // eslint-disable-line react/p
     return (
       <ThemeProvider>
         <AuthorContainer>
-            <AuthorLink to={`/search/authors!${this.props.slug}`}>
-              <AuthorImage image={this.props.author.image} />
-            </AuthorLink>
-          <AuthorName>
+          <AuthorLink to={`/search/authors!${this.props.slug}`}>
+            <AuthorImage image={this.props.author.image} />
+          </AuthorLink>
+          {/*<AuthorName>
             <AuthorLink to={`/search/authors!${this.props.slug}`}>{firstName}</AuthorLink>
             <AuthorLink to={`/search/authors!${this.props.slug}`}>{latterName}</AuthorLink>
-          </AuthorName>
+          </AuthorName> */}
           <AuthorDesc>
             <ContentBlock>
               <Markdown source={this.props.author.bio} />

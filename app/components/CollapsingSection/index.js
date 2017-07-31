@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import ArrowIcon from 'assets/images/icons/arrow.svg';
 import Isvg from 'react-inlinesvg';
 
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
 const Container = styled.div`
 
@@ -22,14 +23,28 @@ const HeaderContainer = styled.div`
 const Header = styled.div`
   display: inline-block;
   padding-right: 20px;
+  width: 100%;
 `;
 const ArrowContainer = styled.span`
   display: inline-block;
-  transform: ${p=>!p.showing ? 'rotate(180deg)' : 'rotate(270deg)'};
   transition: transform 0.5s ease;
   position: absolute;
-  right: 20px;
-  top: 10px;
+
+  ${p=>{
+    if (p.theme.isArabic) {
+      return `
+        transform: ${p.showing ? 'rotate(270deg)' : 'rotate(360deg)'} ${p.showing ? 'translate(100%, 0%)' : 'translate(0, -50%)'};
+        left: 20px;
+      `;
+    } else {
+      return `
+      transform: ${p.showing ? 'rotate(270deg)' : 'rotate(180deg)'} ${p.showing ? 'translate(100%, 0%)' : 'translate(0, 50%)'};
+      right: 20px;
+      `
+    }
+  }}
+
+  top: 50%;
   svg {
     width: 12px !important;
     * {
@@ -39,7 +54,7 @@ const ArrowContainer = styled.span`
   }
 `;
 const Content = styled.div`
-  max-height: ${p=>p.show?'100vh':'0'};
+  max-height: ${p=>p.show?'5000px':'0'};
   overflow: hidden;
   transition: max-height 0.7s ease;
 `;
@@ -54,10 +69,10 @@ const ActionButton = styled.button`
 `;
 
 class CollapsingSection extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
-      showContent: false
+      showContent: props.isShown || false
     }
   }
 
@@ -68,17 +83,19 @@ class CollapsingSection extends React.PureComponent { // eslint-disable-line rea
   render() {
     return (
       <Container>
-        <HeaderContainer>
-          <ActionButton onClick={this.toggleContent.bind(this)}>
-            <Header>{ this.props.header }</Header>
-            <ArrowContainer showing={this.state.showContent}>
-              <Isvg src={ArrowIcon} />
-            </ArrowContainer>
-          </ActionButton>
-        </HeaderContainer>
-        <Content show={this.state.showContent}>
-          {React.Children.toArray(this.props.children)}
-        </Content>
+        <LanguageThemeProvider>
+          <HeaderContainer>
+            <ActionButton onClick={this.toggleContent.bind(this)}>
+              <Header>{ this.props.header }</Header>
+              <ArrowContainer showing={this.state.showContent}>
+                <Isvg src={ArrowIcon} />
+              </ArrowContainer>
+            </ActionButton>
+          </HeaderContainer>
+          <Content show={this.state.showContent}>
+            {React.Children.toArray(this.props.children)}
+          </Content>
+        </LanguageThemeProvider>
       </Container>
     );
   }

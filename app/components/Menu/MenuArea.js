@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 export default styled.div`
-width: 1100px;
+width: 1170px;
 text-align: ${props=>props.lang==='ar'?'right':'left'};
 display: inline-block;
 &::before {

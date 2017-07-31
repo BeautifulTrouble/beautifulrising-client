@@ -16,7 +16,7 @@ import messages from './messages';
 
 const Viewport = styled.div`
   position: relative;
-  width: 1110px;
+  width: 1180px;
   text-align: left;
   display: inline-block;
 `;
