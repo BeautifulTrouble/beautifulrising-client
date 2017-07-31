@@ -110,5 +110,13 @@ export default {
   trainingForm: {
     id: 'forms.training',
     defaultMessage: 'https://docs.google.com/forms/d/e/1FAIpQLSfbN0Qb5P2ORCHYl4UPEdA-01I-ixPP9TRjEFv5c05HGguwrA/viewform'
-  }
+  },
+  whyItFailedHeader: {
+    id: 'module.why-it-failed',
+    defaultMessage: 'Why it Failed',
+  },
+  whyItWorkedHeader: {
+    id: 'module.why-it-worked',
+    defaultMessage: 'Why it Worked',
+  },
 }

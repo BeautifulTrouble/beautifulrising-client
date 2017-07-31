@@ -16,6 +16,8 @@ import PotentialRisk from './PotentialRisk';
 import RelatedTools from './RelatedTools';
 import Tags from './Tags';
 import Training from './Training';
+import WhyItWorked from './WhyItWorked';
+import WhyItFailed from './WhyItFailed';
 
 class Sidebar extends React.PureComponent {
   constructor(props) {
@@ -23,10 +25,11 @@ class Sidebar extends React.PureComponent {
   }
 
   render() {
-    console.log("Sidebar", this.props);
     return (
       <LanguageThemeProvider>
-        <PotentialRisk content={this.props['potential-risks']} type={this.props.type} />
+        <WhyItWorked {...this.props} text={this.props['why-it-worked']} />
+        <WhyItFailed {...this.props} text={this.props['why-it-failed']} />
+        <PotentialRisk {...this.props} content={this.props['potential-risks']} type={this.props.type} />
         <RelatedTools {...this.props} />
         <Tags {...this.props} />
         <Training {...this.props} />
