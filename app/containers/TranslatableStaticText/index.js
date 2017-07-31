@@ -108,6 +108,7 @@ const injectStaticText = (WrappedComponent) => {
       if (values) {
         let splits = message.split(/({{.*?}})/);
         const regex = new RegExp("{{\s*(.*?)\s*}}", "gi");
+        console.log(splits);
         return splits.map(item => {
           var match;
           if (match = regex.exec(item)) {
@@ -115,7 +116,7 @@ const injectStaticText = (WrappedComponent) => {
           } else {
       		    return item;
           }
-        })
+        }).join('');
         // var compiled = _.template(message);
         // return compiled(values);
       }

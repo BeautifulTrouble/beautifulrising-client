@@ -102,5 +102,13 @@ export default {
   potentialRiskHeader: {
     id: 'module.potential-risks',
     defaultMessage: 'Potential Risks',
+  },
+  trainingRequest: {
+    id: 'module.training-request',
+    defaultMessage: 'You can also [request]({{form}}) a Beautiful Rising training'
+  },
+  trainingForm: {
+    id: 'forms.training',
+    defaultMessage: 'https://docs.google.com/forms/d/e/1FAIpQLSfbN0Qb5P2ORCHYl4UPEdA-01I-ixPP9TRjEFv5c05HGguwrA/viewform'
   }
 }

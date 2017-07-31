@@ -14,6 +14,8 @@ import { ContentContainer } from 'components/ToolPage/Main';
 
 import PotentialRisk from './PotentialRisk';
 import RelatedTools from './RelatedTools';
+import Tags from './Tags';
+import Training from './Training';
 
 class Sidebar extends React.PureComponent {
   constructor(props) {
@@ -26,6 +28,8 @@ class Sidebar extends React.PureComponent {
       <LanguageThemeProvider>
         <PotentialRisk content={this.props['potential-risks']} type={this.props.type} />
         <RelatedTools {...this.props} />
+        <Tags {...this.props} />
+        <Training {...this.props} />
       </LanguageThemeProvider>
     );
   }
