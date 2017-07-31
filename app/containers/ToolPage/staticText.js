@@ -119,4 +119,8 @@ export default {
     id: 'module.why-it-worked',
     defaultMessage: 'Why it Worked',
   },
+  expandingToolbox: {
+    id: 'module.expanding-toolbox',
+    defaultMessage: 'This is an ever-expanding toolbox. You’re welcome to [read more]({{link}}) this tool. '
+  }
 }
