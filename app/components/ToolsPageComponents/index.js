@@ -176,7 +176,7 @@ export const ToolMainContent = styled(ContentBlock)`
 `;
 
 export const ToolLearnMoreContent = styled(ToolMainContent)`
-  margin-top: 72px;
+  margin-top: 36px;
 `;
 
 export const ToolMainContentHeader = styled(CommonLeftHeader)`
