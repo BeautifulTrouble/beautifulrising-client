@@ -74,7 +74,7 @@ const Example = styled.div`
     if(props.pos % 2 == 1) {
       return `
       margin-top: -22px;
-      margin-left: 90px;
+      left: calc(100% - 322px);
     `
 
     } else {

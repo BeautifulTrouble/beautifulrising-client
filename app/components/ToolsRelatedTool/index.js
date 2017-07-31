@@ -18,7 +18,8 @@ const Viewport = styled.div``;
 
 const List = styled.ul`
 padding: 0;
-margin: 0 0 0 23px;
+margin: 0;
+margin-${p=>p.lang==='ar'?'right':'left'}:  18px;
 `;
 
 const ListItem = styled.li`
@@ -38,7 +39,7 @@ function ToolsRelatedTool(props) {
   return (
     <Container lang={props.intl.locale}>
       <Viewport>
-        <List>
+        <List lang={props.intl.locale}>
           {props.relatedTools.map(item => (
             <ListItem key={item}>
               <ToolLink to={`/tool/${item}`}>{props.dict.getIn([item, 'title'])}</ToolLink>
