@@ -22,7 +22,7 @@ class Training extends React.PureComponent {
     const {buildMessage} = this.props.translatable;
     const formLink = buildMessage(staticText.trainingForm);
     const requestMarkdown = buildMessage(staticText.trainingRequest, {form: formLink});
-    console.log(requestMarkdown);
+    
     return (
       <LanguageThemeProvider>
         <SidebarContent>

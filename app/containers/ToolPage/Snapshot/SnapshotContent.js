@@ -36,7 +36,7 @@ export class SnapshotContent extends React.PureComponent {
   }
 
   render() {
-    console.log("XX", this.props);
+    
     const { buildMessage } = this.props.translatable;
     const callToAction = buildMessage(staticText.expandingToolbox, { link: this.props['bt-link'] });
 

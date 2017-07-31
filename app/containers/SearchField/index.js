@@ -69,7 +69,7 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
   }
 
   handleClearSearch() {
-    console.log(this.refs.SearchBox, this.refs.SearchBox.value);
+    
     this.props.dispatch(push('/'));
   }
 
@@ -85,7 +85,7 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
     return (<Isvg src={SearchIcon} />);
   }
   render() {
-    console.log("XXX", this.props);
+    
     const {locale} = this.props.intl;
     const {buildMessage} = this.props.translatable;
     return (

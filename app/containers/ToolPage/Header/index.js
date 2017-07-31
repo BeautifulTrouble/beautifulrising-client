@@ -54,7 +54,7 @@ export class Header extends React.PureComponent {
   }
 
   render() {
-    console.log(this.getBanner());
+    
     return (
       <Container id="XX" backgroundImage={BR_IMAGE_PREFIX+this.props.image}>
         <Viewport showOverflow={this.props['module-type-effective'] !== 'snapshot'}>

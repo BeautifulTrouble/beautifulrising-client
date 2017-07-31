@@ -60,7 +60,7 @@ export class TypeFlag extends React.PureComponent {
     this.setState({ showTooltip: false });
   }
   render() {
-      console.log(this.props);
+      
     //iF there's only one truth here, we show big flag.
     const oneTruth = [this.props.isTactic, this.props.isMethodology, this.props.isPrinciple, this.props.isTheory].filter(item=>item).length == 1;
 

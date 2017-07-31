@@ -108,7 +108,7 @@ const injectStaticText = (WrappedComponent) => {
       if (values) {
         let splits = message.split(/({{.*?}})/);
         const regex = new RegExp("{{\s*(.*?)\s*}}", "gi");
-        console.log(splits);
+        
         return splits.map(item => {
           var match;
           if (match = regex.exec(item)) {

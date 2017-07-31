@@ -29,7 +29,7 @@ class RelatedTools extends React.PureComponent {
   }
 
   renderRelated(FlagImage, typeKey) {
-    console.log(this.props[typeKey]);
+    
     if (!this.props[typeKey] || this.props[typeKey].length == 0) return null;
     return (
       <ContentBlock>

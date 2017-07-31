@@ -21,7 +21,7 @@ import { BigHeader,
 import staticText from '../staticText';
 
 function WhyItWorked(props) {
-  console.log(props);
+  
   if (!props.text || props.text.trim().length == 0) return null;
   const lang = props.intl.locale;
   return (

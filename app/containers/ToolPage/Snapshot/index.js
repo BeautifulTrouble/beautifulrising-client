@@ -82,7 +82,7 @@ export class Snapshot extends React.Component {
     return (
       <div>
         <Button lang={lang} onClick={this.openModal}>
-          • {React.Children.toArray(this.props.children)}
+          {React.Children.toArray(this.props.children)}
         </Button>
         <Modal
           isOpen={this.state.modalIsOpen}
