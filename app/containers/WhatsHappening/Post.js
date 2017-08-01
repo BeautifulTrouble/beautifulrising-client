@@ -4,6 +4,7 @@ import Markdown from 'react-markdown';
 import { RouterLink } from 'utils/markdown';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
+import BlockViewItem from 'containers/HomePage/BlockViewItem';
 
 import styled from 'styled-components';
 import ContentBlock from 'components/ContentBlock';
@@ -16,6 +17,7 @@ const Container = styled.div`
 `;
 const ContentArea = styled.div`
   width: 490px;
+  min-width: 490px;
   display: inline-block;
   border-${p=>p.theme.isArabic?'left':'right'}: 2px solid;
   align-items: stretch;
@@ -39,6 +41,7 @@ const FeatureArea = styled.div`
   padding-${p=>p.theme.isArabic?'right':'left'}: 80px;
   padding-${p=>p.theme.isArabic?'left':'right'}: 30px;
   padding-top: 45px;
+  padding-bottom: 70px;
 `;
 
 const DateContent = styled(ContentBlock)`
@@ -55,13 +58,25 @@ class Post extends React.PureComponent {
   constructor(props) {
     super();
 
-    console.log(props);
+
   }
 
   renderImage() {
     return (
       <FeatureImage src={BEAUTIFULRISING_URL + this.props.image} />
     )
+  }
+
+  renderTools() {
+
+    return this.props.tools.map((item, index) => {
+      if (!this.props.toolsData[item] || this.props.toolsData[item] === undefined) return null;
+      return (
+      <BlockViewItem
+        {...this.props.toolsData[item]}
+        key={item}
+      />
+    )})
   }
   renderFeatureArea() {
 
@@ -73,9 +88,16 @@ class Post extends React.PureComponent {
       );
     }
 
+    if (this.props.tools) {
+      return (
+        <FeatureArea>
+          {this.renderTools()}
+        </FeatureArea>
+      )
+    }
   }
   render() {
-    console.log(this.props);
+
 
     return(
       <LanguageThemeProvider>

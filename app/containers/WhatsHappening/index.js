@@ -7,20 +7,18 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
-import makeSelectWhatsHappening from './selectors';
-import { updateLastViewed } from './actions';
-import LanguageThemeProvider from 'components/LanguageThemeProvider';
-
 import styled from 'styled-components';
 
+import { createStructuredSelector } from 'reselect';
+
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import TranslatableStaticText from 'containers/TranslatableStaticText';
-import staticText from './staticText'
-
-import Post from './Post';
-
-import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
 import { loadData } from 'containers/App/actions';
+
+import makeSelectWhatsHappening, { makeSelectToolsAsSlug } from './selectors';
+import { updateLastViewed } from './actions';
+import staticText from './staticText'
+import Post from './Post';
 
 const PostList = styled.ul`margin: 0; padding: 0;`;
 const PostListItem = styled.li`list-style: none;`;
@@ -35,7 +33,7 @@ export class WhatsHappening extends React.PureComponent { // eslint-disable-line
     this.props.handlePageLoaded();
 
     if (this.props.toolsData.size === 0 ) {
-      console.log("Loading!")
+
       this.props.onPageLoad();
     }
   }
@@ -51,7 +49,7 @@ export class WhatsHappening extends React.PureComponent { // eslint-disable-line
 
   render() {
     const postList = this.renderPostList();
-    // console.log("postList", postList);
+    //
     return (
       <LanguageThemeProvider>
         <Helmet
@@ -77,7 +75,7 @@ WhatsHappening.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   WhatsHappening: makeSelectWhatsHappening(),
-  toolsData: makeSelectAllToolsWithSlugIndex()
+  toolsData: makeSelectToolsAsSlug()
 });
 
 function mapDispatchToProps(dispatch) {
