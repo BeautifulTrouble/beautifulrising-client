@@ -61,14 +61,14 @@ export class SelectedTool extends React.PureComponent { // eslint-disable-line r
   }
 
   render() {
-    const flag = this.getFlag();
+    const Flag = this.getFlag();
     const tool = this.props.allData.get(this.props.slug);
     const lang = this.props.intl.locale;
     if (!tool) return null;
     return (
       <LanguageThemeProvider>
         <SelectedToolItem lang={lang}>
-          <SelectedToolTitle flag={flag} lang={lang}>
+          <SelectedToolTitle flag={Flag} lang={lang}>
             <Link to={`/tool/${tool.get('slug')}`}>{tool.get('title')}</Link>
           </SelectedToolTitle>
           <SelectedToolSnapshot>
