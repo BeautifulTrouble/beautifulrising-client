@@ -56,7 +56,9 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
       <LanguageThemeProvider>
         <FormContainer>
           <form onSubmit={this.handleSubmit.bind(this)}>
-            <input type='email' name='email' onChange={this.handleChange.bind(this)} placeholder='samir@gmail.com'/>
+            <div>
+              <input type='email' name='email' onChange={this.handleChange.bind(this)} placeholder='samir@gmail.com'/>
+            </div>
             <button>
               <TranslatableStaticText {...staticText.submit} />
             </button>

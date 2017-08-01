@@ -10,19 +10,27 @@ export default styled(ContentBlock)`
     clear: both;
   }
 
-  input[type=email] {
-    outline: none;
-    padding: 2px;
-    float: ${p=>p.theme.isArabic?'right':'left'};
-    text-align: ${p=>p.theme.isArabic?'right':'left'};
+  form {
+    display: flex;
+
+    div {
+      flex-grow: 1;
+      display: inline-block;
+      input[type=email] {
+        outline: none;
+        padding: 2px;
+        text-align: ${p=>p.theme.isArabic?'right':'left'};
+        width: 100%;
+      }
+    }
+    button {
+      outline: none;
+      text-align: ${p=>p.theme.isArabic?'left':'right'};
+      text-transform: uppercase;
+      text-decoration: underline;
+      font-weight: bold;
+      color: #828486;
+    }
   }
-  button {
-    outline: none;
-    text-align: ${p=>p.theme.isArabic?'left':'right'};
-    float: ${p=>p.theme.isArabic?'right':'left'};
-    text-transform: uppercase;
-    text-decoration: underline;
-    font-weight: bold;
-    color: #828486;
-  }
+
 `;
