@@ -23,7 +23,7 @@ import MenuViewport from 'components/Menu/MenuViewport';
 
 function Menu(props) {
   const lang = props.intl.locale;
-  
+
   return (
     <MenuArea lang={lang}>
       <MenuViewport>
@@ -37,7 +37,7 @@ function Menu(props) {
         <PlatformsMenu onClick={props.onClick}/>
         <ContributeMenu onClick={props.onClick}/>
         <TrainingMenu onClick={props.onClick}/>
-        <ContactUs />
+        <ContactUs onClick={props.onClick} />
       </MenuViewport>
     </MenuArea>
   );

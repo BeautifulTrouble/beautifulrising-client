@@ -10,5 +10,9 @@ export default {
   submit: {
     id: "menu.submit",
     defaultMessage: "Submit"
+  },
+  whatsHappening: {
+    id: "menu.whats-happening",
+    defaultMessage: "What's Happening"
   }
 }
