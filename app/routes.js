@@ -76,6 +76,26 @@ export default function createRoutes(store) {
       getComponent: getHomePageComponent,
     },
     {
+      path: '/whats-happening',
+      name: 'whats-happening',
+      ignoreScrollBehavior: true, //for useScroll
+      getComponent(nextState, cb) {
+
+          const importModules = Promise.all([
+            import('containers/WhatsHappening'),
+          ]);
+
+          const renderRoute = loadModule(cb);
+
+          importModules.then(([component]) => {
+            renderRoute(component);
+          });
+
+          importModules.catch(errorLoading);
+
+      },
+    },
+    {
       path: '/tool(/:label)*',
       name: 'tool',
       getComponent(nextState, cb) {

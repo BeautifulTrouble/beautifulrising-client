@@ -9,18 +9,26 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import makeSelectWhatsHappening from './selectors';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+import staticText from './staticText'
 
 export class WhatsHappening extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
+    console.log(this.props.WhatsHappening);
     return (
-      <div>
+      <LanguageThemeProvider>
         <Helmet
           title="BeautifulRising – What's Happening"
           meta={[
             { name: 'description', content: 'What\'s Happening' },
           ]}
         />
-      </div>
+        <h1>
+          <TranslatableStaticText {...staticText.whatsHappeningHeader} />
+        </h1>
+      </LanguageThemeProvider>
     );
   }
 }
