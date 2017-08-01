@@ -43,6 +43,8 @@ function whatsHappeningReducer(state = initialState, action) {
                 .set('loading', false)
                 .set('complete', false)
                 .set('error', action.error);
+    default:
+      return state;
   }
 }
 

@@ -23,9 +23,10 @@ import Tools from 'containers/Tools';
 import Footer from 'containers/Footer';
 import LanguageChanger from 'containers/LanguageChanger';
 import OnboardingModal from 'containers/OnboardingModal';
-import { isShowTools, makeSelectLanguage, makeSelectStaticText } from './selectors';
+import { isShowTools, makeSelectLanguage, makeSelectStaticText, makeSelectWhatsHappening } from './selectors';
 import { isOnboarded } from 'containers/OnboardingModal/selectors';
 import { loadLanguage } from 'containers/TranslatableStaticText/actions';
+import { loadWhatsHappening } from 'containers/WhatsHappening/actions';
 //Themes
 
 const Content = styled.section`
@@ -49,8 +50,12 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
 
 
     if (!this.props.staticText) {
-
       this.props.onLanguageLoad()
+    }
+
+
+    if (!this.props.whatsHappening) {
+      this.props.initializeWhatsHappening()
     }
   }
 
@@ -80,7 +85,8 @@ const mapStateToProps = createStructuredSelector({
   isOnboarded: isOnboarded(),
   isShowTools: isShowTools(),
   language: makeSelectLanguage(),
-  staticText: makeSelectStaticText()
+  staticText: makeSelectStaticText(),
+  whatsHappening: makeSelectWhatsHappening()
 });
 
 function mapDispatchToProps(dispatch) {
@@ -88,6 +94,9 @@ function mapDispatchToProps(dispatch) {
     dispatch,
     onLanguageLoad: function() {
       dispatch(loadLanguage())
+    },
+    initializeWhatsHappening: function() {
+      dispatch(loadWhatsHappening())
     }
   };
 }

@@ -9,6 +9,7 @@ import NewsFeed from 'containers/NewsFeed/sagas';
 import Tools from 'containers/Tools/sagas';
 import TranslatableStaticText from 'containers/TranslatableStaticText/sagas';
 import SubmitNewsFeed from 'containers/SubmitNewsFeed/sagas';
+import WhatsHappening from 'containers/WhatsHappening/sagas';
 import {changeLocale} from 'containers/LanguageProvider/actions';
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -22,6 +23,8 @@ export default function createRoutes(store) {
   // Create reusable async injectors using getAsyncInjectors factory
   const { injectReducer, injectSagas } = getAsyncInjectors(store); // eslint-disable-line no-unused-vars
   injectSagas(ContactUs);
+
+  injectSagas(WhatsHappening);
 
   //enable email everywhere
   injectSagas(EmailTools);

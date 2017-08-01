@@ -73,7 +73,7 @@ export default function createReducer(asyncReducers) {
     askTheContributor: askTheContributorReducer,
     onboardingModal: onboardingModalReducer,
     translatableStaticText: translatableStaticTextReducer,
-    whatsHappening: whatsHappeningReducer
+    whatsHappening: whatsHappeningReducer,
     ...asyncReducers,
   });
 }
