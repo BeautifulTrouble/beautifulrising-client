@@ -9,14 +9,16 @@ import {
   DEFAULT_ACTION,
   LOAD_WHATSHAPPENING,
   LOADING_WHATSHAPPENING_COMPLETE,
-  LOADING_WHATSHAPPENING_ERROR
+  LOADING_WHATSHAPPENING_ERROR,
+  UPDATE_WHATSHAPPENING_LASTVIEWED
 } from './constants';
 
 const initialState = fromJS({
   data: null,
   loading: false,
   complete: false,
-  error: false
+  error: false,
+  lastViewed: null
 });
 
 function whatsHappeningReducer(state = initialState, action) {
@@ -43,6 +45,8 @@ function whatsHappeningReducer(state = initialState, action) {
                 .set('loading', false)
                 .set('complete', false)
                 .set('error', action.error);
+    case UPDATE_WHATSHAPPENING_LASTVIEWED:
+      return state.set('lastViewed', action.lastViewed);
     default:
       return state;
   }

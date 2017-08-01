@@ -54,9 +54,9 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
     }
 
 
-    if (!this.props.whatsHappening) {
-      this.props.initializeWhatsHappening()
-    }
+    // if (!this.props.whatsHappening) {
+    this.props.initializeWhatsHappening()
+    // }
   }
 
   render() {

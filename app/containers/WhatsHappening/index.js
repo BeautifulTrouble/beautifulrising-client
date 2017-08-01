@@ -9,14 +9,22 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import makeSelectWhatsHappening from './selectors';
+import { updateLastViewed } from './actions';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 import staticText from './staticText'
 
 export class WhatsHappening extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  constructor(props) {
+    super();
+  }
+
+  componentDidMount() {
+    this.props.handlePageLoaded();
+  }
+
   render() {
-    console.log(this.props.WhatsHappening);
     return (
       <LanguageThemeProvider>
         <Helmet
@@ -44,6 +52,12 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    handlePageLoaded: () =>{
+      dispatch(updateLastViewed());
+    },
+    handleShowClick: () => {
+      dispatch(updateLastViewed());
+    }
   };
 }
 

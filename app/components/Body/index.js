@@ -8,7 +8,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export default styled.section`
-  padding-top: 160px;
+  padding-top: 140px;
   display: inline-block;
   max-width: 1170px;
   width: 100%;

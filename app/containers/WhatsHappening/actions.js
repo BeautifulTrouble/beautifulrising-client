@@ -8,7 +8,8 @@ import {
   DEFAULT_ACTION,
   LOAD_WHATSHAPPENING,
   LOADING_WHATSHAPPENING_COMPLETE,
-  LOADING_WHATSHAPPENING_ERROR
+  LOADING_WHATSHAPPENING_ERROR,
+  UPDATE_WHATSHAPPENING_LASTVIEWED
 } from './constants';
 
 export function defaultAction() {
@@ -36,4 +37,11 @@ export function loadingWhatsHappeningError(err) {
     type: LOADING_WHATSHAPPENING_ERROR,
     error: err
   };
+}
+
+export function updateLastViewed(lastViewed = new Date()) {
+  return {
+    type: UPDATE_WHATSHAPPENING_LASTVIEWED,
+    lastViewed
+  }
 }
