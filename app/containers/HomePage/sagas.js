@@ -34,7 +34,7 @@ export function* beautifulRisingData() {
 
   const watcher = yield takeLatest(LOAD_DATA, getData);
 
-  yield take(CHANGE_LOCALE);
+  yield take(LOCATION_CHANGE);
 
   yield cancel(watcher);
 

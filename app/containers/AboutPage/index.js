@@ -53,7 +53,8 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
   // The delay is so that the receiveProps and didMount
   // will not go against eachother
   componentDidMount() {
-    if (this.props.aboutData) {
+    console.log(this.props.aboutData);
+    if (this.props.aboutData.size === 0) {
       this.props.onPageLoad();
     }
 
