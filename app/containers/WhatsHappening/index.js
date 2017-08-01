@@ -12,8 +12,19 @@ import makeSelectWhatsHappening from './selectors';
 import { updateLastViewed } from './actions';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
+import styled from 'styled-components';
+
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 import staticText from './staticText'
+
+import Post from './Post';
+
+import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
+import { loadData } from 'containers/App/actions';
+
+const PostList = styled.ul`margin: 0; padding: 0;`;
+const PostListItem = styled.li`list-style: none;`;
+
 
 export class WhatsHappening extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -22,9 +33,25 @@ export class WhatsHappening extends React.PureComponent { // eslint-disable-line
 
   componentDidMount() {
     this.props.handlePageLoaded();
+
+    if (this.props.toolsData.size === 0 ) {
+      console.log("Loading!")
+      this.props.onPageLoad();
+    }
+  }
+
+  renderPostList() {
+    //Filter out the ones that are after the lastUpdate date
+    const itemsToShow = this.props.WhatsHappening.data.filter(item => !this.props.WhatsHappening.lastViewed || new Date(item.date) < this.props.WhatsHappening.lastViewed)
+    return itemsToShow.map((item, index) =>
+      <PostListItem key={item.slug}>
+        <Post toolsData={this.props.toolsData} {...item} index={index}/>
+      </PostListItem>)
   }
 
   render() {
+    const postList = this.renderPostList();
+    // console.log("postList", postList);
     return (
       <LanguageThemeProvider>
         <Helmet
@@ -36,6 +63,9 @@ export class WhatsHappening extends React.PureComponent { // eslint-disable-line
         <h1>
           <TranslatableStaticText {...staticText.whatsHappeningHeader} />
         </h1>
+        <PostList>
+          {postList}
+        </PostList>
       </LanguageThemeProvider>
     );
   }
@@ -47,6 +77,7 @@ WhatsHappening.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   WhatsHappening: makeSelectWhatsHappening(),
+  toolsData: makeSelectAllToolsWithSlugIndex()
 });
 
 function mapDispatchToProps(dispatch) {
@@ -57,6 +88,9 @@ function mapDispatchToProps(dispatch) {
     },
     handleShowClick: () => {
       dispatch(updateLastViewed());
+    },
+    onPageLoad: (evt) => {
+      dispatch(loadData());
     }
   };
 }

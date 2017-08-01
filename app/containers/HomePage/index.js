@@ -151,7 +151,6 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                   this.props.sorted.map((tool, index) => {
                     return (
                       <ListItem
-                            position={this.randomizePosition(tool)}
                             lang={this.props.language} {...tool}
                             key={tool['document_id']}
                             />)
