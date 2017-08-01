@@ -84,6 +84,13 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
           <MenuTitle>
             <TranslatableStaticText {...staticText.header} />
           </MenuTitle>
+          <MenuList>
+            <MenuListItem>
+              <MenuLink to="/whats-happening" onClick={this.props.onClick}>
+                <TranslatableStaticText  {...staticText.whatsHappening} />
+              </MenuLink>
+            </MenuListItem>
+          </MenuList>
           <EmailLink to='mailto:info@beautifulrising.org'>info@beautifulrising.org</EmailLink>
           <div>
             <SocialLink to='https://twitter.com/beautrising' target='_blank'>

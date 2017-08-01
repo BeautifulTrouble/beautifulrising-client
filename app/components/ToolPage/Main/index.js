@@ -6,9 +6,10 @@ import ShowContentButton from './ShowContentButton';
 import ByLine from './ByLine';
 import CollapsingHeader from './CollapsingHeader';
 import CollapsingContent from './CollapsingContent';
+import ShortContentContainer from './ShortContentContainer';
 
 export default Container;
 
 export { ContentContainer, Epigraph, PullQuote,
           ShowContentButton, ByLine, CollapsingHeader,
-          CollapsingContent };
+          CollapsingContent, ShortContentContainer };

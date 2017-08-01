@@ -16,7 +16,7 @@ import { makeSelectLanguage } from 'containers/App/selectors';
 import { loadData, langChangeReloadData } from '../App/actions';
 
 const Container = styled.div`
-  position: absolute;
+  position: fixed;
   ${props=>props.lang==='ar'?'left: 50%': 'right:50%'}
   top: 45px;
   z-index: ${p=>p.zIndex?p.zIndex:500};
@@ -62,8 +62,6 @@ export class LanguageChanger extends React.PureComponent { // eslint-disable-lin
       <Container lang={lang} zIndex={this.props.zIndex}>
         <Viewport lang={lang}>
           <List>
-
-
             <Item lang={lang}>
               <Button onClick={this.handleClick.bind(this)} selected={lang === 'ar'} value={'ar'}>AR</Button>
             </Item>

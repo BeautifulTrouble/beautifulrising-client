@@ -9,6 +9,8 @@ import NewsFeed from 'containers/NewsFeed/sagas';
 import Tools from 'containers/Tools/sagas';
 import TranslatableStaticText from 'containers/TranslatableStaticText/sagas';
 import SubmitNewsFeed from 'containers/SubmitNewsFeed/sagas';
+import HomePage from 'containers/HomePage/sagas';
+import WhatsHappening from 'containers/WhatsHappening/sagas';
 import {changeLocale} from 'containers/LanguageProvider/actions';
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -23,8 +25,13 @@ export default function createRoutes(store) {
   const { injectReducer, injectSagas } = getAsyncInjectors(store); // eslint-disable-line no-unused-vars
   injectSagas(ContactUs);
 
+  injectSagas(WhatsHappening);
+
   //enable email everywhere
   injectSagas(EmailTools);
+
+  //for HomePage
+  injectSagas(HomePage);
 
   //get news feed
   injectSagas(NewsFeed);
@@ -42,7 +49,6 @@ export default function createRoutes(store) {
   const getHomePageComponent = (nextState, cb) => {
     const importModules = Promise.all([
       import('containers/HomePage/reducer'),
-      import('containers/HomePage/sagas'),
       // import('containers/SearchField/sagas'),
       import('containers/HomePage'),
       import('containers/ToolsViewOptions/reducer'),
@@ -51,10 +57,9 @@ export default function createRoutes(store) {
 
     const renderRoute = loadModule(cb);
 
-    importModules.then(([reducer, sagas, /*searchSagas,*/ component,
+    importModules.then(([reducer, /*searchSagas,*/ component,
           toolsViewOptionsReducer, toolsSortOptionsReducer]) => {
       injectReducer('homePage', reducer.default);
-      injectSagas(sagas.default);
       // injectSagas(searchSagas.default);
 
       injectReducer('toolsView', toolsViewOptionsReducer.default);
@@ -73,13 +78,32 @@ export default function createRoutes(store) {
       getComponent: getHomePageComponent,
     },
     {
+      path: '/whats-happening',
+      name: 'whats-happening',
+      ignoreScrollBehavior: true, //for useScroll
+      getComponent(nextState, cb) {
+
+          const importModules = Promise.all([
+            import('containers/WhatsHappening'),
+          ]);
+
+          const renderRoute = loadModule(cb);
+
+          importModules.then(([component]) => {
+            renderRoute(component);
+          });
+
+          importModules.catch(errorLoading);
+
+      },
+    },
+    {
       path: '/tool(/:label)*',
       name: 'tool',
       getComponent(nextState, cb) {
 
           const importModules = Promise.all([
             import('containers/ToolPage/reducer'),
-            import('containers/ToolPage/sagas'),
             import('containers/SubmitRealWorldExample/sagas'),
             import('containers/AskTheContributor/sagas'),
             import('containers/ToolPage'),
@@ -87,9 +111,8 @@ export default function createRoutes(store) {
 
           const renderRoute = loadModule(cb);
 
-          importModules.then(([reducer, sagas, worldExampleSagas, askContributor, component]) => {
+          importModules.then(([reducer, worldExampleSagas, askContributor, component]) => {
             injectReducer('tool', reducer.default);
-            injectSagas(sagas.default);
             injectSagas(worldExampleSagas.default);
             injectSagas(askContributor.default);
             renderRoute(component);
@@ -106,14 +129,12 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
 
           const importModules = Promise.all([
-            import('containers/AboutPage/sagas'),
             import('containers/AboutPage'),
           ]);
 
           const renderRoute = loadModule(cb);
 
-          importModules.then(([sagas, component]) => {
-            injectSagas(sagas.default);
+          importModules.then(([component]) => {
             renderRoute(component);
           });
 
@@ -128,14 +149,12 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
 
           const importModules = Promise.all([
-            import('containers/AboutPage/sagas'),
             import('containers/ContributePage'),
           ]);
 
           const renderRoute = loadModule(cb);
 
-          importModules.then(([sagas, component]) => {
-            injectSagas(sagas.default);
+          importModules.then(([component]) => {
             renderRoute(component);
           });
 
@@ -150,13 +169,11 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
 
           const importModules = Promise.all([
-            import('containers/AboutPage/sagas'),
             import('containers/TrainingPage'),
           ]);
 
           const renderRoute = loadModule(cb);
-          importModules.then(([sagas, component]) => {
-            injectSagas(sagas.default);
+          importModules.then(([component]) => {
             renderRoute(component);
           });
           importModules.catch(errorLoading);
@@ -169,13 +186,11 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
 
           const importModules = Promise.all([
-            import('containers/AboutPage/sagas'),
             import('containers/PlatformsPage'),
           ]);
 
           const renderRoute = loadModule(cb);
-          importModules.then(([sagas, component]) => {
-            injectSagas(sagas.default);
+          importModules.then(([component]) => {
             renderRoute(component);
           });
           importModules.catch(errorLoading);

@@ -23,6 +23,7 @@ import submitNewsFeedReducer from 'containers/SubmitNewsFeed/reducer';
 import askTheContributorReducer from 'containers/AskTheContributor/reducer';
 import onboardingModalReducer from 'containers/OnboardingModal/reducer';
 import translatableStaticTextReducer from 'containers/TranslatableStaticText/reducer';
+import whatsHappeningReducer from 'containers/WhatsHappening/reducer';
 /*
  * routeReducer
  *
@@ -72,6 +73,7 @@ export default function createReducer(asyncReducers) {
     askTheContributor: askTheContributorReducer,
     onboardingModal: onboardingModalReducer,
     translatableStaticText: translatableStaticTextReducer,
+    whatsHappening: whatsHappeningReducer,
     ...asyncReducers,
   });
 }

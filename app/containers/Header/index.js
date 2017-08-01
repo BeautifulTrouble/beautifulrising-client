@@ -21,11 +21,11 @@ const Viewport = styled.div`
   display: inline-block;
 `;
 const PageHeader = styled.header`
-  // position: fixed;
-  position: absolute;
+  position: fixed;
+  // position: absolute;
   width: 100%;
   background-color: white;
-  height: 92px;
+  height: 115px;
   overflow: visible;
   padding: 0 20px 0px;
   z-index: 300;

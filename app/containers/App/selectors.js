@@ -5,7 +5,12 @@ const selectGlobal = (state) => state.get('global');
 const selectTools = (state) => state.get('tools');
 const selectLanguage = (state) => state.get('language');
 const selectTranslatableStaticText = (state) => state.get('translatableStaticText');
+const selectWhatsHappening = (state) => state.get('whatsHappening');
 
+const makeSelectWhatsHappening = () => createSelector(
+  [selectWhatsHappening],
+  (whatsHappeningData) => whatsHappeningData.get('data')
+)
 const makeSelectLanguage = () => createSelector(
   [selectLanguage],
   (languageState) => languageState.get('locale')
@@ -167,6 +172,7 @@ export {
   makeSelectLanguage,
   makeSelectExamples,
   makeSelectSlugged,
-  makeSelectStaticText
+  makeSelectStaticText,
+  makeSelectWhatsHappening
   // makeSelectToolView,
 };
