@@ -109,20 +109,6 @@ function ToolTypeAllFull(props) {
               </Desc>
             </ToolType>
         </Row>
-        <Row>
-            <ToolType to={'/type/story'} lang={lang}>
-              <Head ar={lang==='ar'}>
-                <TranslatableStaticText {...staticText.stories} />
-              </Head>
-              <Isvg src={StoryIcon} />
-            </ToolType>
-
-            <ToolType to={'/type/story'} style={{paddingTop: 35}} lang={lang}>
-              <Desc ar={lang==='ar'}>
-                <TranslatableStaticText {...staticText.shortDefinitionStory} />
-              </Desc>
-            </ToolType>
-        </Row>
       </div>
     </Container>
   );
