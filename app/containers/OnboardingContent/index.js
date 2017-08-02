@@ -16,6 +16,8 @@ import { Map } from 'immutable';
 import { connect } from 'react-redux';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import { loadData } from 'containers/App/actions';
+
 
 import FAQ from 'containers/AboutPage/FAQ';
 import TheToolbox from 'containers/AboutPage/TheToolbox';
@@ -46,11 +48,12 @@ const Header = styled.h2`
   padding-bottom: 15px;
   margin-bottom: 0;
   position:relative;
+  padding-top: 9px;
 
   &::after {
     content: ' ';
     position: absolute;
-    height: 80px;
+    height: 110px;
     border-right: 1px solid;
     width: 1PX;
     bottom: -65px;
@@ -103,6 +106,10 @@ const ListItem = styled.li`
   button { width: 100%; margin-${p=>p.lang==='ar'?'left':'right'}: 20px;}
   h2 {
     font-size: 20px;
+  }
+  button span.isvg {
+    position: absolute;
+    ${p=>p.lang==='ar'?'left':'right'}: 20px;
   }
   button svg {
     transition: transform 0.4s ease;
@@ -164,6 +171,11 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
     };
   }
 
+  componentDidMount(){
+    if (this.props.aboutData.size === 0) {
+      this.props.onPageLoad();
+    }
+  }
   handleClick(key) {
     if (this.state.chosen == key) {
       this.setState({ chosen: null });
@@ -231,6 +243,7 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
     );
   }
 
+
   renderData() {
     if (this.props.aboutData.size == 0 || !this.props.aboutData || this.props.aboutData == undefined) return null;
     const about = this.props.aboutData.get('about');
@@ -244,8 +257,13 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
       },
       {
         title: misc.get('process'),
-        content: <OurProcess hideHeader={true}
-                    participants={this.props.aboutData.get('workshop-participants')}/>
+        content: <OurProcess ref={"/about/process"}
+                  targetRoute="/about/process"
+                  hideHeader={true}
+                  header = { this.props.aboutData.getIn(['about', 'misc', 'process'])}
+                  participants={this.props.aboutData.get('workshop-participants')}
+                  processes={this.props.aboutData.getIn(['about', 'process']) ? this.props.aboutData.getIn(['about', 'process']).toJS() : null}
+                />
       },
       {
         title: misc.get('values'),
@@ -309,6 +327,9 @@ function mapDispatchToProps(dispatch) {
     dispatch,
     onOnboard: (evt) => {
       dispatch(onboardUser());
+    },
+    onPageLoad: (evt) => {
+      dispatch(loadData());
     }
   };
 }
