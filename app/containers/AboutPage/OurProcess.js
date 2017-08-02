@@ -32,6 +32,8 @@ const WORKSHOPS = ['myanmar', 'jordan', 'zimbabwe', 'bangladesh', 'uganda', 'mex
 
 const [STEPS, SUBHEADING, WORKSHOP] = [0, 1, 2];
 
+const Subheader = styled.h4`margin-top: 18px;`
+const Header = styled.h3`margin-top: 24px;`
 class OurProcess extends React.Component {
 
   renderProjects() {
@@ -48,7 +50,7 @@ class OurProcess extends React.Component {
             <ProcessListItem key={ind} lang={lang}>
 
               <ProcessImage lang={lang} src={require('assets/images/workshops/' + WORKSHOPS[ind] + '.png')} />
-              <h4>{item.get('name')}</h4>
+              <Subheader>{item.get('name')}</Subheader>
               <ContentBlock>
                 <ol>
                   {item.get('participants') ?
@@ -83,7 +85,7 @@ class OurProcess extends React.Component {
               <ProcessListItem key={item.image} lang={locale}>
                 <CircledImage src={`https://beautifulrising.org/${item.image}`} />
                 <ContentBlock>
-                  <h1>{item.title}</h1>
+                  <Header>{item.title}</Header>
                   <Markdown source={item.description} />
                 </ContentBlock>
               </ProcessListItem>

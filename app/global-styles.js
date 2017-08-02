@@ -130,7 +130,7 @@ injectGlobal`
 
   .ReactModal__Overlay--after-open {
     .circledContainer::after {
-        width: 138px !important;
+        width: 157px !important;
     }
   }
 `;
