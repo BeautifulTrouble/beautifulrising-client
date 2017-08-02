@@ -26,9 +26,9 @@ export function* loadLanguageItem() {
   try {
     const data = yield call(request, requestURL);
 
-    console.log(data);
+
     /** LOADING AREA **/
-    yield put(loadingLanguageComplete(data[0]));
+    yield put(loadingLanguageComplete(data));
 
 
   } catch (err) {
