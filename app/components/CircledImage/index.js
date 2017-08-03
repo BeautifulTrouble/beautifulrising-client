@@ -18,7 +18,7 @@ const CircledContainer = styled.div`
 
   &::after {
     content: ' ';
-    width: 170px;
+    width: 189px;
     height: 1px;
     border-bottom: 2px solid;
     top: 50%;

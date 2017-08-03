@@ -72,7 +72,7 @@ export class OurValues extends React.Component {
                           <ul key={ind}>
                             <SubListItem lang={lang}>
                               <SubListContentBlock>
-                                <p key={ind} style={{color: '#828486'}}>
+                                <p key={ind} style={{color: '#828486', fontStyle: 'italic'}}>
                                   <Markdown source={item.get('value')} />
                                 </p>
                               </SubListContentBlock>
