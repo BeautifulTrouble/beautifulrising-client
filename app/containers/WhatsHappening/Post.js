@@ -57,8 +57,6 @@ class Post extends React.PureComponent {
 
   constructor(props) {
     super();
-
-
   }
 
   renderImage() {
