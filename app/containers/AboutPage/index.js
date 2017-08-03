@@ -178,12 +178,12 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
             teamMembers={this.props.aboutData.getIn(['about', 'team-members'])}
             allData={this.props.aboutData}
         />
-        <BeautifulTroubleAA
+        {/*<BeautifulTroubleAA
             ref="/about/beautiful-trouble-and-action-aid"
             targetRoute="/about/beautiful-trouble-and-action-aid"
             onChange={this.componentIsVisible.bind(this) }
             allData={this.props.aboutData}
-        />
+        />*/}
         <Partners
             ref="/about/partners"
             targetRoute="/about/partners"

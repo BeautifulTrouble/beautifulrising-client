@@ -288,13 +288,13 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
             allData={this.props.aboutData}
         />
       },
-      {
-        title: misc.get('beautiful-trouble-and-action-aid'),
-        content: <BeautifulTroubleAA
-            hideHeader={true}
-            allData={this.props.aboutData}
-        />
-      },
+      // {
+      //   title: misc.get('beautiful-trouble-and-action-aid'),
+      //   content: <BeautifulTroubleAA
+      //       hideHeader={true}
+      //       allData={this.props.aboutData}
+      //   />
+      // },
       {
         title: misc.get('partners'),
         content: <Partners
