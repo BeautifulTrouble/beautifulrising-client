@@ -19,6 +19,7 @@ import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
 import TrainingBanner from 'assets/images/about/training.jpg';
 import OtherResources  from 'components/OtherResources';
+import SubmitResource from 'containers/SubmitResource';
 import { loadData } from 'containers/App/actions';
 
 //For listening
@@ -120,6 +121,11 @@ const OtherResourcesArea = styled.div`
   margin-left: 20px;
   margin-right: 20px;
 `;
+
+const SubmitResourcesArea = styled.div`
+  margin-top: 72px;
+  text-align: center;
+`;
 export class TrainingPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
@@ -203,6 +209,10 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
               </Heading>
               <OtherResources data={this.props.data.get('resources')}/>
             </OtherResourcesArea>
+
+            <SubmitResourcesArea>
+              <SubmitResource />
+            </SubmitResourcesArea>
           </Viewport>
         </Container>
       </LanguageThemeProvider>

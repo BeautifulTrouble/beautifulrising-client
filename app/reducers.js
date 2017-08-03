@@ -17,6 +17,7 @@ import searchFieldReducer from 'containers/SearchField/reducer';
 import toolsReducer from 'containers/Tools/reducer';
 import contactUsReducer from 'containers/ContactUs/reducer';
 import submitRealWorldExampleReducer from 'containers/SubmitRealWorldExample/reducer';
+import submitResourceReducer from 'containers/SubmitResource/reducer';
 import emailToolsReducer from 'containers/EmailTools/reducer';
 import newsFeedReducer from 'containers/NewsFeed/reducer';
 import submitNewsFeedReducer from 'containers/SubmitNewsFeed/reducer';
@@ -67,6 +68,7 @@ export default function createReducer(asyncReducers) {
     tools: toolsReducer,
     contactUs: contactUsReducer,
     submitRealWorldExample: submitRealWorldExampleReducer,
+    submitResource: submitResourceReducer,
     emailTools: emailToolsReducer,
     newsFeed: newsFeedReducer,
     submitNewsFeed: submitNewsFeedReducer,
