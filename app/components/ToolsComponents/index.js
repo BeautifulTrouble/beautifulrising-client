@@ -113,7 +113,7 @@ export const ToolTitle = styled.h1`
   letter-spacing: 1px;
   font-weight: normal;
   margin: 0;
-  margin-bottom: ${p=>p.theme.isArabic?'5px':'0'};
+  margin-bottom: 26px;
   text-align: ${p=>p.theme.isArabic?'right':'left'};
   font-size: ${p=>p.theme.isArabic?'30px':'30px'};
   line-height: 1;
@@ -189,9 +189,9 @@ export const BlockAddRem = styled.div`
 //List View
 export const ListContainer = styled(ToolContainer)`
   width: 370px;
-  height: 200px;
   text-align: left;
   margin-${p=>p.lang==='ar'?'left':'right'}: ${p=>p.index%2==0?'0':'130px'};
+  padding-bottom: 40px;
 `;
 
 export const ListSpiel = styled(ContentBlock)`

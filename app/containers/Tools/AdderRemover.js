@@ -31,7 +31,6 @@ const CallToAction = styled.span`
   font-weight: 800;
   font-size: ${p=>p.ar?'16px':'14px'};
   line-height: 22px;
-  padding-top: 26px;
   display: inline-block;
 `;
 
