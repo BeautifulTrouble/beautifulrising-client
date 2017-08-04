@@ -83,7 +83,13 @@ const FilterItem = styled.li`
 
 const TagShownIcon = styled.div`
   display: inline-block;
-  transform: ${p=>p.selected?'rotate(270deg)':'rotate(180deg)'};
+  ${p=>{
+    if(p.theme.isArabic) {
+      return `transform: ${p.selected?'rotate(270deg)':'rotate(360deg)'};`
+    } else {
+      return `transform: ${p.selected?'rotate(270deg)':'rotate(180deg)'};`;
+    }
+  }}
   margin-${p=>p.theme.isArabic?'right':'left'}: 12px;
   margin-top: -5px;
   transition: transform 0.5s ease;
