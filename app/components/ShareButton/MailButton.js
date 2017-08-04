@@ -3,7 +3,7 @@ export default styled.a`
   outline: none;
   padding: 0; margin: 0;
   cursor: pointer;
-  padding: 5px;
+  padding: ${p=>p.padding || '5px'};
   span svg {
     width: 20px;
     height: 20px;
