@@ -63,7 +63,7 @@ class ContributeType extends React.PureComponent { // eslint-disable-line react/
           <div>
             <TypeList>
               {DATA.map((item, index) => (
-                <Type key={index}>
+                <Type key={index} isChosen={this.state.chosen === index}>
                   <Button value={index} onClick={()=>this.handleClick(index)}>
                     <TypeName>{item.label}</TypeName>
                     <Isvg src={item.icon} />
