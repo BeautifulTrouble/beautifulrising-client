@@ -2,6 +2,7 @@ import styled from 'styled-components';
 export default styled.div`
 width: 1170px;
 text-align: ${props=>props.lang==='ar'?'right':'left'};
+direction: ${p=>p.lang==='ar'?'rtl':'ltr'};
 display: inline-block;
 &::before {
   // content: ' ';
