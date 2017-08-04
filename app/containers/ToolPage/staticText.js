@@ -27,6 +27,10 @@ export default {
     id: 'module.learn-more',
     defaultMessage: 'Learn More',
   },
+  realWorldHeader: {
+    id: 'module.real-world-header',
+    defaultMessage: 'Real-world Examples'
+  },
   realWorldExamplesOf: {
     id: 'module.real-world',
     defaultMessage: 'Real world examples of “{{title}}”',

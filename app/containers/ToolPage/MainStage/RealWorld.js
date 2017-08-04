@@ -60,7 +60,7 @@ class RealWorld extends React.Component { // eslint-disable-line react/prefer-st
           isShown={true}
           header={(
               <CollapsingHeader>
-                <TranslatableStaticText {...staticText.realWorldExamplesOf} values={{title: this.props.title}}/>
+                <TranslatableStaticText {...staticText.realWorldHeader} values={{title: this.props.title}}/>
               </CollapsingHeader>)}>
           <CollapsingContent>
             <LatinThemeProvider>
