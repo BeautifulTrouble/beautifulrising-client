@@ -15,6 +15,7 @@ import styled from 'styled-components';
 
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 import staticText from './staticText';
+import { Bell as WhatsHappeningBell} from 'containers/WhatsHappening';
 
 const customStyles = {
   overlay: {
@@ -59,6 +60,7 @@ const CloseBox = styled.div`
   width: 1170px;
   display: inline-block;
   height: 122px;
+  position: relative;
 `;
 
 const MenuContainer= styled.div`
@@ -86,6 +88,12 @@ const Viewport = styled.div`
 const MenuSection = styled.section`
   width: 100%;
   border-bottom: 2px solid black;
+`;
+
+const BellArea = styled.div`
+  position: absolute;
+  ${p=>p.theme.ar=='ar'?'left':'right'}: -5px;
+  top: 42px;
 `;
 
 
@@ -139,6 +147,9 @@ export class ModalMenu extends React.Component {
                 <CloseButton onClick={this.closeModal.bind(this)}>
                   <Isvg src={CloseIcon} />
                 </CloseButton>
+                <BellArea>
+                  <WhatsHappeningBell />
+                </BellArea>
               </CloseBox>
             </MenuSection>
             <MenuSection>

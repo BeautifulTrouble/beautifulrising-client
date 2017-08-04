@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { injectIntl } from 'react-intl';
 import Isvg from 'react-inlinesvg';
 import makeSelectWhatsHappening from './selectors';
 import BellIcon from 'assets/images/icons/bell.svg';
@@ -44,9 +45,7 @@ const CounterContainer = styled.div`
   left: 6px;
 `;
 const BellContainer = styled.div`
-  position: absolute;
-  right: 0;
-  top: 27px;
+  display: inline-block;
 `;
 const Viewport = styled.div`
   width: 100%;
@@ -81,9 +80,10 @@ class Bell extends React.PureComponent {
     )
   }
   render() {
+    const { locale } = this.props.intl;
     const counter = this.renderCounter();
     return(
-      <BellContainer>
+      <BellContainer isArabic={locale==='ar'}>
         <Viewport>
           <Link to='/whats-happening'>
             <Isvg src={BellIcon} />
@@ -106,4 +106,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Bell);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(Bell));

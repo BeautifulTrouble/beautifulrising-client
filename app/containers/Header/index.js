@@ -42,6 +42,12 @@ const ModalMenuArea = styled(ModalMenu)`
   }
 `;
 
+const BellArea = styled.div`
+  position: absolute;
+  ${p=>p.theme.ar=='ar'?'left':'right'}: 0;
+  top: 27px;
+`;
+
 class Header extends React.Component {
 
   render() {
@@ -53,7 +59,9 @@ class Header extends React.Component {
           <Viewport>
             <Logo lang={this.props.lang}/>
             <ModalMenuArea lang={this.props.lang} />
-            <WhatsHappeningBell />
+            <BellArea>
+              <WhatsHappeningBell />
+            </BellArea>
           </Viewport>
         </PageHeader>
       </ThemeProvider>
