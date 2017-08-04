@@ -38,5 +38,29 @@ export default {
   shortDefinitionStory: {
     id: 'definitions.story-short',
     defaultMessage: 'Accounts of memorable actions and campaigns, analysing what worked, or didn’t, and why.'
+  },
+  goToForm: {
+    id: 'module.form',
+    defaultMessage: 'Go To Form'
+  },
+  storyForm: {
+    id: 'forms.story',
+    defaultMessage: "https://docs.google.com/forms/d/e/1FAIpQLSeC_EdxoO7owVnL8fjSERZlychwMhDOR-7rI1SDtpL4ijZgkg/viewform",
+  },
+  tacticForm: {
+    id: 'forms.tactic',
+    defaultMessage: "https://docs.google.com/forms/d/e/1FAIpQLSeC_EdxoO7owVnL8fjSERZlychwMhDOR-7rI1SDtpL4ijZgkg/viewform",
+  },
+  methodologyForm: {
+    id: 'forms.methodology',
+    defaultMessage: "https://docs.google.com/forms/d/e/1FAIpQLSeC_EdxoO7owVnL8fjSERZlychwMhDOR-7rI1SDtpL4ijZgkg/viewform"
+  },
+  principleForm: {
+    id: 'forms.principle',
+    defaultMessage: "https://docs.google.com/forms/d/e/1FAIpQLSeC_EdxoO7owVnL8fjSERZlychwMhDOR-7rI1SDtpL4ijZgkg/viewform"
+  },
+  theoryForm: {
+    id: 'forms.theory',
+    defaultMessage: 'https://docs.google.com/forms/d/e/1FAIpQLSeC_EdxoO7owVnL8fjSERZlychwMhDOR-7rI1SDtpL4ijZgkg/viewform'
   }
 };
