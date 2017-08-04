@@ -66,14 +66,14 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
   }
 
   componentWillReceiveProps(nextProps) {
-    const reference = browserHistory.getCurrentLocation().pathname;
-    const targetNode = ReactDOM.findDOMNode(this.refs[reference]);
+    // const reference = browserHistory.getCurrentLocation().pathname;
+    // const targetNode = ReactDOM.findDOMNode(this.refs[reference]);
 
-    if (targetNode && this.state.activateAnchor) {
-      this.setState({ activateAnchor : false, currentPath: reference, currentOffset: targetNode.offsetTop });
-      window.scrollTo(0, targetNode.offsetTop);
-      setTimeout(() => { this.setState({ activateAnchor: true }); }, 100);
-    }
+    // if (targetNode && this.state.activateAnchor) {
+    //   this.setState({ activateAnchor : false, currentPath: reference, currentOffset: targetNode.offsetTop });
+    //   window.scrollTo(0, targetNode.offsetTop);
+    //   setTimeout(() => { this.setState({ activateAnchor: true }); }, 100);
+    // }
   }
 
   // This puts the path on top of the route stack
