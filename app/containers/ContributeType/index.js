@@ -26,6 +26,7 @@ import Subtitle from 'components/ContributeType/Subtitle';
 import Type from 'components/ContributeType/Type';
 import TypeList from 'components/ContributeType/TypeList';
 import TypeName from 'components/ContributeType/TypeName';
+import ExampleContainer from 'components/ContributeType/ExampleContainer';
 
 import StoryIcon from 'assets/images/type/stories.svg';
 import TacticIcon from 'assets/images/type/tactics.svg';
@@ -87,8 +88,9 @@ class ContributeType extends React.PureComponent { // eslint-disable-line react/
                   type: DATA[this.state.chosen].label
                 }}/>
               </Subtitle>
-
-              {this.props.examples[DATA[this.state.chosen].type]}
+              <ExampleContainer>
+                {this.props.examples[DATA[this.state.chosen].type]}
+              </ExampleContainer>
             </Examples>
           </div>
         </div>
