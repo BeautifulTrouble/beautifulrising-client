@@ -153,7 +153,7 @@ function TypeDetails(props) {
     <LanguageThemeProvider>
       <Container show={props.show}>
         <Viewport>
-          <Column width="50%">
+          <Column width="500px">
             <Description>
               <TranslatableStaticText {...staticText[props.label + 'Long']} />
             </Description>
