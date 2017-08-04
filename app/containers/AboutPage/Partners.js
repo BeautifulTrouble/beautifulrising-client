@@ -31,9 +31,11 @@ class Partners extends React.Component {
     );
   }
   render() {
+    if (!this.props.networkPartners) return null;
+
     const lang = this.props.intl.locale;
     return (
-      <AboutSection id='partners' lang={lang}>
+      <AboutSection id='partners' lang={lang} position={this.props.networkPartners.toString().length}>
         { this.props.hideHeader ? null : this.renderHeader() }
         <ThemeProvider theme={themeThreeColumns}>
           <ul>
