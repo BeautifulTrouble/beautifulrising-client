@@ -47,8 +47,8 @@ class MainContent extends React.PureComponent {
 
       const mainContent = this.generateContent();
       const buttonText = this.state.showFull
-          ? (<TranslatableStaticText {...staticText.showLess}/>)
-          : (<TranslatableStaticText {...staticText.showMore}/>);
+          ? (<TranslatableStaticText {...staticText.less}/>)
+          : (<TranslatableStaticText {...staticText.more}/>);
 
       return (
         <ContentContainer>
