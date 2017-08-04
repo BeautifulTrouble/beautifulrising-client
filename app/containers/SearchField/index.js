@@ -45,7 +45,7 @@ const SearchBox = styled.input`
 `;
 const ClearButton = styled.button`
   outline: none;
-  cursor: point;
+  cursor: pointer;
   padding: 0 5px 0 0;
   margin-top: -4px;
 `;
@@ -69,7 +69,7 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
   }
 
   handleClearSearch() {
-    
+    ReactDOM.findDOMNode(this.refs['SearchBox']).value = "";
     this.props.dispatch(push('/'));
   }
 
@@ -85,7 +85,7 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
     return (<Isvg src={SearchIcon} />);
   }
   render() {
-    
+
     const {locale} = this.props.intl;
     const {buildMessage} = this.props.translatable;
     return (

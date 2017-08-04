@@ -70,7 +70,7 @@ class Bell extends React.PureComponent {
           return dateTime > lastViewed;
       });
 
-    console.log(unseenCount, data);
+    
     if (unseenCount.length == 0) return null;
 
     return (

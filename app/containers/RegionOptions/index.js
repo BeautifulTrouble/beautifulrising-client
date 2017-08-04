@@ -38,6 +38,7 @@ const AllRegionLink = styled(RegionLink)`
 `;
 function RegionOptions(props) {
   const lang = props.intl.locale;
+
   return (
     <Container inline={!props.showHeader}>
       <Viewport lang={lang}>
@@ -45,8 +46,8 @@ function RegionOptions(props) {
           <FormattedMessage {...messages.header} />
         </Subheader>
         <RegionList lang={lang}>
-          <Region>
-            <AllRegionLink to={'/type/story'}  selected={props.region === undefined}>
+          <Region lang={lang} >
+            <AllRegionLink to={'/type/story'} selected={props.region === undefined}>
               <TranslatableStaticText {...staticText.allHead} />
             </AllRegionLink>
           </Region>
