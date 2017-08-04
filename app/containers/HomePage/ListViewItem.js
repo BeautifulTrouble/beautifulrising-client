@@ -24,7 +24,7 @@ class ListViewItem extends React.Component {
     const { locale } = this.props.intl;
 
     return (
-      <ListContainer lang={locale}>
+      <ListContainer lang={locale} index={this.props.index}>
         <ListViewport>
           <LanguageThemeProvider>
             <ToolType type={this.props.type}>

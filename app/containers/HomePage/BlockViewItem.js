@@ -58,6 +58,7 @@ class BlockViewItem extends React.Component {
      return (
         <BlockContainer
               lang={locale}
+              index={this.props.index}
               onMouseOver={this.handleMouseOver.bind(this)}
               onMouseOut={this.handleMouseOut.bind(this)}
               background={`url(${BR_IMAGE_PREFIX + this.props.image})`}>

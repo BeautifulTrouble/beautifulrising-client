@@ -5,11 +5,8 @@ export default styled(ToolContainer)`
   background-image: ${props => props.background};
   background-size: cover;
   background-position: center;
-  width: 250px;
-  height: 250px;
-  margin: 10px;
-  margin-${p=>p.lang==='ar'?'right':'left'}: 17px;
-  margin-${p=>p.lang==='ar'?'left':'right'}: 2px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  width: 270px;
+  height: 270px;
+  margin-${p=>p.lang==='ar'?'left':'right'}: ${p=>p.index%3===0?'0':'30px'};
+  margin-bottom: 30px;
 `;

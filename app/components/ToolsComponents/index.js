@@ -179,8 +179,6 @@ export const ToolsContainer = styled.div`
 
 export const ToolContainer = styled.div`
   ${props=>props.lang==='ar' ? 'float: right' : 'float: left'};
-  margin-right: 10px;
-  margin-bottom: 10px;
   text-align: left;
 `;
 
@@ -190,9 +188,10 @@ export const BlockAddRem = styled.div`
 
 //List View
 export const ListContainer = styled(ToolContainer)`
-  width: 48%;
-  height: 190px;
+  width: 370px;
+  height: 200px;
   text-align: left;
+  margin-${p=>p.lang==='ar'?'left':'right'}: ${p=>p.index%2==0?'0':'130px'};
 `;
 
 export const ListSpiel = styled(ContentBlock)`

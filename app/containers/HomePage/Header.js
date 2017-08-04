@@ -29,8 +29,7 @@ import TagArea from './TagArea';
 import staticText from './staticText';
 
 const HeaderContainer = styled.div`
-  width: 789px;
-  margin-${p=>p.theme.isArabic?'right':'left'}: 16px;
+  width: 100%;
 
   &::before {
     position: absolute;
