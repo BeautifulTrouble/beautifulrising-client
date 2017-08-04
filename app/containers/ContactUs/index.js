@@ -10,6 +10,7 @@ import { Link } from 'react-router';
 import Isvg from 'react-inlinesvg';
 import TwitterIcon from 'assets/images/icons/twitter.svg';
 import FacebookIcon from 'assets/images/icons/facebook.svg';
+import MenuBlock from 'components/MenuBlock';
 
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -21,7 +22,6 @@ import { sendSubscription } from './actions';
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 
 import MenuLink from 'components/MenuLink';
-import MenuBlock from 'components/MenuBlock';
 import MenuList from 'components/MenuList';
 import MenuListItem from 'components/MenuListItem';
 import MenuTitle from 'components/MenuTitle';
@@ -53,18 +53,18 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
   renderForm() {
     const {locale} = this.props.intl;
     return (
-      <LanguageThemeProvider>
-        <FormContainer>
-          <form onSubmit={this.handleSubmit.bind(this)}>
-            <div>
-              <input type='email' name='email' onChange={this.handleChange.bind(this)} placeholder='samir@gmail.com'/>
-            </div>
-            <button>
-              <TranslatableStaticText {...staticText.submit} />
-            </button>
-          </form>
-        </FormContainer>
-      </LanguageThemeProvider>
+        <LanguageThemeProvider>
+          <FormContainer>
+            <form onSubmit={this.handleSubmit.bind(this)}>
+              <div>
+                <input type='email' name='email' onChange={this.handleChange.bind(this)} placeholder='samir@gmail.com'/>
+              </div>
+              <button>
+                <TranslatableStaticText {...staticText.submit} />
+              </button>
+            </form>
+          </FormContainer>
+        </LanguageThemeProvider>
 
     );
   }
@@ -81,7 +81,7 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
     const { locale } = this.props.intl;
     return (
 
-        <MenuBlock last={true}>
+        <MenuBlock isArabic={locale==='ar'} last={true}>
         <LanguageThemeProvider>
           <MenuTitle>
             <TranslatableStaticText {...staticText.header} />

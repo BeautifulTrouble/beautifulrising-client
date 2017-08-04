@@ -6,8 +6,8 @@ export default styled.button`
   padding: 2px;
   text-transform: uppercase;
   span svg {
-    width: 30px;
-    height: 30px;
+    width: ${p=>p.svgSquare || '30px'};
+    height: ${p=>p.svgSquare || '30px'};
 
     * {
       fill: white ;

@@ -6,7 +6,7 @@ export default styled.div `
   opacity: ${p=>p.show?1:0};
   visibility: ${p=>p.show?'visible':'hidden'};
   transition: opacity 0.2s ease;
-
+  ${p=>p.orientation&&p.orientation==='vertical'?'':'width:100px;'}
   ${p=> {
 
     if (p.orientation && p.orientation === 'vertical') {
@@ -26,6 +26,6 @@ export default styled.div `
   }
 
   button {
-    ${p=>p.orientation&&p.orientation==='vertical'?'display:block;':''}
+    ${p=>p.orientation&&p.orientation==='vertical'?'display:block;':'display:inline-block;'}
   }
 `;

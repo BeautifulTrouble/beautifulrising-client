@@ -6,6 +6,7 @@
 
 import React from 'react';
 
+import { injectIntl } from 'react-intl';
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import MenuLink from 'components/MenuLink';
@@ -16,9 +17,10 @@ import MenuTitle from 'components/MenuTitle';
 import staticText from './staticText';
 
 function ContributeMenu(props) {
+  const { locale } = props.intl;
   return (
 
-      <MenuBlock>
+      <MenuBlock isArabic={locale==='ar'}>
         <LanguageThemeProvider>
           <MenuTitle>
             <TranslatableStaticText {...staticText.header} />
@@ -40,4 +42,4 @@ ContributeMenu.propTypes = {
 
 };
 
-export default ContributeMenu;
+export default injectIntl(ContributeMenu);

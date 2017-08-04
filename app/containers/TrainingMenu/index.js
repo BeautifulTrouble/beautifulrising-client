@@ -22,9 +22,10 @@ import staticText from './staticText';
 
 
 function TrainingMenu(props) {
+  const {locale} = props.intl;
   return (
 
-      <MenuBlock>
+      <MenuBlock  isArabic={locale==='ar'}>
       <LanguageThemeProvider>
         <MenuTitle><TranslatableStaticText {...staticText.header} /></MenuTitle>
         <MenuList>

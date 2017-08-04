@@ -53,21 +53,8 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 
   constructor(props) {
     super(props);
-    this.windowEvent = this.handleScroll.bind(this);
-    this.state = {
-      scrollY: 0
-    }
   }
 
-  componentWillMount() {
-    window.addEventListener('scroll', this.windowEvent, false);
-  }
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.windowEvent, false);
-  }
-  handleScroll() {
-    this.setState({ scrollY: window.scrollY });
-  }
 
   componentDidMount() {
     if (!this.props.tools) {
@@ -132,7 +119,6 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             dir={this.getDirection()}
             full={this.props.params.filter !== 'type'}
             isStory = {this.props.params.label === 'story'}
-            shorten = {this.state.scrollY > 10}
             >
           <Helmet
             title="BeautifulRising"
@@ -151,6 +137,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                   this.props.sorted.map((tool, index) => {
                     return (
                       <ListItem
+                            index={index + 1}
                             lang={this.props.language} {...tool}
                             key={tool['document_id']}
                             />)

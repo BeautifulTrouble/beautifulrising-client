@@ -21,24 +21,28 @@ import TranslatableStaticText from 'containers/TranslatableStaticText';
 import staticText from './staticText';
 
 const Container = styled.div`
-display: inline-block;
-width: auto;
+  display: inline-block;
+  width: auto;
 `;
+const SortButton = styled(IconButton)`
+  margin-${p=>p.isArabic?'right':'left'}: ${p=>p.last?'24px':'0'};
+`
+
 export class ToolsSortOptions extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     const { locale } = this.props.intl;
     return (
       <Container>
-        <IconButton width="auto" onClick={this.props.clickAlphabeticalSort}>
+        <SortButton isArabic={locale==='ar'} width="auto" onClick={this.props.clickAlphabeticalSort}>
           <TextButton ar={locale==='ar'} selected={this.props.ToolsSortOptions.chosen === SORT_ALPHABETICAL}>
             <TranslatableStaticText {...staticText.alphabeticalButton} />
           </TextButton>
-        </IconButton>
-        <IconButton ar={locale==='ar'} width="auto" onClick={this.props.clickNewestSort}>
+        </SortButton>
+        <SortButton isArabic={locale==='ar'} last={true} width="auto" onClick={this.props.clickNewestSort}>
           <TextButton selected={this.props.ToolsSortOptions.chosen === SORT_NEWEST}>
             <TranslatableStaticText {...staticText.newestButton} />
           </TextButton>
-        </IconButton>
+        </SortButton>
       </Container>
     );
   }

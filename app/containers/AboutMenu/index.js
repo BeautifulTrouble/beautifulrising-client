@@ -22,7 +22,7 @@ function AboutMenu(props) {
   const { locale } = props.intl;
 
   return (
-      <MenuBlock>
+      <MenuBlock isArabic={locale==='ar'}>
         <LanguageThemeProvider>
           <MenuTitle>
             <TranslatableStaticText id={KEY_MENU_ABOUT} />

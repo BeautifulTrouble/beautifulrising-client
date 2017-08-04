@@ -15,6 +15,14 @@ export default {
     id: 'module.read-more',
     defaultMessage: 'Read More',
   },
+  more: {
+    id: 'module.more',
+    defaultMessage: 'More',
+  },
+  less: {
+    id: 'module.less',
+    defaultMessage: 'Less',
+  },
   learnMore: {
     id: 'module.learn-more',
     defaultMessage: 'Learn More',
@@ -24,8 +32,8 @@ export default {
     defaultMessage: 'Real world examples of “{{title}}”',
   },
   contributedByHeader: {
-    id: 'module.contributed-by',
-    defaultMessage: 'Contributed By'
+    id: 'module.about-contributor',
+    defaultMessage: 'About the contributer'
   },
 
   share: {

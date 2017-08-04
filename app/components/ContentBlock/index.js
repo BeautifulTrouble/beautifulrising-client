@@ -27,4 +27,8 @@ export default styled.div`
   };
 
   font-family: Avenir, Kaff, sans-serif;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
 `;;
