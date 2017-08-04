@@ -3,7 +3,7 @@ import { Header } from 'components/ToolPage/Sidebar';
 export default styled(Header)`
 
   font-size: ${p=>p.theme.lang==='ar'?'40px':'40px'};
-  padding-${p=>p.theme.lang==='ar'?'right':'left'}: 46px;
+  padding-${p=>p.theme.lang==='ar'?'right':'left'}: 52px;
   .isvg.loaded {
     position: absolute;
     top: ${p=>p.theme.lang==='ar'?'8px':'8px'};
