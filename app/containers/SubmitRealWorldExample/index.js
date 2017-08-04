@@ -27,7 +27,7 @@ import TextArea from 'components/SubmitRealWorldExample/TextArea';
 import staticText from './staticText';
 
 const SubmitExampleContainer = styled.div`
-  margin-top: 36px;
+  margin-top: 12px;
   width: 470px;
 `;
 
