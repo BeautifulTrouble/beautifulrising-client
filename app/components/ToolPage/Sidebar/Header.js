@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 export default styled.h3`
-  font-size: ${p=>p.theme.lang==='ar'?'20px':'30px'};
+  font-size: ${p=>p.theme.lang==='ar'?'30px':'30px'};
   text-transform: uppercase;
   position: relative;
   margin: 0;
