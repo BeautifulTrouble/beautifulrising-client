@@ -13,4 +13,5 @@ export default styled(ContentBlock)`
   display: inline-block;
   vertical-align: top;
   align-items: stretch;
+  text-align: ${p=>p.isArabic?'right':'left'};
 `;
