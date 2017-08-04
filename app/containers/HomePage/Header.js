@@ -57,22 +57,26 @@ const FilterItem = styled.li`
   display: inline-block;
   list-style: none;
   position: relative;
-  padding-${p=>p.theme.isArabic?'left':'right'}: 24px;
-  padding-${p=>p.theme.isArabic?'right':'left'}: 0;
+  padding-left: ${p=>p.sidePadding || 0};
+  padding-right: ${p=>p.sidePadding || 0};
   position: relative;
 
+  ${p=>{
+      if (p.last) {
+          return p.theme.isArabic?'padding-left:0;':'padding-right:0';
+      } else { return null; }
+  }}
   &::after {
     content: ' ';
     border-${p=>p.theme.isArabic?'left':'right'}: 2px solid;
     position: absolute;
     height: 12px;
-    ${p=>p.theme.isArabic?'left':'right'}: 11px;
+    ${p=>p.theme.isArabic?'left':'right'}: 0px;
     top: 7px;
   }
 
   &:last-child {
     padding-${p=>p.theme.isArabic?'left':'right'}: 0;
-    margin-${p=>p.theme.isArabic ? 'left' : 'right'}: -6px;
     &::after { border-${p=>p.theme.isArabic?'left':'right'}: none; }
   }
 `;
@@ -80,7 +84,7 @@ const FilterItem = styled.li`
 const TagShownIcon = styled.div`
   display: inline-block;
   transform: ${p=>p.selected?'rotate(270deg)':'rotate(180deg)'};
-  margin-${p=>p.theme.isArabic?'right':'left'}: 5px;
+  margin-${p=>p.theme.isArabic?'right':'left'}: 12px;
   margin-top: -5px;
   transition: transform 0.5s ease;
 
@@ -122,7 +126,7 @@ class Header extends React.PureComponent {
             <FilterItem style={{ flexGrow: 1 }}>
               <SearchField {...this.props.params}/>
             </FilterItem>
-            <FilterItem>
+            <FilterItem sidePadding="24px">
               <IconButton width="auto" onClick={this.toggleTagArea.bind(this)}>
                 <TextButton ar={lang==='ar'} selected={true}>
                   <TranslatableStaticText {...staticText.tags} />
@@ -133,10 +137,10 @@ class Header extends React.PureComponent {
               </IconButton>
             </FilterItem>
 
-            <FilterItem>
+            <FilterItem sidePadding="36px">
               <ToolsSortOptions />
             </FilterItem>
-            <FilterItem>
+            <FilterItem last={true} sidePadding="36px">
               <ToolsViewOptions />
             </FilterItem>
           </FilterSection>

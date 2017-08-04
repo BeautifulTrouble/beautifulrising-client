@@ -7,6 +7,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { injectIntl} from 'react-intl';
 import makeSelectToolView, { isListView, isBlockView } from './selectors';
 import styled from 'styled-components';
 
@@ -25,18 +26,21 @@ const Container = styled.div`
   display: inline-block;
 `;
 // import { makeSelectToolView } from './selectors';
-
+const ViewOption = styled(IconButton)`
+  margin-${p=>p.isArabic?'right':'left'}: ${p=>p.last?'24px':'0'};
+`
 export class ToolsViewOptions extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   render() {
+    const { locale } = this.props.intl;
     return (
       <Container>
-        <IconButton width="auto" onClick={this.props.clickBlockView}>
+        <ViewOption isArabic={locale==='ar'} width="auto" onClick={this.props.clickBlockView}>
           <SvgButton selected={this.props.isBlockView} src={BlockIcon}/>
-        </IconButton>
-        <IconButton width="auto" onClick={this.props.clickListView}>
+        </ViewOption>
+        <ViewOption isArabic={locale==='ar'} last={true} width="auto" onClick={this.props.clickListView}>
           <SvgButton selected={this.props.isListView} src={ListIcon}/>
-        </IconButton>
+        </ViewOption>
       </Container>
     );
   }
@@ -63,4 +67,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ToolsViewOptions);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(ToolsViewOptions));
