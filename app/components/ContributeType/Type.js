@@ -6,6 +6,7 @@ export default styled.li`
   list-style: none;
   width: 18%;
   margin-right: 2%;
+  opacity: ${p=>p.isChosen?1:0.5};
   &:last-child {
     margin-right: 0;
   }

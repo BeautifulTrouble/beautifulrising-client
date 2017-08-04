@@ -16,3 +16,4 @@ export const DEVELOPMENT_ENDPOINT = 'https://api-develop.beautifulrising.org/api
 export const MODULE_TYPE_FULL = 'full';
 export const MODULE_TYPE_GALLERY = 'gallery';
 export const MODULE_TYPE_UNTRANSLATED = 'untranslated';
+export const MODULE_TYPE_SNAPSHOT = 'snapshot';

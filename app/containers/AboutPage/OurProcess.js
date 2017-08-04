@@ -110,11 +110,11 @@ class OurProcess extends React.Component {
   }
 
   render() {
+    if (!this.props.processes) return null;
     const {locale} = this.props.intl;
-
     return (
       <LanguageThemeProvider>
-        <AboutSection id='process' name='process' lang={locale}>
+        <AboutSection id='process' name='process' position={this.props.processes.toString().length} lang={locale}>
           { this.props.hideHeader ?  null : this.renderHeader() }
           { this.renderProcess() }
           {this.renderParticipants() }

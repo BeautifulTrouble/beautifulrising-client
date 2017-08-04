@@ -7,10 +7,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import { Link } from 'react-router';
 import Isvg from 'react-inlinesvg';
 import Markdown from 'react-remarkable';
 
-import TranslatableStaticText from 'containers/TranslatableStaticText';
+import TranslatableStaticText, { injectStaticText } from 'containers/TranslatableStaticText';
 
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
@@ -26,6 +27,7 @@ import Subtitle from 'components/ContributeType/Subtitle';
 import Type from 'components/ContributeType/Type';
 import TypeList from 'components/ContributeType/TypeList';
 import TypeName from 'components/ContributeType/TypeName';
+import ExampleContainer from 'components/ContributeType/ExampleContainer';
 
 import StoryIcon from 'assets/images/type/stories.svg';
 import TacticIcon from 'assets/images/type/tactics.svg';
@@ -54,14 +56,14 @@ class ContributeType extends React.PureComponent { // eslint-disable-line react/
   }
 
   render() {
-    const { formatMessage } = this.props.intl;
+    const { buildMessage } = this.props.translatable;
     return (
       <LanguageThemeProvider>
         <div>
           <div>
             <TypeList>
               {DATA.map((item, index) => (
-                <Type key={index}>
+                <Type key={index} isChosen={this.state.chosen === index}>
                   <Button value={index} onClick={()=>this.handleClick(index)}>
                     <TypeName>{item.label}</TypeName>
                     <Isvg src={item.icon} />
@@ -74,7 +76,9 @@ class ContributeType extends React.PureComponent { // eslint-disable-line react/
                     </Spiel>
                     <CallToAction>
                       <ContentBlock>
-                        <Markdown source={formatMessage(messages.callToAction)} />
+                        <Link to={buildMessage(item.form)} target="_blank" style={{textTransform: 'uppercase'}}>
+                          <TranslatableStaticText {...staticText.goToForm} />
+                        </Link>
                       </ContentBlock>
                     </CallToAction>
                   </Content>
@@ -87,8 +91,9 @@ class ContributeType extends React.PureComponent { // eslint-disable-line react/
                   type: DATA[this.state.chosen].label
                 }}/>
               </Subtitle>
-
-              {this.props.examples[DATA[this.state.chosen].type]}
+              <ExampleContainer>
+                {this.props.examples[DATA[this.state.chosen].type]}
+              </ExampleContainer>
             </Examples>
           </div>
         </div>
@@ -103,31 +108,36 @@ const DATA = [
     type: 'story',
     icon: StoryIcon,
     label: (<TranslatableStaticText {...staticText.stories} />),
-    description: (<TranslatableStaticText {...staticText.shortDefinitionStory} />)
+    description: (<TranslatableStaticText {...staticText.shortDefinitionStory} />),
+    form: staticText.storyForm
   },
   {
     type: 'tactic',
     icon: TacticIcon,
     label: (<TranslatableStaticText {...staticText.tactics} />),
-    description: (<TranslatableStaticText {...staticText.shortDefinitionTactic} />)
+    description: (<TranslatableStaticText {...staticText.shortDefinitionTactic} />),
+    form: staticText.tacticForm
   },
   {
     type: 'principle',
     icon: PrincipleIcon,
     label: (<TranslatableStaticText {...staticText.principles} />),
-    description: (<TranslatableStaticText {...staticText.shortDefinitionPrinciple} />)
+    description: (<TranslatableStaticText {...staticText.shortDefinitionPrinciple} />),
+    form: staticText.principleForm
   },
   {
     type: 'theory',
     icon: TheoryIcon,
     label: (<TranslatableStaticText {...staticText.theories} />),
-    description: (<TranslatableStaticText {...staticText.shortDefinitionTheory} />)
+    description: (<TranslatableStaticText {...staticText.shortDefinitionTheory} />),
+    form: staticText.theoryForm
   },
   {
     type: 'methodology',
     icon: MethodologyIcon,
     label: (<TranslatableStaticText {...staticText.methodologies} />),
-    description: (<TranslatableStaticText {...staticText.shortDefinitionMethodology} />)
+    description: (<TranslatableStaticText {...staticText.shortDefinitionMethodology} />),
+    form: staticText.methodologyForm
   },
 
 ];
@@ -136,4 +146,4 @@ ContributeType.propTypes = {
 
 };
 
-export default injectIntl(ContributeType);
+export default injectStaticText(ContributeType);

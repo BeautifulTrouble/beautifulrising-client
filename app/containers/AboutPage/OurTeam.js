@@ -29,10 +29,11 @@ export class OurTeam extends React.Component {
     );
   }
   render() {
+      if (!this.props.teamMembers) return null;
       const {locale}=this.props.intl;
       return (
       <LanguageThemeProvider>
-        <AboutSection id='team' lang={locale}>
+        <AboutSection id='team' lang={locale} position={this.props.teamMembers.toString().length}>
           { this.props.hideHeader ? null : this.renderHeader() }
           <ThemeProvider theme={themeThreeColumns}>
             <ul>

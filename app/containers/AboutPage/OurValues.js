@@ -41,7 +41,7 @@ export class OurValues extends React.Component {
     const lang = this.props.intl.locale
     return (
       <LanguageThemeProvider>
-        <AboutSection id='values' name='values' lang={lang}>
+        <AboutSection id='values' name='values' lang={lang} position={this.props.toString().length}>
           { this.props.hideHeader ? null : this.renderHeader() }
             <List>
               { this.props.ourValues.map((item, ind) =>
