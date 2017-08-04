@@ -17,7 +17,6 @@ const Container = styled.div`
 `;
 
 const HeaderContainer = styled.div`
-  padding: 4px 0 3px;
   border-bottom: 2px solid black;
 `;
 const Header = styled.div`

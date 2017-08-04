@@ -32,8 +32,8 @@ export default {
     defaultMessage: 'Real world examples of “{{title}}”',
   },
   contributedByHeader: {
-    id: 'module.contributed-by',
-    defaultMessage: 'Contributed By'
+    id: 'module.about-contributor',
+    defaultMessage: 'About the contributer'
   },
 
   share: {
