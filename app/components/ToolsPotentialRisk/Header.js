@@ -6,7 +6,7 @@ export default styled(Header)`
   padding-${p=>p.theme.lang==='ar'?'right':'left'}: 46px;
   .isvg.loaded {
     position: absolute;
-    top: ${p=>p.theme.lang==='ar'?'0':'8px'};
+    top: ${p=>p.theme.lang==='ar'?'8px':'8px'};
     ${p=>p.theme.lang==='ar'?'right':'left'}: 0;
   }
   * {
