@@ -3,42 +3,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { injectIntl } from 'react-intl';
 import Isvg from 'react-inlinesvg';
-import makeSelectWhatsHappening from './selectors';
-import BellIcon from 'assets/images/icons/bell.svg';
 import { createStructuredSelector } from 'reselect';
 import styled from 'styled-components';
 
-const Counter = styled.div`
-  color: white;
-  text-align: center;
-  width: 20px;
-  font-size: 12px;
-  border-right: 50%
-  position: relative;
+import makeSelectWhatsHappening from './selectors';
+import BellIcon from 'assets/images/icons/bell.svg';
+import Counter from './Counter';
 
-  span {
-    z-index: 100;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    font-weight: 800;
-  }
-
-  &::after {
-    content: ' ';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 50;
-    width: 100%;
-    padding-bottom: 100%;
-    background: black;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-`;
 const CounterContainer = styled.div`
   position: absolute
   top: 5px;
@@ -59,36 +30,16 @@ class Bell extends React.PureComponent {
     super();
   }
 
-  renderCounter() {
-
-
-    const { data, lastViewed } = this.props.WhatsHappening;
-    const { locale } = this.props.intl;
-    if (!data || data === undefined) return null;
-
-    const unseenCount = data.filter(item=> {
-          const dateTime = new Date(item.date);
-          return dateTime > lastViewed;
-      });
-
-
-    if (unseenCount.length == 0) return null;
-
-    return (
-      <CounterContainer lang={locale}>
-        <Counter><span>{unseenCount.length}</span></Counter>
-      </CounterContainer>
-    )
-  }
   render() {
     const { locale } = this.props.intl;
-    const counter = this.renderCounter();
     return(
       <BellContainer isArabic={locale==='ar'}>
         <Viewport>
           <Link to='/whats-happening' onClick={()=>this.props.onClick()}>
             <Isvg src={BellIcon} />
-            { counter }
+            <CounterContainer lang={locale}>
+              <Counter />
+            </CounterContainer>
           </Link>
         </Viewport>
       </BellContainer>

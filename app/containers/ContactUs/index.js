@@ -19,6 +19,7 @@ import makeSelectContactUs from './selectors';
 import messages from './messages';
 import { sendSubscription } from './actions';
 
+import {Counter} from 'containers/WhatsHappening';
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 
 import MenuLink from 'components/MenuLink';
@@ -34,6 +35,11 @@ import SubscribeCTA from 'components/MenuContactUs/SubscribeCTA';
 
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import staticText from './staticText';
+
+const CounterContainer = styled.div`
+  display: inline-block;
+  vertical-align: top;
+`;
 
 export class ContactUs extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -90,6 +96,9 @@ export class ContactUs extends React.PureComponent { // eslint-disable-line reac
             <MenuListItem>
               <MenuLink to="/whats-happening" onClick={this.props.onClick}>
                 <TranslatableStaticText  {...staticText.whatsHappening} />
+                <CounterContainer>
+                  <Counter />
+                </CounterContainer>
               </MenuLink>
             </MenuListItem>
           </MenuList>
