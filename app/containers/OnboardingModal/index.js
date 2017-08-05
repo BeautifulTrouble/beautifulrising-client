@@ -29,7 +29,7 @@ const customStyles = (lang) => { return {
     bottom                : 'auto',
     transform             : `${lang==='ar' ? 'translate(50%,0)':'translate(-50%,0)'}`,
     padding: '0',
-    width: '975px',
+    width: '960px',
     // minHeight: '80vh',
     overflow: 'visible',
     borderRadius: 0,

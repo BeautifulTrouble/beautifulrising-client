@@ -253,6 +253,7 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
         title: misc.get('whats-inside'),
         content: <TheToolbox hideHeader={true}
                   whatsInside = { this.props.aboutData.getIn(['about','whats-inside', 'introduction']) }
+                  notClickable = {true}
                 />
       },
       {
