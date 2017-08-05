@@ -148,7 +148,7 @@ export class ModalMenu extends React.Component {
                   <Isvg src={CloseIcon} />
                 </CloseButton>
                 <BellArea>
-                  <WhatsHappeningBell />
+                  <WhatsHappeningBell onClick={this.closeModal.bind(this)} />
                 </BellArea>
               </CloseBox>
             </MenuSection>

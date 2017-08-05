@@ -86,7 +86,7 @@ class Bell extends React.PureComponent {
     return(
       <BellContainer isArabic={locale==='ar'}>
         <Viewport>
-          <Link to='/whats-happening'>
+          <Link to='/whats-happening' onClick={()=>this.props.onClick()}>
             <Isvg src={BellIcon} />
             { counter }
           </Link>
