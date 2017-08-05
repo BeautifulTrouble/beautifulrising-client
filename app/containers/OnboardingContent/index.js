@@ -203,9 +203,10 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
                 <CloseButton lang={lang} onClick={this.handleClose.bind(this)}>
                   <Isvg src={CloseIcon}/>
                 </CloseButton>
-                <OnboardedButton lang={lang} onClick={this.handleClose.bind(this)}>
+                {/*<OnboardedButton lang={lang} onClick={this.handleClose.bind(this)}>
                   {about.getIn(['modal','dismiss'])}
                 </OnboardedButton>
+                */}
                 <LogoArea>
                   <Logo top={'20px'} left={'40px'} isReversed={true}/>
                 </LogoArea>
@@ -271,23 +272,23 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
             ourValues={this.props.aboutData.getIn(['about', 'values'])}
         />
       },
-      {
-        left: '80%',
-        title: misc.get('advisory-network'),
-        content: <OurAdvisoryNetwork
-            hideHeader={true}
-            advisoryNetwork = {this.props.advisoryBoard}
-            introText = { this.props.aboutData.getIn(['about', 'advisory-network', 'introduction'])}
-        />
-      },
-      {
-        title: misc.get('team'),
-        content: <OurTeam
-            hideHeader={true}
-            teamMembers={this.props.aboutData.getIn(['about', 'team-members'])}
-            allData={this.props.aboutData}
-        />
-      },
+      // {
+      //   left: '80%',
+      //   title: misc.get('advisory-network'),
+      //   content: <OurAdvisoryNetwork
+      //       hideHeader={true}
+      //       advisoryNetwork = {this.props.advisoryBoard}
+      //       introText = { this.props.aboutData.getIn(['about', 'advisory-network', 'introduction'])}
+      //   />
+      // },
+      // {
+      //   title: misc.get('team'),
+      //   content: <OurTeam
+      //       hideHeader={true}
+      //       teamMembers={this.props.aboutData.getIn(['about', 'team-members'])}
+      //       allData={this.props.aboutData}
+      //   />
+      // },
       // {
       //   title: misc.get('beautiful-trouble-and-action-aid'),
       //   content: <BeautifulTroubleAA
@@ -302,13 +303,13 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
             networkPartners={this.props.aboutData.getIn(['about', 'network-partners'])}
         />
       },
-      {
-        title: misc.get('faq'),
-        content: <FAQ
-            hideHeader={true}
-            questions={this.props.aboutData.getIn(['about', 'questions'])}
-        />
-      },
+      // {
+      //   title: misc.get('faq'),
+      //   content: <FAQ
+      //       hideHeader={true}
+      //       questions={this.props.aboutData.getIn(['about', 'questions'])}
+      //   />
+      // },
     ];
   }
 }

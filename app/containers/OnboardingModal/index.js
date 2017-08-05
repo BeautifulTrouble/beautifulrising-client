@@ -23,7 +23,7 @@ const customStyles = (lang) => { return {
   content : {
     direction: `${lang==='ar' ? 'rtl':'ltr'}`,
     textAlign: `${lang==='ar' ? 'right':'left'}`,
-    top                   : '57px',
+    top                   : '11px',
     left                  : `${lang==='ar' ? 'auto':'50%'}`,
     right                 : `${lang==='ar' ? '50%':'auto'}`,
     bottom                : 'auto',
