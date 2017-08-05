@@ -49,7 +49,9 @@ const Heading = styled.h2`
   line-height: 40px;
   text-align: ${props=>props.lang==='ar'?'right':'left'};
 `;
-const Lead = styled.div``;
+const Lead = styled.div`
+    margin-bottom: 36px;
+`;
 
 const MenuList = styled.ul`
 padding: 0;
@@ -87,7 +89,7 @@ const Button = styled.button`
   text-transform: uppercase;
   font-weight: bold;
   font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
-  margin-top: 18px;
+  margin-bottom: 18px;
   font-size: ${props=>props.lang==='ar'?'13px':'14px;'};
   line-height: 22px;
   padding-${props=>props.lang==='ar'?'right':'left'}: 0;
