@@ -39,7 +39,6 @@ const FeatureArea = styled.div`
   align-items: stretch;
   display: inline-block;
   padding-${p=>p.theme.isArabic?'right':'left'}: 80px;
-  padding-${p=>p.theme.isArabic?'left':'right'}: 30px;
   padding-top: 45px;
   padding-bottom: 70px;
 `;
