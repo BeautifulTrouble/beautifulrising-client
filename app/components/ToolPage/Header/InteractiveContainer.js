@@ -4,5 +4,5 @@ export default styled.div`
   position: absolute;
   top: 48px;
   ${p=>p.lang==='ar'?'left':'right'}: 34px;
-  z-index: 500;
+  z-index: 0;
 `;
