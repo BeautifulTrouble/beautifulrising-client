@@ -109,7 +109,6 @@ const Content = styled.div`
 
 
 const TrainingArea =styled.div`
-  padding-bottom: 40px;
   border-bottom: 2px solid;
   margin-left: 20px;
   margin-right: 20px;
@@ -123,6 +122,7 @@ const TrainingArea =styled.div`
 const OtherResourcesArea = styled.div`
   margin-left: 20px;
   margin-right: 20px;
+  margin-top: 72px;
 `;
 
 const SubmitResourcesArea = styled.div`
