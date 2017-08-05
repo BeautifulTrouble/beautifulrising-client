@@ -20,7 +20,7 @@ const Container = styled.section`
 padding: 10px;
 text-align: center;
 border-top: 2px solid black;
-margin-top: 50px;
+margin-top: 72px;
 margin-left: 20px;
 margin-right: 20px;
 &::before {
