@@ -112,6 +112,7 @@ const TrainingArea =styled.div`
   border-bottom: 2px solid;
   margin-left: 20px;
   margin-right: 20px;
+  padding-bottom: 72px;
 
   &::after {
     content: ' ';
@@ -119,10 +120,14 @@ const TrainingArea =styled.div`
     display: block;
   }
 `;
+
+const OtherResourcesHeading = styled(Heading)`
+  padding-top: 36px
+`;
+
 const OtherResourcesArea = styled.div`
   margin-left: 20px;
   margin-right: 20px;
-  margin-top: 72px;
 `;
 
 const SubmitResourcesArea = styled.div`
@@ -207,9 +212,9 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
             </TrainingArea>
 
             <OtherResourcesArea>
-              <Heading lang={lang}>
+              <OtherResourcesHeading lang={lang}>
                 <TranslatableStaticText {...staticText.otherResources} />
-              </Heading>
+              </OtherResourcesHeading>
               <OtherResources data={this.props.data.get('resources')}/>
             </OtherResourcesArea>
 
