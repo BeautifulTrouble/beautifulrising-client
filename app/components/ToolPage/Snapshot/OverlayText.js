@@ -9,7 +9,7 @@ export default styled.div`
   left: 0;
 
   background-color: white;
-  padding: 44px 64px 10px;
+  padding: 44px 60px 10px;
   font-weight: bold;
   font-size: 20px;
   z-index: 700;
@@ -21,8 +21,8 @@ export default styled.div`
   &::before {
     content: '*';
     position: absolute;
-    left: 30px;
-    font-size: 40px;
-    top: 36px;
+    ${p=>p.theme.isArabic?'right':'left'}: 45px;
+    font-size: 26px;
+    top: 40px;
   }
 `

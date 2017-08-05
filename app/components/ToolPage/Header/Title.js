@@ -7,5 +7,5 @@ export default styled(ToolTitle)`
   letter-spacing: ${p=>p.theme.isArabic?'3px':'1px'};
   margin: 0 0 20px;
   padding: 0;
-  line-height: 70px;
+  line-height: ${p=>p.theme.isArabic?'95px':'70px'};
 `;

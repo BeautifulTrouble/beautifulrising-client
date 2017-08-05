@@ -15,6 +15,7 @@ import Container from 'components/ToolsPotentialRisk/Container';
 import HeaderName from 'components/ToolsPotentialRisk/HeaderName';
 import Header from 'components/ToolsPotentialRisk/Header';
 import staticText from '../staticText';
+import SidebarContent from 'components/ToolPage/Sidebar/SidebarContent';
 
 function PotentialRisk(props) {
   if (!props.content || props.content.trim().length == 0) return null;

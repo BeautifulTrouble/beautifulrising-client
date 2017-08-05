@@ -14,10 +14,10 @@ import ContentBlock from 'components/ContentBlock';
 import {
   Caption, Container,
   Content, ContentViewport,
-  Title, ToolType
+  ToolType
 } from 'components/ToolPage/Header';
 
-import { SnapshotText, Viewport, OverlayText } from 'components/ToolPage/Snapshot';
+import { SnapshotText, Viewport, OverlayText, Title } from 'components/ToolPage/Snapshot';
 
 import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
 import TypeOverlay from 'components/TypeOverlay';
@@ -36,7 +36,7 @@ export class SnapshotContent extends React.PureComponent {
   }
 
   render() {
-    
+
     const { buildMessage } = this.props.translatable;
     const callToAction = buildMessage(staticText.expandingToolbox, { link: this.props['bt-link'] });
 

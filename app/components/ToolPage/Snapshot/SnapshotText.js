@@ -7,4 +7,5 @@ export default styled(ContentBlock) `
   font-weight: bold;
   color: white;
   max-width: 480px;
+  display: inline-block;
 `

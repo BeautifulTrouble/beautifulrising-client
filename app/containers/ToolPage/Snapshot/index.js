@@ -5,7 +5,7 @@ import Isvg from 'react-inlinesvg';
 
 import CloseIcon from 'assets/images/icons/close.svg';
 import TranslatableStaticText from 'containers/TranslatableStaticText';
-import SnapshotContainer, { Button } from 'components/ToolPage/Snapshot';
+import { Container as SnapshotContainer, Button } from 'components/ToolPage/Snapshot';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import SnapshotContent from './SnapshotContent';
 import staticText from '../staticText';
