@@ -79,8 +79,8 @@ const CloseButton = styled(Button)`
   background: white;
   padding: 0;
   position: absolute;
-  ${p=>p.lang==='ar'?'left':'right'}: -27px;
-  top: 27px;
+  ${p=>p.lang==='ar'?'right':'left'}: -27px;
+  top: -27px;
 `;
 const OnboardedButton = styled(Button)`
   font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
@@ -153,8 +153,9 @@ const LogoArea = styled.div`
 const SubTitle = styled.h2`
   margin: 0;
 `;
-const Spiel = styled.div`
-  width: 42%;
+const Spiel = styled(ContentBlock)`
+  margin: 0 28%;
+  text-align: center;
 `;
 const Overlay = styled.div`
   width: 100%;
@@ -210,13 +211,11 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
                 <LogoArea>
                   <Logo top={'20px'} left={'40px'} isReversed={true}/>
                 </LogoArea>
-                <SubTitle>
+                {/*<SubTitle>
                   {about.getIn(['modal','welcome'])}
-                </SubTitle>
+                </SubTitle>*/}
                 <Spiel>
-                  <ContentBlock>
-                    {about.getIn(['modal','introduction'])}
-                  </ContentBlock>
+                  {about.getIn(['modal','introduction'])}
                 </Spiel>
               </Overlay>
             </HeaderArea>
