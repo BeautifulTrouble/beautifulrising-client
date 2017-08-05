@@ -75,7 +75,7 @@ const LinkItem = styled.li`
     display: ${props => props.isSelected ? 'block' : 'none'};
     content: '______';
     position: absolute;
-    ${props=>props.lang==='ar'?'right':'left'}: 350px;
+    ${props=>props.lang==='ar'?'right':'left'}: 370px;
     top: 25%;
     transform: translate(0,-50%);
   }
