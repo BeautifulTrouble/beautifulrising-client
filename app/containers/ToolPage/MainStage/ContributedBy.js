@@ -11,7 +11,9 @@ import ContentBlock from 'components/ContentBlock';
 import AskTheContributor from 'containers/AskTheContributor';
 import CouldBeYou from 'components/CouldBeYou';
 import Author from 'containers/Author';
-
+import makeSelectToolPage from '../selectors';
+import { setChosenSection } from '../actions';
+import { CONTRIBUTED_BY } from '../constants';
 import staticText from '../staticText';
 
 class ContributedBy extends React.PureComponent {
@@ -31,6 +33,18 @@ class ContributedBy extends React.PureComponent {
   renderAuthors() {
     return this.props.authors.map(item=><Author key={item} slug={item}/>);
   }
+
+  handleClick() {
+
+    // Set it to null if the same CONTRIBUTED_BY
+    if (this.props.ToolPage.chosenSection === CONTRIBUTED_BY) {
+      this.props.handleSectionClick(null);
+    } else {
+      this.props.handleSectionClick(CONTRIBUTED_BY);
+    }
+
+  }
+
   render() {
     if (!this.props.authors || this.props.authors.length == 0) {
       return null;
@@ -44,11 +58,17 @@ class ContributedBy extends React.PureComponent {
         <LanguageThemeProvider>
           <ContentBlock>
             <CollapsingSection
+              onClick={this.handleClick.bind(this)}
               header={(
                 <CollapsingHeader>
                   <TranslatableStaticText {...staticText.contributedByHeader} />
                 </CollapsingHeader>
               )}
+
+              shouldOpen={
+                this.props.ToolPage.expandAll ||
+                this.props.ToolPage.chosenSection === CONTRIBUTED_BY
+              }
             >
               <CollapsingContent>
                 {authors}
@@ -63,4 +83,17 @@ class ContributedBy extends React.PureComponent {
 
 }
 
-export default ContributedBy;
+const mapStateToProps = createStructuredSelector({
+  ToolPage: makeSelectToolPage()
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    handleSectionClick: (chosenSection) => {
+      dispatch(setChosenSection(chosenSection));
+    }
+  };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContributedBy);

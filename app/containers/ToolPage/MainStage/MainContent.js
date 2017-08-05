@@ -1,6 +1,9 @@
 import React, { PropTypes } from 'react';
 import Markdown from 'react-markdown';
+import { createStructuredSelector } from 'reselect';
+import { connect } from 'react-redux';
 
+import TranslatableStaticText from 'containers/TranslatableStaticText';
 import ContentBlock from 'components/ContentBlock';
 import { ContentContainer, ShowContentButton } from 'components/ToolPage/Main';
 import ShortContent from './ShortContent';
@@ -8,27 +11,22 @@ import FullContent from './FullContent';
 
 import { PROP_FULL_WRITE_UP, PROP_SHORT_WRITE_UP } from '../constants';
 
-import TranslatableStaticText from 'containers/TranslatableStaticText';
+import makeSelectToolPage from '../selectors';
+import {setExpandAll} from '../actions';
+
 import staticText from '../staticText';
 
 class MainContent extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = {
-      showFull: false
-    }
   }
 
   componentWillReceiveProps(nextProps) {
-    //Refresh if label is different
-    if (nextProps.params.label !== this.props.params.label) {
-      this.setState({ showFull: false });
-    }
   }
 
   generateContent(){
-    if (this.state.showFull) {
+    if (this.props.ToolPage.expandAll) {
       return (<FullContent {...this.props} />);
     } else {
       return (<ShortContent {...this.props} />)
@@ -36,7 +34,7 @@ class MainContent extends React.PureComponent {
   }
 
   handleShowClick() {
-    this.setState({ showFull : !this.state.showFull })
+    this.props.handleMoreLessClick(!this.props.ToolPage.expandAll);
   }
 
   render() {
@@ -46,7 +44,7 @@ class MainContent extends React.PureComponent {
           && this.props['full-write-up'] ) {
 
       const mainContent = this.generateContent();
-      const buttonText = this.state.showFull
+      const buttonText = this.props.ToolPage.expandAll
           ? (<TranslatableStaticText {...staticText.less}/>)
           : (<TranslatableStaticText {...staticText.more}/>);
 
@@ -74,4 +72,17 @@ class MainContent extends React.PureComponent {
   }
 }
 
-export default MainContent;
+const mapStateToProps = createStructuredSelector({
+  ToolPage: makeSelectToolPage()
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    handleMoreLessClick: (isExpandAll) => {
+      dispatch(setExpandAll(isExpandAll));
+    }
+  };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainContent);

@@ -30,6 +30,11 @@ import ContentBlock from 'components/ContentBlock';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
 
 import TranslatableStaticText from 'containers/TranslatableStaticText';
+
+import makeSelectToolPage from '../selectors';
+import { setChosenSection } from '../actions';
+import { REAL_WORLD_EXAMPLE } from '../constants';
+
 import staticText from '../staticText';
 
 class RealWorld extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -53,11 +58,29 @@ class RealWorld extends React.Component { // eslint-disable-line react/prefer-st
     )
 
   }
+
+  handleClick() {
+
+    // Set it to null if the same REAL_WORLD_EXAMPLE
+    if (this.props.ToolPage.chosenSection === REAL_WORLD_EXAMPLE) {
+      this.props.handleSectionClick(null);
+    } else {
+      this.props.handleSectionClick(REAL_WORLD_EXAMPLE);
+    }
+
+  }
+
   render() {
+    (this.props.ToolPage);
     return (
 
         <CollapsingSection
           isShown={true}
+          onClick={this.handleClick.bind(this)}
+          shouldOpen={
+            this.props.ToolPage.expandAll ||
+            this.props.ToolPage.chosenSection === REAL_WORLD_EXAMPLE
+          }
           header={(
               <CollapsingHeader>
                 <TranslatableStaticText {...staticText.realWorldHeader} values={{title: this.props.title}}/>
@@ -76,4 +99,17 @@ class RealWorld extends React.Component { // eslint-disable-line react/prefer-st
   }
 }
 
-export default RealWorld;
+const mapStateToProps = createStructuredSelector({
+  ToolPage: makeSelectToolPage()
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    handleSectionClick: (chosenSection) => {
+      dispatch(setChosenSection(chosenSection));
+    }
+  };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(RealWorld);

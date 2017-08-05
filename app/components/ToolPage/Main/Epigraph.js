@@ -6,4 +6,10 @@ export default styled.div`
   & p:last-child {
     color: gray;
   }
+
+  p {
+    margin: 0;
+  }
+
+  margin: 36px 0;
 `;
