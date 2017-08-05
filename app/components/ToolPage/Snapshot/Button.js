@@ -14,4 +14,6 @@ export default styled.button`
   text-transform: uppercase;
 
   font-weight: bold;
+
+  text-align: ${p=>p.isArabic?'right':'left'};
 `;
