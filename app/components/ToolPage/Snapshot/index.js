@@ -3,6 +3,6 @@ import Container from './Container';
 import SnapshotText from './SnapshotText';
 import Viewport from './Viewport';
 import OverlayText from './OverlayText';
-export default Container;
+import Title from './Title';
 
-export { Button, SnapshotText, Viewport, OverlayText };
+export { Button, SnapshotText, Viewport, OverlayText, Title, Container};
