@@ -41,8 +41,9 @@ const Counter = styled.div`
 `;
 const CounterContainer = styled.div`
   position: absolute
-  top: 20px;
-  left: 6px;
+  top: 5px;
+  ${p=>p.lang==='ar'?'right':'left'}: 7px;
+
 `;
 const BellContainer = styled.div`
   display: inline-block;
@@ -62,7 +63,7 @@ class Bell extends React.PureComponent {
 
 
     const { data, lastViewed } = this.props.WhatsHappening;
-
+    const { locale } = this.props.intl;
     if (!data || data === undefined) return null;
 
     const unseenCount = data.filter(item=> {
@@ -70,11 +71,11 @@ class Bell extends React.PureComponent {
           return dateTime > lastViewed;
       });
 
-    
+
     if (unseenCount.length == 0) return null;
 
     return (
-      <CounterContainer>
+      <CounterContainer lang={locale}>
         <Counter><span>{unseenCount.length}</span></Counter>
       </CounterContainer>
     )
