@@ -7,7 +7,7 @@ export default styled.h5`
   font-family: 'Avenir', 'Kaff', 'sans-serif';
   margin: 0;
   text-align: ${p=>p.theme.isArabic?'right':'left'};
-  padding-top: 34px;
-  padding-bottom: 34px;
+  padding-top: 32px;
+  padding-bottom: 31px;
   padding-${p=>p.theme.isArabic?'right':'left'}: 16px;
 `;
