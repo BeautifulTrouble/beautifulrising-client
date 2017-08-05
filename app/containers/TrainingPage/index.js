@@ -87,9 +87,10 @@ const Button = styled.button`
   text-transform: uppercase;
   font-weight: bold;
   font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
-  margin-bottom: 18px;
-  font-size: 16px;
+  margin-top: 18px;
+  font-size: ${props=>props.lang==='ar'?'13px':'14px;'};
   line-height: 22px;
+  padding-${props=>props.lang==='ar'?'right':'left'}: 0;
 `;
 const Banner = styled.img``;
 
