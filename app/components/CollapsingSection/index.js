@@ -76,6 +76,7 @@ class CollapsingSection extends React.PureComponent { // eslint-disable-line rea
   }
 
   toggleContent() {
+     ("Hello WorldX");
     this.setState({showContent: !this.state.showContent} );
   }
 
@@ -84,14 +85,14 @@ class CollapsingSection extends React.PureComponent { // eslint-disable-line rea
       <Container>
         <LanguageThemeProvider>
           <HeaderContainer>
-            <ActionButton onClick={this.toggleContent.bind(this)}>
+            <ActionButton onClick={this.props.onClick !== undefined ? () => this.props.onClick() : this.toggleContent.bind(this)}>
               <Header>{ this.props.header }</Header>
-              <ArrowContainer showing={this.state.showContent}>
+              <ArrowContainer showing={this.props.shouldOpen !== undefined ? this.props.shouldOpen : this.state.showContent}>
                 <Isvg src={ArrowIcon} />
               </ArrowContainer>
             </ActionButton>
           </HeaderContainer>
-          <Content show={this.state.showContent}>
+          <Content show={this.props.shouldOpen !== undefined ? this.props.shouldOpen : this.state.showContent}>
             {React.Children.toArray(this.props.children)}
           </Content>
         </LanguageThemeProvider>
@@ -102,6 +103,7 @@ class CollapsingSection extends React.PureComponent { // eslint-disable-line rea
 
 CollapsingSection.propTypes = {
   // header: React.PropTypes.object.required
+  onClick: React.PropTypes.func
 };
 
 export default CollapsingSection;

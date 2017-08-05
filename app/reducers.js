@@ -19,6 +19,7 @@ import contactUsReducer from 'containers/ContactUs/reducer';
 import submitRealWorldExampleReducer from 'containers/SubmitRealWorldExample/reducer';
 import submitResourceReducer from 'containers/SubmitResource/reducer';
 import emailToolsReducer from 'containers/EmailTools/reducer';
+import toolPageReducer from 'containers/ToolPage/reducer';
 import newsFeedReducer from 'containers/NewsFeed/reducer';
 import submitNewsFeedReducer from 'containers/SubmitNewsFeed/reducer';
 import askTheContributorReducer from 'containers/AskTheContributor/reducer';
@@ -66,6 +67,7 @@ export default function createReducer(asyncReducers) {
     toolsView: toolsViewOptionsReducer,
     toolsSort: toolsSortOptionsReducer,
     tools: toolsReducer,
+    toolPage: toolPageReducer,
     contactUs: contactUsReducer,
     submitRealWorldExample: submitRealWorldExampleReducer,
     submitResource: submitResourceReducer,

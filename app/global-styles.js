@@ -97,8 +97,10 @@ injectGlobal`
     font-family: 'Avenir', 'Kaff', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
-
-
+  input[type=text]::placeholder, textarea::placeholder {
+    font-size: 12px;
+  }
+  
   h1 {
     font-size: 50px;
     letter-spacing: 1px;

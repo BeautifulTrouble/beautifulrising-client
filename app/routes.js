@@ -104,6 +104,7 @@ export default function createRoutes(store) {
 
           const importModules = Promise.all([
             import('containers/ToolPage/reducer'),
+            import('containers/ToolPage/sagas'),
             import('containers/SubmitRealWorldExample/sagas'),
             import('containers/AskTheContributor/sagas'),
             import('containers/ToolPage'),
@@ -111,8 +112,9 @@ export default function createRoutes(store) {
 
           const renderRoute = loadModule(cb);
 
-          importModules.then(([reducer, worldExampleSagas, askContributor, component]) => {
+          importModules.then(([reducer, toolPageSagas, worldExampleSagas, askContributor, component]) => {
             injectReducer('tool', reducer.default);
+            injectSagas(toolPageSagas.default);
             injectSagas(worldExampleSagas.default);
             injectSagas(askContributor.default);
             renderRoute(component);
