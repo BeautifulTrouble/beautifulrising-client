@@ -45,7 +45,6 @@ const HeaderContainer = styled.div`
 const FilterSection = styled.ul`
   width: 100%;
   padding-bottom: 5px;
-  padding-top: 70px;
   border-bottom: 2px solid black;
   padding-${p=>p.theme.isArabic?'right':'left'}: 0px;
   display: flex;

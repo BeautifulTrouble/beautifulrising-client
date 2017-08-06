@@ -30,7 +30,7 @@ import messages from './messages';
 */
 
 const AllContainer = styled.div`
-  margin-top: 65px;
+  // margin-top: 65px;
   text-align: ${props=>props.lang === 'ar' ? 'right' : 'left'};
 `;
 
