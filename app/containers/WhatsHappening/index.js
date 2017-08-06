@@ -20,6 +20,7 @@ import { updateLastViewed } from './actions';
 import staticText from './staticText'
 import Post from './Post';
 import Bell from './Bell';
+import Counter from './Counter';
 
 const PostList = styled.ul`margin: 0; padding: 0;`;
 const PostListItem = styled.li`list-style: none;`;
@@ -42,7 +43,7 @@ export class WhatsHappening extends React.PureComponent { // eslint-disable-line
   renderPostList() {
     //Filter out the ones that are after the lastUpdate date
     if (!this.props.WhatsHappening.data) return null;
-    
+
     const itemsToShow = this.props.WhatsHappening.data.filter(item => !this.props.WhatsHappening.lastViewed || new Date(item.date) < this.props.WhatsHappening.lastViewed)
     return itemsToShow.map((item, index) =>
       <PostListItem key={item.slug}>
@@ -97,4 +98,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WhatsHappening);
-export { Bell };
+export { Bell, Counter };

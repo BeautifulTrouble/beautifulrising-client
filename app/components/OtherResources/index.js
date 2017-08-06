@@ -21,6 +21,8 @@ const ResourceTypeList = styled.ul`
 const ResourceType = styled.li`
   list-style: none;
   position:relative;
+
+  margin-top: 36px;
 `;
 
 const ResourceList = styled.ul`

@@ -37,6 +37,12 @@ injectGlobal`
   }
 
   @font-face {
+    font-family: 'Avenir Black';
+    font-weight: 800;
+    src: url(${AvenirBlack});
+  }
+
+  @font-face {
     font-family: 'KnockOut';
     src: url(${KnockOut});
   }
@@ -100,7 +106,7 @@ injectGlobal`
   input[type=text]::placeholder, textarea::placeholder {
     font-size: 12px;
   }
-  
+
   h1 {
     font-size: 50px;
     letter-spacing: 1px;
