@@ -5,11 +5,12 @@ import { RouterLink } from 'utils/markdown';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import BlockViewItem from 'containers/HomePage/BlockViewItem';
-
+import ImageSlideshow from 'components/ImageSlideshow';
 import styled from 'styled-components';
 import ContentBlock from 'components/ContentBlock';
 import HeaderBlock from 'components/HeaderBlock';
-
+import Isvg from 'react-inlinesvg';
+import ArrowIcon from 'assets/images/icons/arrow.svg';
 
 const Container = styled.div`
   display: flex
@@ -52,6 +53,17 @@ const Title = styled(HeaderBlock)`
 `;
 const FeatureImage = styled.img`width: 100%`;
 const BEAUTIFULRISING_URL = `//www.beautifulrising.org/`;
+
+const PreviousButton = styled.div`
+  display: inline-block;
+  opacity: 0.7;
+`;
+const NextButton = styled.div`
+  display: inline-block;
+  transform: rotate(180deg);
+  opacity: 0.7;
+`
+
 class Post extends React.PureComponent {
 
   constructor(props) {
@@ -60,7 +72,15 @@ class Post extends React.PureComponent {
 
   renderImage() {
     return (
-      <FeatureImage src={BEAUTIFULRISING_URL + this.props.image} />
+      <ImageSlideshow images={[
+        BEAUTIFULRISING_URL + this.props.image,
+        "https://images.pexels.com/photos/9805/pexels-photo.jpg",
+        "https://images.pexels.com/photos/8852/food-wood-kitchen-candy.jpg",
+        "https://images.pexels.com/photos/9095/pexels-photo.jpg"
+      ]}
+        previousButton={(<PreviousButton><Isvg src={ArrowIcon} /></PreviousButton>)}
+        nextButton={(<NextButton><Isvg src={ArrowIcon} /></NextButton>)}
+      />
     )
   }
 
