@@ -11,14 +11,23 @@ import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import {Header, SidebarContent} from 'components/ToolPage/Sidebar';
 import TagsContent from 'containers/Tags';
 
+import {createStructuredSelector} from 'reselect';
+import { connect } from 'react-redux';
+import { CollapsingHeader, ContentContainer, CollapsingContent } from 'components/ToolPage/Main';
+import CollapsingSection from 'components/CollapsingSection';
+
 import staticText from '../staticText';
+
+import makeSelectToolPage from '../selectors';
+import { setChosenSection } from '../actions';
+import { TAGS } from '../constants';
 
 class Tags extends React.PureComponent {
   constructor(props) {
     super();
   }
 
-  render() {
+  renderSidebar() {
     const lang = this.props.intl.locale;
     return (
       <LanguageThemeProvider>
@@ -35,6 +44,48 @@ class Tags extends React.PureComponent {
       </LanguageThemeProvider>
     );
   }
+
+  handleClick() {
+    // Set it to null if the same LEARN_MORE
+    if (this.props.ToolPage.chosenSection === TAGS) {
+      this.props.handleSectionClick(null);
+    } else {
+      this.props.handleSectionClick(TAGS);
+    }
+  }
+
+  renderCollapsible()  {
+    const lang = this.props.intl.locale;
+    return (
+      <CollapsingSection
+        header={(
+          <CollapsingHeader>
+            <TranslatableStaticText {...staticText.tags} />
+          </CollapsingHeader>
+        )}
+
+        onClick={this.handleClick.bind(this)}
+        shouldOpen={
+          this.props.ToolPage.expandAll ||
+          this.props.ToolPage.chosenSection === TAGS
+        }
+      >
+        <CollapsingContent>
+          <LanguageThemeProvider>
+            <TagsContent
+                align={lang == 'ar' ? "right" : "left"}
+                tags={this.props.tags ?
+                        this.props.tags.map(item=>item.toLowerCase()) : null}
+            />
+          </LanguageThemeProvider>
+        </CollapsingContent>
+      </CollapsingSection>
+    );
+  }
+
+  render() {
+    return this.props.collapsible ? this.renderCollapsible() : this.renderSidebar();
+  }
 }
 
 Tags.propTypes = {
@@ -42,4 +93,17 @@ Tags.propTypes = {
   type: React.PropTypes.string.isRequired
 };
 
-export default injectIntl(Tags);
+const mapStateToProps = createStructuredSelector({
+  ToolPage: makeSelectToolPage()
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    handleSectionClick: (chosenSection) => {
+      dispatch(setChosenSection(chosenSection));
+    }
+  };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(Tags));

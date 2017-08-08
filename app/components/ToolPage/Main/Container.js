@@ -7,5 +7,7 @@ export default styled.div`
 
   @media(max-width: 700px) {
     flex-wrap: wrap;
+    padding: 32px;
+    padding-${p=>p.theme.isArabic?'left':'right'}: 20px;
   }
 `;
