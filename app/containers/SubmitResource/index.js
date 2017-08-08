@@ -30,6 +30,11 @@ const SubmitResourceContainer = styled.div`
   margin-top: 36px;
   width: 475px;
   display: inline-block;
+
+  @media(max-width: 700px) {
+    width: 100%;
+    padding: 10px;
+  }
 `;
 
 export class SubmitResource extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
