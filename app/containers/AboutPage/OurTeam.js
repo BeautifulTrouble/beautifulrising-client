@@ -20,6 +20,11 @@ import TeamListItem from 'components/AboutPage/Team/TeamListItem';
 import TeamImage from 'components/AboutPage/Team/TeamImage';
 import TeamName from 'components/AboutPage/Team/TeamName';
 
+const TeamList = styled.ul`
+  @media(max-width: 700px) {
+    padding: 0;
+  }
+`;
 export class OurTeam extends React.Component {
   renderHeader() {
     return(
@@ -35,8 +40,7 @@ export class OurTeam extends React.Component {
       <LanguageThemeProvider>
         <AboutSection id='team' lang={locale} position={this.props.teamMembers.toString().length}>
           { this.props.hideHeader ? null : this.renderHeader() }
-          <ThemeProvider theme={themeThreeColumns}>
-            <ul>
+            <TeamList>
               { !this.props.teamMembers ? null : this.props.teamMembers.map((item, ind) => {
                   const teamMember = this.props.allData.get(item);
                   return (
@@ -50,8 +54,7 @@ export class OurTeam extends React.Component {
                     </TeamListItem>
                   );
               })}
-            </ul>
-          </ThemeProvider>
+            </TeamList>
         </AboutSection>
       </LanguageThemeProvider>
     );
