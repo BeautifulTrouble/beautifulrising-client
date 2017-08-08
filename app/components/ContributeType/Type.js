@@ -14,4 +14,11 @@ export default styled.li`
   svg {
     width: 100%;
   }
+
+  @media(max-width: 700px) {
+    width: auto;
+    padding: 0;
+    margin-bottom: 0;
+    display: inline-block;
+  }
 `;

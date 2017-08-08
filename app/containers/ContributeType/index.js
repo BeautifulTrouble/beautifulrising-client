@@ -39,6 +39,15 @@ import messages from './messages';
 import keys from './constants';
 import staticText from './staticText';
 
+const MobileContent = styled(Content)`
+  display: none;
+  padding: 0 20px 20px;
+  @media(max-width: 700px) {
+    width: 100%;
+    display: ${p=>p.show?'block':'none'};
+    * {text-align: center !important;}
+  }
+`;
 
 class ContributeType extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -85,6 +94,22 @@ class ContributeType extends React.PureComponent { // eslint-disable-line react/
                 </Type>
               ))}
             </TypeList>
+            {DATA.map((item, index) => (
+              <MobileContent key={index} show={this.state.chosen === index}>
+                  <Spiel>
+                    <ContentBlock>
+                      {item.description}
+                    </ContentBlock>
+                  </Spiel>
+                  <CallToAction>
+                    <ContentBlock>
+                      <Link to={buildMessage(item.form)} target="_blank" style={{textTransform: 'uppercase'}}>
+                        <TranslatableStaticText {...staticText.goToForm} />
+                      </Link>
+                    </ContentBlock>
+                  </CallToAction>
+              </MobileContent>
+            ))}
             <Examples>
               <Subtitle>
                 <FormattedMessage {...messages.examples} values={{
