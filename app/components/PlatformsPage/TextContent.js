@@ -6,4 +6,10 @@ export default styled.div`
   * {
     text-align: ${props=>props.lang==='ar'?'right':'left'};
   }
+
+  @media(max-width: 700px) {
+    width: 100%;
+    float: none;
+    padding: 10px;
+  }
 `;
