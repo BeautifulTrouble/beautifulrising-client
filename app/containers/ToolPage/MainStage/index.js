@@ -3,6 +3,8 @@ import Markdown from 'react-markdown';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import styled from 'styled-components';
+
 import { RouterLink } from 'utils/markdown';
 
 import ToolKeyItems from 'containers/ToolKeyItems';
@@ -16,6 +18,14 @@ import ByLine from './ByLine';
 import ContributedBy from './ContributedBy';
 import RealWorld from './RealWorld';
 import LearnMore from './LearnMore';
+import WhyItWorked from '../Sidebar/WhyItWorked';
+import WhyItFailed from '../Sidebar/WhyItFailed';
+const MobileContent = styled.div`
+  display: block;
+  @media(max-width: 700px) {
+    display: block;
+  }
+`;
 
 class MainStage extends React.PureComponent {
   constructor(props) {
@@ -29,11 +39,20 @@ class MainStage extends React.PureComponent {
         <Untranslated { ...this.props} />
         <MainContent { ...this.props } />
         <ToolKeyItems {...this.props} />
-        <ContributedBy {...this.props} />
 
+        <MobileContent>
+          <WhyItWorked collapsible={true}  {...this.props} text={this.props['why-it-worked']} />
+          <WhyItFailed collapsible={true}  {...this.props} text={this.props['why-it-worked']} />
+        </MobileContent>
+
+        <ContributedBy {...this.props} />
         {/* Show RealWorld example only on non-stories*/}
         {this.props.type !== "story" ? <RealWorld {...this.props} /> : null}
         <LearnMore {...this.props} />
+
+        <MobileContent>
+        </MobileContent>
+
       </LanguageThemeProvider>
     );
   }

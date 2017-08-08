@@ -27,6 +27,10 @@ export const AuthorContainer = styled.section`
   margin-bottom: 54px;
   direction: ${p=>p.theme.isArabic?'rtl':'ltr'} !important;
   display: flex;
+
+  @media(max-width: 700px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const AuthorImageArea = styled.div`
@@ -59,6 +63,11 @@ export const AuthorLink = styled(Link)`
   width: 200px;
   height: 170px;
   min-width: 200px;
+
+  @media(max-width: 700px) {
+    width: 100%;
+    min-width: 100%;
+  }
 `;
 
 export const AuthorDesc = styled.div`
@@ -69,6 +78,12 @@ export const AuthorDesc = styled.div`
 
   p {
     margin: 0;
+  }
+
+  @media(max-width: 700px) {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
   }
 `;
 

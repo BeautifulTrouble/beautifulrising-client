@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router';
 
 export default styled(Link)`
-  width: 100%;
+  width: 205px;
   display: inline-block;
   vertical-align: top;
   text-align: ${props=>props.lang==='ar' ? 'right' : 'left'};
@@ -20,4 +20,7 @@ export default styled(Link)`
     vertical-align: top;
   }
 
+  @media(max-width: 700px) {
+    width: 100%;
+  }
 `;

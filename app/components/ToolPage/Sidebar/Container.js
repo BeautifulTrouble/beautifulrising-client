@@ -4,4 +4,8 @@ export default styled.div`
   padding-top: 49px;
   width: 370px;
   min-width: 370px;
+
+  @media(max-width: 700px) {
+    display: none;
+  }
 `;
