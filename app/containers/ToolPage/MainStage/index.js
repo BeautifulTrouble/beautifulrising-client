@@ -20,8 +20,10 @@ import RealWorld from './RealWorld';
 import LearnMore from './LearnMore';
 import WhyItWorked from '../Sidebar/WhyItWorked';
 import WhyItFailed from '../Sidebar/WhyItFailed';
+import PotentialRisk from '../Sidebar/PotentialRisk';
+
 const MobileContent = styled.div`
-  display: block;
+  display: none;
   @media(max-width: 700px) {
     display: block;
   }
@@ -43,6 +45,7 @@ class MainStage extends React.PureComponent {
         <MobileContent>
           <WhyItWorked collapsible={true}  {...this.props} text={this.props['why-it-worked']} />
           <WhyItFailed collapsible={true}  {...this.props} text={this.props['why-it-worked']} />
+          <PotentialRisk collapsible={true} {...this.props} content={this.props['potential-risks']} type={this.props.type} />
         </MobileContent>
 
         <ContributedBy {...this.props} />
