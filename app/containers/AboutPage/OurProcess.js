@@ -34,6 +34,11 @@ const [STEPS, SUBHEADING, WORKSHOP] = [0, 1, 2];
 
 const Subheader = styled.h4`margin-top: 18px;`
 const Header = styled.h3`margin-top: 24px;`
+const ProcessList = styled.ul`
+@media(max-width: 700px) {
+  padding: 0;
+}
+`;
 class OurProcess extends React.Component {
 
   renderProjects() {
@@ -45,7 +50,7 @@ class OurProcess extends React.Component {
     if (!groups) return null;
 
     return (
-        <ul lang={lang}>
+        <ProcessList lang={lang}>
           {groups.map((item,ind) => { return(
             <ProcessListItem key={ind} lang={lang}>
 
@@ -61,7 +66,7 @@ class OurProcess extends React.Component {
             </ProcessListItem>
             )}
           )}
-        </ul>
+        </ProcessList>
       )
 
   }
@@ -80,7 +85,7 @@ class OurProcess extends React.Component {
     // processes[0] is the list
     return (
       <LanguageThemeProvider theme={themeFourColumns}>
-          <ul>
+          <ProcessList>
             {processes[STEPS].value.map(item=>(
               <ProcessListItem key={item.image} lang={locale}>
                 <CircledImage src={`https://beautifulrising.org/${item.image}`} />
@@ -90,7 +95,7 @@ class OurProcess extends React.Component {
                 </ContentBlock>
               </ProcessListItem>
             ))}
-          </ul>
+          </ProcessList>
       </LanguageThemeProvider>
     )
   }
