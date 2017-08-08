@@ -8,4 +8,9 @@ export default styled.section`
   &::after {
     clear: both;
   }
+
+  //mobile
+  @media(max-width: 700px) {
+    display: none;
+  }
 `;
