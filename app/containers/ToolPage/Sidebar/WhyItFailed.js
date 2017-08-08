@@ -81,7 +81,7 @@ class WhyItFailed extends React.PureComponent {
             <TranslatableStaticText {...staticText.whyItFailedHeader} />
           </BigHeader>
           <ContentBlock>
-            <Markdown source={props.text} renderers={{Link: RouterLink}} />
+            <Markdown source={this.props.text} renderers={{Link: RouterLink}} />
           </ContentBlock>
         </SidebarContent>
       </LanguageThemeProvider>

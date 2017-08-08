@@ -16,6 +16,7 @@ export const WHY_IT_FAILED = 'app/ToolPage/Section/WHY_IT_FAILED';
 export const POTENTIAL_RISK = 'app/ToolPage/Section/POTENTIAL_RISK';
 export const TAGS = 'app/ToolPage/Section/TAGS';
 export const TRAINING = 'app/ToolPage/Section/TRAINING';
+export const RELATED_TOOLS = 'app/ToolPage/Section/RELATED_TOOLS';
 
 
 export const TYPE_PERSON = 'person';

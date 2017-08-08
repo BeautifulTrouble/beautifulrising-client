@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import styled from 'styled-components';
+import { makeSelectAllToolsWithSlugIndex } from 'containers/App/selectors';
 
 import { RouterLink } from 'utils/markdown';
 
@@ -21,6 +22,7 @@ import LearnMore from './LearnMore';
 import WhyItWorked from '../Sidebar/WhyItWorked';
 import WhyItFailed from '../Sidebar/WhyItFailed';
 import PotentialRisk from '../Sidebar/PotentialRisk';
+import RelatedTools from '../Sidebar/RelatedTools';
 
 const MobileContent = styled.div`
   display: none;
@@ -54,6 +56,7 @@ class MainStage extends React.PureComponent {
         <LearnMore {...this.props} />
 
         <MobileContent>
+          <RelatedTools collapsible={true} {...this.props} />
         </MobileContent>
 
       </LanguageThemeProvider>
@@ -61,4 +64,14 @@ class MainStage extends React.PureComponent {
   }
 }
 
-export default MainStage;
+const mapStateToProps = createStructuredSelector({
+   toolsList: makeSelectAllToolsWithSlugIndex()
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainStage);
