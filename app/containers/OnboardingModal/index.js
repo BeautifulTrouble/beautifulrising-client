@@ -120,7 +120,7 @@ export class OnboardingModal extends React.Component {
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           style={customStyles(lang)}
-          contentLabel="Example Modal"
+          contentLabel="Onboarding"
         >
             <OnboardingContent />
         </Modal>
