@@ -23,6 +23,8 @@ import WhyItWorked from '../Sidebar/WhyItWorked';
 import WhyItFailed from '../Sidebar/WhyItFailed';
 import PotentialRisk from '../Sidebar/PotentialRisk';
 import RelatedTools from '../Sidebar/RelatedTools';
+import Tags from '../Sidebar/Tags';
+import Training from '../Sidebar/Training';
 
 const MobileContent = styled.div`
   display: none;
@@ -57,6 +59,8 @@ class MainStage extends React.PureComponent {
 
         <MobileContent>
           <RelatedTools collapsible={true} {...this.props} />
+          <Tags collapsible={true} {...this.props} />
+          <Training collapsible={true} {...this.props} />
         </MobileContent>
 
       </LanguageThemeProvider>

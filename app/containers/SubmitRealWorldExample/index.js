@@ -29,6 +29,10 @@ import staticText from './staticText';
 const SubmitExampleContainer = styled.div`
   margin-top: 12px;
   width: 470px;
+
+  @media(max-width: 700px) {
+    width: 100%;
+  }
 `;
 
 export class SubmitRealWorldExample extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
