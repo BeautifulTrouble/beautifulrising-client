@@ -27,6 +27,9 @@ const ResourceType = styled.li`
 
 const ResourceList = styled.ul`
   padding-left: 70px;
+  @media(max-width: 700px) {
+    padding: 0;
+  }
 `;
 const Resource = styled.li`
   list-style: none;
@@ -39,6 +42,13 @@ const Resource = styled.li`
   }
   p {
     font-style: italic;
+  }
+
+  @media(max-width: 700px) {
+    width: 100%;
+    padding: 0;
+    margin-top :10px;
+    p { margin: 0;}
   }
 `;
 

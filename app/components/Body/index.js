@@ -19,6 +19,6 @@ export default styled.section`
   // Mobile
   @media(max-width: 700px) {
     max-width: 100%;
-    padding-top: 0px;
+    padding-top: 120px;
   }
 `;

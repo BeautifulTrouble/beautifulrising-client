@@ -20,6 +20,7 @@ import ContentBlock from 'components/ContentBlock';
 import TrainingBanner from 'assets/images/about/training.jpg';
 import OtherResources  from 'components/OtherResources';
 import SubmitResource from 'containers/SubmitResource';
+import CollapsingSection from 'components/CollapsingSection';
 import { loadData } from 'containers/App/actions';
 
 //For listening
@@ -41,6 +42,13 @@ const MenuArea = styled.div`
   border-${props=>props.lang==='ar'?'left':'right'}: 2px solid;
   position: relative;
 
+  @media(max-width: 700px) {
+    width: 100%;
+    float: none;
+    padding: 0;
+    border: none;
+  }
+
 `;
 const Header = styled.h1`text-align: center
   font-size: 48px;
@@ -56,6 +64,10 @@ const Lead = styled.div`
 const MenuList = styled.ul`
 padding: 0;
 margin: 0;
+
+@media(max-width: 700px) {
+  display: none;
+}
 `;
 const LinkItem = styled.li`
   text-align: ${props=>props.lang==='ar'?'right':'left'};
@@ -81,7 +93,7 @@ const LinkItem = styled.li`
   }
 `;
 const Button = styled.button`
-  text-align: ${props=>props.lang==='ar'?'right':'left'};
+  text-align: ${props=>props.lang==='ar'?'right':'left'} !important;
   outline: none;
   cursor: pointer;
 
@@ -93,18 +105,55 @@ const Button = styled.button`
   font-size: ${props=>props.lang==='ar'?'13px':'14px;'};
   line-height: 22px;
   padding-${props=>props.lang==='ar'?'right':'left'}: 0;
-`;
-const Banner = styled.img``;
 
+  @media(max-width: 700px) {
+    margin-bottom: 0;
+    margin: 0;
+    padding: 10px 0;
+    width: 100%;
+  }
+`;
+const Banner = styled.img`
+  display: block;
+  @media(max-width: 700px) {
+    display: none;
+  }
+`;
+
+const MobileBanner = styled.img`
+  display: none;
+  @media(max-width: 700px) {
+    display: block;
+    width: 100%;
+  }
+`;
+
+const MobileTrainingList = styled.div`
+display: none;
+@media(max-width: 700px) {
+  display: block;
+  width: 100%;
+}`;
 const ContentArea = styled.div`
   width: 60%;
   float: ${props=>props.lang==='ar'?'right':'left'};
   padding-${props=>props.lang==='ar'?'right':'left'}: 100px;
+
+  @media(max-width: 700px) {
+    display: none;
+  }
 `;
 const Content = styled.div`
   display: ${props => props.isVisible ? 'block' : 'none'} !important;
   padding-${props=>props.lang==='ar'?'left':'right'}: 170px;
   margin-top: 40px;
+
+  @media(max-width: 700px) {
+    display: block !important;
+    padding-right: 0;
+    margin-top: 0;
+    margin-bottom: 60px;
+  }
 `;
 
 
@@ -118,6 +167,10 @@ const TrainingArea =styled.div`
     content: ' ';
     clear: both;
     display: block;
+  }
+
+  @media(max-width: 700px) {
+    padding-bottom: 20px;
   }
 `;
 
@@ -179,12 +232,35 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
             </Header>
             <TrainingArea lang={lang}>
               <MenuArea lang={lang}>
+                <MobileBanner  src={TrainingBanner} />
                 <Heading lang={lang}>{trouble.get('heading')}</Heading>
                 <Lead>
                   <ContentBlock>
                     <Markdown source={trouble.get('lead')} />
                   </ContentBlock>
                 </Lead>
+
+                <MobileTrainingList>
+                  {trouble.get('content').map((item, ind) => {
+                    return (
+                      <CollapsingSection
+                        key={ind}
+                        header={
+                            (<Button onClick={()=>this.handleClick(ind)}>
+                              {item.get('heading')}
+                            </Button>
+                            )
+                        }
+                        shouldOpen={ind === this.state.selected}
+                      >
+                        <Content key={ind} isVisible={ ind === this.state.selected }>
+                          <Markdown source={item.get('text')} />
+                        </Content>
+                      </CollapsingSection>
+                    )
+                  })}
+                </MobileTrainingList>
+
                 <MenuList lang={lang}>
                 {trouble.get('content').map((item, ind) => {
                   return (
