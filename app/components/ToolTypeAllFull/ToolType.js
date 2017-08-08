@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router';
 
 export default styled(Link)`
-  width: 205px;
+  width: 100%;
   display: inline-block;
   vertical-align: top;
   text-align: ${props=>props.lang==='ar' ? 'right' : 'left'};

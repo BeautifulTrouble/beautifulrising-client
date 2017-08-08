@@ -21,6 +21,8 @@ import Team from 'components/AboutPage/Partners/Team';
 
 import messages from './messages';
 
+const List = styled.ul`
+padding: 0`;
 class Partners extends React.Component {
   renderHeader() {
     const lang = this.props.intl.locale;
@@ -38,7 +40,7 @@ class Partners extends React.Component {
       <AboutSection id='partners' lang={lang} position={this.props.networkPartners.toString().length}>
         { this.props.hideHeader ? null : this.renderHeader() }
         <ThemeProvider theme={themeThreeColumns}>
-          <ul>
+          <List>
             { this.props.networkPartners === undefined ? null : this.props.networkPartners.map((item, ind) => (
               <ListItem key={ind} lang={lang}>
                 <a href={item.get('link')} target="_blank">
@@ -51,7 +53,7 @@ class Partners extends React.Component {
                 </a>
               </ListItem>
             ))}
-          </ul>
+          </List>
         </ThemeProvider>
       </AboutSection>
     );

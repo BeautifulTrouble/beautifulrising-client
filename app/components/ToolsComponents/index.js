@@ -171,11 +171,16 @@ export const ToolsContainer = styled.div`
   border: 2px solid black;
   top: 217px;
 
-  ${props=>props.theme.lang == 'ar' ? 'left: 0;' : 'right: 0;'}
+  ${props=>props.lang == 'ar' ? 'left: 0;' : 'right: 0;'}
   transition: transform 0.3s ease, width 0.3s ease;
   overflow-x: hidden;
   overflow-y: hidden;
-  `;
+
+  //mobile
+  @media(max-width: 700px) {
+    display: none;
+  }
+`;
 
 export const ToolContainer = styled.div`
   ${props=>props.lang==='ar' ? 'float: right' : 'float: left'};
@@ -192,6 +197,12 @@ export const ListContainer = styled(ToolContainer)`
   text-align: left;
   margin-${p=>p.lang==='ar'?'left':'right'}: ${p=>p.index%2==0?'0':'130px'};
   padding-bottom: 40px;
+
+  @media(max-width: 700px) {
+    margin: 0;
+    width: 100%;
+    padding: 20px;
+  }
 `;
 
 export const ListSpiel = styled(ContentBlock)`

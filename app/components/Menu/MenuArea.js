@@ -20,4 +20,10 @@ display: inline-block;
   display: block;
   clear: both;
 }
+
+// Mobile
+@media(max-width: 700px) {
+  max-width: 100%;
+  width: 100%;
+}
 `;

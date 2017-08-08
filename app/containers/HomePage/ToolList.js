@@ -17,4 +17,8 @@ export default styled.div`
     clear: both;
     display: block;
   }
+
+  @media(max-width: 700px) {
+    justify-content: center;
+  }
 `;

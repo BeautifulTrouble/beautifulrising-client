@@ -18,6 +18,13 @@ const Title = styled.h1`
   left: 50%;
   margin: 0;
   transform: translate(-50%, 0);
+
+  @media(max-width: 700px) {
+    top: ${props=> props.top || '-15px' };
+    img {
+      width: 170px;
+    }
+  }
 `;
 
 class Logo extends React.Component {

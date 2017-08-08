@@ -15,4 +15,10 @@ export default styled.section`
   position: relative;
   left: ${(props) => props.showTools ? (props.lang==='ar' ? '230px' : '-230px') : '0'};
   transition: left 0.3s ease;
+
+  // Mobile
+  @media(max-width: 700px) {
+    max-width: 100%;
+    padding-top: 0px;
+  }
 `;

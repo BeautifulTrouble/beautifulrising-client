@@ -112,8 +112,8 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
     const {locale} = this.props.intl;
 
     return (
-      <LanguageThemeProvider>
-        <ToolsContainer showTools={this.props.Tools.show || this.props.Tools.onboardShow }>
+      <ToolsContainer lang={locale} showTools={this.props.Tools.show || this.props.Tools.onboardShow }>
+        <LanguageThemeProvider>
           <ToolsViewport>
               <ToolsMenu>
                 <ToolsMenuItem>
@@ -153,8 +153,8 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
               </ToolsMenu>
             <ToolsArea lang={this.props.language} show={this.props.Tools.show || this.props.Tools.onboardShow}/>
           </ToolsViewport>
-        </ToolsContainer>
-      </LanguageThemeProvider>
+        </LanguageThemeProvider>
+      </ToolsContainer>
     );
   }
 }

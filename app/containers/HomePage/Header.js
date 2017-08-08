@@ -30,6 +30,7 @@ import staticText from './staticText';
 
 const HeaderContainer = styled.div`
   width: 100%;
+  margin-top: 10px;
 
   &::before {
     position: absolute;
@@ -50,6 +51,19 @@ const FilterSection = styled.ul`
   display: flex;
   list-style: none;
   margin: 0;
+
+  @media(max-width: 700px) {
+    flex-wrap: wrap;
+
+    &::after {
+      content: ' ';
+      border: 1px solid white;
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 68px;
+    }
+  }
 `;
 
 const FilterItem = styled.li`
@@ -131,7 +145,7 @@ class Header extends React.PureComponent {
             <FilterItem style={{ flexGrow: 1 }}>
               <SearchField {...this.props.params}/>
             </FilterItem>
-            <FilterItem sidePadding="24px">
+            <FilterItem sidePadding="24px" >
               <IconButton width="auto" onClick={this.toggleTagArea.bind(this)}>
                 <TextButton ar={lang==='ar'} selected={true}>
                   <TranslatableStaticText {...staticText.tags} />
