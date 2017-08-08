@@ -141,4 +141,9 @@ injectGlobal`
         width: 157px !important;
     }
   }
+  [aria-label=Onboarding] {
+    @media(max-width: 700px) {
+      width: calc(100% - 75px) !important;
+    }
+  }
 `;

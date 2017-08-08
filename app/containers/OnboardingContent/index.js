@@ -60,6 +60,8 @@ const Header = styled.h2`
     left: ${p=>p.leftLine || '50%'};
     opacity: ${p=>p.showLine?'1':'0'};
     transition: opacity 0.3s ease;
+
+    @media(max-width: 700px) { display: none; }
   }
 `;
 const Content = styled.div`
@@ -74,6 +76,10 @@ const Button = styled.button`
 const List = styled.ul`
   padding: 0;
   margin: 20px 50px;
+
+  @media(max-width: 700px) {
+    margin: 5px;
+  }
 `;
 const CloseButton = styled(Button)`
   background: white;
@@ -110,6 +116,11 @@ const ListItem = styled.li`
   button span.isvg {
     position: absolute;
     ${p=>p.lang==='ar'?'left':'right'}: 20px;
+
+    @media(max-width: 700px) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
   button svg {
     transition: transform 0.4s ease;
@@ -129,6 +140,15 @@ const ListItem = styled.li`
         return `transform: ${p.selected ? 'rotate(270deg)' : 'rotate(180deg)'}`;
       }
     }};
+  }
+
+  @media(max-width: 700px) {
+    h2 {
+      font-size: 14px;
+      padding: 10px 0;
+
+      padding-${p=>p.lang==='ar'?'left':'right'}: 30px;
+    }
   }
 `;
 
@@ -156,12 +176,20 @@ const SubTitle = styled.h2`
 const Spiel = styled(ContentBlock)`
   margin: 0 28%;
   text-align: center;
+
+  @media(max-width: 700px) {
+    margin: 0;
+  }
 `;
 const Overlay = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,0,0.6);
   padding: 120px 39px 30px;
+
+  @media(max-width: 700px) {
+    padding: 120px 0 10px;
+  }
 `;
 
 class OnboardingContent extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
