@@ -14,4 +14,13 @@ export default styled(ContentBlock)`
   vertical-align: top;
   align-items: stretch;
   text-align: ${p=>p.isArabic?'right':'left'};
+
+  @media(max-width: 700px) {
+    width: 100%;
+    border: none;
+
+    text-align: center;
+    border-bottom: 2px solid black;
+    
+  }
 `;

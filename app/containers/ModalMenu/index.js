@@ -44,6 +44,12 @@ const Button = styled.button`
   position: absolute;
   ${props=>props.lang==='ar'?'right':'left'}: -1px;
   top: 10px;
+
+  //mobile
+  @media(max-width: 700px) {
+    left: 0px;
+    top: 0px;
+  }
 `;
 
 const MenuText = styled.span`{
@@ -61,6 +67,11 @@ const CloseBox = styled.div`
   display: inline-block;
   height: 122px;
   position: relative;
+
+  // Mobile
+  @media(max-width: 700px) {
+    max-width: 1170px;
+  }
 `;
 
 const MenuContainer= styled.div`
@@ -76,6 +87,7 @@ const MenuContainer= styled.div`
     content: ' ';
     clear: both;
   }
+
 `;
 const CloseButton = styled.button`
 
@@ -88,6 +100,13 @@ const Viewport = styled.div`
 const MenuSection = styled.section`
   width: 100%;
   border-bottom: 2px solid black;
+`;
+const MenuHeaderSection = styled(MenuSection)``;
+const MenuBodySection = styled(MenuSection)`
+  @media(max-width: 700px) {
+    overflow: auto;
+    height: calc(100vh - 124px);
+  }
 `;
 
 const BellArea = styled.div`
@@ -142,7 +161,7 @@ export class ModalMenu extends React.Component {
           contentLabel="Example Modal"
         >
           <MenuContainer>
-            <MenuSection>
+            <MenuHeaderSection>
               <CloseBox lang={lang}>
                 <CloseButton onClick={this.closeModal.bind(this)}>
                   <Isvg src={CloseIcon} />
@@ -151,10 +170,10 @@ export class ModalMenu extends React.Component {
                   <WhatsHappeningBell onClick={this.closeModal.bind(this)} />
                 </BellArea>
               </CloseBox>
-            </MenuSection>
-            <MenuSection>
+            </MenuHeaderSection>
+            <MenuBodySection>
               <Menu onClick={this.closeModal.bind(this)} />
-            </MenuSection>
+            </MenuBodySection>
           </MenuContainer>
         </Modal>
       </Viewport>

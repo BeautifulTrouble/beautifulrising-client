@@ -19,6 +19,10 @@ const Viewport = styled.div`
   width: 1180px;
   text-align: left;
   display: inline-block;
+  // Mobile
+  @media(max-width: 700px) {
+    max-width: 100%;
+  }
 `;
 const PageHeader = styled.header`
   position: fixed;
@@ -30,6 +34,11 @@ const PageHeader = styled.header`
   padding: 0 20px 0px;
   z-index: 300;
   text-align: center;
+
+  @media(max-width: 700px) {
+    padding: 0;
+    position: relative;
+  }
 `;
 
 const ModalMenuArea = styled(ModalMenu)`
@@ -46,6 +55,12 @@ const BellArea = styled.div`
   position: absolute;
   ${p=>p.theme.ar=='ar'?'left':'right'}: 0;
   top: 27px;
+
+  @media(max-width: 700px) {
+    position: absolute;
+    ${p=>p.theme.ar=='ar'?'left':'right'}: 15px;
+    top: 10px;
+  }
 `;
 
 class Header extends React.Component {

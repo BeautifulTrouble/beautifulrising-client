@@ -21,6 +21,11 @@ const Container = styled.div`
   top: 45px;
   z-index: ${p=>p.zIndex?p.zIndex:500};
   transform: ${props=>props.lang==='ar'?'translate(-530px,0)':'translate(530px,0)'};
+
+  // Mobile
+  @media(max-width: 700px) {
+    display: none;
+  }
 `;
 const Viewport = styled.div``;
 const Button = styled.button`
