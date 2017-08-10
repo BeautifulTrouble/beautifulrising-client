@@ -15,6 +15,11 @@ import ArrowIcon from 'assets/images/icons/arrow.svg';
 const Container = styled.div`
   display: flex
   margin-top: 95px;
+
+  @media(max-width: 700px) {
+    display: block;
+    margin-top: 15px;
+  }
 `;
 const ContentArea = styled.div`
   width: 490px;
@@ -34,6 +39,18 @@ const ContentArea = styled.div`
     border-top: 2px solid;
     top: ${p=>p.twig + 10}%;
   }
+
+  @media(max-width: 700px) {
+    display: block;
+    width: 100%;
+    min-width: 100%;
+    border: none;
+    padding: 40px;
+
+    &::after {
+      border: none;
+    }
+  }
 `;
 const FeatureArea = styled.div`
   flex-grow: 1;
@@ -42,6 +59,21 @@ const FeatureArea = styled.div`
   padding-${p=>p.theme.isArabic?'right':'left'}: 80px;
   padding-top: 45px;
   padding-bottom: 70px;
+
+  @media(max-width: 700px) {
+    display: block;
+    width: 100%;
+    min-width: 100%;
+    padding: 10px;
+    text-align: center;
+
+    & > div {
+      float: none;
+      margin: 0;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+  }
 `;
 
 const DateContent = styled(ContentBlock)`
