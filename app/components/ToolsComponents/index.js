@@ -145,6 +145,12 @@ export const ToolsMenu = styled.ul`
   padding: 20px 0;
   border: solid black;
   border-width: ${props=>props.theme.lang === 'ar' ? '0 0 0 2px' : '0 2px 0 0'};
+  @media(max-width: 700px) {
+    display: flex;
+    padding: 0;
+    width: 100%;
+    border: none;
+  }
 `;
 export const ToolsMenuItem = styled.li`
   list-style: none;
@@ -155,6 +161,10 @@ export const ToolsMenuItem = styled.li`
       display: block;
       clear: both;
     }
+  }
+
+  @media(max-width: 700px) {
+    flex-grow: 1;
   }
 `;
 
@@ -178,7 +188,14 @@ export const ToolsContainer = styled.div`
 
   //mobile
   @media(max-width: 700px) {
-    display: none;
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    width: 100vw;
+    height: 70px;
+    background-color: white;
+    z-index: 600;
   }
 `;
 
