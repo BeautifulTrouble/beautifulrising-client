@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import Modal from 'react-modal';
 
 import styled from 'styled-components';
 import Isvg from 'react-inlinesvg';
@@ -40,7 +41,7 @@ import staticText from './staticText';
 const ToolsOpenerCloser = styled.div``;
 
 const ToolsMenuContainer = styled.div`
-height: 100%;
+  height: 100%;
 `;
 
 const ToolsViewType = styled(ToolsButton)`
@@ -49,6 +50,20 @@ const ToolsViewType = styled(ToolsButton)`
   color: ${props=>props.chosen&&props.toShow ? 'black' : '#828486' };
   svg, svg * {
     fill: ${props=>props.chosen&&props.toShow ? 'black' : '#828486' };
+  }
+`;
+
+const DesktopContent = styled.div`
+  display: block;
+  @media(max-width: 700px) {
+    display: none;
+  }
+`;
+
+const MobileContent = styled.div`
+  display: none;
+  @media(max-width: 700px) {
+    display: block;
   }
 `;
 
@@ -70,15 +85,53 @@ const MyToolsButton = styled(ToolsViewType)`
   }}
 
 `;
+
+//For modalIsOpen
+const customStyles = {
+  overlay: {
+    backgroundColor: 'rgba(149, 149, 149, 0.75)',
+    zIndex: 590
+  },
+  content : {
+    position: 'absolute',
+    right: 'auto',
+    left: 'auto',
+    top: '0px',
+    bottom: 'auto',
+    border: '0px none',
+    background: 'rgb(255, 255, 255)',
+    overflow: 'visible',
+    outline: 'none',
+    padding: '0px',
+    width: '100%',
+    textAlign: 'center'
+  }
+};
 export class Tools extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
     super(props);
     this.state = {
       chosen: NEWS_FEED, //myTools
-      isFirstTime: false
+      isFirstTime: false,
+      modalIsOpen: false
     }
+
+    this.closeModal = this.closeModal.bind(this);
   }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
+  }
+
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+  }
+
   onToggleClick(chosen = null) {
     if (chosen !== null) {
       this.props.setShowTools(true);
@@ -101,11 +154,105 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
         && Object.keys(nextProps.Tools.selectedTools).length === 1
     ) {
       this.setState({ isFirstTime: true });
-
     } else {
       this.setState({ isFirstTime: false });
-
     }
+  }
+  renderMobileContent() {
+    const {locale} = this.props.intl;
+    return (
+      <LanguageThemeProvider>
+        <ToolsMenu>
+          <ToolsMenuItem>
+            <ToolsViewType
+              ar={locale==='ar'}
+              onClick={() => {
+                  this.onToggleClick(NEWS_FEED);
+                  this.openModal();
+              }}
+              chosen={this.props.Tools.viewType === NEWS_FEED}
+              toShow={this.props.Tools.show}
+              >
+              <Isvg src={NewsFeedIcon} />
+              <TranslatableStaticText {...staticText.newsFeed} />
+            </ToolsViewType>
+          </ToolsMenuItem>
+          <ToolsMenuItem>
+            <MyToolsButton
+                ar={locale==='ar'}
+                onClick={() => {
+                  this.onToggleClick(MY_TOOLS);
+                  this.openModal();
+                }}
+                chosen={this.props.Tools.viewType === MY_TOOLS}
+                toShow={this.props.Tools.show || this.props.Tools.onboardShow}
+                firstTime={this.props.Tools.onboardShow}
+                className={this.props.Tools.onboardShow ? 'animate' : ''}
+            >
+              <Isvg src={MyToolsIcon} />
+              <TranslatableStaticText {...staticText.myTools} />
+            </MyToolsButton>
+          </ToolsMenuItem>
+        </ToolsMenu>
+        <Modal
+          isOpen={this.props.Tools.show}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={{...customStyles, content: {...customStyles.content}}}
+          contentLabel="ToolsModal"
+        >
+          <ToolsArea lang={this.props.language} show={this.props.Tools.show || this.props.Tools.onboardShow}/>
+        </Modal>
+      </LanguageThemeProvider>
+    )
+  }
+
+  renderDesktopContent() {
+    const {locale} = this.props.intl;
+
+    return (
+      <LanguageThemeProvider>
+        <ToolsViewport>
+            <ToolsMenu>
+              <ToolsMenuItem>
+                <ToolsButton
+                  onClick={() => this.onToggleClick(null)}
+                  rotate={true}
+                  toShow={this.props.Tools.show || this.props.Tools.onboardShow}
+                  lang={this.props.language}
+                >
+                  <Isvg src={ArrowIcon} />
+                </ToolsButton>
+              </ToolsMenuItem>
+              <ToolsMenuItem>
+                <ToolsViewType
+                  ar={locale==='ar'}
+                  onClick={() => this.onToggleClick(NEWS_FEED)}
+                  chosen={this.props.Tools.viewType === NEWS_FEED}
+                  toShow={this.props.Tools.show}
+                  >
+                  <Isvg src={NewsFeedIcon} />
+                  <TranslatableStaticText {...staticText.newsFeed} />
+                </ToolsViewType>
+              </ToolsMenuItem>
+              <ToolsMenuItem>
+                <MyToolsButton
+                    ar={locale==='ar'}
+                    onClick={() => this.onToggleClick(MY_TOOLS)}
+                    chosen={this.props.Tools.viewType === MY_TOOLS}
+                    toShow={this.props.Tools.show || this.props.Tools.onboardShow}
+                    firstTime={this.props.Tools.onboardShow}
+                    className={this.props.Tools.onboardShow ? 'animate' : ''}
+                >
+                  <Isvg src={MyToolsIcon} />
+                  <TranslatableStaticText {...staticText.myTools} />
+                </MyToolsButton>
+              </ToolsMenuItem>
+            </ToolsMenu>
+          <ToolsArea lang={this.props.language} show={this.props.Tools.show || this.props.Tools.onboardShow}/>
+        </ToolsViewport>
+      </LanguageThemeProvider>
+    );
   }
 
   render() {
@@ -113,47 +260,12 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
 
     return (
       <ToolsContainer lang={locale} showTools={this.props.Tools.show || this.props.Tools.onboardShow }>
-        <LanguageThemeProvider>
-          <ToolsViewport>
-              <ToolsMenu>
-                <ToolsMenuItem>
-                  <ToolsButton
-                    onClick={() => this.onToggleClick(null)}
-                    rotate={true}
-                    toShow={this.props.Tools.show || this.props.Tools.onboardShow}
-                    lang={this.props.language}
-                  >
-                    <Isvg src={ArrowIcon} />
-                  </ToolsButton>
-                </ToolsMenuItem>
-                <ToolsMenuItem>
-                  <ToolsViewType
-                    ar={locale==='ar'}
-                    onClick={() => this.onToggleClick(NEWS_FEED)}
-                    chosen={this.props.Tools.viewType === NEWS_FEED}
-                    toShow={this.props.Tools.show}
-                    >
-                    <Isvg src={NewsFeedIcon} />
-                    <TranslatableStaticText {...staticText.newsFeed} />
-                  </ToolsViewType>
-                </ToolsMenuItem>
-                <ToolsMenuItem>
-                  <MyToolsButton
-                      ar={locale==='ar'}
-                      onClick={() => this.onToggleClick(MY_TOOLS)}
-                      chosen={this.props.Tools.viewType === MY_TOOLS}
-                      toShow={this.props.Tools.show || this.props.Tools.onboardShow}
-                      firstTime={this.props.Tools.onboardShow}
-                      className={this.props.Tools.onboardShow ? 'animate' : ''}
-                  >
-                    <Isvg src={MyToolsIcon} />
-                    <TranslatableStaticText {...staticText.myTools} />
-                  </MyToolsButton>
-                </ToolsMenuItem>
-              </ToolsMenu>
-            <ToolsArea lang={this.props.language} show={this.props.Tools.show || this.props.Tools.onboardShow}/>
-          </ToolsViewport>
-        </LanguageThemeProvider>
+        <MobileContent>
+         {this.renderMobileContent()}
+        </MobileContent>
+        <DesktopContent>
+          {this.renderDesktopContent()}
+        </DesktopContent>
       </ToolsContainer>
     );
   }

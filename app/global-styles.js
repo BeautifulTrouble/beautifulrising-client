@@ -146,4 +146,10 @@ injectGlobal`
       width: calc(100% - 75px) !important;
     }
   }
+  [aria-label=ToolsModal] {
+    @media(max-width: 700px) {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
 `;

@@ -20,5 +20,7 @@ export default styled.section`
   @media(max-width: 700px) {
     max-width: 100%;
     padding-top: 120px;
+    left: 0 !important;
+    padding-bottom: 70px;
   }
 `;
