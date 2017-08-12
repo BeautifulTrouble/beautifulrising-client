@@ -104,7 +104,9 @@ const customStyles = {
     outline: 'none',
     padding: '0px',
     width: '100%',
-    textAlign: 'center'
+    textAlign: 'center',
+    height: 'calc(100% - 70px) !important',
+    zIndex: '1000'
   }
 };
 export class Tools extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function

@@ -151,7 +151,9 @@ injectGlobal`
     @media(max-width: 700px) {
       display: block;
       width: 100% !important;
-      height: 100% !important;
+      height: calc(100% - 70px) !important;
+
+      & > div { height: 100%; }
     }
   }
 
