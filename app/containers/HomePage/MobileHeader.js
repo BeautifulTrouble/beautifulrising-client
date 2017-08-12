@@ -19,11 +19,12 @@ import TranslatableStaticText from 'containers/TranslatableStaticText';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import {TextButton} from 'components/CommonComponents';
 import IconButton from 'components/IconButton';
+import MobileSectionHeader from 'components/HomePage/MobileSectionHeader';
 import ArrowIcon from 'assets/images/icons/arrow.svg';
 
 import TypeDetails from 'containers/TypeDetails';
 import Link from 'components/Link';
-
+import Modal from 'react-modal';
 
 import TagArea from './TagArea';
 import staticText from './staticText';
@@ -128,6 +129,47 @@ const TagShownIcon = styled.div`
   }
 `;
 
+//For modalIsOpen
+const customStyles = {
+  overlay: {
+    backgroundColor: 'rgba(149, 149, 149, 0.75)',
+    zIndex: 590
+  },
+  content : {
+    position: 'absolute',
+    right: 'auto',
+    left: 'auto',
+    bottom: 'auto',
+    border: '0px none',
+    background: 'rgb(255, 255, 255)',
+    overflow: 'visible',
+    outline: 'none',
+    padding: '15px',
+    width: '100%',
+    height: 'calc(100% - 115px)',
+    zIndex: '600',
+    top: '115px'
+  }
+};
+
+const ApplyButton = styled.button`
+  outline: none;
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 15px;
+  padding: 18px;
+  text-transform: uppercase;
+  font-weight: 800;
+  border: 2px solid black;
+  @media(max-width: 700px) {
+    display: block;
+  }
+`;
+
+
 class MobileHeader extends React.PureComponent {
 
   constructor() {
@@ -149,6 +191,17 @@ class MobileHeader extends React.PureComponent {
   showTagArea(){
     this.setState({isTagsAreaShown: true });
   }
+
+  renderMobileTags() {
+    const lang = this.props.intl.locale;
+    return (
+      <IconButton width="auto" onClick={this.toggleTagArea.bind(this)}>
+        <TextButton ar={lang==='ar'} selected={false}>
+          <TranslatableStaticText {...staticText.tags} />
+        </TextButton>
+      </IconButton>
+    )
+  }
   render() {
     const lang = this.props.intl.locale;
     const showTypeDetails=this.props.params.filter==="type";
@@ -160,14 +213,7 @@ class MobileHeader extends React.PureComponent {
               <SearchField {...this.props.params}/>
             </FilterItem>
             <FilterItem>
-              <IconButton width="auto" onClick={this.toggleTagArea.bind(this)}>
-                <TextButton ar={lang==='ar'} selected={true}>
-                  <TranslatableStaticText {...staticText.tags} />
-                  <TagShownIcon  selected={this.state.isTagsAreaShown}>
-                    <Isvg src={ArrowIcon}/>
-                  </TagShownIcon>
-                </TextButton>
-              </IconButton>
+              { this.renderMobileTags() }
             </FilterItem>
           </FilterSection>
           <FilterSection>
@@ -178,9 +224,25 @@ class MobileHeader extends React.PureComponent {
               <ToolsViewOptions />
             </FilterItem>
           </FilterSection>
-          <TagArea show={true} {...this.props} show={this.state.isTagsAreaShown} hideTagArea={this.hideTagArea.bind(this)}/>
           <TypeDetails show={showTypeDetails} {...this.props.params} />
         </MobileHeaderContainer>
+
+
+        <Modal
+          isOpen={this.state.isTagsAreaShown}
+
+          style={{...customStyles, content: {...customStyles.content}}}
+          contentLabel="TagsModal"
+          overlayClassName="TagsModalOverlay"
+        >
+          <MobileSectionHeader>
+            <TranslatableStaticText {...staticText.tags} />
+          </MobileSectionHeader>
+          <TagArea show={true} {...this.props} hideTagArea={()=>{}}/>
+          <ApplyButton onClick={this.hideTagArea.bind(this)}>
+            <TranslatableStaticText {...staticText.apply} />
+          </ApplyButton>
+        </Modal>
       </LanguageThemeProvider>
     );
   }

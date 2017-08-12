@@ -42,5 +42,9 @@ export default {
   searchResults: {
     id: 'list.results',
     defaultMessage: 'Search results for “{{query}}” ({{count}}) results found'
+  },
+  apply: {
+    id: 'list.apply',
+    defaultMessage: 'Apply'
   }
 }

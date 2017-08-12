@@ -38,6 +38,7 @@ const PageHeader = styled.header`
   @media(max-width: 700px) {
     padding: 0;
     // position: relative;
+    z-index: 1000;
   }
 `;
 
