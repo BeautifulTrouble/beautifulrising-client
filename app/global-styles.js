@@ -151,7 +151,27 @@ injectGlobal`
     @media(max-width: 700px) {
       display: block;
       width: 100% !important;
-      height: 100% !important;
+      height: calc(100% - 70px) !important;
+
+      & > div { height: 100%; }
+    }
+  }
+
+  .MenuModalOverlay {
+
+    @media(max-width: 700px) {
+      z-index: 1100;
+
+      & > div {
+        z-index: 1100;
+      }
+    }
+  }
+
+  .ToolModalOverlay {
+    display: none;
+    @media(max-width: 700px) {
+      display: block;
     }
   }
 `;

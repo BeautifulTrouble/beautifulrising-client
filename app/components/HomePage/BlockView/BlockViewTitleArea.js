@@ -5,7 +5,11 @@ export default styled.div`
   ${p=>p.theme.isArabic?'right':'left'}: 20px;
   top: 40px;
   padding-${p=>p.theme.isArabic?'left':'right'}: 10px;
-  z-index: 100;
-  opacity: ${props=>props.show ? '1': (props.forceShow?'1':'0')};
-  transition: opacity 0.2s;
+  z-index: 0;
+  opacity: 1;
+
+  @media(min-width: 1170px) {
+    opacity: ${props=>props.show ? '1': (props.forceShow?'1':'0')};
+    transition: opacity 0.2s;
+  }
 `;

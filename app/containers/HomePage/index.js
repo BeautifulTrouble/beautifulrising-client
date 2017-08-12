@@ -10,7 +10,7 @@ import Helmet from 'react-helmet';
 import { push } from 'react-router-redux';
 
 import { createStructuredSelector } from 'reselect';
-
+import styled from 'styled-components';
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 import Tags from 'containers/Tags';
 import ContentBlock from 'components/ContentBlock';
@@ -44,11 +44,24 @@ import ToolList from './ToolList';
 import BlockViewItem from './BlockViewItem';
 import ListViewItem from './ListViewItem';
 import Header from './Header';
+import MobileHeader from './MobileHeader';
 import staticText from './staticText';
 
 
 const TOP=0,MIDDLE=1,BOTTOM=2;
 
+const HeaderContainer = styled.div`
+  display: block;
+  @media(max-width: 700px) {
+    display: none;
+  }
+`;
+const MobileHeaderContainer = styled.div`
+  display: none;
+  @media(max-width: 700px) {
+    display: block;
+  }
+`;
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
@@ -130,7 +143,12 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             <ToolTypeArea lang={lang} params={this.props.params} />
           </LeftSection>
           <Stage lang={lang}>
-            <Header lang={lang} {...this.props}/>
+            <HeaderContainer>
+              <Header lang={lang} {...this.props}/>
+            </HeaderContainer>
+            <MobileHeaderContainer>
+              <MobileHeader lang={lang} {...this.props} />
+            </MobileHeaderContainer>
             {this.getSearchResultsHeader()}
             <ToolList>
               { this.props.sorted ?

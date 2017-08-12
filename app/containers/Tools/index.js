@@ -104,7 +104,9 @@ const customStyles = {
     outline: 'none',
     padding: '0px',
     width: '100%',
-    textAlign: 'center'
+    textAlign: 'center',
+    height: 'calc(100% - 70px) !important',
+    zIndex: '1000'
   }
 };
 export class Tools extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -200,6 +202,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
           onRequestClose={this.closeModal}
           style={{...customStyles, content: {...customStyles.content}}}
           contentLabel="ToolsModal"
+          overlayClassName="ToolModalOverlay"
         >
           <ToolsArea lang={this.props.language} show={this.props.Tools.show || this.props.Tools.onboardShow}/>
         </Modal>

@@ -159,6 +159,7 @@ export class ModalMenu extends React.Component {
           onRequestClose={this.closeModal}
           style={{...customStyles, content: {...customStyles.content}}}
           contentLabel="Example Modal"
+          overlayClassName={'MenuModalOverlay'}
         >
           <MenuContainer>
             <MenuHeaderSection>
