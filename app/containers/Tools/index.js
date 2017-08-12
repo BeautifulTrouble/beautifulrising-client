@@ -200,6 +200,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
           onRequestClose={this.closeModal}
           style={{...customStyles, content: {...customStyles.content}}}
           contentLabel="ToolsModal"
+          overlayClassName="ToolModalOverlay"
         >
           <ToolsArea lang={this.props.language} show={this.props.Tools.show || this.props.Tools.onboardShow}/>
         </Modal>

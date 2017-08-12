@@ -12,6 +12,10 @@ export default styled(ContentBlock)`
   padding: 0 10px;
   font-weight: 400;
   text-align: center;
-  opacity: ${props=>props.show?(props.forceShow?'0':'1'):'0'};
-  transition: opacity 0.2s;
+
+  opacity: 0;
+  @media(min-width: 1170px) {
+    opacity: ${props=>props.show?(props.forceShow?'0':'1'):'0'};
+    transition: opacity 0.2s;
+  }
 `;

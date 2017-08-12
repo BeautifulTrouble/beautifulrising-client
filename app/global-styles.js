@@ -154,4 +154,11 @@ injectGlobal`
       height: 100% !important;
     }
   }
+
+  .ToolModalOverlay {
+    display: none;
+    @media(max-width: 700px) {
+      display: block;
+    }
+  }
 `;
