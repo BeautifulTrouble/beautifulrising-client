@@ -147,7 +147,9 @@ injectGlobal`
     }
   }
   [aria-label=ToolsModal] {
+    display: none;
     @media(max-width: 700px) {
+      display: block;
       width: 100% !important;
       height: 100% !important;
     }
