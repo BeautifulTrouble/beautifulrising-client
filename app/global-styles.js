@@ -157,6 +157,17 @@ injectGlobal`
     }
   }
 
+  .MenuModalOverlay {
+
+    @media(max-width: 700px) {
+      z-index: 1100;
+
+      & > div {
+        z-index: 1100;
+      }
+    }
+  }
+
   .ToolModalOverlay {
     display: none;
     @media(max-width: 700px) {

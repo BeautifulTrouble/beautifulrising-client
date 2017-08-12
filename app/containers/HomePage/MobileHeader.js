@@ -199,6 +199,10 @@ class MobileHeader extends React.PureComponent {
     this.setState({isTagsAreaShown: true });
   }
 
+  toggleTypeArea() {
+    this.setState({isTypeAreaShown: !this.state.isTypeAreaShown });
+  }
+  
   hideTypeArea() {
     this.setState({isTypeAreaShown: false });
   }
@@ -223,9 +227,9 @@ class MobileHeader extends React.PureComponent {
   renderTypeButton() {
     const lang = this.props.intl.locale;
     return (
-      <IconButton width="auto" onClick={this.toggleTagArea.bind(this)}>
+      <IconButton width="auto" onClick={this.toggleTypeArea.bind(this)}>
         <TextButton ar={lang==='ar'} selected={false}>
-          <TranslatableStaticText {...staticText.typeButton} />
+          <TranslatableStaticText {...staticText.toolTypeButton} />
         </TextButton>
       </IconButton>
     )
@@ -268,9 +272,9 @@ class MobileHeader extends React.PureComponent {
           overlayClassName="TagsModalOverlay"
         >
           <MobileSectionHeader>
-            <TranslatableStaticText {...staticText.typeButton} />
+            <TranslatableStaticText {...staticText.tags} />
           </MobileSectionHeader>
-          <ToolTypeAll lang={lang} show={true} {...this.props}/>
+          <TagArea show={true} {...this.props} hideTagArea={()=>{}}/>
           <ApplyButton onClick={this.hideTagArea.bind(this)}>
             <TranslatableStaticText {...staticText.apply} />
           </ApplyButton>
@@ -284,7 +288,7 @@ class MobileHeader extends React.PureComponent {
           overlayClassName="TypeFilterOverlay"
         >
           <MobileSectionHeader>
-            <TranslatableStaticText {...staticText.tags} />
+            <TranslatableStaticText {...staticText.toolTypeButton} />
           </MobileSectionHeader>
           <ToolTypeAll lang={this.props.lang} show={true} {...this.props} />
           <ApplyButton onClick={this.hideTypeArea.bind(this)}>
