@@ -48,6 +48,14 @@ const ToolType = styled(Link)`
     width: 166px;
   }
   margin-bottom: 20px;
+
+  @media(max-width: 700px) {
+    text-align: center;
+    width: 100%;
+    .isvg {
+      display: none;
+    }
+  }
 `;
 const BigHead = styled.h2`margin:0`;
 const Head = styled.h3`
@@ -72,6 +80,10 @@ const ToolDesc = styled(ContentBlock)`
   margin-top: 36px;
   padding-right: 30px;
   margin-bottom: 70px;
+
+  @media(max-width: 700px) {
+    display: none;
+  }
 `;
 
 function ToolTypeAll(props) {

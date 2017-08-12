@@ -10,7 +10,7 @@ import Isvg from 'react-inlinesvg';
 
 import { injectIntl } from 'react-intl';
 
-import ToolTypeArea from 'containers/ToolTypeArea';
+import ToolTypeAll from 'containers/ToolTypeAll';
 
 import SearchField from 'containers/SearchField';
 import ToolsViewOptions from 'containers/ToolsViewOptions';
@@ -72,6 +72,12 @@ const FilterSection = styled.ul`
       border-bottom: 0;
     }
   }
+`;
+
+const SingleFilterSection = styled(FilterSection)`
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-bottom: 0;
 `;
 
 const FilterItem = styled.li`
@@ -176,7 +182,8 @@ class MobileHeader extends React.PureComponent {
     super();
 
     this.state = {
-      isTagsAreaShown: false
+      isTagsAreaShown: false,
+      isTypeAreaShown: false
     }
   }
 
@@ -192,6 +199,14 @@ class MobileHeader extends React.PureComponent {
     this.setState({isTagsAreaShown: true });
   }
 
+  hideTypeArea() {
+    this.setState({isTypeAreaShown: false });
+  }
+
+  showTypeArea(){
+    this.setState({isTypeAreaShown: true });
+  }
+
   componentWillReceiveProps(nextProps) {
   }
 
@@ -201,6 +216,16 @@ class MobileHeader extends React.PureComponent {
       <IconButton width="auto" onClick={this.toggleTagArea.bind(this)}>
         <TextButton ar={lang==='ar'} selected={false}>
           <TranslatableStaticText {...staticText.tags} />
+        </TextButton>
+      </IconButton>
+    )
+  }
+  renderTypeButton() {
+    const lang = this.props.intl.locale;
+    return (
+      <IconButton width="auto" onClick={this.toggleTagArea.bind(this)}>
+        <TextButton ar={lang==='ar'} selected={false}>
+          <TranslatableStaticText {...staticText.typeButton} />
         </TextButton>
       </IconButton>
     )
@@ -227,22 +252,42 @@ class MobileHeader extends React.PureComponent {
               <ToolsViewOptions />
             </FilterItem>
           </FilterSection>
+          <SingleFilterSection>
+            <FilterItem>
+              {this.renderTypeButton() }
+            </FilterItem>
+          </SingleFilterSection>
           <TypeDetails show={showTypeDetails} {...this.props.params} />
         </MobileHeaderContainer>
 
-
+        {/* MODAL FOR TAGS */}
         <Modal
           isOpen={this.state.isTagsAreaShown}
-
           style={{...customStyles, content: {...customStyles.content}}}
           contentLabel="TagsModal"
           overlayClassName="TagsModalOverlay"
         >
           <MobileSectionHeader>
+            <TranslatableStaticText {...staticText.typeButton} />
+          </MobileSectionHeader>
+          <ToolTypeAll lang={lang} show={true} {...this.props}/>
+          <ApplyButton onClick={this.hideTagArea.bind(this)}>
+            <TranslatableStaticText {...staticText.apply} />
+          </ApplyButton>
+        </Modal>
+
+        {/* MODAL FOR TYPES */}
+        <Modal
+          isOpen={this.state.isTypeAreaShown}
+          style={{...customStyles, content: {...customStyles.content}}}
+          contentLabel="TypeFilterModal"
+          overlayClassName="TypeFilterOverlay"
+        >
+          <MobileSectionHeader>
             <TranslatableStaticText {...staticText.tags} />
           </MobileSectionHeader>
-          <TagArea show={true} {...this.props} hideTagArea={()=>{}}/>
-          <ApplyButton onClick={this.hideTagArea.bind(this)}>
+          <ToolTypeAll lang={this.props.lang} show={true} {...this.props} />
+          <ApplyButton onClick={this.hideTypeArea.bind(this)}>
             <TranslatableStaticText {...staticText.apply} />
           </ApplyButton>
         </Modal>

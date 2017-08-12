@@ -46,5 +46,9 @@ export default {
   apply: {
     id: 'list.apply',
     defaultMessage: 'Apply'
+  },
+  typeButton: {
+    id: 'list.type-button',
+    defaultMessage: 'filter by tool type'
   }
 }

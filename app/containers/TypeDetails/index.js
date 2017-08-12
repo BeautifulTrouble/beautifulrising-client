@@ -76,6 +76,14 @@ const Column = styled.div`
       }
     });
   }
+
+  @media(max-width: 700px) {
+    width: 100%;
+    display: block;
+    text-align: center;
+
+    & > div { text-align: center; }
+  }
 `;
 const ToolType = styled(Link)`
   margin-${p=>p.theme.isArabic ?'left':'right'}: 0.5%;
