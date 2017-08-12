@@ -192,6 +192,9 @@ class MobileHeader extends React.PureComponent {
     this.setState({isTagsAreaShown: true });
   }
 
+  componentWillReceiveProps(nextProps) {
+  }
+
   renderMobileTags() {
     const lang = this.props.intl.locale;
     return (
