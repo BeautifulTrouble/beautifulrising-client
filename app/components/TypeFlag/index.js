@@ -31,6 +31,13 @@ const FlagContainer = styled.div`
   svg polyline {
     stroke: ${props=>getToolTypeColor(props.type)};
   }
+
+  @media(max-width: 700px) {
+    position: absolute;
+    left: -220px;
+    top: 35px;
+    zoom: 0.75;
+  }
 `;
 const FlagViewport = styled.div`
   position: relative;

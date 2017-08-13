@@ -28,7 +28,14 @@ import TranslatableStaticText from 'containers/TranslatableStaticText';
 import staticText from '../staticText';
 
 import InteractiveArea from './InteractiveArea';
+import MobileInteractiveArea from './MobileInteractiveArea';
+import WhereWhen from 'components/ToolPage/Header/WhereWhen';
 
+const MobileWhenWhereContainer = styled.div`
+  position: absolute;
+  left: 0;
+  top: -15px;
+`;
 export class Header extends React.PureComponent {
   constructor() {
     super();
@@ -54,7 +61,7 @@ export class Header extends React.PureComponent {
   }
 
   render() {
-    
+
     return (
       <Container id="XX" backgroundImage={BR_IMAGE_PREFIX+this.props.image}>
         <Viewport showOverflow={this.props['module-type-effective'] !== 'snapshot'}>
@@ -62,6 +69,9 @@ export class Header extends React.PureComponent {
             <InteractiveArea {...this.props}/>
             <Content id="Content">
               <ContentViewport>
+                <MobileWhenWhereContainer>
+                  <WhereWhen {...this.props} />
+                </MobileWhenWhereContainer>
                 <ToolType type={this.props.type}>
                   <Link to={`/type/${this.props.type}`}>
                     <TranslatableStaticText {...staticText[this.props.type]} />
@@ -70,6 +80,7 @@ export class Header extends React.PureComponent {
                 <Title color={'white'}>
                   {this.props.title}
                 </Title>
+                <MobileInteractiveArea {...this.props} />
                 <Caption
                   show={
                       this.props['image-caption'] !== undefined

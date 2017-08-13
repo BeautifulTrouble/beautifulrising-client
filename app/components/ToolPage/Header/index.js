@@ -11,10 +11,16 @@ import Viewport from './Viewport';
 
 import InteractiveViewport from './InteractiveViewport';
 import InteractiveContainer from './InteractiveContainer';
+import WhereWhen from './WhereWhen';
+import MobileInteractiveContainer from './MobileInteractiveContainer';
 
 export default styled.section`
   width: 100%;
   height: 430px;
+
+  @media(max-width: 700px) {
+    height: 245px;
+  }
 `;;
 
 export {
@@ -24,5 +30,7 @@ export {
   Title, ToolType,
   Viewport,
 
+  MobileInteractiveContainer,
+  WhereWhen,
   InteractiveViewport, InteractiveContainer
 };

@@ -8,4 +8,11 @@ export default styled(ToolTitle)`
   margin: 0 0 20px;
   padding: 0;
   line-height: ${p=>p.theme.isArabic?'95px':'70px'};
+
+  @media(max-width: 700px) {
+    font-size: 30px;
+    line-height: ${p=>p.theme.isArabic?'28px':'28px'};
+    margin-bottom: 12px;
+    width: 100%;
+  }
 `;

@@ -6,4 +6,8 @@ export default styled.div`
   width: calc(100% - 90px);
   height: 100%;
   padding-top: 50px;
+
+  @media(max-width: 700px) {
+    padding-top: 26px;
+  }
 `;

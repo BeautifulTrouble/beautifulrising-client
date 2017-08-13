@@ -11,4 +11,10 @@ export default styled(ToolType)`
     color: inherit;
     text-decoration: none;
   }
+
+  @media(max-width: 700px) {
+    font-size: 21px;
+    line-height: 21px;
+    margin-bottom: 6px;
+  }
 `;

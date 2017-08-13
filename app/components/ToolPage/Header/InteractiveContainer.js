@@ -5,4 +5,8 @@ export default styled.div`
   top: 48px;
   ${p=>p.lang==='ar'?'left':'right'}: 34px;
   z-index: 0;
+
+  @media(max-width: 700px) {
+    display: none;
+  }
 `;

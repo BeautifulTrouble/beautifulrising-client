@@ -55,6 +55,7 @@ const ToolsViewType = styled(ToolsButton)`
 
 const DesktopContent = styled.div`
   display: block;
+  height: 100%;
   @media(max-width: 700px) {
     display: none;
   }
@@ -214,8 +215,8 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
     const {locale} = this.props.intl;
 
     return (
-      <LanguageThemeProvider>
-        <ToolsViewport>
+      <ToolsViewport>
+        <LanguageThemeProvider>
             <ToolsMenu>
               <ToolsMenuItem>
                 <ToolsButton
@@ -253,8 +254,8 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
               </ToolsMenuItem>
             </ToolsMenu>
           <ToolsArea lang={this.props.language} show={this.props.Tools.show || this.props.Tools.onboardShow}/>
-        </ToolsViewport>
-      </LanguageThemeProvider>
+        </LanguageThemeProvider>
+      </ToolsViewport>
     );
   }
 

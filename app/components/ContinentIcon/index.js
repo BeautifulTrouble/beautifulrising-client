@@ -12,6 +12,8 @@ import Isvg from 'react-inlinesvg';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
+import { WhereWhen } from 'components/ToolPage/Header';
+
 import messages from './messages';
 import Africa from 'assets/images/regions/africa.svg';
 import APOceania from 'assets/images/regions/asia-pacific-oceania.svg';
@@ -25,18 +27,28 @@ const Content = styled.div`
   top: 0;
   text-align: ${p=>p.lang==='ar'?'left':'right'};
   margin-bottom: 20px;
+
+  @media(max-width: 700px) {
+    display: inline-block;
+
+    .where-when-desktop { display: none; }
+  }
 `;
 
+const DesktopContent = styled.div`
+  display: block;
+  @media(max-width: 700px) {
+    display: none;
+  }
+`;
 const Continent = styled.div`
   svg { height: 40px; margin-top: 10px;}
   svg * {
     fill: #08eb8c;
   }
-`;
-const WhereWhen = styled.div`
-  font-weight: 800;
-  color: white;
-  text-transform: uppercase;
+  @media(max-width: 700px) {
+    margin-${p=>p.lang==='ar' ? 'left' : 'right'}: 10px;
+  }
 `;
 
 class ContinentIcon extends React.PureComponent {
@@ -59,18 +71,12 @@ class ContinentIcon extends React.PureComponent {
     if (this.props.type !== "story") return null;
 
     const lang = this.props.intl.locale;
-    const where = this.props.where !== undefined ? this.props.where : '';
-    const when = this.props.when !== undefined ? this.props.when : '';
     return (
         <Content lang={lang}>
-          <WhereWhen>
-            <LanguageThemeProvider>
-              <ContentBlock>
-                {`${where} ${when}`}
-              </ContentBlock>
-            </LanguageThemeProvider>
-          </WhereWhen>
-          <Continent>
+          <DesktopContent>
+            <WhereWhen {...this.props}/>
+          </DesktopContent>
+          <Continent lang={lang}>
             <Isvg src={this.getRegionIcon(this.props.region)} />
           </Continent>
         </Content>

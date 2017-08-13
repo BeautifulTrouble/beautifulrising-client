@@ -7,4 +7,8 @@ export default styled.div`
   text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
   padding-${props=>props.theme.lang==='ar'?'right':'left'}: 90px;
   overflow: ${props=>props.showOverflow?'visible':'hidden'};
+
+  @media(max-width: 700px) {
+    padding-${props=>props.theme.lang==='ar'?'right':'left'}: 42px;
+  }
 `;
