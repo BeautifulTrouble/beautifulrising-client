@@ -32,8 +32,8 @@ function WhereWhen(props) {
 
 
 WhereWhen.propTypes = {
-  where: React.PropTypes.string.isRequired,
-  when: React.PropTypes.string.isRequired,
+  where: React.PropTypes.string,
+  when: React.PropTypes.string,
 };
 
 export default WhereWhen;

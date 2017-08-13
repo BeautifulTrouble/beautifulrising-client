@@ -11,13 +11,21 @@ import {
   DEFAULT_ACTION,
   SET_VIEW_TYPE,
   NEW_USER_TOOL_ONBOARDING,
-  TOOL_ONBOARDING_FINISHED
+  TOOL_ONBOARDING_FINISHED,
+  SET_MOBILE_SHOW_TOOLS
 } from './constants';
 
 export function setShowTools(showTools) {
   return {
     type: SET_SHOW_TOOLS,
     data: showTools
+  }
+}
+
+export function setMobileShowTools(mobileShowTools) {
+  return {
+    type: SET_MOBILE_SHOW_TOOLS,
+    data: mobileShowTools
   }
 }
 

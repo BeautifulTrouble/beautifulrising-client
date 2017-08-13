@@ -100,6 +100,7 @@ export default function createRoutes(store) {
     {
       path: '/tool(/:label)*',
       name: 'tool',
+      scrollToTop: true, 
       getComponent(nextState, cb) {
 
           const importModules = Promise.all([

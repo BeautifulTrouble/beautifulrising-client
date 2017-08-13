@@ -33,7 +33,7 @@ import { ThemeProvider } from 'styled-components';
 import ToolsArea from './ToolsArea';
 import makeSelectTools, {makeSelectLanguage} from './selectors';
 import messages from './messages';
-import { setShowTools, setViewType } from './actions';
+import { setShowTools, setViewType, setMobileShowTools } from './actions';
 
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 import staticText from './staticText';
@@ -151,6 +151,23 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
     }
   }
 
+  onMobileToggleClick(chosen = null) {
+    if (chosen !== null) {
+      this.props.handleSetMobileShowTools(true);
+    } else {
+      this.props.handleSetMobileShowTools(!this.props.Tools.mobileShow);
+    }
+
+    if (this.props.Tools.mobileShow && chosen === this.props.Tools.viewType) {
+      this.props.handleSetMobileShowTools(false);
+    }
+
+    if ( chosen !== null) {
+      this.props.setViewType(chosen);
+    }
+  }
+
+
   componentWillReceiveProps(nextProps) {
     //
     if(Object.keys(this.props.Tools.selectedTools).length === 0
@@ -170,11 +187,11 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
             <ToolsViewType
               ar={locale==='ar'}
               onClick={() => {
-                  this.onToggleClick(NEWS_FEED);
+                  this.onMobileToggleClick(NEWS_FEED);
                   this.openModal();
               }}
               chosen={this.props.Tools.viewType === NEWS_FEED}
-              toShow={this.props.Tools.show}
+              toShow={this.props.Tools.mobileShow}
               >
               <Isvg src={NewsFeedIcon} />
               <TranslatableStaticText {...staticText.newsFeed} />
@@ -184,11 +201,11 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
             <MyToolsButton
                 ar={locale==='ar'}
                 onClick={() => {
-                  this.onToggleClick(MY_TOOLS);
+                  this.onMobileToggleClick(MY_TOOLS);
                   this.openModal();
                 }}
                 chosen={this.props.Tools.viewType === MY_TOOLS}
-                toShow={this.props.Tools.show || this.props.Tools.onboardShow}
+                toShow={this.props.Tools.mobileShow || this.props.Tools.onboardShow}
                 firstTime={this.props.Tools.onboardShow}
                 className={this.props.Tools.onboardShow ? 'animate' : ''}
             >
@@ -198,14 +215,14 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
           </ToolsMenuItem>
         </ToolsMenu>
         <Modal
-          isOpen={this.props.Tools.show}
+          isOpen={this.props.Tools.mobileShow}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           style={{...customStyles, content: {...customStyles.content}}}
           contentLabel="ToolsModal"
           overlayClassName="ToolModalOverlay"
         >
-          <ToolsArea lang={this.props.language} show={this.props.Tools.show || this.props.Tools.onboardShow}/>
+          <ToolsArea lang={this.props.language} show={this.props.Tools.mobileShow || this.props.Tools.onboardShow}/>
         </Modal>
       </LanguageThemeProvider>
     )
@@ -292,6 +309,9 @@ function mapDispatchToProps(dispatch) {
     },
     setViewType: (viewType) => {
       dispatch(setViewType(viewType));
+    },
+    handleSetMobileShowTools: (show) => {
+      dispatch(setMobileShowTools(show));
     }
   };
 }

@@ -129,7 +129,6 @@ injectGlobal`
     background-color: white;
     min-height: 100%;
     min-width: 100%;
-    height: 100%;
   }
 
   .ReactModal__Body--open {
