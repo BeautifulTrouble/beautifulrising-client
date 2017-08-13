@@ -29,7 +29,13 @@ import staticText from '../staticText';
 
 import InteractiveArea from './InteractiveArea';
 import MobileInteractiveArea from './MobileInteractiveArea';
+import WhereWhen from 'components/ToolPage/Header/WhereWhen';
 
+const MobileWhenWhereContainer = styled.div`
+  position: absolute;
+  left: 0;
+  top: -15px;
+`;
 export class Header extends React.PureComponent {
   constructor() {
     super();
@@ -63,6 +69,9 @@ export class Header extends React.PureComponent {
             <InteractiveArea {...this.props}/>
             <Content id="Content">
               <ContentViewport>
+                <MobileWhenWhereContainer>
+                  <WhereWhen {...this.props} />
+                </MobileWhenWhereContainer>
                 <ToolType type={this.props.type}>
                   <Link to={`/type/${this.props.type}`}>
                     <TranslatableStaticText {...staticText[this.props.type]} />

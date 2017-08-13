@@ -9,6 +9,11 @@ const WhereWhenContainer = styled.div`
   text-transform: uppercase;
 `;
 
+const WhereWhenContent = styled(ContentBlock)`
+  font-size: 8px;
+  line-height: 8px;
+`;
+
 function WhereWhen(props) {
 
   const where = props.where !== undefined ? props.where : '';
@@ -17,9 +22,9 @@ function WhereWhen(props) {
   return (
     <WhereWhenContainer>
       <LanguageThemeProvider>
-        <ContentBlock>
+        <WhereWhenContent>
           {`${where} ${when}`}
-        </ContentBlock>
+        </WhereWhenContent>
       </LanguageThemeProvider>
     </WhereWhenContainer>
   )
