@@ -11,7 +11,7 @@ import Viewport from './Viewport';
 
 import InteractiveViewport from './InteractiveViewport';
 import InteractiveContainer from './InteractiveContainer';
-
+import WhereWhen from './WhereWhen';
 import MobileInteractiveContainer from './MobileInteractiveContainer';
 
 export default styled.section`
@@ -30,7 +30,7 @@ export {
   Title, ToolType,
   Viewport,
 
-  MobileInteractiveContainer, 
-
+  MobileInteractiveContainer,
+  WhereWhen,
   InteractiveViewport, InteractiveContainer
 };

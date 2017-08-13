@@ -34,8 +34,8 @@ const FlagContainer = styled.div`
 
   @media(max-width: 700px) {
     position: absolute;
-    left: -210px;
-    top: 55px;
+    left: -220px;
+    top: 35px;
     zoom: 0.75;
   }
 `;
