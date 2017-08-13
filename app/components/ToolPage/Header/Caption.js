@@ -8,4 +8,8 @@ export default styled.div`
   display: ${props=>props.show ? 'block' : 'none'};
 
   a { color: white; }
+
+  @media(max-width: 700px) {
+    display: none;
+  }
 `;
