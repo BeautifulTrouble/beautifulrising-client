@@ -12,6 +12,8 @@ import Viewport from './Viewport';
 import InteractiveViewport from './InteractiveViewport';
 import InteractiveContainer from './InteractiveContainer';
 
+import MobileInteractiveContainer from './MobileInteractiveContainer';
+
 export default styled.section`
   width: 100%;
   height: 430px;
@@ -27,6 +29,8 @@ export {
   CTA, ShareContainer,
   Title, ToolType,
   Viewport,
+
+  MobileInteractiveContainer, 
 
   InteractiveViewport, InteractiveContainer
 };

@@ -28,6 +28,7 @@ import TranslatableStaticText from 'containers/TranslatableStaticText';
 import staticText from '../staticText';
 
 import InteractiveArea from './InteractiveArea';
+import MobileInteractiveArea from './MobileInteractiveArea';
 
 export class Header extends React.PureComponent {
   constructor() {
@@ -54,7 +55,7 @@ export class Header extends React.PureComponent {
   }
 
   render() {
-    
+
     return (
       <Container id="XX" backgroundImage={BR_IMAGE_PREFIX+this.props.image}>
         <Viewport showOverflow={this.props['module-type-effective'] !== 'snapshot'}>
@@ -70,6 +71,7 @@ export class Header extends React.PureComponent {
                 <Title color={'white'}>
                   {this.props.title}
                 </Title>
+                <MobileInteractiveArea {...this.props} />
                 <Caption
                   show={
                       this.props['image-caption'] !== undefined

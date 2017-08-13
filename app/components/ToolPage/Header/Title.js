@@ -11,6 +11,8 @@ export default styled(ToolTitle)`
 
   @media(max-width: 700px) {
     font-size: 30px;
-    line-height: ${p=>p.theme.isArabic?'34px':'34px'};
+    line-height: ${p=>p.theme.isArabic?'28px':'28px'};
+    margin-bottom: 12px;
+    width: 100%;
   }
 `;

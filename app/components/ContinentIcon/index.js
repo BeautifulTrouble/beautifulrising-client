@@ -25,6 +25,10 @@ const Content = styled.div`
   top: 0;
   text-align: ${p=>p.lang==='ar'?'left':'right'};
   margin-bottom: 20px;
+
+  @media(max-width: 700px) {
+    display: inline-block;
+  }
 `;
 
 const Continent = styled.div`
@@ -32,11 +36,18 @@ const Continent = styled.div`
   svg * {
     fill: #08eb8c;
   }
+  @media(max-width: 700px) {
+    margin-${p=>p.lang==='ar' ? 'left' : 'right'}: 10px;
+  }
 `;
 const WhereWhen = styled.div`
   font-weight: 800;
   color: white;
   text-transform: uppercase;
+
+  @media(max-width: 700px) {
+    display: none;
+  }
 `;
 
 class ContinentIcon extends React.PureComponent {
@@ -70,7 +81,7 @@ class ContinentIcon extends React.PureComponent {
               </ContentBlock>
             </LanguageThemeProvider>
           </WhereWhen>
-          <Continent>
+          <Continent lang={lang}>
             <Isvg src={this.getRegionIcon(this.props.region)} />
           </Continent>
         </Content>
