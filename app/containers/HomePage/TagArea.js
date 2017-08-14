@@ -12,7 +12,7 @@ const Container = styled.div`
   width: 100%;
   overflow: hidden;
   border-bottom: 2px solid black;
-  padding: 0px 20px 15px;
+  padding: 0px 44px 15px;
   padding-bottom: ${p=>p.show?15:0};
   position: relative;
   border-bottom: ${p=>p.show?'2px solid black':0};
