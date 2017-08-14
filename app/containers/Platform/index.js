@@ -32,6 +32,10 @@ import CollapsingSection from 'components/CollapsingSection';
 const Introduction = styled(ContentBlock)`
   margin-bottom: 26px;
 `;
+
+const CollapsingSectionContent = styled(ContentBlock)`
+  padding-bottom: 36px;
+`
 class Platform extends React.Component {
   render() {
 
@@ -61,9 +65,9 @@ class Platform extends React.Component {
                       </Subtitle>)
                   }
                 >
-                  <ContentBlock>
+                  <CollapsingSectionContent>
                     <Markdown source={this.props.content.get('what')} />
-                  </ContentBlock>
+                  </CollapsingSectionContent>
                 </CollapsingSection>
 
                 <CollapsingSection
@@ -73,9 +77,9 @@ class Platform extends React.Component {
                       </Subtitle>)
                   }
                 >
-                  <ContentBlock>
+                  <CollapsingSectionContent>
                     <Markdown source={this.props.content.get('how')} />
-                  </ContentBlock>
+                  </CollapsingSectionContent>
                 </CollapsingSection>
 
                 <CTA>
