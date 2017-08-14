@@ -9,6 +9,7 @@ export default styled.blockquote`
   max-width: 230px;
   width: 230px;
   padding: 10px 0;
+  margin-right: 40px;
   p, div, span {
     font-family: 'Paint Hand',  'Massira Spray', serif;
     display: inline;
@@ -19,4 +20,10 @@ export default styled.blockquote`
 
   font-size: 20px;
 
+  @media(max-width: 700px) {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 30px;
+    text-align: center;
+  }
 `;
