@@ -55,6 +55,7 @@ const Resource = styled.li`
 const ResourceContainer =styled.div``;
 const Header =styled(SmallHeaderBlock)`
   position: relative;
+  margin-bottom: 36px;
   &::before {
     position: absolute;
     content: "";
