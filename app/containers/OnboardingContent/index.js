@@ -157,7 +157,7 @@ const HeaderArea = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-color: rgba(0,0,0,0.6);
-
+  background-position: center center;
 
   color: white;
 `;
