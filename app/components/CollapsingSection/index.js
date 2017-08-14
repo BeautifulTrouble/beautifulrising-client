@@ -21,7 +21,7 @@ const HeaderContainer = styled.div`
 `;
 const Header = styled.div`
   display: inline-block;
-  padding-right: 20px;
+  padding-${p=>p.theme.isArabic?'left':'right'}: 20px;
   width: 100%;
 `;
 const ArrowContainer = styled.span`
@@ -63,7 +63,7 @@ const ActionButton = styled.button`
   padding: 0;
   cursor: pointer;
   width: 100%;
-  padding-right: 20px;
+  padding-${p=>p.theme.isArabic?'left':'right'}: 20px;
   position: relative;
 `;
 
