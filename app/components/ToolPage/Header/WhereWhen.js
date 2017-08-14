@@ -10,8 +10,11 @@ const WhereWhenContainer = styled.div`
 `;
 
 const WhereWhenContent = styled(ContentBlock)`
-  font-size: 8px;
-  line-height: 8px;
+
+  @media(max-width: 700px) {
+    font-size: 8px;
+    line-height: 8px;
+  }
 `;
 
 function WhereWhen(props) {

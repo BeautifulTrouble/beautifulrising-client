@@ -21,7 +21,7 @@ import Header from 'containers/Header';
 import Body from 'components/Body';
 import Tools from 'containers/Tools';
 import Footer from 'containers/Footer';
-import LanguageChanger from 'containers/LanguageChanger';
+import LanguageChanger, { MobileLanguageChanger } from 'containers/LanguageChanger';
 import OnboardingModal from 'containers/OnboardingModal';
 import { isShowTools, makeSelectLanguage, makeSelectStaticText, makeSelectWhatsHappening } from './selectors';
 import { isOnboarded } from 'containers/OnboardingModal/selectors';

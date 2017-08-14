@@ -137,10 +137,21 @@ injectGlobal`
   }
 
   .ReactModal__Overlay--after-open {
+    position: absolute;
+    left: 0; top: 0;
+    height: 100%;
+    width: 100% !important;
+
     .circledContainer::after {
         width: 157px !important;
     }
   }
+  [aria-label=MenuModal] {
+    @media(max-width: 700px) {
+      z-index: 1100 !important;
+    }
+  }
+
   [aria-label=Onboarding] {
     @media(max-width: 700px) {
       width: calc(100% - 75px) !important;
@@ -173,5 +184,8 @@ injectGlobal`
     @media(max-width: 700px) {
       display: block;
     }
+  }
+
+  .ReactModalPortal {
   }
 `;

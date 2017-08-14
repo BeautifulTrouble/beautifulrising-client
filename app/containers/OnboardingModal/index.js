@@ -12,7 +12,7 @@ import OnboardingContent from 'containers/OnboardingContent';
 import MenuIcon from 'assets/images/icons/menu.svg';
 import CloseIcon from 'assets/images/icons/close.svg';
 import styled from 'styled-components';
-import LanguageChanger from 'containers/LanguageChanger';
+import LanguageChanger, { MobileLanguageChanger } from 'containers/LanguageChanger';
 
 const customStyles = (lang) => { return {
   overlay: {
@@ -103,14 +103,12 @@ export class OnboardingModal extends React.Component {
     this.setState({modalIsOpen: false});
   }
 
-  renderLanguageChanger() {
-    return (<LanguageChanger zIndex={1000} />);
-  }
   render() {
     const lang = this.props.intl.locale;
     return (
       <Viewport>
-        {this.renderLanguageChanger()}
+        <LanguageChanger zIndex={1000} />
+        <MobileLanguageChanger />
         <Button lang={lang} onClick={this.openModal}>
           <Isvg src={MenuIcon} />
           <MenuText>MENU</MenuText>

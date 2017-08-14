@@ -139,7 +139,7 @@ const TagShownIcon = styled.div`
 const customStyles = {
   overlay: {
     backgroundColor: 'rgba(149, 149, 149, 0.75)',
-    zIndex: 590
+    zIndex: 900
   },
   content : {
     position: 'absolute',
@@ -202,7 +202,7 @@ class MobileHeader extends React.PureComponent {
   toggleTypeArea() {
     this.setState({isTypeAreaShown: !this.state.isTypeAreaShown });
   }
-  
+
   hideTypeArea() {
     this.setState({isTypeAreaShown: false });
   }

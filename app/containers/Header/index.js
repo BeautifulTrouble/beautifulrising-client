@@ -13,6 +13,7 @@ import Link from 'components/Link';
 import { injectIntl } from 'react-intl';
 import messages from './messages';
 import { Bell as WhatsHappeningBell} from 'containers/WhatsHappening';
+import { MobileLanguageChanger } from 'containers/LanguageChanger';
 
 const Viewport = styled.div`
   position: relative;
@@ -75,6 +76,7 @@ class Header extends React.Component {
           <Viewport>
             <Logo lang={this.props.lang}/>
             <ModalMenuArea lang={this.props.lang} />
+            <MobileLanguageChanger />
             <BellArea>
               <WhatsHappeningBell />
             </BellArea>
