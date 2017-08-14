@@ -199,6 +199,8 @@ export const ToolsContainer = styled.div`
     height: 70px;
     background-color: white;
     z-index: 600;
+
+    border-width: 2px;
   }
 `;
 
