@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import LatinThemeProvider from 'components/LatinThemeProvider'
 import Markdown from 'react-markdown';
 import { RouterLink } from 'utils/markdown';
 import { createStructuredSelector } from 'reselect';
@@ -34,7 +35,7 @@ const ContentArea = styled.div`
     content: ' ';
     position: absolute;
     width: 50px;
-    right: -25px;
+    ${p=>p.theme.isArabic?'left':'right'}: -25px;
     height: 0;
     border-top: 2px solid;
     top: ${p=>p.twig + 10}%;
@@ -152,14 +153,16 @@ class Post extends React.PureComponent {
       <LanguageThemeProvider>
         <Container>
           <ContentArea twig={Math.floor(this.props.index * 77 % 10) * 10}>
-            <DateContent>{this.props.date}</DateContent>
-            <Title>{this.props.title}</Title>
-            <ContentBlock>
-              <Markdown
-                source={this.props.content}
-                renderers={{Link: RouterLink}}
-              />
-            </ContentBlock>
+            <LatinThemeProvider>
+              <DateContent>{this.props.date}</DateContent>
+              <Title>{this.props.title}</Title>
+              <ContentBlock>
+                <Markdown
+                  source={this.props.content}
+                  renderers={{Link: RouterLink}}
+                />
+              </ContentBlock>
+            </LatinThemeProvider>
           </ContentArea>
           { this.renderFeatureArea() }
         </Container>
