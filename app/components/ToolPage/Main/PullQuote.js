@@ -24,6 +24,6 @@ export default styled.blockquote`
     width: 100%;
     max-width: 100%;
     padding: 0 30px;
-    text-align: center;
+    text-align: center; 
   }
 `;
