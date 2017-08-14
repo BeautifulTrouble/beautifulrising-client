@@ -8,4 +8,5 @@ export default styled(ContentBlock) `
   color: white;
   max-width: 480px;
   display: inline-block;
+  margin-top: 36px;
 `
