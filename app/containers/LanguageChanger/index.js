@@ -34,7 +34,7 @@ const Button = styled.button`
   outline: none;
   cursor: pointer;
   font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
-  color: ${props=>props.selected ? 'black' : '#828486'};
+  color: ${props=>props.selected ? 'black !important' : '#828486'};
   text-decoration: ${props=>props.selected ? 'none' : 'underline'};
   font-size: 14px;
   padding: 0 13px;
@@ -65,8 +65,9 @@ export class LanguageChanger extends React.PureComponent { // eslint-disable-lin
 
   render() {
     const lang = this.props.intl.locale;
+    console.log(this.props.changerClass);
     return (
-      <Container lang={lang} zIndex={this.props.zIndex}>
+      <Container lang={lang} className={this.props.changerClass} zIndex={this.props.zIndex}>
         <Viewport lang={lang}>
           <List>
             <Item lang={lang}>

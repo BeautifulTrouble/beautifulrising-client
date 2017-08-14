@@ -134,6 +134,10 @@ injectGlobal`
   .ReactModal__Body--open {
     overflow-y: hidden;
     overflow: hidden;
+
+    .onboarding-language-changer {
+      button { color: white; }
+    }
   }
 
   .ReactModal__Overlay--after-open {

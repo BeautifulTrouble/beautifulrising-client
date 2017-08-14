@@ -107,7 +107,7 @@ export class OnboardingModal extends React.Component {
     const lang = this.props.intl.locale;
     return (
       <Viewport>
-        <LanguageChanger zIndex={1000} />
+        <LanguageChanger changerClass={'onboarding-language-changer'} zIndex={1000} />
         <MobileLanguageChanger />
         <Button lang={lang} onClick={this.openModal}>
           <Isvg src={MenuIcon} />
