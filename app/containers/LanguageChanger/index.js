@@ -15,6 +15,8 @@ import { injectIntl } from 'react-intl';
 import { makeSelectLanguage } from 'containers/App/selectors';
 import { loadData, langChangeReloadData } from '../App/actions';
 
+import MobileLanguageChanger from './MobileLanguageChanger';
+
 const Container = styled.div`
   position: fixed;
   ${props=>props.lang==='ar'?'left: 50%': 'right:50%'}
@@ -110,3 +112,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(LanguageChanger));
+export { MobileLanguageChanger };

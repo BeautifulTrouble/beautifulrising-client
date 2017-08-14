@@ -20,7 +20,7 @@ import { Bell as WhatsHappeningBell} from 'containers/WhatsHappening';
 const customStyles = {
   overlay: {
     backgroundColor: 'rgba(149, 149, 149, 0.75)',
-    zIndex: 600
+    zIndex: 1100
   },
   content : {
     position: 'absolute',
@@ -34,7 +34,8 @@ const customStyles = {
     outline: 'none',
     padding: '0px',
     width: '100%',
-    textAlign: 'center'
+    textAlign: 'center',
+    zIndex: '900'
   }
 };
 
@@ -158,7 +159,7 @@ export class ModalMenu extends React.Component {
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           style={{...customStyles, content: {...customStyles.content}}}
-          contentLabel="Example Modal"
+          contentLabel="MenuModal"
           overlayClassName={'MenuModalOverlay'}
         >
           <MenuContainer>
