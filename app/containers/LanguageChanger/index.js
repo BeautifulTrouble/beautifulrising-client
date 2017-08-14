@@ -65,7 +65,7 @@ export class LanguageChanger extends React.PureComponent { // eslint-disable-lin
 
   render() {
     const lang = this.props.intl.locale;
-    console.log(this.props.changerClass);
+    (this.props.changerClass);
     return (
       <Container lang={lang} className={this.props.changerClass} zIndex={this.props.zIndex}>
         <Viewport lang={lang}>

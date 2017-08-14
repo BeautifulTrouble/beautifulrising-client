@@ -276,8 +276,10 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
     if (this.props.aboutData.size == 0 || !this.props.aboutData || this.props.aboutData == undefined) return null;
     const about = this.props.aboutData.get('about');
     const misc = this.props.aboutData.getIn(['about', 'misc']);
-    return [
+    const shownItems = this.props.aboutData.getIn(['about', 'modal-items-shown']);
+    const data = [
       {
+        slug: 'whats-inside',
         title: misc.get('whats-inside'),
         content: <TheToolbox hideHeader={true}
                   whatsInside = { this.props.aboutData.getIn(['about','whats-inside', 'introduction']) }
@@ -285,6 +287,7 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
                 />
       },
       {
+        slug: 'process',
         title: misc.get('process'),
         content: <OurProcess ref={"/about/process"}
                   targetRoute="/about/process"
@@ -295,50 +298,50 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
                 />
       },
       {
+        slug: 'values',
         title: misc.get('values'),
         content: <OurValues hideHeader={true}
             ourValues={this.props.aboutData.getIn(['about', 'values'])}
         />
       },
-      // {
-      //   left: '80%',
-      //   title: misc.get('advisory-network'),
-      //   content: <OurAdvisoryNetwork
-      //       hideHeader={true}
-      //       advisoryNetwork = {this.props.advisoryBoard}
-      //       introText = { this.props.aboutData.getIn(['about', 'advisory-network', 'introduction'])}
-      //   />
-      // },
-      // {
-      //   title: misc.get('team'),
-      //   content: <OurTeam
-      //       hideHeader={true}
-      //       teamMembers={this.props.aboutData.getIn(['about', 'team-members'])}
-      //       allData={this.props.aboutData}
-      //   />
-      // },
-      // {
-      //   title: misc.get('beautiful-trouble-and-action-aid'),
-      //   content: <BeautifulTroubleAA
-      //       hideHeader={true}
-      //       allData={this.props.aboutData}
-      //   />
-      // },
       {
+        slug: 'advisory-network',
+        left: '80%',
+        title: misc.get('advisory-network'),
+        content: <OurAdvisoryNetwork
+            hideHeader={true}
+            advisoryNetwork = {this.props.advisoryBoard}
+            introText = { this.props.aboutData.getIn(['about', 'advisory-network', 'introduction'])}
+        />
+      },
+      {
+        slug: 'team',
+        title: misc.get('team'),
+        content: <OurTeam
+            hideHeader={true}
+            teamMembers={this.props.aboutData.getIn(['about', 'team-members'])}
+            allData={this.props.aboutData}
+        />
+      },
+      {
+        slug: 'partners',
         title: misc.get('partners'),
         content: <Partners
           hideHeader={true}
             networkPartners={this.props.aboutData.getIn(['about', 'network-partners'])}
         />
       },
-      // {
-      //   title: misc.get('faq'),
-      //   content: <FAQ
-      //       hideHeader={true}
-      //       questions={this.props.aboutData.getIn(['about', 'questions'])}
-      //   />
-      // },
+      {
+        slug: 'faq',
+        title: misc.get('faq'),
+        content: <FAQ
+            hideHeader={true}
+            questions={this.props.aboutData.getIn(['about', 'questions'])}
+        />
+      },
     ];
+
+    return data.filter(item => shownItems.contains(item.slug));
   }
 }
 
