@@ -134,5 +134,10 @@ export default {
   expandingToolbox: {
     id: 'module.expanding-toolbox',
     defaultMessage: 'This is an ever-expanding toolbox. You’re welcome to [read more]({{link}}) this tool. '
+  },
+
+  origins:  {
+    id: 'module.origins',
+    defaultMessage: 'Origins'
   }
 }

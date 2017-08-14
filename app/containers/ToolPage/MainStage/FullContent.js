@@ -5,6 +5,7 @@ import {injectIntl} from 'react-intl';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
 import Epigraph from './Epigraph';
+import Origins from './Origins'
 import { RouterLink } from 'utils/markdown';
 import { ContentContainer, PullQuote } from 'components/ToolPage/Main';
 
@@ -47,6 +48,7 @@ class FullContent extends React.PureComponent {
       <ContentContainer>
         <LanguageThemeProvider>
           <Epigraph {...this.props}/>
+          <Origins {...this.props} />
           <ContentBlock>
             { content }
           </ContentBlock>
