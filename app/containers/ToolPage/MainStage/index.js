@@ -33,6 +33,9 @@ const MobileContent = styled.div`
   }
 `;
 
+const ContentSeparation = styled.div`
+  height: 72px;
+`;
 class MainStage extends React.PureComponent {
   constructor(props) {
     super();
@@ -45,7 +48,7 @@ class MainStage extends React.PureComponent {
         <Untranslated { ...this.props} />
         <MainContent { ...this.props } />
         <ToolKeyItems {...this.props} />
-
+        <ContentSeparation />
         <MobileContent>
           <WhyItWorked collapsible={true}  {...this.props} text={this.props['why-it-worked']} />
           <WhyItFailed collapsible={true}  {...this.props} text={this.props['why-it-worked']} />

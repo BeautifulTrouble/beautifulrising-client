@@ -80,7 +80,6 @@ export class PlatformsPage extends React.Component { // eslint-disable-line reac
     const miscellaneous = this.props.aboutData.getIn(['platforms', 'misc']);
     if(!miscellaneous) { return null; }
     const platforms = this.props.aboutData.getIn(['platforms', 'all']).toJS()
-    console.log(platforms);
     return platforms.map((item, index) => (
       <VisibilitySensor
         key={`${index}--${slugify(item.title)}`}

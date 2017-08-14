@@ -149,7 +149,7 @@ export class MobileLanguageChanger extends React.PureComponent { // eslint-disab
   }
 
   handleClick(language) {
-    console.log(language);
+
 
     if (this.props.intl.locale !== language) {
 
