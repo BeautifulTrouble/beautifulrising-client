@@ -32,7 +32,27 @@ import CollapsingSection from 'components/CollapsingSection';
 const Introduction = styled(ContentBlock)`
   margin-bottom: 26px;
 `;
+
+const CollapsingSectionContent = styled(ContentBlock)`
+  padding-bottom: 36px;
+`
 class Platform extends React.Component {
+  renderQuestions() {
+    return this.props.content.questions.map((item,index) => (
+      <CollapsingSection
+        key={`${index}-${item.title}`}
+        header={
+            (<Subtitle>
+              {item.title}
+            </Subtitle>)
+        }
+      >
+        <CollapsingSectionContent>
+          <Markdown source={item.text} />
+        </CollapsingSectionContent>
+      </CollapsingSection>
+    ));
+  }
   render() {
 
     if (!this.props.content || this.props.content === undefined) return null;
@@ -48,43 +68,20 @@ class Platform extends React.Component {
             <TextContent lang={lang}>
               <Content>
                 <Title lang={lang}>
-                  {this.props.content.get('title')}
+                  {this.props.content.title}
                 </Title>
                 <Introduction>
-                  {this.props.content.get('introduction')}
+                  {this.props.content.introduction}
                 </Introduction>
 
-                <CollapsingSection
-                  header={
-                      (<Subtitle>
-                        {this.props.misc.get('what')}
-                      </Subtitle>)
-                  }
-                >
-                  <ContentBlock>
-                    <Markdown source={this.props.content.get('what')} />
-                  </ContentBlock>
-                </CollapsingSection>
-
-                <CollapsingSection
-                  header={
-                      (<Subtitle>
-                        {this.props.misc.get('how')}
-                      </Subtitle>)
-                  }
-                >
-                  <ContentBlock>
-                    <Markdown source={this.props.content.get('how')} />
-                  </ContentBlock>
-                </CollapsingSection>
-
+                {this.renderQuestions()}
                 <CTA>
-                  <Markdown source={this.props.content.get('get')} />
+                  <Markdown source={this.props.content.get} />
                 </CTA>
               </Content>
             </TextContent>
             <ImageContent lang={lang}>
-              <Image source={this.props.content.get('image')} />
+              <Image source={this.props.content.image} />
             </ImageContent>
           </Viewport>
         </Container>

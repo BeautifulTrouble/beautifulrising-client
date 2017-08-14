@@ -35,6 +35,11 @@ const MobileWhenWhereContainer = styled.div`
   position: absolute;
   left: 0;
   top: -15px;
+  display: none;
+
+  @media(max-width: 700px) {
+    display: block;
+  }
 `;
 export class Header extends React.PureComponent {
   constructor() {

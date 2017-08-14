@@ -2,7 +2,7 @@ import styled from 'styled-components';
 export default styled.div`
   position: absolute;
   top: 0;
-  ${p=>p.theme.isArabic ? 'right': 'left'}: -15px;
+  ${p=>p.theme.isArabic ? 'right': 'left'}: -44px;
   text-align: center;
   color: #828486;
   button {

@@ -78,7 +78,7 @@ const ToolDesc = styled(ContentBlock)`
   width: 200px;
   text-transform: none;
   margin-top: 36px;
-  padding-right: 30px;
+  padding-${p=>p.theme.isArabic?'left':'right'}: 30px;
   margin-bottom: 70px;
 
   @media(max-width: 700px) {

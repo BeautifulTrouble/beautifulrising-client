@@ -11,7 +11,7 @@ import Helmet from 'react-helmet';
 import { push,replace } from 'react-router-redux';
 import { createStructuredSelector } from 'reselect';
 import VisibilitySensor from 'react-visibility-sensor';
-
+import { slugify } from 'utils/tags';
 import ChatbotIcon from 'assets/images/platform/chatbot.svg';
 import GameIcon from 'assets/images/platform/game.svg';
 import PDFIcon from 'assets/images/platform/pdf.svg';
@@ -76,6 +76,26 @@ export class PlatformsPage extends React.Component { // eslint-disable-line reac
     }
   }
 
+  renderPlatforms() {
+    const miscellaneous = this.props.aboutData.getIn(['platforms', 'misc']);
+    if(!miscellaneous) { return null; }
+    const platforms = this.props.aboutData.getIn(['platforms', 'all']).toJS()
+    return platforms.map((item, index) => (
+      <VisibilitySensor
+        key={`${index}--${slugify(item.title)}`}
+        onChange={(isVisible) => this.componentIsVisible(isVisible, `/platforms/${slugify(item.title)}`)}>
+        <div>
+          <Platform
+            ref={`/platforms/${slugify(item.title)}`}
+            targetRoute={`/platforms/${slugify(item.title)}`}
+            content={item}
+            misc={miscellaneous}
+          />
+        </div>
+      </VisibilitySensor>
+    ))
+  }
+
   render() {
     if(!this.props.aboutData || this.props.aboutData === undefined) {
       return null;
@@ -94,61 +114,11 @@ export class PlatformsPage extends React.Component { // eslint-disable-line reac
         />
         <Header>{miscellaneous.get('heading')}</Header>
 
-        <VisibilitySensor onChange={(isVisible) => this.componentIsVisible(isVisible, '/platforms/chatbot')}>
-          <div>
-            <Platform
-              ref="/platforms/chatbot"
-              targetRoute="/platforms/chatbot"
-              content={ this.props.aboutData.getIn(['platforms', 'chatbot'])}
-              misc={miscellaneous}
-              icon={ChatbotIcon}
-            />
-          </div>
-        </VisibilitySensor>
-
-
-        <VisibilitySensor onChange={(isVisible) => this.componentIsVisible(isVisible, '/platforms/game')}>
-          <div>
-            <Platform
-              ref="/platforms/game"
-              targetRoute="/platforms/game"
-              content={this.props.aboutData.getIn(['platforms', 'game'])}
-              misc={miscellaneous}
-              icon={GameIcon}
-            />
-          </div>
-        </VisibilitySensor>
-
-
-        <VisibilitySensor onChange={(isVisible) => this.componentIsVisible(isVisible, '/platforms/pdf')}>
-          <div>
-            <Platform
-              ref="/platforms/pdf"
-              targetRoute="/platforms/pdf"
-              content={ this.props.aboutData.getIn(['platforms', 'pdf'])}
-              misc={miscellaneous}
-              icon={PDFIcon}
-            />
-          </div>
-        </VisibilitySensor>
-
+        { this.renderPlatforms() }
       </div>
     );
   }
 }
-
-// <Game
-//   ref="/platforms/game"
-//   targetRoute="/platforms/game"
-//   onChange={ this.componentIsVisible.bind(this) }
-//   content={ this.props.aboutData.getIn(['platforms', 'game'])}
-// />
-// <PDF
-//   ref="/platforms/pdf"
-//   targetRoute="/platforms/pdf"
-//   onChange={ this.componentIsVisible.bind(this) }
-//   content={ this.props.aboutData.getIn(['platforms', 'pdf'])}
-// />
 
 PlatformsPage.propTypes = {
   dispatch: PropTypes.func.isRequired,

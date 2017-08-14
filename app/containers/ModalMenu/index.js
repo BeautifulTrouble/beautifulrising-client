@@ -12,7 +12,8 @@ import { injectIntl } from 'react-intl';
 import MenuIcon from 'assets/images/icons/menu.svg';
 import CloseIcon from 'assets/images/icons/close.svg';
 import styled from 'styled-components';
-
+import { MobileLanguageChanger } from 'containers/LanguageChanger';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 import staticText from './staticText';
 import { Bell as WhatsHappeningBell} from 'containers/WhatsHappening';
@@ -48,7 +49,7 @@ const Button = styled.button`
 
   //mobile
   @media(max-width: 700px) {
-    left: 0px;
+    ${props=>props.lang==='ar'?'right':'left'}: 0px;
     top: 0px;
   }
 `;
@@ -71,7 +72,8 @@ const CloseBox = styled.div`
 
   // Mobile
   @media(max-width: 700px) {
-    max-width: 1170px;
+    width: 100%;
+    padding: 20px 0;
   }
 `;
 
@@ -112,8 +114,13 @@ const MenuBodySection = styled(MenuSection)`
 
 const BellArea = styled.div`
   position: absolute;
-  ${p=>p.theme.ar=='ar'?'left':'right'}: -5px;
+  ${p=>p.theme.isArabic?'left':'right'}: -5px;
   top: 42px;
+
+  @media(max-width: 700px) {
+    ${p=>p.theme.isArabic?'left':'right'}: 13px;
+    top: 26px;
+  }
 `;
 
 
@@ -164,14 +171,17 @@ export class ModalMenu extends React.Component {
         >
           <MenuContainer>
             <MenuHeaderSection>
-              <CloseBox lang={lang}>
-                <CloseButton onClick={this.closeModal.bind(this)}>
-                  <Isvg src={CloseIcon} />
-                </CloseButton>
-                <BellArea>
-                  <WhatsHappeningBell onClick={this.closeModal.bind(this)} />
-                </BellArea>
-              </CloseBox>
+              <LanguageThemeProvider>
+                <MobileLanguageChanger />
+                <CloseBox lang={lang}>
+                  <CloseButton onClick={this.closeModal.bind(this)}>
+                    <Isvg src={CloseIcon} />
+                  </CloseButton>
+                  <BellArea>
+                    <WhatsHappeningBell onClick={this.closeModal.bind(this)} />
+                  </BellArea>
+                </CloseBox>
+              </LanguageThemeProvider>
             </MenuHeaderSection>
             <MenuBodySection>
               <Menu onClick={this.closeModal.bind(this)} />

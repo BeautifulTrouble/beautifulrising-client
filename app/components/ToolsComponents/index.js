@@ -143,8 +143,8 @@ export const ToolsMenu = styled.ul`
   height: 100%;
   margin: 0;
   padding: 20px 0;
-  border: solid black;
-  border-width: ${props=>props.theme.lang === 'ar' ? '0 0 0 2px' : '0 2px 0 0'};
+  // border: solid black;
+  // border-width: ${props=>props.theme.lang === 'ar' ? '0 0 0 2px' : '0 2px 0 0'};
   @media(max-width: 700px) {
     display: flex;
     padding: 0;
@@ -177,9 +177,12 @@ export const ToolsContainer = styled.div`
   position: fixed;
 
   width: ${(props) => props.showTools ? '350px' : '75px' };
-  height: calc(100vh - 240px)
+  height: calc(100vh - 220px)
   border: 2px solid black;
-  top: 217px;
+  // top: 217px;
+
+  bottom: 0;
+  border-width: ${props=>props.lang == 'ar' ? '2px 2px 0 0' : '2px 0 0 2px'};
 
   ${props=>props.lang == 'ar' ? 'left: 0;' : 'right: 0;'}
   transition: transform 0.3s ease, width 0.3s ease;

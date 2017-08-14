@@ -10,5 +10,8 @@ export default styled(ContentBlock)`
 
   @media(max-width: 700px) {
     width: 100%;
+    text-align: center;
+    transform: none;
+    margin-left: auto;
   }
 `;

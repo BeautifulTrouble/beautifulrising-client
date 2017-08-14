@@ -22,5 +22,6 @@ export default styled(Link)`
 
   @media(max-width: 700px) {
     width: 100%;
+    text-align: center;
   }
 `;

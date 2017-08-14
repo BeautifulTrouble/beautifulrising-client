@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-
+import styled from 'styled-components';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 import { CollapsingHeader, ContentContainer, CollapsingContent } from 'components/ToolPage/Main';
@@ -15,6 +15,13 @@ import makeSelectToolPage from '../selectors';
 import { setChosenSection } from '../actions';
 import { CONTRIBUTED_BY } from '../constants';
 import staticText from '../staticText';
+
+
+const FirstCollapsingHeader = styled(CollapsingHeader)`
+  @media(max-width: 700px) {
+    margin-top: 0;
+  }
+`;
 
 class ContributedBy extends React.PureComponent {
 
@@ -60,9 +67,9 @@ class ContributedBy extends React.PureComponent {
             <CollapsingSection
               onClick={this.handleClick.bind(this)}
               header={(
-                <CollapsingHeader>
+                <FirstCollapsingHeader>
                   <TranslatableStaticText {...staticText.contributedByHeader} />
-                </CollapsingHeader>
+                </FirstCollapsingHeader>
               )}
 
               shouldOpen={
