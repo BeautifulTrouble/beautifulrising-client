@@ -11,6 +11,8 @@ import { injectIntl } from 'react-intl';
 const Container = styled.div`
   height: inherit;
   width: 100%;
+
+  direction: ${p=>p.theme.isArabic ? 'rtl':'ltr'};
 `;
 class LanguageThemeProvider extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
