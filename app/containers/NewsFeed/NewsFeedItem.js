@@ -43,6 +43,7 @@ const Image = styled.img`
 const Content = styled.span`
 margin-top: 15px;
 display: inline-block;
+width: 100%;
 `;
 const CallToAction = styled.div`
 color: gray;
