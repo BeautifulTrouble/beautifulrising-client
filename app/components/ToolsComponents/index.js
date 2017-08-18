@@ -154,7 +154,10 @@ export const ToolsMenu = styled.ul`
 `;
 export const ToolsMenuItem = styled.li`
   list-style: none;
-  margin: 10px 0 20px;
+  margin: 10px 0;
+
+  margin-bottom: ${p=> p.marginBottom || '20px'};
+
   .isvg {
     &::after {
       content: ' ';

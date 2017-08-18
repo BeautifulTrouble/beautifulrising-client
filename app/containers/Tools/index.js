@@ -242,7 +242,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
       <ToolsViewport>
         <LanguageThemeProvider>
             <ToolsMenu>
-              <ToolsMenuItem>
+              <ToolsMenuItem  marginBottom={'57px'}>
                 <ToolsButton
                   onClick={() => this.onToggleClick(null)}
                   rotate={true}
@@ -252,7 +252,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
                   <Isvg src={ArrowIcon} />
                 </ToolsButton>
               </ToolsMenuItem>
-              <ToolsMenuItem>
+              <ToolsMenuItem  marginBottom={'42px'}>
                 <ToolsViewType
                   ar={locale==='ar'}
                   onClick={() => this.onToggleClick(NEWS_FEED)}
