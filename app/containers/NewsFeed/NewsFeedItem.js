@@ -13,6 +13,10 @@ const ItemContainer = styled.li`
   list-style: none;
   border-top: 2px solid;
   padding: 15px 0;
+
+  &:first-child {
+    border-top: none;
+  }
 `;
 const Viewport = styled.div`
 position: relative`;
@@ -65,8 +69,9 @@ const TweetTimestamp = styled(Timestamp)`
 function NewsFeedItem(props) {
 
   return (
-    <LanguageThemeProvider>
+
       <ItemContainer>
+      <LanguageThemeProvider>
         <Viewport>
           <ContentBlock>
             <Image src={props.image_https} lang={props.intl.locale}/>
@@ -79,8 +84,8 @@ function NewsFeedItem(props) {
             <button onClick={()=>twitterFollow(props.user_handle)}><FormattedMessage {...messages.follow} /></button>
           </CallToAction>
         </Viewport>
+        </LanguageThemeProvider>
       </ItemContainer>
-    </LanguageThemeProvider>
   )
 }
 
