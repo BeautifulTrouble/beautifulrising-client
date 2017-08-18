@@ -8,9 +8,10 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import makeSelectTranslatableStaticText from './selectors';
-
+import styled from 'styled-components';
 import { loadLanguage } from './actions';
 
+const SpanItem = styled.span``;
 export class TranslatableStaticText extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   constructor() {
@@ -61,7 +62,7 @@ export class TranslatableStaticText extends React.PureComponent { // eslint-disa
     const message = this.buildMessage({...this.props}, this.props.values);
 
     return (
-      <span>{message}</span>
+      <SpanItem {...this.props}>{message}</SpanItem>
     );
   }
 }
@@ -108,7 +109,7 @@ const injectStaticText = (WrappedComponent) => {
       if (values) {
         let splits = message.split(/({{.*?}})/);
         const regex = new RegExp("{{\s*(.*?)\s*}}", "gi");
-        
+
         return splits.map(item => {
           var match;
           if (match = regex.exec(item)) {
