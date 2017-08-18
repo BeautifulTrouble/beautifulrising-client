@@ -83,7 +83,6 @@ export const ToolsButton = styled.button`
 export const ToolsListMenu = styled.ul`
     padding: 0;
     padding: 10px 0 10px;
-    border-bottom: 2px solid black;
     margin: 0;
     display: ${props=>props.show?'block':'none'};
 
