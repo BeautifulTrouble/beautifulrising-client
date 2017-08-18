@@ -129,7 +129,7 @@ margin: 0;
 `;
 export const ToolsListItem = styled.li`
   list-style: none;
-  margin: 10px 10px 20px;
+  margin: 10px 10px 30px;
   border-top: 2px solid;
 
   &:first-child {
