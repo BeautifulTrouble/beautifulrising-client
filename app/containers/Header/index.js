@@ -39,7 +39,7 @@ const PageHeader = styled.header`
   @media(max-width: 700px) {
     padding: 0;
     // position: relative;
-    z-index: 1000;
+    z-index: 400;
   }
 `;
 
@@ -61,7 +61,7 @@ const BellArea = styled.div`
   @media(max-width: 700px) {
     position: absolute;
     ${p=>p.theme.ar=='ar'?'left':'right'}: 15px;
-    top: 10px;
+    top: 25px;
   }
 `;
 
