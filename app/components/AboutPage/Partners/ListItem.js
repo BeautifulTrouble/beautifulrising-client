@@ -24,7 +24,7 @@ export default styled.li`list-style: none;
     padding-${p=>p.lang==='ar'?'right':'left'}: 10px;
   }
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     width: 100%;
     text-align: center;
     p {

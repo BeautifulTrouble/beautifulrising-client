@@ -56,14 +56,14 @@ const ToolsViewType = styled(ToolsButton)`
 const DesktopContent = styled.div`
   display: block;
   height: 100%;
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     display: none;
   }
 `;
 
 const MobileContent = styled.div`
   display: none;
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     display: block;
   }
 `;

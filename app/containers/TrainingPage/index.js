@@ -42,7 +42,7 @@ const MenuArea = styled.div`
   border-${props=>props.lang==='ar'?'left':'right'}: 2px solid;
   position: relative;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     width: 100%;
     float: none;
     padding: 0;
@@ -65,7 +65,7 @@ const MenuList = styled.ul`
 padding: 0;
 margin: 0;
 
-@media(max-width: 700px) {
+@media(max-width: 1170px) {
   display: none;
 }
 `;
@@ -106,7 +106,7 @@ const Button = styled.button`
   line-height: 22px;
   padding-${props=>props.lang==='ar'?'right':'left'}: 0;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     margin-bottom: 0;
     margin: 0;
     padding: 10px 0;
@@ -115,14 +115,14 @@ const Button = styled.button`
 `;
 const Banner = styled.img`
   display: block;
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     display: none;
   }
 `;
 
 const MobileBanner = styled.img`
   display: none;
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     display: block;
     width: 100%;
   }
@@ -130,7 +130,7 @@ const MobileBanner = styled.img`
 
 const MobileTrainingList = styled.div`
 display: none;
-@media(max-width: 700px) {
+@media(max-width: 1170px) {
   display: block;
   width: 100%;
 }`;
@@ -139,7 +139,7 @@ const ContentArea = styled.div`
   float: ${props=>props.lang==='ar'?'right':'left'};
   padding-${props=>props.lang==='ar'?'right':'left'}: 100px;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     display: none;
   }
 `;
@@ -148,7 +148,7 @@ const Content = styled.div`
   padding-${props=>props.lang==='ar'?'left':'right'}: 170px;
   margin-top: 40px;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     display: block !important;
     padding-right: 0;
     margin-top: 0;
@@ -169,7 +169,7 @@ const TrainingArea =styled.div`
     display: block;
   }
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     padding-bottom: 20px;
   }
 `;

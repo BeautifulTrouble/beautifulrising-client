@@ -49,7 +49,7 @@ const ToolType = styled(Link)`
   }
   margin-bottom: 20px;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     text-align: center;
     width: 100%;
     .isvg {
@@ -81,7 +81,7 @@ const ToolDesc = styled(ContentBlock)`
   padding-${p=>p.theme.isArabic?'left':'right'}: 30px;
   margin-bottom: 70px;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     display: none;
   }
 `;

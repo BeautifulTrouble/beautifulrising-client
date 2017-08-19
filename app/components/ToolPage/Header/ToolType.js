@@ -12,7 +12,7 @@ export default styled(ToolType)`
     text-decoration: none;
   }
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     font-size: 21px;
     line-height: 21px;
     margin-bottom: 6px;

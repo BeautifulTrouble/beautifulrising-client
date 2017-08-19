@@ -6,7 +6,7 @@ export default styled(IntroText)`
   width: 33%;
   padding: 0;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     width: 100%;
     margin: 0;
     transform: translateX(0);

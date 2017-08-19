@@ -32,7 +32,7 @@ const FlagContainer = styled.div`
     stroke: ${props=>getToolTypeColor(props.type)};
   }
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     position: absolute;
     left: -220px;
     top: 35px;

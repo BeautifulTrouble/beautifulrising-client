@@ -5,7 +5,7 @@ export default styled.div`
   width: 370px;
   min-width: 370px;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     display: none;
   }
 `;

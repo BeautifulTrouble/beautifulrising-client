@@ -18,7 +18,7 @@ export default styled.section`
   width: 100%;
   height: 430px;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     height: 245px;
   }
 `;;

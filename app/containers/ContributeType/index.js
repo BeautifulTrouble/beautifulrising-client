@@ -42,7 +42,7 @@ import staticText from './staticText';
 const MobileContent = styled(Content)`
   display: none;
   padding: 0 20px 20px;
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     width: 100%;
     display: ${p=>p.show?'block':'none'};
     * {text-align: center !important;}

@@ -22,7 +22,7 @@ display: inline-block;
 }
 
 // Mobile
-@media(max-width: 700px) {
+@media(max-width: 1170px) {
   max-width: 100%;
   width: 100%;
 }

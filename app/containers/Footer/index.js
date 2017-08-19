@@ -33,7 +33,7 @@ margin-right: 20px;
 const Viewport = styled.div`
   margin-${p=>p.isArabic?'right':'left'}: 16%; width: 66%;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     width: 100%;
     margin: 0;
   }

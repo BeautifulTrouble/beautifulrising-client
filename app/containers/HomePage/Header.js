@@ -52,7 +52,7 @@ const FilterSection = styled.ul`
   list-style: none;
   margin: 0;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     flex-wrap: wrap;
 
     &::after {

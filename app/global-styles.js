@@ -151,19 +151,19 @@ injectGlobal`
     }
   }
   [aria-label=MenuModal] {
-    @media(max-width: 700px) {
+    @media(max-width: 1170px) {
       z-index: 1100 !important;
     }
   }
 
   [aria-label=Onboarding] {
-    @media(max-width: 700px) {
+    @media(max-width: 1170px) {
       width: calc(100% - 75px) !important;
     }
   }
   [aria-label=ToolsModal] {
     display: none;
-    @media(max-width: 700px) {
+    @media(max-width: 1170px) {
       display: block;
       width: 100% !important;
       height: calc(100% - 70px) !important;
@@ -174,7 +174,7 @@ injectGlobal`
 
   .MenuModalOverlay {
 
-    @media(max-width: 700px) {
+    @media(max-width: 1170px) {
       z-index: 1100;
 
       & > div {
@@ -185,7 +185,7 @@ injectGlobal`
 
   .ToolModalOverlay {
     display: none;
-    @media(max-width: 700px) {
+    @media(max-width: 1170px) {
       display: block;
     }
   }
