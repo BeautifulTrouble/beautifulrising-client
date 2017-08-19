@@ -83,7 +83,6 @@ export const ToolsButton = styled.button`
 export const ToolsListMenu = styled.ul`
     padding: 0;
     padding: 10px 0 10px;
-    border-bottom: 2px solid black;
     margin: 0;
     display: ${props=>props.show?'block':'none'};
 
@@ -129,7 +128,7 @@ margin: 0;
 `;
 export const ToolsListItem = styled.li`
   list-style: none;
-  margin: 10px 10px 20px;
+  margin: 10px 10px 30px;
   border-top: 2px solid;
 
   &:first-child {
@@ -154,7 +153,10 @@ export const ToolsMenu = styled.ul`
 `;
 export const ToolsMenuItem = styled.li`
   list-style: none;
-  margin: 10px 0 20px;
+  margin: 10px 0;
+
+  margin-bottom: ${p=> p.marginBottom || '20px'};
+
   .isvg {
     &::after {
       content: ' ';

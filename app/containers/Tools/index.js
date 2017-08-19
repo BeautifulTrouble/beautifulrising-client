@@ -84,7 +84,10 @@ const MyToolsButton = styled(ToolsViewType)`
         // return `animation-play-state: paused;`;
     }
   }}
+`;
 
+const ToolTitle = styled.span`
+  color: black;
 `;
 
 //For modalIsOpen
@@ -194,7 +197,9 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
               toShow={this.props.Tools.mobileShow}
               >
               <Isvg src={NewsFeedIcon} />
-              <TranslatableStaticText {...staticText.newsFeed} />
+              <ToolTitle>
+                <TranslatableStaticText {...staticText.newsFeed} />
+              </ToolTitle>
             </ToolsViewType>
           </ToolsMenuItem>
           <ToolsMenuItem>
@@ -210,7 +215,9 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
                 className={this.props.Tools.onboardShow ? 'animate' : ''}
             >
               <Isvg src={MyToolsIcon} />
-              <TranslatableStaticText {...staticText.myTools} />
+              <ToolTitle>
+                <TranslatableStaticText {...staticText.myTools} />
+              </ToolTitle>
             </MyToolsButton>
           </ToolsMenuItem>
         </ToolsMenu>
@@ -235,7 +242,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
       <ToolsViewport>
         <LanguageThemeProvider>
             <ToolsMenu>
-              <ToolsMenuItem>
+              <ToolsMenuItem  marginBottom={'57px'}>
                 <ToolsButton
                   onClick={() => this.onToggleClick(null)}
                   rotate={true}
@@ -245,7 +252,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
                   <Isvg src={ArrowIcon} />
                 </ToolsButton>
               </ToolsMenuItem>
-              <ToolsMenuItem>
+              <ToolsMenuItem  marginBottom={'42px'}>
                 <ToolsViewType
                   ar={locale==='ar'}
                   onClick={() => this.onToggleClick(NEWS_FEED)}
@@ -253,7 +260,9 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
                   toShow={this.props.Tools.show}
                   >
                   <Isvg src={NewsFeedIcon} />
-                  <TranslatableStaticText {...staticText.newsFeed} />
+                  <ToolTitle>
+                    <TranslatableStaticText {...staticText.newsFeed} />
+                  </ToolTitle>
                 </ToolsViewType>
               </ToolsMenuItem>
               <ToolsMenuItem>
@@ -266,7 +275,9 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
                     className={this.props.Tools.onboardShow ? 'animate' : ''}
                 >
                   <Isvg src={MyToolsIcon} />
-                  <TranslatableStaticText {...staticText.myTools} />
+                  <ToolTitle>
+                    <TranslatableStaticText {...staticText.myTools} />
+                  </ToolTitle>
                 </MyToolsButton>
               </ToolsMenuItem>
             </ToolsMenu>

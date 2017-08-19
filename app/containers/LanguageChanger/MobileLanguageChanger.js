@@ -22,7 +22,7 @@ import { loadData, langChangeReloadData } from '../App/actions';
 
 const customStyles = {
   overlay: {
-    backgroundColor: 'rgba(255, 255, 255, 0.75)',
+    backgroundColor: 'rgba(149, 149, 149, 0.75)',
     zIndex: 800
   },
   content : {
@@ -45,8 +45,8 @@ const Container = styled.div`
   display: none;
   position: fixed;
   z-index: ${p=>p.zIndex?p.zIndex:500};
-  ${p=>p.lang==='ar'?'left':'right'}: 50px;
-  top: 28px;
+  ${p=>p.lang==='ar'?'left':'right'}: 5px;
+  top: 13px;
 
   @media(max-width: 700px) {
     display: block;
