@@ -17,7 +17,7 @@ import { MobileLanguageChanger } from 'containers/LanguageChanger';
 
 const Viewport = styled.div`
   position: relative;
-  width: 1180px;
+  width: 1170px;
   text-align: left;
   display: inline-block;
   // Mobile
@@ -32,7 +32,7 @@ const PageHeader = styled.header`
   background-color: white;
   height: 115px;
   overflow: visible;
-  padding: 0 20px 0px;
+  padding: 0;
   z-index: 300;
   text-align: center;
 
