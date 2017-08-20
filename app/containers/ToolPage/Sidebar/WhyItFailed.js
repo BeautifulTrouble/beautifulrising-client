@@ -27,7 +27,7 @@ import staticText from '../staticText';
 
 import makeSelectToolPage from '../selectors';
 import { setChosenSection } from '../actions';
-import { WHY_IT_FAILED } from '../constants';
+import { WHY_IT_FAILED, PROP_WHY_IT_FAILED } from '../constants';
 
 
 class WhyItFailed extends React.PureComponent {
@@ -89,6 +89,10 @@ class WhyItFailed extends React.PureComponent {
   }
 
   render() {
+    if( !this.props.showIfUntranslated(PROP_WHY_IT_FAILED) ) {
+      return null;
+    }
+
     if (!this.props.text || this.props.text.trim().length == 0) return null;
     return this.props.collapsible ? this.renderCollapsible() : this.renderSidebar();
   }

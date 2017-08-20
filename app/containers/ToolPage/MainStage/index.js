@@ -28,7 +28,7 @@ import Training from '../Sidebar/Training';
 
 const MobileContent = styled.div`
   display: none;
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     display: block;
   }
 `;
@@ -51,7 +51,7 @@ class MainStage extends React.PureComponent {
         <ContentSeparation />
         <MobileContent>
           <WhyItWorked collapsible={true}  {...this.props} text={this.props['why-it-worked']} />
-          <WhyItFailed collapsible={true}  {...this.props} text={this.props['why-it-worked']} />
+          <WhyItFailed collapsible={true}  {...this.props} text={this.props['why-it-failed']} />
           <PotentialRisk collapsible={true} {...this.props} content={this.props['potential-risks']} type={this.props.type} />
         </MobileContent>
 

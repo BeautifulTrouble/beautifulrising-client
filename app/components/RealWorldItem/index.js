@@ -67,7 +67,8 @@ const Example = styled.div`
   position: relative;
   z-index: 100;
   font-size: 12px;
-  width: 342px;
+  width: 100%;
+  max-width: 342px;
   border: 2px solid black;
 
   ${props=> {
@@ -75,6 +76,10 @@ const Example = styled.div`
       return `
       margin-top: -22px;
       left: calc(100% - 322px);
+      @media(max-width: 1170px) {
+        left: -22px;
+        // left: auto;
+      }
     `
 
     } else {

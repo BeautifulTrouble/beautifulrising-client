@@ -17,7 +17,7 @@ const Container = styled.div`
   display: flex
   margin-top: 95px;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     display: block;
     margin-top: 15px;
   }
@@ -41,7 +41,7 @@ const ContentArea = styled.div`
     top: ${p=>p.twig + 10}%;
   }
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     display: block;
     width: 100%;
     min-width: 100%;
@@ -61,7 +61,7 @@ const FeatureArea = styled.div`
   padding-top: 45px;
   padding-bottom: 70px;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     display: block;
     width: 100%;
     min-width: 100%;

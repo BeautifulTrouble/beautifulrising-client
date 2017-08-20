@@ -17,7 +17,7 @@ export default styled.section`
   transition: left 0.3s ease;
 
   // Mobile
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     max-width: 100%;
     padding-top: 120px;
     left: 0 !important;

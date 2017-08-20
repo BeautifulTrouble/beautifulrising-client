@@ -8,7 +8,7 @@ export default styled.section`
    display: block;
  }
 
- @media(max-width: 700px) {
+ @media(max-width: 1170px) {
    display: block;
  }
 `;

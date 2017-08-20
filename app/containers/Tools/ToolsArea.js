@@ -53,10 +53,13 @@ export const ToolsListContainer = styled.div`
       text-align: ${props=>props.lang === 'ar' ? 'right' : 'left'};
     }
 
-    @media(max-width: 700px) {
+    @media(max-width: 1170px) {
       display: block;
       width: 100%;
       float: none;
+
+      border: 2px solid;
+      border-width: 2px 2px 0;
     }
 `;
 

@@ -22,7 +22,7 @@ import AdvisoryNetworkIntro from 'components/AboutPage/AdvisoryNetwork/AdvisoryN
 import messages from './messages';
 
 const AdvisoryNetworkList = styled.ul`
-@media(max-width: 700px) {
+@media(max-width: 1170px) {
   padding: 0;
 }
 `;

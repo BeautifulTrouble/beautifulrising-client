@@ -35,7 +35,7 @@ export default styled.li`
     }
   }
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     width: 100%;
     text-align: center;
     p {

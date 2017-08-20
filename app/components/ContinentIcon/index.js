@@ -28,7 +28,7 @@ const Content = styled.div`
   text-align: ${p=>p.lang==='ar'?'left':'right'};
   margin-bottom: 20px;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     display: inline-block;
 
     .where-when-desktop { display: none; }
@@ -37,7 +37,7 @@ const Content = styled.div`
 
 const DesktopContent = styled.div`
   display: block;
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     display: none;
   }
 `;
@@ -46,7 +46,7 @@ const Continent = styled.div`
   svg * {
     fill: #08eb8c;
   }
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     margin-${p=>p.lang==='ar' ? 'left' : 'right'}: 10px;
   }
 `;

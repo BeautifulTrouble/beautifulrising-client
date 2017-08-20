@@ -17,11 +17,11 @@ import { MobileLanguageChanger } from 'containers/LanguageChanger';
 
 const Viewport = styled.div`
   position: relative;
-  width: 1180px;
+  width: 1170px;
   text-align: left;
   display: inline-block;
   // Mobile
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     max-width: 100%;
   }
 `;
@@ -32,11 +32,11 @@ const PageHeader = styled.header`
   background-color: white;
   height: 115px;
   overflow: visible;
-  padding: 0 20px 0px;
+  padding: 0;
   z-index: 300;
   text-align: center;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     padding: 0;
     // position: relative;
     z-index: 400;
@@ -58,7 +58,7 @@ const BellArea = styled.div`
   ${p=>p.theme.ar=='ar'?'left':'right'}: 0;
   top: 27px;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     position: absolute;
     ${p=>p.theme.ar=='ar'?'left':'right'}: 15px;
     top: 25px;

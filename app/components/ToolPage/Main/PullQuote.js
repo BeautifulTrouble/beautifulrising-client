@@ -20,7 +20,7 @@ export default styled.blockquote`
 
   font-size: 20px;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     width: 100%;
     max-width: 100%;
     padding: 0 30px;

@@ -21,7 +21,7 @@ import TeamImage from 'components/AboutPage/Team/TeamImage';
 import TeamName from 'components/AboutPage/Team/TeamName';
 
 const TeamList = styled.ul`
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     padding: 0;
   }
 `;

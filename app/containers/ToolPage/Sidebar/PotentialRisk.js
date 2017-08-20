@@ -24,7 +24,7 @@ import SidebarContent from 'components/ToolPage/Sidebar/SidebarContent';
 
 import makeSelectToolPage from '../selectors';
 import { setChosenSection } from '../actions';
-import { POTENTIAL_RISK } from '../constants';
+import { POTENTIAL_RISK, PROP_POTENTIAL_RISK } from '../constants';
 
 class PotentialRisk extends React.PureComponent {
 
@@ -88,6 +88,10 @@ class PotentialRisk extends React.PureComponent {
   }
 
   render() {
+    if( !this.props.showIfUntranslated(PROP_POTENTIAL_RISK) ) {
+      return null;
+    }
+
     if (!this.props.content || this.props.content.trim().length == 0) return null;
 
     return this.props.collapsible ? this.renderCollapsible() : this.renderSidebar();

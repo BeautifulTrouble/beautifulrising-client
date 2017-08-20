@@ -30,7 +30,7 @@ const SubmitExampleContainer = styled.div`
   margin-top: 12px;
   width: 470px;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     width: 100%;
   }
 `;

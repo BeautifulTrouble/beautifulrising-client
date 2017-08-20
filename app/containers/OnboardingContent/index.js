@@ -61,7 +61,7 @@ const Header = styled.h2`
     opacity: ${p=>p.showLine?'1':'0'};
     transition: opacity 0.3s ease;
 
-    @media(max-width: 700px) { display: none; }
+    @media(max-width: 1170px) { display: none; }
   }
 `;
 const Content = styled.div`
@@ -77,7 +77,7 @@ const List = styled.ul`
   padding: 0;
   margin: 20px 50px;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     margin: 5px;
   }
 `;
@@ -117,7 +117,7 @@ const ListItem = styled.li`
     position: absolute;
     ${p=>p.lang==='ar'?'left':'right'}: 20px;
 
-    @media(max-width: 700px) {
+    @media(max-width: 1170px) {
       top: 50%;
       transform: translateY(-50%);
     }
@@ -142,7 +142,7 @@ const ListItem = styled.li`
     }};
   }
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     h2 {
       font-size: 14px;
       padding: 10px 0;
@@ -177,7 +177,7 @@ const Spiel = styled(ContentBlock)`
   margin: 0 28%;
   text-align: center;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     margin: 0;
   }
 `;
@@ -187,7 +187,7 @@ const Overlay = styled.div`
   background-color: rgba(0,0,0,0.6);
   padding: 120px 39px 30px;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     padding: 120px 0 10px;
   }
 `;

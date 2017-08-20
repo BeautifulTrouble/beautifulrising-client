@@ -4,7 +4,7 @@ export default styled(ContentBlock)`
   padding-${p=>p.theme.isArabic?'right':'left'}: 100px !important;
   margin: 10px;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     padding-${p=>p.theme.isArabic?'right':'left'}: 0 !important;
   }
 `;

@@ -48,7 +48,7 @@ const Container = styled.div`
   ${p=>p.lang==='ar'?'left':'right'}: 5px;
   top: 13px;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     display: block;
   }
 `;

@@ -9,7 +9,7 @@ export default styled.div`
 
   a { color: white; }
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     display: none;
   }
 `;

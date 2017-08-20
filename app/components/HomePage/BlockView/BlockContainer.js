@@ -11,9 +11,9 @@ export default styled(ToolContainer)`
   margin-bottom: 30px;
 
 
-  @media(max-width: 700px) {
-    width: 80vmin;
-    height: 80vmin;
+  @media(max-width: 1170px) {
+    width: 350px;
+    height: 350px;
     margin: 10px;
   }
 `;

@@ -8,7 +8,7 @@ export default styled(ContentBlock)`
   padding: 0 40px;
   text-align: center;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1170px) {
     width: 100%;
     text-align: center;
     transform: none;
