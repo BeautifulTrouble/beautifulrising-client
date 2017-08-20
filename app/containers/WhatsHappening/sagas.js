@@ -54,8 +54,7 @@ export function* retrieveWhatsHappening() {
   const language = yield select(getLanguage);
 
 
-  const requestURL = `https://api.beautifulrising.org/api/v1/posts?lang=${language.get('locale')}`;
-
+  const requestURL = `https://api.beautifulrising.org/api/v1/posts?lang=${language.get('locale')}&orderby=timestamp`;
 
   try {
     const data = yield call(request, requestURL);
