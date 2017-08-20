@@ -39,6 +39,9 @@ import staticText from './staticText';
 const CounterContainer = styled.div`
   display: inline-block;
   vertical-align: top;
+  position: relative;
+  top: 11px;
+  right: -4px;
 `;
 
 export class ContactUs extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
