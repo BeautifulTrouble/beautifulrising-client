@@ -23,3 +23,6 @@ export const TYPE_PERSON = 'person';
 
 export const PROP_FULL_WRITE_UP = 'full-write-up';
 export const PROP_SHORT_WRITE_UP = 'short-write-up';
+export const PROP_WHY_IT_WORKED = 'why-it-worked';
+export const PROP_WHY_IT_FAILED = 'why-it-failed';
+export const PROP_POTENTIAL_RISK = 'potential-risk';

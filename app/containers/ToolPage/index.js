@@ -95,7 +95,11 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
               />
             </MainArea>
             <SidebarContainer>
-              <Sidebar {...tool} {...this.props}/>
+              <Sidebar
+                {...tool}
+                {...this.props}
+                showIfUntranslated={this.showIfUntranslated.bind(this)}
+              />
             </SidebarContainer>
           </StageContainer>
         </div>
