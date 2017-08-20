@@ -58,7 +58,7 @@ class Counter extends React.PureComponent {
       });
 
 
-    // if (unseenCount.length == 0) return null;
+    if (unseenCount.length == 0) return null;
 
     return (
       <CounterArea><span>{unseenCount.length}</span></CounterArea>
