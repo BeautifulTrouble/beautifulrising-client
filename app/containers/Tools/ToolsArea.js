@@ -57,6 +57,9 @@ export const ToolsListContainer = styled.div`
       display: block;
       width: 100%;
       float: none;
+
+      border: 2px solid;
+      border-width: 2px 2px 0;
     }
 `;
 
