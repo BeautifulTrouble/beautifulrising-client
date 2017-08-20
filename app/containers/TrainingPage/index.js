@@ -196,11 +196,32 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
     }
   }
 
+  // The delay is so that the receiveProps and didMount
+  // will not go against eachother
   componentDidMount() {
     if (!this.props.data.size || !this.props.data || this.props.data === undefined) {
       this.props.onPageLoad();
     }
 
+    const reference = browserHistory.getCurrentLocation().pathname;
+    const targetNode = ReactDOM.findDOMNode(this.refs[reference]);
+    if (targetNode) {
+      window.scrollTo(0, targetNode.offsetTop);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const reference = browserHistory.getCurrentLocation().pathname;
+    const targetNode = ReactDOM.findDOMNode(this.refs[reference]);
+
+    if (targetNode &&
+          // this.state.activateAnchor &&
+          this.props.params.section !== nextProps.params.section
+       ) {
+      // this.setState({ activateAnchor : false, currentPath: reference, currentOffset: targetNode.offsetTop });
+      window.scrollTo(0, targetNode.offsetTop);
+      // setTimeout(() => { this.setState({ activateAnchor: true }); }, 100);
+    }
   }
 
   handleClick(clicked) {
@@ -225,7 +246,7 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
             { name: 'description', content: 'Description of TrainingPage' },
           ]}
         />
-        <Container>
+        <Container ref="/resources/training">
           <Viewport>
             <Header>
               <TranslatableStaticText {...staticText.header} />
@@ -287,7 +308,7 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
               </ContentArea>
             </TrainingArea>
 
-            <OtherResourcesArea>
+            <OtherResourcesArea ref={"/resources/other"}>
               <OtherResourcesHeading lang={lang}>
                 <TranslatableStaticText {...staticText.otherResources} />
               </OtherResourcesHeading>

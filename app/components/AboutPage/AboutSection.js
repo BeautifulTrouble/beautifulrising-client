@@ -12,7 +12,7 @@ h2 {
   letter-spacing: 0;
   font-family: 'Avenir', 'Kaff', sans-serif;
   font-weight: 800;
-  margin-top: 40px;
+  margin-top: 90px;
   padding: 15px 20px;
   text-align: ${p=>p.lang==='ar'?'right':'left'};
   position: relative;
