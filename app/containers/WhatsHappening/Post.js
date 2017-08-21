@@ -103,13 +103,21 @@ class Post extends React.PureComponent {
     super();
   }
 
+  renderSlideshow() {
+    return (
+      <ImageSlideshow images={
+        this.props.slideshow.map(item => BEAUTIFULRISING_URL + item)
+      }
+        previousButton={(<PreviousButton><Isvg src={ArrowIcon} /></PreviousButton>)}
+        nextButton={(<NextButton><Isvg src={ArrowIcon} /></NextButton>)}
+      />
+    )
+  }
+
   renderImage() {
     return (
       <ImageSlideshow images={[
-        BEAUTIFULRISING_URL + this.props.image,
-        "https://images.pexels.com/photos/9805/pexels-photo.jpg",
-        "https://images.pexels.com/photos/8852/food-wood-kitchen-candy.jpg",
-        "https://images.pexels.com/photos/9095/pexels-photo.jpg"
+        BEAUTIFULRISING_URL + this.props.image
       ]}
         previousButton={(<PreviousButton><Isvg src={ArrowIcon} /></PreviousButton>)}
         nextButton={(<NextButton><Isvg src={ArrowIcon} /></NextButton>)}
@@ -129,6 +137,14 @@ class Post extends React.PureComponent {
     )})
   }
   renderFeatureArea() {
+
+    if (this.props.slideshow) {
+      return (
+        <FeatureArea>
+          {this.renderSlideshow()}
+        </FeatureArea>
+      );
+    }
 
     if (this.props.image) {
       return (
