@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 export default styled.li`list-style: none;
-  width: ${props=>props.theme.itemWidth};
-  margin-${p=>p.lang==='ar'?'left':'right'}: ${props=>props.theme.itemMargin};
+  width: 24%;
+  margin-${p=>p.lang==='ar'?'left':'right'}: ${props=>'0.5%'};
   display: inline-block;
   vertical-align: top;
   margin-bottom: 50px;
@@ -48,6 +48,19 @@ export default styled.li`list-style: none;
       font-size: 12px;
       text-align: ${p=>p.lang==='ar'?'right':'left'};
       line-height: 20px;
+    }
+  }
+
+  @media(max-width: 1170px) {
+    width: 100%;
+    float: none;
+
+    text-align: center;
+    .circledContainer {
+      display: inline-block;
+      &::after {
+        display: none;
+      }
     }
   }
 `;

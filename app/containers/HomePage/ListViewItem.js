@@ -10,7 +10,9 @@ import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import { injectIntl } from 'react-intl';
 import Link from 'components/Link';
 import AdderRemover from 'containers/Tools/AdderRemover';
-import {ToolType, ToolTitle, ListContainer, ListViewport, ListSpiel} from 'components/ToolsComponents';
+import {ToolType, ToolTitle, ListContainer, ListSpiel} from 'components/ToolsComponents';
+import { ListViewport } from 'components/HomePage/ListView';
+
 import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
 
 import TranslatableStaticText from 'containers/TranslatableStaticText';
@@ -22,7 +24,7 @@ class ListViewItem extends React.Component {
     const { locale } = this.props.intl;
 
     return (
-      <ListContainer lang={locale}>
+      <ListContainer lang={locale} index={this.props.index}>
         <ListViewport>
           <LanguageThemeProvider>
             <ToolType type={this.props.type}>

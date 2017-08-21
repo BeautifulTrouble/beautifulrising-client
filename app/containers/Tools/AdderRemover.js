@@ -22,6 +22,7 @@ import { Link } from 'react-router';
 import { ToolsButton, ToolsListMenu, ToolsListMenuItem,
           ToolsList, ToolsListItem } from 'components/ToolsComponents';
 
+import { getToolTypeColor } from 'components/CommonComponents';
 import { removeTool, addTool } from './actions';
 
 const CallToAction = styled.span`
@@ -30,9 +31,21 @@ const CallToAction = styled.span`
   font-weight: 800;
   font-size: ${p=>p.ar?'16px':'14px'};
   line-height: 22px;
-  padding-top: 12px;
   display: inline-block;
 `;
+
+const CallToRemoveAction = styled(CallToAction) `
+  svg circle {
+    ${p=>p.type ? `stroke: ${getToolTypeColor(p.type)};` : ''}
+    fill: transparent;
+  }
+
+  svg path {
+    fill:  ${p=>p.type ? `${getToolTypeColor(p.type)}` : 'transparent'};
+  }
+  margin-left: -10px;
+  margin-top: -10px;
+`
 
 export class AdderRemover extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -48,9 +61,9 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
 
   buildRemove() {
     return (
-      <CallToAction ar={this.props.intl.locale==='ar'}>
-        <img src={RemoveToolIcon}/>{ this.props.removeText || ""}
-      </CallToAction>
+      <CallToRemoveAction ar={this.props.intl.locale==='ar'} type={this.props.type}>
+        <Isvg src={RemoveToolIcon}/>{ this.props.removeText || ""}
+      </CallToRemoveAction>
     )
   }
 

@@ -5,5 +5,9 @@ export default styled.li`list-style: none;
   display: inline-block;
   vertical-align: top;
   margin-bottom: 34px;
+
+  @media(max-width: 1170px) {
+    width: 100%;
+  }
 `
 ;

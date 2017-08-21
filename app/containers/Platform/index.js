@@ -27,7 +27,32 @@ import Title from 'components/PlatformsPage/Title';
 import TextContent from 'components/PlatformsPage/TextContent';
 import Viewport from 'components/PlatformsPage/Viewport';
 
+import CollapsingSection from 'components/CollapsingSection';
+
+const Introduction = styled(ContentBlock)`
+  margin-bottom: 26px;
+`;
+
+const CollapsingSectionContent = styled(ContentBlock)`
+  padding-bottom: 36px;
+`
 class Platform extends React.Component {
+  renderQuestions() {
+    return this.props.content.questions.map((item,index) => (
+      <CollapsingSection
+        key={`${index}-${item.title}`}
+        header={
+            (<Subtitle>
+              {item.title}
+            </Subtitle>)
+        }
+      >
+        <CollapsingSectionContent>
+          <Markdown source={item.text} />
+        </CollapsingSectionContent>
+      </CollapsingSection>
+    ));
+  }
   render() {
 
     if (!this.props.content || this.props.content === undefined) return null;
@@ -36,39 +61,27 @@ class Platform extends React.Component {
       <LanguageThemeProvider>
         <Container lang={lang}>
           <Viewport>
-            <IconContainer lang={lang}>
+            {/*<IconContainer lang={lang}>
               <Isvg src={this.props.icon} />
             </IconContainer>
+            */}
             <TextContent lang={lang}>
               <Content>
                 <Title lang={lang}>
-                  {this.props.content.get('title')}
+                  {this.props.content.title}
                 </Title>
-                <Subtitle>
-                  {this.props.content.get('introduction')}
-                </Subtitle>
+                <Introduction>
+                  {this.props.content.introduction}
+                </Introduction>
 
-                <Subtitle>
-                  {this.props.misc.get('what')}
-                </Subtitle>
-                <ContentBlock>
-                  <Markdown source={this.props.content.get('what')} />
-                </ContentBlock>
-
-                <Subtitle>
-                  {this.props.misc.get('how')}
-                </Subtitle>
-                <ContentBlock>
-                  <Markdown source={this.props.content.get('how')} />
-                </ContentBlock>
-
+                {this.renderQuestions()}
                 <CTA>
-                  <Markdown source={this.props.content.get('get')} />
+                  <Markdown source={this.props.content.get} />
                 </CTA>
               </Content>
             </TextContent>
             <ImageContent lang={lang}>
-              <Image source={this.props.content.get('image')} />
+              <Image source={this.props.content.image} />
             </ImageContent>
           </Viewport>
         </Container>

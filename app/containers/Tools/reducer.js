@@ -13,12 +13,14 @@ import {
   SET_VIEW_TYPE,
   NEWS_FEED,
   NEW_USER_TOOL_ONBOARDING,
-  TOOL_ONBOARDING_FINISHED
+  TOOL_ONBOARDING_FINISHED,
+  SET_MOBILE_SHOW_TOOLS
 } from './constants';
 
 const initialState = fromJS({
   show: false,
   onboardShow: false,
+  mobileShow: false,
   selectedTools: {},
   viewType: NEWS_FEED
 });
@@ -28,6 +30,8 @@ function toolsReducer(state = initialState, action) {
   switch (action.type) {
     case SET_SHOW_TOOLS:
       return state.set('show', action.data);
+    case SET_MOBILE_SHOW_TOOLS:
+      return state.set('mobileShow', action.data);
     case ADD_TOOL:
       return state
               .setIn(['selectedTools', action.slug], action.data);

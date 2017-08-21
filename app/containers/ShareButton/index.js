@@ -67,14 +67,14 @@ class ShareButton extends React.PureComponent { // eslint-disable-line react/pre
 
     return (
       <Container>
-        <ShareArea className={'shareArea'} lang={this.props.intl.locale} show={ this.state.showSocialButtons }>
-          <TwitterButton onClick={()=>this.handleTwitterClick(this.props.title, url)}>
+        <ShareArea orientation={this.props.orientation} className={'shareArea'} lang={this.props.intl.locale} show={ this.state.showSocialButtons }>
+          <TwitterButton svgSquare={'20px'} onClick={()=>this.handleTwitterClick(this.props.title, url)}>
             <Isvg src={TwitterIcon} />
           </TwitterButton>
-          <FacebookButton onClick={()=>this.handleFacebookShare(url)}>
+          <FacebookButton svgSquare={'20px'} onClick={()=>this.handleFacebookShare(url)}>
             <Isvg src={FacebookIcon} />
           </FacebookButton>
-          <MailButton href={`mailto:?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailMessage)}`}>
+          <MailButton svgSquare={'20px'} padding={this.props.orientation=='vertical'?'0':'5px'} href={`mailto:?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailMessage)}`}>
             <Isvg src={MailIcon} />
           </MailButton>
         </ShareArea>

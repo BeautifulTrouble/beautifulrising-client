@@ -67,14 +67,19 @@ const Example = styled.div`
   position: relative;
   z-index: 100;
   font-size: 12px;
-  width: 342px;
+  width: 100%;
+  max-width: 342px;
   border: 2px solid black;
 
   ${props=> {
     if(props.pos % 2 == 1) {
       return `
       margin-top: -22px;
-      margin-left: 90px;
+      left: calc(100% - 322px);
+      @media(max-width: 1170px) {
+        left: -22px;
+        // left: auto;
+      }
     `
 
     } else {
@@ -87,10 +92,11 @@ const Example = styled.div`
   }}
 `;
 const ExampleTitle = styled.h5`
-  line-height: 1;
+
   margin: 0;
   padding: 0;
   font-size: 14px;
+  line-height: 22px;
   font-weight: 800; font-family: 'Avenir', sans-serif;
   letter-spacing: 0;
   a {
@@ -99,10 +105,13 @@ const ExampleTitle = styled.h5`
     text-transform: uppercase;
   }
 `;
-const ExampleDescription = styled.div`
+const ExampleDescription = styled(ContentBlock)`
   font-style: italic;
   margin: 5px 0 0;
   padding: 0;
+  font-size: 12px;
+  line-height: 18px;
+
 `;
 
 class RealWorldItem extends React.PureComponent {
@@ -132,11 +141,9 @@ class RealWorldItem extends React.PureComponent {
                   </a>
                 </ExampleTitle>
               </ContentBlock>
-              <ExampleDescription>
-                <ContentBlock>
+                <ExampleDescription>
                   {this.props.description}
-                </ContentBlock>
-              </ExampleDescription>
+                </ExampleDescription>
             </Example>
           <ImageBackgroundBottom type={this.props.type} image={this.props.image}
                 pos={this.props.pos} />

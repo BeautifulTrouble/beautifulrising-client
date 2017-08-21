@@ -21,6 +21,12 @@ import AdvisoryNetworkIntro from 'components/AboutPage/AdvisoryNetwork/AdvisoryN
 
 import messages from './messages';
 
+const AdvisoryNetworkList = styled.ul`
+@media(max-width: 1170px) {
+  padding: 0;
+}
+`;
+
 export class OurAdvisoryNetwork extends React.Component {
   renderHeader() {
     return (
@@ -45,7 +51,7 @@ export class OurAdvisoryNetwork extends React.Component {
             </AdvisoryNetworkIntro>
           </Introduction>
           <ThemeProvider theme={themeThreeColumns}>
-            <ul>
+            <AdvisoryNetworkList>
               { this.props.advisoryNetwork.map((item, ind) => (
                 <AdvisoryNetworkListItem key={ind}>
                   <AdvisoryNetworkImage source={item['image']} />
@@ -56,7 +62,7 @@ export class OurAdvisoryNetwork extends React.Component {
                   </ContentBlock>
                 </AdvisoryNetworkListItem>
               ))}
-            </ul>
+            </AdvisoryNetworkList>
           </ThemeProvider>
         </AdvisoryNetworkSection>
       </LanguageThemeProvider>

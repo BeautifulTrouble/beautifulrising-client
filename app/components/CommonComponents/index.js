@@ -30,7 +30,7 @@ export const getToolTypeColor = (type) => {
       return "#ff9200";
     case "principle":
     case "principles":
-      return "#166ce3";
+      return "#0088ff";
     case "theory":
     case "theories":
       return "#f93732";

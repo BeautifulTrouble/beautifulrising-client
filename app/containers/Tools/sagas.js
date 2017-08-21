@@ -1,13 +1,14 @@
 import { LOCATION_CHANGE } from 'react-router-redux';
 import {takeLatest, take, call, put, select } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
-import { setShowTools , setViewType, showToolsForOnboarding, hideToolsAfterOnboarded} from './actions'
+import { setShowTools , setMobileShowTools, setViewType, showToolsForOnboarding, hideToolsAfterOnboarded} from './actions'
 import { ADD_TOOL, MY_TOOLS } from './constants';
 
 export const getTools = (state) => state.get('tools');
 
 export function* closeToolsList() {
   yield put(setShowTools(false));
+  yield put(setMobileShowTools(false));
 }
 
 // This will hide the tools area the page

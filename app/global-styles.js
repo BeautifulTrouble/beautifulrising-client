@@ -37,6 +37,12 @@ injectGlobal`
   }
 
   @font-face {
+    font-family: 'Avenir Black';
+    font-weight: 800;
+    src: url(${AvenirBlack});
+  }
+
+  @font-face {
     font-family: 'KnockOut';
     src: url(${KnockOut});
   }
@@ -97,7 +103,9 @@ injectGlobal`
     font-family: 'Avenir', 'Kaff', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
-
+  input[type=text]::placeholder, textarea::placeholder {
+    font-size: 12px;
+  }
 
   h1 {
     font-size: 50px;
@@ -112,6 +120,7 @@ injectGlobal`
     letter-spacing: 1px;
   }
 
+  h1,h2,h3,h4,h5 { margin: 0; padding: 0; }
   body.fontLoaded {
     font-family: 'Avenir', 'Kaff', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
@@ -125,11 +134,62 @@ injectGlobal`
   .ReactModal__Body--open {
     overflow-y: hidden;
     overflow: hidden;
+
+    .onboarding-language-changer {
+      button { color: white; }
+    }
   }
 
   .ReactModal__Overlay--after-open {
+    position: absolute;
+    left: 0; top: 0;
+    height: 100%;
+    width: 100% !important;
+
     .circledContainer::after {
-        width: 138px !important;
+        width: 157px !important;
     }
+  }
+  [aria-label=MenuModal] {
+    @media(max-width: 1170px) {
+      z-index: 1100 !important;
+    }
+  }
+
+  [aria-label=Onboarding] {
+    @media(max-width: 1170px) {
+      width: calc(100% - 75px) !important;
+    }
+  }
+  [aria-label=ToolsModal] {
+    display: none;
+    @media(max-width: 1170px) {
+      display: block;
+      width: 100% !important;
+      height: calc(100% - 70px) !important;
+
+      & > div { height: 100%; }
+    }
+  }
+
+  .MenuModalOverlay {
+
+    @media(max-width: 1170px) {
+      z-index: 1100;
+
+      & > div {
+        z-index: 1100;
+      }
+    }
+  }
+
+  .ToolModalOverlay {
+    display: none;
+    @media(max-width: 1170px) {
+      display: block;
+    }
+  }
+
+  .ReactModalPortal {
   }
 `;

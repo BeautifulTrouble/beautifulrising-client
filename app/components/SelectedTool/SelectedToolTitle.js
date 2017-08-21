@@ -9,11 +9,9 @@ export default styled.h3`
     color: black;
     text-decoration: none;
   }
-  &::after {
+  &::before {
     content: url(${props => props.flag });
-    position: absolute;
-    transform: scale(.75) translate(-10px,-5px);
-    box-sizing: border-box;
+    display: block;
   }
 
 `;

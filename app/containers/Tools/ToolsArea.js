@@ -44,12 +44,22 @@ import staticText from './staticText';
 export const ToolsListContainer = styled.div`
     width: calc(100% - 73px);
     float: ${props=>props.lang === 'ar' ? 'right' : 'left'};
-    direction: float: ${props=>props.lang === 'ar' ? 'rtl' : 'ltr'};
+    direction: ${props=>props.lang === 'ar' ? 'rtl' : 'ltr'};
     height: 100%;
     display: ${props=>props.show ? 'block' : 'none'};
+    ${props=>props.lang === 'ar' ? 'border-right' : 'border-left'}: 2px solid;
     & > div > * {
       direction: ${props=>props.lang === 'ar' ? 'rtl' : 'ltr'};
       text-align: ${props=>props.lang === 'ar' ? 'right' : 'left'};
+    }
+
+    @media(max-width: 1170px) {
+      display: block;
+      width: 100%;
+      float: none;
+
+      border: 2px solid;
+      border-width: 2px 2px 0;
     }
 `;
 

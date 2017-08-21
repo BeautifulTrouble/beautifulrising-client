@@ -16,5 +16,14 @@ export default styled.li`
   a {
     text-decoration: ${props=>props.selected ? 'normal' : 'underline'};
     color: ${props=>props.selected ? 'black' : '#828486'};
+
+    ${ p=>{
+      if(p.selected) {
+        return `
+          margin-left: -5px;
+          margin-right: -4px;
+        `
+      }
+    }};
   }
 `;

@@ -21,10 +21,15 @@ const ResourceTypeList = styled.ul`
 const ResourceType = styled.li`
   list-style: none;
   position:relative;
+
+  margin-top: 36px;
 `;
 
 const ResourceList = styled.ul`
   padding-left: 70px;
+  @media(max-width: 1170px) {
+    padding: 0;
+  }
 `;
 const Resource = styled.li`
   list-style: none;
@@ -38,11 +43,19 @@ const Resource = styled.li`
   p {
     font-style: italic;
   }
+
+  @media(max-width: 1170px) {
+    width: 100%;
+    padding: 0;
+    margin-top :10px;
+    p { margin: 0;}
+  }
 `;
 
 const ResourceContainer =styled.div``;
 const Header =styled(SmallHeaderBlock)`
   position: relative;
+  margin-bottom: 36px;
   &::before {
     position: absolute;
     content: "";

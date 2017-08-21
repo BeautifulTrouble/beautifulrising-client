@@ -48,51 +48,114 @@ function ToolTypeAllFull(props) {
             </ToolType>
         </Row>
 
+
         <Row>
-          <ToolType to={'/type/tactic'} lang={lang}>
-            <Head ar={lang==='ar'}>
-              <TranslatableStaticText {...staticText.tactics} />
-            </Head>
-            <Isvg src={TacticIcon} />
-            <Desc ar={lang==='ar'}>
-              <TranslatableStaticText {...staticText.shortDefinitionTactic} />
-            </Desc>
-          </ToolType>
+            <ToolType to={'/type/tactic'} lang={lang}>
+              <Head ar={lang==='ar'}>
+                <TranslatableStaticText {...staticText.tactics} />
+              </Head>
+              <Isvg src={TacticIcon} />
+            </ToolType>
 
-          <ToolType to={'/type/principle'} lang={lang}>
-            <Head ar={lang==='ar'}>
-              <TranslatableStaticText {...staticText.principles} />
-            </Head>
-            <Isvg src={PrincipleIcon} />
-            <Desc ar={lang==='ar'}>
-              <TranslatableStaticText {...staticText.shortDefinitionPrinciple} />
-            </Desc>
-          </ToolType>
+            <ToolType to={'/type/tactic'} style={{paddingTop: 35}} lang={lang}>
+              <Desc ar={lang==='ar'}>
+                <TranslatableStaticText {...staticText.shortDefinitionTactic} />
+              </Desc>
+            </ToolType>
+        </Row>
 
-          <ToolType to={'/type/theory'} lang={lang}>
-            <Head ar={lang==='ar'}>
-              <TranslatableStaticText {...staticText.theories} />
-            </Head>
-            <Isvg src={TheoryIcon} />
-            <Desc ar={lang==='ar'}>
-              <TranslatableStaticText {...staticText.shortDefinitionTheory} />
-            </Desc>
-          </ToolType>
 
-          <ToolType to={'/type/methodology'} lang={lang}>
-            <Head ar={lang==='ar'}>
-              <TranslatableStaticText {...staticText.methodologies} />
-            </Head>
-            <Isvg src={MethodologyIcon} />
-            <Desc ar={lang==='ar'}>
-              <TranslatableStaticText {...staticText.shortDefinitionMethodology} />
-            </Desc>
-          </ToolType>
+        <Row>
+            <ToolType to={'/type/principle'} lang={lang}>
+              <Head ar={lang==='ar'}>
+                <TranslatableStaticText {...staticText.principles} />
+              </Head>
+              <Isvg src={PrincipleIcon} />
+            </ToolType>
+
+            <ToolType to={'/type/principle'} style={{paddingTop: 35}} lang={lang}>
+              <Desc ar={lang==='ar'}>
+                <TranslatableStaticText {...staticText.shortDefinitionPrinciple} />
+              </Desc>
+            </ToolType>
+        </Row>
+
+
+        <Row>
+            <ToolType to={'/type/theory'} lang={lang}>
+              <Head ar={lang==='ar'}>
+                <TranslatableStaticText {...staticText.theories} />
+              </Head>
+              <Isvg src={TheoryIcon} />
+            </ToolType>
+
+            <ToolType to={'/type/theory'} style={{paddingTop: 35}} lang={lang}>
+              <Desc ar={lang==='ar'}>
+                <TranslatableStaticText {...staticText.shortDefinitionTheory} />
+              </Desc>
+            </ToolType>
+        </Row>
+        <Row>
+            <ToolType to={'/type/methodology'} lang={lang}>
+              <Head ar={lang==='ar'}>
+                <TranslatableStaticText {...staticText.methodologies} />
+              </Head>
+              <Isvg src={MethodologyIcon} />
+            </ToolType>
+
+            <ToolType to={'/type/methodology'} style={{paddingTop: 35}} lang={lang}>
+              <Desc ar={lang==='ar'}>
+                <TranslatableStaticText {...staticText.shortDefinitionMethodology} />
+              </Desc>
+            </ToolType>
         </Row>
       </div>
     </Container>
   );
 }
+
+/**
+<Row>
+  <ToolType to={'/type/tactic'} lang={lang}>
+    <Head ar={lang==='ar'}>
+      <TranslatableStaticText {...staticText.tactics} />
+    </Head>
+    <Isvg src={TacticIcon} />
+    <Desc ar={lang==='ar'}>
+      <TranslatableStaticText {...staticText.shortDefinitionTactic} />
+    </Desc>
+  </ToolType>
+
+  <ToolType to={'/type/principle'} lang={lang}>
+    <Head ar={lang==='ar'}>
+      <TranslatableStaticText {...staticText.principles} />
+    </Head>
+    <Isvg src={PrincipleIcon} />
+    <Desc ar={lang==='ar'}>
+      <TranslatableStaticText {...staticText.shortDefinitionPrinciple} />
+    </Desc>
+  </ToolType>
+
+  <ToolType to={'/type/theory'} lang={lang}>
+    <Head ar={lang==='ar'}>
+      <TranslatableStaticText {...staticText.theories} />
+    </Head>
+    <Isvg src={TheoryIcon} />
+    <Desc ar={lang==='ar'}>
+      <TranslatableStaticText {...staticText.shortDefinitionTheory} />
+    </Desc>
+  </ToolType>
+
+  <ToolType to={'/type/methodology'} lang={lang}>
+    <Head ar={lang==='ar'}>
+      <TranslatableStaticText {...staticText.methodologies} />
+    </Head>
+    <Isvg src={MethodologyIcon} />
+    <Desc ar={lang==='ar'}>
+      <TranslatableStaticText {...staticText.shortDefinitionMethodology} />
+    </Desc>
+  </ToolType>
+</Row>*/
 
 ToolTypeAllFull.propTypes = {
 

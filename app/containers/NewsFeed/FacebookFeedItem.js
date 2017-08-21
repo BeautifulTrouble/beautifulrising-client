@@ -13,6 +13,10 @@ const ItemContainer = styled.li`
   list-style: none;
   border-top: 2px solid;
   padding: 15px 0;
+
+  &:first-child {
+    border-top: none;
+  }
 `;
 const Viewport = styled.div`
 position: relative`;
@@ -38,6 +42,7 @@ const Image = styled.img`
 const Content = styled.span`
 margin-top: 15px;
 display: inline-block;
+width: 100%;
 `;
 const CallToAction = styled.div`
 color: gray;
@@ -64,19 +69,19 @@ const TweetTimestamp = styled(Timestamp)`
 function FacebookFeedItem(props) {
 
   return (
-    <LanguageThemeProvider>
       <ItemContainer>
-        <Viewport>
-          <ContentBlock>
-            <Image src={props.image_https} lang={props.intl.locale}/>
-            <Source to={props.user_link} target='_blank'>{props.user_name}</Source>
-            <Handle to={props.user_link} target='_blank'>{props.user_handle}</Handle>
-            <Content dangerouslySetInnerHTML={{__html: props.content_html}}></Content>
-          </ContentBlock>
-          <TweetTimestamp time={props.timestamp / 1000} format='full' />
-        </Viewport>
+        <LanguageThemeProvider>
+          <Viewport>
+            <ContentBlock>
+              <Image src={props.image_https} lang={props.intl.locale}/>
+              <Source to={props.user_link} target='_blank'>{props.user_name}</Source>
+              <Handle to={props.user_link} target='_blank'>{props.user_handle}</Handle>
+              <Content dangerouslySetInnerHTML={{__html: props.content_html}}></Content>
+            </ContentBlock>
+            <TweetTimestamp time={props.timestamp / 1000} format='full' />
+          </Viewport>
+        </LanguageThemeProvider>
       </ItemContainer>
-    </LanguageThemeProvider>
   )
 }
 

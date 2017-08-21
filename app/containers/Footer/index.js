@@ -20,7 +20,7 @@ const Container = styled.section`
 padding: 10px;
 text-align: center;
 border-top: 2px solid black;
-margin-top: 50px;
+margin-top: 72px;
 margin-left: 20px;
 margin-right: 20px;
 &::before {
@@ -30,7 +30,14 @@ margin-right: 20px;
 }
 
 `;
-const Viewport = styled.div`margin-${p=>p.isArabic?'right':'left'}: 16%; width: 66%;`;
+const Viewport = styled.div`
+  margin-${p=>p.isArabic?'right':'left'}: 16%; width: 66%;
+
+  @media(max-width: 1170px) {
+    width: 100%;
+    margin: 0;
+  }
+`;
 const Content = styled.div`
 
   p {

@@ -9,6 +9,7 @@ import styled from 'styled-components';
 
 import Isvg from 'react-inlinesvg';
 
+import ToolTypeAll from 'containers/ToolTypeAll';
 import ToolTypeAllFull from 'containers/ToolTypeAllFull';
 import ToolTypeAllPartial from 'containers/ToolTypeAllPartial';
 import ToolTypeSelectedFull from 'containers/ToolTypeSelectedFull';
@@ -29,9 +30,7 @@ import messages from './messages';
 */
 
 const AllContainer = styled.div`
-  border: solid black;
-  border-width: 0 2px 2px;
-  padding: 20px 60px;
+  // margin-top: 65px;
   text-align: ${props=>props.lang === 'ar' ? 'right' : 'left'};
 `;
 
@@ -50,52 +49,59 @@ class ToolTypeArea extends React.Component { // eslint-disable-line react/prefer
 
   constructor(props) {
     super(props);
-    this.windowEvent = this.handleScroll.bind(this);
+    // this.windowEvent = this.handleScroll.bind(this);
     this.state = {
       scrollY: 0
     }
   }
 
   componentWillMount() {
-    const func = this.handleScroll.bind(this);
-    window.addEventListener('scroll', this.windowEvent, false);
+    // const func = this.handleScroll.bind(this);
+    // window.addEventListener('scroll', this.windowEvent, false);
   }
 
   componentWillUnmount() {
-    const func = this.handleScroll.bind(this);
-    window.removeEventListener('scroll', this.windowEvent, false);
+    // const func = this.handleScroll.bind(this);
+    // window.removeEventListener('scroll', this.windowEvent, false);
     // window.addEventListener('scroll', this.handleScroll.bind(this), true);
   }
 
   handleScroll() {
-    this.setState({ scrollY: window.scrollY });
+    // this.setState({ scrollY: window.scrollY });
   }
 
   render() {
     const onTop = this.state.scrollY < 10;
-    if (this.props.filter !== 'type' || !this.props.label || this.props.label === undefined) {
-      //All
-      return (
-        <AllContainer lang={this.props.lang}>
-          <ToolTypeAllFull showLine={true} lang={this.props.lang} show={onTop} {...this.props} />
-          <ToolTypeAllPartial lang={this.props.lang} show={!onTop} {...this.props} />
-          <TypeArrow lang={this.props.lang} lookRight={!onTop}>
-            <Isvg src={ArrowIcon} />
-          </TypeArrow>
-        </AllContainer>
-      );
-    } else {
-      //Selected
-      return (
-        <div>
-          <ToolTypeSelectedFull lang={this.props.lang}  show={onTop} {...this.props}/>
-          <ToolTypeSelectedPartial lang={this.props.lang} show={!onTop} {...this.props}/>
-          <TypeArrow lang={this.props.lang} lookRight={!onTop}>
-            <Isvg src={ArrowIcon} />
-          </TypeArrow>
-        </div>
-      );
-    }
+
+    return (
+      <AllContainer lang={this.props.lang}>
+        <ToolTypeAll lang={this.props.lang} show={true} {...this.props} />
+      </AllContainer>
+    );
+
+    // if (this.props.filter !== 'type' || !this.props.label || this.props.label === undefined) {
+    //   //All
+    //   return (
+    //     <AllContainer lang={this.props.lang}>
+    //       <ToolTypeAllFull showLine={true} lang={this.props.lang} show={onTop} {...this.props} />
+    //       <ToolTypeAllPartial lang={this.props.lang} show={!onTop} {...this.props} />
+    //       <TypeArrow lang={this.props.lang} lookRight={!onTop}>
+    //         <Isvg src={ArrowIcon} />
+    //       </TypeArrow>
+    //     </AllContainer>
+    //   );
+    // } else {
+    //   //Selected
+    //   return (
+    //     <div>
+    //       <ToolTypeSelectedFull lang={this.props.lang}  show={onTop} {...this.props}/>
+    //       <ToolTypeSelectedPartial lang={this.props.lang} show={!onTop} {...this.props}/>
+    //       <TypeArrow lang={this.props.lang} lookRight={!onTop}>
+    //         <Isvg src={ArrowIcon} />
+    //       </TypeArrow>
+    //     </div>
+    //   );
+    // }
   }
 }
 

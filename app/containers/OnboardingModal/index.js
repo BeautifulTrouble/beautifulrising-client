@@ -12,24 +12,24 @@ import OnboardingContent from 'containers/OnboardingContent';
 import MenuIcon from 'assets/images/icons/menu.svg';
 import CloseIcon from 'assets/images/icons/close.svg';
 import styled from 'styled-components';
-import LanguageChanger from 'containers/LanguageChanger';
+import LanguageChanger, { MobileLanguageChanger } from 'containers/LanguageChanger';
 
 const customStyles = (lang) => { return {
   overlay: {
     backgroundColor: 'hsla(0,0%,58%,.75)',
-    zIndex: 600,
+    zIndex: 3000,
     overflow: 'auto',
   },
   content : {
     direction: `${lang==='ar' ? 'rtl':'ltr'}`,
     textAlign: `${lang==='ar' ? 'right':'left'}`,
-    top                   : '57px',
+    top                   : '75px',
     left                  : `${lang==='ar' ? 'auto':'50%'}`,
     right                 : `${lang==='ar' ? '50%':'auto'}`,
     bottom                : 'auto',
     transform             : `${lang==='ar' ? 'translate(50%,0)':'translate(-50%,0)'}`,
     padding: '0',
-    width: '1100px',
+    width: '960px',
     // minHeight: '80vh',
     overflow: 'visible',
     borderRadius: 0,
@@ -103,14 +103,12 @@ export class OnboardingModal extends React.Component {
     this.setState({modalIsOpen: false});
   }
 
-  renderLanguageChanger() {
-    return (<LanguageChanger zIndex={1000} />);
-  }
   render() {
     const lang = this.props.intl.locale;
     return (
       <Viewport>
-        {this.renderLanguageChanger()}
+        <LanguageChanger changerClass={'onboarding-language-changer'} zIndex={1000} />
+        <MobileLanguageChanger />
         <Button lang={lang} onClick={this.openModal}>
           <Isvg src={MenuIcon} />
           <MenuText>MENU</MenuText>
@@ -120,7 +118,7 @@ export class OnboardingModal extends React.Component {
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           style={customStyles(lang)}
-          contentLabel="Example Modal"
+          contentLabel="Onboarding"
         >
             <OnboardingContent />
         </Modal>

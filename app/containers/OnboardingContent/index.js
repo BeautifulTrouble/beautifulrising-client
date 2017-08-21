@@ -16,6 +16,8 @@ import { Map } from 'immutable';
 import { connect } from 'react-redux';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import { loadData } from 'containers/App/actions';
+
 
 import FAQ from 'containers/AboutPage/FAQ';
 import TheToolbox from 'containers/AboutPage/TheToolbox';
@@ -46,17 +48,20 @@ const Header = styled.h2`
   padding-bottom: 15px;
   margin-bottom: 0;
   position:relative;
+  padding-top: 9px;
 
   &::after {
     content: ' ';
     position: absolute;
-    height: 80px;
+    height: 110px;
     border-right: 1px solid;
     width: 1PX;
     bottom: -65px;
     left: ${p=>p.leftLine || '50%'};
     opacity: ${p=>p.showLine?'1':'0'};
     transition: opacity 0.3s ease;
+
+    @media(max-width: 1170px) { display: none; }
   }
 `;
 const Content = styled.div`
@@ -71,13 +76,17 @@ const Button = styled.button`
 const List = styled.ul`
   padding: 0;
   margin: 20px 50px;
+
+  @media(max-width: 1170px) {
+    margin: 5px;
+  }
 `;
 const CloseButton = styled(Button)`
   background: white;
   padding: 0;
   position: absolute;
-  ${p=>p.lang==='ar'?'left':'right'}: -27px;
-  top: 27px;
+  ${p=>p.lang==='ar'?'right':'left'}: -27px;
+  top: -27px;
 `;
 const OnboardedButton = styled(Button)`
   font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
@@ -104,6 +113,15 @@ const ListItem = styled.li`
   h2 {
     font-size: 20px;
   }
+  button span.isvg {
+    position: absolute;
+    ${p=>p.lang==='ar'?'left':'right'}: 20px;
+
+    @media(max-width: 1170px) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
   button svg {
     transition: transform 0.4s ease;
     width: 10px;
@@ -123,6 +141,15 @@ const ListItem = styled.li`
       }
     }};
   }
+
+  @media(max-width: 1170px) {
+    h2 {
+      font-size: 14px;
+      padding: 10px 0;
+
+      padding-${p=>p.lang==='ar'?'left':'right'}: 30px;
+    }
+  }
 `;
 
 const HeaderArea = styled.div`
@@ -130,7 +157,7 @@ const HeaderArea = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-color: rgba(0,0,0,0.6);
-
+  background-position: center center;
 
   color: white;
 `;
@@ -146,14 +173,23 @@ const LogoArea = styled.div`
 const SubTitle = styled.h2`
   margin: 0;
 `;
-const Spiel = styled.div`
-  width: 42%;
+const Spiel = styled(ContentBlock)`
+  margin: 0 28%;
+  text-align: center;
+
+  @media(max-width: 1170px) {
+    margin: 0;
+  }
 `;
 const Overlay = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,0,0.6);
   padding: 120px 39px 30px;
+
+  @media(max-width: 1170px) {
+    padding: 120px 0 10px;
+  }
 `;
 
 class OnboardingContent extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -164,6 +200,11 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
     };
   }
 
+  componentDidMount(){
+    if (this.props.aboutData.size === 0) {
+      this.props.onPageLoad();
+    }
+  }
   handleClick(key) {
     if (this.state.chosen == key) {
       this.setState({ chosen: null });
@@ -191,19 +232,18 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
                 <CloseButton lang={lang} onClick={this.handleClose.bind(this)}>
                   <Isvg src={CloseIcon}/>
                 </CloseButton>
-                <OnboardedButton lang={lang} onClick={this.handleClose.bind(this)}>
+                {/*<OnboardedButton lang={lang} onClick={this.handleClose.bind(this)}>
                   {about.getIn(['modal','dismiss'])}
                 </OnboardedButton>
+                */}
                 <LogoArea>
                   <Logo top={'20px'} left={'40px'} isReversed={true}/>
                 </LogoArea>
-                <SubTitle>
+                {/*<SubTitle>
                   {about.getIn(['modal','welcome'])}
-                </SubTitle>
+                </SubTitle>*/}
                 <Spiel>
-                  <ContentBlock>
-                    {about.getIn(['modal','introduction'])}
-                  </ContentBlock>
+                  {about.getIn(['modal','introduction'])}
                 </Spiel>
               </Overlay>
             </HeaderArea>
@@ -231,29 +271,41 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
     );
   }
 
+
   renderData() {
     if (this.props.aboutData.size == 0 || !this.props.aboutData || this.props.aboutData == undefined) return null;
     const about = this.props.aboutData.get('about');
     const misc = this.props.aboutData.getIn(['about', 'misc']);
-    return [
+    const shownItems = this.props.aboutData.getIn(['about', 'modal-items-shown']);
+    const data = [
       {
+        slug: 'whats-inside',
         title: misc.get('whats-inside'),
         content: <TheToolbox hideHeader={true}
                   whatsInside = { this.props.aboutData.getIn(['about','whats-inside', 'introduction']) }
+                  notClickable = {true}
                 />
       },
       {
+        slug: 'process',
         title: misc.get('process'),
-        content: <OurProcess hideHeader={true}
-                    participants={this.props.aboutData.get('workshop-participants')}/>
+        content: <OurProcess ref={"/about/process"}
+                  targetRoute="/about/process"
+                  hideHeader={true}
+                  header = { this.props.aboutData.getIn(['about', 'misc', 'process'])}
+                  participants={this.props.aboutData.get('workshop-participants')}
+                  processes={this.props.aboutData.getIn(['about', 'process']) ? this.props.aboutData.getIn(['about', 'process']).toJS() : null}
+                />
       },
       {
+        slug: 'values',
         title: misc.get('values'),
         content: <OurValues hideHeader={true}
             ourValues={this.props.aboutData.getIn(['about', 'values'])}
         />
       },
       {
+        slug: 'advisory-network',
         left: '80%',
         title: misc.get('advisory-network'),
         content: <OurAdvisoryNetwork
@@ -263,6 +315,7 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
         />
       },
       {
+        slug: 'team',
         title: misc.get('team'),
         content: <OurTeam
             hideHeader={true}
@@ -271,13 +324,7 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
         />
       },
       {
-        title: misc.get('beautiful-trouble-and-action-aid'),
-        content: <BeautifulTroubleAA
-            hideHeader={true}
-            allData={this.props.aboutData}
-        />
-      },
-      {
+        slug: 'partners',
         title: misc.get('partners'),
         content: <Partners
           hideHeader={true}
@@ -285,6 +332,7 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
         />
       },
       {
+        slug: 'faq',
         title: misc.get('faq'),
         content: <FAQ
             hideHeader={true}
@@ -292,6 +340,8 @@ class OnboardingContent extends React.PureComponent { // eslint-disable-line rea
         />
       },
     ];
+
+    return data.filter(item => shownItems.contains(item.slug));
   }
 }
 
@@ -309,6 +359,9 @@ function mapDispatchToProps(dispatch) {
     dispatch,
     onOnboard: (evt) => {
       dispatch(onboardUser());
+    },
+    onPageLoad: (evt) => {
+      dispatch(loadData());
     }
   };
 }

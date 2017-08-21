@@ -8,9 +8,10 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import makeSelectTranslatableStaticText from './selectors';
-
+import styled from 'styled-components';
 import { loadLanguage } from './actions';
 
+const SpanItem = styled.span``;
 export class TranslatableStaticText extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   constructor() {
@@ -50,6 +51,7 @@ export class TranslatableStaticText extends React.PureComponent { // eslint-disa
   }
 
   buildMessage({id, defaultMessage}, values) {
+    if (!id || id === undefined ) { return null; }
     const template = this.getStaticMessage({id, defaultMessage});
     const extrapolate = this.build(template, values);
     return extrapolate;
@@ -60,7 +62,7 @@ export class TranslatableStaticText extends React.PureComponent { // eslint-disa
     const message = this.buildMessage({...this.props}, this.props.values);
 
     return (
-      <span>{message}</span>
+      <SpanItem {...this.props}>{message}</SpanItem>
     );
   }
 }
@@ -107,6 +109,7 @@ const injectStaticText = (WrappedComponent) => {
       if (values) {
         let splits = message.split(/({{.*?}})/);
         const regex = new RegExp("{{\s*(.*?)\s*}}", "gi");
+
         return splits.map(item => {
           var match;
           if (match = regex.exec(item)) {
@@ -114,7 +117,7 @@ const injectStaticText = (WrappedComponent) => {
           } else {
       		    return item;
           }
-        })
+        }).join('');
         // var compiled = _.template(message);
         // return compiled(values);
       }
@@ -123,7 +126,7 @@ const injectStaticText = (WrappedComponent) => {
     }
 
     buildMessage({id, defaultMessage}, values) {
-
+      if (!id  || id === undefined ) { return null; }
       const template = this.getStaticMessage({id, defaultMessage});
       const extrapolate = this.build(template, values);
 

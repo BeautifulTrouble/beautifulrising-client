@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 export default styled.li`list-style: none;
-  width: ${props=>props.theme.itemWidth};
-  margin-right: ${props=>props.theme.itemMargin};
+  width: 32%;
+  margin-${p=>p.theme.isArabic?'left':'right'}: 0.5%;
   display: inline-block;
   vertical-align: top;
   margin-bottom: 50px;
@@ -26,4 +26,15 @@ export default styled.li`list-style: none;
   }
 
   p { padding-${p=>p.theme.isArabic?'left':'right'}: 30px; }
+
+  @media(max-width: 1170px) {
+    width: 100%;
+    text-align: center;
+    p {
+      padding: 0;
+    }
+    h3 {
+      text-align: center;
+    }
+  }
 `;

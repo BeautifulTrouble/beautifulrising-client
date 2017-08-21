@@ -3,15 +3,17 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
 import { LOAD_DATA, LANGUAGE_CHANGE_RELOAD_DATA } from 'containers/App/constants';
 import { CHANGE_LOCALE } from 'containers/LanguageProvider/constants';
-import { dataLoaded, dataLoadingError } from 'containers/App/actions';
+import { loadData, dataLoaded, dataLoadingError } from 'containers/App/actions';
 import request, { getEndpoint } from 'utils/request';
 
 export const getLanguage = (state) => state.get('language');
 
-export function* getData(lang) {
+export function* getData() {
 
-  const requestURL = getEndpoint(lang);
-  
+  let language = yield select(getLanguage);
+  const chosenLanguage = language !== undefined ? language.get('locale') : 'en';
+  const requestURL = getEndpoint(chosenLanguage);
+
   try {
 
     const data = yield call(request, requestURL);
@@ -29,11 +31,21 @@ export function* beautifulRisingData() {
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
 
-  let language = yield select(getLanguage);
-  const chosenLanguage = language !== undefined ? language.get('locale') : 'en';
-  const watcher = yield takeLatest(LOAD_DATA, getData, chosenLanguage);
-  yield take(CHANGE_LOCALE, LOCATION_CHANGE);
+
+  const watcher = yield takeLatest(LOAD_DATA, getData);
+
+  yield take(LOCATION_CHANGE);
+
   yield cancel(watcher);
+
+}
+
+export function* changeLanguage() {
+  // Watches for LOAD_REPOS actions and calls getRepos when one comes in.
+  // By using `takeLatest` only the result of the latest API call is applied.
+  // It returns task descriptor (just like fork) so we can continue execution
+
+  const watcher = yield takeLatest(CHANGE_LOCALE, getData);
 }
 
 // export function* langaugeChangeData() {
@@ -50,4 +62,5 @@ export function* beautifulRisingData() {
 // All sagas to be loaded
 export default [
   beautifulRisingData,
+  changeLanguage
 ];

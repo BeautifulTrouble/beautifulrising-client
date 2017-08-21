@@ -8,8 +8,11 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
+import Isvg from 'react-inlinesvg';
 import { makeSelectAllTags } from 'containers/App/selectors';
 import { push } from 'react-router-redux';
+
+import ClearIcon from 'assets/images/icons/clear.svg';
 
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 import ContentBlock from 'components/ContentBlock';
@@ -20,7 +23,6 @@ import MenuTitle from 'components/MenuTitle';
 import MenuList from 'components/MenuList';
 import MenuListItem from 'components/MenuListItem';
 import Link from 'components/Link';
-import ClearButton from 'components/ClearButton';
 
 import {slugify} from 'utils/tags'
 
@@ -48,9 +50,9 @@ export class Tags extends React.PureComponent { // eslint-disable-line react/pre
 
     return (
       <ClearButtonContainer>
-        <ClearButton onClick={this.handleClearTags.bind(this)}>
-          <TranslatableStaticText {...staticText.clearTags} />
-        </ClearButton>
+        <button onClick={this.handleClearTags.bind(this)}>
+          <Isvg src={ClearIcon} />
+        </button>
       </ClearButtonContainer>
     );
 

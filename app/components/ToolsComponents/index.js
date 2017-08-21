@@ -26,7 +26,7 @@ export const getToolTypeColor = (type) => {
     case TYPE_TACTICS:
       return "#ff9200";
     case TYPE_PRINCIPLES:
-      return "#166ce3";
+      return "#0088ff";
     case TYPE_THEORIES:
       return "#f93732";
     case TYPE_METHODOLOGIES:
@@ -83,7 +83,6 @@ export const ToolsButton = styled.button`
 export const ToolsListMenu = styled.ul`
     padding: 0;
     padding: 10px 0 10px;
-    border-bottom: 2px solid black;
     margin: 0;
     display: ${props=>props.show?'block':'none'};
 
@@ -100,7 +99,7 @@ export const ToolsListMenuItem = styled.li`
 
 export const ToolType = styled.h3`
   margin: 0;
-  font-size: ${p=>p.ar?'35px':'20px'};
+  font-size: ${p=>p.ar?'32px':'20px'};
   letter-spacing: ${p=>p.ar?'3px':'0'};
   text-align: ${p=>p.theme.isArabic?'right':'left'};
   padding-top: 20px;
@@ -113,7 +112,7 @@ export const ToolTitle = styled.h1`
   letter-spacing: 1px;
   font-weight: normal;
   margin: 0;
-  margin-bottom: ${p=>p.theme.isArabic?'5px':'0'};
+  margin-bottom: 26px;
   text-align: ${p=>p.theme.isArabic?'right':'left'};
   font-size: ${p=>p.theme.isArabic?'30px':'30px'};
   line-height: 1;
@@ -129,7 +128,7 @@ margin: 0;
 `;
 export const ToolsListItem = styled.li`
   list-style: none;
-  margin: 10px 10px 20px;
+  margin: 10px 10px 30px;
   border-top: 2px solid;
 
   &:first-child {
@@ -143,18 +142,31 @@ export const ToolsMenu = styled.ul`
   height: 100%;
   margin: 0;
   padding: 20px 0;
-  border: solid black;
-  border-width: ${props=>props.theme.lang === 'ar' ? '0 0 0 2px' : '0 2px 0 0'};
+  // border: solid black;
+  // border-width: ${props=>props.theme.lang === 'ar' ? '0 0 0 2px' : '0 2px 0 0'};
+  @media(max-width: 1170px) {
+    display: flex;
+    padding: 0;
+    width: 100%;
+    border: none;
+  }
 `;
 export const ToolsMenuItem = styled.li`
   list-style: none;
-  margin: 10px 0 20px;
+  margin: 10px 0;
+
+  margin-bottom: ${p=> p.marginBottom || '20px'};
+
   .isvg {
     &::after {
       content: ' ';
       display: block;
       clear: both;
     }
+  }
+
+  @media(max-width: 1170px) {
+    flex-grow: 1;
   }
 `;
 
@@ -167,99 +179,56 @@ export const ToolsContainer = styled.div`
   position: fixed;
 
   width: ${(props) => props.showTools ? '350px' : '75px' };
-  height: calc(100vh - 170px);
+  height: calc(100vh - 220px)
   border: 2px solid black;
-  top: 93px;
+  // top: 217px;
 
-  ${props=>props.theme.lang == 'ar' ? 'left: 50%' : 'right: 50%;'}
-  transform: translateX(${(props) => props.showTools ?
-      (props=>props.theme.lang == 'ar' ? '-685px' : '685px') :
-      (props=>props.theme.lang == 'ar' ? '-640px' : '640px') });
+  bottom: 0;
+  border-width: ${props=>props.lang == 'ar' ? '2px 2px 0 0' : '2px 0 0 2px'};
+
+  ${props=>props.lang == 'ar' ? 'left: 0;' : 'right: 0;'}
   transition: transform 0.3s ease, width 0.3s ease;
   overflow-x: hidden;
   overflow-y: hidden;
-  `;
+
+  //mobile
+  @media(max-width: 1170px) {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    width: 100vw;
+    height: 70px;
+    background-color: white;
+    z-index: 600;
+
+    border-width: 2px;
+  }
+`;
 
 export const ToolContainer = styled.div`
   ${props=>props.lang==='ar' ? 'float: right' : 'float: left'};
-  margin-right: 10px;
-  margin-bottom: 10px;
   text-align: left;
 `;
-export const ToolViewport = styled.div`
-  margin: 0;
-  padding: 0;
-`
-// Block View
-export const BlockContainer = styled(ToolContainer)`
-  background-image: ${props => props.background};
-  background-size: cover;
-  background-position: center;
-  width: 250px;
-  height: 250px;
-  margin: 10px;
-  margin-${p=>p.lang==='ar'?'right':'left'}: 17px;
-  margin-${p=>p.lang==='ar'?'left':'right'}: 2px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-`;
-export const BlockViewport = styled(ToolViewport)`
-  background-color: rgba(0,0,0,0.5);
-  padding: 10px;
-  width: 100%;
-  height: 100%;
-  position: relative;
-`;
-export const BlockSpiel = styled(ContentBlock)`
-  color: ${props=>getToolTypeColor(props.type)};
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 10px;
-  font-weight: 800;
-  opacity: ${props=>props.show?(props.forceShow?'0':'1'):'0'};
-  transition: opacity 0.2s;
-`;
 
-export const BlockViewTitleArea = styled.div`
-  position: absolute;
-  left: 10px;
-  padding-right: 10px;
-  z-index: 100;
-  width: calc(100% - 10px);
-  opacity: ${props=>props.show ? '1': (props.forceShow?'1':'0')};
-  transition: opacity 0.2s;
-`;
 export const BlockAddRem = styled.div`
   text-align: ${p=>p.theme.isArabic?'right':'left'};
 `;
 
 //List View
 export const ListContainer = styled(ToolContainer)`
-  width: 48%;
-  height: 190px;
+  width: 370px;
   text-align: left;
-`;
+  margin-${p=>p.lang==='ar'?'left':'right'}: ${p=>p.index%2==0?'0':'130px'};
+  padding-bottom: 40px;
 
-export const ListViewport = styled(ToolViewport)`
-  background-color: none;
-  padding: 0 10px 0 50px;
-  position: relative;
-
-  &::before{
-    content: ' ';
-    width: 53px;
-    height: 1px;
-    border-bottom: 2px solid;
-    position: absolute;
-    top: 0px;
-    ${p=>p.theme.isArabic?'right: 9px;':'left: 50px;'};
-  }
-
-  h3 {
-    padding-top: 5px;
+  @media(max-width: 1170px) {
+    margin: 0;
+    width: 100%;
+    padding: 20px;
   }
 `;
+
 export const ListSpiel = styled(ContentBlock)`
   margin: 0;
 `;

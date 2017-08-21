@@ -15,21 +15,29 @@ import { injectIntl } from 'react-intl';
 import { makeSelectLanguage } from 'containers/App/selectors';
 import { loadData, langChangeReloadData } from '../App/actions';
 
+import MobileLanguageChanger from './MobileLanguageChanger';
+
 const Container = styled.div`
   position: fixed;
   ${props=>props.lang==='ar'?'left: 50%': 'right:50%'}
-  top: 10px;
+  top: 45px;
   z-index: ${p=>p.zIndex?p.zIndex:500};
   transform: ${props=>props.lang==='ar'?'translate(-530px,0)':'translate(530px,0)'};
+
+  // Mobile
+  @media(max-width: 1170px) {
+    display: none;
+  }
 `;
 const Viewport = styled.div``;
 const Button = styled.button`
   outline: none;
   cursor: pointer;
   font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
-  color: ${props=>props.selected ? 'black' : '#828486'};
+  color: ${props=>props.selected ? 'black !important' : '#828486'};
   text-decoration: ${props=>props.selected ? 'none' : 'underline'};
   font-size: 14px;
+  padding: 0 13px;
 `;
 
 const List = styled.ul`
@@ -49,7 +57,7 @@ const Item = styled.li`
 export class LanguageChanger extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   handleClick(e) {
     if (this.props.intl.locale !== e.target.value) {
-      
+
       this.props.handleChangeLocale(e.target.value);
       this.props.handleChangeLocationSignal();
     }
@@ -57,18 +65,19 @@ export class LanguageChanger extends React.PureComponent { // eslint-disable-lin
 
   render() {
     const lang = this.props.intl.locale;
+    (this.props.changerClass);
     return (
-      <Container lang={lang} zIndex={this.props.zIndex}>
+      <Container lang={lang} className={this.props.changerClass} zIndex={this.props.zIndex}>
         <Viewport lang={lang}>
           <List>
+            <Item lang={lang}>
+              <Button onClick={this.handleClick.bind(this)} selected={lang === 'ar'} value={'ar'}>AR</Button>
+            </Item>
             <Item lang={lang}>
               <Button onClick={this.handleClick.bind(this)} selected={lang === 'en'} value={'en'}>EN</Button>
             </Item>
             <Item lang={lang}>
               <Button onClick={this.handleClick.bind(this)} selected={lang === 'es'} value={'es'}>ES</Button>
-            </Item>
-            <Item lang={lang}>
-              <Button onClick={this.handleClick.bind(this)} selected={lang === 'ar'} value={'ar'}>AR</Button>
             </Item>
           </List>
         </Viewport>
@@ -104,3 +113,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(LanguageChanger));
+export { MobileLanguageChanger };

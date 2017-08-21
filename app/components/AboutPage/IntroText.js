@@ -7,4 +7,11 @@ export default styled(ContentBlock)`
   transform: translateX(${p=>p.lang==='ar'?'50%':'-50%'});
   padding: 0 40px;
   text-align: center;
+
+  @media(max-width: 1170px) {
+    width: 100%;
+    text-align: center;
+    transform: none;
+    margin-left: auto;
+  }
 `;

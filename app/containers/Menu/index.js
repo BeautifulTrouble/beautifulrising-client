@@ -19,22 +19,26 @@ import staticText from './staticText';
 
 import MenuArea from 'components/Menu/MenuArea';
 import Home from 'components/Menu/Home';
+import MenuViewport from 'components/Menu/MenuViewport';
 
 function Menu(props) {
   const lang = props.intl.locale;
+
   return (
     <MenuArea lang={lang}>
-      <Logo top={'17px'} left={'115px'} />
-      { window.location.pathname.match(/^\/(type|tag|search)|^\/$/) ? null :
-          (<Home to="/" onClick={props.onClick}>
-            <TranslatableStaticText {...staticText.home} />
-          </Home>)
-      }
-      <AboutMenu onClick={props.onClick} />
-      <PlatformsMenu onClick={props.onClick}/>
-      <ContributeMenu onClick={props.onClick}/>
-      <TrainingMenu onClick={props.onClick}/>
-      <ContactUs />
+      <MenuViewport>
+        <Logo top={'17px'} left={'115px'} />
+        {/* window.location.pathname.match(/^\/(type|tag|search)|^\/$/) ? null :
+            (<Home to="/" onClick={props.onClick}>
+              <TranslatableStaticText {...staticText.home} />
+            </Home>)
+        */}
+        <AboutMenu onClick={props.onClick} />
+        <PlatformsMenu onClick={props.onClick}/>
+        <ContributeMenu onClick={props.onClick}/>
+        <TrainingMenu onClick={props.onClick}/>
+        <ContactUs onClick={props.onClick} />
+      </MenuViewport>
     </MenuArea>
   );
 }

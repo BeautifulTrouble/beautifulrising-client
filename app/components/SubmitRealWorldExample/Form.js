@@ -8,6 +8,10 @@ export default styled.form`
     text-align: ${props=>props.theme.lang === 'ar' ? 'right' : 'left'};
     width: 100%;
     padding: 5px;
+
+    &::placeholder {
+      font-size: 12px;
+    }
   }
 
   textarea {

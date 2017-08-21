@@ -10,6 +10,7 @@ import styled, { ThemeProvider } from 'styled-components';
 const Container = styled.div`
   height: inherit;
   width: 100%;
+  direction: ltr;
 `;
 class LatinThemeProvider extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {

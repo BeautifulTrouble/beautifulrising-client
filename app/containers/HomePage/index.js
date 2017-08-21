@@ -10,7 +10,7 @@ import Helmet from 'react-helmet';
 import { push } from 'react-router-redux';
 
 import { createStructuredSelector } from 'reselect';
-
+import styled from 'styled-components';
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 import Tags from 'containers/Tags';
 import ContentBlock from 'components/ContentBlock';
@@ -25,13 +25,14 @@ import { makeSelectToolById,
 
 import ToolsViewOptions from 'containers/ToolsViewOptions';
 import ToolsSortOptions from 'containers/ToolsSortOptions';
+import ToolTypeArea from 'containers/ToolTypeArea';
 
-import LeftSection from 'components/LeftSection';
+import { LeftSection,
+         Stage } from 'components/HomePage/Layout';
+
 import ClearButton from 'components/ClearButton';
 
 import { LeftHeader, LeftContainer } from 'components/HomePage';
-
-import Stage from 'components/Stage';
 
 import { loadData } from '../App/actions';
 import makeSelectHomePage, { makeSelectSearchFieldValue, makeSelectToolView, makeSelectAllTools, isToolsShown, makeSortedTools, makeSelectLanguage } from './selectors';
@@ -43,30 +44,30 @@ import ToolList from './ToolList';
 import BlockViewItem from './BlockViewItem';
 import ListViewItem from './ListViewItem';
 import Header from './Header';
+import MobileHeader from './MobileHeader';
 import staticText from './staticText';
 
 
 const TOP=0,MIDDLE=1,BOTTOM=2;
 
+const HeaderContainer = styled.div`
+  display: block;
+  @media(max-width: 1170px) {
+    display: none;
+  }
+`;
+const MobileHeaderContainer = styled.div`
+  display: none;
+  @media(max-width: 1170px) {
+    display: block;
+  }
+`;
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
     super(props);
-    this.windowEvent = this.handleScroll.bind(this);
-    this.state = {
-      scrollY: 0
-    }
   }
 
-  componentWillMount() {
-    window.addEventListener('scroll', this.windowEvent, false);
-  }
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.windowEvent, false);
-  }
-  handleScroll() {
-    this.setState({ scrollY: window.scrollY });
-  }
 
   componentDidMount() {
     if (!this.props.tools) {
@@ -77,7 +78,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   getViewMode() {
     if (this.props.params.label !== undefined &&
         this.props.params.label !== '' &&
-        this.props.params.filter === 'search') {
+        (this.props.params.filter === 'search' || this.props.params.filter == 'tag') ) {
       return ListViewItem;
     }
 
@@ -93,18 +94,15 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     if (!this.props.params.filter || this.props.params.filter !== 'search' || !this.props.params.label) return;
 
     return (
-      <LanguageThemeProvider>
-        <SearchResultsContainer>
+      <SearchResultsContainer>
+        <LanguageThemeProvider>
           <ContentBlock>
             <span>
-              <ClearButton onClick={this.handleClearSearch.bind(this)}>
-                <TranslatableStaticText {...staticText.clearSearch} />
-              </ClearButton>
               <TranslatableStaticText {...staticText.searchResults} values={{query: this.props.params.label, count: this.props.sorted ? this.props.sorted.length : 0 }} />
             </span>
           </ContentBlock>
-        </SearchResultsContainer>
-      </LanguageThemeProvider>
+        </LanguageThemeProvider>
+      </SearchResultsContainer>
     );
   }
   getDirection() {
@@ -126,53 +124,38 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 
     const lang = this.props.language;
     const ListItem = this.getViewMode();
-    return (
+
+
+;    return (
       <LanguageThemeProvider>
         <Container
             dir={this.getDirection()}
             full={this.props.params.filter !== 'type'}
             isStory = {this.props.params.label === 'story'}
-            shorten = {this.state.scrollY > 10}
             >
           <Helmet
             title="BeautifulRising"
             meta={[
-              { name: 'description', content: 'Description of HomePage' },
+              { name: 'description', content: 'BeautifulRising' },
             ]}
           />
-          <Header lang={lang} {...this.props}/>
           <LeftSection lang={lang}>
-
-            <LeftHeader>
-              <TranslatableStaticText {...staticText.viewAs} />
-            </LeftHeader>
-
-            <LeftContainer>
-              <ToolsViewOptions />
-            </LeftContainer>
-
-            <LeftHeader>
-              <TranslatableStaticText {...staticText.sortBy} />
-            </LeftHeader>
-
-            <LeftContainer>
-              <ToolsSortOptions />
-            </LeftContainer>
-
-
-            <LeftHeader>
-              <TranslatableStaticText {...staticText.tags} />
-            </LeftHeader>
-            <Tags {...this.props} align={'center'} showClear={true}/>
+            <ToolTypeArea lang={lang} params={this.props.params} />
           </LeftSection>
           <Stage lang={lang}>
+            <HeaderContainer>
+              <Header lang={lang} {...this.props}/>
+            </HeaderContainer>
+            <MobileHeaderContainer>
+              <MobileHeader lang={lang} {...this.props} />
+            </MobileHeaderContainer>
             {this.getSearchResultsHeader()}
             <ToolList>
               { this.props.sorted ?
                   this.props.sorted.map((tool, index) => {
                     return (
                       <ListItem
-                            position={this.randomizePosition(tool)}
+                            index={index + 1}
                             lang={this.props.language} {...tool}
                             key={tool['document_id']}
                             />)

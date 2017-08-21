@@ -22,4 +22,23 @@ export default styled.li`list-style: none;
     text-align: ${p=>p.lang==='ar'?'right':'left'};
     font-size: 18px;
     padding-${p=>p.lang==='ar'?'right':'left'}: 10px;
-  }`;
+  }
+
+  @media(max-width: 1170px) {
+    width: 100%;
+    text-align: center;
+    p {
+      padding: 0;
+    }
+    h3 {
+      text-align: center;
+    }
+
+    h5 {
+      &::before {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+  `;

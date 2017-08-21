@@ -20,4 +20,8 @@ export default styled(Link)`
     vertical-align: top;
   }
 
+  @media(max-width: 1170px) {
+    width: 100%;
+    text-align: center;
+  }
 `;

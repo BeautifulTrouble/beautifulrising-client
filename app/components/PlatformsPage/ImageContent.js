@@ -4,5 +4,11 @@ export default styled.div`
   float: ${props=>props.lang==='ar'?'right':'left'};
   height: 400px;
   display: inline-block;
-  margin-top: 130px;
+
+  @media(max-width: 1170px) {
+    width: 100%;
+    float: none;
+    padding: 10px;
+    height: 65vmin;
+  }
 `;

@@ -27,9 +27,16 @@ import TextArea from 'components/SubmitRealWorldExample/TextArea';
 import staticText from './staticText';
 
 const SubmitExampleContainer = styled.div`
-  margin-top: 36px;
-`;
+  margin-top: 12px;
+  width: 470px;
 
+  @media(max-width: 1170px) {
+    width: 100%;
+  }
+`;
+const InstructionsBlock = styled(ContentBlock)`
+  margin-bottom: 12px;
+`;
 export class SubmitRealWorldExample extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
@@ -107,11 +114,9 @@ export class SubmitRealWorldExample extends React.PureComponent { // eslint-disa
           <Header>
             <TranslatableStaticText {...staticText.header} values={{type: this.props.type}} />
           </Header>
-          <div>
-            <ContentBlock>
-              <TranslatableStaticText {...staticText.instruction} />
-            </ContentBlock>
-          </div>
+          <InstructionsBlock>
+            <TranslatableStaticText {...staticText.instruction} />
+          </InstructionsBlock>
           { this.props.realWorldEx.complete ? this.renderComplete() : this.renderForm() }
           </LanguageThemeProvider>
         </SubmitExampleContainer>

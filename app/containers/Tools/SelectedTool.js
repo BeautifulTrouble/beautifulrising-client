@@ -40,6 +40,14 @@ import AdderRemover from './AdderRemover';
 import makeSelectTools from './selectors';
 import staticText from './staticText';
 
+const RemoveIconContainer = styled.span`
+  svg circle {
+    fill: transparent;
+  }
+  svg path {
+    fill: #B3B3B3;
+  }
+`;
 export class SelectedTool extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   getFlag() {
@@ -53,14 +61,14 @@ export class SelectedTool extends React.PureComponent { // eslint-disable-line r
   }
 
   render() {
-    const flag = this.getFlag();
+    const Flag = this.getFlag();
     const tool = this.props.allData.get(this.props.slug);
     const lang = this.props.intl.locale;
     if (!tool) return null;
     return (
       <LanguageThemeProvider>
         <SelectedToolItem lang={lang}>
-          <SelectedToolTitle flag={flag} lang={lang}>
+          <SelectedToolTitle flag={Flag} lang={lang}>
             <Link to={`/tool/${tool.get('slug')}`}>{tool.get('title')}</Link>
           </SelectedToolTitle>
           <SelectedToolSnapshot>
@@ -71,7 +79,9 @@ export class SelectedTool extends React.PureComponent { // eslint-disable-line r
           <SelectedToolCommands lang={lang}>
             <SelectedToolCommandItem  lang={lang}>
               <AdderRemover {...this.props}>
-                <Isvg src={RemoveSmallIcon} />
+                <RemoveIconContainer>
+                  <Isvg src={RemoveSmallIcon} />
+                </RemoveIconContainer>
                 <SelectedToolCommandContent>
                   <TranslatableStaticText {...staticText.removeSelected} />
                 </SelectedToolCommandContent>

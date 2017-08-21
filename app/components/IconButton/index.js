@@ -12,5 +12,6 @@ export default styled.button`
   text-align: center;
   width: ${props => props.width || "20px" };
   cursor: pointer;
-  font-family: 'Avenir', 'Kaff'
+  font-family: 'Avenir', 'Kaff';
+  padding: 0;
 `;

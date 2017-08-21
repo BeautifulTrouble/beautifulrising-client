@@ -28,8 +28,17 @@ import Region from 'components/RegionOptions/Region';
 import Disabled from 'components/RegionOptions/Disabled';
 import RegionLink from 'components/RegionOptions/RegionLink';
 
+import TranslatableStaticText from 'containers/TranslatableStaticText';
+import staticText from 'containers/ToolTypeArea/staticText';
+
+const AllRegionLink = styled(RegionLink)`
+  &::after {
+    display: none;
+  }
+`;
 function RegionOptions(props) {
   const lang = props.intl.locale;
+
   return (
     <Container inline={!props.showHeader}>
       <Viewport lang={lang}>
@@ -37,6 +46,11 @@ function RegionOptions(props) {
           <FormattedMessage {...messages.header} />
         </Subheader>
         <RegionList lang={lang}>
+          <Region lang={lang} >
+            <AllRegionLink to={'/type/story'} selected={props.region === undefined}>
+              <TranslatableStaticText {...staticText.allHead} />
+            </AllRegionLink>
+          </Region>
           <Region>
             <RegionLink to={'/type/story/africa'} selected={props.region === 'africa'}>
               <Isvg src={Africa} />

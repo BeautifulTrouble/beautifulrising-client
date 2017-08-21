@@ -53,7 +53,7 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
   // The delay is so that the receiveProps and didMount
   // will not go against eachother
   componentDidMount() {
-    if (this.props.aboutData) {
+    if (this.props.aboutData.size === 0) {
       this.props.onPageLoad();
     }
 
@@ -69,10 +69,13 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
     const reference = browserHistory.getCurrentLocation().pathname;
     const targetNode = ReactDOM.findDOMNode(this.refs[reference]);
 
-    if (targetNode && this.state.activateAnchor) {
-      this.setState({ activateAnchor : false, currentPath: reference, currentOffset: targetNode.offsetTop });
+    if (targetNode &&
+          // this.state.activateAnchor &&
+          this.props.params.section !== nextProps.params.section
+       ) {
+      // this.setState({ activateAnchor : false, currentPath: reference, currentOffset: targetNode.offsetTop });
       window.scrollTo(0, targetNode.offsetTop);
-      setTimeout(() => { this.setState({ activateAnchor: true }); }, 100);
+      // setTimeout(() => { this.setState({ activateAnchor: true }); }, 100);
     }
   }
 
@@ -178,12 +181,12 @@ export class AboutPage extends React.PureComponent { // eslint-disable-line reac
             teamMembers={this.props.aboutData.getIn(['about', 'team-members'])}
             allData={this.props.aboutData}
         />
-        <BeautifulTroubleAA
+        {/*<BeautifulTroubleAA
             ref="/about/beautiful-trouble-and-action-aid"
             targetRoute="/about/beautiful-trouble-and-action-aid"
             onChange={this.componentIsVisible.bind(this) }
             allData={this.props.aboutData}
-        />
+        />*/}
         <Partners
             ref="/about/partners"
             targetRoute="/about/partners"

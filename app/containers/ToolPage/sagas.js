@@ -4,7 +4,7 @@ import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects'
 import { LOAD_DATA } from 'containers/App/constants';
 import { CHANGE_LOCALE } from 'containers/LanguageProvider/constants';
 import { dataLoaded, dataLoadingError } from 'containers/App/actions';
-
+import { resetToolState } from 'containers/ToolPage/actions';
 import request, { getEndpoint } from 'utils/request';
 
 export const getLanguage = (state) => state.get('language');
@@ -23,24 +23,20 @@ export function* getToolsData(lang) {
   }
 }
 
+export function* resetState() {
+  yield put(resetToolState());
+}
+
 // Individual exports for testing
-export function* toolsData() {
+export function* checkLocaleChange() {
 
-  // Watches for LOAD_REPOS actions and calls getRepos when one comes in.
-  // By using `takeLatest` only the result of the latest API call is applied.
-  // It returns task descriptor (just like fork) so we can continue execution
-  let language = yield select(getLanguage);
-  const chosenLanguage = language !== undefined ? language.get('locale') : 'en';
+  yield put(resetToolState());
+  yield take(LOCATION_CHANGE);
 
-  const watcher = yield takeLatest(LOAD_DATA, getToolsData, chosenLanguage);
-
-  // Suspend execution until location changes
-  yield take(CHANGE_LOCALE, LOCATION_CHANGE);
-  yield cancel(watcher);
 
 }
 
 // All sagas to be loaded
 export default [
-  toolsData,
+  checkLocaleChange,
 ];

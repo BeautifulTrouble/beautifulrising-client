@@ -6,6 +6,7 @@
 
 import React from 'react';
 
+import { injectIntl } from 'react-intl';
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import MenuLink from 'components/MenuLink';
@@ -16,21 +17,24 @@ import MenuTitle from 'components/MenuTitle';
 import staticText from './staticText';
 
 function ContributeMenu(props) {
+  const { locale } = props.intl;
   return (
-    <LanguageThemeProvider>
-      <MenuBlock>
-        <MenuTitle>
-          <TranslatableStaticText {...staticText.header} />
-        </MenuTitle>
-        <MenuList>
-          <MenuListItem>
-            <MenuLink to="/contribute/how-it-works" onClick={props.onClick}>
-              <TranslatableStaticText {...staticText.howItWorks} />
-            </MenuLink>
-          </MenuListItem>
-        </MenuList>
+
+      <MenuBlock isArabic={locale==='ar'}>
+        <LanguageThemeProvider>
+          <MenuTitle>
+            <TranslatableStaticText {...staticText.header} />
+          </MenuTitle>
+          <MenuList>
+            <MenuListItem>
+              <MenuLink to="/contribute/how-it-works" onClick={props.onClick}>
+                <TranslatableStaticText {...staticText.howItWorks} />
+              </MenuLink>
+            </MenuListItem>
+          </MenuList>
+        </LanguageThemeProvider>
       </MenuBlock>
-    </LanguageThemeProvider>
+
   );
 }
 
@@ -38,4 +42,4 @@ ContributeMenu.propTypes = {
 
 };
 
-export default ContributeMenu;
+export default injectIntl(ContributeMenu);

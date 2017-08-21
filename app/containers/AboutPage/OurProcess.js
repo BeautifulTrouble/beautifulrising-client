@@ -32,6 +32,13 @@ const WORKSHOPS = ['myanmar', 'jordan', 'zimbabwe', 'bangladesh', 'uganda', 'mex
 
 const [STEPS, SUBHEADING, WORKSHOP] = [0, 1, 2];
 
+const Subheader = styled.h4`margin-top: 18px;`
+const Header = styled.h3`margin-top: 24px;`
+const ProcessList = styled.ul`
+@media(max-width: 1170px) {
+  padding: 0;
+}
+`;
 class OurProcess extends React.Component {
 
   renderProjects() {
@@ -43,12 +50,12 @@ class OurProcess extends React.Component {
     if (!groups) return null;
 
     return (
-        <ul lang={lang}>
+        <ProcessList lang={lang}>
           {groups.map((item,ind) => { return(
             <ProcessListItem key={ind} lang={lang}>
 
               <ProcessImage lang={lang} src={require('assets/images/workshops/' + WORKSHOPS[ind] + '.png')} />
-              <h4>{item.get('name')}</h4>
+              <Subheader>{item.get('name')}</Subheader>
               <ContentBlock>
                 <ol>
                   {item.get('participants') ?
@@ -59,7 +66,7 @@ class OurProcess extends React.Component {
             </ProcessListItem>
             )}
           )}
-        </ul>
+        </ProcessList>
       )
 
   }
@@ -78,17 +85,17 @@ class OurProcess extends React.Component {
     // processes[0] is the list
     return (
       <LanguageThemeProvider theme={themeFourColumns}>
-          <ul>
+          <ProcessList>
             {processes[STEPS].value.map(item=>(
               <ProcessListItem key={item.image} lang={locale}>
                 <CircledImage src={`https://beautifulrising.org/${item.image}`} />
                 <ContentBlock>
-                  <h1>{item.title}</h1>
+                  <Header>{item.title}</Header>
                   <Markdown source={item.description} />
                 </ContentBlock>
               </ProcessListItem>
             ))}
-          </ul>
+          </ProcessList>
       </LanguageThemeProvider>
     )
   }
@@ -108,11 +115,11 @@ class OurProcess extends React.Component {
   }
 
   render() {
+    if (!this.props.processes) return null;
     const {locale} = this.props.intl;
-
     return (
       <LanguageThemeProvider>
-        <AboutSection id='process' name='process' lang={locale}>
+        <AboutSection id='process' name='process' position={this.props.processes.toString().length} lang={locale}>
           { this.props.hideHeader ?  null : this.renderHeader() }
           { this.renderProcess() }
           {this.renderParticipants() }

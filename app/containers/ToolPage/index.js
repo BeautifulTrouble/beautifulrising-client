@@ -13,16 +13,24 @@ import { createStructuredSelector } from 'reselect';
 import AdderRemover from 'containers/Tools/AdderRemover';
 import { ToolInformation, ToolHeader } from 'components/ToolsPageComponents';
 // import { makeSelectToolById } from 'containers/Tool/selectors';
+import HeaderContainer from 'components/ToolPage/Header';
+import StageContainer from 'components/ToolPage/Stage';
+import MainArea from 'components/ToolPage/Main';
+import SidebarContainer from 'components/ToolPage/Sidebar';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
 import { loadData } from '../App/actions';
 
 import { ThemeProvider } from 'styled-components';
 import makeSelectToolPage, { makeSelectTool } from './selectors';
 import messages from './messages';
-import ToolPageHeader from './ToolPageHeader';
+import Header from './Header';
 import ToolPageLeft from './ToolPageLeft';
 import ToolPageMain from './ToolPageMain';
 import ToolPageRight from './ToolPageRight';
+import MainStage from './MainStage';
+import Sidebar from './Sidebar';
+
 import {BR_IMAGE_PREFIX} from 'containers/Tools/constants';
 import { MODULE_TYPE_UNTRANSLATED } from 'components/CommonComponents/constants';
 
@@ -60,7 +68,7 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
     if (!tool.document_id) return null;
 
     return (
-      <ThemeProvider theme={{ lang }}>
+      <LanguageThemeProvider>
         <div>
           <Helmet
             title={'BeautifulRising: ' + tool.title}
@@ -73,28 +81,42 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
               { property: 'og:image', content: BR_IMAGE_PREFIX+tool.image }
             ]}
           />
-          <ToolHeader>
-            <ToolPageHeader {...tool}
+          <HeaderContainer>
+            <Header {...tool}
                 showIfUntranslated={this.showIfUntranslated.bind(this)}
                 key={'header'}/>
-          </ToolHeader>
-          <ToolInformation>
-            <ToolPageLeft {...tool}
+          </HeaderContainer>
+          <StageContainer>
+            <MainArea>
+              <MainStage
+                {...tool}
                 showIfUntranslated={this.showIfUntranslated.bind(this)}
-                key={'page-left'}/>
-            <ToolPageMain {...tool}
+                params={this.props.params} key={'page-main'}
+              />
+            </MainArea>
+            <SidebarContainer>
+              <Sidebar
+                {...tool}
+                {...this.props}
                 showIfUntranslated={this.showIfUntranslated.bind(this)}
-                params={this.props.params} key={'page-main'}/>
-            <ToolPageRight {...tool}
-                showIfUntranslated={this.showIfUntranslated.bind(this)}
-                key={'page-right'}/>
-          </ToolInformation>
+              />
+            </SidebarContainer>
+          </StageContainer>
         </div>
-      </ThemeProvider>
+      </LanguageThemeProvider>
     );
   }
 }
-
+//
+// <ToolPageLeft {...tool}
+//     showIfUntranslated={this.showIfUntranslated.bind(this)}
+//     key={'page-left'}/>
+// <ToolPageMain {...tool}
+//     showIfUntranslated={this.showIfUntranslated.bind(this)}
+//     params={this.props.params} key={'page-main'}/>
+// <ToolPageRight {...tool}
+//     showIfUntranslated={this.showIfUntranslated.bind(this)}
+//     key={'page-right'}/>
 // <h3>{tool.type}</h3>
 // <p>{tool['short-write-up']}</p>
 // <h3>{this.props.toolData.getIn(['authors']).map(item => item.title)}</h3>

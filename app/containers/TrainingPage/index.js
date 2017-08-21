@@ -19,6 +19,8 @@ import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
 import TrainingBanner from 'assets/images/about/training.jpg';
 import OtherResources  from 'components/OtherResources';
+import SubmitResource from 'containers/SubmitResource';
+import CollapsingSection from 'components/CollapsingSection';
 import { loadData } from 'containers/App/actions';
 
 //For listening
@@ -40,6 +42,13 @@ const MenuArea = styled.div`
   border-${props=>props.lang==='ar'?'left':'right'}: 2px solid;
   position: relative;
 
+  @media(max-width: 1170px) {
+    width: 100%;
+    float: none;
+    padding: 0;
+    border: none;
+  }
+
 `;
 const Header = styled.h1`text-align: center
   font-size: 48px;
@@ -48,11 +57,17 @@ const Heading = styled.h2`
   line-height: 40px;
   text-align: ${props=>props.lang==='ar'?'right':'left'};
 `;
-const Lead = styled.div``;
+const Lead = styled.div`
+    margin-bottom: 36px;
+`;
 
 const MenuList = styled.ul`
 padding: 0;
 margin: 0;
+
+@media(max-width: 1170px) {
+  display: none;
+}
 `;
 const LinkItem = styled.li`
   text-align: ${props=>props.lang==='ar'?'right':'left'};
@@ -72,13 +87,13 @@ const LinkItem = styled.li`
     display: ${props => props.isSelected ? 'block' : 'none'};
     content: '______';
     position: absolute;
-    ${props=>props.lang==='ar'?'right':'left'}: 350px;
+    ${props=>props.lang==='ar'?'left':'right'}: -105px;
     top: 25%;
     transform: translate(0,-50%);
   }
 `;
 const Button = styled.button`
-  text-align: ${props=>props.lang==='ar'?'right':'left'};
+  text-align: ${props=>props.lang==='ar'?'right':'left'} !important;
   outline: none;
   cursor: pointer;
 
@@ -87,38 +102,90 @@ const Button = styled.button`
   font-weight: bold;
   font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
   margin-bottom: 18px;
-  font-size: 16px;
+  font-size: ${props=>props.lang==='ar'?'13px':'14px;'};
   line-height: 22px;
-`;
-const Banner = styled.img``;
+  padding-${props=>props.lang==='ar'?'right':'left'}: 0;
 
+  @media(max-width: 1170px) {
+    margin-bottom: 0;
+    margin: 0;
+    padding: 10px 0;
+    width: 100%;
+  }
+`;
+const Banner = styled.img`
+  display: block;
+  @media(max-width: 1170px) {
+    display: none;
+  }
+`;
+
+const MobileBanner = styled.img`
+  display: none;
+  @media(max-width: 1170px) {
+    display: block;
+    width: 100%;
+  }
+`;
+
+const MobileTrainingList = styled.div`
+display: none;
+@media(max-width: 1170px) {
+  display: block;
+  width: 100%;
+}`;
 const ContentArea = styled.div`
   width: 60%;
   float: ${props=>props.lang==='ar'?'right':'left'};
   padding-${props=>props.lang==='ar'?'right':'left'}: 100px;
+
+  @media(max-width: 1170px) {
+    display: none;
+  }
 `;
 const Content = styled.div`
   display: ${props => props.isVisible ? 'block' : 'none'} !important;
   padding-${props=>props.lang==='ar'?'left':'right'}: 170px;
   margin-top: 40px;
+
+  @media(max-width: 1170px) {
+    display: block !important;
+    padding-right: 0;
+    margin-top: 0;
+    margin-bottom: 60px;
+  }
 `;
 
 
 const TrainingArea =styled.div`
-  padding-bottom: 40px;
   border-bottom: 2px solid;
   margin-left: 20px;
   margin-right: 20px;
+  padding-bottom: 72px;
 
   &::after {
     content: ' ';
     clear: both;
     display: block;
   }
+
+  @media(max-width: 1170px) {
+    padding-bottom: 20px;
+  }
 `;
+
+const OtherResourcesHeading = styled(Heading)`
+  padding-top: 36px
+`;
+
 const OtherResourcesArea = styled.div`
   margin-left: 20px;
   margin-right: 20px;
+`;
+
+const SubmitResourcesArea = styled.div`
+  margin-top: 72px;
+  text-align: center;
 `;
 export class TrainingPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -129,11 +196,32 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
     }
   }
 
+  // The delay is so that the receiveProps and didMount
+  // will not go against eachother
   componentDidMount() {
     if (!this.props.data.size || !this.props.data || this.props.data === undefined) {
       this.props.onPageLoad();
     }
 
+    const reference = browserHistory.getCurrentLocation().pathname;
+    const targetNode = ReactDOM.findDOMNode(this.refs[reference]);
+    if (targetNode) {
+      window.scrollTo(0, targetNode.offsetTop);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const reference = browserHistory.getCurrentLocation().pathname;
+    const targetNode = ReactDOM.findDOMNode(this.refs[reference]);
+
+    if (targetNode &&
+          // this.state.activateAnchor &&
+          this.props.params.section !== nextProps.params.section
+       ) {
+      // this.setState({ activateAnchor : false, currentPath: reference, currentOffset: targetNode.offsetTop });
+      window.scrollTo(0, targetNode.offsetTop);
+      // setTimeout(() => { this.setState({ activateAnchor: true }); }, 100);
+    }
   }
 
   handleClick(clicked) {
@@ -158,19 +246,42 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
             { name: 'description', content: 'Description of TrainingPage' },
           ]}
         />
-        <Container>
+        <Container ref="/resources/training">
           <Viewport>
             <Header>
               <TranslatableStaticText {...staticText.header} />
             </Header>
             <TrainingArea lang={lang}>
               <MenuArea lang={lang}>
+                <MobileBanner  src={TrainingBanner} />
                 <Heading lang={lang}>{trouble.get('heading')}</Heading>
                 <Lead>
                   <ContentBlock>
                     <Markdown source={trouble.get('lead')} />
                   </ContentBlock>
                 </Lead>
+
+                <MobileTrainingList>
+                  {trouble.get('content').map((item, ind) => {
+                    return (
+                      <CollapsingSection
+                        key={ind}
+                        header={
+                            (<Button onClick={()=>this.handleClick(ind)}>
+                              {item.get('heading')}
+                            </Button>
+                            )
+                        }
+                        shouldOpen={ind === this.state.selected}
+                      >
+                        <Content key={ind} isVisible={ ind === this.state.selected }>
+                          <Markdown source={item.get('text')} />
+                        </Content>
+                      </CollapsingSection>
+                    )
+                  })}
+                </MobileTrainingList>
+
                 <MenuList lang={lang}>
                 {trouble.get('content').map((item, ind) => {
                   return (
@@ -197,12 +308,16 @@ export class TrainingPage extends React.PureComponent { // eslint-disable-line r
               </ContentArea>
             </TrainingArea>
 
-            <OtherResourcesArea>
-              <Heading lang={lang}>
+            <OtherResourcesArea ref={"/resources/other"}>
+              <OtherResourcesHeading lang={lang}>
                 <TranslatableStaticText {...staticText.otherResources} />
-              </Heading>
+              </OtherResourcesHeading>
               <OtherResources data={this.props.data.get('resources')}/>
             </OtherResourcesArea>
+
+            <SubmitResourcesArea>
+              <SubmitResource />
+            </SubmitResourcesArea>
           </Viewport>
         </Container>
       </LanguageThemeProvider>

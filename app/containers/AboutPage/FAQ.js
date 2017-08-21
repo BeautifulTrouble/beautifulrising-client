@@ -29,10 +29,11 @@ export class FAQ extends React.Component {
     )
   }
   render() {
+    if (!this.props.questions ) return null;
     const {locale}=this.props.intl;
     return (
       <LanguageThemeProvider>
-        <AboutSection id='faq' lang={locale}>
+        <AboutSection id='faq' lang={locale} position={this.props.questions.toString().length}>
           { this.props.hideHeader ? null : this.renderHeader()}
           <FAQList lang={locale}>
             { this.props.questions === undefined ? null : this.props.questions.map((item, ind) => {

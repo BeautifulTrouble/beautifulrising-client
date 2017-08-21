@@ -1,16 +1,16 @@
 {
-  "name": "react-boilerplate",
-  "version": "3.4.0",
-  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+  "name": "beautiful-rising",
+  "version": "3.1.0",
+  "description": "Beautiful Rising harnesses the insights of changemakers worldwide to help make our movements more strategic, creative and effective.",
   "repository": {
     "type": "git",
-    "url": "git://github.com/react-boilerplate/react-boilerplate.git"
+    "url": "git://github.com/BeautifulTrouble/beautifulrising-client.git"
   },
   "engines": {
     "npm": ">=3",
     "node": ">=5"
   },
-  "author": "Max Stoiber",
+  "author": "Rapi Castillo, Adrian Carpenter",
   "license": "MIT",
   "scripts": {
     "analyze:clean": "rimraf stats.json",

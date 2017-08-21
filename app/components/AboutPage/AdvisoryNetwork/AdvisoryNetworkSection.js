@@ -6,5 +6,11 @@ export default styled(AboutSection)`
     &::after {
       ${p=>p.theme.isArabic?'right':'left'}: 83%;
     }
+
+    @media(max-width: 1170px) {
+      &::after {
+        ${p=>p.theme.isArabic?'right':'left'}: 50%;
+      }
+    }
   }
 `;

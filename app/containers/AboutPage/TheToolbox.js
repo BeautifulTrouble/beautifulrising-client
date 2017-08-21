@@ -18,6 +18,27 @@ import VisibilitySensor from 'react-visibility-sensor';
 
 import messages from './messages';
 
+const ToolTypeContainer = styled.div`
+
+
+  position: relative;
+
+  ${p=>{
+    if (p.notClickable) {
+      return `
+      &::after {
+        content: ' ';
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0);
+      }
+      `
+    }
+  }}
+`;
 export class TheToolbox extends React.Component {
 
   renderHeader() {
@@ -40,7 +61,9 @@ export class TheToolbox extends React.Component {
               <Markdown source={this.props.whatsInside}/>
             </IntroText>
           </Introduction>
-          <ToolTypeAllFull show={true} showLine={false}/>
+          <ToolTypeContainer notClickable={this.props.notClickable}>
+            <ToolTypeAllFull show={true} showLine={false}/>
+          </ToolTypeContainer>
         </AboutSection>
       </LanguageThemeProvider>
     );

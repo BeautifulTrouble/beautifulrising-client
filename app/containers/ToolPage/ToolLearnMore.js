@@ -10,7 +10,7 @@ import { createStructuredSelector } from 'reselect';
 import LatinThemeProvider from 'components/LatinThemeProvider';
 import AdderRemover from 'containers/Tools/AdderRemover';
 import { LearnMoreList, ToolMainContent, ToolLearnMoreContent, ToolMainContentHeader } from 'components/ToolsPageComponents';
-import ToolLearnMoreItem from './ToolLearnMoreItem';
+import ToolLearnMoreItem from 'containers/ToolPage/ToolLearnMoreItem';
 
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 import staticText from './staticText';

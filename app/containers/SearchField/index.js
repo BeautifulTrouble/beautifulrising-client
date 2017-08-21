@@ -8,30 +8,46 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
-
+import ReactDOM from 'react-dom';
+import { browserHistory } from 'react-router';
 import { createStructuredSelector } from 'reselect';
+import { push } from 'react-router-redux';
+
+import Isvg from 'react-inlinesvg';
+
 import makeSelectSearchField from './selectors';
 import messages from './messages';
 import {searchFieldChanged} from './actions';
-
 import { injectStaticText } from 'containers/TranslatableStaticText';
-
-import ReactDOM from 'react-dom';
-import { browserHistory } from 'react-router';
-
+import SearchIcon from 'assets/images/icons/search.svg';
+import ClearIcon from 'assets/images/icons/clear.svg';
 import staticText from './staticText';
 
 
-const SearchContainer = styled.div``;
-const SearchForm = styled.form``;
+const SearchContainer = styled.div`
+
+    width: 100%;
+    display: inline-block;
+    border: none;
+
+`;
+const SearchForm = styled.form`
+display: flex;
+`;
 const SearchBox = styled.input`
-  width: 100%;
-  padding: 20px 10px 10px;
-  border: 2px solid black;
+  flex-grow: 1;
+  padding: 3px 10px 5px;
+  // border: 2px solid black;
   font-size: ${p=>p.ar?'13px':'14px'};
   line-height: ${p=>p.ar?'24px':'22px'};
   font-style: italic;
   outline: none;
+`;
+const ClearButton = styled.button`
+  outline: none;
+  cursor: pointer;
+  padding: 0 5px 0 0;
+  margin-top: -4px;
 `;
 
 let timeoutHandler = null;
@@ -52,12 +68,30 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
     this.props.searchItems(ReactDOM.findDOMNode(this.refs['SearchBox']).value);
   }
 
+  handleClearSearch() {
+    ReactDOM.findDOMNode(this.refs['SearchBox']).value = "";
+    this.props.dispatch(push('/'));
+  }
+
+  renderControlButton() {
+    const { filter, label } = this.props;
+    if (filter == 'search' && (label !== undefined && label !== '')) {
+      return (
+        <ClearButton onClick={this.handleClearSearch.bind(this)}>
+          <Isvg src={ClearIcon} />
+        </ClearButton>
+      )
+    }
+    return (<Isvg src={SearchIcon} />);
+  }
   render() {
+
     const {locale} = this.props.intl;
     const {buildMessage} = this.props.translatable;
     return (
       <SearchContainer>
         <SearchForm onSubmit={this.handleSubmit.bind(this)}>
+          { this.renderControlButton() }
           <SearchBox ref={'SearchBox'} ar={locale==='ar'} type='text' onChange={this.props.onChange} placeholder={buildMessage(staticText.placeholder)} />
         </SearchForm>
       </SearchContainer>
@@ -74,6 +108,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
+    dispatch,
     onChange: (evt) => {
       const text = evt.target.value;
       //Change browser

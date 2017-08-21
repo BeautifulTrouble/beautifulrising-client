@@ -17,12 +17,15 @@ import searchFieldReducer from 'containers/SearchField/reducer';
 import toolsReducer from 'containers/Tools/reducer';
 import contactUsReducer from 'containers/ContactUs/reducer';
 import submitRealWorldExampleReducer from 'containers/SubmitRealWorldExample/reducer';
+import submitResourceReducer from 'containers/SubmitResource/reducer';
 import emailToolsReducer from 'containers/EmailTools/reducer';
+import toolPageReducer from 'containers/ToolPage/reducer';
 import newsFeedReducer from 'containers/NewsFeed/reducer';
 import submitNewsFeedReducer from 'containers/SubmitNewsFeed/reducer';
 import askTheContributorReducer from 'containers/AskTheContributor/reducer';
 import onboardingModalReducer from 'containers/OnboardingModal/reducer';
 import translatableStaticTextReducer from 'containers/TranslatableStaticText/reducer';
+import whatsHappeningReducer from 'containers/WhatsHappening/reducer';
 /*
  * routeReducer
  *
@@ -64,14 +67,17 @@ export default function createReducer(asyncReducers) {
     toolsView: toolsViewOptionsReducer,
     toolsSort: toolsSortOptionsReducer,
     tools: toolsReducer,
+    toolPage: toolPageReducer,
     contactUs: contactUsReducer,
     submitRealWorldExample: submitRealWorldExampleReducer,
+    submitResource: submitResourceReducer,
     emailTools: emailToolsReducer,
     newsFeed: newsFeedReducer,
     submitNewsFeed: submitNewsFeedReducer,
     askTheContributor: askTheContributorReducer,
     onboardingModal: onboardingModalReducer,
     translatableStaticText: translatableStaticTextReducer,
+    whatsHappening: whatsHappeningReducer,
     ...asyncReducers,
   });
 }

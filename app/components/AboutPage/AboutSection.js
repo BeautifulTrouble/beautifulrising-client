@@ -12,7 +12,7 @@ h2 {
   letter-spacing: 0;
   font-family: 'Avenir', 'Kaff', sans-serif;
   font-weight: 800;
-  margin-top: 40px;
+  margin-top: 90px;
   padding: 15px 20px;
   text-align: ${p=>p.lang==='ar'?'right':'left'};
   position: relative;
@@ -25,7 +25,14 @@ h2 {
     border-right: ${p=>p.hideHeader ? '0px solid' : '1px solid'};
     width: 1PX;
     bottom: -65px;
-    ${p=>p.lang==='ar'?'right':'left'}: 50%;
+    ${p=>p.lang==='ar'?'right':'left'}: ${p=>{
+      if (!p.position) return '50%';
+      switch(p.position % 3) {
+        case 0: return '50%';
+        case 1: return '67%';
+        case 2: return '83%';
+      }
+    }};
   }
 }
 
