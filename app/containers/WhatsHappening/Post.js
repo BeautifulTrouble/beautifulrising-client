@@ -148,7 +148,6 @@ class Post extends React.PureComponent {
   }
   render() {
 
-
     return(
       <LanguageThemeProvider>
         <Container>
