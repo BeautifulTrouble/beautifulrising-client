@@ -83,6 +83,7 @@ const DateContent = styled(ContentBlock)`
 `;
 const Title = styled(HeaderBlock)`
   font-size: 40px;
+  line-height: 44px;
 `;
 const FeatureImage = styled.img`width: 100%`;
 const BEAUTIFULRISING_URL = `//www.beautifulrising.org/`;
