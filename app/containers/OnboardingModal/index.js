@@ -17,7 +17,7 @@ import LanguageChanger, { MobileLanguageChanger } from 'containers/LanguageChang
 const customStyles = (lang) => { return {
   overlay: {
     backgroundColor: 'hsla(0,0%,58%,.75)',
-    zIndex: 600,
+    zIndex: 3000,
     overflow: 'auto',
   },
   content : {
