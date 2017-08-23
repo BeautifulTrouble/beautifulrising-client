@@ -19,6 +19,7 @@ import ByLine from './ByLine';
 import ContributedBy from './ContributedBy';
 import RealWorld from './RealWorld';
 import LearnMore from './LearnMore';
+import HowToUse from './HowToUse';
 import WhyItWorked from '../Sidebar/WhyItWorked';
 import WhyItFailed from '../Sidebar/WhyItFailed';
 import PotentialRisk from '../Sidebar/PotentialRisk';
@@ -49,6 +50,8 @@ class MainStage extends React.PureComponent {
         <MainContent { ...this.props } />
         <ToolKeyItems {...this.props} />
         <ContentSeparation />
+        <HowToUse {...this.props} />
+
         <MobileContent>
           <WhyItWorked collapsible={true}  {...this.props} text={this.props['why-it-worked']} />
           <WhyItFailed collapsible={true}  {...this.props} text={this.props['why-it-failed']} />
