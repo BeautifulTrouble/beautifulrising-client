@@ -139,5 +139,10 @@ export default {
   origins:  {
     id: 'module.origins',
     defaultMessage: 'Origins'
+  },
+
+  howToUseHeader: {
+    id: 'how-to-use',
+    defaultMessage: "How To Use"
   }
 }

@@ -17,7 +17,7 @@ export const POTENTIAL_RISK = 'app/ToolPage/Section/POTENTIAL_RISK';
 export const TAGS = 'app/ToolPage/Section/TAGS';
 export const TRAINING = 'app/ToolPage/Section/TRAINING';
 export const RELATED_TOOLS = 'app/ToolPage/Section/RELATED_TOOLS';
-
+export const HOW_TO_USE = 'app/ToolPage/Section/HOW_TO_USE';
 
 export const TYPE_PERSON = 'person';
 
@@ -26,3 +26,4 @@ export const PROP_SHORT_WRITE_UP = 'short-write-up';
 export const PROP_WHY_IT_WORKED = 'why-it-worked';
 export const PROP_WHY_IT_FAILED = 'why-it-failed';
 export const PROP_POTENTIAL_RISK = 'potential-risk';
+export const PROP_HOW_TO_USE = 'how-to-use';
