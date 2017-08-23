@@ -44,6 +44,9 @@ class HowToUse extends React.PureComponent {
   }
 
     renderCollapsible() {
+
+      const imageReplaced = this.props[PROP_HOW_TO_USE].replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)");
+
       return (
         <CollapsingSection
           header={(
@@ -61,7 +64,7 @@ class HowToUse extends React.PureComponent {
           <CollapsingContent>
             <LanguageThemeProvider>
               <ContentBlock>
-                <Markdown source={this.props[PROP_HOW_TO_USE]} renderers={{Link: RouterLink}} />
+                <Markdown source={imageReplaced} renderers={{Link: RouterLink}} />
               </ContentBlock>
             </LanguageThemeProvider>
           </CollapsingContent>
