@@ -140,9 +140,8 @@ export default {
     id: 'module.origins',
     defaultMessage: 'Origins'
   },
-
   howToUseHeader: {
-    id: 'how-to-use',
+    id: 'module.how-to-use',
     defaultMessage: "How To Use"
   }
 }
