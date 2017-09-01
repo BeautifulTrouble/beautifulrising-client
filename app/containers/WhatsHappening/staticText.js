@@ -1,6 +1,6 @@
 export default {
   whatsHappeningHeader: {
-    id: 'whats-happening.header',
+    id: 'menu.blog',
     defaultMessage: 'What\'s Happening',
   }
 };

@@ -43,7 +43,7 @@ function RegionOptions(props) {
     <Container inline={!props.showHeader}>
       <Viewport lang={lang}>
         <Subheader lang={lang} show={props.showHeader}>
-          <FormattedMessage {...messages.header} />
+          <TranslatableStaticText {...staticText.header} />
         </Subheader>
         <RegionList lang={lang}>
           <Region lang={lang} >
