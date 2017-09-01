@@ -62,5 +62,9 @@ export default {
   methodologyLong: {
     id: 'definitions.methodology',
     defaultMessage: '“If you don\'t know where you’re going, you\'ll end up someplace else.” ―Yogi Berra Tactics are fun, but if you haven’t first identified goals and mapped out your strategy for how to achieve them, even the most engaging tactic won’t get you closer to where you want to go. That’s where these exercises and strategic frameworks come in: they are tools to help you better understand your situation, plan your next steps, assess your progress, and, eventually, win.'
+  },
+  header: {
+    id: 'module.region-filter',
+    defaultMessage: 'Filter by Region'
   }
 };

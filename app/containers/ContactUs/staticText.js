@@ -12,7 +12,7 @@ export default {
     defaultMessage: "Submit"
   },
   whatsHappening: {
-    id: "menu.whats-happening",
+    id: "menu.blog",
     defaultMessage: "What's Happening"
   }
 }
