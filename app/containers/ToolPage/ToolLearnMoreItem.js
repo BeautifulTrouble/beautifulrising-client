@@ -7,6 +7,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import Markdown from 'react-remarkable';
 import ContentBlock from 'components/ContentBlock';
 import LatinThemeProvider from 'components/LatinThemeProvider';
 import AdderRemover from 'containers/Tools/AdderRemover';
@@ -21,7 +22,7 @@ export default function ToolLearnMoreItem(props) { // eslint-disable-line react/
       <LearnMoreItem>
         <ContentBlock>
           <LearnMoreItemLink href={props.link} target='_blank'>{props.title}</LearnMoreItemLink>
-          {props.source !== '' ? (<LearnMoreItemSource> | {props.source}</LearnMoreItemSource>) : null }
+          {props.source !== '' ? (<LearnMoreItemSource> | <Markdown className={'markdown'} source={props.source} /> </LearnMoreItemSource>) : null }
           {props.year ? `, ${props.year}` : ''}
         </ContentBlock>
       </LearnMoreItem>

@@ -209,7 +209,9 @@ export const LearnMoreItemLink = styled.a`
   text-decoration: underline;
   font-weight: 800;
 `;
-export const LearnMoreItemSource = styled.span``;
+export const LearnMoreItemSource = styled.span`
+  * { display: inline; margin: 0; padding: 0; }
+`;
 
 
 // RealWorldContainer
