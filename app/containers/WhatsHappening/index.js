@@ -135,8 +135,8 @@ export class WhatsHappening extends React.PureComponent { // eslint-disable-line
         </PostList>
 
         <PaginationArea>
-          <PreviousButton to={`/whats-happening?page=${pageFocus - 1}`} toShow={pageFocus > 1}>Previous Page</PreviousButton>
-          <NextButton to={`/whats-happening?page=${pageFocus + 1}`} toShow={!this.state.isLast}>Next Button</NextButton>
+          <PreviousButton to={`/whats-happening?page=${pageFocus - 1}`} toShow={pageFocus > 1}>Previous</PreviousButton>
+          <NextButton to={`/whats-happening?page=${pageFocus + 1}`} toShow={!this.state.isLast}>Next</NextButton>
         </PaginationArea>
       </LanguageThemeProvider>
     );

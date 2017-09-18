@@ -7,6 +7,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import Menu from 'containers/Menu';
+import Logo from 'components/Logo';
 import Isvg from 'react-inlinesvg';
 import { injectIntl } from 'react-intl';
 import MenuIcon from 'assets/images/icons/menu.svg';
@@ -177,6 +178,7 @@ export class ModalMenu extends React.Component {
                   <CloseButton onClick={this.closeModal.bind(this)}>
                     <Isvg src={CloseIcon} />
                   </CloseButton>
+                  <Logo top={'17px'} left={'115px'} />
                   <BellArea>
                     <WhatsHappeningBell onClick={this.closeModal.bind(this)} />
                   </BellArea>

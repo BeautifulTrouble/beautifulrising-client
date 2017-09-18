@@ -18,6 +18,9 @@ function Origins(props) {
 
   const originsText = buildMessage(staticText.origins);
 
+  console.log("originsText :: ", originsText)
+  if (props.origins === undefined || !props.origins) return null;
+
   return (
     <ContentContainer>
       <LanguageThemeProvider>
