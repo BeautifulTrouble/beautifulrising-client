@@ -28,7 +28,6 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
 
      if (appData) {
        let tags = appData.find(item => item['type'] == 'text' && item['slug'] == 'tags');
-       console.log(tags);
        return tags;
      }
    }
