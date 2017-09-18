@@ -138,6 +138,16 @@ injectGlobal`
     .onboarding-language-changer {
       button { color: white; }
     }
+
+    @media(max-width: 1170px) {
+      height: 100vh;
+      overflow: hidden;
+
+      & > #app {
+        height: 100vh !important;
+        overflow: hidden;
+      }
+    }
   }
 
   .ReactModal__Overlay--after-open {
