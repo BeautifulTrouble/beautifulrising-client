@@ -104,7 +104,7 @@ class BlockViewItem extends React.Component {
 BlockViewItem.propTypes = {
   title: PropTypes.string.isRequired,
   snapshot: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
   slug: PropTypes.string.isRequired,
 };
 
