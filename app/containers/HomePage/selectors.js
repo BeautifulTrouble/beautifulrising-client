@@ -27,7 +27,7 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
      let appData = globalState.getIn(['appData', 'information']);
 
      if (appData) {
-       let tags = appData.find(item => item['_id'] === 'text:tags');
+       let tags = appData.find(item => item['type'] == 'text' && item['slug'] == 'tags');
        return tags;
      }
    }
