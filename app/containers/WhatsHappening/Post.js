@@ -61,6 +61,10 @@ const FeatureArea = styled.div`
   padding-top: 45px;
   padding-bottom: 70px;
 
+  @media(max-width: 700px) {
+    height: 300px;
+  }
+  
   @media(max-width: 1170px) {
     display: block;
     width: 100%;
