@@ -27,12 +27,12 @@ const BUTTON = {
   cursor: 'pointer'
 }
 const PREVIOUS_BUTTON = {
-  left: 0,
+  left: 5,
   ...BUTTON
 };
 
 const NEXT_BUTTON = {
-  right: 0,
+  right: 5,
   ...BUTTON
 };
 
@@ -84,7 +84,7 @@ export class ImageSlideshow extends React.PureComponent { // eslint-disable-line
     if (this.state.chosen == 0) return null;
     return this.props.previousButton || this.renderDefaultPreviousButton();
   }
-  
+
   renderDefaultPreviousButton() {
     return (<div>PREVIOUS</div>);
   }

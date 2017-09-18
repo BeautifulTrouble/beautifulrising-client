@@ -12,6 +12,8 @@ import ContentBlock from 'components/ContentBlock';
 import HeaderBlock from 'components/HeaderBlock';
 import Isvg from 'react-inlinesvg';
 import ArrowIcon from 'assets/images/icons/arrow.svg';
+import LeftArrow from 'assets/images/icons/arrows-20.svg';
+import RightArrow from 'assets/images/icons/arrows-21.svg';
 
 const Container = styled.div`
   display: flex
@@ -61,6 +63,10 @@ const FeatureArea = styled.div`
   padding-top: 45px;
   padding-bottom: 70px;
 
+  @media(max-width: 700px) {
+    height: 300px;
+  }
+
   @media(max-width: 1170px) {
     display: block;
     width: 100%;
@@ -94,7 +100,6 @@ const PreviousButton = styled.div`
 `;
 const NextButton = styled.div`
   display: inline-block;
-  transform: rotate(180deg);
   opacity: 0.7;
 `
 
@@ -109,8 +114,8 @@ class Post extends React.PureComponent {
       <ImageSlideshow images={
         this.props.slideshow.map(item => BEAUTIFULRISING_URL + item)
       }
-        previousButton={(<PreviousButton><Isvg src={ArrowIcon} /></PreviousButton>)}
-        nextButton={(<NextButton><Isvg src={ArrowIcon} /></NextButton>)}
+        previousButton={(<PreviousButton><Isvg src={LeftArrow} /></PreviousButton>)}
+        nextButton={(<NextButton><Isvg src={RightArrow} /></NextButton>)}
       />
     )
   }
