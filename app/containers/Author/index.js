@@ -15,6 +15,9 @@ import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import LatinThemeProvider from 'components/LatinThemeProvider';
 import {selectAuthor} from './selectors';
 
+import AnonPhoto from 'assets/images/icons/anon.png';
+
+const AUTHOR_BASE_IMAGE = "https://beautifulrising.org/assets/content/small-";
 export class Author extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   render() {
@@ -30,7 +33,7 @@ export class Author extends React.PureComponent { // eslint-disable-line react/p
       <ThemeProvider>
         <AuthorContainer>
           <AuthorLink to={`/search/authors!${this.props.slug}`}>
-            <AuthorImage image={this.props.author.image} />
+            <AuthorImage image={this.props.author.image ? AUTHOR_BASE_IMAGE + this.props.author.image : AnonPhoto } />
           </AuthorLink>
           {/*<AuthorName>
             <AuthorLink to={`/search/authors!${this.props.slug}`}>{firstName}</AuthorLink>
@@ -38,7 +41,7 @@ export class Author extends React.PureComponent { // eslint-disable-line react/p
           </AuthorName> */}
           <AuthorDesc>
             <ContentBlock>
-              <Markdown source={this.props.author.bio} />
+              <Markdown source={this.props.author.bio || `**${this.props.author.title}**`} />
             </ContentBlock>
           </AuthorDesc>
         </AuthorContainer>

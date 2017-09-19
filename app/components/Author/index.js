@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import SmallHeaderBlock from 'components/SmallHeaderBlock';
 
 import { Link } from 'react-router';
-const AUTHOR_BASE_IMAGE = "https://beautifulrising.org/assets/content/small-";
+
 
 function AuthorComponents() {
   return (
@@ -41,7 +41,7 @@ export const AuthorImageArea = styled.div`
 export const AuthorImage = styled.span`
   width: 100%;
   height: 100%;
-  background-image: url(${props=>AUTHOR_BASE_IMAGE + props.image})
+  background-image: url(${props=> props.image})
 
   display: inline-block;
   background-size: cover;

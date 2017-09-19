@@ -9,6 +9,10 @@ import { PRODUCTION_ENDPOINT, DEVELOPMENT_ENDPOINT } from 'components/CommonComp
  * @return {object}          The parsed JSON from the request
  */
 function parseJSON(response) {
+
+  if (response.type == 'opaque') {
+    return true;
+  }
   return response.json();
 }
 
@@ -20,7 +24,9 @@ function parseJSON(response) {
  * @return {object|undefined} Returns either the response, or throws an error
  */
 function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
+
+  if (response.status >= 200 && response.status < 300 || response.type == 'opaque') {
+
     return response;
   }
 
@@ -47,6 +53,7 @@ export function getEndpoint(lang = 'en') {
  * @return {object}           The response data
  */
 export default function request(url, options) {
+
   return fetch(url, options)
     .then(checkStatus)
     .then(parseJSON);

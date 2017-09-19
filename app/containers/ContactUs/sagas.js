@@ -17,9 +17,10 @@ export function* subscribeUser() {
     //   })
     const data = yield call(request, requestURL, { mode: 'no-cors'});
     //
-
+    
     // /** LOADING AREA **/
     yield put(subscriptionComplete());
+
   } catch (err) {
 
     yield call(put, errorSubscribing(err));
