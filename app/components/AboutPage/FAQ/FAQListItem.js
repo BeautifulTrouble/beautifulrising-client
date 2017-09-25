@@ -6,7 +6,7 @@ export default styled.li`list-style: none;
   vertical-align: top;
   margin-bottom: 34px;
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     width: 100%;
   }
 `

@@ -22,7 +22,7 @@ const List = styled.ul`
 `;
 
 const OurValuesList = styled.ul`
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     padding: 0;
   }
 `;

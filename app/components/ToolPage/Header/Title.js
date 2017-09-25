@@ -9,7 +9,7 @@ export default styled(ToolTitle)`
   padding: 0;
   line-height: ${p=>p.theme.isArabic?'95px':'70px'};
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     font-size: 30px;
     line-height: ${p=>p.theme.isArabic?'28px':'28px'};
     margin-bottom: 12px;

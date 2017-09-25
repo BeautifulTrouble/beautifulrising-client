@@ -9,7 +9,7 @@ export default styled.blockquote`
   max-width: 230px;
   width: 230px;
   padding: 10px 0;
-  margin-right: 40px;
+  margin-${p=>p.theme.isArabic?'left':'right'}: 40px;
   p, div, span {
     font-family: 'Paint Hand',  'Massira Spray', serif;
     display: inline;
@@ -20,10 +20,10 @@ export default styled.blockquote`
 
   font-size: 20px;
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     width: 100%;
     max-width: 100%;
     padding: 0 30px;
-    text-align: center; 
+    text-align: center;
   }
 `;

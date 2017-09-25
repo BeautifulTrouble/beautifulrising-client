@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import SmallHeaderBlock from 'components/SmallHeaderBlock';
 
 import { Link } from 'react-router';
-const AUTHOR_BASE_IMAGE = "https://beautifulrising.org/assets/content/small-";
+
 
 function AuthorComponents() {
   return (
@@ -28,7 +28,7 @@ export const AuthorContainer = styled.section`
   direction: ${p=>p.theme.isArabic?'rtl':'ltr'} !important;
   display: flex;
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     flex-wrap: wrap;
   }
 `;
@@ -41,7 +41,7 @@ export const AuthorImageArea = styled.div`
 export const AuthorImage = styled.span`
   width: 100%;
   height: 100%;
-  background-image: url(${props=>AUTHOR_BASE_IMAGE + props.image})
+  background-image: url(${props=> props.image})
 
   display: inline-block;
   background-size: cover;
@@ -64,7 +64,7 @@ export const AuthorLink = styled(Link)`
   height: 170px;
   min-width: 200px;
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     width: 100%;
     min-width: 100%;
   }
@@ -80,7 +80,7 @@ export const AuthorDesc = styled.div`
     margin: 0;
   }
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     width: 100%;
     padding: 10px;
     margin-top: 10px;

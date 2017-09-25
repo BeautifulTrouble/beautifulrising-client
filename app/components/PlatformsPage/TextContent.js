@@ -7,7 +7,7 @@ export default styled.div`
     text-align: ${props=>props.lang==='ar'?'right':'left'};
   }
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     width: 100%;
     float: none;
     padding: 10px;

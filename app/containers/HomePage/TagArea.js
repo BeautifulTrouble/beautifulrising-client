@@ -19,11 +19,13 @@ const Container = styled.div`
   max-height: ${p=>p.show?'100vh':0};
   transition: max-height 0.8s ease, border-bottom 0.8s ease, padding-bottom 0.4s ease;
 
-  @media(max-width: 1170px) {
-    height: 100%;
+  @media(max-width: 1320px) {
+    height: calc(100% - 137px);
     border-bottom: 0;
     z-index: 700px;
-    padding: 0px 40px 15px;
+    padding: 0px 40px 0;
+    overflow: auto;
+    display: inline-block;
   }
 `;
 const CloseButton = styled.button`

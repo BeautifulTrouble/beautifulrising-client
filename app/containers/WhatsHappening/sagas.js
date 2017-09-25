@@ -102,7 +102,6 @@ export function* languageChanged() {
 
 // Daemonize tasks in parallel
 export default [
-  watchPollData,
   languageChanged,
   initialLoadingCall
 ]

@@ -18,7 +18,7 @@ import staticText from '../staticText';
 
 
 const FirstCollapsingHeader = styled(CollapsingHeader)`
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     margin-top: 0;
   }
 `;
@@ -59,6 +59,9 @@ class ContributedBy extends React.PureComponent {
 
     const authors = this.renderAuthors();
     const askTheAuthors = this.renderAskContributors();
+    const contribText = this.props.authors && this.props.authors.length > 1 ?
+                            staticText.contributedByHeaderPlural :
+                            staticText.contributedByHeader;
 
     return (
       <ContentContainer>
@@ -68,7 +71,7 @@ class ContributedBy extends React.PureComponent {
               onClick={this.handleClick.bind(this)}
               header={(
                 <FirstCollapsingHeader>
-                  <TranslatableStaticText {...staticText.contributedByHeader} />
+                  <TranslatableStaticText {...contribText} />
                 </FirstCollapsingHeader>
               )}
 

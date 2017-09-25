@@ -3,7 +3,7 @@ export default styled.div`
 width: 65%;
 padding-bottom: 13px;
 
-@media(max-width: 1170px) {
+@media(max-width: 1320px) {
   display: inline-block;
 }
 `;

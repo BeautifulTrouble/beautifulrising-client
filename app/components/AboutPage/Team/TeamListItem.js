@@ -27,7 +27,7 @@ export default styled.li`list-style: none;
 
   p { padding-${p=>p.theme.isArabic?'left':'right'}: 30px; }
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     width: 100%;
     text-align: center;
     p {
