@@ -37,7 +37,11 @@ export default {
   },
   contributedByHeader: {
     id: 'module.about-contributor',
-    defaultMessage: 'About the contributer'
+    defaultMessage: 'About the contributor'
+  },
+  contributedByHeaderPlural: {
+    id: 'module.about-contributors',
+    defaultMessage: 'About the contributors'
   },
 
   share: {

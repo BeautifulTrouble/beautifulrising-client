@@ -59,6 +59,9 @@ class ContributedBy extends React.PureComponent {
 
     const authors = this.renderAuthors();
     const askTheAuthors = this.renderAskContributors();
+    const contribText = this.props.authors && this.props.authors.length > 1 ?
+                            staticText.contributedByHeaderPlural :
+                            staticText.contributedByHeader;
 
     return (
       <ContentContainer>
@@ -68,7 +71,7 @@ class ContributedBy extends React.PureComponent {
               onClick={this.handleClick.bind(this)}
               header={(
                 <FirstCollapsingHeader>
-                  <TranslatableStaticText {...staticText.contributedByHeader} />
+                  <TranslatableStaticText {...contribText} />
                 </FirstCollapsingHeader>
               )}
 
