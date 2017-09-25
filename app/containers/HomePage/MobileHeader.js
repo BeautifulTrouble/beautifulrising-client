@@ -267,7 +267,7 @@ class MobileHeader extends React.PureComponent {
         {/* MODAL FOR TAGS */}
         <Modal
           isOpen={this.state.isTagsAreaShown}
-          style={{...customStyles, content: {...customStyles.content}}}
+          style={{content: {...customStyles.content}, overlay: {...customStyles.overlay, backgroundColor: 'rgba(0,0,0,0)'} }}
           contentLabel="TagsModal"
           overlayClassName="TagsModalOverlay"
         >
