@@ -11,4 +11,4 @@ export const SENDING = 'app/ContactUs/SUBSCRIPTION_SENDING';
 export const SUBSCRIPTION_COMPLETE = 'app/ContactUs/SUBSCRIPTION_COMPLETE';
 export const ERROR_SUBSCRIBING = 'app/ContactUs/ERROR_SUBSCRIBING';
 export const SUBSCRIPTION_SENDING = 'app/ContactUs/SUBSCRIPTION_SENDING';
-export const SUBSCRIPTION_ENDPOINT = 'https://beautifulrising.us8.list-manage.com/subscribe/post-json?u=17cdfdd393d63b7891e9b3ef4&id=29b9c2184c&subscribe=Subscribe';
+export const SUBSCRIPTION_ENDPOINT = 'https://beautifultrouble.us7.list-manage.com/subscribe/post-json?u=2aa3b5c34f535e74090f9098d&id=4a7c9e1689&subscribe=Subscribe';

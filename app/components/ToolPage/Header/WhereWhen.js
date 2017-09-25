@@ -11,7 +11,7 @@ const WhereWhenContainer = styled.div`
 
 const WhereWhenContent = styled(ContentBlock)`
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     font-size: 8px;
     line-height: 8px;
   }

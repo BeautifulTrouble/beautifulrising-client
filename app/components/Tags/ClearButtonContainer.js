@@ -11,4 +11,8 @@ export default styled.div`
     padding-right: 0;
     padding-left: 0;
   }
+
+  @media(max-width: 1320px) {
+    ${p=>p.theme.isArabic ? 'right': 'left'}: -40px;
+  }
 `;

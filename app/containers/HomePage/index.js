@@ -52,13 +52,13 @@ const TOP=0,MIDDLE=1,BOTTOM=2;
 
 const HeaderContainer = styled.div`
   display: block;
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     display: none;
   }
 `;
 const MobileHeaderContainer = styled.div`
   display: none;
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     display: block;
   }
 `;

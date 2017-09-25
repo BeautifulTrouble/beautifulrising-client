@@ -20,7 +20,7 @@ export default styled(Link)`
     vertical-align: top;
   }
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     width: 100%;
     text-align: center;
   }

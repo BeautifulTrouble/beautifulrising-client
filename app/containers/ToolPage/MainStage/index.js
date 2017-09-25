@@ -29,7 +29,7 @@ import Training from '../Sidebar/Training';
 
 const MobileContent = styled.div`
   display: none;
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     display: block;
   }
 `;

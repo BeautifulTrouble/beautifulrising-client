@@ -31,6 +31,7 @@ export default styled(ContentBlock)`
       font-weight: bold;
       color: #828486;
       padding: 0;
+      cursor: pointer;
     }
   }
 

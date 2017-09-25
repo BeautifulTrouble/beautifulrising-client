@@ -6,7 +6,7 @@ export default styled.div`
   ${p=>p.lang==='ar'?'left':'right'}: 34px;
   z-index: 200;
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     display: none;
   }
 `;

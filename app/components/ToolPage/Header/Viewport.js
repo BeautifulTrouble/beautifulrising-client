@@ -8,7 +8,7 @@ export default styled.div`
   padding-${props=>props.theme.lang==='ar'?'right':'left'}: 90px;
   overflow: ${props=>props.showOverflow?'visible':'hidden'};
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     padding-${props=>props.theme.lang==='ar'?'right':'left'}: 42px;
   }
 `;

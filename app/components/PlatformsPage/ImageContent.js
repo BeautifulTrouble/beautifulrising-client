@@ -5,7 +5,7 @@ export default styled.div`
   height: 400px;
   display: inline-block;
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     width: 100%;
     float: none;
     padding: 10px;

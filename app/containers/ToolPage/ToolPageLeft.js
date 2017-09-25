@@ -52,11 +52,15 @@ export class ToolPageLeft extends React.PureComponent { // eslint-disable-line r
 
   render() {
     const lang = this.props.intl.locale;
+
+    const contribText = this.props.authors && this.props.authors.length > 1 ?
+                            staticText.contributedByHeaderPlural :
+                            staticText.contributedByHeader;
     return (
         <LanguageThemeProvider>
           <ToolLeftArea>
             <ToolsPageContributor>
-              <TranslatableStaticText {...staticText.contributedByHeader} />
+              <TranslatableStaticText {...contribText} />
             </ToolsPageContributor>
             { this.props.authors && this.props.authors.length > 0 ?
                 this.props.authors.map(item=><Author key={item} slug={item}/>) :

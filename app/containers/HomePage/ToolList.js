@@ -18,7 +18,7 @@ export default styled.div`
     display: block;
   }
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     justify-content: center;
   }
 `;

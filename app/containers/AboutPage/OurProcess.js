@@ -35,7 +35,7 @@ const [STEPS, SUBHEADING, WORKSHOP] = [0, 1, 2];
 const Subheader = styled.h4`margin-top: 18px;`
 const Header = styled.h3`margin-top: 24px;`
 const ProcessList = styled.ul`
-@media(max-width: 1170px) {
+@media(max-width: 1320px) {
   padding: 0;
 }
 `;

@@ -56,7 +56,7 @@ const FilterSection = styled.ul`
   list-style: none;
   margin: 0;
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     flex-wrap: wrap;
 
     &::after {
@@ -170,7 +170,7 @@ const ApplyButton = styled.button`
   text-transform: uppercase;
   font-weight: 800;
   border: 2px solid black;
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     display: block;
   }
 `;
@@ -267,7 +267,7 @@ class MobileHeader extends React.PureComponent {
         {/* MODAL FOR TAGS */}
         <Modal
           isOpen={this.state.isTagsAreaShown}
-          style={{...customStyles, content: {...customStyles.content}}}
+          style={{content: {...customStyles.content}, overlay: {...customStyles.overlay, backgroundColor: 'rgba(0,0,0,0)'} }}
           contentLabel="TagsModal"
           overlayClassName="TagsModalOverlay"
         >

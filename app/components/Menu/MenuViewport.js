@@ -4,7 +4,7 @@ export default styled.div`
   display: flex;
   width: 100%;
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     display: block;
   }
 `;

@@ -7,7 +7,7 @@ export default styled(AboutSection)`
       ${p=>p.theme.isArabic?'right':'left'}: 83%;
     }
 
-    @media(max-width: 1170px) {
+    @media(max-width: 1320px) {
       &::after {
         ${p=>p.theme.isArabic?'right':'left'}: 50%;
       }
