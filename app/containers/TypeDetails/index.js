@@ -77,7 +77,7 @@ const Column = styled.div`
     });
   }
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     width: 100%;
     display: block;
     text-align: center;

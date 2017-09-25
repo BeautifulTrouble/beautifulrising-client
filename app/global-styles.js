@@ -139,7 +139,7 @@ injectGlobal`
       button { color: white; }
     }
 
-    @media(max-width: 1170px) {
+    @media(max-width: 1320px) {
       height: 100vh;
       overflow: hidden;
 
@@ -161,19 +161,19 @@ injectGlobal`
     }
   }
   [aria-label=MenuModal] {
-    @media(max-width: 1170px) {
+    @media(max-width: 1320px) {
       z-index: 1100 !important;
     }
   }
 
   [aria-label=Onboarding] {
-    @media(max-width: 1170px) {
+    @media(max-width: 1320px) {
       width: calc(100% - 75px) !important;
     }
   }
   [aria-label=ToolsModal] {
     display: none;
-    @media(max-width: 1170px) {
+    @media(max-width: 1320px) {
       display: block;
       width: 100% !important;
       height: calc(100% - 70px) !important;
@@ -184,7 +184,7 @@ injectGlobal`
 
   .MenuModalOverlay {
 
-    @media(max-width: 1170px) {
+    @media(max-width: 1320px) {
       z-index: 1100;
 
       & > div {
@@ -195,7 +195,7 @@ injectGlobal`
 
   .ToolModalOverlay {
     display: none;
-    @media(max-width: 1170px) {
+    @media(max-width: 1320px) {
       display: block;
     }
   }

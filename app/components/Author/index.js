@@ -28,7 +28,7 @@ export const AuthorContainer = styled.section`
   direction: ${p=>p.theme.isArabic?'rtl':'ltr'} !important;
   display: flex;
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     flex-wrap: wrap;
   }
 `;
@@ -64,7 +64,7 @@ export const AuthorLink = styled(Link)`
   height: 170px;
   min-width: 200px;
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     width: 100%;
     min-width: 100%;
   }
@@ -80,7 +80,7 @@ export const AuthorDesc = styled.div`
     margin: 0;
   }
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     width: 100%;
     padding: 10px;
     margin-top: 10px;

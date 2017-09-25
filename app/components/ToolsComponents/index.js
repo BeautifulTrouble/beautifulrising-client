@@ -146,7 +146,7 @@ export const ToolsMenu = styled.ul`
   padding: 20px 0;
   // border: solid black;
   // border-width: ${props=>props.theme.lang === 'ar' ? '0 0 0 2px' : '0 2px 0 0'};
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     display: flex;
     padding: 0;
     width: 100%;
@@ -167,7 +167,7 @@ export const ToolsMenuItem = styled.li`
     }
   }
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     flex-grow: 1;
   }
 `;
@@ -194,7 +194,7 @@ export const ToolsContainer = styled.div`
   overflow-y: hidden;
 
   //mobile
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     position: fixed;
     bottom: 0;
     top: auto;
@@ -224,7 +224,7 @@ export const ListContainer = styled(ToolContainer)`
   margin-${p=>p.lang==='ar'?'left':'right'}: ${p=>p.index%2==0?'0':'130px'};
   padding-bottom: 40px;
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     margin: 0;
     width: 100%;
     padding: 20px;

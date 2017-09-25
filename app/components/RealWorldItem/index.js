@@ -76,7 +76,7 @@ const Example = styled.div`
       return `
       margin-top: -22px;
       left: calc(100% - 322px);
-      @media(max-width: 1170px) {
+      @media(max-width: 1320px) {
         left: -22px;
         // left: auto;
       }

@@ -37,7 +37,7 @@ const MobileWhenWhereContainer = styled.div`
   top: -15px;
   display: none;
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     display: block;
   }
 `;

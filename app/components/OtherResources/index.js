@@ -27,7 +27,7 @@ const ResourceType = styled.li`
 
 const ResourceList = styled.ul`
   padding-left: 70px;
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     padding: 0;
   }
 `;
@@ -44,7 +44,7 @@ const Resource = styled.li`
     font-style: italic;
   }
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     width: 100%;
     padding: 0;
     margin-top :10px;

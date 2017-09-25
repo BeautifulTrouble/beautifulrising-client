@@ -21,7 +21,7 @@ const Viewport = styled.div`
   text-align: left;
   display: inline-block;
   // Mobile
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     max-width: 100%;
   }
 `;
@@ -36,7 +36,7 @@ const PageHeader = styled.header`
   z-index: 300;
   text-align: center;
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     padding: 0;
     // position: relative;
     z-index: 400;
@@ -58,7 +58,7 @@ const BellArea = styled.div`
   ${p=>p.theme.ar=='ar'?'left':'right'}: 0;
   top: 27px;
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     position: absolute;
     ${p=>p.theme.ar=='ar'?'left':'right'}: 15px;
     top: 25px;

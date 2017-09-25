@@ -11,7 +11,7 @@ export default styled(ToolContainer)`
   margin-bottom: 30px;
 
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     width: 350px;
     height: 350px;
     margin: 10px;

@@ -49,7 +49,7 @@ const Button = styled.button`
   top: 10px;
 
   //mobile
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     ${props=>props.lang==='ar'?'right':'left'}: 0px;
     top: 0px;
   }
@@ -72,7 +72,7 @@ const CloseBox = styled.div`
   position: relative;
 
   // Mobile
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     width: 100%;
     padding: 20px 0;
   }
@@ -107,7 +107,7 @@ const MenuSection = styled.section`
 `;
 const MenuHeaderSection = styled(MenuSection)``;
 const MenuBodySection = styled(MenuSection)`
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     overflow: auto;
     height: calc(100vh - 124px);
   }
@@ -118,7 +118,7 @@ const BellArea = styled.div`
   ${p=>p.theme.isArabic?'left':'right'}: -5px;
   top: 42px;
 
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     ${p=>p.theme.isArabic?'left':'right'}: 13px;
     top: 26px;
   }

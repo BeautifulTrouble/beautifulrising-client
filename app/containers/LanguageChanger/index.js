@@ -25,7 +25,7 @@ const Container = styled.div`
   transform: ${props=>props.lang==='ar'?'translate(-530px,0)':'translate(530px,0)'};
 
   // Mobile
-  @media(max-width: 1170px) {
+  @media(max-width: 1320px) {
     display: none;
   }
 `;
