@@ -32,6 +32,8 @@ const CallToAction = styled.span`
   font-size: ${p=>p.ar?'16px':'14px'};
   line-height: 22px;
   display: inline-block;
+  margin-left: 10px;
+  margin-top: 10px;
 `;
 
 const CallToRemoveAction = styled(CallToAction) `
@@ -43,8 +45,13 @@ const CallToRemoveAction = styled(CallToAction) `
   svg path {
     fill:  ${p=>p.type ? `${getToolTypeColor(p.type)}` : 'transparent'};
   }
-  margin-left: -10px;
+  margin-left: 0;
+  margin-top: 0;
+`
+
+const CallToActionButton = styled(ToolsButton)`
   margin-top: -10px;
+  margin-${p=>p.ar?'right':'left'}: -10px;
 `
 
 export class AdderRemover extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -98,9 +105,9 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
       } else {
 
         return (
-          <ToolsButton ar={locale==='ar'} color={this.props.color || "white"} onClick={this.onButtonClick.bind(this)}>
+          <CallToActionButton ar={locale==='ar'} color={this.props.color || "white"} onClick={this.onButtonClick.bind(this)}>
             {this.props.toolIsSelected && this.props.toolIsSelected !== undefined ? this.buildRemove() : this.buildAdd()}
-          </ToolsButton>
+          </CallToActionButton>
         );
       }
     }

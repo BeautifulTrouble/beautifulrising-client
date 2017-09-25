@@ -79,6 +79,8 @@ export const ToolsButton = styled.button`
     width: ${props=>props.width || 'auto'};
     transition:  fill 0.4s ease;
   }
+
+  overflow: visible;
 `;
 export const ToolsListMenu = styled.ul`
     padding: 0;
