@@ -134,18 +134,20 @@ const makeSelectSearchFieldValue = createSelector(
      if (tools) {
        switch (sortBy) {
          case SORT_NEWEST:
-          return tools.sort((a, b) => {
+          const copy = Object.assign([], tools);
+          return copy.sort((a, b) => {
             return new Date(b.timestamp) - new Date(a.timestamp);
             // if (a.timestamp > b.timestamp) return -1;
             // if (a.timestamp < b.timestamp) return 1;
             // return 0;
           })
          case SORT_ALPHABETICAL:
-          return tools.sort((a, b) => {
-              if(a.title < b.title) return -1;
-              if(a.title > b.title) return 1;
-              return 0;
-          })
+          return Object.assign([], tools); //Make a copy
+          // return tools.sort((a, b) => {
+          //     if(a.title < b.title) return -1;
+          //     if(a.title > b.title) return 1;
+          //     return 0;
+          // })
        }
      }
 

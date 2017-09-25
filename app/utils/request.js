@@ -36,7 +36,7 @@ function checkStatus(response) {
 }
 
 export function getEndpoint(lang = 'en') {
-    return `${PRODUCTION_ENDPOINT}?lang=${lang}`;
+    return `${PRODUCTION_ENDPOINT}?lang=${lang}&orderby=title`;
     // if (process.env.NODE_ENV === 'production') {
     //   return `${PRODUCTION_ENDPOINT}?lang=${lang}`;
     // } else {
