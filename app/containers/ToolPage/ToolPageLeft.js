@@ -53,7 +53,6 @@ export class ToolPageLeft extends React.PureComponent { // eslint-disable-line r
   render() {
     const lang = this.props.intl.locale;
 
-    console.log(this.props.authors);
     const contribText = this.props.authors && this.props.authors.length > 1 ?
                             staticText.contributedByHeaderPlural :
                             staticText.contributedByHeader;
