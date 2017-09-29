@@ -283,7 +283,7 @@ class MobileHeader extends React.PureComponent {
         {/* MODAL FOR TYPES */}
         <Modal
           isOpen={this.state.isTypeAreaShown}
-          style={{...customStyles, content: {...customStyles.content}}}
+          style={{...customStyles, content: {...customStyles.content}, overlay: {...customStyles.overlay, backgroundColor: 'rgba(0,0,0,0)'}}}
           contentLabel="TypeFilterModal"
           overlayClassName="TypeFilterOverlay"
         >

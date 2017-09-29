@@ -22,6 +22,16 @@ import TheoryIcon from 'assets/images/type/theories-option.svg';
 
 const Container = styled.section`
   display: ${props=>props.show ? 'block' : 'none'};
+
+  @media(max-width: 1320px) {
+    height: calc(100% - 137px);
+    border-bottom: 0;
+    z-index: 700px;
+    padding: 0px 40px 0;
+    overflow: auto;
+    display: inline-block;
+    width: 100%;
+  }
 `;
 const Viewport = styled.div``;
 const Row = styled.div`
@@ -92,8 +102,8 @@ function ToolTypeAll(props) {
   const isSelected = (type)=> label === type && filter === 'type';
 
   return (
-    <LanguageThemeProvider>
-      <Container {...props}>
+    <Container {...props}>
+      <LanguageThemeProvider>
         <Viewport>
           <Row>
             <ToolType to={'/'} selected={label === undefined}>
@@ -139,8 +149,8 @@ function ToolTypeAll(props) {
             </ToolType>
           </Row>
         </Viewport>
-      </Container>
-    </LanguageThemeProvider>
+      </LanguageThemeProvider>
+    </Container>
   );
 }
 
