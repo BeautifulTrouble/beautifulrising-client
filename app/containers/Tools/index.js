@@ -10,6 +10,7 @@ import { injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import Modal from 'react-modal';
+import CloseIcon from 'assets/images/icons/clear.svg';
 
 import styled from 'styled-components';
 import Isvg from 'react-inlinesvg';
@@ -42,6 +43,17 @@ const ToolsOpenerCloser = styled.div``;
 
 const ToolsMenuContainer = styled.div`
   height: 100%;
+`;
+
+const CloseButton = styled.button`
+border: solid 2px black;
+position: absolute;
+top: 10px;
+left: 10px;
+display: inline-block;
+padding: 0;
+line-height: 0;
+
 `;
 
 const ToolsViewType = styled(ToolsButton)`
@@ -230,6 +242,9 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
           overlayClassName="ToolModalOverlay"
         >
           <ToolsArea lang={this.props.language} show={this.props.Tools.mobileShow || this.props.Tools.onboardShow}/>
+          <CloseButton onClick={this.closeModal.bind(this)}>
+            <Isvg src={CloseIcon} />
+          </CloseButton>
         </Modal>
       </LanguageThemeProvider>
     )
