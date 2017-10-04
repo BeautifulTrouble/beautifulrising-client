@@ -38,7 +38,11 @@ export class SnapshotContent extends React.PureComponent {
   render() {
 
     const { buildMessage } = this.props.translatable;
-    const callToAction = buildMessage(staticText.expandingToolbox, { link: this.props['bt-link'] });
+    const formLink = buildMessage(staticText.expandForm);
+    const callToAction = buildMessage((this.props['bt-link'] ? staticText.snapshotBt : staticText.snapshotContribute), {
+        'bt-link': this.props['bt-link'],
+        'form': formLink
+    });
 
     return (
       <Container backgroundImage={BR_IMAGE_PREFIX+this.props.image}>

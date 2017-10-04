@@ -135,9 +135,17 @@ export default {
     id: 'module.why-it-worked',
     defaultMessage: 'Why it Worked',
   },
-  expandingToolbox: {
-    id: 'module.expanding-toolbox',
-    defaultMessage: 'This is an ever-expanding toolbox. You’re welcome to [read more]({{link}}) this tool. '
+  snapshotContribute: {
+    id: 'module.should-be-snapshot-contribute',
+    defaultMessage: 'Beautiful Rising is an ever-expanding toolbox. Some concepts (this one, for instance!) are only summarized. Would you like to [expand]({{form}}) this tool?'
+  },
+  snapshotBt: {
+    id: 'module.should-be-snapshot-bt',
+    defaultMessage: 'Beautiful Rising is an ever-expanding toolbox. Some concepts (this one, for instance!) are only summarized. [Read more]({{bt-link}}) about this tool, or [expand]({{form}}) on it.'
+  },
+  expandForm: {
+    id: 'module.expand-form',
+    defaultMessage: 'https://docs.google.com/forms/d/e/1FAIpQLSeC_EdxoO7owVnL8fjSERZlychwMhDOR-7rI1SDtpL4ijZgkg/viewform'
   },
 
   origins:  {
