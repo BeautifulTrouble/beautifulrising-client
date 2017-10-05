@@ -23,7 +23,7 @@ export function* sendModulesToEmail() {
   const requestURL = `https://api.beautifulrising.org/pdf/email?tools=${encodeURIComponent(toolsValue)}&lang=${encodeURIComponent(locale)}&address=${encodeURIComponent(userEmail)}`;
 
   try {
-    const data = yield call(request, requestURL);
+    const data = yield call(request, requestURL, { mode: 'no-cors'});
     yield put(emailModulesComplete());
 
     yield delay(3000);
