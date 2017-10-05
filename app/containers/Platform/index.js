@@ -13,7 +13,9 @@ import VisibilitySensor from 'react-visibility-sensor';
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import messages from './messages';
-import Markdown from 'react-remarkable';
+import Markdown from 'react-markdown';
+import { RouterLink } from 'utils/markdown';
+
 import Isvg from 'react-inlinesvg';
 
 import Container from 'components/PlatformsPage/Container';
@@ -48,7 +50,10 @@ class Platform extends React.Component {
         }
       >
         <CollapsingSectionContent>
-          <Markdown source={item.text} />
+          <Markdown
+              source={item.text}
+              renderers={{Link: RouterLink}}
+          />
         </CollapsingSectionContent>
       </CollapsingSection>
     ));
@@ -76,7 +81,10 @@ class Platform extends React.Component {
 
                 {this.renderQuestions()}
                 <CTA>
-                  <Markdown source={this.props.content.get} />
+                  <Markdown
+                      source={this.props.content.get}
+                      renderers={{Link: RouterLink}}
+                  />
                 </CTA>
               </Content>
             </TextContent>
