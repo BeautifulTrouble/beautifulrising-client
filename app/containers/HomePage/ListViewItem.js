@@ -6,6 +6,7 @@
 
 import React, {PropTypes} from 'react';
 import styled from 'styled-components';
+import Markdown from 'react-remarkable';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import { injectIntl } from 'react-intl';
 import Link from 'components/Link';
@@ -33,7 +34,7 @@ class ListViewItem extends React.Component {
               </ToolType>
             </ToolType>
             <ToolTitle><Link to={`/tool/${this.props.slug}`}>{this.props.title}</Link></ToolTitle>
-            <ListSpiel type={this.props.type}>{this.props.snapshot}</ListSpiel>
+            <ListSpiel type={this.props.type}><Markdown source={this.props.snapshot} /></ListSpiel>
           </LanguageThemeProvider>
         </ListViewport>
       </ListContainer>
