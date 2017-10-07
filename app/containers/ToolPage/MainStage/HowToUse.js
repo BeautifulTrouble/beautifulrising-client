@@ -28,6 +28,12 @@ import makeSelectToolPage from '../selectors';
 import { setChosenSection } from '../actions';
 import { HOW_TO_USE, PROP_HOW_TO_USE } from '../constants';
 
+const HowToUseContent = styled(ContentBlock)`
+  img {
+    width: 100%;
+  }
+`;
+
 class HowToUse extends React.PureComponent {
 
   constructor() {
@@ -63,9 +69,9 @@ class HowToUse extends React.PureComponent {
         >
           <CollapsingContent>
             <LanguageThemeProvider>
-              <ContentBlock>
+              <HowToUseContent>
                 <Markdown source={imageReplaced} renderers={{Link: RouterLink}} />
-              </ContentBlock>
+              </HowToUseContent>
             </LanguageThemeProvider>
           </CollapsingContent>
         </CollapsingSection>
