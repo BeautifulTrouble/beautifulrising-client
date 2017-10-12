@@ -136,11 +136,11 @@ export default {
     defaultMessage: 'Why it Worked',
   },
   snapshotContribute: {
-    id: 'module.should-be-snapshot-contribute',
+    id: 'module.snapshot-contribute',
     defaultMessage: 'Beautiful Rising is an ever-expanding toolbox. Some concepts (this one, for instance!) are only summarized. Would you like to [expand]({{form}}) this tool?'
   },
   snapshotBt: {
-    id: 'module.should-be-snapshot-bt',
+    id: 'module.snapshot-bt',
     defaultMessage: 'Beautiful Rising is an ever-expanding toolbox. Some concepts (this one, for instance!) are only summarized. [Read more]({{bt-link}}) about this tool, or [expand]({{form}}) on it.'
   },
   expandForm: {
