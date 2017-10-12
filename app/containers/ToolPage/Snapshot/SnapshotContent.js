@@ -59,7 +59,7 @@ export class SnapshotContent extends React.PureComponent {
                   {this.props.title}
                 </Title>
                 <SnapshotText>
-                  {this.props.snapshot}
+                  <Markdown source={this.props.snapshot} renderers={{Link: RouterLink}} />
                 </SnapshotText>
               </ContentViewport>
             </Content>
