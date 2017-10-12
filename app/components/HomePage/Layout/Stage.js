@@ -14,6 +14,7 @@ export default styled.section`
   &:after {
     clear: both;
   }
+  width: ${document.documentMode ? '0' : 'auto'}; /* Fix for IE */
 
   @media(max-width:600px) {
     width: 100%;
