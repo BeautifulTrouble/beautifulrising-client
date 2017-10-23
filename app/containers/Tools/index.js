@@ -173,6 +173,11 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
     }
   }
 
+  onMobileClose() {
+
+    this.props.handleSetMobileShowTools(false);
+  }
+
   onMobileToggleClick(chosen = null) {
     if (chosen !== null) {
       this.props.handleSetMobileShowTools(true);
@@ -249,7 +254,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
           overlayClassName="ToolModalOverlay"
         >
           <ToolsArea lang={this.props.language} show={this.props.Tools.mobileShow || this.props.Tools.onboardShow}/>
-          <CloseButton onClick={this.closeModal.bind(this)}>
+          <CloseButton onClick={this.onMobileClose.bind(this)}>
             <CloseSvg src={CloseIcon} />
           </CloseButton>
         </Modal>
@@ -259,6 +264,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
 
   renderDesktopContent() {
     const {locale} = this.props.intl;
+
 
     return (
       <ToolsViewport>
@@ -338,6 +344,7 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     setShowTools: (toShow) => {
+
       dispatch(setShowTools(toShow));
     },
     setViewType: (viewType) => {
