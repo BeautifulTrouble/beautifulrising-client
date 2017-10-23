@@ -102,6 +102,12 @@ const ToolTitle = styled.span`
   color: black;
 `;
 
+const CloseSvg = styled(Isvg)`
+  svg {
+    width: 25px;
+    height: 25px;
+  }
+`;
 //For modalIsOpen
 const customStyles = {
   overlay: {
@@ -125,6 +131,7 @@ const customStyles = {
     zIndex: '1000'
   }
 };
+
 export class Tools extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
@@ -243,7 +250,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
         >
           <ToolsArea lang={this.props.language} show={this.props.Tools.mobileShow || this.props.Tools.onboardShow}/>
           <CloseButton onClick={this.closeModal.bind(this)}>
-            <Isvg src={CloseIcon} />
+            <CloseSvg src={CloseIcon} />
           </CloseButton>
         </Modal>
       </LanguageThemeProvider>
