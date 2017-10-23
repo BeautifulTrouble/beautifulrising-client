@@ -40,7 +40,7 @@ function submitRealWorldExampleReducer(state = initialState, action) {
             .set('error', false)
             .set('complete', false);
     case SUBMISSION_COMPLETE:
-      return initialState;
+      return initialState.set('complete', true);
     case SUBMISSION_ERROR:
       return state
         .set('complete', true)
