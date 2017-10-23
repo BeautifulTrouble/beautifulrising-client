@@ -60,7 +60,7 @@ const BellArea = styled.div`
 
   @media(max-width: 1320px) {
     position: absolute;
-    ${p=>p.theme.ar=='ar'?'left':'right'}: 15px;
+    ${p=>p.theme.ar=='ar'?'left':'right'}: 30px;
     top: 25px;
   }
 `;
