@@ -25,6 +25,7 @@ export function submitExample({url, title, description, captcha, documentLink, d
 }
 
 export function successfulSubmission() {
+
   return {
     type: SUBMISSION_COMPLETE
   }

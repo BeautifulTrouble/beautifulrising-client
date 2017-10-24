@@ -107,6 +107,7 @@ export class SubmitRealWorldExample extends React.PureComponent { // eslint-disa
   }
 
   render() {
+    
     return (
 
         <SubmitExampleContainer>
@@ -136,7 +137,7 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     onFormSubmit: (captchaResponse, values) => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+
       dispatch(submitExample({...values, captcha: captchaResponse}));
     }
   };

@@ -16,26 +16,30 @@ export function* submitExample() {
   const captcha = submitExample.get('captcha');
   const documentLink = submitExample.get('documentLink');
   const documentTitle = submitExample.get('documentTitle');
+  const options = {
+    method: "POST",
+    mode: 'no-cors',
+    header: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      'g-recaptcha-response': captcha,
+      'document_title': documentTitle,
+      'document_link': documentLink,
+      'title': title,
+      'link': url,
+      'description': description
+    })
+  };
+
 
   try {
     const requestUrl = `https://api.beautifulrising.org/intake/real-world-example`;
-    yield put(request(requrestUrl, {
-      method: "POST",
-      header: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        'g-recaptcha-response': captcha,
-        'document_title': documentTitle,
-        'document_link': document_link,
-        'title': title,
-        'link': url,
-        'description': description
-      })
-    }));
-
+    yield put(request(requestUrl, options));
     yield put(successfulSubmission());
+
   } catch(e) {
+
     yield call(put, submissionError(e))
   }
 }
