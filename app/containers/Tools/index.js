@@ -102,6 +102,12 @@ const ToolTitle = styled.span`
   color: black;
 `;
 
+const CloseSvg = styled(Isvg)`
+  svg {
+    width: 25px;
+    height: 25px;
+  }
+`;
 //For modalIsOpen
 const customStyles = {
   overlay: {
@@ -125,6 +131,7 @@ const customStyles = {
     zIndex: '1000'
   }
 };
+
 export class Tools extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
@@ -164,6 +171,11 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
     if ( chosen !== null) {
       this.props.setViewType(chosen);
     }
+  }
+
+  onMobileClose() {
+
+    this.props.handleSetMobileShowTools(false);
   }
 
   onMobileToggleClick(chosen = null) {
@@ -242,8 +254,8 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
           overlayClassName="ToolModalOverlay"
         >
           <ToolsArea lang={this.props.language} show={this.props.Tools.mobileShow || this.props.Tools.onboardShow}/>
-          <CloseButton onClick={this.closeModal.bind(this)}>
-            <Isvg src={CloseIcon} />
+          <CloseButton onClick={this.onMobileClose.bind(this)}>
+            <CloseSvg src={CloseIcon} />
           </CloseButton>
         </Modal>
       </LanguageThemeProvider>
@@ -252,6 +264,7 @@ export class Tools extends React.PureComponent { // eslint-disable-line react/pr
 
   renderDesktopContent() {
     const {locale} = this.props.intl;
+
 
     return (
       <ToolsViewport>
@@ -331,6 +344,7 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     setShowTools: (toShow) => {
+
       dispatch(setShowTools(toShow));
     },
     setViewType: (viewType) => {
