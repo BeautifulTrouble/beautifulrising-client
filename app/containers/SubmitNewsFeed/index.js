@@ -27,6 +27,9 @@ const Form = styled.form`
 const FormItem = styled.span`
   flex-grow: ${p=>p.grow || 0};
 `;
+const HashtagInput = styled.input`
+  width: 100%;
+`;
 
 export class SubmitNewsFeed extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -55,7 +58,7 @@ export class SubmitNewsFeed extends React.PureComponent { // eslint-disable-line
       <FormContainer>
         <Form onSubmit={this.handleSubmit.bind(this)}>
           <FormItem grow={1}>
-            <input type='hashtag' name='hashtag' onChange={this.handleChange.bind(this)} placeholder='#'/>
+            <HashtagInput type='hashtag' name='hashtag' onChange={this.handleChange.bind(this)} placeholder='#'/>
           </FormItem>
           <FormItem>
             <button>
