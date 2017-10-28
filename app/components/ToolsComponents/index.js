@@ -70,14 +70,14 @@ export const ToolsButton = styled.button`
     }
   }
 
-  transition:  transform 0.4s ease;
+  transition:  transform 0.1s ease;
 
   text-transform: uppercase;
 
   svg, svg * {
     fill: ${props=>props.color ? props.color : (props.toShow ? 'black' : '#828486')};
     width: ${props=>props.width || 'auto'};
-    transition:  fill 0.4s ease;
+    transition:  fill 0.1s ease;
   }
 
   overflow: visible;
@@ -174,22 +174,18 @@ export const ToolsMenuItem = styled.li`
 
 export const ToolsListContainer = styled.div``;
 export const ToolsViewport = styled.div`
-    ${(props) => props.showTools ? '350px' : '75px' };
-height: 100%;`;
+    height: 100%;`;
 
 export const ToolsContainer = styled.div`
-  position: fixed;
+  position: absolute;
 
   width: ${(props) => props.showTools ? '350px' : '75px' };
-  height: calc(100vh - 220px)
+  height: calc(100% - 220px)
   border: 2px solid black;
-  // top: 217px;
+  border-bottom: none;
 
-  bottom: 0;
-  border-width: ${props=>props.lang == 'ar' ? '2px 2px 0 0' : '2px 0 0 2px'};
-
-  ${props=>props.lang == 'ar' ? 'left: 0;' : 'right: 0;'}
-  transition: transform 0.3s ease, width 0.3s ease;
+  ${(props) => props.lang == 'ar' ? 'right: 1195px;' : 'left: 1195px;'}
+  transition: transform 0.1s ease, width 0.1s ease;
   overflow-x: hidden;
   overflow-y: hidden;
 
