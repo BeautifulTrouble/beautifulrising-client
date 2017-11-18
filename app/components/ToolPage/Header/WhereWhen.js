@@ -3,34 +3,30 @@ import React from 'react';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
 
-const WhereWhenContainer = styled.div`
+const WhereWhenContainer = styled(ContentBlock)`
   font-weight: 800;
   color: white;
-  text-transform: uppercase;
-`;
-
-const WhereWhenContent = styled(ContentBlock)`
-
   @media(max-width: 1320px) {
     font-size: 8px;
     line-height: 8px;
   }
 `;
 
-function WhereWhen(props) {
+const WhereContent = styled.span`
+  text-transform: uppercase;
+`;
 
+function WhereWhen(props) {
   const where = props.where !== undefined ? props.where : '';
   const when = props.when !== undefined ? props.when : '';
 
   return (
-    <WhereWhenContainer>
-      <LanguageThemeProvider>
-        <WhereWhenContent>
-          {`${where} ${when}`}
-        </WhereWhenContent>
-      </LanguageThemeProvider>
-    </WhereWhenContainer>
-  )
+    <LanguageThemeProvider>
+      <WhereWhenContainer>
+        <WhereContent>{where}</WhereContent> {when}
+      </WhereWhenContainer>
+    </LanguageThemeProvider>
+  );
 }
 
 
