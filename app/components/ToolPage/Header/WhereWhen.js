@@ -3,30 +3,36 @@ import React from 'react';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import ContentBlock from 'components/ContentBlock';
 
-const WhereWhenContainer = styled(ContentBlock)`
+const WhereWhenContainer = styled.div`
   font-weight: 800;
   color: white;
+  // It's complicated to get all the capitalization right for every date format
+  // in every language, so let's not do this. Example dates: 1980s, 1995-present
+  //text-transform: uppercase;
+`;
+
+const WhereWhenContent = styled(ContentBlock)`
+
   @media(max-width: 1320px) {
     font-size: 8px;
     line-height: 8px;
   }
 `;
 
-const WhereContent = styled.span`
-  text-transform: uppercase;
-`;
-
 function WhereWhen(props) {
+
   const where = props.where !== undefined ? props.where : '';
   const when = props.when !== undefined ? props.when : '';
 
   return (
-    <LanguageThemeProvider>
-      <WhereWhenContainer>
-        <WhereContent>{where}</WhereContent> {when}
-      </WhereWhenContainer>
-    </LanguageThemeProvider>
-  );
+    <WhereWhenContainer>
+      <LanguageThemeProvider>
+        <WhereWhenContent>
+          {`${where} ${when}`}
+        </WhereWhenContent>
+      </LanguageThemeProvider>
+    </WhereWhenContainer>
+  )
 }
 
 
