@@ -9,6 +9,7 @@ import styled, { ThemeProvider } from 'styled-components';
 
 import { injectIntl } from 'react-intl';
 import { RouterLink } from 'utils/markdown';
+import { Link } from 'react-router';
 import Markdown from 'react-markdown';
 
 import TranslatableStaticText from 'containers/TranslatableStaticText';
@@ -23,6 +24,11 @@ import TypeSubheader from 'components/ToolKeyItems/TypeSubheader';
 
 import staticText from './staticText';
 
+const ToolLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
+
 
 class ToolKeyItems extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -36,12 +42,14 @@ class ToolKeyItems extends React.PureComponent { // eslint-disable-line react/pr
       <KeyItemList>
         { list.map((item,ind)=> {
             try {
-              const [header, content] = item;
+              const [header, content, slug] = item;
               return (<KeyItemListItem key={ind} >
                         {ind>0?null:<TypeSubheader type={type}>
                           <TranslatableStaticText {...staticText[type]} />
                         </TypeSubheader>}
-                        <Header>{header}</Header>
+                        <Header>
+                          <ToolLink to={`/tool/${slug}`}>{header}</ToolLink>
+                        </Header>
                         <ContentBlock>
                           <Markdown
                               source={content}
