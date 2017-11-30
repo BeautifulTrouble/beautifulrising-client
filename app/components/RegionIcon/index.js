@@ -26,6 +26,7 @@ const getIcon = (region) => {
     case 'middle-east': return MiddleEast;
     case 'north-america': return NorthAmerica;
   }
+  return null;
 }
 
 const Container = styled.div`
@@ -36,7 +37,7 @@ const Container = styled.div`
   }
 `;
 function RegionIcon(props) {
-  const RegionIcon = getIcon(props.region);
+    const RegionIcon = getIcon(props.region);
   return (
     <Container type={props.type} color={props.color}>
       <Isvg src={RegionIcon} />

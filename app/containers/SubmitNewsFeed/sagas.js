@@ -32,7 +32,7 @@ export function* submitHashtag() {
 
 
     //TODO Insert request call here
-    const data = yield put( request( requestUrl, options ) )
+    const data = yield call(request, requestUrl, options)
 
     yield put(hashtagSubmissionSuccess());
 
