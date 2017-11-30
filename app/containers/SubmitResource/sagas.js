@@ -9,34 +9,37 @@ import request from 'utils/request';
 export const getSubmitResource = (state) => state.get('submitResource');
 
 export function* submitResource() {
+
+
+
   const submitResource = yield select(getSubmitResource);
   const url = submitResource.get('url');
   const title = submitResource.get('title');
   const description = submitResource.get('description');
   const captcha = submitResource.get('captcha');
-  const documentLink = submitResource.get('documentLink');
-  const documentTitle = submitResource.get('documentTitle');
+
 
   try {
     const requestUrl = `https://api.beautifulrising.org/intake/resource`;
-    yield put(request(requrestUrl, {
+    yield call(request, requestUrl, {
       method: "POST",
+      mode: 'no-cors',
       header: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         'g-recaptcha-response': captcha,
-        'document_title': documentTitle,
-        'document_link': document_link,
         'title': title,
         'link': url,
         'description': description
       })
-    }));
+    });
+
 
     yield put(successfulSubmission());
   } catch(e) {
-    yield call(put, submissionError(e))
+
+    yield call(put, submissionError())
   }
 }
 export function* listenForSubmissions() {
