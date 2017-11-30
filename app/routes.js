@@ -11,6 +11,7 @@ import TranslatableStaticText from 'containers/TranslatableStaticText/sagas';
 import SubmitNewsFeed from 'containers/SubmitNewsFeed/sagas';
 import HomePage from 'containers/HomePage/sagas';
 import WhatsHappening from 'containers/WhatsHappening/sagas';
+import SubmitResource from 'containers/SubmitResource/sagas';
 import {changeLocale} from 'containers/LanguageProvider/actions';
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -100,7 +101,7 @@ export default function createRoutes(store) {
     {
       path: '/tool(/:label)*',
       name: 'tool',
-      scrollToTop: true, 
+      scrollToTop: true,
       getComponent(nextState, cb) {
 
           const importModules = Promise.all([
@@ -173,10 +174,12 @@ export default function createRoutes(store) {
 
           const importModules = Promise.all([
             import('containers/TrainingPage'),
+            import('containers/SubmitResource/sagas'),
           ]);
 
           const renderRoute = loadModule(cb);
-          importModules.then(([component]) => {
+          importModules.then(([component, submitResourceSagas]) => {
+            injectSagas(submitResourceSagas.default);
             renderRoute(component);
           });
           importModules.catch(errorLoading);

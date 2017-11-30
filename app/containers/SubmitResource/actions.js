@@ -17,10 +17,11 @@ export function defaultAction() {
   };
 }
 
-export function submitResource({url, title, description, captcha, documentLink, documentTitle }) {
+export function submitResource({url, title, description, captcha }) {
+
   return {
     type: SUBMIT_RESOURCE,
-    data: { url, title, description, captcha, documentLink, documentTitle  }
+    data: { url, title, description, captcha }
   }
 }
 

@@ -34,8 +34,6 @@ function submitResourceReducer(state = initialState, action) {
             .set('title', action.data.title)
             .set('description', action.data.description)
             .set('captcha', action.data.captcha)
-            .set('documentTitle', action.data.documentTitle)
-            .set('documentLink', action.data.documentLink)
             .set('submitting', true)
             .set('error', false)
             .set('complete', false);

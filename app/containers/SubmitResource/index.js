@@ -51,6 +51,8 @@ export class SubmitResource extends React.PureComponent { // eslint-disable-line
   }
 
   handleSubmit(evt) {
+
+
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
     // this.props.onFormSubmit(evt, { ...this.state });
 
@@ -134,7 +136,8 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     onFormSubmit: (captchaResponse, values) => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+      //
+      // if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(submitResource({...values, captcha: captchaResponse}));
     }
   };
