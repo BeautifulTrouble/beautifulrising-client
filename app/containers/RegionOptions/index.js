@@ -62,9 +62,9 @@ function RegionOptions(props) {
             </RegionLink>
           </Region>
           <Region>
-            <Disabled>
+            <RegionLink to={'/type/story/north-america'} selected={props.region === 'north-america'}>
               <Isvg src={NorthAmerica} />
-            </Disabled>
+            </RegionLink>
           </Region>
           <Region>
             <RegionLink to={'/type/story/asia'} selected={props.region === 'asia'}>
@@ -72,9 +72,9 @@ function RegionOptions(props) {
             </RegionLink>
           </Region>
           <Region>
-            <Disabled>
+            <RegionLink to={'/type/story/europe'} selected={props.region === 'europe'}>
               <Isvg src={Europe} />
-            </Disabled>
+            </RegionLink>
           </Region>
           <Region>
             <RegionLink to={'/type/story/middle-east'} selected={props.region === 'middle-east'}>

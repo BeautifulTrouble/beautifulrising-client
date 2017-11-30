@@ -78,7 +78,7 @@ const makeSelectSearchFieldValue = createSelector(
           const result = data.filter(item => isFullTool(item, lang) && item.type === label);
 
           if (region !== undefined && region) {
-            return result.filter(item => slugify(item.region) === region);
+            return result.filter(item => item.regions && item.regions.map(slugify).includes(region));
           }
           return result;
           break;
