@@ -27,12 +27,13 @@ export function* submitQuestion() {
         {
           'g-recaptcha-response': captcha,
           'contributors': authors,
-          'question': `${question} - ${email}`
+          'question': `${question} - ${email}`,
+          'g-recaptcha-version': 'v2'
         }
       )
     };
     //TODO Insert request call here
-    const data = yield put( request( requestUrl, options ) )
+    const data = yield call(request, requestUrl, options )
 
     yield put(contributorQuestionSent());
   } catch(e) {

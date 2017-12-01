@@ -31,7 +31,8 @@ export function* submitResource() {
         'g-recaptcha-response': captcha,
         'title': title,
         'link': url,
-        'description': description
+        'description': description,
+        'g-recaptcha-version': 'v2'
       })
     });
 
