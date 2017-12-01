@@ -25,6 +25,7 @@ const getIcon = (region) => {
     case 'latin-america-and-the-caribbean': return LatinAmericaCaribbean;
     case 'middle-east': return MiddleEast;
     case 'north-america': return NorthAmerica;
+    case 'europe': return Europe
   }
   return null;
 }

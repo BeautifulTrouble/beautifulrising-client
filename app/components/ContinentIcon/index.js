@@ -13,6 +13,7 @@ import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 
 import { WhereWhen } from 'components/ToolPage/Header';
+import { slugify } from 'utils/tags';
 
 import messages from './messages';
 import Africa from 'assets/images/regions/africa.svg';
@@ -58,13 +59,16 @@ class ContinentIcon extends React.PureComponent {
   }
 
   getRegionIcon(region) {
-    switch(region) {
-      case "North America": return NorthAmerica;
-      case "Middle East": return MiddleEast;
-      case "Asia": return Asia;
-      case "Africa": return Africa;
-      case "Latin America and the Caribbean": return LatinAmericaCarribean;
+    switch (region) {
+      case 'africa': return Africa;
+      case 'oceania': return Oceania;
+      case 'asia': return Asia;
+      case 'latin-america-and-the-caribbean': return LatinAmericaCaribbean;
+      case 'middle-east': return MiddleEast;
+      case 'north-america': return NorthAmerica;
+      case 'europe': return Europe
     }
+    return null;
   }
 
   render() {
@@ -77,7 +81,7 @@ class ContinentIcon extends React.PureComponent {
             <WhereWhen {...this.props}/>
           </DesktopContent>
           <Continent lang={lang}>
-            <Isvg src={this.getRegionIcon(this.props.region)} />
+            <Isvg src={this.getRegionIcon(this.props.regions && this.props.regions.length ? slugify(this.props.regions[0]) : '')} />
           </Continent>
         </Content>
     );

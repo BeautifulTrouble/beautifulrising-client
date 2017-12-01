@@ -90,7 +90,7 @@ class BlockViewItem extends React.Component {
 
                 { this.props.type === 'story' ?
                     <RegionContainer lang={locale} show={!this.state.mouseOver}>
-                      <RegionIcon type={this.props.type} region={this.props.region && this.props.region!==undefined ? slugify(this.props.region) : ''} />
+                      <RegionIcon type={this.props.type} region={this.props.regions && this.props.regions.length ? slugify(this.props.regions[0]) : ''} />
                     </RegionContainer>
                   : null }
               </Link>
