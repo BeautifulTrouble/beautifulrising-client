@@ -27,8 +27,7 @@ export function* submitQuestion() {
         {
           'g-recaptcha-response': captcha,
           'contributors': authors,
-          'question': `${question} - ${email}`,
-          'g-recaptcha-version': 'v2'
+          'question': `${question} - ${email}`
         }
       )
     };

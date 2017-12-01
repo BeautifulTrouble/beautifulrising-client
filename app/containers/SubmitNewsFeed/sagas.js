@@ -25,8 +25,7 @@ export function* submitHashtag() {
       body: JSON.stringify(
         {
           'g-recaptcha-response': captcha,
-          'suggestion': hashtag,
-          'g-recaptcha-version': 'v2'
+          'suggestion': hashtag
         }
       )
     };

@@ -28,8 +28,7 @@ export function* submitExample() {
       'document_link': documentLink,
       'title': title,
       'link': url,
-      'description': description,
-      'g-recaptcha-version': 'v2'
+      'description': description
     })
   };
 
