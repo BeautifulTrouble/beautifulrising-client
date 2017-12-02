@@ -75,7 +75,7 @@ class ToolTypeArea extends React.Component { // eslint-disable-line react/prefer
 
     return (
       <AllContainer lang={this.props.lang}>
-        <ToolTypeAll lang={this.props.lang} show={true} {...this.props} />
+        <ToolTypeAll lang={this.props.lang} show={true} {...this.props} params={this.props.params || {}} />
       </AllContainer>
     );
 
