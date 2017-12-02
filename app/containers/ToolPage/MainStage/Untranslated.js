@@ -21,7 +21,7 @@ import staticText from '../staticText';
 function Untranslated(props) { // eslint-disable-line react/prefer-stateless-function
 
   const { buildMessage } = props.translatable;
-  const origLink = `/${props.lang}/tool/${props.slug}`;
+  const origLink = `/en/tool/${props.slug}`;
   const message = buildMessage(staticText.translationNeeded, {
     link: origLink,
     form: buildMessage(staticText.needsTranslationForm)
