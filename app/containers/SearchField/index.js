@@ -65,6 +65,22 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
 
   handleSubmit(evt) {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+    return false;
+  }
+  checkEnter(evt) {
+    if (evt.which === 13 ) {
+      evt.preventDefault();
+      return false;
+    }
+  }
+
+  handleKeyUp(evt) {
+
+    if (evt.key === 'Enter') {
+      evt.preventDefault()
+      return false;
+    }
+
     this.props.searchItems(ReactDOM.findDOMNode(this.refs['SearchBox']).value);
   }
 
@@ -90,9 +106,10 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
     const {buildMessage} = this.props.translatable;
     return (
       <SearchContainer>
-        <SearchForm onSubmit={this.handleSubmit.bind(this)}>
+        <SearchForm onKeyPress={this.checkEnter.bind(this)} onKeyUp={this.handleKeyUp.bind(this)} >
           { this.renderControlButton() }
-          <SearchBox ref={'SearchBox'} ar={locale==='ar'} type='text' onChange={this.props.onChange} placeholder={buildMessage(staticText.placeholder)} />
+          <SearchBox ref={'SearchBox'} ar={locale==='ar'} type='text'
+               placeholder={buildMessage(staticText.placeholder)} />
         </SearchForm>
       </SearchContainer>
     );
@@ -122,7 +139,12 @@ function mapDispatchToProps(dispatch) {
     },
     searchItems: (text) => {
       clearTimeout(timeoutHandler);
-      browserHistory.push(`/search/${text}`);
+      timeoutHandler = setTimeout(() => {
+
+        // dispatch(searchFieldChanged(text));
+        browserHistory.push(`/search/${text}`);
+      }, 500);
+      // browserHistory.push(`/search/${text}`);
     }
   };
 }
