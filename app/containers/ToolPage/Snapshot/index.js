@@ -4,7 +4,6 @@ import { injectIntl } from 'react-intl';
 import Isvg from 'react-inlinesvg';
 import { browserHistory } from 'react-router'
 import CloseIcon from 'assets/images/icons/close.svg';
-import TranslatableStaticText from 'containers/TranslatableStaticText';
 import { Container as SnapshotContainer, Button } from 'components/ToolPage/Snapshot';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import SnapshotContent from './SnapshotContent';
@@ -86,7 +85,7 @@ export class Snapshot extends React.Component {
 
     return (
       <div>
-        <Button lang={lang} isArabic={lang==='ar'} onClick={this.openModal}>
+        <Button lang={lang} isArabic={lang==='ar'} noUnderline={this.props.noUnderline} onClick={this.openModal}>
           {React.Children.toArray(this.props.children)}
         </Button>
         <Modal
