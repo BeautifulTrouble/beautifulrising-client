@@ -34,7 +34,7 @@ import Sidebar from './Sidebar';
 import HomePage from 'containers/HomePage';
 
 import {BR_IMAGE_PREFIX} from 'containers/Tools/constants';
-import { MODULE_TYPE_UNTRANSLATED } from 'components/CommonComponents/constants';
+import { MODULE_TYPE_UNTRANSLATED, MODULE_TYPE_GALLERY } from 'components/CommonComponents/constants';
 
 
 
@@ -59,8 +59,12 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
   showIfUntranslated(attr) {
     const tool = this.props.toolData.getIn(['tool']);
 
-    if ( tool['module-type-effective'] !== MODULE_TYPE_UNTRANSLATED ) {
-       return true
+    if ( tool['module-type-effective'] === MODULE_TYPE_GALLERY
+          && tool['lang-missing'].includes(attr)) {
+      return this.state.showUntranslated;
+
+    } else if ( tool['module-type-effective'] !== MODULE_TYPE_UNTRANSLATED ) {
+       return true;
     }
 
     return this.state.showUntranslated && tool['lang-missing'].includes(attr);
@@ -70,8 +74,6 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
     const tool = this.props.toolData.getIn(['tool']);
     const lang = this.props.intl.locale;
     if (!tool.document_id) return null;
-
-    console.log(tool['module-type-effective']);
 
     if (tool['module-type-effective'] === 'snapshot') {
       return (<HomePage popup={tool} />)
