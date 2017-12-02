@@ -137,7 +137,7 @@ class Header extends React.PureComponent {
   }
   render() {
     const lang = this.props.intl.locale;
-    const showTypeDetails=this.props.params.filter==="type";
+    const showTypeDetails= this.props.params !== undefined && this.props.params.filter==="type";
     return (
       <LanguageThemeProvider>
         <HeaderContainer lang={lang} {...this.props}>

@@ -63,7 +63,7 @@ export class SnapshotContent extends React.PureComponent {
                 </SnapshotText>
               </ContentViewport>
             </Content>
-            <TypeOverlay type={this.props.type} />
+            {/*<TypeOverlay type={this.props.type} />*/}
             <OverlayText>
               <Markdown source={callToAction} renderers={{Link: RouterLink}} />
             </OverlayText>

@@ -2,9 +2,8 @@ import React from 'react';
 import Modal from 'react-modal';
 import { injectIntl } from 'react-intl';
 import Isvg from 'react-inlinesvg';
-
+import { browserHistory } from 'react-router'
 import CloseIcon from 'assets/images/icons/close.svg';
-import TranslatableStaticText from 'containers/TranslatableStaticText';
 import { Container as SnapshotContainer, Button } from 'components/ToolPage/Snapshot';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
 import SnapshotContent from './SnapshotContent';
@@ -51,11 +50,11 @@ const CloseButton = styled.button`
 
 
 export class Snapshot extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
 
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: props.openNow ? props.openNow : false
     };
 
     this.openModal = this.openModal.bind(this);
@@ -74,6 +73,11 @@ export class Snapshot extends React.Component {
 
   closeModal() {
     this.setState({modalIsOpen: false});
+
+    if (this.props.openNow && this.props.targetBack) {
+      // console.log(this.props);
+      browserHistory.push(this.props.targetBack);
+    }
   }
 
   render() {
@@ -81,7 +85,7 @@ export class Snapshot extends React.Component {
 
     return (
       <div>
-        <Button lang={lang} isArabic={lang==='ar'} onClick={this.openModal}>
+        <Button lang={lang} isArabic={lang==='ar'} noUnderline={this.props.noUnderline} onClick={this.openModal}>
           {React.Children.toArray(this.props.children)}
         </Button>
         <Modal

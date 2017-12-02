@@ -31,8 +31,12 @@ import ToolPageRight from './ToolPageRight';
 import MainStage from './MainStage';
 import Sidebar from './Sidebar';
 
+import HomePage from 'containers/HomePage';
+
 import {BR_IMAGE_PREFIX} from 'containers/Tools/constants';
 import { MODULE_TYPE_UNTRANSLATED } from 'components/CommonComponents/constants';
+
+
 
 export class ToolPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -66,6 +70,12 @@ export class ToolPage extends React.PureComponent { // eslint-disable-line react
     const tool = this.props.toolData.getIn(['tool']);
     const lang = this.props.intl.locale;
     if (!tool.document_id) return null;
+
+    console.log(tool['module-type-effective']);
+
+    if (tool['module-type-effective'] === 'snapshot') {
+      return (<HomePage popup={tool} />)
+    }
 
     return (
       <LanguageThemeProvider>
