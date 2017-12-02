@@ -236,7 +236,7 @@ class MobileHeader extends React.PureComponent {
   }
   render() {
     const lang = this.props.intl.locale;
-    const showTypeDetails=this.props.params.filter==="type";
+    const showTypeDetails=this.props.params&&this.props.params.filter==="type";
     return (
       <LanguageThemeProvider>
         <MobileHeaderContainer {...this.props}>

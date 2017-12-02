@@ -17,9 +17,9 @@ const selectHomePageDomain = () => (state) => state.get('homePage');
  const selectLanguage = (state) => state.get('language');
  const selectSearchField = (state) => state.get('searchField');
 
- const selectFilter = (state, props) => { return props.params.filter; }
- const selectLabel = (state, props) => { return props.params.label; }
- const selectRegion = (state, props) => { return props.params.region; }
+ const selectFilter = (state, props) => { return props.params ? props.params.filter : null; }
+ const selectLabel = (state, props) => { return props.params ? props.params.label : null; }
+ const selectRegion = (state, props) => { return props.params ? props.params.region : null; }
 
  const allTags = createSelector(
    [selectGlobal],

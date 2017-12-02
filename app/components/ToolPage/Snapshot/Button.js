@@ -9,7 +9,7 @@ export default styled.button`
   padding: 0;
 
   color: black;
-  text-decoration: underline;
+  text-decoration: ${p => p.noUnderline ? 'none' : 'underline' };
 
   text-transform: uppercase;
 

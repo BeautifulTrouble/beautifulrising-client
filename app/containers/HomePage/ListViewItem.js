@@ -17,10 +17,31 @@ import { ListViewport } from 'components/HomePage/ListView';
 import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
 
 import TranslatableStaticText from 'containers/TranslatableStaticText';
+import Snapshot from 'containers/ToolPage/Snapshot';
 import staticText from './staticText';
+
+const SnapshotTitle = styled(ToolTitle)`
+  margin-bottom: 0;
+  padding-bottom: 0;
+  text-decoration: none !important;
+`;
 
 class ListViewItem extends React.Component {
 
+  renderLink() {
+
+    if (this.props['module-type-effective'] === 'snapshot') {
+      return (
+        <Snapshot {...this.props} noUnderline={true}>
+          <SnapshotTitle>{this.props.title}</SnapshotTitle>
+        </Snapshot>
+      );
+    }
+
+    return (
+      <Link to={`/tool/${this.props.slug}`}>{this.props.title}</Link>
+    )
+  }
   render() {
     const { locale } = this.props.intl;
 
@@ -33,7 +54,9 @@ class ListViewItem extends React.Component {
                 <TranslatableStaticText { ...staticText[this.props.type] } />
               </ToolType>
             </ToolType>
-            <ToolTitle><Link to={`/tool/${this.props.slug}`}>{this.props.title}</Link></ToolTitle>
+            <ToolTitle>
+              {this.renderLink()}
+            </ToolTitle>
             <ListSpiel type={this.props.type}><Markdown source={this.props.snapshot} /></ListSpiel>
           </LanguageThemeProvider>
         </ListViewport>

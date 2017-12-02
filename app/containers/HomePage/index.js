@@ -39,6 +39,7 @@ import makeSelectHomePage, { makeSelectSearchFieldValue, makeSelectToolView, mak
 
 import SearchResultsContainer from 'components/HomePage/SearchResultsContainer';
 import Container from 'components/HomePage/Container' ;
+import Snapshot from 'containers/ToolPage/Snapshot';
 
 import ToolList from './ToolList';
 import BlockViewItem from './BlockViewItem';
@@ -62,6 +63,12 @@ const MobileHeaderContainer = styled.div`
     display: block;
   }
 `;
+
+const SnapshotContainer = styled.div`
+  color: white;
+  display: none;
+`;
+
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {
@@ -76,7 +83,8 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   }
 
   getViewMode() {
-    if (this.props.params.label !== undefined &&
+    if (this.props.params !== undefined &&
+        this.props.params.label !== undefined &&
         this.props.params.label !== '' &&
         (this.props.params.filter === 'search' || this.props.params.filter == 'tag') ) {
       return ListViewItem;
@@ -91,14 +99,14 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 
   getSearchResultsHeader() {
 
-    if (!this.props.params.filter || this.props.params.filter !== 'search' || !this.props.params.label) return;
+    if (this.props.params  === undefined || !this.props.params.filter || this.props.params.filter !== 'search' || !this.props.params.label) return;
 
     return (
       <SearchResultsContainer>
         <LanguageThemeProvider>
           <ContentBlock>
             <span>
-              <TranslatableStaticText {...staticText.searchResults} values={{query: this.props.params.label, count: this.props.sorted ? this.props.sorted.length : 0 }} />
+              <TranslatableStaticText {...staticText.searchResults} values={{query: this.props.params !== undefined ? this.props.params.label : null, count: this.props.sorted ? this.props.sorted.length : 0 }} />
             </span>
           </ContentBlock>
         </LanguageThemeProvider>
@@ -121,17 +129,17 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   }
 
   render() {
-
     const lang = this.props.language;
     const ListItem = this.getViewMode();
 
+    const renderedPopupSnapshot = this.props.popup ? <Snapshot {...this.props.popup} openNow={true} targetBack={'/'} >{this.props.popup.title}</Snapshot>  : null
 
-;    return (
+    return (
       <LanguageThemeProvider>
         <Container
             dir={this.getDirection()}
-            full={this.props.params.filter !== 'type'}
-            isStory = {this.props.params.label === 'story'}
+            full={this.props.params !== undefined && this.props.params.filter !== 'type'}
+            isStory = {this.props.params !== undefined && this.props.params.label === 'story'}
             >
           <Helmet
             title="BeautifulRising"
@@ -162,6 +170,9 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                   }) : null }
             </ToolList>
           </Stage>
+          <SnapshotContainer>
+            {renderedPopupSnapshot}
+          </SnapshotContainer>
         </Container>
       </LanguageThemeProvider>
     );
