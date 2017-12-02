@@ -74,7 +74,7 @@ export const AuthorDesc = styled.div`
   flex-grow: 1;
   text-align: ${p=>p.theme.isArabic?'right':'left'} !important;
   display: inline-block;
-  padding-left: 28px;
+  padding-${p=>p.theme.isArabic?'right':'left'}: 28px;
 
   p {
     margin: 0;

@@ -80,6 +80,7 @@ class ToolKeyItems extends React.PureComponent { // eslint-disable-line react/pr
     const showTheories = this.props.showIfUntranslated('key-theories');
     const showMethodologies = this.props.showIfUntranslated('key-methodologies');
 
+    
     return (
       <LanguageThemeProvider>
         <section>
