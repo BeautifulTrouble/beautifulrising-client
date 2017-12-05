@@ -18,8 +18,7 @@ export function* submitHashtag() {
     const requestUrl = `https://api.beautifulrising.org/intake/newsfeed-suggestion`;
     const options = {
       method: "POST",
-      mode: 'no-cors',
-      header: {
+      headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(
@@ -34,9 +33,14 @@ export function* submitHashtag() {
     //TODO Insert request call here
     const data = yield call(request, requestUrl, options)
 
+
+
     yield put(hashtagSubmissionSuccess());
 
+
   } catch(e) {
+
+
     hashtagSubmissionFailure(e);
   }
 
