@@ -23,7 +23,7 @@ const initialState = fromJS({
 });
 
 function askTheContributorReducer(state = initialState, action) {
-  console.log(action);
+
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;

@@ -18,5 +18,9 @@ export default {
   submit: {
     id: 'submit-resource.submit',
     defaultMessage: 'Submit'
+  },
+  thanks: {
+    id: 'module.seen-thanks',
+    defaultMessage: 'Thanks for your contribution.'
   }
 }

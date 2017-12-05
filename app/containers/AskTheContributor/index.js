@@ -49,12 +49,12 @@ export class AskTheContributor extends React.PureComponent { // eslint-disable-l
   }
   handleSubmit(evt) {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-    console.log("Entered here handleSubmit");
+
     this.recaptcha.execute();
   }
 
   handleRecaptcha(resp) {
-    console.log("Entered here handleRecaptcha", resp);
+
     this.props.onFormSubmit({...this.state, captcha: resp});
   }
 
@@ -104,7 +104,7 @@ export class AskTheContributor extends React.PureComponent { // eslint-disable-l
 
   }
   render() {
-    console.log(this.props.askTheContributor);
+
 
     const { buildMessage } = this.props.translatable;
     return (

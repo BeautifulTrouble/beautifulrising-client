@@ -83,7 +83,9 @@ export class SubmitResource extends React.PureComponent { // eslint-disable-line
 
   renderComplete() {
     return (
-      <span>Thanks for submitting!</span>
+      <span>
+        <TranslatableStaticText {...staticText.thanks} />
+      </span>
     )
   }
 

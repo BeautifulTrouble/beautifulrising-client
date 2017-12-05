@@ -19,7 +19,7 @@ export function* submitExample() {
   const options = {
     method: "POST",
     mode: 'no-cors',
-    header: {
+    headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
