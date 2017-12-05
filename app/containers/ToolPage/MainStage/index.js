@@ -46,8 +46,8 @@ class MainStage extends React.PureComponent {
     return (
       <LanguageThemeProvider>
         <ByLine {...this.props} />
-        <Untranslated { ...this.props} />
         <MainContent { ...this.props } />
+        <Untranslated { ...this.props} />
         <ToolKeyItems {...this.props} />
         <ContentSeparation />
         <HowToUse {...this.props} />

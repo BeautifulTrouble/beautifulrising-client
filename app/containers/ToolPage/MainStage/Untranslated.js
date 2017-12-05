@@ -18,6 +18,11 @@ import { MODULE_TYPE_UNTRANSLATED } from 'components/CommonComponents/constants'
 
 import staticText from '../staticText';
 
+
+const UntranslatedBlock = styled(ContentBlock)`
+  font-weight: bold;
+`;
+
 function Untranslated(props) { // eslint-disable-line react/prefer-stateless-function
 
   const { buildMessage } = props.translatable;
@@ -34,11 +39,11 @@ function Untranslated(props) { // eslint-disable-line react/prefer-stateless-fun
   return (
     <ContentContainer>
       <LanguageThemeProvider>
-        <ContentBlock>
+        <UntranslatedBlock>
           <Markdown
             source={message}
           />
-        </ContentBlock>
+        </UntranslatedBlock>
       </LanguageThemeProvider>
     </ContentContainer>
   );
