@@ -18,7 +18,7 @@ export function defaultAction() {
 }
 
 export function askContributorQuestion({captcha, authors, email, question}) {
-  
+  console.log('askContributorQuestion', captcha);
   return {
     type: CONTRIB_QUESTION_ASKED,
     data: { email, question, captcha, authors }

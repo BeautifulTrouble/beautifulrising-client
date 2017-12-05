@@ -15,12 +15,13 @@ export function* submitQuestion() {
   const email = askContributor.get('email');
   const question = askContributor.get('question');
 
+  console.log(captcha, askContributor.toJS());
+
   try {
     const requestUrl = `https://api.beautifulrising.org/intake/contributor-question`;
     const options = {
       method: "POST",
-      mode: 'no-cors',
-      header: {
+      headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(

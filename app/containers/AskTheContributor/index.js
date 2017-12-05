@@ -49,13 +49,62 @@ export class AskTheContributor extends React.PureComponent { // eslint-disable-l
   }
   handleSubmit(evt) {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+    console.log("Entered here handleSubmit");
     this.recaptcha.execute();
   }
+
   handleRecaptcha(resp) {
+    console.log("Entered here handleRecaptcha", resp);
     this.props.onFormSubmit({...this.state, captcha: resp});
   }
 
+  renderForm() {
+    const { buildMessage } = this.props.translatable;
+
+    if (this.props.askTheContributor.successful) {
+        return(
+          <div><TranslatableStaticText {...staticText.thanks} /></div>
+        )
+    }
+
+    return(
+      <Form onSubmit={this.handleSubmit.bind(this)}>
+        <ContentBlock>
+          <TextArea name='question'
+              required={true}
+              onChange={this.handleTextAreaChange.bind(this)} placeholder={buildMessage(staticText.questionPlaceholder)}></TextArea>
+          <Email name='email'
+              required={true}
+              onChange={this.handleEmailChange.bind(this)} type='email' placeholder={buildMessage(staticText.emailPlaceholder)}/>
+          <SubmitContainer>
+            <Submit>
+              <TranslatableStaticText {...staticText.submit} />
+            </Submit>
+            <Recaptcha
+              ref={ ref=> this.recaptcha = ref }
+              sitekey={ RECAPTCHA_SITE_KEY }
+              onResolved={this.handleRecaptcha.bind(this)}
+            />
+          </SubmitContainer>
+        </ContentBlock>
+      </Form>
+    );
+  }
+
+  renderAuthorInfo() {
+    if (!this.props.askTheContributor.successful) {
+      return (
+        <div>
+          <ContentBlock>
+            <TranslatableStaticText {...staticText.subheader} values={{name: (this.props.count > 1 ? 'the authors' : this.props.author.title ) }}/>
+          </ContentBlock>
+        </div>
+      );
+    }
+
+  }
   render() {
+    console.log(this.props.askTheContributor);
 
     const { buildMessage } = this.props.translatable;
     return (
@@ -64,31 +113,8 @@ export class AskTheContributor extends React.PureComponent { // eslint-disable-l
           <Header>
             <TranslatableStaticText {...staticText.header} />
           </Header>
-          <div>
-            <ContentBlock>
-              <TranslatableStaticText {...staticText.subheader} values={{name: (this.props.count > 1 ? 'the authors' : this.props.author.title ) }}/>
-            </ContentBlock>
-          </div>
-          <Form onSubmit={this.handleSubmit.bind(this)}>
-            <ContentBlock>
-              <TextArea name='question'
-                  required={true}
-                  onChange={this.handleTextAreaChange.bind(this)} placeholder={buildMessage(staticText.questionPlaceholder)}></TextArea>
-              <Email name='email'
-                  required={true}
-                  onChange={this.handleEmailChange.bind(this)} type='email' placeholder={buildMessage(staticText.emailPlaceholder)}/>
-              <SubmitContainer>
-                <Submit>
-                  <TranslatableStaticText {...staticText.submit} />
-                </Submit>
-                <Recaptcha
-                  ref={ ref=> this.recaptcha = ref }
-                  sitekey={ RECAPTCHA_SITE_KEY }
-                  onResolved={this.handleRecaptcha.bind(this)}
-                />
-              </SubmitContainer>
-            </ContentBlock>
-          </Form>
+          {this.renderAuthorInfo()}
+          {this.renderForm()}
         </Container>
       </LanguageThemeProvider>
     );
@@ -103,7 +129,8 @@ AskTheContributor.propTypes = {
 
 const mapStateToProps = (state, props) => {
   return {
-    author: selectAuthor(state, props)
+    author: selectAuthor(state, props),
+    askTheContributor: makeSelectAskTheContributor()(state,props)
   }
 }
 
