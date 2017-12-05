@@ -20,8 +20,8 @@ export function* submitResource() {
 
 
   try {
-    const requestUrl = `https://api.beautifulrising.org/intake/resource`;
-    yield call(request, requestUrl, {
+    const requestUrl = `https://api.beautifulrising.org/intake/resource-suggestion`;
+    const options =  {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -32,9 +32,9 @@ export function* submitResource() {
         'link': url,
         'description': description
       })
-    });
+    };
 
-
+    const data = yield call(request, requestUrl, options);
     yield put(successfulSubmission());
   } catch(e) {
 
