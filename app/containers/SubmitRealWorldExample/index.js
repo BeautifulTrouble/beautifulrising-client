@@ -81,7 +81,9 @@ export class SubmitRealWorldExample extends React.PureComponent { // eslint-disa
 
   renderComplete() {
     return (
-      <span>Thanks for submitting!</span>
+      <span>
+        <TranslatableStaticText {...staticText.thanks} />
+      </span>
     )
   }
 
@@ -107,7 +109,7 @@ export class SubmitRealWorldExample extends React.PureComponent { // eslint-disa
   }
 
   render() {
-    
+
     return (
 
         <SubmitExampleContainer>

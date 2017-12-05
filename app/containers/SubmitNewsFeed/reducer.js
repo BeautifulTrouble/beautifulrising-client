@@ -21,12 +21,14 @@ const initialState = fromJS({
 });
 
 function submitNewsFeedReducer(state = initialState, action) {
+
   switch (action.type) {
     case SUBMIT_HASHTAG:
       return state
               .set('submitting', true)
               .set('captcha', action.data.captcha)
-              .set('hashtag', action.data.hashtag);
+              .set('hashtag', action.data.hashtag)
+              .set('complete', false);
     case SUBMIT_HASHTAG_SUCCESS:
       return state.set('submitting', false)
               .set('complete', true);
