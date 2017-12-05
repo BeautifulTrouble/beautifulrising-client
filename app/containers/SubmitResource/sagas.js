@@ -20,7 +20,7 @@ export function* submitResource() {
 
 
   try {
-    const requestUrl = `https://api.beautifulrising.org/intake/resource`;
+    const requestUrl = `https://api.beautifulrising.org/intake/resource-suggestion`;
     yield call(request, requestUrl, {
       method: "POST",
       mode: 'no-cors',

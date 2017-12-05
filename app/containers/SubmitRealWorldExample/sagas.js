@@ -34,7 +34,7 @@ export function* submitExample() {
 
 
   try {
-    const requestUrl = `https://api.beautifulrising.org/intake/real-world-example`;
+    const requestUrl = `https://api.beautifulrising.org/intake/real-world-examples`;
     yield put(request(requestUrl, options));
     yield put(successfulSubmission());
 
