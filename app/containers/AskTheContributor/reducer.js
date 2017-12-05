@@ -28,17 +28,20 @@ function askTheContributorReducer(state = initialState, action) {
     case DEFAULT_ACTION:
       return state;
     case CONTRIB_QUESTION_ASKED:
-      
+
       return state
               .set('email', action.data.email)
               .set('question', action.data.question)
-              .set('captch', action.data.captcha)
+              .set('captcha', action.data.captcha)
               .set('authors', action.data.authors)
               .set('isSending', true)
               .set('successful', false)
               .set('error', false);
     case CONTRIB_QUESTION_SENT:
-      return initialState;
+      return state
+            .set('isSending', false)
+            .set('successful', true)
+            .set('error', false);
     case CONTRIB_QUESTION_ERROR:
       return state
               .set('isSending', false)

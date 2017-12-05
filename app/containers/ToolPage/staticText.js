@@ -16,11 +16,11 @@ export default {
     defaultMessage: 'Read More',
   },
   more: {
-    id: 'module.more',
+    id: 'module.read-more',
     defaultMessage: 'More',
   },
   less: {
-    id: 'module.less',
+    id: 'module.read-less',
     defaultMessage: 'Less',
   },
   learnMore: {

@@ -21,10 +21,9 @@ export function* submitResource() {
 
   try {
     const requestUrl = `https://api.beautifulrising.org/intake/resource-suggestion`;
-    yield call(request, requestUrl, {
+    const options =  {
       method: "POST",
-      mode: 'no-cors',
-      header: {
+      headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -33,9 +32,9 @@ export function* submitResource() {
         'link': url,
         'description': description
       })
-    });
+    };
 
-
+    const data = yield call(request, requestUrl, options);
     yield put(successfulSubmission());
   } catch(e) {
 

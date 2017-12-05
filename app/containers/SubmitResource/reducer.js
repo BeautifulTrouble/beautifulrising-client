@@ -38,7 +38,9 @@ function submitResourceReducer(state = initialState, action) {
             .set('error', false)
             .set('complete', false);
     case SUBMISSION_COMPLETE:
-      return initialState;
+      return state.set('complete', true)
+                .set('submitting', false)
+                .set('error', false);
     case SUBMISSION_ERROR:
       return state
         .set('complete', true)

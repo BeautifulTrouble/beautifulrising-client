@@ -9,8 +9,7 @@ import { PRODUCTION_ENDPOINT, DEVELOPMENT_ENDPOINT } from 'components/CommonComp
  * @return {object}          The parsed JSON from the request
  */
 function parseJSON(response) {
-
-  if (response.type == 'opaque') {
+  if (response.type == 'opaque' || response.statusText == 'NO CONTENT') {
     return true;
   }
   return response.json();

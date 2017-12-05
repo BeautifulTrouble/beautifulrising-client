@@ -75,7 +75,7 @@ export class Snapshot extends React.Component {
     this.setState({modalIsOpen: false});
 
     if (this.props.openNow && this.props.targetBack) {
-      // console.log(this.props);
+      // 
       browserHistory.push(this.props.targetBack);
     }
   }

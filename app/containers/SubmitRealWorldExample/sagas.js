@@ -18,8 +18,7 @@ export function* submitExample() {
   const documentTitle = submitExample.get('documentTitle');
   const options = {
     method: "POST",
-    mode: 'no-cors',
-    header: {
+    headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
@@ -35,7 +34,8 @@ export function* submitExample() {
 
   try {
     const requestUrl = `https://api.beautifulrising.org/intake/real-world-examples`;
-    yield put(request(requestUrl, options));
+    const data = yield call(request, requestUrl, options);
+
     yield put(successfulSubmission());
 
   } catch(e) {

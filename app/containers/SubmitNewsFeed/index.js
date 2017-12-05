@@ -54,6 +54,13 @@ export class SubmitNewsFeed extends React.PureComponent { // eslint-disable-line
   }
 
   renderForm() {
+    if (this.props.SubmitNewsFeed.complete) {
+      return (
+        <div>
+          <TranslatableStaticText {...staticText.thanks} />
+        </div>
+      )
+    }
     return (
       <FormContainer>
         <Form onSubmit={this.handleSubmit.bind(this)}>
