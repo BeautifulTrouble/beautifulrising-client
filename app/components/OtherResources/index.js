@@ -82,6 +82,7 @@ function OtherResources(props) {
                     <Resource lang={lang} key={resourceType.get('name') + resInd}>
                       <ContentBlock>
                         <a href={resource.get('link')} target='_blank'>{resource.get('title')}</a>
+                        {resource.get('who') && <span> | {resource.get('who')}</span>}
                         <p>{resource.get('description')}</p>
                       </ContentBlock>
                     </Resource>
