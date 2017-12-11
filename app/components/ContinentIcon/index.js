@@ -20,7 +20,7 @@ import Africa from 'assets/images/regions/africa.svg';
 import APOceania from 'assets/images/regions/asia-pacific-oceania.svg';
 import Asia from 'assets/images/regions/asia.svg';
 import Europe from 'assets/images/regions/europe.svg';
-import LatinAmericaCarribean from 'assets/images/regions/latin-america-caribbean.svg';
+import LatinAmericaCaribbean from 'assets/images/regions/latin-america-caribbean.svg';
 import MiddleEast from 'assets/images/regions/middle-east.svg';
 import NorthAmerica from 'assets/images/regions/north-america.svg';
 
