@@ -31,4 +31,10 @@ export default styled.div`
   p:last-child {
     margin-bottom: 0;
   }
+
+  h6 {
+    margin-top: 0;
+    line-height: 1.5;
+    font-weight: normal;
+  }
 `;;
