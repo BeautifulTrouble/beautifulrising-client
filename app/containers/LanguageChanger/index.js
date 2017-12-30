@@ -79,6 +79,9 @@ export class LanguageChanger extends React.PureComponent { // eslint-disable-lin
             <Item lang={lang}>
               <Button onClick={this.handleClick.bind(this)} selected={lang === 'es'} value={'es'}>ES</Button>
             </Item>
+            <Item lang={lang}>
+              <Button onClick={this.handleClick.bind(this)} selected={lang === 'pt'} value={'pt'}>PT</Button>
+            </Item>
           </List>
         </Viewport>
       </Container>

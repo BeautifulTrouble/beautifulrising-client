@@ -191,6 +191,11 @@ export class MobileLanguageChanger extends React.PureComponent { // eslint-disab
                   <span>ES</span>
                 </LanguageChooser>
               </Item>
+              <Item lang={lang}>
+                <LanguageChooser onClick={()=>this.handleClick('pt')} selected={lang === 'pt'} value={'pt'}>
+                  <span>PT</span>
+                </LanguageChooser>
+              </Item>
             </List>
           </Viewport>
         </Modal>

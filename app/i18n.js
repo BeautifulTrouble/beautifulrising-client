@@ -7,25 +7,25 @@
 import { addLocaleData } from 'react-intl';
 import enLocaleData from 'react-intl/locale-data/en';
 import esLocaleData from 'react-intl/locale-data/es';
-import frLocaleData from 'react-intl/locale-data/fr';
+import ptLocaleData from 'react-intl/locale-data/pt';
 import arLocaleData from 'react-intl/locale-data/ar';
 
 import { DEFAULT_LOCALE } from './containers/App/constants'; // eslint-disable-line
 import enTranslationMessages from './translations/en.json';
 import esTranslationMessages from './translations/es.json';
-import frTranslationMessages from './translations/fr.json';
+import ptTranslationMessages from './translations/pt.json';
 import arTranslationMessages from './translations/ar.json';
 
 export const appLocales = [
   'en',
   'es',
-  'fr',
+  'pt',
   'ar',
 ];
 
 addLocaleData(enLocaleData);
 addLocaleData(esLocaleData);
-addLocaleData(frLocaleData);
+addLocaleData(ptLocaleData);
 addLocaleData(arLocaleData);
 
 export const formatTranslationMessages = (locale, messages) => {
@@ -44,6 +44,6 @@ export const formatTranslationMessages = (locale, messages) => {
 export const translationMessages = {
   en: formatTranslationMessages('en', enTranslationMessages),
   es: formatTranslationMessages('es', esTranslationMessages),
-  fr: formatTranslationMessages('fr', frTranslationMessages),
+  pt: formatTranslationMessages('pt', ptTranslationMessages),
   ar: formatTranslationMessages('ar', arTranslationMessages),
 };
