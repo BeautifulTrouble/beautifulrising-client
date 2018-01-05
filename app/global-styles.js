@@ -140,8 +140,8 @@ injectGlobal`
     }
 
     @media(max-width: 1320px) {
-      height: 100vh;
-      overflow: hidden;
+      // height: 100vh;
+      // overflow: hidden;
 
       & > #app {
         height: 100vh !important;
@@ -197,9 +197,20 @@ injectGlobal`
     display: none;
     @media(max-width: 1320px) {
       display: block;
+      background-color: white !important;
+      border-right: black 2px solid;
+      border-left: black 2px solid;
+
     }
   }
 
   .ReactModalPortal {
+  }
+
+  @media (max-width: 1320px)
+  body, html {
+    height: auto!important;
+    overflow: auto!important;
+    max-height: 100% !important;
   }
 `;
