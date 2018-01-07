@@ -1,6 +1,7 @@
 import { injectGlobal } from 'styled-components';
 import KnockOut from 'assets/fonts/Knockout-HTF67-FullBantamwtMod.otf';
-import AvenirBlack from 'assets/fonts/Avenir-Black.ttf';
+import AvenirBlack from 'assets/fonts/AvenirBlack.ttf';
+import AvenirHeavy from 'assets/fonts/Avenir-Heavy-05.ttf';
 import AvenirBook from 'assets/fonts/Avenir-Book.ttf';
 import PaintHand from 'assets/fonts/Paint-hand_fixed.ttf';
 import MassiraSpray from 'assets/fonts/Massira-Spray-Small.woff';
@@ -38,8 +39,12 @@ injectGlobal`
 
   @font-face {
     font-family: 'Avenir Black';
-    font-weight: 800;
     src: url(${AvenirBlack});
+  }
+
+  @font-face {
+    font-family: 'Avenir Heavy';
+    src: url(${AvenirHeavy});
   }
 
   @font-face {
