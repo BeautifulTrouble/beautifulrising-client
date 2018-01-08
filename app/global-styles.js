@@ -1,6 +1,7 @@
 import { injectGlobal } from 'styled-components';
 import KnockOut from 'assets/fonts/Knockout-HTF67-FullBantamwtMod.otf';
-import AvenirBlack from 'assets/fonts/Avenir-Black.ttf';
+import AvenirBlack from 'assets/fonts/AvenirBlack.ttf';
+import AvenirHeavy from 'assets/fonts/Avenir-Heavy-05.ttf';
 import AvenirBook from 'assets/fonts/Avenir-Book.ttf';
 import PaintHand from 'assets/fonts/Paint-hand_fixed.ttf';
 import MassiraSpray from 'assets/fonts/Massira-Spray-Small.woff';
@@ -38,8 +39,12 @@ injectGlobal`
 
   @font-face {
     font-family: 'Avenir Black';
-    font-weight: 800;
     src: url(${AvenirBlack});
+  }
+
+  @font-face {
+    font-family: 'Avenir Heavy';
+    src: url(${AvenirHeavy});
   }
 
   @font-face {
@@ -140,8 +145,8 @@ injectGlobal`
     }
 
     @media(max-width: 1320px) {
-      height: 100vh;
-      overflow: hidden;
+      // height: 100vh;
+      // overflow: hidden;
 
       & > #app {
         height: 100vh !important;
@@ -197,9 +202,20 @@ injectGlobal`
     display: none;
     @media(max-width: 1320px) {
       display: block;
+      background-color: white !important;
+      border-right: black 2px solid;
+      border-left: black 2px solid;
+
     }
   }
 
   .ReactModalPortal {
+  }
+
+  @media (max-width: 1320px)
+  body, html {
+    height: auto!important;
+    overflow: auto!important;
+    max-height: 100% !important;
   }
 `;
