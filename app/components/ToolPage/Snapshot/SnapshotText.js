@@ -10,9 +10,15 @@ export default styled(ContentBlock) `
   display: inline-block;
   margin-top: 36px;
 
-  p {
-    font-weight: normal;
-    font-family: Avenir Heavy;
-    letter-spacing: 0.5px;
-  }
+  ${p=>p.theme.isArabic ?
+      "" :
+      `
+      p {
+        font-weight: normal;
+        font-family: Avenir Heavy;
+        letter-spacing: 0.5px;
+      }
+      `
+  };
+
 `
