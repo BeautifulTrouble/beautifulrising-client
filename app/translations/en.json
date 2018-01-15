@@ -69,7 +69,7 @@
   "app.components.PlatformsPageComponents.what": "What It is",
   "app.components.RegionOptions.header": "Filter by Region",
   "app.components.SelectedToolComponents.header": "This is the SelectedToolComponents component !",
-  "app.components.ShareButton.emailMessage": "Checkout this awesome tool from BeautifulRising.org {url}",
+  "app.components.ShareButton.emailMessage": "Check out this awesome tool from BeautifulRising.org {url}",
   "app.components.ShareButton.emailSubject": "Read about \"{title}\" at BeautifulRising.org",
   "app.components.ShareButton.header": "Share",
   "app.components.ToolHowToUse.header": "How to use",
