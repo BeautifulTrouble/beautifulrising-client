@@ -59,7 +59,7 @@ export const ToolsListContainer = styled.div`
       float: none;
 
       border: 2px solid;
-      border-width: 2px 2px 0;
+      border-width: 2px 0px 0;
     }
 `;
 

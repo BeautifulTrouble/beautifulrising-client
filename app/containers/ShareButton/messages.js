@@ -12,7 +12,7 @@ export default defineMessages({
   },
   emailMessage: {
     id: 'app.components.ShareButton.emailMessage',
-    defaultMessage: 'Checkout this awesome tool from BeautifulRising.org {url}'
+    defaultMessage: 'Check out this awesome tool from BeautifulRising.org {url}'
   },
   emailSubject: {
     id: 'app.components.ShareButton.emailSubject',

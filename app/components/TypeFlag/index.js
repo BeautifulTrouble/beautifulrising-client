@@ -66,10 +66,29 @@ export class TypeFlag extends React.PureComponent {
   handleMouseOut() {
     this.setState({ showTooltip: false });
   }
+
+  renderFlags() {
+    const oneTruth = [this.props.isTactic, this.props.isMethodology, this.props.isPrinciple, this.props.isTheory].filter(item=>item).length == 1;
+
+
+      return (
+        <FlagViewport data-id='oneTypeFlag'>
+          <Flag show={oneTruth && this.props.isTactic} isBig={true} src={BigTacticFlag} />
+          <Flag show={oneTruth && this.props.isMethodology} isBig={true} src={BigMethodologyFlag} />
+          <Flag show={oneTruth && this.props.isPrinciple} isBig={true} src={BigPrincipleFlag} />
+          <Flag show={oneTruth && this.props.isTheory} isBig={true} src={BigTheoryFlag} />
+
+          <Flag show={!oneTruth && this.props.isTactic} isBig={false}  src={TacticFlag} />
+          <Flag show={!oneTruth && this.props.isMethodology} isBig={false} src={MethodologyFlag} />
+          <Flag show={!oneTruth && this.props.isPrinciple} isBig={false} src={PrincipleFlag} />
+          <Flag show={!oneTruth && this.props.isTheory} isBig={false} src={TheoryFlag} />
+        </FlagViewport>
+      );
+
+  }
   render() {
 
     //iF there's only one truth here, we show big flag.
-    const oneTruth = [this.props.isTactic, this.props.isMethodology, this.props.isPrinciple, this.props.isTheory].filter(item=>item).length == 1;
 
     const truths = [
       {name: 'tactic', show: this.props.isTactic},
@@ -80,12 +99,7 @@ export class TypeFlag extends React.PureComponent {
     return (
       <FlagContainer lang={this.props.intl.locale} type={this.props.type} onMouseOver={this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)}>
         <TypeFlagTooltip type={this.props.type} truths={truths} show={this.state.showTooltip} />
-        <FlagViewport>
-          <Flag show={this.props.isTactic} src={oneTruth ? BigTacticFlag : TacticFlag} />
-          <Flag show={this.props.isMethodology} src={oneTruth ? BigMethodologyFlag : MethodologyFlag} />
-          <Flag show={this.props.isPrinciple} src={oneTruth ? BigPrincipleFlag : PrincipleFlag} />
-          <Flag show={this.props.isTheory} src={oneTruth ? BigTheoryFlag : TheoryFlag} />
-        </FlagViewport>
+        { this.renderFlags() }
       </FlagContainer>
     );
   }
