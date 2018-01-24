@@ -228,13 +228,24 @@ export default function createRoutes(store) {
     },
     {
       path: '/es(/:items)*',
-      name: 'homePage',
+      name: 'spanish',
       onEnter: function(nextState, replace, next) {
         const nextPath = nextState.params.items ? `/${nextState.params.items}${nextState.params.splat}` : '/';
-
         replace(nextPath);
         setTimeout(function() {
           store.dispatch(changeLocale("es"));
+          next();
+        }, 50);
+      },
+    },
+    {
+      path: '/pt(/:items)*',
+      name: 'portuguese',
+      onEnter: function(nextState, replace, next) {
+        const nextPath = nextState.params.items ? `/${nextState.params.items}${nextState.params.splat}` : '/';
+        replace(nextPath);
+        setTimeout(function() {
+          store.dispatch(changeLocale("pt"));
           next();
         }, 50);
       },
