@@ -34,7 +34,7 @@ function ToolHowToUse(props) {
       <Content lang={lang}>
         <ContentBlock>
           <Markdown
-              source={props.text.replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)")}
+              source={props.text.replace(/\(([^()]*?)\.(jpg|png)\)/g,"(https://www.beautifulrising.org/$1.$2)")}
               renderers={{Link: RouterLink}}
           />
         </ContentBlock>

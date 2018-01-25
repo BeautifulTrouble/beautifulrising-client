@@ -13,7 +13,7 @@ export default function(props) {
       <ContentBlock>
         <ShortContentContainer>
           <Markdown
-            source={props[PROP_SHORT_WRITE_UP].replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)") }
+            source={props[PROP_SHORT_WRITE_UP].replace(/\(([^()]*?)\.(jpg|png)\)/g,"(https://www.beautifulrising.org/$1.$2)") }
             renderers={{Link: RouterLink}}
           />
         </ShortContentContainer>

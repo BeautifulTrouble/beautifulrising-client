@@ -34,7 +34,7 @@ function ToolWhyItFailed(props) {
       </Header>
       <Content lang={props.intl.locale}>
         <Markdown
-            source={props.text.replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)")}
+            source={props.text.replace(/\(([^()]*?)\.(jpg|png)\)/g,"(https://www.beautifulrising.org/$1.$2)")}
             renderers={{Link: RouterLink}}
         />
       </Content>

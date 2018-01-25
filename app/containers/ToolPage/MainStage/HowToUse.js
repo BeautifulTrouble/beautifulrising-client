@@ -51,7 +51,7 @@ class HowToUse extends React.PureComponent {
 
     renderCollapsible() {
 
-      const imageReplaced = this.props[PROP_HOW_TO_USE].replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)");
+      const imageReplaced = this.props[PROP_HOW_TO_USE].replace(/\(([^()]*?)\.(jpg|png)\)/g,"(https://www.beautifulrising.org/$1.$2)");
 
       return (
         <CollapsingSection

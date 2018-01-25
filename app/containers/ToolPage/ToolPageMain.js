@@ -61,7 +61,7 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
     return(
       <ToolReadShortContent>
         <Markdown
-          source={this.props[PROP_SHORT_WRITE_UP].replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)") }
+          source={this.props[PROP_SHORT_WRITE_UP].replace(/\(([^()]*?)\.(jpg|png)\)/g,"(https://www.beautifulrising.org/$1.$2)") }
           renderers={{Link: RouterLink}}
         />
       </ToolReadShortContent>
@@ -77,7 +77,7 @@ export class ToolPageMain extends React.PureComponent { // eslint-disable-line r
 
     if (!this.props['full-write-up']) return null;
 
-    const imageReplaced = this.props['full-write-up'].replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)");
+    const imageReplaced = this.props['full-write-up'].replace(/\(([^()]*?)\.(jpg|png)\)/g,"(https://www.beautifulrising.org/$1.$2)");
 
 
 

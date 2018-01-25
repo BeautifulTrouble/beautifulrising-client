@@ -40,7 +40,7 @@ class FullContent extends React.PureComponent {
   render() {
     if (!this.props['full-write-up']) return null;
 
-    const imageReplaced = this.props['full-write-up'].replace(/\(([^()]*?)\.jpg\)/g,"(https://www.beautifulrising.org/$1.jpg)");
+    const imageReplaced = this.props['full-write-up'].replace(/\(([^()]*?)\.(jpg|png)\)/g,"(https://www.beautifulrising.org/$1.$2)");
 
     const content = this.generateContent(imageReplaced);
 
