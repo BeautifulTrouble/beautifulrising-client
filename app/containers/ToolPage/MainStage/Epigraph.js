@@ -10,7 +10,7 @@ function Epigraph(props) {
   const { locale } = props.intl;
   const content = props.epigraphs ?
                   props.epigraphs.map(item => {
-                    const text = item.replace(/—/g, '\r\n\r\n––');
+                    const text = item.replace(/(—[^—]+)$/g, '\r\n\r\n$1');
 
                     return (
                       <EpigraphContainer key={text} ar={locale === 'ar'}>

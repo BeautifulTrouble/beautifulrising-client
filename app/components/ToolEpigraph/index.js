@@ -34,7 +34,7 @@ class ToolEpigraph extends React.Component {
     return (
       <Container>
         <Viewport>
-            {this.props.epigraphs ? this.props.epigraphs.map(item => this.renderEpigraph(item.replace(/—/g, '\r\n\r\n––'))) : null}
+            {this.props.epigraphs ? this.props.epigraphs.map(item => this.renderEpigraph(item.replace(/(—[^—]+)$/g, '\r\n\r\n$1'))) : null}
         </Viewport>
       </Container>
     );
