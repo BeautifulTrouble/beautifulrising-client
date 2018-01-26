@@ -33,8 +33,9 @@ export default styled.div`
   }
 
   h6 {
-    margin-top: 0;
-    line-height: 1.5;
+    margin-top: .25rem;
+    line-height: 1.25;
     font-weight: normal;
+    font-size: .75rem;
   }
 `;;
