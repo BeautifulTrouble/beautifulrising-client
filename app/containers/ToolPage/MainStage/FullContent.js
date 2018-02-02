@@ -13,13 +13,13 @@ class FullContent extends React.PureComponent {
 
   renderWithPullQuote(content) {
     const {locale} = this.props.intl;
-    const count = 1 + ((Math.random() * 100) % 2);
     const split = content.split('\n').filter(item => item !== "");
+    const insertionPoint = split.length > 3 ? 2 : 1;
     let contents = split.map((item, ind) => { return (<Markdown key={ind} source={item} renderers={{Link: RouterLink}} />) });
     let pullQuote = <Markdown
                       source={this.props['pull-quote']}
                       renderers={{Link: RouterLink}} />
-    contents.splice(count, 0, (<PullQuote ar={locale==='ar'} key={Math.random()}>"{pullQuote}"</PullQuote>));
+    contents.splice(insertionPoint, 0, (<PullQuote ar={locale==='ar'} key={Math.random()}>"{pullQuote}"</PullQuote>));
 
     return (
       <div>
