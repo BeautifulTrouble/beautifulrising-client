@@ -10,7 +10,7 @@ import { injectIntl } from 'react-intl';
 import Isvg from 'react-inlinesvg';
 
 import { twitterShare, facebookShare } from 'utils/social';
-import { gaEvent } from 'utils/analytics';
+import { gaClick } from 'utils/analytics';
 
 
 import messages from './messages';
@@ -53,12 +53,12 @@ class ShareButton extends React.PureComponent { // eslint-disable-line react/pre
 
   handleTwitterClick(title, url) {
     twitterShare(title, url);
-    gaEvent('share', 'twitter');
+    gaClick('share-twitter');
   }
 
   handleFacebookShare(url) {
     facebookShare(url);
-    gaEvent('share', 'facebook');
+    gaClick('share-facebook');
   }
 
   render() {

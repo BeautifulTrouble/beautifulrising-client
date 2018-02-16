@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 
-import { gaEvent } from 'utils/analytics';
+import { gaClick } from 'utils/analytics';
 
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
@@ -42,7 +42,7 @@ export class EmailTools extends React.PureComponent { // eslint-disable-line rea
 
   handleSubmit(evt) {
     this.props.onSubmitForm(evt, this.state.email);
-    gaEvent('click', 'pdf-email-custom');
+    gaClick('pdf-email-custom');
   }
 
   renderCompleteMessage() {

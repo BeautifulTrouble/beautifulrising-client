@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 
-import { gaEvent } from 'utils/analytics';
+import { gaClick } from 'utils/analytics';
 
 import ContentBlock from 'components/ContentBlock';
 import LanguageThemeProvider from 'components/LanguageThemeProvider';
@@ -177,7 +177,7 @@ export class ToolsArea extends React.PureComponent { // eslint-disable-line reac
               <ContentBlock>
                 <TranslatableStaticText {...staticText.pdfSpiel} />
                 <br/>
-                <Link onClick={()=>gaEvent('click', 'pdf-download-custom')} to={this.buildPDFLink()} target='_blank'>
+                <Link onClick={()=>gaClick('pdf-download-custom')} to={this.buildPDFLink()} target='_blank'>
                   <TranslatableStaticText {...staticText.pdfCTA} />
                 </Link>
               </ContentBlock>

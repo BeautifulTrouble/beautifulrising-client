@@ -11,7 +11,7 @@ import { createStructuredSelector } from 'reselect';
 import Isvg from 'react-inlinesvg';
 import { Link } from 'react-router';
 
-import { gaEvent } from 'utils/analytics';
+import { gaClick } from 'utils/analytics';
 
 import AddToolIcon from 'assets/images/icons/add-tool.svg';
 import RemoveToolIcon from 'assets/images/icons/remove-tool.svg';
@@ -64,7 +64,7 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
       this.props.removeTool(this.props.slug)
     } else {
       this.props.addTool(this.props.slug, this.props.title, this.props.type, this.props.snapshot);
-      gaEvent('click', 'save-tool');
+      gaClick('save-tool');
     }
   }
 

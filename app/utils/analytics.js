@@ -2,7 +2,7 @@
 import ReactGA from 'react-ga';
 
 function gaInit(gaId) {
-    console.debug('GA Init', gaId);
+    console.debug('GA init', gaId);
     ReactGA.initialize(gaId);
 }
 export function gaPageView() {
@@ -10,9 +10,9 @@ export function gaPageView() {
     ReactGA.set({ page: window.location.pathname + window.location.search });
     ReactGA.pageview(window.location.pathname + window.location.search);
 };
-export function gaEvent(category, action) {
-    console.debug('GA Event', category, action);
-    ReactGA.event({category, action});
+export function gaClick(action) {
+    console.debug('GA click', action);
+    ReactGA.event({category: 'click', action});
 }
 
 // Mapping of links in markdown fields to an appropriate ga click action
