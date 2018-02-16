@@ -9,6 +9,9 @@ import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import Isvg from 'react-inlinesvg';
+import { Link } from 'react-router';
+
+import { gaEvent } from 'utils/analytics';
 
 import AddToolIcon from 'assets/images/icons/add-tool.svg';
 import RemoveToolIcon from 'assets/images/icons/remove-tool.svg';
@@ -16,8 +19,6 @@ import RemoveToolIcon from 'assets/images/icons/remove-tool.svg';
 import makeSelectTools, { toolIsSelected } from './selectors';
 import messages from './messages';
 import styled from 'styled-components';
-
-import { Link } from 'react-router';
 
 import { ToolsButton, ToolsListMenu, ToolsListMenuItem,
           ToolsList, ToolsListItem } from 'components/ToolsComponents';
@@ -63,6 +64,7 @@ export class AdderRemover extends React.PureComponent { // eslint-disable-line r
       this.props.removeTool(this.props.slug)
     } else {
       this.props.addTool(this.props.slug, this.props.title, this.props.type, this.props.snapshot);
+      gaEvent('click', 'save-tool');
     }
   }
 

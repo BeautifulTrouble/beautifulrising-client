@@ -3,6 +3,8 @@ import Markdown from 'react-markdown';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 
+import { gaEvent } from 'utils/analytics';
+
 import TranslatableStaticText from 'containers/TranslatableStaticText';
 import ContentBlock from 'components/ContentBlock';
 import { ContentContainer, ShowContentButton } from 'components/ToolPage/Main';
@@ -35,6 +37,7 @@ class MainContent extends React.PureComponent {
 
   handleShowClick() {
     this.props.handleMoreLessClick(!this.props.ToolPage.expandAll);
+    !this.props.ToolPage.expandAll && gaEvent('click', 'read-more');
   }
 
   render() {
