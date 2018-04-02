@@ -104,20 +104,23 @@ export class AskTheContributor extends React.PureComponent { // eslint-disable-l
 
   }
   render() {
-
-
     const { buildMessage } = this.props.translatable;
-    return (
-      <LanguageThemeProvider>
-        <Container>
-          <Header>
-            <TranslatableStaticText {...staticText.header} />
-          </Header>
-          {this.renderAuthorInfo()}
-          {this.renderForm()}
-        </Container>
-      </LanguageThemeProvider>
-    );
+
+    if (this.props.author['email-available']) {
+        return (
+          <LanguageThemeProvider>
+            <Container>
+              <Header>
+                <TranslatableStaticText {...staticText.header} />
+              </Header>
+              {this.renderAuthorInfo()}
+              {this.renderForm()}
+            </Container>
+          </LanguageThemeProvider>
+        );
+    } else {
+        return (null);
+    }
   }
 }
 
