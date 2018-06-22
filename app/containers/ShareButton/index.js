@@ -63,7 +63,7 @@ class ShareButton extends React.PureComponent { // eslint-disable-line react/pre
 
   render() {
     const { formatMessage } = this.props.intl;
-    const url = `https://beautifulrising.org/tool/${this.props.slug}`;
+    const url = `https://beautifulrising.org/${this.props.intl.locale}/tool/${this.props.slug}`;
     const emailMessage = formatMessage(messages.emailMessage, {url: url});
     const emailSubject = formatMessage(messages.emailSubject, {title: this.props.title });
 
