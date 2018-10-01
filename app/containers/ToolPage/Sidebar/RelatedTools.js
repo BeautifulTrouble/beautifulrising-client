@@ -37,6 +37,20 @@ class RelatedTools extends React.PureComponent {
     super();
   }
 
+  shuffledSlice(array, length) {
+    let counter = array.length;
+    while (counter > 0) {
+        let index = Math.floor(Math.random() * counter);
+        counter--;
+        let temp = array[counter];
+        array[counter] = array[index];
+        array[index] = temp;
+    }
+    let slice = array.slice(0, length);
+    slice.sort();
+    return slice;
+  }
+
   handleClick() {
     // Set it to null if the same LEARN_MORE
     if (this.props.ToolPage.chosenSection === RELATED_TOOLS) {
@@ -47,14 +61,14 @@ class RelatedTools extends React.PureComponent {
   }
 
   renderRelated(FlagImage, typeKey) {
-    
     if (!this.props[typeKey] || this.props[typeKey].length == 0) return null;
+    let toolSlice = this.shuffledSlice(this.props[typeKey], 5);
     return (
       <ContentBlock>
         <RelatedHeader>
           <Isvg src={FlagImage} />
         </RelatedHeader>
-        <RelatedToolsList relatedTools={this.props[typeKey]} dict={this.props.toolsList}/>
+        <RelatedToolsList relatedTools={toolSlice} dict={this.props.toolsList}/>
       </ContentBlock>
     );
   }
