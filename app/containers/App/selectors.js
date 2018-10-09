@@ -67,9 +67,7 @@ const makeSelectAllTags = createSelector(
   (toolTags, globalState) => {
     if (globalState.getIn(['appData', 'tags']) !== undefined && globalState.getIn(['appData', 'tags']).size !== 0) {
       const allTags = globalState.getIn(['appData', 'tags']);
-      const slugged = toolTags ? toolTags.map(i=>slugify(i)) : Object.keys(allTags);
-
-      return slugged
+      return (toolTags ? toolTags : Object.keys(allTags))
                 .map((key, index) => {
                     return {key: key, value: allTags[key]}}
                 )
