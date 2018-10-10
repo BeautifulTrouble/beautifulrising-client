@@ -111,7 +111,7 @@ const makeSelectSearchFieldValue = createSelector(
             return label ? data.filter(
                               item => {
                                   const searchBase = searchIndices.map(key => item[key]).join(' ').toLowerCase();
-                                  console.log(searchBase, label)
+                                  //console.log(searchBase, label)
                                   return isSearchItem(item, lang) && item['module-type-effective'] !== MODULE_TYPE_UNTRANSLATED && searchBase.search(label.toLowerCase()) >= 0
                               }
                            )
