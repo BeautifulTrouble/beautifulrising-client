@@ -13,6 +13,7 @@ import Link from 'components/Link';
 import AdderRemover from 'containers/Tools/AdderRemover';
 import {ToolType, ToolTitle, ListContainer, ListSpiel} from 'components/ToolsComponents';
 import { ListViewport } from 'components/HomePage/ListView';
+import { gaSearchClickthrough } from 'utils/analytics';
 
 import { BR_IMAGE_PREFIX } from 'containers/Tools/constants';
 
@@ -54,7 +55,7 @@ class ListViewItem extends React.Component {
                 <TranslatableStaticText { ...staticText[this.props.type] } />
               </ToolType>
             </ToolType>
-            <ToolTitle>
+            <ToolTitle onClick={(e) => gaSearchClickthrough(this.props.label, this.props.title)}>
               {this.renderLink()}
             </ToolTitle>
             <ListSpiel type={this.props.type}><Markdown source={this.props.snapshot} /></ListSpiel>

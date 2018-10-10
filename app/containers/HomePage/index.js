@@ -166,6 +166,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                             index={index + 1}
                             lang={this.props.language} {...tool}
                             key={tool['document_id']}
+                            label={this.props.params.label}
                             />)
                   }) : null }
             </ToolList>

@@ -14,6 +14,10 @@ export function gaClick(action) {
     console.debug('GA click', action);
     ReactGA.event({category: 'click', action});
 }
+export function gaSearchClickthrough(query, title) {
+    console.debug(`GA search clickthrough ${query} -> ${title}`);
+    ReactGA.event({category: 'click', action: 'search-clickthrough', label: `${query} -> ${title}`});
+}
 
 // Mapping of links in markdown fields to an appropriate ga click action
 export const gaTrackedLinks = {
