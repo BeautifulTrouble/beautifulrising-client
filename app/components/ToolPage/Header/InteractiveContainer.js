@@ -5,6 +5,7 @@ export default styled.div`
   top: 48px;
   ${p=>p.lang==='ar'?'left':'right'}: 34px;
   z-index: 200;
+  max-width: 50%;
 
   @media(max-width: 1320px) {
     display: none;
