@@ -85,7 +85,7 @@ export class Snapshot extends React.Component {
 
     return (
       <div>
-        <Button lang={lang} isArabic={lang==='ar'} noUnderline={this.props.noUnderline} onClick={this.openModal}>
+        <Button lang={lang} isArabic={lang==='ar'} noUnderline={this.props.noUnderline} onClick={this.openModal} style={this.props.buttonStyle}>
           {React.Children.toArray(this.props.children)}
         </Button>
         <Modal

@@ -21,6 +21,7 @@ import KeyItemList from 'components/ToolKeyItems/KeyItemList';
 import KeyItemListItem from 'components/ToolKeyItems/KeyItemListItem';
 import Header from 'components/ToolKeyItems/Header';
 import TypeSubheader from 'components/ToolKeyItems/TypeSubheader';
+import Snapshot from 'containers/ToolPage/Snapshot';
 
 import staticText from './staticText';
 
@@ -29,6 +30,12 @@ const ToolLink = styled(Link)`
   color: black;
 `;
 
+const buttonStyle = {
+  textDecoration: 'none',
+  letterSpacing: '1px',
+  fontWeight: 'normal',
+  fontFamily: "'KnockOut', 'Greta', Helvetica, Arial, sans-serif"
+};
 
 class ToolKeyItems extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -43,12 +50,15 @@ class ToolKeyItems extends React.PureComponent { // eslint-disable-line react/pr
         { list.map((item,ind)=> {
             try {
               const [header, content, slug] = item;
+              const tool = this.props.toolsList.get(slug);
               return (<KeyItemListItem key={ind} >
                         {ind>0?null:<TypeSubheader type={type}>
                           <TranslatableStaticText {...staticText[type]} />
                         </TypeSubheader>}
                         <Header>
-                          <ToolLink to={`/tool/${slug}`}>{header}</ToolLink>
+                          {tool && tool.get('module-type-effective') == 'snapshot'
+                              ? <Snapshot {...tool.toJS()} buttonStyle={buttonStyle}>{header}</Snapshot>
+                              : <ToolLink to={`/tool/${slug}`}>{header}</ToolLink>}
                         </Header>
                         <ContentBlock>
                           <Markdown
