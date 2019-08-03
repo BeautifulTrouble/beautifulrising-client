@@ -16,6 +16,7 @@ import MenuListItem from 'components/MenuListItem';
 import MenuTitle from 'components/MenuTitle';
 import staticText from './staticText';
 
+
 function ContributeMenu(props) {
   const { locale } = props.intl;
   return (
@@ -30,6 +31,9 @@ function ContributeMenu(props) {
               <MenuLink to="/contribute/how-it-works" onClick={props.onClick}>
                 <TranslatableStaticText {...staticText.howItWorks} />
               </MenuLink>
+              <a href="http://donate.beautifultrouble.org" target="_blank" style={{textTransform: "uppercase", fontWeight: "bold", fontSize: "12px"}} key="donate">
+                <TranslatableStaticText {...staticText.donate} />
+              </a>
             </MenuListItem>
           </MenuList>
         </LanguageThemeProvider>

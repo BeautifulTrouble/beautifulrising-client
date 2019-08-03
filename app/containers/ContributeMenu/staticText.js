@@ -6,5 +6,9 @@ export default {
   howItWorks: {
     id: 'menu.how-it-works',
     defaultMessage: 'How does it work?'
+  },
+  donate: {
+    id: 'menu.donate',
+    defaultMessage: 'Donate'
   }
 }
