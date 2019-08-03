@@ -46,7 +46,7 @@ const Container = styled.div`
   position: fixed;
   z-index: ${p=>p.zIndex?p.zIndex:500};
   ${p=>p.lang==='ar'?'left':'right'}: 5px;
-  top: 13px;
+  top: 7px;
 
   @media(max-width: 1320px) {
     display: block;
@@ -58,7 +58,7 @@ const Button = styled.button`
   cursor: pointer;
   text-transform: uppercase;
   font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
-  color: ${props=>props.selected ? 'black' : '#828486'};
+  color: ${props=>props.selected ? 'white' : '#828486'};
   text-decoration: ${props=>props.selected ? 'none' : 'underline'};
   font-size: 14px;
   padding: 0 13px;
@@ -82,7 +82,7 @@ const LanguageChooser = styled(Button)`
     content: ' ';
     width: 50px;
     height: 50px;
-    background-color: white;
+    background-color: black;
     position: absolute;
     border-radius: 50%;
     border: 2px solid black;
@@ -113,7 +113,7 @@ const ArrowSvg = styled(Isvg)`
   }
 
   svg * {
-    fill: black;
+    fill: white;
   }
 `;
 
@@ -156,7 +156,10 @@ export class MobileLanguageChanger extends React.PureComponent { // eslint-disab
       this.props.handleChangeLocale(language);
       this.props.handleChangeLocationSignal();
       // this.setState({modalIsOpen: false});
+    } else {
+      this.setState({modalIsOpen: false});
     }
+
   }
 
   render() {

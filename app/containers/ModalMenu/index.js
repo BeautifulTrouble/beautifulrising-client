@@ -22,13 +22,18 @@ import { Bell as WhatsHappeningBell} from 'containers/WhatsHappening';
 const customStyles = {
   overlay: {
     backgroundColor: 'rgba(149, 149, 149, 0.75)',
-    zIndex: 1100
+    zIndex: 1100,
+    position: 'fixed',
+    right: 0,
+    left: 0,
+    top: 0,
+    bottom: 0
   },
   content : {
-    position: 'absolute',
+    position: 'fixed',
     right: 'auto',
     left: 'auto',
-    top: '0px',
+    //top: '38px', // Moved to globalStyles for media query support
     bottom: 'auto',
     border: '0px none',
     background: 'rgb(255, 255, 255)',
@@ -52,6 +57,7 @@ const Button = styled.button`
   @media(max-width: 1320px) {
     ${props=>props.lang==='ar'?'right':'left'}: 0px;
     top: 0px;
+    ${p=>p.theme.isArabic?'right':'left'}: 20px;
   }
 `;
 
@@ -70,17 +76,26 @@ const CloseBox = styled.div`
   display: inline-block;
   height: 122px;
   position: relative;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
 
   // Mobile
   @media(max-width: 1320px) {
     width: 100%;
-    padding: 20px 0;
+    padding: 10px 0;
+    svg {
+      position: relative;
+      ${p=>p.theme.isArabic?'right':'left'}: 14px;
+      top: 21px;
+    }
   }
 `;
 
 const MenuContainer= styled.div`
   border: solid black;
-  border-width: 2px 2px 0;
+  border-width: 2px 0 0;
   // padding: 0 0px 20px;
   overflow: auto;
   width: 100%;
@@ -91,10 +106,14 @@ const MenuContainer= styled.div`
     content: ' ';
     clear: both;
   }
+  // Mobile
+  @media(max-width: 1320px) {
+    padding-top: 23px;
+    border-width: 2px 2px 0;
+  }
 
 `;
 const CloseButton = styled.button`
-
 `;
 
 const Viewport = styled.div`
@@ -119,8 +138,11 @@ const BellArea = styled.div`
   top: 42px;
 
   @media(max-width: 1320px) {
-    ${p=>p.theme.isArabic?'left':'right'}: 13px;
-    top: 26px;
+    /* Figure out how to position this thing */
+    display: none;
+    position: fixed;
+    top: 62px;
+    ${p=>p.theme.isArabic?'left':'right'}: 44px;
   }
 `;
 
@@ -168,6 +190,7 @@ export class ModalMenu extends React.Component {
           onRequestClose={this.closeModal}
           style={{...customStyles, content: {...customStyles.content}}}
           contentLabel="MenuModal"
+          className={'MenuModal'}
           overlayClassName={'MenuModalOverlay'}
         >
           <MenuContainer>

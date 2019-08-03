@@ -187,6 +187,12 @@ injectGlobal`
     }
   }
 
+  .MenuModal {
+    top: 38px;
+    @media(max-width: 1320px) {
+      top: 0px;
+    }
+  }
   .MenuModalOverlay {
 
     @media(max-width: 1320px) {

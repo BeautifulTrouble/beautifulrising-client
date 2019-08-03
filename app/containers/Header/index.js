@@ -10,6 +10,8 @@ import Logo from 'components/Logo';
 import styled, { ThemeProvider } from 'styled-components';
 import ModalMenu from 'containers/ModalMenu';
 import Link from 'components/Link';
+import LanguageThemeProvider from 'components/LanguageThemeProvider';
+import TranslatableStaticText from 'containers/TranslatableStaticText';
 import { injectIntl } from 'react-intl';
 import messages from './messages';
 import { Bell as WhatsHappeningBell} from 'containers/WhatsHappening';
@@ -20,6 +22,7 @@ const Viewport = styled.div`
   width: 1170px;
   text-align: left;
   display: inline-block;
+  top: 40px;
   // Mobile
   @media(max-width: 1320px) {
     max-width: 100%;
@@ -30,7 +33,7 @@ const PageHeader = styled.header`
   // position: absolute;
   width: 100%;
   background-color: white;
-  height: 115px;
+  height: 155px;
   overflow: visible;
   padding: 0;
   z-index: 300;
@@ -39,7 +42,35 @@ const PageHeader = styled.header`
   @media(max-width: 1320px) {
     padding: 0;
     // position: relative;
+    height: 130px;
     z-index: 400;
+  }
+`;
+const DonateHeader = styled.div`
+  height: 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: ${p=>p.theme.ar=='ar'?'right':'left'};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  div {
+    width: 1170px;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  @media(max-width: 1320px) {
+    a {
+      padding: 0 20px;
+    }
   }
 `;
 
@@ -65,15 +96,25 @@ const BellArea = styled.div`
   }
 `;
 
+const staticText = {
+  donate: {
+    id: 'menu.donate',
+    defaultMessage: 'Donate'
+  }
+};
+
 class Header extends React.Component {
 
   render() {
     const {formatMessage} = this.props.intl;
     const logo = formatMessage(messages.logoLanguage);
     return (
-      <ThemeProvider theme={{ ar: this.props.lang }} >
+      <LanguageThemeProvider theme={{ ar: this.props.lang }} >
         <PageHeader>
           <Viewport>
+            <DonateHeader>
+                <div><a href="http://donate.beautifultrouble.org" target="_blank"><TranslatableStaticText {...staticText.donate} /></a></div>
+            </DonateHeader>
             <Logo lang={this.props.lang}/>
             <ModalMenuArea lang={this.props.lang} />
             <MobileLanguageChanger />
@@ -82,7 +123,7 @@ class Header extends React.Component {
             </BellArea>
           </Viewport>
         </PageHeader>
-      </ThemeProvider>
+      </LanguageThemeProvider>
     );
   }
 }

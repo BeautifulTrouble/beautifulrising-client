@@ -20,7 +20,7 @@ import MobileLanguageChanger from './MobileLanguageChanger';
 const Container = styled.div`
   position: fixed;
   ${props=>props.lang==='ar'?'left: 50%': 'right:50%'}
-  top: 45px;
+  top: 7px;
   z-index: ${p=>p.zIndex?p.zIndex:500};
   transform: ${props=>props.lang==='ar'?'translate(-530px,0)':'translate(530px,0)'};
 
@@ -33,9 +33,10 @@ const Viewport = styled.div``;
 const Button = styled.button`
   outline: none;
   cursor: pointer;
-  font-weight: 800; font-family: 'Avenir', 'Kaff', sans-serif;
-  color: ${props=>props.selected ? 'black !important' : '#828486'};
-  text-decoration: ${props=>props.selected ? 'none' : 'underline'};
+  font-weight: ${props=>props.selected ? 800 : 400}; 
+  font-family: 'Avenir', 'Kaff', sans-serif;
+  color: white;
+  text-decoration: none;
   font-size: 14px;
   padding: 0 13px;
 `;
@@ -48,7 +49,7 @@ const List = styled.ul`
 const Item = styled.li`
   list-style: none;
   display: inline-block;
-  border-right: 2px solid;
+  border-right: 2px solid white;
   &:${props=>props.lang==='ar'?'first-child':'last-child'} {
     border-right: none;
   }

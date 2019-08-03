@@ -8,7 +8,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export default styled.section`
-  padding-top: 220px;
+  padding-top: 180px;
   display: inline-block;
   max-width: 1170px;
   width: 100%;
@@ -21,7 +21,7 @@ export default styled.section`
   // Mobile
   @media(max-width: 1320px) {
     max-width: 100%;
-    padding-top: 120px;
+    padding-top: 130px;
     left: 0 !important;
     right: 0 !important;
     padding-bottom: 70px;
