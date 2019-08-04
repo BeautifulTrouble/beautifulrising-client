@@ -9,6 +9,8 @@ export default styled.div`
   overflow: ${props=>props.showOverflow?'visible':'hidden'};
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     padding-${props=>props.theme.lang==='ar'?'right':'left'}: 42px;
   }
 `;

@@ -15,6 +15,8 @@ const WhereWhenContent = styled(ContentBlock)`
 
   text-align: ${props => props.theme.lang == 'ar' ? 'left' : 'right'};
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     font-size: 8px;
     line-height: 8px;
   }

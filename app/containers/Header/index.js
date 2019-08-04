@@ -25,6 +25,9 @@ const Viewport = styled.div`
   top: 40px;
   // Mobile
   @media(max-width: 1320px) {
+    width: 970px;
+  }
+  @media(max-width: 970px) {
     max-width: 100%;
   }
 `;
@@ -40,6 +43,8 @@ const PageHeader = styled.header`
   text-align: center;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     padding: 0;
     // position: relative;
     height: 130px;
@@ -68,6 +73,11 @@ const DonateHeader = styled.div`
     color: white;
   }
   @media(max-width: 1320px) {
+    div {
+      width: 970px !important;
+    }
+  }
+  @media(max-width: 970px) {
     a {
       padding: 0 20px;
     }
@@ -90,6 +100,8 @@ const BellArea = styled.div`
   top: 27px;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     position: absolute;
     ${p=>p.theme.ar=='ar'?'left':'right'}: 30px;
     top: 25px;

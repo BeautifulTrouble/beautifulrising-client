@@ -10,6 +10,8 @@ export default styled(ToolTitle)`
   line-height: ${p=>p.theme.isArabic?'95px':'70px'};
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     font-size: 30px;
     line-height: ${p=>p.theme.isArabic?'28px':'28px'};
     margin-bottom: 12px;

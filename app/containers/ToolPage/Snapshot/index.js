@@ -22,7 +22,7 @@ const customStyles = {
     top: '50%',
     transform: 'translate(-50%, -50%)',
     borderRadius: '0',
-    width: '1035px',
+    //width: '1035px', // Moved to global-styles for media query
     height: '533px',
     bottom: 'auto',
     border: '2px solid',
@@ -94,6 +94,7 @@ export class Snapshot extends React.Component {
           onRequestClose={this.closeModal}
           style={{...customStyles, content: {...customStyles.content}}}
           contentLabel="Example Modal"
+          className={'SnapshotModal'}
         >
           <SnapshotContainer>
             <LanguageThemeProvider>

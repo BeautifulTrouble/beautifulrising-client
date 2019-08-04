@@ -21,6 +21,8 @@ export default styled(Link)`
   }
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     width: 100%;
     text-align: center;
   }

@@ -19,6 +19,8 @@ export default styled.section`
   height: 430px;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     height: 245px;
   }
 `;;

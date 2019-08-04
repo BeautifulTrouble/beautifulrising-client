@@ -147,6 +147,8 @@ export const ToolsMenu = styled.ul`
   // border: solid black;
   // border-width: ${props=>props.theme.lang === 'ar' ? '0 0 0 2px' : '0 2px 0 0'};
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     display: flex;
     padding: 0;
     width: 100%;
@@ -168,6 +170,8 @@ export const ToolsMenuItem = styled.li`
   }
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     flex-grow: 1;
   }
 `;
@@ -191,6 +195,9 @@ export const ToolsContainer = styled.div`
 
   //mobile
   @media(max-width: 1320px) {
+    ${(props) => props.lang == 'ar' ? 'right: 988px;' : 'left: 988px;'}
+  }
+  @media(max-width: 970px) {
     position: fixed;
     bottom: 0;
     top: auto;
@@ -221,6 +228,10 @@ export const ListContainer = styled(ToolContainer)`
   padding-bottom: 40px;
 
   @media(max-width: 1320px) {
+    width: 360px;
+    margin-${p=>p.lang==='ar'?'left':'right'}: ${p=>p.index%2==0?'0':'30px'};
+  }
+  @media(max-width: 970px) {
     margin: 0;
     width: 100%;
     padding: 20px;

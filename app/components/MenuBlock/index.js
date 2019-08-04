@@ -16,6 +16,9 @@ export default styled(ContentBlock)`
   text-align: ${p=>p.isArabic?'right':'left'};
 
   @media(max-width: 1320px) {
+    align-items: flex-start;
+  }
+  @media(max-width: 970px) {
     width: 100%;
     border: none;
 

@@ -5,6 +5,8 @@ export default styled.div`
   width: 100%;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     display: block;
   }
 `;

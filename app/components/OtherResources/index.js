@@ -28,6 +28,8 @@ const ResourceType = styled.li`
 const ResourceList = styled.ul`
   padding-left: 70px;
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     padding: 0;
   }
 `;
@@ -45,6 +47,8 @@ const Resource = styled.li`
   }
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     width: 100%;
     padding: 0;
     margin-top :10px;

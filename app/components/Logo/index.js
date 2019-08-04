@@ -20,6 +20,8 @@ const Title = styled.h1`
   transform: translate(-50%, 0);
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     top: ${props=> props.top || '-15px' };
     img {
       width: 170px;

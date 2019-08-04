@@ -78,6 +78,8 @@ const Column = styled.div`
   }
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     width: 100%;
     display: block;
     text-align: center;

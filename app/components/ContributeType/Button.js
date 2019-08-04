@@ -5,6 +5,8 @@ export default styled.button`
   cursor: pointer;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     .isvg {
       display: none;
     }

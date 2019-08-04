@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export default styled(ContentBlock)`
   padding-${p=>p.theme.isArabic?'right':'left'}: 100px;
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     padding: 0;
   }
 `;

@@ -24,6 +24,8 @@ const Container = styled.section`
   display: ${props=>props.show ? 'block' : 'none'};
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     height: calc(100% - 137px);
     border-bottom: 0;
     z-index: 700px;
@@ -60,6 +62,8 @@ const ToolType = styled(Link)`
   margin-bottom: 20px;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     text-align: center;
     width: 100%;
     .isvg {
@@ -89,9 +93,11 @@ const ToolDesc = styled(ContentBlock)`
   text-transform: none;
   margin-top: 36px;
   padding-${p=>p.theme.isArabic?'left':'right'}: 30px;
-  margin-bottom: 70px;
+  margin-bottom: 50px;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     display: none;
   }
 `;

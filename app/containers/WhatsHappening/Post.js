@@ -20,6 +20,8 @@ const Container = styled.div`
   margin-top: 95px;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     display: block;
     margin-top: 15px;
   }
@@ -44,6 +46,8 @@ const ContentArea = styled.div`
   }
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     display: block;
     width: 100%;
     min-width: 100%;
@@ -68,6 +72,8 @@ const FeatureArea = styled.div`
   }
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     display: block;
     width: 100%;
     min-width: 100%;

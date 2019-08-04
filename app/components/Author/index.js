@@ -29,6 +29,8 @@ export const AuthorContainer = styled.section`
   display: flex;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     flex-wrap: wrap;
   }
 `;
@@ -65,6 +67,8 @@ export const AuthorLink = styled(Link)`
   min-width: 200px;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     width: 100%;
     min-width: 100%;
   }
@@ -81,6 +85,8 @@ export const AuthorDesc = styled.div`
   }
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     width: 100%;
     padding: 10px;
     margin-top: 10px;

@@ -14,7 +14,7 @@ export default styled(ContentBlock)`
   text-align: center;
 
   opacity: 0;
-  @media(min-width: 1320px) {
+  @media(min-width: 970px) {
     opacity: ${props=>props.show?(props.forceShow?'0':'1'):'0'};
     transition: opacity 0.2s;
   }

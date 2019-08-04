@@ -31,6 +31,8 @@ const SubmitExampleContainer = styled.div`
   width: 470px;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     width: 100%;
   }
 `;

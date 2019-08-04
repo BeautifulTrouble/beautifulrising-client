@@ -20,6 +20,10 @@ export default styled.section`
 
   // Mobile
   @media(max-width: 1320px) {
+    max-width: 970px;
+    ${(props) => props.showTools ? ((props.lang == 'ar' ? 'right:' : 'left:') + Math.min(((innerWidth - 970)/2 - 400), 0) + 'px') : ''};
+  }
+  @media(max-width: 970px) {
     max-width: 100%;
     padding-top: 130px;
     left: 0 !important;

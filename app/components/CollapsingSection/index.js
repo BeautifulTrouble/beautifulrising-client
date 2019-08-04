@@ -26,7 +26,7 @@ const Header = styled.div`
 `;
 const ArrowContainer = styled.span`
   display: inline-block;
-  transition: transform 0.5s ease;
+  transition: transform 0.2s ease;
   position: absolute;
 
   ${p=>{
@@ -55,7 +55,7 @@ const ArrowContainer = styled.span`
 const Content = styled.div`
   max-height: ${p=>p.show?'5000px':'0'};
   overflow: hidden;
-  transition: max-height 0.7s ease;
+  transition: max-height 0.2s ease;
 `;
 
 const ActionButton = styled.button`

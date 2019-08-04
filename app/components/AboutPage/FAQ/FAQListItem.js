@@ -7,6 +7,8 @@ export default styled.li`list-style: none;
   margin-bottom: 34px;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     width: 100%;
   }
 `

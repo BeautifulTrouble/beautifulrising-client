@@ -53,6 +53,8 @@ const FilterSection = styled.ul`
   margin: 0;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     flex-wrap: wrap;
 
     &::after {

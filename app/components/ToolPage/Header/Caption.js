@@ -10,6 +10,8 @@ export default styled.div`
   a { color: white; }
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     display: none;
   }
 `;

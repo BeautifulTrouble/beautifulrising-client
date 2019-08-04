@@ -8,6 +8,8 @@ export default styled(AboutSection)`
     }
 
     @media(max-width: 1320px) {
+    }
+    @media(max-width: 970px) {
       &::after {
         ${p=>p.theme.isArabic?'right':'left'}: 50%;
       }

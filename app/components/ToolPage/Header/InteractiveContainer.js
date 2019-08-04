@@ -8,6 +8,8 @@ export default styled.div`
   max-width: 50%;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     display: none;
   }
 `;

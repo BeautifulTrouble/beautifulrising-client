@@ -8,7 +8,7 @@ export default styled.div`
   z-index: 0;
   opacity: 1;
 
-  @media(min-width: 1320px) {
+  @media(min-width: 970px) {
     opacity: ${props=>props.show ? '1': (props.forceShow?'1':'0')};
     transition: opacity 0.2s;
   }

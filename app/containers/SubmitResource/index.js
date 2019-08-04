@@ -32,6 +32,8 @@ const SubmitResourceContainer = styled.div`
   display: inline-block;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     width: 100%;
     padding: 10px;
   }

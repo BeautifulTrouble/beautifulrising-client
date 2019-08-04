@@ -19,6 +19,8 @@ import staticText from '../staticText';
 
 const FirstCollapsingHeader = styled(CollapsingHeader)`
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     margin-top: 0;
   }
 `;

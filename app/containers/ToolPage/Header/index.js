@@ -38,6 +38,8 @@ const MobileWhenWhereContainer = styled.div`
   display: none;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     display: block;
   }
 `;

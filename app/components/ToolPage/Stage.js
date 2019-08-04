@@ -9,6 +9,8 @@ export default styled.section`
  }
 
  @media(max-width: 1320px) {
+ }
+ @media(max-width: 970px) {
    display: block;
  }
 `;

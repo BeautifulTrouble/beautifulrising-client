@@ -17,9 +17,11 @@ const Container = styled.div`
   position: relative;
   border-bottom: ${p=>p.show?'2px solid black':0};
   max-height: ${p=>p.show?'100vh':0};
-  transition: max-height 0.8s ease, border-bottom 0.8s ease, padding-bottom 0.4s ease;
+  transition: max-height 0.4s ease, border-bottom 0.4s ease, padding-bottom 0.4s ease;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     height: calc(100% - 137px);
     border-bottom: 0;
     z-index: 700px;

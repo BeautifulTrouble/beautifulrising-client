@@ -69,6 +69,8 @@ const DesktopContent = styled.div`
   display: block;
   height: 100%;
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     display: none;
   }
 `;
@@ -76,6 +78,8 @@ const DesktopContent = styled.div`
 const MobileContent = styled.div`
   display: none;
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     display: block;
   }
 `;

@@ -10,7 +10,7 @@ export default styled(ToolViewport)`
   position: relative;
 
   background-color: ${BLACKED};
-  @media(min-width: 1320px) {
+  @media(min-width: 970px) {
     background-color: ${p=>p.grayout&&!p.forceShow ? GRAYED : BLACKED };
     transition: background-color 0.3s ease;
   }

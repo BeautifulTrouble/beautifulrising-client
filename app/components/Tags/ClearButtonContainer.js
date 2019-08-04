@@ -13,6 +13,8 @@ export default styled.div`
   }
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     ${p=>p.theme.isArabic ? 'right': 'left'}: -40px;
   }
 `;

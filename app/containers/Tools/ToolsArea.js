@@ -56,6 +56,8 @@ export const ToolsListContainer = styled.div`
     }
 
     @media(max-width: 1320px) {
+    }
+    @media(max-width: 970px) {
       display: block;
       width: 100%;
       float: none;

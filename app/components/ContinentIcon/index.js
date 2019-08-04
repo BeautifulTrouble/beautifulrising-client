@@ -30,6 +30,8 @@ const Content = styled.div`
   margin-bottom: 20px;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     display: inline-block;
 
     .where-when-desktop { display: none; }
@@ -39,6 +41,8 @@ const Content = styled.div`
 const DesktopContent = styled.div`
   display: block;
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     display: none;
   }
 `;
@@ -48,6 +52,8 @@ const Continent = styled.div`
     fill: #08eb8c;
   }
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     margin-${p=>p.lang==='ar' ? 'left' : 'right'}: 10px;
   }
 `;

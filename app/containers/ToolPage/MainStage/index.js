@@ -30,6 +30,8 @@ import Training from '../Sidebar/Training';
 const MobileContent = styled.div`
   display: none;
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     display: block;
   }
 `;

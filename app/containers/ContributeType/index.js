@@ -43,6 +43,8 @@ const MobileContent = styled(Content)`
   display: none;
   padding: 0 20px 20px;
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     width: 100%;
     display: ${p=>p.show?'block':'none'};
     * {text-align: center !important;}

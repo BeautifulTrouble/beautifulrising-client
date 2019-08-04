@@ -16,6 +16,8 @@ export default styled.li`
   }
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     width: auto;
     padding: 0;
     margin-bottom: 0;

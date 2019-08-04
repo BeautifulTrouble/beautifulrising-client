@@ -26,6 +26,9 @@ const Container = styled.div`
 
   // Mobile
   @media(max-width: 1320px) {
+    transform: ${props=>props.lang==='ar'?'translate(-480px,0)':'translate(480px,0)'};
+  }
+  @media(max-width: 970px) {
     display: none;
   }
 `;

@@ -8,6 +8,8 @@ export default styled.div`
   padding-top: 50px;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     padding-top: 26px;
   }
 `;

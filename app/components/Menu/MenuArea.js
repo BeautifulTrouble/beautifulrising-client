@@ -23,6 +23,9 @@ display: inline-block;
 
 // Mobile
 @media(max-width: 1320px) {
+  width: 970px;
+}
+@media(max-width: 970px) {
   max-width: 100%;
   width: 100%;
 }

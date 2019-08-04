@@ -145,6 +145,8 @@ injectGlobal`
     }
 
     @media(max-width: 1320px) {
+    }
+    @media(max-width: 970px) {
       // height: 100vh;
       // overflow: hidden;
 
@@ -167,18 +169,24 @@ injectGlobal`
   }
   [aria-label=MenuModal] {
     @media(max-width: 1320px) {
+    }
+    @media(max-width: 970px) {
       z-index: 1100 !important;
     }
   }
 
   [aria-label=Onboarding] {
     @media(max-width: 1320px) {
+    }
+    @media(max-width: 970px) {
       width: calc(100% - 75px) !important;
     }
   }
   [aria-label=ToolsModal] {
     display: none;
     @media(max-width: 1320px) {
+    }
+    @media(max-width: 970px) {
       display: block;
       width: 100% !important;
       height: calc(100% - 70px) !important;
@@ -187,15 +195,25 @@ injectGlobal`
     }
   }
 
+  .SnapshotModal {
+    width: 1035px;
+    @media(max-width: 1320px) {
+      width: 970px;
+    }
+  }
   .MenuModal {
     top: 38px;
     @media(max-width: 1320px) {
+    }
+    @media(max-width: 970px) {
       top: 0px;
     }
   }
   .MenuModalOverlay {
 
     @media(max-width: 1320px) {
+    }
+    @media(max-width: 970px) {
       z-index: 1100;
 
       & > div {
@@ -207,6 +225,8 @@ injectGlobal`
   .ToolModalOverlay {
     display: none;
     @media(max-width: 1320px) {
+    }
+    @media(max-width: 970px) {
       display: block;
       background-color: white !important;
       border-right: black 2px solid;

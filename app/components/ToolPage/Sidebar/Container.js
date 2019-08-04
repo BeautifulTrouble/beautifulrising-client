@@ -6,6 +6,10 @@ export default styled.div`
   min-width: 370px;
 
   @media(max-width: 1320px) {
+    width: 270px;
+    min-width: 270px;
+  }
+  @media(max-width: 970px) {
     display: none;
   }
 `;

@@ -36,6 +36,8 @@ const Subheader = styled.h4`margin-top: 18px;`
 const Header = styled.h3`margin-top: 24px;`
 const ProcessList = styled.ul`
 @media(max-width: 1320px) {
+}
+@media(max-width: 970px) {
   padding: 0;
 }
 `;

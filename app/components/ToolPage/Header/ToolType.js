@@ -13,6 +13,8 @@ export default styled(ToolType)`
   }
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     font-size: 21px;
     line-height: 21px;
     margin-bottom: 6px;

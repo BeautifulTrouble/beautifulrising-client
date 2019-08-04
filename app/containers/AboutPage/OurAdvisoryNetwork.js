@@ -23,6 +23,8 @@ import messages from './messages';
 
 const AdvisoryNetworkList = styled.ul`
 @media(max-width: 1320px) {
+}
+@media(max-width: 970px) {
   padding: 0;
 }
 `;

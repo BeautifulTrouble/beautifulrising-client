@@ -43,6 +43,8 @@ const MenuArea = styled.div`
   position: relative;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     width: 100%;
     float: none;
     padding: 0;
@@ -66,6 +68,8 @@ padding: 0;
 margin: 0;
 
 @media(max-width: 1320px) {
+}
+@media(max-width: 970px) {
   display: none;
 }
 `;
@@ -107,6 +111,8 @@ const Button = styled.button`
   padding-${props=>props.lang==='ar'?'right':'left'}: 0;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     margin-bottom: 0;
     margin: 0;
     padding: 10px 0;
@@ -116,6 +122,8 @@ const Button = styled.button`
 const Banner = styled.img`
   display: block;
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     display: none;
   }
 `;
@@ -123,6 +131,8 @@ const Banner = styled.img`
 const MobileBanner = styled.img`
   display: none;
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     display: block;
     width: 100%;
   }
@@ -131,6 +141,8 @@ const MobileBanner = styled.img`
 const MobileTrainingList = styled.div`
 display: none;
 @media(max-width: 1320px) {
+}
+@media(max-width: 970px) {
   display: block;
   width: 100%;
 }`;
@@ -140,6 +152,8 @@ const ContentArea = styled.div`
   padding-${props=>props.lang==='ar'?'right':'left'}: 100px;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     display: none;
   }
 `;
@@ -149,6 +163,8 @@ const Content = styled.div`
   margin-top: 40px;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     display: block !important;
     padding-right: 0;
     margin-top: 0;
@@ -170,6 +186,8 @@ const TrainingArea =styled.div`
   }
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     padding-bottom: 20px;
   }
 `;

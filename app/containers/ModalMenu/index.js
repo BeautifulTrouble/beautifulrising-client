@@ -55,6 +55,8 @@ const Button = styled.button`
 
   //mobile
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     ${props=>props.lang==='ar'?'right':'left'}: 0px;
     top: 0px;
     ${p=>p.theme.isArabic?'right':'left'}: 20px;
@@ -83,6 +85,9 @@ const CloseBox = styled.div`
 
   // Mobile
   @media(max-width: 1320px) {
+    width: 970px;
+  }
+  @media(max-width: 970px) {
     width: 100%;
     padding: 10px 0;
     svg {
@@ -108,6 +113,8 @@ const MenuContainer= styled.div`
   }
   // Mobile
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     padding-top: 23px;
     border-width: 2px 2px 0;
   }
@@ -127,6 +134,8 @@ const MenuSection = styled.section`
 const MenuHeaderSection = styled(MenuSection)``;
 const MenuBodySection = styled(MenuSection)`
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     overflow: auto;
     height: calc(100vh - 124px);
   }
@@ -138,6 +147,8 @@ const BellArea = styled.div`
   top: 42px;
 
   @media(max-width: 1320px) {
+  }
+  @media(max-width: 970px) {
     /* Figure out how to position this thing */
     display: none;
     position: fixed;

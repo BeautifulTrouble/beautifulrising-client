@@ -11,5 +11,8 @@ export default styled.div`
   // display: block;
   background-color: white;
   text-align: center;
+  @media(max-width: 1320px) {
+    display: none;
+  }
 
 `;

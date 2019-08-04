@@ -33,6 +33,11 @@ const FlagContainer = styled.div`
   }
 
   @media(max-width: 1320px) {
+    TypeFlagTooltip {
+      display: none;
+    }
+  }
+  @media(max-width: 970px) {
     position: absolute;
     left: -220px;
     top: 35px;
