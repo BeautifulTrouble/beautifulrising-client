@@ -89,6 +89,7 @@ module.exports = (options) => ({
       'main',
     ],
   },
+  node: {fs: 'empty'}, // Adrian: hide some errors about not being able to resolve fs
   devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window
   performance: options.performance || {},
