@@ -78,7 +78,12 @@ const makeSelectSearchFieldValue = createSelector(
           const result = data.filter(item => isFullTool(item, lang) && item.type === label);
 
           if (region !== undefined && region) {
-            return result.filter(item => item.regions && item.regions.map(slugify).includes(region));
+            return result.filter(item => {
+                if (item.regions) {
+                    let slugRegions = item.regions.map(slugify);
+                    return slugRegions.includes(region) || slugRegions.includes('worldwide');
+                }
+            });
           }
           return result;
           break;
