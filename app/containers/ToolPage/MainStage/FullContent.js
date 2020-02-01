@@ -45,13 +45,19 @@ class FullContent extends React.PureComponent {
   render() {
     if (!this.props['full-write-up']) return null;
 
-    const imageReplaced = this.props['full-write-up'].replace(/\(([^()]*?)\.(jpg|png)\)/g,"(https://www.beautifulrising.org/$1.$2)");
+    let image2 = '';
+    if (this.props['type'] == 'methodology' && this.props['image-2']) {
+      image2 = `![](https://beautifulrising.org/${this.props['image-2']})`;
+    }
+
+    const imageReplaced = this.props['full-write-up'].replace(/\(([^()]*?)\.(jpg|png)\)/g,"(https://beautifulrising.org/$1.$2)");
 
     const content = this.generateContent(imageReplaced);
 
     return(
       <ContentContainer>
         <LanguageThemeProvider>
+          <Markdown source={image2} />
           <Epigraph {...this.props}/>
           <Origins {...this.props} />
           <ContentBlock>
