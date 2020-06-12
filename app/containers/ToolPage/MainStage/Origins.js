@@ -18,14 +18,16 @@ function Origins(props) {
 
   const originsText = buildMessage(staticText.origins);
 
-  
+
   if (props.origins === undefined || !props.origins) return null;
 
   return (
     <ContentContainer>
       <LanguageThemeProvider>
         <OriginsContent>
-          <Markdown source={`**${originsText}:** *${props.origins}*`}/>
+          <em>
+          <Markdown source={`**${originsText}:** ${props.origins}`}/>
+          </em>
         </OriginsContent>
       </LanguageThemeProvider>
     </ContentContainer>

@@ -14,7 +14,7 @@ class FullContent extends React.PureComponent {
   renderWithPullQuote(content) {
     const {locale} = this.props.intl;
     const split = content.split('\n').filter(item => item !== "");
-    let contents = split.map((item, ind) => { return (<Markdown key={ind} source={item} renderers={{Link: RouterLink}} />) });
+    let contents = split.map((item, ind) => { return (<Markdown key={ind} escapeHtml={false} source={item} renderers={{Link: RouterLink}} />) });
     let insertionPoint = split.length > 3 ? 2 : 1;
     try { // If there's already a blockquote or image, move the pull-quote downward
         if (/^(!|>)/.test(contents[insertionPoint].props.source[0])) {
